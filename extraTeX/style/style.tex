@@ -10,6 +10,7 @@
 % 10 Special Boxes
 
 
+\newcommand{\textPE}[1]{#1}
 
 
 %-------------------------------------------------------------
@@ -46,13 +47,14 @@
 \setlength{\marginparwidth}{20mm}
 
 
+% Tablet Version
+%\setlength\paperheight{8.82in}\setlength\textheight{8.25in}\setlength\paperwidth{5.7in}\setlength\textwidth{5.45in}\setlength\voffset{-23.5mm}\setlength\hoffset{-27mm}\setlength\oddsidemargin{5mm}\setlength\evensidemargin{5mm}\setlength{\marginparsep}{5mm}\setlength{\marginparwidth}{35mm}
+
+
 
 
 %-------------------------------------------------------------
 % 2 Special Commands for Editions
-\newcommand{\vspacePE}[1]{\vspace{#1}}
-\newcommand{\hspacePE}[1]{\hspace{#1}}
-\newcommand{\textPE}[1]{#1}
 \newcommand{\vspaceB}[1]{\vspace{#1}}
 \newcommand{\hspaceB}[1]{\hspace{#1}}
 \newcommand{\textB}[1]{#1}
@@ -94,35 +96,38 @@
 \newlength{\exampleBelowBar}
 \setlength{\exampleAboveBar}{-3.15mm}
 \setlength{\exampleBelowBar}{-1.15mm}
-
+% 4.3 Chapter Declarations
+\newcommand\includechapter[2]{
+  \setcounter{chapter}{#1}
+  \addtocounter{chapter}{-1}
+  \normalsize
+  \include{#2/TeX/#2}
+  \include{#2/TeX/#2_ex}}
 
 
 
 %-------------------------------------------------------------
 % 5 Section Coloring
 % 5.1 Chapter
-% Color 1 of ZZQ, oiB
 \titleformat{\chapter}[display]
-{\color{black}\normalfont\huge\bfseries\raggedright}{\chaptertitlename\
+{\color{oiB}\normalfont\huge\bfseries\raggedright}{\chaptertitlename\
 \thechapter}{20pt}{\Huge}
 % 5.2 Section
-% Color 2 of ZZQ, oiB
 \titleformat{\section}
-{\color{black}\normalfont\Large\bfseries}
-{\color{black}\thesection}{1em}{}
+{\color{oiB}\normalfont\Large\bfseries}
+{\color{oiB}\thesection}{1em}{}
 % 5.3 Subsection
-% Color 3 of ZZQ, oiB
 \titleformat{\subsection}
-{\color{black}\normalfont\large\bfseries}
-{\color{black}\thesubsection}{1em}{}
+{\color{oiB}\normalfont\large\bfseries}
+{\color{oiB}\thesubsection}{1em}{}
 
 
 %-------------------------------------------------------------
 % 6 Utilities
 % 6.1 Helpful Editing Commands
-\newcommand\Add[1]{\marginpar[\color{oiR}$\bullet$]{\color{oiR}$\bullet$}{\color{oiB}#1}}
-\newcommand\Cut[1]{\marginpar[\color{oiR}$\bullet$]{\color{oiR}$\bullet$}{\color{oiGC}#1}}
-\newcommand\Comment[1]{\marginpar[\color{oiR}$\bullet$]{\color{oiR}$\bullet$} {\color{oiG}{[#1]}}}
+\newcommand\Add[1]{\marginpar[{\Huge\color{oiR}$\bullet$}]{\color{oiR}$\bullet$}{\color{oiB}#1}}
+\newcommand\Cut[1]{\marginpar[{\Huge\color{oiR}$\bullet$}]{\color{oiR}$\bullet$}{\color{oiGC}#1}}
+\newcommand\Comment[1]{\marginpar[{\Huge\color{oiR}$\bullet$}]{\color{oiR}$\bullet$} {\color{oiG}{[#1]}}}
 \newcommand{\note}[1]{\Comment{#1}}
 % 6.2 Special Symbols
 \newcommand{\degree}{\ensuremath{^\circ}}
@@ -154,7 +159,7 @@
 
 %-------------------------------------------------------------
 % 8 Figures and Captions
-% 8.1 Table Caption
+% 8.1 & 8.2 Table & Figure Numbering
 % Thanks @Herbert on StackExchange for helping clean up this style code!
 % http://tex.stackexchange.com/questions/176978/latex-numbering-in-counters-appears-to-have-changed/177045?noredirect=1#comment409945_177045
 \makeatletter
@@ -172,11 +177,10 @@
 % 9 Examples and Exercises
 % 9.1 Exercises, within the text
 % 9.1.1 Exercise Environment
-% Color 4 of ZZQ, oiB
 \newcommand{\excolor}[1]{{\color{excolor}#1}}
 \newenvironment{exercise}
 {
-\begin{itemize}\item[\color{black}$\bigodot$]\refstepcounter{equation}\noindent\normalsize\textbf{\color{black}Guided~Practice~\theexercise}\hspace{3mm}}
+\begin{itemize}\item[\color{oiB}$\bigodot$]\refstepcounter{equation}\noindent\normalsize\textbf{\color{oiB}Guided Practice \theexercise}\hspace{3mm}}
 {\normalsize
 
 \addvspace{3mm}
@@ -185,11 +189,10 @@
 \newcommand\theexercise{\thechapter.\arabic{equation}}
 % 9.2 Examples
 % 9.2.1 Example Environment
-% Color 5 of ZZQ, oiB
 \newcommand\theexample{\thechapter.\arabic{equation}}
 \newenvironment{example}[1]
 {\begin{itemize}
-\item[\color{black}\Large$\CIRCLE$]\refstepcounter{equation}\noindent\textbf{\color{black}Example \theexample}\hspace{0.3cm}#1\vspace{\exampleAboveBar}
+\item[\color{oiB}\Large$\CIRCLE$]\refstepcounter{equation}\noindent\textbf{\color{oiB}Example \theexample}\hspace{0.3cm}#1\vspace{\exampleAboveBar}
 
 {\color{examplegray}\rule{20mm}{0.1mm}}
 
@@ -202,9 +205,8 @@
 }
 % 9.3 EOCEs: End of Chapter Exercises
 % 9.3.1 Environment
-% Color 6 of ZZQ, oiB
 \newenvironment{eoce}[2]
-{\refstepcounter{eoce}\noindent\small\textbf{\textcolor{black}{\arabic{chapter}.\arabic{eoce}}}\hspace{2mm} #1
+{\refstepcounter{eoce}\noindent\small\textbf{\textcolor{oiB}{\arabic{chapter}.\arabic{eoce}}}\hspace{2mm} #1
 
 \addvspace{3mm}
 
@@ -212,24 +214,21 @@
 %{\em #2 } $\:$ \\ }
 {}
 % 9.3.2 EOCE Solutions
-% Color 7 of ZZQ, oiB
 \newcommand{\eocesolch}[1]{
-\refstepcounter{eocesolch}\noindent\textbf{\color{black}\arabic{eocesolch}\hspace{2mm}#1}
+\refstepcounter{eocesolch}\noindent\textbf{\color{oiB}\arabic{eocesolch}\hspace{2mm}#1}
 
 \addvspace{2mm}
 
 }
-% Color 8 of ZZQ, oiB
-\newcommand{\eocesol}[1]{\refstepcounter{eocesol}\noindent\textbf{\color{black}\arabic{eocesolch}.\arabic{eocesol}}\hspace{2mm}{\small#1}\addtocounter{eocesol}{1}
+\newcommand{\eocesol}[1]{\refstepcounter{eocesol}\noindent\textbf{\color{oiB}\arabic{eocesolch}.\arabic{eocesol}}\hspace{2mm}{\small#1}\addtocounter{eocesol}{1}
 
 \addvspace{1mm}
 
 }
 % 9.3.3 EOCE Utilities
-% Color 9 of ZZQ, oiB
-\newcommand{\qt}[1]{\textcolor{black}{\textbf{#1.}}}
-\newcommand{\qtq}[1]{\textcolor{black}{\textbf{#1?}}}
-\newcommand{\ec}[1]{\textcolor{black}{\footnotesize{~(#1)}}}% 9.3.4 EOCE Roman Parts
+\newcommand{\qt}[1]{\textcolor{oiB}{\textbf{#1.}}}
+\newcommand{\qtq}[1]{\textcolor{oiB}{\textbf{#1?}}}
+\newcommand{\ec}[1]{\textcolor{oiB}{\footnotesize{~(#1)}}}% 9.3.4 EOCE Roman Parts
 \newenvironment{romanparts}{
 \begin{enumerate}[I.]
 \setlength{\itemsep}{0mm}
@@ -266,12 +265,11 @@
 %-------------------------------------------------------------
 % 10 Special Boxes
 % 10.1 Term Box
-% Color 10 of ZZQ, oiB
-\newenvironment{tBoxTitle}[2][\\]{\textbf{\color{black}#2} #1
+\newenvironment{tBoxTitle}[2][\\]{\textbf{\color{oiB}#2} #1
 }{}
 \newenvironment{termBox}[1]{
 \addvspace{4mm}
-\noindent{\color{black}\framebox[\textwidth][c]{\framebox[\textwidth-3mm][l]{ \\
+\noindent{\color{oiB}\framebox[\textwidth][c]{\framebox[\textwidth-3mm][l]{ \\
 	\vspace{0.5cm} \\
 	\begin{minipage}[b]{\textwidth-3mm}
 		\begin{minipage}[t]{2mm}
@@ -285,12 +283,11 @@
 
 \addvspace{1mm}}
 % 10.2 Tip Box
-% Color 11 of ZZQ, oiB
-\newenvironment{tipBoxTitle}[2][TIP:\ ]{\textbf{\color{black}#1#2} \\
+\newenvironment{tipBoxTitle}[2][TIP:\ ]{\textbf{\color{oiB}#1#2} \\
 }{}
 \newenvironment{tipBox}[1]{
 \addvspace{4mm}
-\noindent{\color{black}\framebox[\textwidth][l]{ \\
+\noindent{\color{oiB}\framebox[\textwidth][l]{ \\
 	\vspace{5mm} \\
 	\begin{minipage}[b]{\textwidth-4mm}
 		\begin{minipage}[t]{2mm}
@@ -304,17 +301,16 @@
 
 \addvspace{1mm}}
 % 10.3 Caution Box
-% Color 12 of ZZQ, oiB
 \newenvironment{caution}[2]{
 \addvspace{4mm}
-\noindent{\color{black}\framebox[\textwidth][l]{ \\
+\noindent{\color{oiB}\framebox[\textwidth][l]{ \\
 	\vspace{5mm} \\
 	\begin{minipage}[b]{\textwidth-4mm}
 		\begin{minipage}[t]{2mm}
 			\hspace{2mm}
 		\end{minipage}
 		\begin{minipage}[b]{\textwidth-8mm}
-			\textbf{\color{black}Caution: #1} \\
+			\textbf{\color{oiB}Caution: #1} \\
 			\color{black}#2
 		\end{minipage}
 	\end{minipage}}}
