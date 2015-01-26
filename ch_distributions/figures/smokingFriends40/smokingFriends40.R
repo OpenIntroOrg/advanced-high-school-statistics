@@ -1,7 +1,6 @@
 library(openintro)
 data(COL)
 
-
 myPDF("smokingFriends40.pdf", 7, 3,
       mar = c(1.6, 0, 0, 0))
 # Intentially not exact
@@ -18,8 +17,3 @@ for (i in 1:length(x)) {
 abline(h = 0)
 axis(1, seq(0, 25, 5))
 dev.off()
-
-
-
-
-
