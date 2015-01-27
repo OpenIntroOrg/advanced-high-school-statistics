@@ -32,9 +32,15 @@ A \term{scatterplot} provides a case-by-case view of data that illustrates the r
 We say observations are \emph{paired} when the two observations correspond to each other. In unpaired data, there is no such correspondence. Here the two observations correspond to a particular email.
 \end{example}
 
-The variable that is suspected to be the response variable is plotted on the vertical axis and the variable that is suspected to be the explanatory variable is plotted on the horizontal axis. In this example, the variables could be switched since either variable could reasonably serve as the explanatory variable or the response variable.
+The variable that is suspected to be the response variable is plotted on the vertical axis \Add{(y-axis)}and the variable that is suspected to be the explanatory variable is plotted on the horizontal axis \Add{(x-axis)}. In this example, the variables could be switched since either variable could reasonably serve as the explanatory variable or the response variable.
 
-\begin{tipBox}{\tipBoxTitle{Drawing scatterplots}
+\begin{tipBox}{\tipBoxTitle{Drawing scatterplots} {\color{red} ADD THIS BOX}
+(1) Decide which variable should go on each axis.  Draw and label the two axes.
+\newline(2)  Take note of the largest value in each data set.  Add tick marks and scales to each.  
+\newline(3) Plot the dots as you would on an (\textit{x},\textit{y}) coordinate plane.}
+\end{tipBox}
+
+\begin{tipBox}{\tipBoxTitle{Drawing scatterplots} {\color{red} CUT THIS BOX}
 (1) Draw the axes and add scales to each. (2) Label each axis. (3) Plot the dots.}
 \end{tipBox}
 
@@ -60,10 +66,17 @@ The relationship is evidently nonlinear, as highlighted by the dashed line. This
 \end{example}
 \index{data!cars|)}
 
+\Add{
+\begin{exercise}
+Describe two variables that would have a horseshoe shaped (i.e. ``U"-shaped) association in a scatterplot.\footnote{Consider a variable that represents something that is only good in moderation.  Water consumption fits this description since water becomes toxic when consumed in excessive quantities.  Imagine health on the vertical axis and water consumption on the horizontal axis.  This would create an upside down \"U" shape.}
+\end{exercise}
+}
+
+\Cut{
 \begin{exercise}
 Describe two variables that would have a horseshoe shaped (i.e. ``U"-shaped) association in a scatterplot.\footnote{Consider the case where your vertical axis represents something ``good'' and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description since water becomes toxic when consumed in excessive quantities.}
 \end{exercise}
-
+}
 
 \subsection{Stem-and-leaf plots and dot plots}
 \label{dotPlot}
@@ -184,10 +197,12 @@ Consider a data set that consists of the following numbers:  12, 12, 12, 12, 12,
 \end{exercise}
 
 
-\subsection{Histograms and shape}
+\Comment{Separating Shape into a separate subsection than Histograms, since shape can be inferred from dot plot and stem-and-leaf as well}
+
+\subsection{Histograms}
 \label{histogramsAndShape}
 
-Stem-and-leaf plots and dot plots are ideal for displaying data from small samples because they show the exact values of the observations and how frequently they occur. However, they are impractical for larger samples. Rather than showing the frequency of every value, we prefer to think of the value as belonging to a \emph{bin}. For example, in the \data{email50} data set, we create a table of counts for the number of cases with character counts between 0 and 5,000, then the number of cases between 5,000 and 10,000, and so on. Such a table, shown in Table~\ref{binnedNumCharTable}, is called a \term{frequency table}. Observations that fall on the boundary of a bin (e.g.~5,000) are allocated to the lower bin.\footnote{This is called \emph{left inclusive}.} These binned counts are plotted as bars in Figure~\ref{email50NumCharHist} into what is called a \term{histogram} or \term{frequency histogram}, which resembles the stacked dot plot shown in Figure~\ref{emailCharactersDotPlotStacked}.
+Stem-and-leaf plots and dot plots are ideal for displaying data from small samples because they show the exact values of the observations and how frequently they occur. However, they are impractical for larger samples. \Add{For larger samples, }rather than showing the frequency of every value, we prefer to think of the value as belonging to a \emph{bin}. For example, in the \data{email50} data set, we create a table of counts for the number of cases with character counts between 0 and 5,000, then the number of cases between 5,000 and 10,000, and so on. Such a table, shown in Table~\ref{binnedNumCharTable}, is called a \term{frequency table}. Observations that fall on the boundary of a bin (e.g.~5,000) are \Add{generally} allocated to the lower bin.\footnote{This is called \emph{left inclusive}.} These binned counts are plotted as bars in Figure~\ref{email50NumCharHist} into what is called a \term{histogram} or \term{frequency histogram}, which resembles the stacked dot plot shown in Figure~\ref{emailCharactersDotPlotStacked}.
 
 \begin{table}[ht]
 \centering\small
@@ -217,7 +232,18 @@ Count & 19 & 12 & 6 & 2 & 3 & 5 & $\cdots$ & 0 & 1 \\
    \label{email50NumCharHist}
 \end{figure}
 
-\begin{tipBox}{\tipBoxTitle{Drawing histograms}
+\Comment{moved this exercise here since it didn't make logical sense where it was}
+
+\begin{exercise}
+What can you see in the dot plot and stem-and-leaf plot that you cannot see in the frequency histogram?\footnote{Character counts for individual emails.}
+\end{exercise}
+
+\begin{tipBox}{\tipBoxTitle{Drawing histograms}{\color{red}ADD THIS BOX}
+1.  The variable is always placed on the horizontal axis. Before drawing the histogram, label both axes and draw a scale for each.
+\newline 2.  Draw bars such that the height of the bar corresponds to the frequency and the width of the bar corresponds to the bin width.}
+\end{tipBox}
+
+\begin{tipBox}{\tipBoxTitle{Drawing histograms}{\color{red}CUT THIS BOX}
 The variable is always placed on the horizontal axis. Before drawing the histogram, label both axes and draw a scale for each.}
 \end{tipBox}
 
@@ -229,7 +255,7 @@ Histograms provide a view of the \term{data density}. Higher bars represent wher
 \begin{example}{Approximately how many emails had fewer than 1 thousand chacters?} Based just on this histogram, we cannot know the exact answer to this question. We only know that 19 emails had between 0 and 5 thousand characters. If the number of emails is evenly distribution on this interval, then we can estimate that approximately 19/5~$\approx$ 4 emails fell in the range between 0 and 1 thousand.
 \end{example}
 
-\begin{example}{What \emph{percent} of the emails had 10 thousand or more characters?}From the first example, we know that 31 emails had fewer than 10 thousand characters. Since there are 50 emails in total, there must be 19 emails that have 10 thousand or more characters. $19/50 = 0.38 = 38\%$.
+\begin{example}{What \emph{percent} of the emails had 10 thousand or more characters?}\Add{First find the number of emails that had 10 thousand or more characters.  }From the first example, we know that 31 emails had fewer than 10 thousand characters. Since there are 50 emails in total, there must be 19 emails that have 10 thousand or more characters. \Add{To find the percent, do: }$19/50 = 0.38 = 38\%$.
 \end{example}
 
 Sometimes questions such as the ones above can be answered more easily with a \term{cumulative frequency histogram}. This type of histogram shows cumulative, or total, frequency achieved by each bin, rather than the frequency in that particular bin.
@@ -259,7 +285,7 @@ Frequency &  \raisebox{1.5ex}[0pt]{19} & \raisebox{1.5ex}[0pt]{31} & \raisebox{1
 \textPE{\pagebreak}
 
 \begin{example}{How many of the emails had fewer than 20 thousand characters?}
-By tracing the height of the 15-20 thousand bin over to the vertical axis, we can see that it has a height just under 40 on the cumulative frequency scale. Therefore, we estimate that $\approx$39 of the emails had fewer than 30 thousand characters. Note that answering this question using the original frequency histogram would require additional work.
+By tracing the height of the 15-20 thousand bin over to the vertical axis, we can see that it has a height just under 40 on the cumulative frequency scale. Therefore, we estimate that $\approx$39 of the emails had fewer than 30 thousand characters. \Cut{Note that answering this question using the original frequency histogram would require additional work.}\Add{Note that, unlike with a regular frequency histogram, we do not add up the height of the bars in a cumulative frequency histogram because each bar already represents a cumulative sum.}
 \end{example}
 
 \begin{example}{Using the cumulative frequency histogram, how many of the emails had 10-15 thousand characters?}
@@ -286,6 +312,10 @@ How will the \emph{shape} of the relative frequency histograms differ from the f
 
 %\Comment{reference the relative frequency graph here since it is closer}
 
+
+\subsection{Describing Shape}
+\label{shape}
+
 Frequency and relative frequency histograms are especially convenient for describing the \term{shape} of the data distribution\label{shapeFirstDiscussed}. Figure~\ref{email50NumCharHist} shows that most emails have a relatively small number of characters, while fewer emails have a very large number of characters. When data trail off to the right in this way and have a longer right \hiddenterm{tail}\index{skew!tail}, the shape is said to be \termsub{right skewed}{skew!right skewed}.\footnote{Other ways to describe data that are skewed to the right: \termni{skewed to the right}, \termni{skewed to the high end}, or \termni{skewed to the positive end}.}
 
 Data sets with the reverse characteristic -- a long, thin tail to the left -- are said to be \termsub{left skewed}{skew!left skewed}. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called \term{symmetric}.\index{skew!symmetric}
@@ -295,14 +325,16 @@ When data trail off in one direction, the distribution has a \term{long tail}. \
 \end{termBox}
 
 \begin{exercise}
-Take a look at the dot plot in Figure~\ref{emailCharactersDotPlotStacked}. Can you see the skew in the data? Is it easier to see the skew in the frequency histogram, the dot plot, or the stem-and-leaf plot?\footnote{The skew is visible in all three plots. It is not easily visible in the cumulative frequency histogram.}
+Take a look at the dot plot in Figure~\ref{emailCharactersDotPlotStacked}. Can you see the skew in the data? Is it easier to see the skew in the frequency histogram, the dot plot, or the stem-and-leaf plot?\footnote{The skew is visible in all three plots.  However, it is not easily visible in the cumulative frequency histogram.}
 \end{exercise}
 
+\Add{
 \begin{exercise}
-What can you see in the dot plot and stem-and-leaf plot that you cannot see in the frequency histogram?\footnote{Character counts for individual emails.}
+Would you expect the distribution of number of pets per household to be right skewed, left skewed, or approximately symmetric?  Explain.\footnote{Because most households have 0 or 1 or 2 pets, there is greater density over the small numbers.  A small number of households, though, might have 10 or more pets, thus creating a long right hand tail.  Therefore, the distribution is likely right skewed. }
 \end{exercise}
+}
 
-In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A \term{mode} is represented by a prominent peak in the distribution.\footnote{Another definition of mode, which is not typically used in statistics, is the value with the most occurrences. It is common to have \emph{no} observations with the same value in a data set, which makes this other definition useless for many real data sets.} There is only one prominent peak in the histogram of \var{num\_\hspace{0.3mm}char}.
+In addition to looking at whether a distribution is skewed or symmetric, histograms\Add{, stem-and-leaf plots, and dot plots} can be used to identify modes. A \term{mode} is represented by a prominent peak in the distribution.\footnote{Another definition of mode, which is not typically used in statistics, is the value with the most occurrences. It is common to have \emph{no} observations with the same value in a data set, which makes this other definition useless for many real data sets.} There is only one prominent peak in the histogram of \var{num\_\hspace{0.3mm}char}.
 
 Figure~\ref{singleBiMultiModalPlots} shows histograms that have one, two, or three prominent peaks. Such distributions are called \termsub{unimodal}{modality!unimodal}, \termsub{bimodal}{modality!bimodal}, and \termsub{multimodal}{modality!multimodal}, respectively. Any distribution with more than 2 prominent peaks is called multimodal. Notice that in Figure~\ref{email50NumCharHist} there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.
 
@@ -344,7 +376,7 @@ The sample mean of a numerical variable is computed as the sum of all of the obs
 \bar{x} = \frac{1}{n}\sum{x_{i}} = \frac{x_1+x_2+\cdots+x_n}{n}
 \label{meanEquation}
 \end{eqnarray}
-where $\sum$ is the capital Greek letter sigma and $\sum{x_{i}}$ means take the sum of all the $x$'s.
+where $\sum$ is the capital Greek letter sigma and $\sum{x_{i}}$ means take the sum of all the individual $x$ values.
  $x_1, x_2, \dots, x_n$ represent the $n$ observed values.}
 \end{termBox}
 
@@ -404,7 +436,7 @@ In a left skewed distribution, the mean is less than the median.
 In a symmetric distribution, the mean and median are approximately equal.}
 \end{termBox}
 
-\begin{exercise}Consider the distribution of individual income in the United States. Which is greater: the mean or median? Why? \footnote{Because a small percent of individuals earn extremely large amounts of money while the majority earn a modest amount, the distribution is skewed to the right. Therefore, the mean is greater than the median.}
+\begin{exercise}Consider the distribution of individual income in the United States. Which is greater: the mean or median? Why?\footnote{Because a small percent of individuals earn extremely large amounts of money while the majority earn a modest amount, the distribution is skewed to the right. Therefore, the mean is greater than the median.}
 \end{exercise}
 
 \subsection{Standard deviation as a measure of spread}
@@ -412,7 +444,7 @@ In a symmetric distribution, the mean and median are approximately equal.}
 
 The U.S. Census Bureau reported that in 2012, the median family income was \$62,241 and the mean family income was \$82,743.\footnote{\urlwofont{http://www.census.gov/hhes/www/income/}}
 
-Is a family income of \$40,000 relatively low, or is it a somewhat normal income? In order to answer this question, it is not enough to know the center of the data set and its \term{range} (maximum value - minimum value). We must know about the variability\index{variability} of the data set within that range. Low variability or small spread means that the values tend to be more clustered together. High variability or large spread means that the values tend to be far apart.
+Is a family income of \$60,000 far from the mean or somewhat close to the mean? In order to answer this question, it is not enough to know the center of the data set and its \term{range} (maximum value - minimum value). We must know about the variability\index{variability} of the data set within that range. Low variability or small spread means that the values tend to be more clustered together. High variability or large spread means that the values tend to be far apart.
 
 \begin{example}{Is it possible for two data sets to have the same range but different spread? If so, give an example. If not, explain why not.}
 Yes. An example is:  {1, 1, 1, 1, 1, 9, 9, 9, 9, 9} and {1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 9}.
@@ -469,11 +501,17 @@ Formulas and methods used to compute the variance and standard deviation for a p
 \label{emailCharactersDotPlotStackedRoundedWithSD}
 \end{figure}
 
-\begin{tipBox}{\tipBoxTitle{standard deviation describes variability}
+\begin{tipBox}{\tipBoxTitle{standard deviation describes variability}{\color{red}ADD THIS BOX}
+Focus on the conceptual meaning of the standard deviation as a descriptor of variability rather than the formulas. In general, some values will be more than one standard deviation from the mean and some values will be less than one standard deviation from the mean.  However, \textit{on average}, the values will be one standard deviation from the mean.}
+\end{tipBox}
+
+\begin{tipBox}{\tipBoxTitle{standard deviation describes variability}{\color{red}CUT THIS BOX}
 Focus on the conceptual meaning of the standard deviation as a descriptor of variability rather than the formulas. The empirical rule tells us that usually about 68\% of the data will be within one standard deviation of the mean and about 95\% will be within two standard deviations of the mean. However, as seen in Figures~\ref{emailCharactersDotPlotStackedRoundedWithSD} and~\ref{severalDiffDistWithSdOf1}, these percentages are not strict rules.\footnotemark}\footnotetext{We will learn where these two numbers come from in Chapter 4 when we study the normal distribution.}
 \end{tipBox}
 
-\textPE{\pagebreak}
+\Add{
+The \term{empirical rule} tells us that usually about 68\% of the data will be within one standard deviation of the mean and about 95\% will be within two standard deviations of the mean. However, as seen in Figures~\ref{emailCharactersDotPlotStackedRoundedWithSD} and~\ref{severalDiffDistWithSdOf1}, these percentages are not strict rules.\footnote{We will learn where these two numbers come from in Chapter 4 when we study the normal distribution.}
+}
 
 \begin{figure}
 \centering
@@ -485,6 +523,12 @@ Focus on the conceptual meaning of the standard deviation as a descriptor of var
 \begin{exercise}
 On page~\pageref{shapeFirstDiscussed}, the concept of shape of a distribution was introduced. A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side. Using Figure~\ref{severalDiffDistWithSdOf1} as an example, explain why such a description is important.\footnote{Figure~\ref{severalDiffDistWithSdOf1} shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a~distribution.}
 \end{exercise}
+
+\Add{
+\begin{example}{At the start of this section, we reported that the mean family income in the U.S. in 2012 was \$82,743.  Assuming the standard deviation of income is approximately \$50,000, is a family income of \$60,000 far from the mean or close to the mean?}
+Because \$60,000 is less that one standard deviation from the mean, it is relatively close to the mean.  
+\end{example}
+}
 
 When describing any distribution, comment on the three important characteristics of center, spread, and shape. Also note any especially unusual cases.
 
@@ -502,7 +546,12 @@ The distribution of email character counts is unimodal and very strongly skewed 
 
 \end{example}
 
+\Cut{
 In practice, the variance and standard deviation are sometimes used as a means to an end, where the ``end'' is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter~\ref{foundationsForInference} we will use the variance and standard deviation to assess how close the sample mean is to the population mean.
+}
+\Add{
+In this chapter we use standard deviation as a descriptive statistic to describe the variability in a given data set.  In Chapter~\ref{foundationsForInference} we will use the standard deviation to assess how close a sample mean is to the population mean.
+}
 
 %\Comment{insert section on z-score? It doesn't quite fit into this section, but if we wait until we introduce the normal curve, then students think that z-scores always refer to normal distribution.}
 
@@ -537,7 +586,10 @@ where $Q_1$ and $Q_3$ are the $25^{th}$ and $75^{th}$ percentiles.}
 
 To build a box plot, draw an axis (vertical or horizontal) and mark a uniform scale. Then, draw a dark line denoting $Q_2$. Next, draw a line at $Q_1$ and at $Q_3$. Connect these two lines to form a rectangle. The width of the rectangle corresponds to the IQR and the middle 50\% of the data is in this interval.
 
+\Add{Now the whiskers extend out on either end to the minimum and maximum values.  However, if there are outliers, then we denote those outliers with a special symbol (a dot or an asterisk), and extend the whiskers to the smallest and largest values in the data set that are not outliers.  Here, we define an outlier as a value that is more than $1.5\times IQR$ below $Q_1$ or above $Q_3$.\footnote{While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.}  In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit. There are no values below $Q_1 - 1.5\times IQR$j, so the lower whisker stops at the minimum.  In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data, with outliers escaping their reach.} 
+\Cut{
 Extending out from the rectangle, the \term{whiskers} attempt to capture the data remaining outside of the box; however, their reach cannot be more than $1.5\times IQR$. In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit. The lower whisker stops at the lowest value, 33, since there is no additional data to reach. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data. We will call a value an \hiddenterm{outlier} if it is more than $1.5\times IQR$ below $Q_1$ or above $Q_3$.\footnote{While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.}
+}
 
 \begin{example}{Compare the box plot to the graphs previously discussed: stem-and-leaf plot, dot plot, frequency and relative frequency histogram. What can we learn more easily from a box plot? What can we learn more easily from the other graphs?}
 It is easier to immediately identify the quartiles from a box plot. The box plot also more prominently highlights outliers. However, a box plot, unlike the other graphs, does not show the \emph{distribution} of the data. For example, we cannot generally identify modes using a box plot.
@@ -547,10 +599,16 @@ It is easier to immediately identify the quartiles from a box plot. The box plot
 {Is it possible to identify skew from the box plot?} Yes. Looking at the lower and upper whiskers of this box plot, we see that the lower 25\% of the data is squished into a shorter distance than the upper 25\% of the data, implying that there is greater density in the low values and a tail trailing to the upper values. This box plot is right skewed.
 \end{example}
 
+\Add{
+\begin{exercise}
+True or false:  There is more data between the median and $Q_3$ than betwen $Q_1$ and the median.\footnote{False.  Since $Q_1$ is the 25th percentile and the median is the 50th percentile, 25\% of the data fall between $Q_1$ and the median. Similarly, 25\% of the data fall between $Q_2$ and the median.  The distance between the median and $Q_3$ is larger because that 25\% of the data is more spread out.}
+\end{exercise}
+}
+\Cut{
 \begin{exercise}
 What percent of the data fall between $Q_1$ and the median? What percent is between the median and $Q_3$?\footnote{ Since $Q_1$ is the 25th percentile and $Q_2$ is the 50th percentile, 25\% of the data falls between $Q_1$ and $Q_2$. Similarly, 25\% of the data fall between $Q_2$ and $Q_3$.}
 \end{exercise}
-
+}
 %\Comment{TODO(David)  create another box plot using different data set}
 %\Comment{TODO(Leah) redo exercise}
 
@@ -563,6 +621,8 @@ What percent of the data fall between $Q_1$ and the median? What percent is betw
 
 \subsection{Calculator: summarize 1-variable statistics\textPE{\vspace{-3mm}}}
 \label{TIsummarizedata}
+
+\Comment{Change all \"TI calculator" headings to \"TI-84 calculator"?}
 
 \begin{termBox}{\tBoxTitle{TI calculator:  Entering data}
 The first step in summarizing data or making a graph is to  enter the data set into a list. Use \textbf{STAT, Edit}.
@@ -593,19 +653,19 @@ Use the \textbf{STAT, CALC, 1-VarStats} command to find summary statistics such 
 \end{termBox}
 
 Calculating the summary statistics will return the following information. It will be necessary to hit the down arrow to see all of the summary statistics.
+\Comment{The max got cut off in last version, so added it in, which requires an extra line.  May mess up formatting}
 
 \begin{center}
 \begin{tabular}{ll ll}
 $\bar{\text{x}}$ & (mean)
-	& n & (sample size or \# of data points) \\
-$\Sigma$x & (sum of all the data values)
 	& minX & (minimum) \\
-$\Sigma$x$^2$ & (sum of all the squared data values)
+$\Sigma$x & (sum of all the data values)
 	& Q$_1$ & (first quartile) \\
-Sx & (sample standard deviation) 
+$\Sigma$x$^2$ & (sum of all the squared data values)
 	& Med & (median)\\
 $\sigma$x & (population standard deviation)
-	& Q$_3$ & (third quartile)
+	& maxX & (maximum) \\
+n & (sample size or \# of data points)
 \end{tabular}
 \end{center}
 
@@ -664,6 +724,8 @@ Both are important for the AP exam. In practice, consider these to be only rough
 
 How are the \indexthis{sample statistics}{sample statistic} of the \data{num\_\hspace{0.3mm}char} data set affected by the observation, 64,401? What would have happened if this email wasn't observed? What would happen to these \indexthis{summary statistics}{summary statistic} if the observation at 64,401 had been even larger, say 150,000? These scenarios are plotted alongside the original data in Figure~\ref{email50NumCharDotPlotRobustEx}, and sample statistics are computed under each scenario in Table~\ref{robustOrNotTable}.
 
+\Comment{TODO(David), can you put the Original on on top rather than on the bottom to be consistent with table and verbal description?}
+
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{ch_summarizing_data/figures/emailCharactersDotPlot/email50NumCharDotPlotRobustEx}
@@ -697,7 +759,9 @@ move 66,924 to 150,000		&& 6,890 & 12,875 && 13,310 & 22,434 \\
 The median and IQR are called \term{robust estimates} because extreme observations have little effect on their values. The mean and standard deviation are much more affected by changes in extreme observations.
 
 \begin{example}{The median and IQR do not change much under the three scenarios in Table~\ref{robustOrNotTable}. Why might this be the case?}
-The median and IQR are only sensitive to numbers near $Q_1$, the median, and $Q_3$. Since values in these regions are relatively stable -- there aren't large jumps between observations -- the median and IQR estimates are also quite stable.
+\Cut{
+The median and IQR are only sensitive to numbers near $Q_1$, the median, and $Q_3$. Since values in these regions are relatively stable -- there aren't large jumps between observations -- the median and IQR estimates are also quite stable.}
+\Add{Since there are no large gaps between observations around the three quartiles, adding, deleting, or changing one value, no matter how extreme that value, will have little effect on the quartiles.}
 \end{example}
 
 \begin{exercise}
@@ -751,7 +815,7 @@ Adding a constant to every value in a data set shifts the mean but does not affe
 \end{termBox}
 
 \begin{example}{Consider the temperature example. How would converting from Celsuis to Fahrenheit affect the median? The IQR?}
-The median is affected in the same way as the mean and the IQR is affected in the same way as the standard deviation. To get the new median, multiply the old median by $9/5$ and add 32. The IQR is computed by subtracting $Q_1$ and $Q_3$. While $Q_1$ and $Q_3$ are affected in the same way as the median, the additional 32 added to each will cancel when we take $Q_3 - Q_1$. That is, the IQR will be increase by a factor of $9/5$ but will be unaffected by the addition of~32.
+The median is affected in the same way as the mean and the IQR is affected in the same way as the standard deviation. To get the new median, multiply the old median by $9/5$ and add 32. The IQR is computed by subtracting $Q_1$ from $Q_3$. While $Q_1$ and $Q_3$ are each affected in the same way as the median, the additional 32 added to each will cancel when we take $Q_3 - Q_1$. That is, the IQR will be increase by a factor of $9/5$ but will be unaffected by the addition of~32.
 
 For a more mathematical explanation of the IQR calculation, see the footnote.\footnote{new IQR = $\left(\frac{9}{5} Q_3 + 32\right) - \left(\frac{9}{5} Q_1 + 32\right) = \frac{9}{5} \left(Q_3 - Q_1\right) = \frac{9}{5} \times \text{(old IQR)}$.}
 \end{example}
@@ -847,6 +911,11 @@ What components of each plot in Figure~\ref{countyIncomeSplitByPopGain} do you f
 \begin{exercise}
 Do these graphs tell us about any association between income for the two groups?\footnote{No, to see association we require a scatterplot. Moreover, these data are not paired, so the discussion of association does not make sense here.}
 \end{exercise}
+
+\begin{tipBox}{\tipBoxTitle{Comparing distributions versus looking at association}{\color{red}ADD THIS BOX}
+To compare two distributions, we require two data sets that we can compare with respect to center and spread.  The number of elements in each data set need not be the same (e.g. height of men versus height of women).  We must compare two univariate graphs, such as two histograms, two dot plots, parallel box plots, or a back-to-back stem-and-leaf.  To look at assocation, we require two data sets of equal length that are essentially paired (e.g. height and weight of individuals).  Such association can be seen in a scatterplot.}
+\end{tipBox}
+
 
 \index{data!email50|)}
 
