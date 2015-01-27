@@ -368,52 +368,6 @@ With independence satisfied and skew not a concern, we can proceed with performi
 The sample mean and sample standard deviation are 95.61 and 15.78 minutes, respectively. Recall that the sample size is 100. What is the p-value for the test, and what is your conclusion?\footnote{With the conditions satisfied for the $t$ distribution, we can compute the standard error ($SE = 15.78 / \sqrt{100} = 1.58$ and the \emph{T score}: $T = \frac{95.61 - 93.29}{1.58} = 1.47$. For $df = 100 - 1 = 99$, we would find a p-value between 0.10 and 0.20 (two-sided!). Because the p-value is greater than 0.05, we do not reject the null hypothesis. That is, the data do not provide strong evidence that the average run time for the Cherry Blossom Run in 2012 is any different than the 2006 average.}
 \end{exercise}
 
-%\Cut{
-%An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, and so we have a difference in scores for each student. We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$ as a sample to evaluate the company's claim.
-%(This is \emph{paired data}, so we analyze the score differences.)
-%The distribution of the differences, shown in Figure~\ref{satImprovementHTDataHistogram}, has mean 135.9 and standard deviation 82.2. Do these data provide convincing evidence to back up the company's claim?
-%
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=0.54\textwidth]{ch_inference_for_means/figures/satImprovementHTDataHistogram/satImprovementHTDataHistogram}
-%\caption{Sample distribution of improvements in SAT scores after taking the SAT course. The distribution is approximately symmetric.}
-%\label{satImprovementHTDataHistogram}
-%\end{figure}
-%
-%\begin{exercise}
-%Set up hypotheses to evaluate the company's claim. Use $\mu_{_{diff}}$ to represent the true average difference in student scores.\footnote{This is a one-sided test. $H_0$: student scores do not improve by more than 100 after taking the company's course. $\mu_{_{diff}} = 100$ (we always write the null hypothesis with an equality). $H_A$: students scores improve by more than 100 points on average after taking the company's course. $\mu_{_{diff}} > 100$.}
-%\end{exercise}
-%
-%\begin{exercise}
-%Are the conditions to use the $t$ distribution method satisfied?\footnote{This is a random sample from less than 10\% of the company's students (assuming they have more than 300 former students), so the independence condition is reasonable. The normality condition also seems reasonable based on Figure~\ref{satImprovementHTDataHistogram}. We can use the $t$ distribution method. Note that we could use the normal distribution. However, since the sample size ($n=30$) just meets the threshold for reasonably estimating the standard error, it is advisable to use the $t$ distribution.}
-%\end{exercise}
-%
-%Just as we did for the normal case, we standardize the sample mean using the Z score to identify the test statistic. However, we will write $T$\index{T score ($T$)|textbf}\marginpar[\raggedright$T$\vspace{0.5mm}\\\footnotesize T score\\(like Z score)]{\raggedright$T$\vspace{0.5mm}\\\footnotesize T score\\(like Z score)} instead of $Z$, because we have a small sample and are basing our inference on the $t$ distribution:
-%\begin{eqnarray*}
-%T = \frac{\bar{x} - \text{null value}}{SE} = \frac{135.9 - 100}{82.2/\sqrt{30}} = 2.39 \quad \quad \quad \text{with }df=29
-%\end{eqnarray*}
-%If the null hypothesis was true, the test statistic $T$ would follow a $t$ distribution with $df = n-1 = 29$ degrees of freedom. We can draw a picture of this distribution and mark the observed $T$, as in Figure~\ref{pValueShownForSATHTOfOver100PtGain}. The shaded right tail represents the p-value: the probability of observing such strong evidence in favor of the SAT company's claim, if the average student improvement is really only 100.
-%
-%\begin{figure}
-%\centering
-%\includegraphics[width=0.65\textwidth]{ch_inference_for_means/figures/pValueShownForSATHTOfOver100PtGain/pValueShownForSATHTOfOver100PtGain}
-%\caption{The $t$ distribution with 29 degrees of freedom.}
-%\label{pValueShownForSATHTOfOver100PtGain}
-%\end{figure}
-%
-%\textB{\pagebreak}
-%
-%\begin{exercise}
-%Use the $t$ table in Appendix~\vref{tDistributionTable} to identify the p-value. What do you conclude?\footnote{We use the row with 29 degrees of freedom. The value $T=2.39$ falls between the third and fourth columns. Because we are looking for a single tail, this corresponds to a p-value between 0.01 and 0.025. The p-value is guaranteed to be less than 0.05 (the default significance level), so we reject the null hypothesis. The data provide convincing evidence to support the company's claim that student scores improve by more than 100 points following the class.}
-%\end{exercise}
-%
-%\begin{exercise}
-%Because we rejected the null hypothesis, does this mean that taking the company's class improves student scores by more than 100 points on average?\footnote{This is an observational study, so we cannot make this causal conclusion. For instance, maybe SAT test takers tend to improve their score over time even if they don't take a special SAT class, or perhaps only the most motivated students take such SAT courses.}
-%
-%\index{data!SAT prep company|)}
-%
-%\end{exercise}
-%}
 \begin{termBox}{\tBoxTitle[]{Hypothesis test for a mean}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
