@@ -24,9 +24,9 @@ Researchers from a wide array of fields have questions or problems that require 
 \item Psychology: can a simple reminder about saving money cause students to spend less?
 \item Political science: what fraction of Americans approve of the job Congress is doing?
 \end{itemize}
-\Add{What questions from from current events or from your own life can you think of that could be answered by collecting and analyzing data?  }While the questions that can be posed are incredibly diverse, many of these investigations can be addressed with a small number of data collection techniques, analytic tools, and fundamental concepts in statistical inference.
+What questions from from current events or from your own life can you think of that could be answered by collecting and analyzing data? While the questions that can be posed are incredibly diverse, many of these investigations can be addressed with a small number of data collection techniques, analytic tools, and fundamental concepts in statistical inference.
 
-This chapter focuses on collecting data. We'll discuss basic properties of data, common sources of bias that arise during data collection, and several techniques for collecting data through both sampling \Cut{techniques }and experiments. After finishing this chapter, you will have the tools for identifying weaknesses and strengths in data-based conclusions, tools that are essential to be an informed citizen and a savvy consumer of information.
+This chapter focuses on collecting data. We'll discuss basic properties of data, common sources of bias that arise during data collection, and several techniques for collecting data through both sampling and experiments. After finishing this chapter, you will have the tools for identifying weaknesses and strengths in data-based conclusions, tools that are essential to be an informed citizen and a savvy consumer of information.
 
 
 \section[Case study]{Case study: using stents to prevent strokes}
@@ -88,19 +88,11 @@ Total				& 46		& 405	&&	73	& 378 \\
 \label{stentStudyResults}
 \end{table}
 
-\Cut{
 \begin{exercise}
-Of the 224 patients in the treatment group, 45 had a stroke by the end of the first year. Using these two numbers, compute the proportion of patients in the treatment group who had a stroke by the end of their first year. (Please note: answers to all in-text exercises are provided using footnotes.)\footnote{The proportion of the 224 patients who had a stroke within 365 days: $45/224 = 0.20$.}
+What proportion of the patients in the treatment group had no stroke within the first 30 days of the study? (Please note: answers to all in-text exercises are provided using footnotes.)\footnote{There were 191 patients in the treatment group that had no stroke in the first 30 days. There were 33 + 191 = 224 total patients in the treatment group, so the proportion is $191 / 224 = 0.85$.}
 \end{exercise}
-}
 
-\Add{
-\begin{exercise}
-What proportion of the patients in the treatment group had no stroke within the first 30 days of the study?(Please note: answers to all in-text exercises are provided using footnotes.)\footnote{There were 191 patients in the treatment group that had no stroke in the first 30 days.  There were 33+191 = 244 total patients in the treatment group, so the proportion is $191/224 = 0.78$.}
-\end{exercise}
-}
-
-We can compute summary statistics from the table. A \term{summary statistic} is a single number summarizing a large amount of data.\footnote{Formally, a summary statistic is a value computed from the data. Some summary statistics are more useful than others.} For instance, the primary results of the study after 1~year could be described by two summary statistics: the proportion of people who had a stroke in the treatment and \Add{in the }control groups.
+We can compute summary statistics from the table. A \term{summary statistic} is a single number summarizing a large amount of data.\footnote{Formally, a summary statistic is a value computed from the data. Some summary statistics are more useful than others.} For instance, the primary results of the study after 1~year could be described by two summary statistics: the proportion of people who had a stroke in the treatment and control groups.
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[] Proportion who had a stroke in the treatment (stent) group: $45/224 = 0.20 = 20\%$.
@@ -349,7 +341,7 @@ We collect a sample of data to better understand the characteristics of a popula
 \begin{example}{Earlier we asked the question: what is the average mercury content in swordfish in the Atlantic Ocean? Identify the variable to be measured and the parameter and statistic of interest.}The variable is the level of mercury content in swordfish in the Atlantic Ocean. It will be measured for each individual swordfish. The parameter of interest is the average mercury content in \emph{all} swordfish in the Atlantic Ocean. If we take a sample of 50 swordfish from the Atlantic Ocean, the average mercury content among just those 50 swordfish will be the statistic.
 \end{example}
 
-Two statistics we will study are the \term{mean} (also called the \term{average}) and \term{proportion}. When we are discussing a population, we label the mean as $\mu$ (the Greek letter, \emph{mu}), while we label the sample mean as $\bar{x}$ \Add{(read as \emph{x-bar})}. When we are discussing a proportion in the context of a population, we use the label $p$, while the sample proportion has a label of $\hat{p}$ (read as \emph{p-hat}). Generally, we use $\bar{x}$ to estimate the population mean, $\mu$. Likewise, we use the sample proportion $\hat{p}$ to estimate the population proportion, $p$.
+Two statistics we will study are the \term{mean} (also called the \term{average}) and \term{proportion}. When we are discussing a population, we label the mean as $\mu$ (the Greek letter, \emph{mu}), while we label the sample mean as $\bar{x}$ (read as \emph{x-bar}). When we are discussing a proportion in the context of a population, we use the label $p$, while the sample proportion has a label of $\hat{p}$ (read as \emph{p-hat}). Generally, we use $\bar{x}$ to estimate the population mean, $\mu$. Likewise, we use the sample proportion $\hat{p}$ to estimate the population proportion, $p$.
 
 %\Comment{possibly a table or figure here? }
 
@@ -469,16 +461,17 @@ Some previous research tells us that using sunscreen actually reduces skin cance
 A confounding variable is a variable that is associated with both the explanatory \emph{and} response variables. Because of the confounding variable's association with both variables, we do not know if the response is due to the explanatory variable or due to the confounding variable.}
 \end{termBox}
 
-\Comment{I think these two sentences that were previously omitted below are necessary for students to explicity tie it all together}
-Sun exposure is a confounding factor because it is associated with both the use of sunscreen and the development of skin cancer. People who are out in the sun all day are more likely to use sunscreen, and people who are out in the sun all day are more likely to get skin cancer. Research shows us the the development of skin cancer is due to the sun exposure. The variables of sunscreen usage and sun exposure are \term{confounded} \Add{and without this research, we would have no way of knowing which one was the true cause of skin cancer.}
+Sun exposure is a confounding factor because it is associated with both the use of sunscreen and the development of skin cancer. People who are out in the sun all day are more likely to use sunscreen, and people who are out in the sun all day are more likely to get skin cancer. Research shows us the development of skin cancer is due to the sun exposure. The variables of sunscreen usage and sun exposure are \term{confounded}, and without this research, we would have no way of knowing which one was the true cause of skin cancer.
 
-\begin{example}{Let's assume for the sake of argument that women are more diligent about applying sunscreen. Would this make gender a confounding factor in this study?}
+\Comment{I find the example below is confusing since sun exposure is related to applying sunblock. Could another behavior be chosen, such as healthier eating, exercise, or something else? Also, I think the newly added sentence is incorrect: it should be discussing sun exposure, not sunblock usage (otherwise being a woman would be a confounding variable if sunblock since women should get lower rates of cancer under the scenario and they apply more sunblock). I'm also favorable to scrapping this example since I think it is adding another layer to this example when one is not needed.}
+
+\begin{example}{Let's assume for the sake of argument that women are more diligent about applying sunscreen. Would this make gender a confounding factor in this~study?}
 No, because there is no known association between being female and being more likely to get skin cancer. Thus, the fact that women are more likely (in this scenario) to wear sunblock is not a confounder, because it is only associated with the explanatory variable and not with the response variable. \Add{It does not explain the observed, existing association between sunblock usage and skin cancer.}
 \end{example}
 
 While one method to justify making causal conclusions from observational studies is to exhaust the search for confounding variables, there is no guarantee that all confounding variables can be examined or measured.
 
-In the same way, the \data{county} data set is an observational study with confounding variables, and its data cannot \Cut{easily }be used to make causal conclusions.
+In the same way, the \data{county} data set is an observational study with confounding variables, and its data cannot be used to make causal conclusions.
 
 \begin{exercise}
 Figure~\ref{multiunitsVsOwnership} shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county. However, it is unreasonable to conclude that there is a causal relationship between the two variables. Suggest one or more other variables that might explain the relationship visible in Figure~\ref{multiunitsVsOwnership}.\footnote{Answers will vary. Population density may be important. If a county is very dense, then this may require a larger fraction of residents to live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.}
@@ -515,11 +508,7 @@ Perhaps she would pick a disproportionate number of graduates from health-relate
 
 If the student majoring in nutrition picked a disproportionate number of graduates from health-related fields, this would introduce selection bias into the sample. \termsub{Selection bias}{selection bias} occurs when some individuals of the population are inherently more likely to be included in the sample than others. In the example, this bias creates a problem because a degree in health-related fields might take more or less time to complete than a degree in other fields. Suppose that it takes longer. Since graduates from health-related fields would be more likely to be in the sample, the selection bias would cause her to \emph{overestimate} the parameter.
 
-Sampling randomly resolves the problem of selection bias. The most basic random sample is called a \term{simple random sample}, and it is the equivalent of using a raffle to select cases. This means that each case in the population has an equal chance of being included and there is no implied connection between the cases in the sample. \Add{If a simple random sample is chosen from the entire population of interest, there is no human or selection bias introduced.}
-
-\Cut{
-\APVersion{Sometimes a simple random sample is difficult to implement and an alternative method is helpful. One such substitute is a \term{systematic sample}, where one case is sampled after letting a fixed number of others, say 10 other cases, pass by. Since this approach uses a mechanism that is not easily subject to personal biases, it often yields a reasonably representative sample. This book will focus on random samples since the use of systematic samples is uncommon and requires additional considerations of the context.}{}
-}
+Sampling randomly resolves the problem of selection bias. The most basic random sample is called a \term{simple random sample}, and it is the equivalent of using a raffle to select cases. This means that each case in the population has an equal chance of being included and there is no implied connection between the cases in the sample. \Add{If a simple random sample is chosen from the entire population of interest, there is no human or selection bias introduced.} \Comment{This new sentence is repeating the topic sentence but in more words. I also think what it states is already clear after reading the rest of this paragraph.}
 
 A common downfall is a \term{convenience sample}\index{sample!convenience sample}, where individuals who are easily accessible are more likely to be included in the sample. For instance, if a political survey is done by stopping people walking in the Bronx, this will not represent all of New York City. It is often difficult to discern what sub-population a convenience sample represents.
 
@@ -544,12 +533,8 @@ Even if a sample has no selection bias and no non-response bias, there is an add
 There are many possible correct answers to this question. For example, students might respond differently depending upon who asks the question, such as a school friend or someone who works in the cafeteria. The wording of the question could introduce response bias. Students would likely respond differently if asked ``Do you like the food in the cafeteria?" versus ``The food in the cafeteria is pretty bad, don't you think?"
 \end{example}
 
-\begin{tipBox}{\tipBoxTitle{Watch out for bias} {\color{red}ADD THIS BOX}
+\begin{tipBox}{\tipBoxTitle{Watch out for bias}
 Selection bias, non-response bias, and response bias can still exist within a random sample. Always determine how a sample was chosen, ask what proportion of people failed to respond, and critically examine the wording of the questions.}
-\end{tipBox}
-
-\begin{tipBox}{\tipBoxTitle{Watch out for bias} {\color{red}CUT THIS BOX}
-Selection bias, non-response bias, and response bias can still exist within a random sample. Always ask how a sample was chosen, whether anyone failed to respond (and if so, how many people failed to respond), and critically examine the wording of the questions.}
 \end{tipBox}
 
 When there is no bias in a sample, increasing the sample size tends to increase the precision and reliability of the estimate. When a sample is biased, it may be impossible to decipher helpful information from the data, even if the sample is very large.
@@ -588,13 +573,14 @@ Two properties are always true in a simple random sample:
 \item Each case in the population has an equal chance of being included in the sample.
 \item Each \emph{group} of \textit{n} cases has an equal chance of making up the sample.
 \end{enumerate}
+\Comment{Property 1 is a corollary of Property 2.}
 
 The statistical methods in this book focus on data collected using simple random sampling. Note that Property 2 -- that each group of \textit{n} cases has an equal chance making up the sample -- is not true for the remaining four sampling techniques. As you read each one, consider why.
 
 Though less common than simple random sampling, \termsub{systematic sampling}{sample!systematic sampling} is sometimes used when there exists a convenient list of all of the individuals of the population. Suppose we have a roster with the names of all the MLB players from the 2010 season. To take a systematic random sample, number them from 1 to 828. Select one random number between 1 and 828 and let that player be the first individual in the sample. Then, depending on the desired sample size, select every 10th number or 20th number, for example, to arrive at the sample.\footnote{If we want a sample of size \textit{n} = 138, it would make sense to select every 6th player since \mbox{$828/138 = 6$.} Suppose we randomly select the number 810. Then player 810, 816, 822, 828, 6, 12, $\cdots$ , 798, and 804 would make up the sample.} If there are no patterns in the salaries based on the numbering then this could be a reasonable method.
 
 \begin{example}{A systematic sample is not the same as a simple random sample. Provide an example of a sample that can come from a simple random sample but not from a systematic random sample.}
-Answers can vary. If we take a sample of size 3, then it is possible that we could sample players numbered 1, 2, and 3 in a simple random sample. Such a sample would be impossible from a systematic sample. \Add{Property 2 of simple random samples does not hold for other types of random samples.}
+Answers can vary. If we take a sample of size 3, then it is possible that we could sample players numbered 1, 2, and 3 in a simple random sample. Such a sample would be impossible from a systematic sample. \Add{Property 2 of simple random samples does not hold for other types of random samples.} \Comment{This new sentence doesn't really need to be added (see other comment above), and it also seems out of place since it is just a general comment that is not relevant to this example.}
 \end{example}
 
 \begin{figure}
@@ -624,11 +610,9 @@ Sometimes cluster sampling can be a more economical random sampling technique th
 
 It is also possible to have more than two steps in multistage sampling. Each cluster may be naturally divided into subclusters. For example, each neighborhood could be divided into streets. To take a three-stage sample, we could first select some number of clusters (neighborhoods), and then, within the selected clusters, select some number of subclusters (streets). Finally, we could select some number of individuals from each of the selected streets.
 
-\Add{
-\begin{example}{Suppose we are interested in estimating the proportion of students at a certain school that have part-time jobs.  It is believed that older students are more likely to work than younger students.  What sampling method should be employed?  Describe how to carry out such a sample to get a sample size of 60.}
-Because grade level affects the likelihood of having a part-time job, we should take a stratified random sample.  To do this, we can take a simple random sample of 15 students from each grade.  This will give us equal representation from each grade.  Note: in a simple random sample, just by random chance we might get too many, say, Juniors and Seniors, which would could make our estimate too high.  Also, there are no well-defined clusters in this example.  We wouldn't want to use the grades as clusters and sample everyone from a couple of the grades.  This would create too large a sample and would not give us the nice representation from each grade afforded by the stratified random sample.
+\begin{example}{Suppose we are interested in estimating the proportion of students at a certain school that have part-time jobs. It is believed that older students are more likely to work than younger students. What sampling method should be employed? Describe how to collect such a sample to get a sample size of 60.}
+Because grade level affects the likelihood of having a part-time job, we should take a stratified random sample. To do this, we can take a simple random sample of 15 students from each grade. This will give us equal representation from each grade. Note: in a simple random sample, just by random chance we might get too many \Add{students who are older,} \Cut{, say, Juniors and Seniors,} which \Cut{would} could make \Cut{our} \Add{the} estimate too high. Also, there are no well-defined clusters in this example. We~wouldn't want to use the grades as clusters and sample everyone from a couple of the grades. This would create too large a sample and would not give us the nice representation from each grade afforded by the stratified random sample.
 \end{example}
-}
 
 \begin{example}{Suppose we are interested in estimating the malaria rate in a densely tropical portion of rural Indonesia. We learn that there are 30 villages in that part of the Indonesian jungle, each more or less similar to the next. Our goal is to test 150 individuals for malaria. What sampling method should be employed?}
 A simple random sample would likely draw individuals from all 30 villages, which could make data collection extremely expensive. Stratified sampling would be a challenge since it is unclear how we would build strata of similar individuals. However, multistage cluster sampling seems like a very good idea. First, we might randomly select half the villages, then randomly select 10 people from each. This would probably reduce our data collection costs substantially in comparison to a simple random sample and would still give us reliable information.
@@ -653,7 +637,7 @@ In the last section we investigated observational studies and sampling strategie
 
 Randomized experiments are essential for investigating cause and effect relationships, but they do not ensure an unbiased perspective in all cases. Human studies are perfect examples where bias can unintentionally arise. Here we reconsider a study where a new drug was used to treat heart attack patients.\footnote{Anturane Reinfarction Trial Research Group. 1980. Sulfinpyrazone in the prevention of sudden death after myocardial infarction. New England Journal of Medicine 302(5):250-256.} In particular, researchers wanted to know if the drug reduced deaths in patients.
 
-These researchers designed a randomized experiment because they wanted to draw causal conclusions about the drug's effect. Study volunteers\footnote{Human subjects are often called \term{patients}, \term{volunteers}, or \term{study participants}.} were randomly placed into two study groups. One group, the \term{treatment group}, received the drug. The other group, called the \term{control group}, did not receive any drug treatment. In an experiment, the explanatory variable is also called a \term{factor}. Here the factor is receiving the drug treatment. It has two \term{levels}:  yes and no, thus it is categorical. The response variable is whether or not patients died within the time frame of the study. It is also categorical.
+These researchers designed a randomized experiment because they wanted to draw causal conclusions about the drug's effect. Study volunteers\footnote{Human subjects are often called \term{patients}, \term{volunteers}, or \term{study participants}.} were randomly placed into two study groups. One group, the \term{treatment group}, received the drug. The other group, called the \term{control group}, did not receive any drug treatment. In an experiment, the explanatory variable is also called a \term{factor}. Here the factor is receiving the drug treatment. It has two \term{levels}: yes and no, thus it is categorical. The response variable is whether or not patients died within the time frame of the study. It is also categorical.
 
 Put yourself in the place of a person in the study. If you are in the treatment group, you are given a fancy new drug that you anticipate will help you. On the other hand, a person in the other group doesn't receive the drug and sits idly, hoping her participation doesn't increase her risk of death. These perspectives suggest there are actually two effects: the one of interest is the effectiveness of the drug, and the second is an emotional effect that is difficult to quantify.
 
@@ -686,9 +670,9 @@ Well-conducted experiments are built on three main principles.
 
 Direct control refers to variables that the researcher can control, or make the same. A researcher can directly control the appearance of the treatment, the time of day it is taken, etc. She cannot directly control variables such as gender or age. To control for these other types of variables, she might consider blocking, which is described in Section~\ref{CompletelyRandomizedBlockedAndMatchedPairsDesign}.
 
-\item[Randomization.] Researchers randomize patients into treatment groups to account for variables that cannot be controlled. For example, some patients may be more susceptible to a disease than others due to their dietary habits. Randomizing patients into the treatment or control group helps \emph{even out}  the effects of such differences, and it also prevents accidental bias from entering the study.
+\item[Randomization.] Researchers randomize patients into treatment groups to account for variables that cannot be controlled. For example, some patients may be more susceptible to a disease than others due to their dietary habits. Randomizing patients into the treatment or control group helps \emph{even out} the effects of such differences, and it also prevents accidental bias from entering the study.
 
-\item[Replication.] The more cases researchers observe, the more accurately they can estimate the effect of the explanatory variable on the response. In an experiment with six subjects, even if there is randomization, it is quite possible for the three healthiest people to be in the same treatment group. In a randomized experiment with 100 people, it is virtually impossible for the healthiest 50 people to end up in the same treatment group. In a single study, we \term{replicate} by imposing the treatment on a sufficiently large number of subjects or experimental units. A group of scientists may also replicate an entire study to verify an earlier finding.  However, each study should ensure a sufficiently large number of subjects because, in many cases, there is no opportunity or funding to carry out the entire experiment again.
+\item[Replication.] The more cases researchers observe, the more accurately they can estimate the effect of the explanatory variable on the response. In an experiment with six subjects, even if there is randomization, it is quite possible for the three healthiest people to be in the same treatment group. In a randomized experiment with 100 people, it is virtually impossible for the healthiest 50 people to end up in the same treatment group. In a single study, we \term{replicate} by imposing the treatment on a sufficiently large number of subjects or experimental units. A group of scientists may also replicate an entire study to verify an earlier finding. However, each study should ensure a sufficiently large number of subjects because, in many cases, there is no opportunity or funding to carry out the entire experiment again.
 \end{description}
 
 It is important to incorporate these design principles into any experiment. If they are lacking, the inference methods presented in the following chapters will not be applicable and their results may not be trustworthy. In the next section we will consider three types of experimental design.
@@ -705,7 +689,7 @@ A \term{completely randomized experiment} is one in which the subjects or experi
 
 % ZZQ - The following two paragraphs have an awkward transition.
 
-While it might be ideal for the subjects to be a random sample of the population of interest, that is rarely the case. Subjects must volunteer to be part of an experiment. However, because randomization is incorporated in the splitting of the groups, we can still use statistical techniques to check for a causal connection, though the precise population for which the conclusion applies may be unclear. \Comment{Without a contextual example like the one that follows, the previous sentence will not make any sense to students}. \Add{For example, if an experiment to determine the most effective means to encourage individuals to vote is carried out only on college students, we may not be able to generalize the conclusions of the experiment to all adults in the population.}
+While it might be ideal for the subjects to be a random sample of the population of interest, that is rarely the case. Subjects must volunteer to be part of an experiment. However, because randomization is incorporated in the splitting of the groups, we can still use statistical techniques to check for a causal connection, though the precise population for which the conclusion applies may be unclear. For example, if an experiment to determine the most effective means to encourage individuals to vote is carried out only on college students, we may not be able to generalize the conclusions of the experiment to all adults in the population.
 
 \begin{figure}
 \centering
@@ -727,7 +711,7 @@ Even in a blocked experiment with randomization, other variables that affect the
 An alternate form of matched pairs involves each subject receiving \emph{both} treatments. Randomization can be incorporated by randomly selecting half the subjects to receive treatment 1 first, followed by treatment 2, while the other half receives treatment 2 first, followed by treatment.
 
 \begin{exercise}
-How and why should randomization be incorporated into a matched pairs design?  \footnote{Assume that all subjects received treatment 1 first, followed by treatment 2. If the variable being measured happens to increase naturally over the course of time, it would appear as though treatment 2 had a greater effect than it really did.} 
+How and why should randomization be incorporated into a matched pairs design?\footnote{Assume that all subjects received treatment 1 first, followed by treatment 2. If the variable being measured happens to increase naturally over the course of time, it would appear as though treatment 2 had a greater effect than it really did.} 
 \end{exercise}
 
 %\Add{This type of matched pairs design is optimal, because it allows us to compare each subject to herself, rather than comparing a group of subjects to a separate group of subjects. By doing this, we control for the inherent variability in response from person to person.} % This is not necessarily true: treatments can interact in unexpected ways, even if given over long periods of time. Even in the lotion example, handedness might be more important in some situations, e.g. if looking at how much lotion rubs off. Careful matched individuals might be a better design in that situation.
@@ -750,7 +734,7 @@ Because it is essential to identify the type of data collection method used when
 Some experiments study more than one factor (explanatory variable) at a time, and each of these factors may have two or more levels (possible values). For example, suppose a researcher plans to investigate how the type and volume of music affect a person's performance on a particular video game. Because these two factors, \var{type} and \var{volume}, could interact in interesting ways, we do not want to do two separate experiments testing one factor at time. %
 %Instead, we want to do a \term{factorial experiment} in which 
 Instead, we want to do an experiment in which
-we test all the \emph{combinations} of the factors. Let's say that \var{volume} has two levels (soft and loud) and that \var{type} has three levels (dance, classical, and punk). Then, we would want to carry out the experiment at each of the six (2 x 3 = 6) combinations:  soft dance, soft classical, soft punk, loud dance, loud classical, loud punk. Each of the these combinations is a \term{treatment}. Therefore, this experiment will have 2 factors and 6 treatments. In order to replicate each treatment 10 times, one would need to play the game 60 times.
+we test all the \emph{combinations} of the factors. Let's say that \var{volume} has two levels (soft and loud) and that \var{type} has three levels (dance, classical, and punk). Then, we would want to carry out the experiment at each of the six (2 x 3 = 6) combinations: soft dance, soft classical, soft punk, loud dance, loud classical, loud punk. Each of the these combinations is a \term{treatment}. Therefore, this experiment will have 2 factors and 6 treatments. In order to replicate each treatment 10 times, one would need to play the game 60 times.
 
 \begin{exercise}A researcher wants to compare the effectiveness of four different drugs. She also wants to test each of the drugs at two doses: low and high. Describe the factors, levels, and treatments of this experiment.\footnote{There are two factors: type of drug, which has four levels, and dose, which has 2 levels. There will be 4 x 2 = 8 treatments: drug 1 at low dose, drug 1 at high dose, drug 2 at low dose, and so on.}
 \end{exercise}

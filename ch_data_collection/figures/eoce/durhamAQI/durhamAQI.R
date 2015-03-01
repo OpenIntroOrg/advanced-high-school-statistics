@@ -15,7 +15,8 @@ pdf("durhamAQI_hist.pdf", 8, 4)
 par(mar=c(4,3,0.5,0.5), las=1, mgp=c(2.7,0.7,0), cex.lab = 1.25, cex.axis = 1.25)
 
 hist(d$DAILY_AQI_VALUE, col=oiB, xlab = "daily AQI value", main = "", axes = FALSE, probability = TRUE, ylab = "")
-axis(1)
+axis(1, at = seq(0, 70, 10))
+axis(1, at = seq(0, 70, 10) + 5, rep("", 8), tcl = -0.2)
 axis(2, at = seq(0,0.04,0.01), labels = seq(0,0.04,0.01)*5)
 abline(h = seq(0.01,0.04,0.01), col = "gray", lty = 2)
 
