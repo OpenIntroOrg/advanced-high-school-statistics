@@ -16,8 +16,10 @@ Among all the distributions we see in practice, one is overwhelmingly the most c
 \label{simpleNormal}
 \end{figure}
 
+\Comment{changed: while not perfect for any single problem, is very useful for a variety of problems}
+
 \begin{termBox}{\tBoxTitle{Normal distribution facts}
-Many variables are nearly normal, but none are exactly normal. Thus the normal distribution, while not perfect for any single problem, is very useful for a variety of problems. We will use it in data exploration and to solve important problems in statistics.\vspace{0.7mm}}
+Many variables are nearly normal, but none are exactly normal. The normal distribution, while never perfect, provides very close approximations for a variety of scenarios. We will use it in data exploration and to solve important problems in statistics.\vspace{0.7mm}}
 \end{termBox}
 
 \subsection{Normal distribution model}
@@ -46,7 +48,7 @@ Because the mean and standard deviation describe a normal distribution exactly, 
 \subsection{Standardizing with Z scores}
 
 \begin{example}{Table~\vref{satACTstats} shows the mean and standard deviation for total scores on the SAT and ACT. The distribution of SAT and ACT scores are both nearly normal. Suppose Ann scored 1800 on her SAT and Tom scored 24 on his ACT. Who performed better?}\label{actSAT}
-We use the standard deviation as a guide. Ann is 1 standard deviation above average on the SAT: $1500 + 300=1800$. Tom is 0.6 standard deviations above the mean on the ACT: $21+0.6\times 5=24$. In Figure~\ref{satActNormals}, we can see that Ann tends to do better with respect to everyone else than Tom did, so her score was better.
+\Add{Since the two distributions are on different scales, }we use the standard deviation as a guide. Ann is 1 standard deviation above average on the SAT: $1500 + 300=1800$. Tom is 0.6 standard deviations above the mean on the ACT: $21+0.6\times 5=24$. In Figure~\ref{satActNormals}, we can see that Ann tends to do better with respect to everyone else than Tom did, so her score was better.
 \end{example}
 
 \begin{table}
@@ -74,7 +76,7 @@ Example~\ref{actSAT} used a standardization technique called a Z score, a method
 
 $Z$\vspace{1mm}\\\footnotesize Z score, the\\standardized\\observation]{\raggedright\vspace{-3mm}
 
-$Z$\vspace{1mm}\\\footnotesize Z score, the\\standardized\\observation}\index{Z@$Z$} of an observation is defined as the number of standard deviations it falls above or below the mean. If the observation is one standard deviation above the mean, its Z score is 1. If it is 1.5 standard deviations \emph{below} the mean, then its Z score is -1.5. If $x$ is an observation from a normal distribution with mean $\mu$ and standard deviation $\sigma$, we define the Z score mathematically as
+$Z$\vspace{1mm}\\\footnotesize Z score, the\\standardized\\observation}\index{Z@$Z$} of an observation is defined as the number of standard deviations it falls above or below the mean. If the observation is one standard deviation above the mean, its Z score is 1. If it is 1.5 standard deviations \emph{below} the mean, then its Z score is -1.5. If $x$ is an observation from a \Cut{normal }distribution with mean $\mu$ and standard deviation $\sigma$, we define the Z score mathematically as
 \begin{eqnarray*}
 Z = \frac{x-\mu}{\sigma}
 \end{eqnarray*}
@@ -91,13 +93,13 @@ Z = \frac{x-\mu}{\sigma}
 \end{termBox}
 
 \begin{exercise}
-Use Tom's ACT score, 24, along with the ACT mean and standard deviation to compute his Z score.\footnote{$Z_{Tom} = \frac{x_{Tom} - \mu_{ACT}}{\sigma_{ACT}} = \frac{24 - 21}{5} = 0.6$}
+Use Tom's ACT score, 24, along with the ACT mean of 21 and standard deviation of 5 to compute his Z score.\footnote{$Z_{Tom} = \frac{x_{Tom} - \mu_{ACT}}{\sigma_{ACT}} = \frac{24 - 21}{5} = 0.6$}
 \end{exercise}
 
 Observations above the mean always have positive Z scores while those below the mean have negative Z scores. If an observation is equal to the mean (e.g. SAT score of 1500), then the Z score is $0$.
 
 \begin{exercise}
-Let $X$ represent a random variable from a normal distribution with $\mu = 3$ and $\sigma = 2$, and suppose we observe $x=5.19$. (a) Find the Z score of $x$. (b) Use the Z score to determine how many standard deviations above or below the mean $x$ falls.\footnote{(a) Its Z score is given by $Z = \frac{x-\mu}{\sigma} = \frac{5.19 - 3}{2} = 2.19/2 = 1.095$. (b) The observation $x$ is 1.095 standard deviations \emph{above} the mean. We know it must be above the mean since $Z$ is positive.}
+Let $X$ represent a random variable from a \Cut{normal }distribution with $\mu = 3$ and $\sigma = 2$, and suppose we observe $x=5.19$. (a) Find the Z score of $x$. (b) Use the Z score to determine how many standard deviations above or below the mean $x$ falls.\footnote{(a) Its Z score is given by $Z = \frac{x-\mu}{\sigma} = \frac{5.19 - 3}{2} = 2.19/2 = 1.095$. (b) The observation $x$ is 1.095 standard deviations \emph{above} the mean. We know it must be above the mean since $Z$ is positive.}
 \end{exercise}
 
 \begin{exercise} \label{headLZScore}
@@ -237,7 +239,7 @@ The normal probability table in most books gives the area to the left. If you wo
 
 The last several problems have focused on finding the probability or percentile for a particular observation. It is also possible to identify the value corresponding to a particular percentile.
 
-\begin{example}{Larry believes he can get into his preferred college if he scores at least in the 80th percentile on the SAT. What score should he aim for?}
+\begin{example}{Carlos believes he can get into his preferred college if he scores at least in the 80th percentile on the SAT. What score should he aim for?}
 Here, we are given a percentile rather than a Z score, so we work backwards. As always, first draw the picture.
 \begin{center}
 \includegraphics[height=22mm]{ch_distributions/figures/sat80thPercentile/sat80thPercentile}
@@ -252,7 +254,7 @@ x& = 1752
 The 80th percentile on the SAT corresponds to a score of 1752.
 \end{example}
 
-\begin{exercise}Mary scored at the 72nd percentile on the SAT. What was her SAT score?\footnote{First, draw a picture! The closest percentile in the table to 0.72 is 0.7190, which corresponds to $Z = 0.58$. Next, set up the Z score formula and solve for $x$: $0.58 = \frac{x-1500}{300} \rightarrow x = 1674$. Mary scored 1674.}
+\begin{exercise}Mika scored at the 72nd percentile on the SAT. What was her SAT score?\footnote{First, draw a picture! The closest percentile in the table to 0.72 is 0.7190, which corresponds to $Z = 0.58$. Next, set up the Z score formula and solve for $x$: $0.58 = \frac{x-1500}{300} \rightarrow x = 1674$. Mika scored 1674.}
 \end{exercise}
 
 \begin{caution}{If the data are not nearly normal, don't use a normal table}{
@@ -556,6 +558,8 @@ ID & time & age & gender & state \\
 \end{table}
 
 % WARNING: This figure is referenced in Section 4.2
+\Comment{TODO: DAVID, please add title: Distribution of Population of Run Times}
+
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{ch_distributions/figures/run10SampHistograms/run10SampHistograms} 
@@ -566,6 +570,8 @@ ID & time & age & gender & state \\
 
 From the random sample represented in \data{run10Samp}, we guessed the average time it takes to run 10 miles is 95.61 minutes. Suppose we take another random sample of 100 individuals and take its mean: 95.30 minutes. Suppose we took another (93.43 minutes) and another (94.16 minutes), and so on. If we do this many many times -- which we can do only because we have the entire population data set -- we can build up a \term{sampling distribution} for the sample mean when the sample size is 100, shown in Figure~\ref{netTime1000SamplingDistribution}.
 
+\Comment{TODO: DAVID, please add title: Sampling Distribution of Sample Means for n = 100.  Also, can you shrink the horizontal axis, to emphasize that the variability in this distribution is must smaller than the variability of the original population?}
+
 \begin{figure}
    \centering
    \includegraphics[width=0.93\textwidth]{ch_distributions/figures/netTime1000SamplingDistribution/netTime1000SamplingDistribution}
@@ -573,13 +579,17 @@ From the random sample represented in \data{run10Samp}, we guessed the average t
    \label{netTime1000SamplingDistribution}
 \end{figure}
 
-\begin{termBox}{\tBoxTitle{Sampling distribution}
+\begin{termBox}{\tBoxTitle{Sampling distribution \color{red}ADD THIS BOX}
+A sampling distribution represents the distribution of a point estimate based on samples of a fixed size from a certain population. The distribution of a point estimate has a certain mean and standardard deviation, which depend upon, though are not always identical to, the mean and standard deviation of the population from which the samples were taken.  Understanding the concept of a sampling distribution is central to understanding statistical inference.}
+\end{termBox}
+
+\begin{termBox}{\tBoxTitle{Sampling distribution \color{red}CUT THIS BOX}
 The sampling distribution represents the distribution of the point estimates based on samples of a fixed size from a certain population. It is useful to think of a particular point estimate as being drawn from such a distribution. Understanding the concept of a sampling distribution is central to understanding statistical inference.}
 \end{termBox}
 
-The sampling distribution shown in Figure~\ref{netTime1000SamplingDistribution} is unimodal and approximately symmetric. It is also centered exactly at the true population mean: $\mu=94.52$. Intuitively, this makes sense. The sample means should tend to ``fall around'' the population mean.
+The sampling distribution shown in Figure~\ref{netTime1000SamplingDistribution} \Add{shows the various values of the sample mean obtained from repeated samples of size 100 from the population.}  \Cut{is unimodal and approximately symmetric.} \Add{We denote the mean of the sampling distribution of a sample mean as $\mu_{\bar{x}}$. The sampling distribution of a sample mean is centered exactly at the true population mean: $\mu=94.52$. Intuitively, this makes sense. The sample means should average out to the population mean.  In other words, the sample mean is an unbiased estimator of the population mean.  Mathematically, $\mu_{\bar{x}}=\mu$.}
 
-We can see that the sample mean has some variability around the population mean, which can be quantified using the standard deviation of this distribution of sample means: $\sigma_{\bar{x}} = 1.59$. The standard deviation of the sample mean tells us how far the typical estimate is away from the actual population mean, 94.52 minutes. It also describes the typical \term{error} of a single estimate.  
+We can see that the sample mean has some variability around the population mean, which can be quantified using the standard deviation of this distribution of sample means.  \Cut{$\sigma_{\bar{x}} = 1.59$. }The standard deviation of the sample mean tells us how far the typical estimate is away from the actual population mean, 94.52 minutes.  It also describes the typical \term{error} of a single estimate, and is denoted by the symbol $\sigma_{\bar{x}}$. 
 
 \begin{termBox}{\tBoxTitle{Standard deviation of an estimate}
 The standard deviation associated with an estimate describes the typical error or uncertainty associated with the estimate.}
@@ -594,7 +604,7 @@ The standard deviation associated with an estimate describes the typical error o
 
 When considering how to calculate the standard deviation of a sample mean, there is one problem: there is no obvious way to estimate this from a single sample.  However, statistical theory provides a helpful tool to address this issue.
 
-In the sample of 100 runners, the standard deviation of the sample mean is equal to one-tenth of the population standard deviation: $1.59 = 15.93/10$. In other words, the standard error of the sample mean based on 100 observations is equal to
+In the sample of 100 runners, the standard deviation of the sample mean is equal to one-tenth of the population standard deviation: $15.93/10 = 1.59$. In other words, the standard deviation of the sample mean based on 100 observations is equal to
 \begin{eqnarray*}
 SD_{\bar{x}} = \sigma_{\bar{x}} = \frac{\sigma_{x}}{\sqrt{n}} = \frac{15.93}{\sqrt{100}} = 1.59
 \end{eqnarray*}
@@ -603,7 +613,7 @@ where $\sigma_{x}$ is the standard deviation of the individual observations. Thi
 \begin{termBox}{\tBoxTitle{Computing SD for the sample mean}
 Given $n$ independent observations from a population with standard deviation $\sigma$, the standard deviation of the sample mean is equal to \vspace{-1mm}
 \begin{eqnarray}
-SD_{\bar{x}} = \frac{\sigma}{\sqrt{n}}
+SD_{\bar{x}} = \sigma_{\bar{x}} =  \frac{\sigma}{\sqrt{n}}
 \label{seOfXBar}
 \end{eqnarray}\vspace{-3mm}
 
@@ -628,17 +638,11 @@ The average of the runners' ages is 35.05 years with a standard deviation of $\s
 
 \index{Central Limit Theorem|(}
 
-When sampling from a population that is normally distributed, the distribution of a sample mean is normal.  Even when the population values are skewed, the normal model for the sample mean tends to be very good when the sample consists of at least 30 independent observations. The Central Limit Theorem provides the theory that allows us to model the sample mean using the normal distribution.
-
-\begin{termBox}{\tBoxTitle{Central Limit Theorem, informal definition}
-The distribution of $\bar{x}$ approaches the normal distribution as $n$ increases.  Generally, if the sample size $n\ge 30$, the distribution $\bar{x}$ will be well approximated by the normal distribution, even for skewed populations.}
-\end{termBox}
-
-The Central Limit Theorem states that when the sample size is small, the normal approximation may not be very good. However, as the sample size becomes large, the normal approximation improves. We will investigate three cases to see roughly when the approximation is reasonable.
+\Add{In Figure~\ref{netTime1000SamplingDistribution}, we note that the sampling distribution of the sample mean looks approximately normally distributed.  Will the sampling distribution of a mean always be approximately normal?  Will it depend on the shape of the population?  To address these questions, }we will investigate three cases to see roughly when the approximation is reasonable.
 
 We consider three data sets: one from a \emph{uniform} distribution, one from an \emph{exponential} distribution, and the other from a \emph{normal} distribution. These distributions are shown in the top panels of Figure~\ref{cltSimulations}. The uniform distribution is symmetric, and the exponential distribution may be considered as having moderate skew since its right tail is relatively short (few outliers).\index{skew!example: moderate}
 
-%\CommentA{TODO(David), WOULD BE NICE Could you put the normal first, followed by uniform, followed by exponential?  Also, is there any way you could keep the scales more constant so that we can see the shrinking sd's??}
+\Comment{TODO(David) Could you put the normal first, followed by uniform, followed by exponential?  Also, is there any way you could keep the scales more constant so that we can see the shrinking sd's??}
 
 \begin{figure}
    \centering
@@ -650,32 +654,40 @@ We consider three data sets: one from a \emph{uniform} distribution, one from an
 The left panel in the $n=2$ row represents the sampling distribution of $\bar{x}$ if it is the sample mean of two observations from the uniform distribution shown. The dashed line represents the closest approximation of the normal distribution. Similarly, the center and right panels of the $n=2$ row represent the respective distributions of $\bar{x}$ for data from exponential and log-normal distributions.
 
 \begin{exercise}
-Examine the distributions in each row of Figure~\ref{cltSimulations}. What do you notice about the normal approximation for each sampling distribution as the sample size becomes larger?\footnote{The normal approximation becomes better as larger samples are used. However, in the case when the population is normally distributed, the normal distribution of the sample mean is normal for all sample sizes.}
+Examine the distributions in each row of Figure~\ref{cltSimulations}. What do you notice about the sampling distribution of the mean as the sample size, $n$, becomes larger?\footnote{The normal approximation becomes better as larger samples are used. However, in the case when the population is normally distributed, the normal distribution of the sample mean is normal for all sample sizes.}
 \end{exercise}
 
-\begin{example}{Would the normal approximation be good in all applications where the sample size is at least 30?}
+\begin{example}{In general, would normal approximation for a sample mean be appropriate when the sample size is at least 30?}
 Yes, the sampling distributions when $n = 30$ all look very much like the normal distribution.
 
-However, the more non-normal a population distribution, the larger a sample size seems is necessary for the sampling distribution to look nearly normal.
+However, the more non-normal a population distribution, the larger a sample size is necessary for the sampling distribution to look nearly normal.
 \end{example}
 
-\begin{tipBox}{\tipBoxTitle{With larger $n$, the sampling distribution of $\bar{x}$ becomes more normal}
-As the sample size increases, the normal model for $\bar{x}$ becomes more reasonable. We can also relax our condition on skew when the sample size is very large.}
-\end{tipBox}
+\begin{termBox}{\tBoxTitle{Determining if the sample mean is normally distributed}
+-If the population is normal, the sampling distribution of $\bar{x}$ will be normal for any sample size (including a sample size of 1!).  
+\\-The less normal the population, the larger $n$ needs to be for the sampling distribution of $\bar{x}$ to be normal.  However, a good rule of thumb is that for almost all populations, the sampling distribution of $\bar{x}$ will be approximately normal if $n\ge 30$.}
+\end{termBox}
+
+\Add{This brings us to the \term{Central Limit Theorem}, the most fundamental theorem in Statistics.  }
+
+\begin{termBox}{\tBoxTitle{Central Limit Theorem}
+When taking a random sample of independent observations from a population with fixed mean and standard deviation, the distribution of $\bar{x}$ approaches the normal distribution as $n$ increases.  }
+\end{termBox}
 
 %We discussed in Section~\ref{seOfTheMean} that the sample standard deviation, $s$, could be used as a substitute of the population standard deviation, $\sigma$, when computing the standard error. This estimate tends to be reasonable when $n\geq30$. We will encounter alternative distributions for smaller sample sizes in Chapters~\ref{inferenceForNumericalData} and~\ref{inferenceForCategoricalData}.
 
-\textPE{\pagebreak}
+\Comment{I had to change this from 50 observations to 20 observations, otherwise it is inconsistent with the rule of the thumb just presented about n being at least 30}
+\Comment{TODO{DAVID}:  please change histogram below to correspond to 20 observations, rather than to 50 observations}
 
-\begin{example}{Figure~\ref{pokerProfitsCanApplyNormalToSampMean} shows a histogram of 50 observations. These represent winnings and losses from 50 consecutive days of a professional poker player. Can the normal approximation be applied to the sample mean, 90.69?}
+\begin{example}{Sometimes we do not know what the population distribution looks like.  We have to infer it based on the distribution of a single sample.  Figure~\ref{pokerProfitsCanApplyNormalToSampMean} shows a histogram of 20 observations. These represent winnings and losses from 20 consecutive days of a professional poker player. Based on this sample data, can the normal approximation be applied to the distribution of the sample mean?}
 We should consider each of the required conditions.
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[(1)] These are referred to as \term{time series data}, because the data arrived in a particular sequence. If the player wins on one day, it may influence how she plays the next. To make the assumption of independence we should perform careful checks on such data. While the supporting analysis is not shown, no evidence was found to indicate the observations are not independent.
-\item[(2)] The sample size is 50, which is pretty large.
-\item[(3)] There are two outliers, one very extreme, which suggests the data are very strongly skewed or very distant outliers may be common for this type of data. Outliers can play an important role and affect the distribution of the sample mean and the estimate of the standard error.
+\item[(1)] These are referred to as \term{time series data}, because the data arrived in a particular sequence. If the player wins on one day, it may influence how she plays the next. To make the assumption of independence we should perform careful checks on such data. \Cut{While the supporting analysis is not shown, no evidence was found to indicate the observations are not independent.}
+\item[(2)] The sample size is 20, which is smaller than 30.
+\item[(3)] There are two outliers in the data, one very extreme, which suggests the population may not be normal, but rather may be very strongly skewed or have distant outliers.  Outliers can play an important role and affect the distribution of the sample mean and the estimate of the standard error.
 \end{itemize}
-Since we should be skeptical of the independence of observations and the very extreme upper outlier poses a challenge, we should not use the normal model for the sample mean of these 50 observations. If we can obtain a much larger sample, perhaps several hundred observations, then the concerns about skew and outliers would no longer apply.
+Since we should be skeptical of the independence of observations and the very extreme upper outlier poses a challenge, we should not use the normal model for the sample mean of these 20 observations. If we can obtain a much larger sample, \Cut{perhaps several hundred observations,} then the concerns about skew and outliers would no longer apply.
 \end{example}
 
 \begin{figure}[ht]
@@ -691,7 +703,13 @@ Since we should be skeptical of the independence of observations and the very ex
 \end{caution}
 
 \begin{caution}
-{Watch out for strong skew and outliers}
+{Watch out for strong skew and outliers\color{red}ADD THIS BOX}
+{Strong skew in the population is often identified by the presence of clear outliers in the data. If a data set has prominent outliers, then a larger sample size will be needed for the sampling distribution $\bar{x}$ to be normal.  There are no simple guidelines for what sample size is big enough for each situation.  However, we can use the rule of thumb that, in general, an $n$ of at least 30 is sufficient for most cases.}
+\end{caution}
+\index{skew!strongly skewed guideline}
+
+\begin{caution}
+{Watch out for strong skew and outliers\color{red}CUT THIS BOX}
 {Strong skew is often identified by the presence of clear outliers. If a data set has prominent outliers, or such observations are somewhat common for the type of data under study, then it is useful to collect a sample with many more than 30 observations if the normal model will be used for $\bar{x}$. There are no simple guidelines for what sample size is big enough for all situations, so proceed with caution when working in the presence of strong skew or more extreme outliers.}
 \index{skew!strongly skewed guideline}
 \index{Central Limit Theorem|)}
@@ -699,9 +717,21 @@ Since we should be skeptical of the independence of observations and the very ex
 
 
 
-\subsection{Normal approximation for the sampling distribution of $\bar{x}$}
+\subsection{Normal approximation for the sampling distribution of a sample mean $\bar{x}$}
 
-We have seen that when the sample size is at least 30 and the observations are independent, we can apply the normal model for the sampling distribution of $\bar{x}$.
+\Cut{We have seen that when the sample size is at least 30 and the observations are independent, we can apply the normal model for the sampling distribution of $\bar{x}$.}
+\Add{At the beginning of this chapter, we used normal approximation for populations or for data that had an approxmately normal distribution.  When appropriate conditions are met, we can also use normal approximation to estimate probabilities about a sample average.  We must remember to verify that the conditions are met and use the mean and standard deviation for the sampling distribution of the sample average.}
+
+\begin{tipBox}{\tipBoxTitle{Three important facts about the distribution of a sample mean $\bar{x}$}
+Consider taking a simple  random sample from a large population.
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item The mean of a sample mean is $\mu$.
+\item The SD of a sample mean is $\frac{\sigma}{\sqrt{n}}$.
+\item When the population is normal or when $n\ge 30$, the sample mean closely follows a normal distribution. 
+\end{enumerate}}
+\end{tipBox}
+
 
 \begin{example}{
 In the 2012 Cherry Blossom 10 mile run, the average time for all of the runners is 94.52 minutes with a standard deviation of 8.97 minutes.  The distribution of run times is approximately normal.  Find the probabiliy that a randomly selected runner completes the run in less than 90 minutes.}Because the distribution of run times is approximately normal, we can use normal approximation.  
@@ -716,8 +746,8 @@ There is a 30.72\% probability that a randomly selected runner will complete the
 Find the probabiliy that the average of 20 runners is less than 90~minutes.}
 Here, $n=20<30$, but the distribution of the population, that~is, the distribution of run times is stated to be approximately normal.  Because of this, the sampling distribution will be normal for any sample size.  
 \begin{align*}
-&SD_{\bar{x}}=\frac{\sigma}{\sqrt{n}}=\frac{8.97}{\sqrt{20}}=2.01 \\
-&Z = \frac{\bar{x} - \mu}{\sigma}=\frac{90-94.52}{2.01}=-2.25\\
+&\sigma_{\bar{x}}=\frac{\sigma}{\sqrt{n}}=\frac{8.97}{\sqrt{20}}=2.01 \\
+&Z = \frac{\bar{x} - \mu_{\bar{x}}}{\sigma_{\bar{x}}}=\frac{90-94.52}{2.01}=-2.25\\
 &P(Z < -0.504) = 0.0123
 \end{align*}
 There is a 1.23\% probability that the average run time of 20 randomly selected runners will be less than 90~minutes.
@@ -730,17 +760,17 @@ The average of all the runners' ages is 35.05 years with a standard deviation of
 \begin{exercise}
 What is the probability that the average of 50 randomly selected runners is greater than 37 years?\footnote{Because $n=50\ge 30$, the sampling distribution of the mean is approximately normal, so we can use normal approximation for this problem.  The mean is given as 35.05 years.
 \begin{align*}
-&SD_{\bar{x}}
+&\sigma_{\bar{x}}
 	= \frac{\sigma}{\sqrt{n}}
 	= \frac{8.97}{\sqrt{50}}=1.27
-&&z=\frac{\bar{x}-\mu}{SD_{\bar{x}}} = \frac{37-35.05}{1.27}=1.535
-&&P(Z > 37) = 0.062
+&&z=\frac{\bar{x}-\mu_{\bar{x}}}{\sigma_{\bar{x}}} = \frac{37-35.05}{1.27}=1.535
+&&P(Z > 1.535) = 0.062
 \end{align*}
 There is a 6.2\% chance that the average age of 50 runners will be greater than 37.} 
 \end{exercise}
 
 \begin{tipBox}{\tipBoxTitle{Remember to divide by $\sqrt{n}$}
-When finding the probability that an \emph{average} or mean is greater or less than a particular value, remember to divide the standard deviation of the data by $\sqrt{n}$ to calculate the correct~SD.}
+When finding the probability that an \emph{average} or mean is greater or less than a particular value, remember to divide the standard deviation of the population by $\sqrt{n}$ to calculate the correct~SD.}
 \end{tipBox}
 
 
@@ -906,7 +936,7 @@ $x_i$ & $p_i$ \\
 4 & ${4\choose 4}(0.3)^4(0.7)^{0} = 0.008$  \vspace{1mm}\\
 \hline
 \end{tabular}
-\caption{Probability distribution for the number of 4 smoking friends who will develop a severe lung condition in their lifetime. This is a binomial distribution. After correcting rounding error, the probabilities add up to~1.}
+\caption{Probability distribution for the number of 4 smoking friends who will develop a severe lung condition in their lifetime. This is a binomial distribution. Correcting for rounding error, the probabilities add up to~1, as they must for any probability distribution.}
 \label{binomDistrSmokers}
 \end{table}
 
@@ -973,7 +1003,7 @@ We are asked to determine the expected number (the mean) and the standard deviat
 
 \index{distribution!binomial!normal approximation|(}
 
-The binomial formula is cumbersome when the sample size ($n$) is large, particularly when we consider a range of observations. In some cases we may use the normal distribution as an easier and faster way to estimate binomial probabilities.
+The binomial formula is cumbersome when the sample size ($n$) is large, particularly when we consider a range of observations. \Add{Image finding the probability that at least 25 of 40 somoking friends will develop a sever lung condition.  We would need to use the binomial formula with k=25, k=26, k=27,...,k=40.  That's a lot of work!  }In some cases we may use the normal distribution as an easier and faster way to estimate binomial probabilities.  \Add{While a normal approximation for the distribution in Figure~\ref{smokingFriends4} would not be appropriate, it would not be too bad for the distribution in Figure~\ref{smokingFriends40}.}
 
 \begin{example}{Approximately 20\% of the US population smokes cigarettes. A local government believed their community had a lower smoker rate and commissioned a survey of 400 randomly selected individuals. The survey found that only 60 of the 400 participants smoke cigarettes. If the true proportion of smokers in the community was really 20\%, what is the probability of observing 60 or fewer smokers in a sample of 400 people?}\label{exactBinomialForN400P20SmokerExample}
 We leave the usual verification that the four conditions for the binomial model are valid as an exercise.
@@ -1001,7 +1031,7 @@ Here we consider the binomial model when the probability of a success is $p=0.10
 \end{figure}
 
 \begin{termBox}{\tBoxTitle{Normal approximation of the binomial distribution}
-The binomial distribution with probability of success $p$ is nearly normal when the sample size $n$ is sufficiently large that $np$ and $n(1-p)$ are both at least 10. The approximate normal distribution has parameters corresponding to the mean and standard deviation of the binomial distribution:\vspace{-1.5mm}
+The binomial distribution with probability of success $p$ is nearly normal when the sample size $n$ is sufficiently large that $np\ge 10$ and $n(1-p)\ge 10$. The approximate normal distribution has parameters corresponding to the mean and standard deviation of the binomial distribution:\vspace{-1.5mm}
 \begin{align*}
 \mu &= np
 &&\sigma= \sqrt{np(1-p)}
@@ -1082,7 +1112,7 @@ P(-1.4375 &< Z < -1.0625) = 0.0687
 The probability 0.0687 is much closer to the true value of 0.0703 than the previous estimate of 0.0476 we calculated using normal approximation without the continuity correction.
 \end{example}
 
-It is always possible to apply the continuity correction when finding a normal approximation to the binomial distribution. However, when $n$ is very large or when the interval is wide, the benefit of the modification is limited since the added such a small area becomes negligible compared to the overall area being calculated.
+It is always possible to apply the continuity correction when finding a normal approximation to the binomial distribution. However, when $n$ is very large or when the interval is wide, the benefit of the modification is limited since the added area becomes negligible compared to the overall area being calculated.
 
 \index{distribution!binomial!normal approximation|)}
 \index{distribution!binomial|)}
@@ -1103,13 +1133,13 @@ The binomial distribution shows us the distribution of number of successes in $n
 
 \subsection{The mean and standard deviation of $\hat{p}$}
 
-To answer these questions, we investigate the distribution of the sample proportion $\hat{p}$. In the last section we saw that the \emph{number} of smokers in a sample of size 400 follows a binomial distribution with $p=0.2$ and $n=400$ that is centered on 80 and has standard deviation 8. What does the distribution of the \emph{proportion} of smokers in a sample of size 400 look like?  To convert from a count to a proportion, we divide the outcomes by the sample size, $n = 400$. For example, 60 becomes $60/400 = 0.15$ as a proportion and 61 becomes $61/400 = 0.1525$. 
+To answer these questions, we investigate the distribution of the sample proportion $\hat{p}$. In the last section we saw that the \emph{number} of smokers in a sample of size 400 follows a binomial distribution with $p=0.2$ and $n=400$ that is centered on 80 and has standard deviation 8. What does the distribution of the \emph{proportion} of smokers in a sample of size 400 look like?  To convert from a count to a proportion, we divide the count \Add{(i.e. number of yeses)} by the sample size, $n = 400$. For example, 60 becomes $60/400 = 0.15$ as a proportion and 61 becomes $61/400 = 0.1525$. 
 
 We can find the general formula for the mean (expected value) and standard deviation of a sample proportion $\hat{p}$ using our tools that we've learned so far. To get the sample mean for $\hat{p}$, we divide the binomial mean $\mu_{binomial} = np$ by $n$:
 \begin{align*}
 \mu_{\hat{p}} = \frac{\mu_{binomial}}{n} = \frac{np}{n} = p
 \end{align*}
-As one might expect, the sample proportion $\hat{p}$ is expected to be in the neighborhood of the true proportion $p$. Likewise, the standard deviation of $\hat{p}$ is equal to the standard deviation of the binomial distribution divided by $n$:
+As one might expect, the sample proportion $\hat{p}$ is centered on the true proportion $p$. Likewise, the standard deviation of $\hat{p}$ is equal to the standard deviation of the binomial distribution divided by $n$:
 \begin{align*}
 \sigma_{\hat{p}}
 	= \frac{\sigma_{binomial}}{n}
@@ -1128,7 +1158,7 @@ The mean and standard deviation of the sample proportion describe the center and
 
 %Because the distribution of $\hat{p}$ is centered at $p$, the sample proportion is said to be an \hiddenterm{unbiased estimator} of $p$.
 
-In analyses, we think of the formula for the standard deviation of a sample proportion, $\sigma_{\hat{p}}$, as describing the uncertainty associated with the estimate $\hat{p}$. That is, $\sigma_{\hat{p}}$ can be thought of as a way to quantify the typical \hiddenterm{error} in our sample estimate $\hat{p}$ of the true proportion $p$. Understanding the variability of statistics such as $\hat{p}$ is a central component in the study of statistics.
+In analyses, we think of the formula for the standard deviation of a sample proportion, $\sigma_{\hat{p}}$, as describing the uncertainty associated with the estimate $\hat{p}$. That is, $\sigma_{\hat{p}}$ can be thought of as a way to quantify the typical \hiddenterm{error} in our sample estimate $\hat{p}$ when used as an estimate of the true proportion $p$. Understanding the variability of statistics such as $\hat{p}$ is a central component in the study of statistics.
 
 %\begin{enumerate}
 %\setlength{\itemsep}{0mm}
@@ -1137,7 +1167,7 @@ In analyses, we think of the formula for the standard deviation of a sample prop
 %\end{enumerate}
 
 \begin{example}{If the rate of smoking in the county is really 20\%, find and interpret the mean and standard deviation of the sample proportion for a sample of size 400.}
-The mean of the sample proportion is the population proportion: 0.20. That is, $\hat{p}$ will tend to be near $p = 0.20$.
+The mean of the sample proportion is the population proportion: 0.20. That is, if we took many, many samples and calculated $\hat{p}$, these values would average out to $p = 0.20$.
 
 The standard deviation of $\hat{p}$ is described by the standard deviation for the proportion:
 \begin{align*}
@@ -1146,7 +1176,7 @@ The standard deviation of $\hat{p}$ is described by the standard deviation for t
 	= \sqrt{\frac{0.2 \times 0.8}{400}}
 	= .02
 \end{align*}
-The sample proportion will typically be about 0.02 or 2\% away from the true proportion of $p = 0.20$. We'll become more rigorous about quantifying how close $\hat{p}$ will tend to be to $p$ in Chapter~\ref{foundationsForInference}.
+On average, the sample proportion will be about 0.02 or 2\% away from the true proportion of $p = 0.20$. We'll become more rigorous about quantifying how close $\hat{p}$ will tend to be to $p$ in Chapter~\ref{foundationsForInference}.
 \end{example}
 
 \subsection{The Central Limit Theorem revisited}
@@ -1163,7 +1193,7 @@ A natural question is, what does this have to do with sample proportions? In~fac
 That is, the sample proportion is governed by the Central Limit Theorem, and the Central Limit Theorem is what ties much of the statistical theory we will see together.
 
 
-\begin{tipBox}{\tipBoxTitle{Three important facts about the distribution of a $\hat{p}$}
+\begin{tipBox}{\tipBoxTitle{Three important facts about the distribution of a sample proportion $\hat{p}$}
 Consider taking a simple  random sample from a large population.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}

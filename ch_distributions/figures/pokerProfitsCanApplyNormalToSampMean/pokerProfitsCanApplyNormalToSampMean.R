@@ -9,4 +9,5 @@ histPlot(poker$winnings,
          xlab = 'Poker winnings and losses (US$)',
          ylab = 'Frequency',
          col = COL[1])
+         
 dev.off()
