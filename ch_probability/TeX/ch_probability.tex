@@ -107,7 +107,7 @@ The \term{Addition Rule} guarantees the accuracy of this approach when the outco
 
 \begin{termBox}{\tBoxTitle{Addition Rule of disjoint outcomes} If $A_1$ and $A_2$ represent two disjoint outcomes, then the probability that one of them occurs is given by
 \begin{eqnarray*}
-P(A_1\text{ or} A_2) = P(A_1) + P(A_2)
+P(A_1\text{ or } A_2) = P(A_1) + P(A_2)
 \end{eqnarray*}
 If there are many disjoint outcomes $A_1$, ..., $A_k$, then the probability that one of these outcomes will occur is
 \begin{eqnarray}
@@ -122,7 +122,7 @@ We are interested in the probability of rolling a \resp{1}, \resp{4}, or \resp{5
 
 \index{data!email|(}
 \begin{exercise}
-In the \data{email} data set in Chapter~\ref{introductionToData}, the \var{number} variable described whether no number (labeled \resp{none}), only one or more small numbers (\resp{small}), or whether at least one big number appeared in an email (\resp{big}). Of the 3,921 emails, 549 had no numbers, 2,827 had only one or more small numbers, and 545 had at least one big number. (a) Are the outcomes \resp{none}, \resp{small}, and \resp{big} disjoint? (b) Determine the proportion of emails with value \resp{small} and \resp{big} separately. (c) Use the Addition Rule for disjoint outcomes to compute the probability a randomly selected email from the data set has a number in it, small or big.\footnote{(a) Yes. Each email is categorized in only one level of \var{number}. (b) Small: $\frac{2827}{3921} = 0.721$. Big: $\frac{545}{3921} = 0.139$. (c) $P($\resp{small} or \resp{big}$) = P($\resp{small}$) + P($\resp{big}$) = 0.721 + 0.139 = 0.860$.}
+In the \data{email} data set in Chapter~\ref{summarizingData}, the \var{number} variable described whether no number (labeled \resp{none}), only one or more small numbers (\resp{small}), or whether at least one big number appeared in an email (\resp{big}). Of the 3,921 emails, 549 had no numbers, 2,827 had only one or more small numbers, and 545 had at least one big number. (a) Are the outcomes \resp{none}, \resp{small}, and \resp{big} disjoint? (b) Determine the proportion of emails with value \resp{small} and \resp{big} separately. (c) Use the Addition Rule for disjoint outcomes to compute the probability a randomly selected email from the data set has a number in it, small or big.\footnote{(a) Yes. Each email is categorized in only one level of \var{number}. (b) Small: $\frac{2827}{3921} = 0.721$. Big: $\frac{545}{3921} = 0.139$. (c) $P($\resp{small} or \resp{big}$) = P($\resp{small}$) + P($\resp{big}$) = 0.721 + 0.139 = 0.860$.}
 \end{exercise}
 \index{data!email|)}
 
@@ -139,7 +139,7 @@ Statisticians rarely work with individual outcomes and instead consider \indexth
 
 The Addition Rule applies to both disjoint outcomes and disjoint events. The probability that one of the disjoint events $A$ or $B$ occurs is the sum of the separate probabilities:
 \begin{eqnarray*}
-P(A\text{ or}B) = P(A) + P(B) = 1/3 + 1/3 = 2/3
+P(A\text{ or }B) = P(A) + P(B) = 1/3 + 1/3 = 2/3
 \end{eqnarray*}
 
 \begin{exercise}
@@ -574,16 +574,16 @@ P(\text{\var{student} \resp{uses}} | \text{ \var{parents} \resp{used}})
 \end{align}
 In Equation~(\ref{stUserPUsedHypSampSize}), we examine exactly the fraction of two probabilities, 0.28 and 0.47, which we can write as
 \begin{align*}
-P(\var{student} \resp{uses}\ \text{and} \var{parents} \resp{used})
+P(\text{\var{student} \resp{uses} and \var{parents} \resp{used}})
 	\quad\text{and}\quad
-	P(\var{parents} \resp{used}).
+	P(\text{\var{parents} \resp{used}}).
 \end{align*}
 The fraction of these probabilities represents our general formula for conditional probability.
 
 \begin{termBox}{\tBoxTitle{Conditional Probability}
 The conditional probability of the outcome of interest $A$ given condition $B$ is computed as the following: \vspace{-1.5mm}
 \begin{eqnarray}
-P(A | B) = \frac{P(A\text{ and}B)}{P(B)}
+P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
 \label{condProbEq}
 \end{eqnarray}}
 \end{termBox}
@@ -793,8 +793,8 @@ The General Multiplication Rule states that $P(A\text{ and }B) \text{ equals}P(A
 P(A\text{ and }B) &= P(A)\times P(B)
 \end{align*}
 
-\begin{tipBox}{\tipBoxTitle{Checking the independence of two events}
-When checking for independence between two events $A$ and $B$, verify one of the following equations holds (there is no need to check both equations):
+\begin{tipBox}{\tipBoxTitle{Checking whether two events are independent}
+When checking whether two events $A$ and $B$ are independent, verify one of the following equations holds (there is no need to check both equations):
 \begin{align*}
 P(A|B) &= P(A)&
 P(A\text{ and }B) &= P(A)\times P(B)
@@ -850,14 +850,24 @@ These terms are not equal, which confirms what we learned in Example~\ref{studen
 %\end{align*}
 %}
 
+\Comment{I edited this a little so that it would be parallel to the discussion on independence}
+
+If $A$ and $B$ are mutually exclusive events, then $A$ and $B$ cannot occur at the same time.  Mathematically, this is written as
+\begin{align*}
+P(A \text{ and } B) &= 0
+\end{align*}
+The General Addition Rule states that $P(A\text{ or }B) \text{ equals }P(A) + P(B) - P(A\text{ and }B)$.  If $A$ and $B$ are mutually exclusive events, we can replace $P(A \text{ and }B)$ with 0 and the following addition rule applies:
+\begin{align*}
+P(A\text{ or }B) &= P(A) + P(B)
+\end{align*}
+
 \begin{tipBox}{\tipBoxTitle{Checking whether two events are mutually exclusive (disjoint)}
-If $A$ and $B$ are mutually exclusive events, then they cannot occur at the same time. If asked to determine if events $A$ and $B$ are mutually exclusive, try one of the following approaches:
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item Check whether $P(A\text{ and }B) = 0$. If equality holds, then $A$ and $B$ are mutually exclusive. If it doesn't hold, they are not mutually exclusive.
-\item Check whether $P(A\text{ or }B) = P(A) + P(B)$. If equality holds, then $A$ and $B$ are mutually exclusive. If it doesn't hold, they are not mutually exclusive.
-\end{itemize}
-The first approach is based on the definition of mutually exclusive, and the second approach is based on a simplified version of the General Addition Rule for the case where $A$ and $B$ are mutually exclusive.}
+If $A$ and $B$ are mutually exclusive events, then they cannot occur at the same time. If asked to determine if events $A$ and $B$ are mutually exclusive, verify one of the following equations holds (there is no need to check both equations):
+\begin{align*}
+P(A \text{ and }B) &= 0&
+P(A\text{ or }B) &= P(A) + P(B)
+\end{align*}
+If the equation that is checked holds true (the left and right sies are equal), $A$ and $B$ are mutually exclusive.  If hte equation does not hold, then $A$ and $B$ are not mutually exclusive.}
 \end{tipBox}
 
 %\begin{tipBox}{\tipBoxTitle{Checking whether two events are mutually exclusive}
@@ -880,9 +890,10 @@ P(\text{\var{student} \resp{uses} and \var{parent} \resp{used}}) = \frac{125}{44
 Since this probability is not zero, student and parent drug use are not mutually exclusive.
 \end{example}
 
-\begin{tipBox}{\tipBoxTitle{Mutually exclusive and independence are different}
-If two events are mutually exclusive, then if one is true, the other cannot be true. This implies the two events are in some way connected, meaning they cannot be independent.\\
+\Comment{changed independence, to independent to refer to types of events}
 
+\begin{tipBox}{\tipBoxTitle{Mutually exclusive and independent are different}
+If two events are mutually exclusive, then if one is true, the other cannot be true. This implies the two events are in some way connected, meaning they must be dependent.\\
 If two events are independent, then if one occurs, it is still possible for the other to occur, meaning the events are not mutually exclusive.}
 \end{tipBox}
 
@@ -954,7 +965,7 @@ We are given sufficient information to quickly compute the probability of testin
 \begin{align*}
 P(\text{has BC} | \text{ mammogram$^+$})
 \end{align*}
-Here, ``has BC'' is an abbreviation for the patient actually having breast cancer, and ``mammogram$^+$'' means the mammogram screening was positive, which in this case means the test suggests the patient has breast cancer. (Watch out for the non-intuitive medical language: a~\emph{positive} test result suggests the possible presence of cancer in a mammogram screening.) We can use the conditional probability formula from the previous section: $P(A|B) = \frac{P(A \text{ and} B)}{P(B)}$. Our conditional probability can be found as follows:
+Here, ``has BC'' is an abbreviation for the patient actually having breast cancer, and ``mammogram$^+$'' means the mammogram screening was positive, which in this case means the test suggests the patient has breast cancer. (Watch out for the non-intuitive medical language: a~\emph{positive} test result suggests the possible presence of cancer in a mammogram screening.) We can use the conditional probability formula from the previous section: $P(A|B) = \frac{P(A \text{ and } B)}{P(B)}$. Our conditional probability can be found as follows:
 \begin{align*}
 P(\text{has BC $|$ mammogram$^+$}) &=  \frac{P(\text{has BC and mammogram$^+$})}{P(\text{mammogram$^+$})}
 \end{align*}
@@ -1020,13 +1031,12 @@ Bayes' Theorem states that this conditional probability can be identified as the
 where $A_2$, $A_3$, ..., and $A_k$ represent all other possible outcomes of the first variable.}\index{Bayes' Theorem|textbf}
 \end{termBox}
 
-Bayes' Theorem is just a generalization of what we have done using tree diagrams. The formula can be memorized. If not, it is important to be able to derive the formula quickly with a tree diagram:
+Bayes' Theorem is just a generalization of what we have done using tree diagrams. The formula \Add{need not} be memorized; \Add{it can always be derived using a tree diagram:}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item The numerator identifies the probability of getting both $A_1$ and $B$.
-\item The denominator is the overall probability of getting $B$.
+\item The denominator is the overall probability of getting $B$.  Traverse each branch of the tree diagram that ends with event $B$.  Add up the required products.
 \end{itemize}
-The bottom component (the denominator) of the fraction often appears long and complicated. However, it is equivalent to what we did numerically using tree diagrams: traverse each branch of the tree diagram that ends with event $B$.
 
 \begin{exercise} \label{exerciseForParkingLotOnCampusBeingFullAndWhetherOrNotThereIsASportingEvent}
 Jose visits campus every Thursday evening. However, some days the parking garage is full, often due to college events. There are academic events on 35\% of evenings, sporting events on 20\% of evenings, and no events on 45\% of evenings. When there is an academic event, the garage fills up about 25\% of the time, and it fills up 70\% of evenings with sporting events. On evenings when there are no events, it only fills up about 5\% of the time. If Jose comes to campus and finds the garage full, what is the probability that there is a sporting event? Use a tree diagram to solve this problem.\footnote{\begin{minipage}[t]{0.47\textwidth}
@@ -1066,7 +1076,7 @@ But there are three other scenarios: Brittany, Caroline, or Damian could have be
 \end{example}
 
 \begin{exercise}
-Verify that the scenario where Brittany is the only one to refuse to give the most severe shock has probability $(0.35)^1(0.65)^3$.\footnote{$P(A=\text{\resp{shock}},\text{ }B=\text{\resp{refuse}},\text{ }C=\text{\resp{shock}},\text{ }D=\text{\resp{shock}}) = (0.65)(0.35)(0.65)(0.65) = (0.35)^1(0.65)^3$.}
+Verify that the scenario where Brittany is the only one to refuse to give the most severe shock has probability $(0.35)^1(0.65)^3$. \footnote{$P(A=\text{\resp{shock}},\text{ }B=\text{\resp{refuse}},\text{ }C=\text{\resp{shock}},\text{ }D=\text{\resp{shock}}) = (0.65)(0.35)(0.65)(0.65) = (0.35)^1(0.65)^3$.}
 \end{exercise}
 
 
@@ -1226,7 +1236,7 @@ Use \textbf{2ND VARS, binompdf} to evaluate the probability of \emph{exactly} $k
 \end{termBox}
 
 \begin{termBox}{\tBoxTitle{TI calculator: Computing $P(x \le k)= {n\choose 0}p^0(1-p)^{n-0} + ... + {n\choose k}p^k(1-p)^{n-k}$} 
-Use \textbf{2ND VARS, binomcdf} to evaluate the cumulative probability of \emph{at least} $k$ occurrences out of $n$ independent trials of an event with probability $p$. 
+Use \textbf{2ND VARS, binomcdf} to evaluate the cumulative probability of \emph{at most} $k$ occurrences out of $n$ independent trials of an event with probability $p$. 
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Select 2ND VARS (i.e. DISTR)
@@ -1250,7 +1260,7 @@ Use \textbf{2ND VARS, binomcdf} to evaluate the cumulative probability of \emph{
 \begin{exercise}There are 13 marbles in a bag.  4 are blue and 9 are red.  Randomly draw 5 marbles \emph{with replacement}.  Find the probability you get exactly 3 blue marbles.\footnote{Use binompdf(5, 4/13, 3) to get 0.1396.}
 \end{exercise}
 
-\begin{exercise}There are 13 marbles in a bag.  4 are blue and 9 are red.  Randomly draw 5 marbles \emph{with replacement}.  Find the probability you get \emph{at least} 3 blue marbles.\footnote{Use binomcdf(5, 4/13, 3) to get 0.9662.}
+\begin{exercise}There are 13 marbles in a bag.  4 are blue and 9 are red.  Randomly draw 5 marbles \emph{with replacement}.  Find the probability you get \emph{at most} 3 blue marbles (i.e. less than or equal to 3 blue marbles).\footnote{Use binomcdf(5, 4/13, 3) to get 0.9662.}
 \end{exercise}
 
 
@@ -1267,7 +1277,7 @@ Around 20 students will not buy either book (0 books total), about 55 will buy o
 \end{example}
 
 \begin{exercise}
-Would you be surprised if the bookstore sold slightly more or less than 105 books?\footnote{If they sell a little more or a little less, this should not be a surprise. Hopefully Chapter~\ref{introductionToData} helped make clear that there is natural variability in observed data. For example, if we would flip a coin 100 times, it will not usually come up heads exactly half the time, but it will probably be close.}
+Would you be surprised if the bookstore sold slightly more or less than 105 books?\footnote{If they sell a little more or a little less, this should not be a surprise. Hopefully Chapter~\ref{summarizingData} helped make clear that there is natural variability in observed data. For example, if we would flip a coin 100 times, it will not usually come up heads exactly half the time, but it will probably be close.}
 \end{exercise}
 
 \begin{example}{The textbook costs \$137 and the study guide \$33. How much revenue should the bookstore expect from this class of 100 students?}\label{bookStoreRev}
@@ -1338,7 +1348,7 @@ Income range (\$1000s) & 0-25    & 25-50    & 50-100     & 100+    \\
 \label{usHouseholdIncomeDists}
 \end{table}
 
-Chapter~\ref{introductionToData} emphasized the importance of plotting data to provide quick summaries. Probability distributions can also be summarized in a histogram or bar plot. The probability distribution for the sum of two dice is shown in Table~\ref{diceProb} and its histogram is plotted in Figure~\ref{diceSumDist}. The distribution of US household incomes is shown in Figure~\ref{usHouseholdIncomeDistBar} as a bar plot. The presence of the 100+ category makes it difficult to represent it with a regular histogram.\footnote{It is also possible to construct a distribution plot when income is not artificially binned into four groups. Density histograms for \emph{continuous} distributions are considered in Section~\ref{contDist}.}
+Chapter~\ref{summarizingData} emphasized the importance of plotting data to provide quick summaries. Probability distributions can also be summarized in a histogram or bar plot. The probability distribution for the sum of two dice is shown in Table~\ref{diceProb} and its histogram is plotted in Figure~\ref{diceSumDist}. The distribution of US household incomes is shown in Figure~\ref{usHouseholdIncomeDistBar} as a bar plot. The presence of the 100+ category makes it difficult to represent it with a regular histogram.\footnote{It is also possible to construct a distribution plot when income is not artificially binned into four groups. Density histograms for \emph{continuous} distributions are considered in Section~\ref{contDist}.}
 
 \begin{figure}
 \centering
@@ -1544,10 +1554,11 @@ Using this new table, we can compute the mean and standard deviation of the text
 \mu_{150X-30}&=E(150X-30) 
 	& \sigma_{150X-30}&=SD(150X-30)\\
 &= 150\times E(X) - 30
-	& &=150\times SD(X) = 150\times 0.67 \\
+	& &= 150\times SD(X) \\
 &= 150\times 1.5 - 30
-	& &= 100.5 \\
+	& &= 150\times 0.67 \\
 &= 195
+	& &= 100.5
 \end{align*}
 For a randomly selected student, the textbook company can expect to make \$195 dollars, with a standard deviation of \$100.50.
 
