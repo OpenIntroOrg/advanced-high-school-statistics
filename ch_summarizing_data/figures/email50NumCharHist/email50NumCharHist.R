@@ -54,20 +54,20 @@ myPDF("email50NumCharCumulativeFreqHist.pdf",
 histPlot(rep(steps, ch), breaks = 12,
          xlab = 'Number of Characters (in thousands)',
          ylab = "Cumulative Frequency",  col = COL[1],
-         border = COL[5], xlim = c(0, 70),
+         border = COL[5], xlim = c(0, 62.5),
          axes = FALSE)
 axis(1)
 axis(2, at = seq(0, 50, 10), labels = seq(0, 50, 10))
 axis(1, at = seq(5, 65, 10), labels = rep("", 7),
      tcl = -0.15)
 dev.off()
-xtable(rbind(paste0(seq(0, 65, length.out = 14), "-",
-                    seq(5, 70, length.out = 14)),
+xtable(rbind(paste0(seq(0, 60, length.out = 13), "-",
+                    seq(5, 65, length.out = 13)),
              ch))
 
 
 d     <- round(email50$num_char - 0.5) + 0.5
-steps <- seq(0.5, 69.5, length.out = 70)
+steps <- seq(0.5, 64.5, length.out = 65)
 ch    <- rep(0, length(steps))
 for (i in 1:length(steps)) {
   ch[i] <- sum(d <= steps[i] + 1)
