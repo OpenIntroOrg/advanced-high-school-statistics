@@ -79,7 +79,7 @@ The average or expected error in our estimate is 4\%.
 \begin{align*}
 SE_{\hat{p}}=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} =\sqrt{\frac{0.15(1-0.15)}{240}}=0.02
 \end{align*}
-The larger the sample size, the smaller our standard error.  This is consistent with intuition: the more data we have, the more reliable an estimate will tend to be.  However, quadrupling the sample size does not reduce the error by a factor of 4.  Because of the square root, the effect is to reduce the error by a factor $\sqrt{4}$, or 2). 
+The larger the sample size, the smaller our standard error.  This is consistent with intuition: the more data we have, the more reliable an estimate will tend to be.  However, quadrupling the sample size does not reduce the error by a factor of 4.  Because of the square root, the effect is to reduce the error by a factor $\sqrt{4}$, or 2. 
 \end{example}
 
 
@@ -222,15 +222,19 @@ Create a 99\% confidence interval for the impact of the stent on the risk of str
 
 %\textA{\pagebreak}
 
+\Comment{Changed "z* corresponds to the confidence level" to "z* depends on the confidence level", since corresponds sounds to me like it is equivalent}
+
 \begin{termBox}{\tBoxTitle{Confidence interval for any confidence level}
 If the point estimate follows the normal model with standard error $SE$, then a confidence interval for the population parameter is
 \begin{eqnarray*}
 \text{point estimate}\ \pm\ z^{\star} \times SE
 \end{eqnarray*}
-where $z^{\star}$ corresponds to the confidence level selected.}
+where $z^{\star}$ depends on the confidence level selected.}
 \end{termBox}
 
 Finding the value of $z^{\star}$ that corresponds to a particular confidence level is most easily accomplished by using a new table, called the t table.  For now, what is noteworthy about this table is that the bottom row corresponds to confidence levels.  The numbers inside the table are the critical values, but which row should we use?  Later in this book, we will see that a t curve with infinite degrees of freedom corresponds to the normal curve.  For this reason, when finding using the t table to find the appropriate $z^{\star}$, always use row $\infty$.  
+
+\Comment{TODO(David) Can you change the t table in the appendix to look like this t table???  This is more like how the t table looks like on the formula sheet they have to use for AP exam}
 
 \begin{table}[hht]
 \centering
@@ -290,7 +294,7 @@ The \term{margin of error} is the distance between the point estimate and the lo
 \begin{exercise}To have a smaller margin or error, should one use a larger sample or a smaller sample?\footnote{Intuitively, a larger sample should tend to yield less error.  We can also note that $n$, the sample size is in the denominator of the SE formula, so a $n$ goes up, the SE and thus the margin of error go down.}
 \end{exercise}
 
-\begin{exercise}What is the margin of error for the confidence interval: (0.035, 0.145)?\footnote{Because we both add and subtract the margin of error to get the confidence interval, the margin of error is \emph{half} of the width of the interval.  $(0.035-0.145)/2=0.055$.}
+\begin{exercise}What is the margin of error for the confidence interval: (0.035, 0.145)?\footnote{Because we both add and subtract the margin of error to get the confidence interval, the margin of error is \emph{half} of the width of the interval.  $(0.145 - 0.035)/2=0.055$.}
 \end{exercise}
 
 \subsection{Interpreting confidence intervals}
@@ -304,7 +308,8 @@ We are [XX]\% confident that the population parameter is between...
 \end{quote}
 \emph{Incorrect} language might try to describe the confidence interval as capturing the population parameter with a certain probability.\footnote{To see that this interpretation is incorrect, imagine taking two random samples and constructing two 95\% confidence intervals for an unknown proportion.  If these intervals are disjoint, can we say that there is a 95\%+95\%=190\% chance that the first or the second interval captures the true value?} This is one of the most common errors: while it might be useful to think of it as a probability, the confidence level only quantifies how plausible it is that the parameter is in the interval.
 
-As we saw in Figure~\ref{95PercentConfidenceInterval}, the 95\% confidence interval \emph{method} has a 95\% probability of producing an interval that will contain the population parameter.  However, each individual interval either does or does not contain the population parameter.
+\Comment{A common question on AP is interpret the confidence level, so I want that to be familiar with that term}.
+As we saw in Figure~\ref{95PercentConfidenceInterval}, the 95\% confidence interval \emph{method} has a 95\% probability of producing an interval that will contain the population parameter.  \Add{A correct interpretation of the confidence \emph{level} is that such intervals will contain the population parameter that percent of the time.}  However, each individual \emph{interval} either does or does not contain the population parameter.  A correct interpretation of an individual confidence interval cannot involve the vocabulary of probability.
 
 Another especially important consideration of confidence intervals is that they \emph{only try to capture the population parameter}. Our intervals say nothing about the confidence of capturing individual observations, a proportion of the observations, or about capturing point estimates. Confidence intervals only attempt to capture population parameters.
 
@@ -419,7 +424,7 @@ These hypotheses are part of what is called a \term{hypothesis test}. A hypothes
 Don't worry if you aren't a master of hypothesis testing at the end of this section. We'll discuss these ideas and details many times in this chapter and the two chapters that follow.}
 \end{termBox}
 
-The null claim is always framed as an equality: it tells us what quantity we should use for the parameter when calculating the p-value.  There are three choices for the alternative hypothesis, depending upon whether the researcher is trying to prove that the value of the parameter is greater than, less than, or not equal to the null value.
+The null claim is always framed as an equality: it tells us what quantity we should use for the parameter when carrying out calculations for the test of hypothesis.  There are three choices for the alternative hypothesis, depending upon whether the researcher is trying to prove that the value of the parameter is greater than, less than, or not equal to the null value.
 
 \begin{tipBox}{\tipBoxTitle{Always write the null hypothesis as an equality}
 We will find it most useful if we always list the null hypothesis as an equality (e.g.~$p = 7$) while the alternative always uses an inequality (e.g. $p \neq 0.7$, $p>0.7$, or~$p<0.7$).}
@@ -456,17 +461,20 @@ The setting was framed in the context of the consultant being helpful, but what 
 {There were 62 patients in the consultant's sample.  If the null claim is true, how many would we expect to have had a complication?}If the null claim is true, we would expect about 10\% of the patients, or about 6.2 to have a complication.
 \end{example}
 
-The complication rate in the consultant's sample of size 62 was 0.048 ($0.048 \times 62 \approx 3$). What is the probability that a sample would produce a number of complications rates this far from the expected value of 6.2, \emph{if her true complication rate were} 0.10, that~is, if $H_0$ were true.  The probability, which is estimated in the section that follows, turns out the be 0.2444.  We call his quantity the \term{p-value}.
+The complication rate in the consultant's sample of size 62 was 0.048 ($0.048 \times 62 \approx 3$). What is the probability that a sample would produce a number of complications this far from the expected value of 6.2, \emph{if her true complication rate were} 0.10, that~is, if $H_0$ were true.  The probability, which is estimated in the section that follows, turns out the be 0.2444.  We call his quantity the \term{p-value}.
 
-\begin{termBox}{\tBoxTitle{Interpreting the p-value}
+\Comment{I think the first sentence alone does not make any sense to the students.  When asked to interpret the pvalue on a test, they will not be able to unless they parrot this sentence, but they won't know what it means.}
+
+\Comment{TODO(DAVID), please add graph, showing how p-value corresponds to both tails for a not equal to HA, the right tail for a > HA, and the left tail for a < HA}
+
+\begin{termBox}{\tBoxTitle{Interpreting the p-value\color{red}FIX}
 The \term{p-value}\index{hypothesis testing!p-value|textbf} is the probability of observing data at least as favorable to the alternative hypothesis as our current data set, if the null hypothesis were true. 
-
-When examining a a proportion we can also interpret the p-value as follows, depending upon the nature of the alternative hypothesis.  
-%\begin{description}
-%\item[$H_A: p > p_0.$ ] The p-value is the probability of observing a sample proportion as large as we saw in our sample, if the null hypothesis were true.
-%\item[$H_A: p < p_0.$ ]The p-value is the probability of observing a sample proportion as small as we saw in our sample, if the null hypothesis were true.
-%\item[$H_A: p \ne p_0.$] The p-value is the probability of observing data at least as far from the null value as what was observed in the current data set, if the null hypothesis were true.
-%\end{description}
+\newline More specifically, when examining a a proportion we can interpret the p-value as follows, depending upon the nature of the alternative hypothesis.  
+\begin{description}
+\item[$H_A: p > p_0.$ ] The p-value is the probability of observing a sample proportion as large as we saw in our sample, if the null hypothesis were true.
+\item[$H_A: p < p_0.$ ]The p-value is the probability of observing a sample proportion as small as we saw in our sample, if the null hypothesis were true.
+\item[$H_A: p \ne p_0.$] The p-value is the probability of observing data at least as far from the null value as what was observed in the current data set, if the null hypothesis were true.
+\end{description}
 }
 \end{termBox}
 
@@ -562,13 +570,19 @@ When the p-value is small, i.e. less than a previously set threshold, we say the
 
 $\alpha$\\\footnotesize significance\\level of a\\hypothesis test]{\raggedright\vspace{-4mm}
 
-$\alpha$\\\footnotesize significance\\level of a\\hypothesis test}, is typically set to $\alpha = 0.05$, but can vary depending on the field or the application. Using a  significance level of $\alpha = 0.05$ in the discrimination study, we can say that the data provided statistically significant evidence against the null hypothesis.
+$\alpha$\\\footnotesize significance\\level of a\\hypothesis test}, is typically set to $\alpha = 0.05$, but can vary depending on the field or the application. Using a  significance level of $\alpha = 0.05$ in the discrimination study, we can say that the data \Add{did not }provide statistically significant evidence against the null hypothesis, because the p-value of 0.2444 was larger than the $\alpha$ of 0.05.
 
-\begin{termBox}{\tBoxTitle{Statistical significance}
+\begin{termBox}{\tBoxTitle{Statistical significance\color{red}ADD THIS BOX}
+-If the p-value is less than the significance level $\alpha$ (usually 0.05), we say that the result is statistically significant.  We reject $H_0$ and we have evidence for $H_A$.
+\\
+\newline -If the p-value is greater than the significance level $\alpha$ (usually 0.05), we say that the result is not statistically significant.  We do not reject $H_0$ and we do not have evidence for $H_A$.}
+\end{termBox}
+
+\begin{termBox}{\tBoxTitle{Statistical significance\color{red}CUT THIS BOX}
 We say that the data provide \term{statistically significant}\index{hypothesis testing!statistically significant|textbf} evidence against the null hypothesis if the p-value is less than some reference value, usually~$\alpha=0.05$.}
 \end{termBox}
 
-Recall that the null claim is the claim of no difference.  If we reject $H_0$, we are asserting that there is a real difference.  If we do not reject $H_0$, we are saying that the null claim is \emph{reasonable}. That is, we have not disproved it.
+Recall that the null claim is the claim of no difference.  If we reject $H_0$, we are asserting that there is a real difference.  If we do not reject $H_0$, we are saying that the null claim is \emph{reasonable}\Add{, not have \emph{proven} it.}  
 
 \begin{exercise} \label{plainLanguageExplanationOfHTConclusionForLiverDonorSurgicalConsultant}
 Because the p-value is 0.2444, which is larger than the significance level 0.05, we do not reject the null hypothesis. Explain what this means in the context of the problem using plain language.\footnote{The data do not provide evidence that the consultant's complication rate is significantly lower or higher that the average US rate of 10\%.}
@@ -584,7 +598,7 @@ In many statistical explanations, we use double negatives. For instance, we migh
 \end{tipBox}
 
 \begin{example}{Does the conclusion in Guided Practice~\ref{plainLanguageExplanationOfHTConclusionForLiverDonorSurgicalConsultant} imply for certain there is no real association between the surgical consultant's work and the risk of complications? Explain.}
-No. It might be that the consultant's work is associated with a lower or higher risk of complications. However, the data did not provide enough information to reject the null hypothesis. %However, we currently don't have enough data to say whether the corresponding complication rate is any different than 0.10.
+No. \Cut{It might be}\Add{It is not impossible} that the consultant's work is associated with a lower or higher risk of complications. However, the data did not provide enough information to reject the null hypothesis. %However, we currently don't have enough data to say whether the corresponding complication rate is any different than 0.10.
 \index{data!medical consultant|)}
 \end{example}
 
@@ -607,7 +621,7 @@ We often use a threshold of 0.05 to determine whether a result is statistically 
 Sometimes it's also a good idea to deviate from the standard. We'll discuss when to choose a threshold different than 0.05 in Section~\ref{significanceLevel}.\vspace{0.5mm}}
 \end{termBox}
 
-Statistical inference is the practice of making decisions and conclusions from data in the context of uncertainty. Errors do occur, just like rare events, and the data set at hand might lead us to the wrong conclusion. While a given data set may not always lead us to a correct conclusion, statistical inference gives us tools to control and evaluate how often these errors occur.
+Statistical inference is the practice of making decisions and conclusions from data in the context of uncertainty. \Add{Just as a confidence interval may occasionally fail to capture the true parameter, a test of hypothesis may occasionally lead us to an incorrect conclusion.}\Cut{Errors do occur, just like rare events, and the data set at hand might lead us to the wrong conclusion.} While a given data set may not always lead us to a correct conclusion, statistical inference gives us tools to control and evaluate how often these errors occur.
 
 \textPE{\pagebreak}
 
@@ -640,16 +654,36 @@ However, this is not our p-value! Remember that we are conducting a two-sided te
 \label{MedConsNullSim}
 \end{figure}
 
+\Comment{moved this section to before Decision errors}
+
+\subsection{Formal hypothesis testing: a stepwise approach\vspace{-3mm}}
+
+\begin{termBox}{\tBoxTitle{Carrying out a formal test of hypothesis (AP exam tip)}
+Follow these seven steps when carrying out a hypothesis test. 
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item State the name of the test being used.
+\item Verify conditions to ensure the standard error estimate is reasonable and the point estimate follows appropriate distribution and is unbiased.
+\item First write the hypotheses in plain language, then set them up in mathematical notation.
+\item Identify the significance level $\alpha$.
+\item Calculate the test statistic, often Z, using an appropriate point estimate of the parameter of interest and its standard error.\vspace{-1.5mm}
+\begin{align*}
+\text{test statistic} = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}
+\end{align*}
+\item Find the p-value, compare it to $\alpha$, and state whether to reject or not reject the null hypothesis.
+\item Write your conclusion in context.
+\end{enumerate}}
+\end{termBox}
 
 \subsection{Decision errors}
 \index{hypothesis testing!decision errors|(}
 The hypothesis testing framework is a very general tool, and we often use it without a second thought. If a person makes a somewhat unbelievable claim, we are initially skeptical. However, if there is sufficient evidence that supports the claim, we set aside our skepticism. The hallmarks of hypothesis testing are also found in the US court system. 
 
 \begin{example}{A US court considers two possible claims about a defendant: she is either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?}\label{hypTestCourtExample}
-The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person's guilt. That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis).
+The jury considers whether \Cut{the evidence is so convincing (strong) that there is no }\Add{there is evidence beyond a }reasonable doubt \Add{(the significance level) }regarding the person's guilt. That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis).
 \end{example}
 
-Jurors examine the evidence to see whether it convincingly shows a defendant is guilty. Notice that if a jury finds a defendant \emph{not guilty}, this does not necessarily mean the jury is confident in the person's innocence. They are simply not convinced of the alternative that the person is guilty.
+Jurors examine the evidence to see whether it convincingly shows a defendant is guilty. \Add{Notice that a jury finds a defendent either guilty or not guilty.  They either reject the null claim or they do not reject the null claim.  They never prove the null claim, that is, they never find the defendant innocent.}  If a jury finds a defendant \emph{not guilty}, this does not necessarily mean the jury is confident in the person's innocence. They are simply not convinced of the alternative that the person is guilty.
 
 This is also the case with hypothesis testing: \emph{even if we fail to reject the null hypothesis, we typically do not accept the null hypothesis as truth}. Failing to find strong evidence for the alternative hypothesis is not equivalent to providing evidence that the null hypothesis is true.
 
@@ -676,18 +710,19 @@ There are two competing hypotheses: the null and the alternative. In a hypothesi
 \label{fourHTScenarios}
 \end{table}
 
-A \term{Type~1 Error} is rejecting the null hypothesis when $H_0$ is actually true. When w reject the null hypothesis, it is possible that we make a Type~1 Error.  A \term{Type~2 Error} is failing to reject the null hypothesis when the alternative is actually true.
+\Comment{Made this into a box}
+
+\begin{termBox}{\tBoxTitle{Type I and Type II Errors}
+A \term{Type~1 Error} is rejecting the null hypothesis when $H_0$ is actually true. When we reject the null hypothesis, it is possible that we make a Type~1 Error.  
+
+A \term{Type~2 Error} is failing to reject the null hypothesis when $H_A$ is actually true.  When we do not reject the null hypothesis, it is possible that we make a Type~2 Error.}
+\end{termBox}
+
+
 
 \begin{example}{In a US court, the defendant is either innocent ($H_0$) or  guilty ($H_A$). What does a Type~1 Error represent in this context? What does a Type 2 Error represent? Table~\ref{fourHTScenarios} may be useful.}
 If the court makes a Type~1 Error, this means the defendant is innocent ($H_0$ true) but wrongly convicted. A Type 2 Error means the court failed to reject $H_0$ (i.e. failed to convict the person) when she was in fact guilty ($H_A$ true).
 \end{example}
-
-
-
-\begin{exercise}
-A group of women bring a class action law suit that claims discrimination in promotion rates.  What would a Type~1 Error represent in this context?\footnote{We must first identify which is the null hypothesis and which is the alternative.  The alternative hypothesis is the one that bears the burden of proof, so the null hypothesis is that there was no discrimination and the alternative hypothesis is that there was descrimination.  Making a Type 1 Error in this context would mean that in fact there was no discrimination, even though we concluded that women were discriminated against.  Notice that this does \emph{not} necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.}
-\end{exercise}
-
 
 \begin{example}{How could we reduce the Type~1 Error rate in US courts? What influence would this have on the Type 2 Error rate?}
 To lower the Type~1 Error rate, we might raise our standard for conviction from ``beyond a reasonable doubt'' to ``beyond a conceivable doubt'' so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type~2 Errors.
@@ -697,6 +732,11 @@ To lower the Type~1 Error rate, we might raise our standard for conviction from 
 How could we reduce the Type~2 Error rate in US courts? What influence would this have on the Type~1 Error rate?\footnote{To lower the Type~2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from ``beyond a reasonable doubt'' to ``beyond a little doubt''. Lowering the bar for guilt will also result in more wrongful convictions, raising the Type~1 Error rate.}
 \end{exercise}
 
+\Comment{moved this exercise to be after the court examples, so that that would connect to the prior court example}
+
+\begin{exercise}
+A group of women bring a class action law suit that claims discrimination in promotion rates.  What would a Type~1 Error represent in this context?\footnote{We must first identify which is the null hypothesis and which is the alternative.  The alternative hypothesis is the one that bears the burden of proof, so the null hypothesis is that there was no discrimination and the alternative hypothesis is that there was descrimination.  Making a Type 1 Error in this context would mean that in fact there was no discrimination, even though we concluded that women were discriminated against.  Notice that this does \emph{not} necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.}
+\end{exercise}
 
 \index{hypothesis testing!decision errors|)}
 
@@ -711,40 +751,48 @@ The example and Exercise above provide an important lesson: if we reduce how oft
 \index{hypothesis testing!significance level|(}
 \index{significance level|(}
 
-Choosing a significance level for a test is important in many contexts, and the traditional level is 0.05. However, it is sometimes helpful to adjust the significance level based on the application. We may select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.
+\Comment{we never introduced the idea that significance level alpha is the probability of a Type 1 error!   Added the paragraph as well as the term box and the three examples.}
+
+\Add{If $H_0$ is true, what is the probability that we will incorrectly reject it?  In our test of hypothesis, we assume that $H_0$ is true and we reject it if we get a p-value smaller than the significance level $\alpha$.  Thus $\alpha$ \emph{is} the probability of making a Type~1 Error.  The choice of what to make $\alpha$, then, is not arbitrary.  It depends on the gravity of the consequences of a Type~1 Error.  }
+
+\begin{termBox}{\tBoxTitle{Probabiliy of Type I and Type II Errors}
+The probability of a Type~1 Error is called $\alpha$ and corresponds to the significance level of a test.
+The probability of a Type~2 Error is called $\beta$.
+As we make $\alpha$ smaller, $\beta$ gets larger, and vice versa.}
+\end{termBox}
+
+\begin{example}{If making a Type~1 Error is especially dangerous or especially costly, should we choose a smaller significance level or a higher significance level?}Under this scenario, we want to be very cautious about rejecting the null hypothesis, so we demand very strong evidence before we are willing to reject the null hypothesis.  Therefore, we want a smaller significance level, maybe an $\alpha$ of 0.01.
+\end{example}
+
+\begin{example}{If making a Type~1 Error is especially dangerous, as in the case of convicting an innocent person, should we reduce our significance level to 0.000001?}While doing this would mean that we would almost never convict innocent people, the standard of proof would be so high that we would not convict anyone!  Thus our Type~1 Errors would be extremely low, but our Type~2 Errors (letting guilty people free) would be astronomically high.  It is a challenging balancing act.
+\end{example}
+
+\begin{example}{If making a Type~2 Error is especially dangerous or especially costly, should we choose a smaller significance level or a higher significance level?}We should choose a higher significance level (e.g. 0.10). Here we want to be cautious about failing to reject $H_0$ when the null is actually false.
+\end{example}
+
+
+\Cut{Choosing a significance level for a test is important in many contexts, and the traditional level is 0.05. However, it is sometimes helpful to adjust the significance level based on the application. We may select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.
 
 If making a Type~1 Error is dangerous or especially costly, we should choose a small significance level (e.g. 0.01 or 0.001). Under this scenario, we want to be very cautious about rejecting the null hypothesis, so we demand very strong evidence favoring the alternative $H_A$ before we would reject $H_0$.
 
-If a Type 2 Error is relatively more dangerous or much more costly than a Type~1 Error, then we should choose a higher significance level (e.g. 0.10). Here we want to be cautious about failing to reject $H_0$ when the null is actually false.
+If a Type 2 Error is relatively more dangerous or much more costly than a Type~1 Error, then we should choose a higher significance level (e.g. 0.10). Here we want to be cautious about failing to reject $H_0$ when the null is actually false.}
 
 \begin{tipBox}{\tipBoxTitle{Significance levels should reflect consequences of errors}
-The significance level selected for a test should reflect the real-world consequences associated with making a Type~1 or Type 2 Error.}
+The significance level selected for a test should reflect the real-world consequences associated with making a Type~1 or Type 2 Error.  If a Type~1 Error is very dangerous, make $\alpha$ smaller.}
 \end{tipBox}
 
 \textPE{\pagebreak}
 
 
-\subsection{Formal hypothesis testing: a stepwise approach\vspace{-3mm}}
-
-\begin{termBox}{\tBoxTitle{Carrying out a formal test of hypothesis (AP exam tip)}
-Follow these seven steps when carrying out a hypothesis test. 
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item State the name of the test being used.
-\item Verify conditions to ensure the standard error estimate is reasonable and the point estimate follows appropriate distribution and is unbiased.
-\item First write the hypotheses in plain language, then set them up in mathematical notation.
-\item Identify the significance level $\alpha$.
-\item Calculate the test statistic, often Z, using an appropriate point estimate of the parameter of interest and its standard error.\vspace{-1.5mm}
-\begin{align*}
-\text{test statistic} = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}
-\end{align*}
-\item Find the p-value, compare it to $\alpha$, and state whether to reject or not reject the null hypothesis.
-\item Write your conclusion.
-\end{enumerate}}
-\end{termBox}
-
 \index{hypothesis testing|)}
 
+\Comment{moved this section to connect to Decision errors}
+
+\subsection{Statistical power of a hypothesis test}
+
+When the alternative hypothesis is true, the probability of \underline{not} making a Type~2 Error is called \term{power}. It is common for researchers to perform a \hiddenterm{power analysis} to ensure their study collects enough data to detect the effects they anticipate finding. As you might imagine, if the effect they care about is small or subtle, then if the effect is real, the researchers will need to collect a large sample size in order to have a good chance of detecting the effect. However, if they are interested in large effect, they need not collect as much data.
+
+The Type 2 Error rate $\beta$ and the magnitude of the error for a point estimate are controlled by the sample size. \Add{As the sample size $n$ goes up, the Type 2 Error rate goes down, and power goes up.}  Real differences from the null value, even large ones, may be difficult to detect with small samples. However, if we take a very large sample, we might find a statistically significant difference but the magnitude might be so small that it is of no practical value.
 
 
 %__________________
@@ -770,15 +818,6 @@ When the sample size becomes larger, point estimates become more precise and any
 Statistically significant differences are sometimes so minor that they are not practically relevant. This is especially important to research: if we conduct a study, we want to focus on finding a meaningful result. We don't want to spend lots of money finding results that hold no practical value.
 
 The role of a statistician in conducting a study often includes planning the size of the study. The statistician might first consult experts or scientific literature to learn what would be the smallest meaningful difference from the null value. She also would obtain some reasonable estimate for the standard deviation. With these important pieces of information, she would choose a sufficiently large sample size so that the power for the meaningful difference is perhaps 80\% or 90\%. While larger sample sizes may still be used, she might advise against using them in some cases, especially in sensitive areas of research.
-
-
-\subsection{Statistical power of a hypothesis test}
-
-When the alternative hypothesis is true, the probability of \underline{not} making a Type~2 Error is called \term{power}. It is common for researchers to perform a \hiddenterm{power analysis} to ensure their study collects enough data to detect the effects they anticipate finding. As you might imagine, if the effect they care about is small or subtle, then if the effect is real, the researchers will need to collect a large sample size in order to have a good chance of detecting the effect. However, if they are interested in large effect, they need not collect as much data.
-
-The Type 2 Error rate $\beta$ and the magnitude of the error for a point estimate are controlled by the sample size. Real differences from the null value, even large ones, may be difficult to detect with small samples. If we take a very large sample, we might find a statistically significant difference but the magnitude might be so small that it is of no practical value.
-
-
 
 
 
