@@ -9,8 +9,6 @@ Chapter~\ref{foundationsForInference} introduced the logic and the steps for con
 \end{itemize}
 We will find that the methods we learned in Chapter~\ref{foundationsForInference} are very useful in these settings. In this chapter we will consider the sampling distribution for a proportion and for the difference of two proportions, and we will examine the conditions under which a normal model is appropriate. We will also encounter a new distribution for hypothesis tests on one-way and two-tables.
 
-\textPE{\newpage}
-
 
 
 %__________________
@@ -22,7 +20,12 @@ We will find that the methods we learned in Chapter~\ref{foundationsForInference
 
 \index{data!supreme court|(}
 
-According to a New York Times / CBS News poll in June 2012, only about 44\% of the American public approves of the job the Supreme Court is doing.\footnote{\href{http://www.nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html}{\scriptsize nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html}} This poll included responses of 976 adults.
+\Comment{this doesn't belong here}
+\Cut{According to a New York Times / CBS News poll in June 2012, only about 44\% of the American public approves of the job the Supreme Court is doing.\footnote{\href{http://www.nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html}{\scriptsize nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html}} This poll included responses of 976 adults.}
+
+\Add{The distribution of a sample proportion was introduced in Section~\ref{distributionphat}.  This theoretical distribution tells us about the values we can expect for a sample proportion from a given population.  The details of the distribution are presented below.}
+
+\Comment{L : added symbols}  
 
 \begin{termBox}{\tBoxTitle{Conditions for the sampling distribution of $\hat{p}$ being nearly normal}
 The sampling distribution for $\hat{p}$, taken from a sample of size $n$ from a population with a true proportion $p$, is nearly normal when
@@ -30,8 +33,10 @@ The sampling distribution for $\hat{p}$, taken from a sample of size $n$ from a 
 \item the sample observations are independent and
 \item we expected to see at least 10 successes and 10 failures in our sample, i.e. $np\geq10$ and $n(1-p)\geq10$. This is called the \term{success-failure condition}.
 \end{enumerate}
-If these conditions are met, then the sampling distribution of $\hat{p}$ is nearly normal with mean $p$ and standard deviation $SD_{\hat{p}} = \sqrt{\frac{\ p(1-p)\ }{n}}$.\index{standard error!single proportion}}
+If these conditions are met, then the sampling distribution of $\hat{p}$ is nearly normal with mean $\mu_{\hat{p}}=p$ and standard deviation $\sigma_{\hat{p}} = \sqrt{\frac{\ p(1-p)\ }{n}}$.\index{standard error!single proportion}}
 \end{termBox}
+
+\Comment{L: I'm not sure that this box makes sense here, should we omit it here?}
 
 \begin{termBox}{\tBoxTitle{Computing the standard error of $\hat{p}$}
 For confidence intervals, we use $\hat{p}$ to check conditions and estimate the standard error. In the context of a hypothesis test, we use the null value, $p_0$.}
@@ -41,15 +46,30 @@ For confidence intervals, we use $\hat{p}$ to check conditions and estimate the 
 If data come from a simple random sample, then the independence assumption is generally reasonable. Alternatively, if the data come from a random process, we must evaluate the independence condition more carefully.}
 \end{tipBox}
 
-\textPE{\newpage}
-
 
 \subsection{Confidence intervals for a proportion}
 \label{confIntForPropSection}
 
 \index{point estimate!single proportion}
 
-We would like to construct a confidence interval for the proportion of Americans who approve of the job the Supreme Court is doing. In the simple random sample of $n = 976$, 44\% of respondents approved.
+\Comment{Added everything before the termbox.}
+
+The previous chapter introduced the logic and process for constructing confidence intervals.  We saw that the general form of a confidence interval is:
+\begin{align*}
+\text{point estimate}\ \pm\ \text{critical value} \times SE\vspace{-2mm}
+\end{align*}
+
+Say we would like to construct a confidence interval for the proportion of Americans who approve of the job the Supreme Court is doing. In a simple random sample of $n = 976$, 44\% of respondents approved. 
+
+\begin{example}{What should we use as our point estimate for the confidence interval?}
+The best estimate for the unknown $p$ (proportion of Americans who approve of the job the Supreme Court is doing) is our sample proportion of 44\%.  When constructing a confidence interval for a single proportion, we use $\hat{p}$ as our point estimate for $p$.
+\end{example}
+
+\begin{example}{How will we calculate the SE for this confidence interval?} 
+Recall that $\sigma_{\hat{p}} = \sqrt{\frac{\ p(1-p)\ }{n}}$.  $p$ of course is unknown.  Therefore, we will substitute our sample proportion $\hat{p}$ for $p$ when finding the SE.  Here $SE = \sqrt{\frac{0.44(1-0.44)}{976}}= 0.016$.
+\end{example}
+
+Note also that, since $p$ is unknown, we use $\hat{p}$ when checking the success-failure conditions.  When the conditions for a normal model are met, we can use $z^\star$ for the critical value.  We find $z^\star$ using the t table at row $\infty$, where the column corresponds to the desired confidence level.  A complete solution to a confidence interval question for a single proportion will include the following steps.  
 
 %Before proceeding, we check the conditions. The data are based on a simple random sample of 976 people in the U.S. population, so independence is confirmed. We also check our minimum sample size conditions: there were approximately $976\times \hat{p}=429$ ``successes'' and $976\times (1-\hat{p})=547$ ``failures'' in the sample, both easily greater than~10.
 %
@@ -87,7 +107,7 @@ We would like to construct a confidence interval for the proportion of Americans
 \end{enumerate}}
 \end{termBox}
 
-\begin{example}{Construct a 90\% confidence interval for $p$, the proportion of Americans who approve of the job the Supreme Court is doing.}\label{90CIForJobSupremeCourtDoingExample}
+\begin{example}{Construct a 90\% confidence interval for $p$, the proportion of Americans who approve of the job the Supreme Court is doing.  Recall the sample proportion, based on a sample of size 976, was 44\%.}\label{90CIForJobSupremeCourtDoingExample}
 
 We will construct a 1-proportion Z interval. The conditions are satisfied: we have a simple random sample, and $976 \times 0.44 \geq 10$ and $976 \times 0.56 \geq 10$. The standard error and confidence interval can be constructed as
 \begin{align*}
@@ -103,6 +123,26 @@ We are 90\% confident that the true proportion of Americans who approve of the j
 
 \subsection{Hypothesis testing for a proportion}
 \label{htForPropSection}
+
+\Comment{Added everything before the term box.}
+
+In the previous chapter, we saw that while a confidence interval gives us reasonable values for an unknown parameter, a test of hypothesis tests starts with a null or hypothesized value for the unknown parameter.  The test then then finds the probability of getting a sample value as extreme as the found sample value assuming that the null hypothesis is true.  Because the calculations in a test of hypothesis for a proportion assume a value for the unknown $p$, we use that value, often denoted $p_{0}$ when verifying that conditions are met.  That is, instead of checking the condition $n\hat{p} \geq10$ and $n(1-\hat{p})\geq10$, we check the condition $np_0\geq10$ and $n(1-p_0)\geq10$.  
+
+\begin{example}{Consider the following problem.  Deborah Toohey is running for Congress, and her campaign manager claims she has more than 50\% from the district's electorate.  A newspaper collects a simple random sample of 500 likely voters in the district and estimates Toohey's support to be 52\%.  What value should we use as $p_{0}$?  Are conditions for a normal model met?}
+The alternate hypothesis, the one that bears the burden of proof, argues that Toohey has more than 50\% support.  Therefore, H$_A$ will be one sided and the null value will be 50\%.  Because 500(0.5)$\geq$10 and 500(1-0.5)$\geq$10, conditions for a normal model are met.
+\end{example}.
+
+In the last chapter, we saw that the general form of the test statistic for a test of hypothesis has the form:
+\begin{align*}
+\text{test statistic} = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}
+\end{align*}
+
+When the conditions for a normal model are met, we can use Z as the test statistic.  The point estimate is $\hat{p}$ as it was for the confidence interval.  However, because we have a hypothesized or null value for $p$ (which we do not have for the confidence interval), we use we use this null value when finding the SE.  For this reason, the SE formula when carrying out a test of hypothesis differs from the SE formula when constructing a confidence interval.  For a test of hypothesis, we use
+\begin{align*}
+SE = \sqrt{\frac{p_0(1-p_0)}{n}}
+\end{align*}
+
+A complete solution to a test of hypothesis problem for a single proportion should include the following steps.
 
 \begin{termBox}{\tBoxTitle[]{Hypothesis test for a proportion}
 \begin{enumerate}
@@ -158,6 +198,8 @@ In Example~\ref{TooheyInferenceExample}, the data did not show strong evidence t
 
 
 \subsection{Calculator: The 1-proportion Z test and CI\vspace{-3mm}}
+
+\Add{We can use a calculator to compute the left and right endpoint of a confidence interval or to evaluate the test statistic and the p-value.  Remember to show work and first substitute in all numbers before using the calculator.}
 
 \begin{termBox}{\tBoxTitle{TI calculator: calculating the 1-proportion Z confidence interval}
 Use \textbf{STAT, TESTS, 1-PropZInt}.
@@ -326,8 +368,6 @@ where $p_1$ and $p_2$ represent the population proportions, and $n_1$ and $n_2$ 
 
 In the setting of confidence intervals, the sample proportions are used in place of the population proportions to verify the success-failure condition and also compute standard error, just as was the case with a single proportion.
 
-\textPE{\pagebreak}
-
 \begin{example}{The way a question is phrased can influence a person's response. For example, Pew Research Center conducted a survey with the following question:\footnote{\href{http://www.people-press.org/2012/03/26/public-remains-split-on-health-care-bill-opposed-to-mandate/}{www.people-press.org/2012/03/26/public-remains-split-on-health-care-bill-opposed-to-mandate/}. Sample sizes for each polling group are approximate.}
 \begin{quote}
 As you may know, by 2014 nearly all Americans will be required to have health insurance. [People who do not buy insurance will pay a penalty] while [People who cannot afford it will receive financial help from the government]. Do you approve or disapprove of this policy?
@@ -450,8 +490,6 @@ Set up hypotheses to test whether 2,4-D and the occurrence of cancer in dogs are
 \footnote{Using the proportions within the cancer and no cancer groups may seem odd. We intuitively may desire to compare the fraction of dogs with cancer in the 2,4-D and no 2,4-D groups, since the herbicide is an explanatory variable. However, the cancer rates in each group do not necessarily reflect the real cancer rates due to the way the data were collected. For this reason, computing cancer rates may greatly alarm dog owners. \\ $H_0$: the proportion of dogs with exposure to 2,4-D is the same in ``cancer'' and ``no cancer'' dogs, $p_c - p_n = 0$. \\ $H_A$: dogs with cancer are more likely to have been exposed to 2,4-D than dogs without cancer, $p_c - p_n > 0$.}
 \end{exercise}
 
-\textPE{\pagebreak}
-
 \begin{example}{Are the conditions for using the normal model and make inference on the results?}\label{condFor24DAndCancerInDogsNormalInference}
 (1) It is unclear whether this is a random sample. However, if we believe the dogs in both the cancer and no cancer groups are representative of each respective population and that the dogs in the study do not interact in any way, then we may find it reasonable to assume independence between observations. (2) The success-failure condition (minimums of 10) easily holds for each sample.
 
@@ -502,7 +540,7 @@ We will complete a 2-proportion Z test.  The conditions are met  - we will assum
 n_1\hat{p} &= 491 \times 0.345 = 169.4
 	& n_1(1 - \hat{p}) &= 491 \times 0.655 = 321.6 \\
 n_2\hat{p} &= 945 \times 0.345 = 326
-	& n_s(1 - \hat{p}) &= 945 \times 0.655 = 619
+	& n_2(1 - \hat{p}) &= 945 \times 0.655 = 619
 \end{align*}
 are all at least 10.  Now we set up hypotheses, which were identified in Guided Practice~\ref{htFor24DAndCancerInDogs}:
 \begin{itemize}
@@ -518,6 +556,8 @@ Z = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{0.067 - 0}{0.02
 Looking up $Z=2.58$ in the normal probability table: 0.9951. However this is the lower tail, and the upper tail represents the p-value: $1-0.9951 = 0.0049$. Because the p-value is smaller than $\alpha = 0.01$, we reject the null hypothesis and conclude that there is an association between dogs getting cancer and owners using 2,4-D.
 \end{example}
 
+\Comment{it seems intro stat books don't use the pooled proportion when checking hypotheses for the two proportion z test.  my understanding was that if we assume p1=p2, that is not that same as assuming that they are equal to some null value.}
+ 
 \begin{termBox}{\tBoxTitle[]{Hypothesis test for the difference of two proportions}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -725,22 +765,23 @@ $$ Z = \frac{\text{point estimate} - \text{null value}}{\text{SE of point estima
 This construction was based on (1) identifying the difference between a point estimate and an expected value if the null hypothesis was true, and (2) standardizing that difference using the standard error of the point estimate. These two ideas will help in the construction of an appropriate test statistic for count data.
 
 In this example we have four categories: white, black, hispanic, and other. Because we have four values rather than just one or two, we need a new tool to analyze the data. Our strategy will be to find a test statistic that measures the overall deviation between the observed and the expected counts. We first find the difference between the observed and expected counts for the four groups:
+\Comment{de-italicized white, black, hispanic, other}
 \begin{align*}
-&&White && Black && Hispanic&&Other \\
+&&\text{White} && \text{Black} && \text{Hispanic} && \text{Other} \\
 \text{observed - expected }&& 205-198 && 26-19.25
 	&& 25-33
 	&& 19-24.75
 \end{align*}
 Next, we square the differences:
 \begin{align*}
-&&White && Black && Hispanic&&Other \\
+&&\text{White} && \text{Black} && \text{Hispanic} && \text{Other} \\
 \text{(observed - expected)}^2 && (205-198)^2 && (26-19.25)^2
 	&& (25-33)^2
 	&& (19-24.75)^2
 \end{align*}
 We must standardize each term. To know whether the squared difference is large, we compare it to what was expected. If the expected count was 5, a squared difference of 25 is very large. However, if the expected count was 1,000, a squared difference of 25 is very small. We will divide each of the squared differences by the corresponding expected count.
 \begin{align*}
-&&White && Black && Hispanic&&Other \\
+&&\text{White} && \text{Black} && \text{Hispanic} && \text{Other} \\
 \frac{\text{(observed - expected)}^2}{\text{expected}} && \frac{(205-198)^2}{198} && \frac{(26-19.25)^2 }{19.25}
 	&& \frac{(25-33)^2}{33}
 	&& \frac{(19-24.75)^2}{24.75}
@@ -753,6 +794,8 @@ X^2 &= \sum{\frac{\text{(observed - expected)}^2}{\text{expected}}} \\
 		+ \frac{(25-33)^2}{33}
 		+ \frac{(19-24.75)^2}{24.75}
 \end{align*}
+\Comment{The following sentence: The test statistic chii-sq is generally used for these reasons seems out of place.  What reasons?}
+
 The test statistic $X^2$\marginpar[\raggedright\vspace{9mm}
 
 $X^2$\vspace{0.5mm}\\\footnotesize chi-square\\test statistic]{\raggedright\vspace{9mm}
@@ -815,6 +858,8 @@ df \hfill 2 & \footnotesize 2.41 & \footnotesize \highlightO{3.22} & \footnotesi
 \begin{example}{Figure~\ref{chiSquareAreaAbove6Point25WithDF3} shows a chi-square distribution with 3 degrees of freedom and an upper shaded tail starting at 6.25. Use Table~\ref{chiSquareProbabilityTableShort} to estimate the shaded area.}
 This distribution has three degrees of freedom, so only the row with 3 degrees of freedom (df) is relevant. This row has been italicized in the table. Next, we see that the value -- 6.25 -- falls in the column with upper tail area 0.1. That is, the shaded upper tail of Figure~\ref{chiSquareAreaAbove6Point25WithDF3} has area 0.1.
 \end{example}
+
+\Comment{David, can you reorder these so that they are in order by degrees of freedom, to further illustrate how the curve changes as degrees of freedom gets larger?  Maybe not use repeats and end with a larger value for degrees of freedom so we can see it stretching to the right.  Maybe use the same left endpoint for each?}
 
 \begin{figure}
 \centering
@@ -1355,8 +1400,6 @@ There are two conditions that must be checked before performing a chi-square tes
 \end{description}}
 \end{tipBox}
 
-\textPE{\newpage}
-
 
 \subsection{Summarizing the chi-square tests for two-way tables\vspace{-3mm}}
 
@@ -1401,8 +1444,6 @@ df &= (\# \text{ of rows} - 1) \times (\# \text{ of columns} - 1)
 \item Write the conclusion in the context of the question.
 \end{enumerate}}
 \end{termBox}
-
-\textPE{\newpage}
 
 %\Comment{stole chapter exercise number 45 - not sure about footnote cite}
 
