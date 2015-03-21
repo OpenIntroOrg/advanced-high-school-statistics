@@ -6,6 +6,6 @@ myPDF('chiSquareAreaAbove6Point25WithDF3.pdf', 5, 3,
       mgp = c(2.1, 0.6, 0))
 ChiSquareTail(6.25,
               3,
-              c(0, 15),
+              xlim = c(0, 25),
               col = COL[1])
 dev.off()
