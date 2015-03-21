@@ -185,10 +185,6 @@ The observation 64 thousand, a suspected outlier, was found to be an accurate ob
 Consider a data set that consists of the following numbers:  12, 12, 12, 12, 12, 13, 13, 14, 14, 15, 19. Which graph would better illustrate the data: a stem-and-leaf plot or a dot plot? Explain.\footnote{Because all the values begin with 1, there would be only one stem (or two in a split stem-and-leaf). This would not provide a good sense of the distribution. For example, the gap between 15 and 19 would not be visually apparent. A dot plot would be better here.}
 \end{exercise}
 
-\Comment{Separating Shape into a separate subsection than Histograms, since shape can be inferred from dot plot and stem-and-leaf as well}
-
-\Comment{D: what was changed? I cannot see the changes referred to here via GitHub. L - subsection "Describing shape" was added.  Previously the subsection was "Histograms and shape"}
-
 
 \subsection{Histograms}
 \label{histogramsAndShape}
@@ -481,24 +477,11 @@ Formulas and methods used to compute the variance and standard deviation for a p
 \label{emailCharactersDotPlotStackedRoundedWithSD}
 \end{figure}
 
-\Comment{D: We had gone through similar attempts early in OS on the changes being proposed in the tip box. On the 2nd and third sentences, which are new:
-\begin{itemize}
-\item The second sentence doesn't really say anything helpful that the students haven't already seen.
-\item The third sentence is not true: the observations are not 1 SD away from the mean on average.
-\end{itemize}
-I'm planning to revert this change, but bouncing back if a second attempt is desired. L - in the third sentence, I didn't mean in an exact arithmetic average sense, but that is the way we ask students to think about SD - average deviation from the mean.  I'd prefer a conceptual description of SD that is separate from the empirical rule.  When I ask students to interpret the SD, I don't want them to tell me 68\% of the data falls between ave +/- 1 SD because that is not a true statement.  Even though it says in the box that this is not always true students tend to think it is.}
-
-\begin{tipBox}{\tipBoxTitle{standard deviation describes variability}{\color{red}ADD THIS BOX}
-Focus on the conceptual meaning of the standard deviation as a descriptor of variability rather than the formulas. In general, some values will be more than one standard deviation from the mean and some values will be less than one standard deviation from the mean. However, \textit{on average}, the values will be one standard deviation from the mean.}
+\begin{tipBox}{\tipBoxTitle{thinking about the standard deviation}
+It is useful to think of the standard deviation as the average distance that observations fall from the mean.}
 \end{tipBox}
 
-\begin{tipBox}{\tipBoxTitle{standard deviation describes variability}{\color{red}CUT THIS BOX}
-Focus on the conceptual meaning of the standard deviation as a descriptor of variability rather than the formulas. The empirical rule tells us that usually about 68\% of the data will be within one standard deviation of the mean and about 95\% will be within two standard deviations of the mean. However, as seen in Figures~\ref{emailCharactersDotPlotStackedRoundedWithSD} and~\ref{severalDiffDistWithSdOf1}, these percentages are not strict rules.\footnotemark}\footnotetext{We will learn where these two numbers come from in Chapter 4 when we study the normal distribution.}
-\end{tipBox}
-
-\Add{
 The \term{empirical rule} tells us that usually about 68\% of the data will be within one standard deviation of the mean and about 95\% will be within two standard deviations of the mean. However, as seen in Figures~\ref{emailCharactersDotPlotStackedRoundedWithSD} and~\ref{severalDiffDistWithSdOf1}, these percentages are not strict rules.\footnote{We will learn where these two numbers come from in Chapter 4 when we study the normal distribution.}
-}
 
 \begin{figure}
 \centering
@@ -511,11 +494,9 @@ The \term{empirical rule} tells us that usually about 68\% of the data will be w
 On page~\pageref{shapeFirstDiscussed}, the concept of shape of a distribution was introduced. A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side. Using Figure~\ref{severalDiffDistWithSdOf1} as an example, explain why such a description is important.\footnote{Figure~\ref{severalDiffDistWithSdOf1} shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a~distribution.}
 \end{exercise}
 
-\Add{
 \begin{example}{Earlier we reported that the mean family income in the U.S. in 2012 was \$82,743. Estimating the standard deviation of income as approximately \$50,000, is a family income of \$60,000 unusually far from the mean or relatively close to the mean?}
-Because \$60,000 is less that one standard deviation from the mean, it is relatively close to the mean.  \Add{If the value were more than 2 standard deviations away from the mean, we would consider it far from the mean. }\Comment{I think this example can create confusion: it suggests that 1 SD is our rule for what is ``unusual'', when generally the rule of thumb is 2 SD. Planning to revert, but bouncing back in case wanting to try to revise. L- added sentence saying what you said.}
+Because \$60,000 is less that one standard deviation from the mean, it is relatively close to the mean. If the value were more than 2 standard deviations away from the mean, we would consider it far from the mean.
 \end{example}
-}
 
 When describing any distribution, comment on the three important characteristics of center, spread, and shape. Also note any especially unusual cases.
 
@@ -554,7 +535,9 @@ $Q_2$\index{Q$_2$} represents the \term{second quartile}, which is equivalent to
 
 $Q_1$\index{Q$_1$} represents the \term{first quartile}, which is the 25th percentile, and is the median of the smaller half of the data set. There are 25 values in the lower half of the data set, so $Q_1$ is the middle value: 2,454 characters. $Q_3$\index{$Q_3$} represents the \term{third quartile}, or 75th percentile, and is the median of the larger half of the data set: 15,829 characters.
 
-To determine if there are any unusually distant observations (i.e. outliers), we first calculate the spread of the middle 50\% of the data by subtracting $Q_1$ from $Q_3$: $Q_3 - Q_1 = \text{13,375}$. This quantity is called the \term{interquartile range} (\hiddenterm{IQR}, for short). It, like the standard deviation, is a measure of \indexthis{variability}{variability} or \term{spread} in data. The more variable the data, the larger the standard deviation and~IQR tend to be.
+\Comment{Editing the next paragraph since it doesn't actually explain how to identify unusual observations / outliers.}
+
+\Add{We calculate the variability in the data using the range of the middle 50\% of the data: $Q_3 - Q_1 = \text{13,375}$.} \Cut{To determine if there are any unusually distant observations (i.e. outliers), we first calculate the spread of the middle 50\% of the data by subtracting $Q_1$ from $Q_3$: $Q_3 - Q_1 = \text{13,375}$.} This quantity is called the \term{interquartile range} (\hiddenterm{IQR}, for short). It, like the standard deviation, is a measure of \indexthis{variability}{variability} or \term{spread} in data. The more variable the data, the larger the standard deviation and~IQR tend to be.
 
 \begin{termBox}{\tBoxTitle{Interquartile range (IQR)}
 The IQR\index{interquartile range} is the length of the box in a box plot. It is computed as
@@ -566,7 +549,13 @@ where $Q_1$ and $Q_3$ are the $25^{th}$ and $75^{th}$ percentiles.}
 
 To build a box plot, draw an axis (vertical or horizontal) and mark a uniform scale. Then, draw a dark line denoting $Q_2$. Next, draw a line at $Q_1$ and at $Q_3$. Connect these two lines to form a rectangle. The width of the rectangle corresponds to the IQR and the middle 50\% of the data is in this interval.
 
-\Comment{The proposed updates here need work. For example, the first sentence says the whiskers suggest the whiskers reach out to the max and min values. What was broken about the original description? L - Add the word "usually" so that the first sentence on its own isn't false.} \Add{Now the whiskers usually extend out on either end to the minimum and maximum values. However, if there are outliers, then we denote those outliers with a special symbol (a dot or an asterisk), and extend the whiskers to the smallest and largest values in the data set that are not outliers. Here, we define an outlier as a value that is more than $1.5\times IQR$ below $Q_1$ or above $Q_3$.\footnote{While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.}  In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit. There are no values below $Q_1 - 1.5\times IQR$j, so the lower whisker stops at the minimum. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data, with outliers escaping their reach.} 
+\Comment{The proposed updates here need work. For example, the first sentence says the whiskers suggest the whiskers reach out to the max and min values. What was broken about the original description?
+
+L - Add the word "usually" so that the first sentence on its own isn't false.
+
+D - The description seem to be too much stream-of-thought: whiskers extend to max / min, except when there are outliers, but we haven't yet given a definition of outlier in the context of a boxplot. I think we should revert the changes in this paragraph, which Chris, Mine, and myself had spent a lot of time discussing and crafting to avoid confusion on this topic.}
+
+\Add{Now the whiskers usually extend out on either end to the minimum and maximum values. However, if there are outliers, then we denote those outliers with a special symbol (a dot or an asterisk), and extend the whiskers to the smallest and largest values in the data set that are not outliers. Here, we define an outlier as a value that is more than $1.5\times IQR$ below $Q_1$ or above $Q_3$.\footnote{While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.}  In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit. There are no values below $Q_1 - 1.5\times IQR$j, so the lower whisker stops at the minimum. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data, with outliers escaping their reach.} 
 \Cut{
 Extending out from the rectangle, the \term{whiskers} attempt to capture the data remaining outside of the box; however, their reach cannot be more than $1.5\times IQR$. In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit. The lower whisker stops at the lowest value, 33, since there is no additional data to reach. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data. We will call a value an \hiddenterm{outlier} if it is more than $1.5\times IQR$ below $Q_1$ or above $Q_3$.\footnote{While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.}
 }
@@ -875,12 +864,10 @@ What components of each plot in Figure~\ref{countyIncomeSplitByPopGain} do you f
 Do these graphs tell us about any association between income for the two groups?\footnote{No, to see association we require a scatterplot. Moreover, these data are not paired, so the discussion of association does not make sense here.}
 \end{exercise}
 
-\Comment{D: Adding a tip box below on the proposed topic sounds good, but this box is way too long. Move some of the content out of the box, or eliminate some of the content.}
+Looking at an association is different than comparing distributions. When comparing distributions, we are interested in questions such as, ``Which distribution has a greater average?'' and ``How do the shapes of the distribution differ?'' The number of elements in each data set need not be the same (e.g. height of women and height of men). When we look at association, we are interested in whether there is a positive, negative, or no association between the variables. This requires two data sets of equal length that are essentially paired (e.g. height and weight of individuals).
 
-Looking at association is different than comparing distributions.  When comparing distributions we are interested in questions such as, "Which distribution has a greater average?" and "How do the shapes of the distribution differ?".  The number of elements in each data set need not be the same (e.g. height of women and height of men).  When we look at association, we are interested in whether there is a positive, negative, or no association between the variables.  This requires two data sets of equal length that are essentially paired (e.g. height and weight of individuals). 
-
-\begin{tipBox}{\tipBoxTitle{Comparing distributions versus looking at association}{\color{red}ADD THIS BOX}
-We compare two distributions with respect to center, spread, and shape.  To compare the distributions visually, we require two univariate graphs, such as two histograms, two dot plots, parallel box plots, or a back-to-back stem-and-leaf. When looking at association, we look for a positive, negative, or no relationship between the variables.  To see assocation visually, we require a scatterplot.}
+\begin{tipBox}{\tipBoxTitle{Comparing distributions versus looking at association}
+We compare two distributions with respect to center, spread, and shape.  To compare the distributions visually, we use 2 single-variable graphs, such as two histograms, two dot plots, parallel box plots, or a back-to-back stem-and-leaf. When looking at association, we look for a positive, negative, or no relationship between the variables. To see association visually, we require a scatterplot.}
 \end{tipBox}
 
 
