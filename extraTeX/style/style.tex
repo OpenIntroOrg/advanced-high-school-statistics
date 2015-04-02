@@ -141,9 +141,9 @@
 \newenvironment{data}[1]{\texttt{#1}}{}
 \newenvironment{var}[1]{\texttt{#1}}{}
 \newenvironment{resp}[1]{\texttt{#1}}{}
-\newenvironment{calctext}[1]{\texttt{#1}}{}
-\newenvironment{calctextmath}[1]{\mathtt{#1}}{}
-\newenvironment{calcbutton}[1]{\texttt{#1}}{}
+\newenvironment{calctext}[1]{{\color{oiB}\texttt{#1}}}{}
+\newenvironment{calctextmath}[1]{{\color{oiB}\mathtt{#1}}}{}
+\newenvironment{calcbutton}[1]{{\color{oiB}\texttt{#1}}}{}
 % 6.4 Highlighting
 \newenvironment{highlight}{\textbf}{}
 \newcommand{\highlightO}[1]{\textbf{\color{oiB}#1}}
@@ -152,8 +152,9 @@
 \setlength{\parindent}{0.3in}
 % 6.6 Hyperreferences
 \newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
-\newcommand{\videohref}[2][5mm]{\href{#2}{\raisebox{-0.5ex}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
-\newcommand{\videohrefpadded}[2][5mm]{\hspace{3mm}\videohref{#2}}
+\newcommand{\oiRedirect}[2]{\href{http://www.openintro.org/redirect.php?go=#1&referrer=ahss_pdf}{#2}}
+\newcommand{\videohref}[2][5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
+\newcommand{\sectionvideohref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
 
 
 

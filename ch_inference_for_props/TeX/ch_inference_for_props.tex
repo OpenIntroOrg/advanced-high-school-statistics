@@ -17,21 +17,16 @@ The methods we learned in Chapter~\ref{foundationsForInference} are very useful 
 
 The distribution of a sample proportion, such as an estimate of the fraction of people who share a particular opinion in a poll, was introduced in Section~\ref{distributionphat}.
 
-\Comment{The first subsection felt awkward (no motivation for why that content was shown), so I merged the content within the example in the subsequent subsection.}
-
 \subsection{Confidence intervals for a proportion}
 \label{confIntForPropSection}
 
 \index{data!supreme court|(}
 \index{point estimate!single proportion}
 
-Suppose we want to construct a confidence interval for the proportion of Americans who approve of the job the Supreme Court is doing. In a simple random sample of $n = 976$, 44\% of respondents approved.\footnote{\href{http://www.nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html}{\scriptsize nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html}} \Add{In the examples below, we will construct a \emph{1-proportion Z interval}.}
+Suppose we want to construct a confidence interval for the proportion of Americans who approve of the job the Supreme Court is doing. In a simple random sample of $n = 976$, 44\% of respondents approved.\footnote{\href{http://www.nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html}{\scriptsize nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html}} In the examples below, we will construct a \emph{1-proportion Z interval}.
 
 
-\Add{Before constructing the confidence interval, we should determine whether we can model the sample proportion, $\hat{p} = 0.44$, using a normal model, which requires two conditions to be satisfied.}
-
-\Comment{David: this term box feels a bit redundant with the longer term box at the end of the section, and it also puts a lot of emphasis on checking conditions while we don't do anything like this for the other five steps in constructing a confidence interval. Basically, I'd favor cutting it and tweaking the text in Example~\ref{supremeCourtCIConditionsExample} to accommodate.}
-\Comment{Leah: I'd favor keeping this box, since conditions are very important and they could use the reminder.  The TIP box below the example I would omit, since that same TIP box exists elsewhere.}
+Before constructing the confidence interval, we should determine whether we can model the sample proportion, $\hat{p} = 0.44$, using a normal model, which requires two conditions to be satisfied.
 
 \begin{termBox}{\tBoxTitle{Conditions for the sampling distribution of $\hat{p}$ being nearly normal}
 The sampling distribution for $\hat{p}$, taken from a sample of size $n$ from a population with a true proportion $p$, is nearly normal when
@@ -42,15 +37,15 @@ The sampling distribution for $\hat{p}$, taken from a sample of size $n$ from a 
 If these conditions are met, then the sampling distribution of $\hat{p}$ is nearly normal with mean $\mu_{\hat{p}}=p$ and standard deviation $\sigma_{\hat{p}} = \sqrt{\frac{\ p(1-p)\ }{n}}$.\index{standard error!single proportion}}
 \end{termBox}
 
-\Add{\begin{example}{Verify that we can use a normal distribution to model $\hat{p}=0.44$ for the Supreme Court poll of $n = 976$ US adults.}
+\begin{example}{Verify that we can use a normal distribution to model $\hat{p}=0.44$ for the Supreme Court poll of $n = 976$ US adults.}
 \label{supremeCourtCIConditionsExample}
-The data are from a simple random sample, so the independence condition is satisfied.  \Add{To check the success/failure condition we want to check that $np$ and $n(1-p)$ are at least 10.  However, p is unknown.  Therefore, we will use the sample proportion $\hat{p}$ to check this condition. }\Cut{To check that $np$ and $n(1-p)$ are both at least 10, we will use the sample proportion in place of the population proportion:}
+The data are from a simple random sample, so the independence condition is satisfied. To check the success-failure condition we want to check that $np$ and $n(1-p)$ are at least 10. However, p is unknown. Therefore, we will use the sample proportion $\hat{p}$ to check this condition.
 \begin{align*}
 n\hat{p} = 976 \times 0.44 = 429\text{ (``successes'')} \\
  n(1-\hat{p}) = 976 \times (1 - 0.44) = 547\text{ (``failures'')}
 \end{align*}
 The second condition is satisfied since 429 and 547 are both larger than 10. With the two conditions satisfied, we can model the sample proportion $\hat{p} = 0.44$ using a normal model.
-\end{example}}
+\end{example}
 
 \begin{tipBox}{\tipBoxTitle{Reminder on checking independence of observations}
 If data come from a simple random sample, then the independence assumption is generally reasonable. Alternatively, if the data come from a random process, we must evaluate the independence condition more carefully.}
@@ -64,8 +59,6 @@ What should we use as the point estimate for the confidence interval?}
 \label{supremeCourtCISEExample}
 The best estimate for the unknown parameter $p$ (the proportion of Americans who approve of the job the Supreme Court is doing) is the sample proportion. When constructing a confidence interval for a single proportion, we use $\hat{p} = 0.44$ as the point estimate for $p$.
 \end{example}
-
-\Comment{I added the formula before the numbers for SE}
 
 \begin{example}{Calculate the standard error for the confidence interval.}
 \label{supremeCourtCIFinishedExample}
@@ -132,18 +125,12 @@ A complete solution to a confidence interval question for a single proportion in
 \end{enumerate}}
 \end{termBox}
 
-\Add{
 \begin{exercise}
 Identify each of the six steps for constructing a confidence interval in the Supreme Court description and examples.\footnote{The following are the required components for constructing a confidence interval for a single proportion. 1.~The last sentence in the first paragraph of Section~\ref{confIntForPropSection}. 2.~in the solution to Example~\ref{supremeCourtCIConditionsExample}, the first sentence to cover independence and the two calculations verifying $n\hat{p}$ and $n(1-\hat{p})$ were at least 10. 3.~The last formula in the solution to Example~\ref{supremeCourtCIFinishedExample} and the calculations and identification of $z^{\star}$ in Example~\ref{supremeCourtCIFinishedExample}. 4.~At the end of the calculations in the solution to Example~\ref{supremeCourtCIFinishedExample}. Items~5 and~6 were contained in the last paragraph of Example~\ref{supremeCourtCISEExample}'s solution.}
 \end{exercise}
-}
 
-\Comment{David: I moved the entire example to before the term box. Some of the earlier topics were also previously being covered out of order (e.g. omitted conditions) before the term box, so it felt a bit ironic to provide the structure described in the term box and not adhere to it within this section.
-
-Ping Mine to get a second example to be used to show a fully-fleshed example without generalized explanations.}
-
-\begin{example}{A poll randomly selected 1,042 adults residing in the state of New York and asked the question: ``Regardless of whether the person shows symptoms or not, do you support or oppose a 21 day quarantine for anyone who has come in contact with someone with the Ebola virus?"  Among the sample, 82\% said``support", 15\% said ``oppose", and 3\% said ``unsure".  Carry out the appropriate confidence interval procedure, showing all steps.
-}
+\begin{example}{A poll randomly selected 1,042 adults residing in the state of New York and asked the question, ``Regardless of whether the person shows symptoms or not, do you support or oppose a 21 day quarantine for anyone who has come in contact with someone with the Ebola virus?"\footnote{\oiRedirect{ebola_quarantine_poll_2014}{NBC 4 New York / The Wall Street Journal / Marist Poll. October 31, 2014.}} Among the sample, 82\% said``support", 15\% said ``oppose", and 3\% said ``unsure". Carry out the appropriate confidence interval procedure for the proportion of adults in New York who supported a quarantine.}
+\Comment{Still must add solution.}
 \end{example}
 
 \subsection{Hypothesis testing for a proportion}
@@ -154,13 +141,13 @@ While a confidence interval provides a reasonable range of values for an unknown
 \begin{example}{Deborah Toohey is running for Congress, and her campaign manager claims she has more than 50\% from the district's electorate. A newspaper collects a simple random sample of 500 likely voters in the district and estimates Toohey's support to be 52\%.
 \begin{itemize}
 \item[(a)] What is the name of the test that is appropriate for this context?
-\item[(b)] \Add{State the alternate hypothesis.  }What value we should use as the null value, $p_{0}$?
+\item[(b)] State the alternate hypothesis. What value we should use as the null value, $p_{0}$?
 \item[(c)] Can we model $\hat{p} = 0.52$ using a normal model? Check the conditions.
 \end{itemize}}
 \label{TooheyTestNameAndConditionExample}
 (a) The name of the test we will use is the \emph{1-proportion Z test}. \\[2mm]
-(b) The alternate hypothesis, the one that bears the burden of proof, argues that Toohey has more than 50\% support. Therefore, $H_A$ will be one sided and the null value will be $p_0 = 50\% = 0.5$. \\[2mm]
-(c) The calculations in a hypothesis test for a proportion assume the value $p_0$ for the unknown $p$, so we use $p_{0}$ \Add{rather than $\hat{p}$} when verifying the hypothesis test conditions:
+(b) The alternate hypothesis, the one that bears the burden of proof, argues that Toohey has more than 50\% support. Therefore, $H_A$ will be one sided and the null value will be $p_0 = 50\% = 0.5$. $H_A$: $p > 0.5$. \\[2mm]
+(c) The calculations in a hypothesis test for a proportion assume the value $p_0$ for the unknown $p$, so we use $p_{0}$ rather than $\hat{p}$ when verifying the hypothesis test conditions:
 \begin{align*}
 np_0 &\geq 10 \quad \rightarrow \quad 500\times 0.5 \geq 10 \\
 n(1-p_0) &\geq 10 \quad \rightarrow \quad 500 \times (1-0.5) \geq 10
@@ -182,8 +169,6 @@ SE = \sqrt{\frac{p_0(1-p_0)}{n}}
 \end{align*}
 \end{itemize}
 
-\Comment{I added the formula in addition to the numbers in the example below}
-
 \begin{example}{Deborah Toohey is running for Congress, and her campaign manager claimed she has more than 50\% support from the district's electorate. A newspaper poll finds that 52\% of 500 likely voters who were sampled support Toohey. Does this provide convincing evidence for the claim by Toohey's manager at the 5\% significance level?}\label{TooheyInferenceExample}
 We will use a one-sided test with the following hypotheses:
 \begin{itemize}
@@ -196,7 +181,7 @@ SE = \sqrt{\frac{p_0 (1 - p_0)}{n}} = \sqrt{\frac{0.5 (1 - 0.5)}{500}} = 0.022
 \end{align*}
 The test statistic can be computed as:
 \begin{align*}
-Z = \frac{\hat{p} -p_0}{SE} = \frac{0.52 - 0.50}{0.022} = 0.89
+Z = \frac{\hat{p} - p_0}{SE} = \frac{0.52 - 0.50}{0.022} = 0.89
 \end{align*}
 A picture featuring the p-value is shown in Figure~\ref{pValueForCampaignManagerClaimOfMoreThan50PercentSupport} as the shaded region. Using a table or a calculator, we can get the p-value as about 0.19, which is larger than $\alpha = 0.05$, so we do not reject $H_0$. That is, we do not have strong evidence to support Toohey's campaign manager's claims that she has more than 50\% support within the district.
 \end{example}
@@ -244,14 +229,12 @@ Identify each of the seven steps for conducting a hypothesis test in the example
 In Example~\ref{TooheyInferenceExample}, the data did not show strong evidence that Toohey's campaign manager was correct. Does this mean the manager was wrong?\footnote{Not necessarily. While we did not reject the null hypothesis, that does not mean it is true. It is possible that Toohey does have support above 50\%, but that the sample did not provide enough evidence to convincingly show this.}
 \end{exercise}
 
-\Comment{David: same overall change in this subsection as in the last subsection. If a complete run-through example is desired, we need another example. Leading with the generalization seems too formulaic.}
-
 
 \subsection{Calculator: The 1-proportion Z test and CI\vspace{-3mm}}
 
 We can use a calculator to compute a confidence interval or to evaluate the test statistic and the p-value. Remember to show work and first substitute in all numbers before using the calculator.
 
-\Comment{TODO(David): Add in icons and links for calculator vidoes}
+\Comment{TODO(David): Find suitable TI calculator videos.}
 
 \Comment{TODO(Leah): Do a quick read through the Casio calculator instructions.}
 
@@ -383,12 +366,12 @@ Using a calculator, confirm the earlier result from Example~\ref{TooheyInference
 
 Planning a sample size before collecting data is important. If we collect too little data, the standard error of our point estimate may be so large that the data are not very useful. On the other hand, collecting data in some contexts is time-consuming and expensive, so we don't want to waste resources on collecting more data than we need.
 
-\Comment{changed the formatting of equation so students can focus on the important part and what to solve for}
-\Comment{did we ever define margin of error?}
-\Cut{$ME = 1.96 \times SE = 1.96\times \sqrt{\frac{p(1-p)}{n}} \leq 0.04$}
+\Comment{Leah: did we ever define margin of error?
+
+David: Not certain. Want to add a term box here?}
 
 \begin{example}{Suppose we are conducting a university survey to determine whether students support a \$200 per year increase in fees to pay for a new football stadium, how big of a sample is needed to be sure the margin of error is less than 0.04 using a 95\% confidence level? Find the smallest sample size $n$ so that the margin of error of the point estimate $\hat{p}$ will be no larger than $m=0.04$ when using a 95\% confidence interval.}
-For a 95\% confidence level, the value $z^{\star}$ corresponds to 1.96.\Cut{, and we can write the margin of error expression as follows:}  \Add{The margin of error is the part that follows the +/- in the confidence interval.  It is half the total width of the confidence interval.  We want:}
+For a 95\% confidence level, the value $z^{\star}$ corresponds to 1.96. \Add{The margin of error is the part that follows the +/- in the confidence interval. It is half the total width of the confidence interval. We want:}
 \begin{align*}
 ME \leq 0.04 \\
 1.96 \times SE \leq 0.04 \\
@@ -676,9 +659,7 @@ Z = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{0.067 - 0}{0.02
 Looking up $Z=2.58$ in the normal probability table: 0.9951. However this is the lower tail, and the upper tail represents the p-value: $1-0.9951 = 0.0049$. Because the p-value is smaller than $\alpha = 0.01$, we reject the null hypothesis and conclude that there is an association between dogs getting cancer and owners using 2,4-D.
 \end{example}
  
-\Comment{This box format was different than all the others, so I made it look like the others.}
-
-\begin{termBox}{\tBoxTitle{Hypothesis test for the difference of two proportions}
+\begin{termBox}{\tBoxTitle[]{Hypothesis test for the difference of two proportions}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item State the name of the test being used.
@@ -692,36 +673,17 @@ Looking up $Z=2.58$ in the normal probability table: 0.9951. However this is the
   \item 2~independent random samples OR 2 randomly allocated treatments. 
   \item Calculate the pooled sample proportion $\hat{p}$ and verify $n_1\hat{p}$, $n_2\hat{p}$, $n_1(1 - \hat{p})$, and $n_2(1 - \hat{p})$ are greater than or equal to 10.
   \end{itemize}
-\item Write the hypotheses in plain language and mathematical notation.\vspace{-1.5mm}
+\item Write the hypotheses in plain language and using mathematical notation.\vspace{-1.5mm}
   \begin{itemize}
   \setlength{\itemsep}{0mm}
   \item $H_0: p_1 = p_2$ (or $p_1 - p_2 = 0$)
   \item $H_A: p_1 \ne \text{or} < \text{or} > p_2$
   \end{itemize}
 \item Identify the significance level $\alpha$.
-\vspace{-1.5mm}
 \item Calculate the test statistic: $\text{Z} = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$
   \begin{itemize}
-  \item  the point estimate is: $\hat{p}_1 - \hat{p}_2$ and the SE = $\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$
+  \item The point estimate is $\hat{p}_1 - \hat{p}_2$, and the $SE$ is $\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$
   \end{itemize}
-\item Find the p-value and compare it to $\alpha$ to determine whether to reject or not reject $H_0$.
-\item Write the conclusion in the context of the question.
-\end{enumerate}}
-\end{termBox}
-
-
-
-\begin{termBox}{\tBoxTitle[]{Hypothesis test for the difference of two proportions\color{red} CUT THIS BOX}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item State the name of the test being used: 2-proportion Z test.
-\item Verify conditions: (a)~2~independent random samples OR 2 randomly allocated treatments. (b)~Calculate the pooled sample proportion $\hat{p}$ and verify $n_1\hat{p}$, $n_2\hat{p}$, $n_1(1 - \hat{p})$, and $n_2(1 - \hat{p})$ are greater than or equal to 10.
-\item Write the hypotheses in plain language, then set them up in mathematical notation, e.g. $H_0: p_1 - p_2 = 0$.
-\item Identify the significance level $\alpha$.
-\item Calculate the test statistic: $\text{Z} = \frac{(\hat{p}_1 - \hat{p}_2) - \text{null difference}}{SE}$. In this book, the null difference is always zero, and the standard error is given by\vspace{-3.5mm}
-\begin{align*}
-SE = \sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
-\end{align*}
 \item Find the p-value and compare it to $\alpha$ to determine whether to reject or not reject $H_0$.
 \item Write the conclusion in the context of the question.
 \end{enumerate}}
