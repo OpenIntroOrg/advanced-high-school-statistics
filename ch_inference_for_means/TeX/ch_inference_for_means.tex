@@ -104,6 +104,7 @@ Each row in the $t$ table represents a $t$ distribution with different degrees o
 
 \textPE{\pagebreak}
 
+
 \begin{example}{What proportion of the $t$ distribution with 18 degrees of freedom falls below -2.10?}
 Just like a normal probability problem, we first draw the picture in Figure~\ref{tDistDF18LeftTail2Point10} and shade the area below -2.10. To find this area, we identify the appropriate row: $df=18$. Then we identify the column containing the absolute value of -2.10; it is the third column. Because we are looking for just one tail, we examine the top line of the table, which shows that a one tail area for a value in the third row corresponds to 0.025. About 2.5\% of the distribution falls below -2.10. In the next example we encounter a case where the exact $t$ value is not listed in the table.
 \end{example}
@@ -115,7 +116,15 @@ Just like a normal probability problem, we first draw the picture in Figure~\ref
 \label{tDistDF18LeftTail2Point10}
 \end{figure}
 
-\textB{\pagebreak}
+\Add{
+\begin{example}{For the $t$ distribution with 18 degrees of freedom, what percent of the curve is contained between -1.330 and +1.330?}  Using row 18, we find 1.330 in the table.  The area in each tail is 0.100, so that leaves 0.800 in the middle.  We can easily see this by following 1.330 down to the bottom row and see that it says 80\%.  So 80\% of the $t$ curve with 18 degrees of freedom falls between -1.330 and +1.330.
+\end{example}
+}
+
+\Add{
+\begin{example}{For the $t$ distribution with 3 degrees of freedom, what value of $t$ captures the middle 95\% of the area of the curve?}We can look at the column that says 95\% at the bottom (2.25\% in each tail) and trace it up to row 3 to find that the $t$ such that 95\% of the area is between $-t$ and $+t$ is 2.535.
+\end{example}
+}
 
 \begin{example}{A $t$ distribution with 20 degrees of freedom is shown in the left panel of Figure~\ref{tDistDF20RightTail1Point65}. Estimate the proportion of the distribution falling above 1.65.}
 We identify the row in the $t$ table using the degrees of freedom: $df=20$. Then we look for 1.65; it is not listed. It falls between the first and second columns. Since these values bound 1.65, their tail areas will bound the tail area corresponding to 1.65. We identify the one tail area of the first and second columns, 0.050 and 0.10, and we conclude that between 5\% and 10\% of the distribution is more than 1.65 standard deviations above the mean. If we like, we can identify the precise area using statistical software: 0.0573.
@@ -128,10 +137,14 @@ We identify the row in the $t$ table using the degrees of freedom: $df=20$. Then
 \label{tDistDF20RightTail1Point65}
 \end{figure}
 
+\Comment{favor cutting this example and therefore right pannel of figure 7.5}
+\Cut{
 \begin{example}{A $t$ distribution with 2 degrees of freedom is shown in the right panel of Figure~\ref{tDistDF20RightTail1Point65}. Estimate the proportion of the distribution falling more than 3 units from the mean (above or below).}
 As before, first identify the appropriate row: $df=2$. Next, find the columns that capture 3; because $2.92 < 3 < 4.30$, we use the second and third columns. Finally, we find bounds for the tail areas by looking at the two tail values: 0.05 and 0.10. We use the two tail values because we are looking for two (symmetric) tails.
 \end{example}
+}
 
+\Add{What should we do if the desired degrees of freedom is not listed on the table?  To be conservative, we will just round the degrees of freedom down to the next smallest value that is on the table.}
 
 \subsection{The $t$ distribution and the standard error of a mean}
 \label{tDistSolutionToSEProblem}
@@ -144,8 +157,6 @@ Use the $t$ distribution for inference of the sample mean when observations are 
 \end{tipBox}
 
 \index{data!dolphins and mercury|(}
-
-\textPE{\pagebreak}
 
 %\CommentA{added n at least 30}
 To proceed with the $t$ distribution for inference about a single mean, we must check two conditions.
@@ -182,7 +193,7 @@ You may relax the normality condition as the sample size goes up. If the sample 
 \subsection{One sample $t$ confidence intervals}
 \label{oneSampleTConfidenceIntervals}
 
-Dolphins are at the top of the oceanic food chain, which causes dangerous substances such as mercury to concentrate in their organs and muscles. This is an important problem for both dolphins and other animals, like humans, who occasionally eat them. For instance, this is particularly relevant in Japan where school meals have included dolphin at times.
+Dolphins are at the top of the oceanic food chain, which causes dangerous substances such as mercury to concentrate in their organs and muscles. This is an important problem for both dolphins and other animals, like humans, who occasionally eat them. \Cut{For instance, this is particularly relevant in Japan where school meals have included dolphin at times.}
 \setlength{\captionwidth}{71.5mm}
 
 \begin{figure}[h]
@@ -215,7 +226,7 @@ $n$ & $\bar{x}$ & $s$ & minimum & maximum \\
 \end{table}
 
 \begin{example}{Are the independence and normality conditions satisfied for this data~set?}
-The observations are a simple random sample and consist of less than 10\% of the population, therefore independence is reasonable. The summary statistics in Table~\ref{summaryStatsOfHgInMuscleOfRissosDolphins} do not suggest any skew or outliers; all observations are within 2.5 standard deviations of the mean. Based on this evidence, the normality assumption seems reasonable.
+The observations are a simple random sample and consist of less than 10\% of the population, therefore independence is reasonable. \Add{To check the normality condition of the population, we would like to graph the data from the sample.  However, we do not have all of the data so we will have to look at the summary statistics provided in }Table~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}.  These summary statistics do not suggest any skew or outliers; all observations are within 2.5 standard deviations of the mean. Based on this evidence, the normality assumption seems reasonable.
 \end{example}
 
 In the normal model, we used $z^{\star}$ and the standard deviation to determine the width of a confidence interval. We revise the confidence interval formula slightly when using the $t$ distribution:
@@ -252,14 +263,15 @@ We are 95\% confident the true average mercury content of muscles in Risso's dol
 
 \index{data!dolphins and mercury|)}
 
+\Comment{L: I added the actual formula for SE to the term box below.}
+
 \begin{termBox}{\tBoxTitle{Finding a $t$ confidence interval for the mean}
 Based on a sample of $n$ independent and nearly normal observations, a confidence interval for the population mean is
 \begin{eqnarray*}
 \bar{x} \ \pm\  t^{\star}_{df}SE \quad \quad df=n-1
 \end{eqnarray*}
-where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confidence level and degrees of freedom, and $SE$ is the standard error as estimated by the sample.}
+where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confidence level and degrees of freedom, and $SE$ is the standard error given by $\frac{s}{\sqrt{n}}$.}
 \end{termBox}
-
 
 \begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for a mean}\vspace{-1mm}
 \begin{enumerate}
@@ -295,7 +307,7 @@ The confidence interval is given by: $0.287 \ \pm\  2.145\times 0.0178\ \to\ (0.
 
 Many companies are concerned about rising healthcare costs. A company may estimate certain health characteristics of its employees, such as blood pressure, to project its future cost obligations. However, it might be too expensive to measure the blood pressure of every employee at a large company, and the company may choose to take a sample instead.
 
-\textPE{\pagebreak}
+\Comment{ in example below, I cut that part because we are using the SD of the population.}
 
 \begin{example}{Blood pressure oscillates with the beating of the heart, and the systolic pressure is defined as the peak pressure when a person is at rest. The average systolic blood pressure for people in the U.S. is about 130 mmHg with a standard deviation of about 25 mmHg. How large of a sample is necessary to estimate the average systolic blood pressure with a margin of error of 4 mmHg using a 95\% confidence level?}
 \label{sampleSizeComputationForSystolicBloodPressure}
@@ -307,7 +319,7 @@ The challenge in this case is to find the sample size $n$ so that this margin of
 \begin{align*}
 1.96\times \frac{\sigma_{employee}}{\sqrt{n}} \leq 4
 \end{align*}
-In the above equation we wish to solve for the appropriate value of $n$, but we need a value for $\sigma_{employee}$ before we can proceed. However, we haven't yet collected any data, so we have no direct estimate! Instead, we use the best estimate available to~us: the approximate standard deviation for the U.S. population, 25. To proceed and solve for $n$, we substitute 25 for $\sigma_{employee}$:
+\Cut{In the above equation we wish to solve for the appropriate value of $n$, but we need a value for $\sigma_{employee}$ before we can proceed. However, we haven't yet collected any data, so we have no direct estimate! Instead, we use the best estimate available to~us: the approximate standard deviation for the U.S. population, 25. } To proceed and solve for $n$, we substitute 25 for $\sigma_{employee}$:
 \begin{align*}
 1.96\times \frac{\sigma_{employee}}{\sqrt{n}} \approx 1.96\times\frac{25}{\sqrt{n}}
 	&\leq 4 \\
@@ -321,10 +333,13 @@ The minimum sample size that meets the condition is 151. We round up because the
 
 A potentially controversial part of Example~\ref{sampleSizeComputationForSystolicBloodPressure} is the use of the U.S. standard deviation for the employee standard deviation. Usually the standard deviation is not known. In such cases, it is reasonable to review scientific literature or market research to make an educated guess about the standard deviation.
 
+\Comment{I broke up the equation in the box below, because students look at the longer equation and don't understand where to plug in stuff - they don't get that they don't need to plug in something for ME and for m.}
+
 \begin{termBox}{\tBoxTitle{Identify a sample size for a particular margin of error}
 To estimate the necessary sample size for a maximum margin of error $m$, we set up an equation to represent this relationship:
 \begin{align*}
-ME = z^{\star}\frac{\sigma}{\sqrt{n}} \leq m
+ME = z^{\star}\frac{\sigma}{\sqrt{n}}\\
+ z^{\star}\frac{\sigma}{\sqrt{n}}\leq m
 \end{align*}
 where $z^{\star}$ is chosen to correspond to the desired confidence level, and $\sigma$ is the standard deviation associated with the population. Solve for the sample size,~$n$.}
 \end{termBox}
@@ -352,7 +367,7 @@ What are appropriate hypotheses for this context?\footnote{$H_0$: The average 10
 \end{exercise}
 
 \begin{exercise}
-The data come from a simple random sample from less than 10\% of all participants, so the observations are independent. However, should we be worried about skew in the data? A histogram of the differences was shown in the left panel of Figure~\ref{run10SampHistogramsInHTForMeanSubsection}.~\footnote{Since the sample size 100 is greater than 30, we do not need to worry about slight skew in the data.}
+The data come from a simple random sample from less than 10\% of all participants, so the observations are independent. However, should we be worried about skew in the data? A histogram \Cut{of the differences was shown in the left panel of}\Add{of the times is shown in } Figure~\ref{run10SampHistogramsInHTForMeanSubsection}.~\footnote{Since the sample size 100 is greater than 30, we do not need to worry about slight skew in the data.}
 \end{exercise}
 
 \begin{figure}
