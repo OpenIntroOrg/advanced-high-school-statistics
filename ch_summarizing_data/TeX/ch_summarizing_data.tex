@@ -503,7 +503,7 @@ When describing any distribution, comment on the three important characteristics
 \begin{example}{In the data's context (the number of characters in emails), describe the distribution of the \var{num\_\hspace{0.3mm}char} variable using the histogram in Figure~\ref{email50NumCharHistCopy}.}
 The distribution of email character counts is unimodal and very strongly skewed to the right. Many of the counts fall near the mean at 11,600, and most fall within one standard deviation (13,130) of the mean. There is one exceptionally long email with about 65,000 characters.
 
-\begin{figure}[ht]
+\begin{figure}
    \centering
    \includegraphics[width=0.8\textwidth]{ch_summarizing_data/figures/email50NumCharHist/email50NumCharHist}
    \caption{A copy of Figure~\ref{email50NumCharHist}.}
@@ -519,9 +519,9 @@ In this chapter we use standard deviation as a descriptive statistic to describe
 
 \subsection{Box plots and quartiles}
 
-A \term{box plot} summarizes a data set using five summary statistics while also plotting unusual observations. Figure~\ref{boxPlotLayoutNumVar} provides a box plot of the \var{num\_\hspace{0.3mm}char} variable from the \data{email50} data set.
+A \term{box plot} summarizes a data set using five summary statistics while also plotting unusual observations, called \hiddenterm{outliers}. Figure~\ref{boxPlotLayoutNumVar} provides a box plot of the \var{num\_\hspace{0.3mm}char} variable from the \data{email50} data set.
 
-\begin{figure}[h]
+\begin{figure}
    \centering
    \includegraphics[width=0.85\mycaptionwidth]{ch_summarizing_data/figures/boxPlotLayoutNumVar/boxPlotLayoutNumVar}
 \caption{A labeled box plot for the nuber of characters in 50 emails. The median (6,890) splits the data into the bottom 50\% and the top 50\%.}
@@ -535,9 +535,7 @@ $Q_2$\index{Q$_2$} represents the \term{second quartile}, which is equivalent to
 
 $Q_1$\index{Q$_1$} represents the \term{first quartile}, which is the 25th percentile, and is the median of the smaller half of the data set. There are 25 values in the lower half of the data set, so $Q_1$ is the middle value: 2,454 characters. $Q_3$\index{$Q_3$} represents the \term{third quartile}, or 75th percentile, and is the median of the larger half of the data set: 15,829 characters.
 
-\Comment{Editing the next paragraph since it doesn't actually explain how to identify unusual observations / outliers.}
-
-\Add{We calculate the variability in the data using the range of the middle 50\% of the data: $Q_3 - Q_1 = \text{13,375}$.} \Cut{To determine if there are any unusually distant observations (i.e. outliers), we first calculate the spread of the middle 50\% of the data by subtracting $Q_1$ from $Q_3$: $Q_3 - Q_1 = \text{13,375}$.} This quantity is called the \term{interquartile range} (\hiddenterm{IQR}, for short). It, like the standard deviation, is a measure of \indexthis{variability}{variability} or \term{spread} in data. The more variable the data, the larger the standard deviation and~IQR tend to be.
+We calculate the variability in the data using the range of the middle 50\% of the data: $Q_3 - Q_1 = \text{13,375}$. This quantity is called the \term{interquartile range} (\hiddenterm{IQR}, for short). It, like the standard deviation, is a measure of \indexthis{variability}{variability} or \term{spread} in data. The more variable the data, the larger the standard deviation and~IQR tend to be.
 
 \begin{termBox}{\tBoxTitle{Interquartile range (IQR)}
 The IQR\index{interquartile range} is the length of the box in a box plot. It is computed as
@@ -547,17 +545,21 @@ IQR = Q_3 - Q_1
 where $Q_1$ and $Q_3$ are the $25^{th}$ and $75^{th}$ percentiles.}
 \end{termBox}
 
-To build a box plot, draw an axis (vertical or horizontal) and mark a uniform scale. Then, draw a dark line denoting $Q_2$. Next, draw a line at $Q_1$ and at $Q_3$. Connect these two lines to form a rectangle. The width of the rectangle corresponds to the IQR and the middle 50\% of the data is in this interval.
+\Comment{D - added a definition for outlier for the AP Stat exam below. Probably needs to be tweaked. I've also added some additional text and tweaked the box plot figure to say ``outlier'' rather than ``suspected outlier''. $Q_2$ has also been added to the median label in the figure.}
 
-\Comment{The proposed updates here need work. For example, the first sentence says the whiskers suggest the whiskers reach out to the max and min values. What was broken about the original description?
+\begin{termBox}{\tBoxTitle{Outlier definition for the AP Statistics exam}
+The AP Statistics exam defines an outlier using the box plot criteria: if an \mbox{observation} is more than $1.5 \times IQR$ above $Q_3$ or $1.5 \times IQR$ below $Q_1$, then it is an \term{outlier}, and it is marked using a dot or asterisk in a box plot.}
+\end{termBox}
 
-L - Add the word "usually" so that the first sentence on its own isn't false.
+To build a box plot, draw an axis (vertical or horizontal) and draw a scale. Draw a dark line denoting $Q_2$, the median. Next, draw a line at $Q_1$ and at $Q_3$. Connect the $Q_1$ and $Q_3$ lines to form a rectangle. The width of the rectangle corresponds to the IQR and the middle 50\% of the data is in this interval.
 
-D - The description seem to be too much stream-of-thought: whiskers extend to max / min, except when there are outliers, but we haven't yet given a definition of outlier in the context of a boxplot. I think we should revert the changes in this paragraph, which Chris, Mine, and myself had spent a lot of time discussing and crafting to avoid confusion on this topic (the proposed description looks more like one of the earlier drafts of this content).}
+\Comment{D - The proposed updates here need work. What was broken about the original description? The description seem to be too much stream-of-thought: whiskers extend to max / min, except when there are outliers, but we haven't yet given a definition of outlier in the context of a boxplot. I think we should revert the changes in this paragraph, which Chris, Mine, and myself had spent a lot of time discussing and crafting to avoid confusion on this topic (the proposed description looks more like one of the earlier drafts of this content).}
+
+\Comment{D (April 5th) - this paragraph is a proposed new version that is hopefully more AP Statistics friendly.} \Add{Extending out from the rectangle, the \term{whiskers} attempt to capture all of the data remaining outside of the box, except outliers. In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$ and are outliers, so it extends only to the last point below this limit.\footnote{You might wonder, isn't the choice of $1.5 \times IQR$ for defining an outlier arbitrary? It is! In practical data analyses, we tend to avoid a strict definition since what is an unusual observation is highly dependent on the context of the data.} The lower whisker stops at the lowest value, 33, since there are no additional data to reach. Outliers are each marked with a dot or asterisk. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.}
 
 \Add{Now the whiskers usually extend out on either end to the minimum and maximum values. However, if there are outliers, then we denote those outliers with a special symbol (a dot or an asterisk), and extend the whiskers to the smallest and largest values in the data set that are not outliers. Here, we define an outlier as a value that is more than $1.5\times IQR$ below $Q_1$ or above $Q_3$.\footnote{While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.}  In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit. There are no values below $Q_1 - 1.5\times IQR$j, so the lower whisker stops at the minimum. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data, with outliers escaping their reach.} 
 \Cut{
-Extending out from the rectangle, the \term{whiskers} attempt to capture the data remaining outside of the box; however, their reach cannot be more than $1.5\times IQR$. In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit. The lower whisker stops at the lowest value, 33, since there is no additional data to reach. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data. We will call a value an \hiddenterm{outlier} if it is more than $1.5\times IQR$ below $Q_1$ or above $Q_3$.\footnote{While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.}
+Extending out from the rectangle, the \term{whiskers} attempt to capture the data remaining outside of the box; however, their reach cannot be more than $1.5\times IQR$. In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit. The lower whisker stops at the lowest value, 33, since there is no additional data to reach. \Add{Observations that fall beyond the whiskers are marked with dots or asterisks.} In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data. We will call a value an \hiddenterm{outlier} if it is more than $1.5\times IQR$ below $Q_1$ or above $Q_3$.\footnote{While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.}
 }
 
 \begin{example}{Compare the box plot to the graphs previously discussed: stem-and-leaf plot, dot plot, frequency and relative frequency histogram. What can we learn more easily from a box plot? What can we learn more easily from the other graphs?}

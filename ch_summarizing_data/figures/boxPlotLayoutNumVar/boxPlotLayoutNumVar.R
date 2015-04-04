@@ -15,7 +15,7 @@ text(2, quantile(d, 0.25)+sd(d)/6.5, expression(Q[1]~~'(first quartile)'), pos=4
 
 m <- median(d)
 arrows(2, m+sd(d)/5, 1.35, m, length=0.08)
-text(2,m+sd(d)/4.7,'median', pos=4)
+text(2,m+sd(d)/4.7,expression(Q[2]~~'(median)'), pos=4)
 
 q <- quantile(d, 0.75)
 arrows(2, q+sd(d)/4, 1.35, q, length=0.08)
@@ -34,7 +34,7 @@ s <- m[1]-0.3*sd(m)
 arrows(2, s, 1.1, m[1]-0.2, length=0.08)
 arrows(2, s, 1.1, m[2]+0.3, length=0.08)
 arrows(2, s, 1.1, m[3]+0.35, length=0.08)
-text(2,s,'suspected outliers', pos=4)
+text(2,s,'outliers', pos=4)
 
 
 dev.off()
