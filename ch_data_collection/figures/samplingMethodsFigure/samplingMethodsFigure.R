@@ -32,16 +32,12 @@ box()
 nx  <- 17
 ny  <- (nx + 1) / 2
 x   <- rep(seq(0.02, 1.98, length.out = nx), ny)
-y   <- rep(seq(0.05, 0.95, length.out = ny), rep(nx, ny))
+y   <- rep(rev(seq(0.05, 0.95, length.out = ny)), rep(nx, ny))
 points(x, y, col=col, pch=pch)
 these <- 1:(nx * ny)
 these <- these[(these + 3) %% 7 == 0]
 points(x[these], y[these], pch=20, cex=0.8, col=colSamp)
 points(x[these], y[these], cex=1.4, col=colSamp)
-
-
-
-
 dev.off()
 
 
