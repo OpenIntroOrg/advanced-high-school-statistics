@@ -102,8 +102,6 @@ Confidence level C  &  {\normalsize  80\%} & {\normalsize 90\%} & {\normalsize 9
 
 Each row in the $t$ table represents a $t$ distribution with different degrees of freedom. The columns correspond to tail probabilities. For instance, if we know we are working with the $t$ distribution with $df=18$, we can examine row 18, which is \highlightO{highlighted} in Table~\ref{tTableSample}. If we want the value in this row that identifies the cutoff for an upper tail of 10\%, we can look in the column where \emph{one tail} is 0.100. This cutoff is 1.33. If we had wanted the cutoff for the lower 10\%, we would use -1.33. Just like the normal distribution, all $t$ distributions are symmetric.
 
-\textPE{\pagebreak}
-
 
 \begin{example}{What proportion of the $t$ distribution with 18 degrees of freedom falls below -2.10?}
 Just like a normal probability problem, we first draw the picture in Figure~\ref{tDistDF18LeftTail2Point10} and shade the area below -2.10. To find this area, we identify the appropriate row: $df=18$. Then we identify the column containing the absolute value of -2.10; it is the third column. Because we are looking for just one tail, we examine the top line of the table, which shows that a one tail area for a value in the third row corresponds to 0.025. About 2.5\% of the distribution falls below -2.10. In the next example we encounter a case where the exact $t$ value is not listed in the table.
@@ -120,7 +118,7 @@ Just like a normal probability problem, we first draw the picture in Figure~\ref
 
 \Add{
 \begin{example}{For the $t$ distribution with 18 degrees of freedom, what percent of the curve is contained between -1.330 and +1.330?}
-Using row $df = 18$, we find 1.330 in the table.  The area in each tail is 0.100, which leaves 0.800 in the middle between -1.33 and +1.33.
+Using row $df = 18$, we find 1.330 in the table. The area in each tail is 0.100, which leaves 0.800 in the middle between -1.33 and +1.33.
 \end{example}
 
 \begin{example}{For the $t$ distribution with 3 degrees of freedom, as shown in the left panel of Figure~\ref{tDistDF3_and_20}, what should the value of $t^{\star}$ be so that 95\% of the area of the curve falls between -$t^{\star}$ and +$t^{\star}$?}
@@ -139,7 +137,7 @@ We identify the row in the $t$ table using the degrees of freedom: $df=20$. Then
 \label{tDistDF3_and_20}
 \end{figure}
 
-When the desired degrees of freedom is not listed on the table, choose a conservative value: round the degrees of freedom up, i.e. move \emph{down} to the next row listed. Another options is to use a calculator or statistical software to get a precise value.
+When the desired degrees of freedom is not listed on the table, choose a conservative value: round the degrees of freedom down, i.e. move \emph{up} to the previous row listed. Another options is to use a calculator or statistical software to get a precise value.
 
 \subsection{The $t$ distribution and the standard error of a mean}
 \label{tDistSolutionToSEProblem}
@@ -162,7 +160,7 @@ To proceed with the $t$ distribution for inference about a single mean, we must 
 \end{description}
 When examining a sample mean and estimated standard deviation from a sample of $n$ independent and nearly normal observations, we use a $t$ distribution with $n-1$ degrees of freedom~($df$). For example, if the sample size was 19, then we would use the $t$ distribution with $df=19-1=18$ degrees of freedom and proceed exactly as we did in Chapter~\ref{foundationsForInference}, except that \emph{now we use the $t$ table}.
 
-\begin{termBox}{\tBoxTitle{The t distribution and the SE of a mean}
+\begin{termBox}{\tBoxTitle{The $t$ distribution and the SE of a mean}
 In general, when the population mean is uknown, the population standard deviation will also be unknown. When this is the case, we estimate the population standard deviation with the sample standard deviation and we use SE instead of~SD.
 \begin{align*}
 SE_{\bar{x}}=\frac{s}{\sqrt{n}}
@@ -221,7 +219,7 @@ $n$ & $\bar{x}$ & $s$ & minimum & maximum \\
 \end{table}
 
 \begin{example}{Are the independence and normality conditions satisfied for this data~set?}
-The observations are a simple random sample and consist of less than 10\% of the population, therefore independence is reasonable. To check the normality condition of the population, we would like to graph the data from the sample.  However, we do not have all of the data. Instead, we will have to look at the summary statistics provided in Table~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}.  These summary statistics do not suggest any skew or outliers; all observations are within 2.5 standard deviations of the mean. Based on this evidence, the normality assumption seems reasonable.
+The observations are a simple random sample and consist of less than 10\% of the population, therefore independence is reasonable. To check the normality condition of the population, we would like to graph the data from the sample. However, we do not have all of the data. Instead, we will have to look at the summary statistics provided in Table~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}. These summary statistics do not suggest any skew or outliers; all observations are within 2.5 standard deviations of the mean. Based on this evidence, the normality assumption seems reasonable.
 \end{example}
 
 In the normal model, we used $z^{\star}$ and the standard deviation to determine the width of a confidence interval. We revise the confidence interval formula slightly when using the $t$ distribution:
@@ -269,7 +267,7 @@ where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confiden
 \begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for a mean}\vspace{-1mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the CI being used.
+\item State the name of the CI being used.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item 1-sample $T$ interval.
@@ -277,8 +275,8 @@ where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confiden
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item A simple random sample
-\item Population is known to be normal OR $n\ge 30$ OR graph of sample is approximately symmetric with no outliers, making the assumption that the population is normal a reasonable one
+\item A simple random sample.
+\item Population is known to be normal OR $n\ge 30$ OR graph of sample is approximately symmetric with no outliers, making the assumption that the population is normal a reasonable one.
 \end{itemize}
 \item Plug in the numbers and write the interval in the form
 $$\text{point estimate } \pm  t^\star \times \text{SE of estimate}$$
@@ -286,9 +284,9 @@ $$\text{point estimate } \pm  t^\star \times \text{SE of estimate}$$
 \setlength{\itemsep}{0mm}
 \item The point estimate is $\bar{x}$
 \item $df = n-1$
-\item Plug in a critical value $t^\star$ using the t table at row$=n-1$
-\item Use $SE = \frac{s}{\sqrt{n}}$.
-\item Evaluate the CI and write in the form ( $\_$ , $\_$ ).
+\item Plug in a critical value $t^\star$ using the $t$ table at row$=n-1$
+\item Use $SE = \frac{s}{\sqrt{n}}$
+\item Evaluate the CI and write in the form ( $\_$ , $\_$ )
 \end{itemize}
 \item Interpret the interval:  ``We are [XX]\% confident that the true average of [...] is between [...] and [...]."
 \item State the conclusion to the original question.
@@ -297,8 +295,8 @@ $$\text{point estimate } \pm  t^\star \times \text{SE of estimate}$$
 
 \begin{exercise} \label{croakerWhiteFishPacificExerConditions}
 \index{data!white fish and mercury|(}
-The FDA's webpage provides some data on mercury content of fish.\footnote{\urlwofont{http://www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm}} Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent. Construct an appropriate 95\% confidence interval for the true average mercury content of croaker white fish (Pacific). Is there evidence that the average mercury content is greater than 0.275 ppm?\footnote{The interval called for in this problem is a 1-sample t interval. We will assume that the sample was random. $n$ is small, but there are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not evident. Therefore we do not have reason to believe the mercury content in the population is not nearly normal in this type of fish. We can now identify and calculate the necessary quantities. The point estimate is the sample average, which is 0.287.
-The standard error: $SE = \frac{0.069}{\sqrt{15}} = 0.0178$. Degrees of freedom: $df = n - 1 = 14$. Using the t table, we identify $t^{\star}_{14} = 2.145$.
+The FDA's webpage provides some data on mercury content of fish.\footnote{\urlwofont{http://www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm}} Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent. Construct an appropriate 95\% confidence interval for the true average mercury content of croaker white fish (Pacific). Is there evidence that the average mercury content is greater than 0.275 ppm?\footnote{The interval called for in this problem is a 1-sample $t$ interval. We will assume that the sample was random. $n$ is small, but there are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not evident. Therefore we do not have reason to believe the mercury content in the population is not nearly normal in this type of fish. We can now identify and calculate the necessary quantities. The point estimate is the sample average, which is 0.287.
+The standard error: $SE = \frac{0.069}{\sqrt{15}} = 0.0178$. Degrees of freedom: $df = n - 1 = 14$. Using the $t$ table, we identify $t^{\star}_{14} = 2.145$.
 The confidence interval is given by: $0.287 \ \pm\  2.145\times 0.0178\ \to\ (0.249, 0.325)$. We are 95\% confident that the true average mercury content of croaker white fish (Pacific) is between 0.249 and 0.325 ppm. Because the interval contains 0.275 as well as value less than 0.275, we do not have evidence that the true \emph{average} mercury content is  greater than 0.275, even though our sample average was 0.287.}
 \end{exercise}
 
@@ -312,7 +310,6 @@ Many companies are concerned about rising healthcare costs. A company may estima
 
 \begin{example}{Blood pressure oscillates with the beating of the heart, and the systolic pressure is defined as the peak pressure when a person is at rest. The average systolic blood pressure for people in the U.S. is about 130 mmHg with a standard deviation of about 25 mmHg. How large of a sample is necessary to estimate the average systolic blood pressure with a margin of error of 4 mmHg using a 95\% confidence level?}
 \label{sampleSizeComputationForSystolicBloodPressure}
-First, we frame the problem carefully. Recall that the margin of error is the part we add and subtract from the point estimate when computing a confidence interval. When the standard deviation is known, the margin of error for a 95\% confidence interval estimating a mean can be written as
 \begin{align*}
 ME_{95\%} = 1.96\times\frac{\sigma_{employee}}{\sqrt{n}}
 \end{align*}
@@ -394,7 +391,7 @@ The sample mean and sample standard deviation are 95.61 and 15.78 minutes, respe
 \begin{termBox}{\tBoxTitle[]{Hypothesis test for a mean}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the test being used.
+\item State the name of the test being used.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item 1-sample $T$ test.
@@ -481,7 +478,7 @@ $\calctextmath{\bar{x}}$ &\quad \text{the sample mean}
 \begin{tabular}{ll l ll}
 & alternative hypothesis &\hspace{5mm}&
 	$\calctextmath{\bar{x}}$ & sample mean \\
-\calctext{t} & t statistic &&
+\calctext{t} & T statistic &&
 	\calctext{sx} & sample standard deviation \\
 \calctext{p} & p-value &&
 	\calctext{n} & sample size
@@ -538,17 +535,9 @@ $\calctextmath{\bar{x}}$ &\quad \text{the sample mean} \\
 }
 \end{termBox}
 
-\Comment{substituted out this guided practice, because it is actually from a matched pairs example that is encountered in the next section}
-
-\Cut{
-\begin{exercise}In the previous example, we saw that an SAT prep company claimed that they improve students' scores by 100 points. A sample of size 30 students that used the company produced a mean 135.9 and standard deviation 82.2. Use a calculator to find the $T$ statistic and the p-value.\footnote{Choose Stats and let $\mu_0$ be 100. Choose $>$ to correspond to $H_A$. $T=2.39$ and p-value$=0.012$.}
+\begin{exercise}
+The average time for all runners who finished the Cherry Blossom Run in 2006 was 93.29 minutes. In 2012, the average time for 100 randomly selected participants was 95.61, with a standard deviation of 15.78 minutes. Use a calculator to find the $T$ statistic and p-value for the appropriate test to see if the average time for the participants in 2012 is different than it was in 2006.\footnote{Let $\mu_0$ be 93.29. Choose $\neq$ to correspond to $H_A$. $T=1.47$, $df = 99$, and p-value$=0.14$.}
 \end{exercise}
-}
-
-\Add{
-\begin{exercise}In a previous example we saw that the average time for all runners who finished the Cherry Blossom Run in 2006 was 93.29 minutes.  In 2012, the average time for 100 randomly selected participants was 95.61, with a standard deviation of 15.78 minutes.  Use a calculator to find the $T$ statistic and p-value for the appropriate test to see if the average time for the participants in 2012 is different than it was in 2006.\footnote{Let $\mu_0$ be 93.29. Choose $\neq$ to correspond to $H_A$. $T=1.47$, $df = 99$, and p-value$=0.14$.}
-\end{exercise}
-}
 
 \begin{exercise}Use a calculator to find a 95\% confidence interval for the true improvement of students that use this SAT prep company.\footnote{The interval is $(105.21, 166.59)$.}
 \end{exercise}
@@ -606,17 +595,10 @@ for each book. It is important that we always subtract using a consistent order;
 \label{diffInTextbookPricesS10}
 \end{figure}
 
-\Cut{
 \begin{exercise}
-The first difference shown in Table~\ref{textbooksDF} is computed as $27.67-27.95=-0.28$. Verify the differences are calculated correctly for observations 2 and 3.\footnote{Observation 2: $40.59 - 31.14 = 9.45$. Observation 3: $31.68 - 32.00 = -0.32$.}
+The first difference shown in Table~\ref{textbooksDF} is computed as $27.67-27.95=-0.28$. Based on the table and on the histogram of differences in Figure~\ref{diffInTextbookPricesS10}, which store tends to have the higher prices in the sample?\footnote{Because the most of the differences are positive, UCLA prices tend to be higher than Amazon. Note that it is important to identify the order in which the differences are taken.}
 \end{exercise}
-}
 
-\Add{
-\begin{exercise}
-The first difference shown in Table~\ref{textbooksDF} is computed as $27.67-27.95=-0.28$. Based on the table and on the histogram of differences in Figure~\ref{diffInTextbookPricesS10}, which store tends to have the higher prices?\footnote{Because the most of the differences are positive, UCLA prices tend to be higher than Amazon.  Note: it is important to identify the order in which the differences are taken.}
-\end{exercise}
-}
 
 \subsection{Hypothesis testing for paired data}
 
@@ -642,7 +624,7 @@ There are two scenarios: there is no difference or there is some difference in a
 \item[$H_0$:] $\mu_{diff}=0$. There is no difference in the average textbook price.
 \item[$H_A$:] $\mu_{diff} \neq 0$. There is a difference in average prices.
 \end{itemize}
-The standard deviation of all of the differences in unknown, so we will use the standard deviation of the sample differences. The observations are based on a simple random sample from less than 10\% of all books sold at the bookstore, so independence is reasonable; the distribution of differences, shown in Figure~\ref{diffInTextbookPricesS10}, is strongly skewed, but \Cut{this amount of skew is reasonable for this sized data set ($n=73$)}\Add{our sample size $n=73$ is well over 30}. Because all three conditions are reasonably satisfied, we can conclude the $T$ test is reasonable.
+The standard deviation of all of the differences in unknown, so we will use the standard deviation of the sample differences. The observations are based on a simple random sample from less than 10\% of all books sold at the bookstore, so independence is reasonable; the distribution of differences, shown in Figure~\ref{diffInTextbookPricesS10}, is strongly skewed, but the sample size $n=73$ is well over 30. Because all three conditions are reasonably satisfied, we can conclude the $T$ test is reasonable.
 
 We compute the standard error associated with $\bar{x}_{diff}$ using the standard deviation of the differences ($s_{_{diff}}=14.26$) and the number of differences ($n_{_{diff}}=73$):
 $$SE_{\bar{x}_{diff}} = \frac{s_{diff}}{\sqrt{n_{diff}}} = \frac{14.26}{\sqrt{73}} = 1.67$$
@@ -655,9 +637,9 @@ To visualize the p-value, the sampling distribution of $\bar{x}_{diff}$ is drawn
 \label{textbooksS10HTTails}
 \end{figure}
 
-To find the tail areas, we compute the test statistic, which is the t score of $\bar{x}_{diff}$ under the null condition that the actual mean difference is 0:
+To find the tail areas, we compute the test statistic, which is the $T$ score of $\bar{x}_{diff}$ under the null condition that the actual mean difference is 0:
 $$t = \frac{\bar{x}_{diff} - 0}{SE_{x_{diff}}} = \frac{12.76 - 0}{1.67} = 7.59  \quad \quad \quad df=72$$
-This t score is so large it isn't even in the table, which ensures the single tail area will be 0.0002 or smaller. A calculator gives a tail area as $4.5\times 10^{-11}$. Since the p-value corresponds to both tails in this case and the $t$ distribution is symmetric, the p-value can be estimated as twice the one-tail area:
+This $T$ score is so large it isn't even in the table, which ensures the single tail area will be 0.0002 or smaller. A calculator gives a tail area as $4.5\times 10^{-11}$. Since the p-value corresponds to both tails in this case and the $t$ distribution is symmetric, the p-value can be estimated as twice the one-tail area:
 $$\text{p-value} = 2\times (\text{one tail area}) \approx 2\times 4.5\times 10^{-11} = 9\times 10^{-11}\approx 0$$
 Because the p-value is less than 0.05, we reject the null hypothesis. We have found convincing evidence that Amazon is, on average, cheaper than the UCLA bookstore for UCLA course textbooks.
 \end{example}
@@ -665,16 +647,16 @@ Because the p-value is less than 0.05, we reject the null hypothesis. We have fo
 \begin{termBox}{\tBoxTitle[]{Hypothesis test for paired data}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the test being used.
+\item State the name of the test being used.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item matched pairs $T$ test.
+\item Matched pairs $T$ test.
 \end{itemize}
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item Paired data from a random sample or experiment
-\item Population of differences is known to be normal OR $n_{diff}\ge 30$ OR graph of sample differences is approximately symmetric with no outliers, making the assumption that population of differences is normal a reasonable one
+\item Paired data from a random sample or experiment.
+\item Population of differences is known to be normal OR $n_{diff}\ge 30$ OR graph of sample differences is approximately symmetric with no outliers, making the assumption that population of differences is normal a reasonable one.
 \end{itemize}
 \item Write the hypotheses in plain language, then set them up in mathematical notation.\vspace{-1.5mm}
 \begin{itemize}
@@ -702,12 +684,8 @@ Because the p-value is less than 0.05, we reject the null hypothesis. We have fo
 \label{satImprovementHTDataHistogram}
 \end{figure}
 
-%\CommentA{please format footnote as you like}
-
-\textPE{\newpage}
-
 \begin{exercise}An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, and so we have a difference in scores for each student. We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$ as a sample to evaluate the company's claim. The distribution of the differences, shown in Figure~\ref{satImprovementHTDataHistogram}, has mean 135.9 and standard deviation 82.2. Do these data provide convincing evidence to back up the company's claim?
-\footnote{This is \emph{paired data}, so we analyze the score differences with a matched pairs $T$ test. Conditions: This is a random sample from less than 10\% of the company's students (assuming they have more than 300 former students), so the independence condition is reasonable. $n=30\ge 30$.
+\footnote{These are \emph{paired data}, so we analyze the score differences with a matched pairs $T$ test. Conditions: This is a random sample from less than 10\% of the company's students (assuming they have more than 300 former students), so the independence condition is reasonable. $n=30\ge 30$.
 This is a one-sided test. $H_0$: student scores do not improve by more than 100 after taking the company's course. $\mu_{_{diff}} = 100$  $H_A$: students scores improve by more than 100 points on average after taking the company's course. $\mu_{_{diff}} > 100$.
 Let
 \begin{align*}
@@ -730,26 +708,7 @@ Because we rejected the null hypothesis, does this mean that taking the company'
 
 \subsection{Confidence intervals for the mean of a difference $\mu_{diff}$}
 
-\Comment{This section opened with a guided practice and no explanation}.
-\Cut{
-\begin{exercise}
-Create a 95\% confidence interval for the average price difference between books at the UCLA bookstore and books on Amazon.\footnote{Conditions have already verified and the standard error computed in Example~\ref{htForDiffInUCLAAndAmazonTextbookPrices}. To find the interval, identify $t
-^{\star}$ (round $df=72$ down to 60 to get a $t^{\star}$ of 2.00  for 95\% confidence) and plug it, the point estimate, and the standard error into the confidence interval formula:
-\begin{align*}
-\text{point estimate} \ &\pm\ t^{\star}SE \quad \quad \quad \quad df=n-1\\
-12.76 \ &\pm\ 2.00\times 1.67 \quad \quad  df=72\\
-(9.42 &\text{ , } 16.10)
-\end{align*}
-We are 95\% confident that Amazon is, on average, between \$9.42 and \$16.10 cheaper than the UCLA bookstore for UCLA course books.}
-
-\index{data!textbooks|)}
-\index{paired data|)}
-
-\end{exercise}
-}
-
-\Add{
-In the previous examples, we carried out a matched pairs $T$ test, where the null hypotheses was that the true average of the paired differences is zero.  Sometimes we want to estimate the true average of paired differences and we prefer to create a range or an interval of reasonable values for this average.  In this case, we construct a matched pairs $T$ confidence interval for the average of the paired differences.  Consider again the table of data on the difference in price between UCLA and Amazon for each of the 73 books sampled.
+In the previous examples, we carried out a matched pairs $T$ test, where the null hypothesis was that the true average of the paired differences is zero. Sometimes we want to estimate the true average of paired differences with a confidence interval, and we use a \termsub{matched pairs $T$ confidence interval}{confidence interval!matched pairs}. Consider again the table of data on the difference in price between UCLA and Amazon for each of the 73 books sampled.
 
 \begin{table}[hh]
 \centering
@@ -760,38 +719,36 @@ $n_{_{diff}}$	&\hspace{3mm}& $\bar{x}_{_{diff}}$	&\hspace{3mm}& $s_{_{diff}}$ \v
 \hline
 \end{tabular}
 \caption{Summary statistics for the price differences. There were 73 books, so there are 73 differences.}
-\label{textbooksSummaryStats}
+\label{textbooksSummaryStatsAgain}
 \end{table}
 
 We we construct a 95\% confidence interval for the average price difference between books at the UCLA bookstore and books on Amazon. Conditions have already verified and the standard error computed in Example~\ref{htForDiffInUCLAAndAmazonTextbookPrices}. To find the interval, identify $t
-^{\star}$.  Since 72 $df$ is not on the $t$ table, round the $df$ down to 60 to get a $t^{\star}$ of 2.00  for 95\% confidence.  Plugging in the $t^{\star}$, the point estimate, and the standard error into the confidence interval formula we get:
+^{\star}$. Since $df = 72$ is not on the $t$ table, round the $df$ down to 60 to get a $t^{\star}$ of 2.00  for 95\% confidence. Plugging in the $t^{\star}$, the point estimate, and the standard error into the confidence interval formula we get:
 \begin{align*}
-\text{point estimate} \ &\pm\ t^{\star}SE \quad \quad \quad \quad df=n-1\\
-12.76 \ &\pm\ 2.00\times 1.67 \quad \quad  df=72\\
-(9.42 &\text{ , } 16.10)
+\text{point estimate} \ &\pm\ t^{\star}SE
+	&df&=n-1\\
+12.76 \ &\pm\ 2.00\times 1.67
+	&df&=72\\
+(9.42 &, 16.10)
 \end{align*}
-Thus, we are 95\% confident that the UCLA bookstore is, on average, between \$9.42 and \$16.10 more expensive than Amazon for UCLA course books.  Note that this interval does not contain zero.  This is consistent with the fact that our test of hypothesis \emph{rejected} the null hypothesis that the average difference was 0.  Because our interval is entirely above 0, we have evidence that the true average difference is not 0.  Unlike the test of hypothesis, though, the confidence interval tells us about how much more expensive the UCLA bookstore is.
+We are 95\% confident that the UCLA bookstore is, on average, between \$9.42 and \$16.10 more expensive than Amazon for UCLA course books. This interval does not contain zero, so it is consistent with the fact that our earlier hypothesis test \emph{rejected} the null hypothesis that the average difference was 0. Because our interval is entirely above 0, we have evidence that the true average difference is not 0. Unlike the test of hypothesis, though, the confidence interval tells us about how much more expensive the UCLA bookstore is.
 
 \index{data!textbooks|)}
 \index{paired data|)}
 
-}
-
-\textPE{\newpage}
-
 \begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for paired data}\vspace{-1mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the CI being used.
+\item State the name of the CI being used.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item matched pairs $T$ interval
+\item Matched pairs $T$ interval
 \end{itemize}
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item Paired data from a random sample or experiment
-\item Population of diferrences is known to be normal OR $n_{diff}\ge 30$ OR graph of sample differences is approximately symmetric with no outliers, making the assumption that the population of differences is normal a reasonable one
+\item Paired data from a random sample or experiment.
+\item Population of diferrences is known to be normal OR $n_{diff}\ge 30$ OR graph of sample differences is approximately symmetric with no outliers, making the assumption that the population of differences is normal a reasonable one.
 \end{itemize}
 \item Plug in the numbers and write the interval in the form
 $$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
@@ -799,7 +756,7 @@ $$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
 \setlength{\itemsep}{0mm}
 \item The point estimate of $\bar{x}_{diff}$
 \item $df=n_{diff}-1$
-\item Plug in the critical value $t^\star$ using the t table at row $n_{diff}-1$
+\item Plug in the critical value $t^\star$ using the $t$ table at row $n_{diff}-1$
 \item Use $SE = \frac{s_{diff}}{\sqrt{n_{diff}}}$
 \end{itemize}
 \item Evaluate the CI and write in the form ( $\_$ , $\_$ ).
@@ -808,7 +765,7 @@ $$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
 \end{enumerate}}
 \end{termBox}
 
-\begin{exercise}In the SAT preparation company example, we saw that $\bar{x}_{diff}$ was 135.9 and $s_{diff}$ was 82.2. That~is, the average change in students' scores after the class was a 135.9 point increase and the SD of the change or difference in their scores was 82.2 points. Construct a 95\% confidence interval to estimate the true average change in score after taking the class. Is there evidence for the company's claim that students score an average of 100 points higher after the class?\footnote{Because this is a before and after scenario, we use a matched pairs t interval. The conditions were verified in the previous section. The confidence interval is : $135.9\ \pm 2.045(15.0) \to (105.2, 166.6)$. We can be 95\% confident that the true \emph{average} increase in scores after the prep class is between 105.2 and 166.6. Because the entire interval is above 100, there is evidence that on average students score more than 100 points higher after the course. Recall that this does not prove that the increase is \emph{due to}  the course.}
+\begin{exercise}In the SAT preparation company example, we saw that $\bar{x}_{diff}$ was 135.9 and $s_{diff}$ was 82.2. That~is, the average change in students' scores after the class was a 135.9 point increase and the SD of the change or difference in their scores was 82.2 points. Construct a 95\% confidence interval to estimate the true average change in score after taking the class. Is there evidence for the company's claim that students score an average of 100 points higher after the class?\footnote{Because this is a before and after scenario, we use a matched pairs $t$ interval. The conditions were verified in the previous section. The confidence interval is : $135.9\ \pm 2.045(15.0) \to (105.2, 166.6)$. We can be 95\% confident that the true \emph{average} increase in scores after the prep class is between 105.2 and 166.6. Because the entire interval is above 100, there is evidence that on average students score more than 100 points higher after the course. Recall that this does not prove that the increase is \emph{due to}  the course.}
 \end{exercise}
 
 \begin{exercise}The 95\% confidence interval in the previous exercise was calculated as (105.2, 166.6). True or false: about 95\% of the students that take the class saw an increase of at least 105.2 points.\footnote{False. This confidence interval estimates the \emph{average} increase - not the increase of individuals. As can be seen in Figure~\ref{satImprovementHTDataHistogram}, much greater than 5\% saw an increase of less than 105.2 points. Some individuals even saw a \emph{decrease} in their score as indicated by the negative differences.}
@@ -817,14 +774,9 @@ $$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
 
 \subsection{Calculator: the matched pairs $T$ test and CI}
 
-\Comment{D - necessary to repeat all of these instructions? Can we just say something to the effect of, ``Compute the difference of each paired observation, and use the instructions for the 1-sample cases to analyze the results.''?}
+The matched pairs $T$ test and CI proceed the same way as the 1-sample $T$ test and confidence interval. Instead of using the data or the summary statistics from the single sample, make sure to use the data of \emph{differences} or the summary statistics for the \emph{differences}.
 
-\Comment{L: I think I would still include instructions.  This way they don't have to page back to do the examples, and also, it tells them how to use L3 to find the differences.}
-
-\Add{The matched pairs $T$ test and CI proceed the same way as the 1-sample $T$ test and confidence interval.  Instead of using the data or the summary statistics from the single sample, make sure to use the data of \emph{differences} or the summary statistics for the \emph{differences}.
-}
-
-\begin{termBox}{\tBoxTitle{TI-83/84: matched pairs $T$ test}
+\begin{termBox}{\tBoxTitle{TI-83/84: Matched pairs $T$ test}
 Use \textbf{STAT, TESTS, T-Test}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -894,7 +846,7 @@ $\bar{x}$ &\quad \text{the sample mean of the differences} \\
 \label{textbooksDFPartial}
 \end{table}
 
-\begin{exercise}Use the first 7 values of the ~\ref{textbooksDF} data set produced above and calculate the t score and p-value to test whether, on average, Amazon's textbook price is cheaper that UCLA's price.\footnote{Enter the data into L1  and L2 on a calculator. Let $L3 = L1-L2$. After selecting TTest, choose DATA, let $\mu_0$ be 0, and let List be \textbf{L3}. Let Freq be 1 and  select $>$. $T=3.076$ and p-value$=0.0109$.}\end{exercise}
+\begin{exercise}Use the first 7 values of the ~\ref{textbooksDF} data set produced above and calculate the $T$ score and p-value to test whether, on average, Amazon's textbook price is cheaper that UCLA's price.\footnote{Enter the data into L1  and L2 on a calculator. Let $L3 = L1-L2$. After selecting TTest, choose DATA, let $\mu_0$ be 0, and let List be \textbf{L3}. Let Freq be 1 and  select $>$. $T=3.076$ and p-value$=0.0109$.}\end{exercise}
 
 \begin{exercise}Use the first 7 values of the ~\ref{textbooksDF} data set produced above and calculate a 95\% confidence interval for the average difference in textbook price between Amazon and UCLA.\footnote{The data have already been entered into L1  and L2 and the differences should be in L3. After selecting TInterval, choose DATA, let List be \textbf{L3}. Let Freq be 1 and let C-Level be 0.95. The interval is (.80354, 7.0507).}\end{exercise}
 
@@ -1056,7 +1008,7 @@ As before, we provide a summary of the steps to perform when carrying out such a
 \begin{termBox}{\tBoxTitle[]{Hypothesis test for the difference of two means}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the test being used.
+\item State the name of the test being used.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item 2-sample $T$ test.
@@ -1064,8 +1016,8 @@ As before, we provide a summary of the steps to perform when carrying out such a
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item 2 independent random samples OR 2 randomly allocated treatments
-\item Both populations known to be normal OR $n_1 \ge 30 \text{ and } n_2\ge 30$ OR graphs of both samples are approximately symmetric with no outliers, making the assumption that the populations are normal a reasonable one
+\item 2 independent random samples OR 2 randomly allocated treatments.
+\item Both populations known to be normal OR $n_1 \ge 30 \text{ and } n_2\ge 30$ OR graphs of both samples are approximately symmetric with no outliers, making the assumption that the populations are normal a reasonable one.
 \end{itemize}
 \item Write the hypotheses in plain language, then set them up in mathematical notation.\vspace{-1.5mm}
 \begin{itemize}
@@ -1109,8 +1061,6 @@ control		& 9		& -4.33		& 2.76  	 \\
 \label{stemCellTherapyForHearts}
 \end{figure}
 
-\textPE{\newpage}
-
 \begin{example} {\label{exerciseToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep}
 Do embryonic stem cells (ESCs) help improve heart function following a heart attack? Table~\ref{summaryStatsForSheepHeartDataWhoReceivedMiceESCs} contains summary statistics for an experiment to test ESCs in sheep that had a heart attack. Each of these sheep was randomly assigned to the ESC or control group, and the change in their hearts' pumping capacity was measured. A positive value generally corresponds to increased pumping capacity, which suggests a stronger recovery. The sample data is graphed in Figure~\ref{stemCellTherapyForHearts}. Use the given information and an appropriate an appopriate statistical test to answer the research question.
 }
@@ -1128,8 +1078,6 @@ Let $\alpha=0.05$. Now we compute the sample difference, the standard error for 
 \end{align*}
 Using a calculator, $df=12.2$ and p-value = $8.4\text{x}10^{-4}$. The p-value is much less than 0.05, so we reject the null hypothesis. The data provide convincing evidence that embryonic stem cells improve the heart's pumping function in sheep that have suffered a heart attack.
 \end{example}
-
-\textPE{\pagebreak}
 
 
 \subsection{Confidence intervals for $\mu_1-\mu_2$}
@@ -1165,15 +1113,15 @@ That is, we are 99\% confident that the true improvement in heart pumping functi
 \begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for the difference of two means}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the CI being used.
+\item State the name of the CI being used.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item 2-sample $T$ interval.
 \end{itemize}
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
-\item 2 independent random samples OR 2 randomly allocated treatments
-\item Both populations are known to be normal OR $n_1 \text{ and } n_2\ge 30$ OR graphs of both samples are approximately symmetric with no outliers, making the assumption that the populations are normal a reasonable one
+\item 2 independent random samples OR 2 randomly allocated treatments.
+\item Both populations are known to be normal OR $n_1 \text{ and } n_2\ge 30$ OR graphs of both samples are approximately symmetric with no outliers, i.e. the assumption that the populations are normal is reasonable.
 \end{itemize}
 \item Plug in the numbers and write the interval in the form
 $$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
@@ -1207,7 +1155,8 @@ B		& 27		& 74.1		& 20		& 32		& 100 \\
 \label{summaryStatsForTwoVersionsOfExams2nd}
 \end{table}
 
-\begin{example}{Construct a 90\% confidence interval for the difference in average scores. At this confidence level, is there evidence tha$T$ test was more difficult than the other?}We have two randomly allocated treatments (tests) and the scores for both groups do not show excessive skew, so we can assume that the population distributions are approximately normal. The point estimate is $\bar{x}_A - \bar{x}_B = 5.3$. The standard error of the estimate can be calculated~as
+\begin{example}{Construct a 90\% confidence interval for the difference in average scores. At this confidence level, is there evidence that one test was more difficult than the other?}
+We have two randomly allocated treatments (tests) and the scores for both groups do not show excessive skew, so we can assume that the population distributions are approximately normal. The point estimate is $\bar{x}_A - \bar{x}_B = 5.3$. The standard error of the estimate can be calculated~as
 \begin{eqnarray*}
 SE = \sqrt{\frac{14^2}{30} + \frac{20^2}{27}} = 4.62
 \end{eqnarray*}
@@ -1215,8 +1164,6 @@ A calculator gives the degrees of freedom as 45.97.
 The confidence interval is given by $5.3\ \pm \ 1.684(4.62)\to (-2.5, 13.1)$. Because the interval contains both positive and negative values the data do not convincingly show that one exam version is more difficult than the other, and the teacher should not be convinced that she should add points to the Version B exam scores.
 \index{data!two exam comparison|)}
 \end{example}
-
-\textPE{\newpage}
 
 
 \subsection{Calculator: The 2-sample $T$ test and CI\vspace{-3mm}}
@@ -1355,7 +1302,7 @@ $\bar{x}_2$
 }
 \end{termBox}
 
-\begin{exercise}Use the data from the ESC experiment shown in Table~\ref{summaryStatsForSheepHeartDataWhoReceivedMiceESCsForCalcSubsection} and a calculator to \Add{find the appropriate degrees of freedom and }construct a 90\% confidence interval.\footnote{The interval is $(4.3543, 11.307)$ with $df=12.2$.}
+\begin{exercise}Use the data from the ESC experiment shown in Table~\ref{summaryStatsForSheepHeartDataWhoReceivedMiceESCsForCalcSubsection} and a calculator to find the appropriate degrees of freedom and construct a 90\% confidence interval.\footnote{The interval is $(4.3543, 11.307)$ with $df=12.2$.}
 \end{exercise}
 
 \begin{table}
@@ -1400,8 +1347,6 @@ Generally we must check three conditions on the data before performing ANOVA:
 \end{itemize}
 When these three conditions are met, we may perform an ANOVA to determine whether the data provide strong evidence against the null hypothesis that all the $\mu_i$ are equal.
 
-\textPE{\newpage}
-
 \begin{example}{College departments commonly run multiple lectures of the same introductory course each semester because of high demand. Consider a statistics department that runs three lectures of an introductory statistics course. We might like to determine whether there are statistically significant differences in first exam scores in these three classes ($A$, $B$, and $C$). Describe appropriate hypotheses to determine whether there are any differences between the three classes.} \label{firstExampleForThreeStatisticsClassesAndANOVA}
 The hypotheses may be written in the following form:
 \begin{itemize}
@@ -1424,8 +1369,6 @@ Strong evidence favoring the alternative hypothesis in ANOVA is described by unu
 
 Any real difference in the means of groups I, II, and III is difficult to discern, because the data within each group are very volatile relative to any differences in the average outcome. On the other hand, it appears there are differences in the centers of groups IV, V, and VI. For instance, group V appears to have a higher mean than that of the other two groups. Investigating groups IV, V, and VI, we see the differences in the groups' centers are noticeable because those differences are large \emph{relative to the variability in the individual observations within each group}.
 \end{example}
-
-\textPE{\newpage}
 
 
 \subsection{Is batting performance related to player position in MLB?}
@@ -1508,8 +1451,6 @@ Sample SD ($s_i$)	& 0.029 & 0.037 & 0.036 & 0.045 \\
 \caption{Side-by-side box plot of the on-base percentage for 327 players across four groups. There is one prominent outlier visible in the infield group, but with 154 observations in the infield group, this outlier is not a concern.}
 \label{mlbANOVABoxPlot}
 \end{figure}
-
-\textPE{\newpage}
 
 \begin{example}{The largest difference between the sample means is between the designated hitter and the catcher positions. Consider again the original hypotheses:
 \begin{itemize}
@@ -1635,7 +1576,7 @@ There are three conditions we must check for an ANOVA analysis: all observations
 
 \index{significance level!multiple comparisons|(}
 
-When we reject the null hypothesis in an ANOVA analysis, we might wonder, which of these groups have different means? To answer this question, we compare the means of each possible pair of groups. For instance, if there are three groups and there is strong evidence that there are some differences in the group means, there are three comparisons to make: group 1 to group 2, group 1 to group 3, and group 2 to group 3. These comparisons can be accomplished using a two-sample $t$ test, but we use a modified significance level and a pooled estimate of the standard deviation across groups. Usually this pooled standard deviation can be found in the ANOVA table, e.g. along the bottom of Table~\ref{anovaSummaryTableForOBPAgainstPosition}.
+When we reject the null hypothesis in an ANOVA analysis, we might wonder, which of these groups have different means? To answer this question, we compare the means of each possible pair of groups. For instance, if there are three groups and there is strong evidence that there are some differences in the group means, there are three comparisons to make: group 1 to group 2, group 1 to group 3, and group 2 to group 3. These comparisons can be accomplished using a two-sample $T$ test, but we use a modified significance level and a pooled estimate of the standard deviation across groups. Usually this pooled standard deviation can be found in the ANOVA table, e.g. along the bottom of Table~\ref{anovaSummaryTableForOBPAgainstPosition}.
 
 \textB{\newpage}
 
@@ -1688,7 +1629,7 @@ lecture & 2 & 1290.11 & 645.06 & 3.48 & 0.0330 \\
 \label{anovaSummaryTableForMidtermData}
 \end{table}
 
-There is strong evidence that the different means in each of the three classes is not simply due to chance. We might wonder, which of the classes are actually different? As discussed in earlier chapters, a two-sample $t$ test could be used to test for differences in each possible pair of groups. However, one pitfall was discussed in Example~\vref{multipleComparisonExampleThatIncludesDiscussionOfClassrooms}: when we run so many tests, the Type~1 Error rate increases. This issue is resolved by using a modified significance level. \vspaceB{-1mm}
+There is strong evidence that the different means in each of the three classes is not simply due to chance. We might wonder, which of the classes are actually different? As discussed in earlier chapters, a two-sample $T$ test could be used to test for differences in each possible pair of groups. However, one pitfall was discussed in Example~\vref{multipleComparisonExampleThatIncludesDiscussionOfClassrooms}: when we run so many tests, the Type~1 Error rate increases. This issue is resolved by using a modified significance level. \vspaceB{-1mm}
 
 \begin{termBox}{\tBoxTitle{Multiple comparisons and the Bonferroni correction for $\alpha$}
 The scenario of testing many pairs of groups is called \term{multiple comparisons}. The \term{Bonferroni correction} suggests that a more stringent significance level is more appropriate for these tests:
