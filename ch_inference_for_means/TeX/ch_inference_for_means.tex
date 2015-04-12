@@ -269,7 +269,11 @@ where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confiden
 \begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for a mean}\vspace{-1mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the CI being used: 1-sample t interval.
+\item State the name of the CI being used.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item 1-sample $T$ interval.
+\end{itemize}
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
@@ -277,11 +281,17 @@ where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confiden
 \item Population is known to be normal OR $n\ge 30$ OR graph of sample is approximately symmetric with no outliers, making the assumption that the population is normal a reasonable one
 \end{itemize}
 \item Plug in the numbers and write the interval in the form
-$$\text{point estimate } \pm \text{ critical value}\times \text{SE of estimate}$$
-Use a point estimate of $\bar{x}$, $df = n-1$, find critical value $t^\star$ using the t table at row$=n-1$, and compute $SE = \frac{s}{\sqrt{n}}$.
+$$\text{point estimate } \pm  t^\star \times \text{SE of estimate}$$
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item The point estimate is $\bar{x}$
+\item $df = n-1$
+\item Plug in a critical value $t^\star$ using the t table at row$=n-1$
+\item Use $SE = \frac{s}{\sqrt{n}}$.
 \item Evaluate the CI and write in the form ( $\_$ , $\_$ ).
+\end{itemize}
 \item Interpret the interval:  ``We are [XX]\% confident that the true average of [...] is between [...] and [...]."
-\item State your conclusion to the original question.
+\item State the conclusion to the original question.
 \end{enumerate}}
 \end{termBox}
 
@@ -312,7 +322,7 @@ The challenge in this case is to find the sample size $n$ so that this margin of
 \end{align*}
 To proceed and solve for $n$, we substitute the best estimate we have for $\sigma_{employee}$: 25.
 \begin{align*}
-1.96\times \frac{\sigma_{employee}}{\sqrt{n}} \approx 1.96\times\frac{25}{\sqrt{n}}
+1.96\times\frac{25}{\sqrt{n}}
 	&\leq 4 \\
 1.96\times\frac{25}{4} &\leq \sqrt{n} \\
 \left(1.96\times\frac{25}{4}\right)^2 &\leq n \\
@@ -384,7 +394,11 @@ The sample mean and sample standard deviation are 95.61 and 15.78 minutes, respe
 \begin{termBox}{\tBoxTitle[]{Hypothesis test for a mean}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the test being used: 1-sample t test.
+\item State the name of the test being used.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item 1-sample $T$ test.
+\end{itemize}
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
@@ -398,15 +412,19 @@ The sample mean and sample standard deviation are 95.61 and 15.78 minutes, respe
 \item H$_0: \mu \ne \text{or} < \text{or} > \mu_0$
 \end{itemize}
 \item Identify the significance level $\alpha$.
-\item Calculate the test statistic and $df$.
-$$\text{t} = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$$
-The point estimate is $\bar{x}$, $SE = \frac{s}{\sqrt{n}}$, and $df=n-1$.
+\item Calculate the test statistic and $df$: $T = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item The point estimate is $\bar{x}$
+\item $SE = \frac{s}{\sqrt{n}}$
+\item $df=n-1$
+\end{itemize}
 \item Find the p-value, compare it to $\alpha$, and state whether to reject or not reject the null hypothesis.
-\item Write your conclusion.
+\item Write the conclusion in the context of the question.
 \end{enumerate}}
 \end{termBox}
 
-\begin{exercise}Recall the example about the mercury content in croaker white fish (Pacific). Based on a sample of 15, a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. Carry out an appropriate test to determine 0.25 is a reasonable value for the average mercury content.\footnote{We should carry out a 1-sample t test. The conditions have already been checked. $H_0: \mu=0.25$; The true average mercury content is 0.25 ppm. $H_A: \mu \ne 0.25$; The true average mercury content is not equal to 0.25 ppm. Let $\alpha=0.05$. $SE = \frac{0.069}{\sqrt{15}} = 0.0178$. $t=\frac{0.287-0.25}{0.0178}=2.07$  $df=15-1=14$. p-value$=0.057>0.05$, so we do not reject the null hypothesis. We do not have sufficient evidence that the average mercury content in croaker white fish is not 0.25.}
+\begin{exercise}Recall the example about the mercury content in croaker white fish (Pacific). Based on a sample of 15, a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. Carry out an appropriate test to determine if 0.25 is a reasonable value for the average mercury content.\footnote{We should carry out a 1-sample $T$ test. The conditions have already been checked. $H_0: \mu=0.25$; The true average mercury content is 0.25 ppm. $H_A: \mu \ne 0.25$; The true average mercury content is not equal to 0.25 ppm. Let $\alpha=0.05$. $SE = \frac{0.069}{\sqrt{15}} = 0.0178$. $T=\frac{0.287-0.25}{0.0178}=2.07$  $df=15-1=14$. p-value$=0.057>0.05$, so we do not reject the null hypothesis. We do not have sufficient evidence that the average mercury content in croaker white fish is not 0.25.}
 \end{exercise}
 
 %\CommentA{for the next edition, this example should be put sooner and in the context of proportions. thought of that after I had already written this.}
@@ -414,9 +432,9 @@ The point estimate is $\bar{x}$, $SE = \frac{s}{\sqrt{n}}$, and $df=n-1$.
 \begin{example}{Recall that the 95\% confidence interval for the average mercuy content in croaker white fish was (0.249, 0.325). Discuss whether the conclusion of the test of hypothesis is consistent or inconsistent with the conclusion of the hypothesis test.}It is consistent because 0.25 is located (just barely) inside the confidence interval, so it is a reasonable value. Our hypothesis test did not reject the hypothesis that $\mu=0.25$, implying that it is a plausible value. Note, though, that the hypothesis test did not \emph{prove} that $\mu=.25$. A hypothesis cannot prove that the mean is a specific value. It can only find evidence that it is not a specific value. Note also that the p-value was close to the cutoff of 0.05. This is because the value 0.25 was close to edge of the confidence interval.
 \end{example}
 
-\subsection{Calculator: The 1-sample t test and CI}
+\subsection{Calculator: The 1-sample $T$ test and CI}
 
-\begin{termBox}{\tBoxTitle{\videohref{ti84_1_mean_HT} TI calculator: Carrying out the 1-sample t test}
+\begin{termBox}{\tBoxTitle{\videohref{ti84_1_mean_HT} TI-83/84: 1-sample $T$ test}
 Use \textbf{STAT, TESTS, T-Test}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -443,19 +461,21 @@ $\calctextmath{\bar{x}}$ &\quad \text{the sample mean}
 }
 \end{termBox}
 
-\begin{termBox}{\tBoxTitle[]{\videohref{casio_1_mean_inference} Casio fx-9750GII: 1-sample t test}
+\begin{termBox}{\tBoxTitle[]{\videohref{casio_1_mean_inference} Casio fx-9750GII: 1-sample $T$ test}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
+\item If necessary, enter the data into a list.
 \item Choose the \calctext{TEST} option (\calcbutton{F3} button).
 \item Choose the \calctext{t} option (\calcbutton{F2} button).
-\item Choose the \calctext{1-S} option (\calcbutton{F3} button).
-\item If necessary, select the \calctext{Var} option (\calcbutton{F2}), or use  the data list desired.
+\item Choose the \calctext{1-S} option (\calcbutton{F1} button).
+\item Choose either the \calctext{Var} option (\calcbutton{F2}) or enter the data in using the \calctext{List} option.
 \item Specify the test details:
   \begin{itemize}
   \setlength{\itemsep}{0mm}
   \item Specify the sidedness of the test using the \calcbutton{F1}, \calcbutton{F2}, and \calcbutton{F3} keys.
-  \item Enter the null value, $\calctextmath{\mu}$\calctext{0}, the sample mean ($\calctextmath{\bar{x}}$), sample standard deviation (\calctext{sx}), and sample size (\calctext{n}).
+  \item Enter the null value, $\calctextmath{\mu}$\calctext{0}.
+  \item If using the \calctext{Var} option, enter the summary statistics. If using \calctext{List}, specify the list and leave \calctext{Freq} values at \calctext{1}.
   \end{itemize}
 \item Hit the \calcbutton{EXE} button, which returns \\[1mm]
 \begin{tabular}{ll l ll}
@@ -470,7 +490,7 @@ $\calctextmath{\bar{x}}$ &\quad \text{the sample mean}
 }
 \end{termBox}
 
-\begin{termBox}{\tBoxTitle{\videohref{ti84_1_mean_CI} TI calculator: Calculating the 1-sample $t$ confidence interval}
+\begin{termBox}{\tBoxTitle{\videohref{ti84_1_mean_CI} TI-83/84: 1-sample $T$ confidence interval}
 Use \calcbutton{STAT}, \calctext{TESTS}, \calctext{TInterval}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -494,17 +514,18 @@ $\calctextmath{\bar{x}}$ &\quad \text{the sample mean} \\
 }
 \end{termBox}
 
-\begin{termBox}{\tBoxTitle[]{\videohref{casio_1_mean_inference} Casio fx-9750GII: 1-sample confidence interval}
+\begin{termBox}{\tBoxTitle[]{\videohref{casio_1_mean_inference} Casio fx-9750GII: 1-sample $T$ confidence interval}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
-\item Choose the \calctext{INTR} option (\calcbutton{F3} button), \calctext{t} (\calcbutton{F2} button), and \calctext{1-S} (\calcbutton{F3} button).
-\item If necessary, select the \calctext{Var} option (\calcbutton{F2}), or use  the data list desired.
+\item If necessary, enter the data into a list.
+\item Choose the \calctext{INTR} option (\calcbutton{F3} button), \calctext{t} (\calcbutton{F2} button), and \calctext{1-S} (\calcbutton{F1} button).
+\item Choose either the \calctext{Var} option (\calcbutton{F2}) or enter the data in using the \calctext{List} option.
 \item Specify the interval details:
   \begin{itemize}
   \setlength{\itemsep}{0mm}
   \item Confidence level of interest for \calctext{C-Level}.
-  \item Enter the sample mean ($\calctextmath{\bar{x}}$), sample standard deviation (\calctext{sx}), and sample size (\calctext{n}).
+  \item If using the \calctext{Var} option, enter the summary statistics. If using \calctext{List}, specify the list and leave \calctext{Freq} value at \calctext{1}.
   \end{itemize}
 \item Hit the \calcbutton{EXE} button, which returns \\[1mm]
 \begin{tabular}{ll}
@@ -517,8 +538,17 @@ $\calctextmath{\bar{x}}$ &\quad \text{the sample mean} \\
 }
 \end{termBox}
 
-\begin{exercise}In the previous example, we saw that an SAT prep company claimed that they improve students' scores by 100 points. A sample of size 30 students that used the company produced a mean 135.9 and standard deviation 82.2. Use a calculator to find the t statistic and the p-value.\footnote{Choose Stats and let $\mu_0$ be 100. Choose $>$ to correspond to $H_A$. $t=2.39$ and p-value$=0.012$.}
+\Comment{substituted out this guided practice, because it is actually from a matched pairs example that is encountered in the next section}
+
+\Cut{
+\begin{exercise}In the previous example, we saw that an SAT prep company claimed that they improve students' scores by 100 points. A sample of size 30 students that used the company produced a mean 135.9 and standard deviation 82.2. Use a calculator to find the $T$ statistic and the p-value.\footnote{Choose Stats and let $\mu_0$ be 100. Choose $>$ to correspond to $H_A$. $T=2.39$ and p-value$=0.012$.}
 \end{exercise}
+}
+
+\Add{
+\begin{exercise}In a previous example we saw that the average time for all runners who finished the Cherry Blossom Run in 2006 was 93.29 minutes.  In 2012, the average time for 100 randomly selected participants was 95.61, with a standard deviation of 15.78 minutes.  Use a calculator to find the $T$ statistic and p-value for the appropriate test to see if the average time for the participants in 2012 is different than it was in 2006.\footnote{Let $\mu_0$ be 93.29. Choose $\neq$ to correspond to $H_A$. $T=1.47$, $df = 99$, and p-value$=0.14$.}
+\end{exercise}
+}
 
 \begin{exercise}Use a calculator to find a 95\% confidence interval for the true improvement of students that use this SAT prep company.\footnote{The interval is $(105.21, 166.59)$.}
 \end{exercise}
@@ -576,9 +606,17 @@ for each book. It is important that we always subtract using a consistent order;
 \label{diffInTextbookPricesS10}
 \end{figure}
 
+\Cut{
 \begin{exercise}
 The first difference shown in Table~\ref{textbooksDF} is computed as $27.67-27.95=-0.28$. Verify the differences are calculated correctly for observations 2 and 3.\footnote{Observation 2: $40.59 - 31.14 = 9.45$. Observation 3: $31.68 - 32.00 = -0.32$.}
 \end{exercise}
+}
+
+\Add{
+\begin{exercise}
+The first difference shown in Table~\ref{textbooksDF} is computed as $27.67-27.95=-0.28$. Based on the table and on the histogram of differences in Figure~\ref{diffInTextbookPricesS10}, which store tends to have the higher prices?\footnote{Because the most of the differences are positive, UCLA prices tend to be higher than Amazon.  Note: it is important to identify the order in which the differences are taken.}
+\end{exercise}
+}
 
 \subsection{Hypothesis testing for paired data}
 
@@ -604,7 +642,7 @@ There are two scenarios: there is no difference or there is some difference in a
 \item[$H_0$:] $\mu_{diff}=0$. There is no difference in the average textbook price.
 \item[$H_A$:] $\mu_{diff} \neq 0$. There is a difference in average prices.
 \end{itemize}
-The standard deviation of all of the differences in unknown, so we will use the standard deviation of the sample differences. The observations are based on a simple random sample from less than 10\% of all books sold at the bookstore, so independence is reasonable; the distribution of differences, shown in Figure~\ref{diffInTextbookPricesS10}, is strongly skewed, but this amount of skew is reasonable for this sized data set ($n=73$). Because all three conditions are reasonably satisfied, we can conclude the t test is reasonable.
+The standard deviation of all of the differences in unknown, so we will use the standard deviation of the sample differences. The observations are based on a simple random sample from less than 10\% of all books sold at the bookstore, so independence is reasonable; the distribution of differences, shown in Figure~\ref{diffInTextbookPricesS10}, is strongly skewed, but \Cut{this amount of skew is reasonable for this sized data set ($n=73$)}\Add{our sample size $n=73$ is well over 30}. Because all three conditions are reasonably satisfied, we can conclude the $T$ test is reasonable.
 
 We compute the standard error associated with $\bar{x}_{diff}$ using the standard deviation of the differences ($s_{_{diff}}=14.26$) and the number of differences ($n_{_{diff}}=73$):
 $$SE_{\bar{x}_{diff}} = \frac{s_{diff}}{\sqrt{n_{diff}}} = \frac{14.26}{\sqrt{73}} = 1.67$$
@@ -627,7 +665,11 @@ Because the p-value is less than 0.05, we reject the null hypothesis. We have fo
 \begin{termBox}{\tBoxTitle[]{Hypothesis test for paired data}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the test being used: matched pairs t test.
+\item State the name of the test being used.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item matched pairs $T$ test.
+\end{itemize}
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
@@ -641,9 +683,13 @@ Because the p-value is less than 0.05, we reject the null hypothesis. We have fo
 \item H$_0: \mu_{diff} \ne \text{or} < \text{or} > 0$
 \end{itemize}
 \item Identify the significance level $\alpha$.
-\item Calculate the test statistic and $df$.
-$$\text{t} = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$$
-Where the point estimate is $\bar{x}_{diff}$, $SE = \frac{s_{diff}}{\sqrt{n_{diff}}}$, and $df=n_{diff}-1$.
+\item Calculate the test statistic and $df$: $\text{t} = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item The point estimate is $\bar{x}_{diff}$
+\item Use $SE = \frac{s_{diff}}{\sqrt{n_{diff}}}$
+\item $df=n_{diff}-1$
+\end{itemize}
 \item Find the p-value and compare it to $\alpha$ to determine whether to reject or not reject $H_0$.
 \item Write the conclusion in the context of the question.
 \end{enumerate}}
@@ -661,12 +707,12 @@ Where the point estimate is $\bar{x}_{diff}$, $SE = \frac{s_{diff}}{\sqrt{n_{dif
 \textPE{\newpage}
 
 \begin{exercise}An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, and so we have a difference in scores for each student. We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$ as a sample to evaluate the company's claim. The distribution of the differences, shown in Figure~\ref{satImprovementHTDataHistogram}, has mean 135.9 and standard deviation 82.2. Do these data provide convincing evidence to back up the company's claim?
-\footnote{This is \emph{paired data}, so we analyze the score differences with a matched pairs t test. Conditions: This is a random sample from less than 10\% of the company's students (assuming they have more than 300 former students), so the independence condition is reasonable. $n=30\ge 30$.
+\footnote{This is \emph{paired data}, so we analyze the score differences with a matched pairs $T$ test. Conditions: This is a random sample from less than 10\% of the company's students (assuming they have more than 300 former students), so the independence condition is reasonable. $n=30\ge 30$.
 This is a one-sided test. $H_0$: student scores do not improve by more than 100 after taking the company's course. $\mu_{_{diff}} = 100$  $H_A$: students scores improve by more than 100 points on average after taking the company's course. $\mu_{_{diff}} > 100$.
 Let
 \begin{align*}
 \alpha&=0.05
-&&SE = \frac{82.2}{\sqrt{30}} = 15.0
+&&SE_diff = \frac{82.2}{\sqrt{30}} = 15.0
 &&T = \frac{135.9-100}{15.0}=2.4
 &&\text{with }df=29
 \end{align*}
@@ -682,8 +728,10 @@ Because we rejected the null hypothesis, does this mean that taking the company'
 
 
 
-\subsection{Confidence intervals for the mean of a difference $\mu_{1-2}$}
+\subsection{Confidence intervals for the mean of a difference $\mu_{diff}$}
 
+\Comment{This section opened with a guided practice and no explanation}.
+\Cut{
 \begin{exercise}
 Create a 95\% confidence interval for the average price difference between books at the UCLA bookstore and books on Amazon.\footnote{Conditions have already verified and the standard error computed in Example~\ref{htForDiffInUCLAAndAmazonTextbookPrices}. To find the interval, identify $t
 ^{\star}$ (round $df=72$ down to 60 to get a $t^{\star}$ of 2.00  for 95\% confidence) and plug it, the point estimate, and the standard error into the confidence interval formula:
@@ -698,13 +746,47 @@ We are 95\% confident that Amazon is, on average, between \$9.42 and \$16.10 che
 \index{paired data|)}
 
 \end{exercise}
+}
+
+\Add{
+In the previous examples, we carried out a matched pairs $T$ test, where the null hypotheses was that the true average of the paired differences is zero.  Sometimes we want to estimate the true average of paired differences and we prefer to create a range or an interval of reasonable values for this average.  In this case, we construct a matched pairs $T$ confidence interval for the average of the paired differences.  Consider again the table of data on the difference in price between UCLA and Amazon for each of the 73 books sampled.
+
+\begin{table}[hh]
+\centering
+\begin{tabular}{ccccc}
+\hline
+$n_{_{diff}}$	&\hspace{3mm}& $\bar{x}_{_{diff}}$	&\hspace{3mm}& $s_{_{diff}}$ \vspace{1mm}\\
+73			&& 12.76				&& 14.26 \\
+\hline
+\end{tabular}
+\caption{Summary statistics for the price differences. There were 73 books, so there are 73 differences.}
+\label{textbooksSummaryStats}
+\end{table}
+
+We we construct a 95\% confidence interval for the average price difference between books at the UCLA bookstore and books on Amazon. Conditions have already verified and the standard error computed in Example~\ref{htForDiffInUCLAAndAmazonTextbookPrices}. To find the interval, identify $t
+^{\star}$.  Since 72 $df$ is not on the $t$ table, round the $df$ down to 60 to get a $t^{\star}$ of 2.00  for 95\% confidence.  Plugging in the $t^{\star}$, the point estimate, and the standard error into the confidence interval formula we get:
+\begin{align*}
+\text{point estimate} \ &\pm\ t^{\star}SE \quad \quad \quad \quad df=n-1\\
+12.76 \ &\pm\ 2.00\times 1.67 \quad \quad  df=72\\
+(9.42 &\text{ , } 16.10)
+\end{align*}
+Thus, we are 95\% confident that the UCLA bookstore is, on average, between \$9.42 and \$16.10 more expensive than Amazon for UCLA course books.  Note that this interval does not contain zero.  This is consistent with the fact that our test of hypothesis \emph{rejected} the null hypothesis that the average difference was 0.  Because our interval is entirely above 0, we have evidence that the true average difference is not 0.  Unlike the test of hypothesis, though, the confidence interval tells us about how much more expensive the UCLA bookstore is.
+
+\index{data!textbooks|)}
+\index{paired data|)}
+
+}
 
 \textPE{\newpage}
 
 \begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for paired data}\vspace{-1mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the CI being used: matched pairs t interval.
+\item State the name of the CI being used.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item matched pairs $T$ interval
+\end{itemize}
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
@@ -712,24 +794,37 @@ We are 95\% confident that Amazon is, on average, between \$9.42 and \$16.10 che
 \item Population of diferrences is known to be normal OR $n_{diff}\ge 30$ OR graph of sample differences is approximately symmetric with no outliers, making the assumption that the population of differences is normal a reasonable one
 \end{itemize}
 \item Plug in the numbers and write the interval in the form
-$$\text{point estimate } \pm \text{ critical value}\times \text{SE of estimate}$$
-Use the point estimate of $\bar{x}_{diff}$, $df=n_{diff}-1$, find critical value $t^\star$ using the t table at row $n_{diff}-1$, and compute the $SE = \frac{s_{diff}}{\sqrt{n_{diff}}}$.
+$$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item The point estimate of $\bar{x}_{diff}$
+\item $df=n_{diff}-1$
+\item Plug in the critical value $t^\star$ using the t table at row $n_{diff}-1$
+\item Use $SE = \frac{s_{diff}}{\sqrt{n_{diff}}}$
+\end{itemize}
 \item Evaluate the CI and write in the form ( $\_$ , $\_$ ).
-\item Interpret the interval: ``We are [XX]\% confident that the true mean of the difference in [...] is between [...] and [...]."
-\item State your conclusion to the original question.
+\item Interpret the interval: ``We are [XX]\% confident that the true mean of the differences in [...] is between [...] and [...]."
+\item State the conclusion to the original question.
 \end{enumerate}}
 \end{termBox}
 
 \begin{exercise}In the SAT preparation company example, we saw that $\bar{x}_{diff}$ was 135.9 and $s_{diff}$ was 82.2. That~is, the average change in students' scores after the class was a 135.9 point increase and the SD of the change or difference in their scores was 82.2 points. Construct a 95\% confidence interval to estimate the true average change in score after taking the class. Is there evidence for the company's claim that students score an average of 100 points higher after the class?\footnote{Because this is a before and after scenario, we use a matched pairs t interval. The conditions were verified in the previous section. The confidence interval is : $135.9\ \pm 2.045(15.0) \to (105.2, 166.6)$. We can be 95\% confident that the true \emph{average} increase in scores after the prep class is between 105.2 and 166.6. Because the entire interval is above 100, there is evidence that on average students score more than 100 points higher after the course. Recall that this does not prove that the increase is \emph{due to}  the course.}
 \end{exercise}
 
-\begin{exercise}The 95\% confidence interval in the previous exercise was calculated as (105.2, 166.6). True or false: about 95\% of the students that take the class will saw an increase of at least 105.2 points.\footnote{False. This confidence interval estimates the \emph{average} increase - not the increase of individuals. As can be seen in Figure~\ref{satImprovementHTDataHistogram}, much greater than 5\% saw an increase of less than 105.2 points. Some individuals even saw a \emph{decrease} in their score as indicated by the negative differences.}
+\begin{exercise}The 95\% confidence interval in the previous exercise was calculated as (105.2, 166.6). True or false: about 95\% of the students that take the class saw an increase of at least 105.2 points.\footnote{False. This confidence interval estimates the \emph{average} increase - not the increase of individuals. As can be seen in Figure~\ref{satImprovementHTDataHistogram}, much greater than 5\% saw an increase of less than 105.2 points. Some individuals even saw a \emph{decrease} in their score as indicated by the negative differences.}
 \end{exercise}
 
 
-\subsection{Calculator: the matched pairs t test and CI}
+\subsection{Calculator: the matched pairs $T$ test and CI}
 
-\begin{termBox}{\tBoxTitle{TI calculator: Carrying out the matched pairs t test}
+\Comment{D - necessary to repeat all of these instructions? Can we just say something to the effect of, ``Compute the difference of each paired observation, and use the instructions for the 1-sample cases to analyze the results.''?}
+
+\Comment{L: I think I would still include instructions.  This way they don't have to page back to do the examples, and also, it tells them how to use L3 to find the differences.}
+
+\Add{The matched pairs $T$ test and CI proceed the same way as the 1-sample $T$ test and confidence interval.  Instead of using the data or the summary statistics from the single sample, make sure to use the data of \emph{differences} or the summary statistics for the \emph{differences}.
+}
+
+\begin{termBox}{\tBoxTitle{TI-83/84: matched pairs $T$ test}
 Use \textbf{STAT, TESTS, T-Test}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -756,7 +851,7 @@ $\bar{x}$ &\quad \text{the sample mean of the differences} \\
 }
 \end{termBox}
 
-\begin{termBox}{\tBoxTitle{TI calculator: Calculating the matched pairs t Confidence Interval}
+\begin{termBox}{\tBoxTitle{TI-83/84: matched pairs $T$ Confidence Interval}
 Use \textbf{STAT, TESTS, TInterval}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -771,7 +866,7 @@ Use \textbf{STAT, TESTS, TInterval}.
 \item Let C-Level be the desired confidence level.
 \item Choose Calculate and hit ENTER, which returns:
 \begin{tabular}{l l}
-\text{( $\_$ , $\_$ )} &\quad \text{the confidence interval for the differences} \\
+\text{( $\_$ , $\_$ )} &\quad \text{the confidence interval for the mean of the differences} \\
 $\bar{x}$ &\quad \text{the sample mean of the differences} \\
 \text{Sx} &\quad \text{the sample SD of the differences} \\
 \text{n} &\quad \text{the number of differences in the sample}
@@ -799,7 +894,7 @@ $\bar{x}$ &\quad \text{the sample mean of the differences} \\
 \label{textbooksDFPartial}
 \end{table}
 
-\begin{exercise}Use the first 7 values of the ~\ref{textbooksDF} data set produced above and calculate the t score and p-value to test whether, on average, Amazon's textbook price is cheaper that UCLA's price.\footnote{Enter the data into L1  and L2 on a calculator. Let $L3 = L1-L2$. After selecting TTest, choose DATA, let $\mu_0$ be 0, and let List be \textbf{L3}. Let Freq be 1 and  select $>$. $t=3.076$ and p-value$=0.0109$.}\end{exercise}
+\begin{exercise}Use the first 7 values of the ~\ref{textbooksDF} data set produced above and calculate the t score and p-value to test whether, on average, Amazon's textbook price is cheaper that UCLA's price.\footnote{Enter the data into L1  and L2 on a calculator. Let $L3 = L1-L2$. After selecting TTest, choose DATA, let $\mu_0$ be 0, and let List be \textbf{L3}. Let Freq be 1 and  select $>$. $T=3.076$ and p-value$=0.0109$.}\end{exercise}
 
 \begin{exercise}Use the first 7 values of the ~\ref{textbooksDF} data set produced above and calculate a 95\% confidence interval for the average difference in textbook price between Amazon and UCLA.\footnote{The data have already been entered into L1  and L2 and the differences should be in L3. After selecting TInterval, choose DATA, let List be \textbf{L3}. Let Freq be 1 and let C-Level be 0.95. The interval is (.80354, 7.0507).}\end{exercise}
 
@@ -961,7 +1056,11 @@ As before, we provide a summary of the steps to perform when carrying out such a
 \begin{termBox}{\tBoxTitle[]{Hypothesis test for the difference of two means}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the test being used: 2-sample t test.
+\item State the name of the test being used.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item 2-sample $T$ test.
+\end{itemize}
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
@@ -975,9 +1074,13 @@ As before, we provide a summary of the steps to perform when carrying out such a
 \item H$_0: \mu_1 \ne \text{or} < \text{or} > \mu_2$
 \end{itemize}
 \item Identify the significance level $\alpha$.
-\item Calculate the test statistic and $df$.
-$$\text{t} = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$$
-Use a point estimate of $\bar{x}_1-\bar{x}_2$, compute $SE = \sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}$, and get the $df$ from a calculator.
+\item Calculate the test statistic and $df$: $T = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item The point estimate is $\bar{x}_1-\bar{x}_2$
+\item $SE = \sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}$
+\item Find and record the $df$ from a calculator.
+\end{itemize}
 \item Find the p-value and compare it to $\alpha$ to determine whether to reject or not reject $H_0$.
 \item Write the conclusion in the context of the question.
 \end{enumerate}}
@@ -1011,7 +1114,7 @@ control		& 9		& -4.33		& 2.76  	 \\
 \begin{example} {\label{exerciseToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep}
 Do embryonic stem cells (ESCs) help improve heart function following a heart attack? Table~\ref{summaryStatsForSheepHeartDataWhoReceivedMiceESCs} contains summary statistics for an experiment to test ESCs in sheep that had a heart attack. Each of these sheep was randomly assigned to the ESC or control group, and the change in their hearts' pumping capacity was measured. A positive value generally corresponds to increased pumping capacity, which suggests a stronger recovery. The sample data is graphed in Figure~\ref{stemCellTherapyForHearts}. Use the given information and an appropriate an appopriate statistical test to answer the research question.
 }
-We will carry out a 2-sample t test. The first condition is met because it is stated that there were two randomly allocated treatments. For the second condition, we must look at a graphs of the data. The data are very limited, so we can only check for obvious outliers in the raw data in Figure~\ref{stemCellTherapyForHearts}. Since the distributions are (very) roughly symmetric, we will assume the populations are approximately normal.
+We will carry out a 2-sample $T$ test. The first condition is met because it is stated that there were two randomly allocated treatments. For the second condition, we must look at a graphs of the data. The data are very limited, so we can only check for obvious outliers in the raw data in Figure~\ref{stemCellTherapyForHearts}. Since the distributions are (very) roughly symmetric, we will assume the populations are approximately normal.
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[$H_0$:] $\mu_{esc} - \mu_{control} = 0$. The stem cells do not improve heart pumping function.
@@ -1062,18 +1165,28 @@ That is, we are 99\% confident that the true improvement in heart pumping functi
 \begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for the difference of two means}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the CI being used: 2-sample t interval.
+\item State the name of the CI being used.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item 2-sample $T$ interval.
+\end{itemize}
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \item 2 independent random samples OR 2 randomly allocated treatments
 \item Both populations are known to be normal OR $n_1 \text{ and } n_2\ge 30$ OR graphs of both samples are approximately symmetric with no outliers, making the assumption that the populations are normal a reasonable one
 \end{itemize}
 \item Plug in the numbers and write the interval in the form
-$$\text{point estimate } \pm \text{ critical value}\times \text{SE of estimate}$$
-Compute the point estimate as $\bar{x}_1-\bar{x}_2$, get the $df$ from a calculator, find the critical value $t^\star$ using the t table at row = $df$, and compute $SE = \sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}$.
+$$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item The point estimate is $\bar{x}_1-\bar{x}_2$
+\item Find and record the $df$ using a calculator
+\item Find the critical value $t^\star$ using the $t$ table at row = $df$ (round down to nearest integer)
+\item Use $SE = \sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}$
+\end{itemize}
 \item Evaluate the CI and write in the form ( $\_$ , $\_$ ).
 \item Interpret the interval:  ``We are [XX]\% confident that the true difference in the mean of [...] is between [...] and [...]."
-\item State your conclusion to the original question.
+\item State the conclusion to the original question.
 \end{enumerate}}
 \end{termBox}
 
@@ -1094,7 +1207,7 @@ B		& 27		& 74.1		& 20		& 32		& 100 \\
 \label{summaryStatsForTwoVersionsOfExams2nd}
 \end{table}
 
-\begin{example}{Construct a 90\% confidence interval for the difference in average scores. At this confidence level, is there evidence that test was more difficult than the other?}We have two randomly allocated treatments (tests) and the scores for both groups do not show excessive skew, so we can assume that the population distributions are approximately normal. The point estimate is $\bar{x}_A - \bar{x}_B = 5.3$. The standard error of the estimate can be calculated~as
+\begin{example}{Construct a 90\% confidence interval for the difference in average scores. At this confidence level, is there evidence tha$T$ test was more difficult than the other?}We have two randomly allocated treatments (tests) and the scores for both groups do not show excessive skew, so we can assume that the population distributions are approximately normal. The point estimate is $\bar{x}_A - \bar{x}_B = 5.3$. The standard error of the estimate can be calculated~as
 \begin{eqnarray*}
 SE = \sqrt{\frac{14^2}{30} + \frac{20^2}{27}} = 4.62
 \end{eqnarray*}
@@ -1106,9 +1219,9 @@ The confidence interval is given by $5.3\ \pm \ 1.684(4.62)\to (-2.5, 13.1)$. Be
 \textPE{\newpage}
 
 
-\subsection{Calculator: The 2-sample t test and CI\vspace{-3mm}}
+\subsection{Calculator: The 2-sample $T$ test and CI\vspace{-3mm}}
 
-\begin{termBox}{\tBoxTitle{\videohref{ti84_2_mean_HT} TI calculator: Carrying out the 2-sample t test}
+\begin{termBox}{\tBoxTitle{\videohref{ti84_2_mean_HT} TI-83/84: 2-sample $T$ test}
 Use \textbf{STAT, TESTS, 2-SampTTest}.\vspace{-1.5mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1148,7 +1261,37 @@ $\bar{x}_2$
 }
 \end{termBox}
 
-\begin{termBox}{\tBoxTitle{\videohref{ti84_2_mean_CI} TI calculator: Calculating the 2-sample t Confidence Interval}Use \textbf{STAT, TESTS, 2-SampTInt}.\vspace{-1.5mm}
+\begin{termBox}{\tBoxTitle[]{\videohref{casio_2_mean_inference} Casio fx-9750GII: 2-sample $T$ test}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
+\item If necessary, enter the data into a list.
+\item Choose the \calctext{TEST} option (\calcbutton{F3} button).
+\item Choose the \calctext{t} option (\calcbutton{F2} button).
+\item Choose the \calctext{2-S} option (\calcbutton{F2} button).
+\item Choose either the \calctext{Var} option (\calcbutton{F2}) or enter the data in using the \calctext{List} option.
+\item Specify the test details:
+  \begin{itemize}
+  \setlength{\itemsep}{0mm}
+  \item Specify the sidedness of the test using the \calcbutton{F1}, \calcbutton{F2}, and \calcbutton{F3} keys.
+  \item If using the \calctext{Var} option, enter the summary statistics for each group. If using \calctext{List}, specify the lists and leave \calctext{Freq} values at \calctext{1}.
+  \item Choose whether to pool the data or not.
+  \end{itemize}
+\item Hit the \calcbutton{EXE} button, which returns \\[1mm]
+\begin{tabular}{ll l ll}
+$\calctextmath{\mu1}\ \_\_\ \calctextmath{\mu2}$ & alt. hypothesis &&
+	$\calctextmath{\bar{x}1}$, $\calctextmath{\bar{x}2}$ & sample means \\
+\calctext{t} & t statistic &&
+	\calctext{sx1}, \calctext{sx2} & sample standard deviations \\
+\calctext{p} & p-value &&
+	\calctext{n1}, \calctext{n2} & sample sizes \\
+\calctext{df} & degrees of freedom
+\end{tabular}
+\end{enumerate}
+}
+\end{termBox}
+
+\begin{termBox}{\tBoxTitle{\videohref{ti84_2_mean_CI} TI-83/84: 2-sample $T$ Confidence Interval}Use \textbf{STAT, TESTS, 2-SampTInt}.\vspace{-1.5mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Choose STAT.
@@ -1184,7 +1327,35 @@ $\bar{x}_2$
 }
 \end{termBox}
 
-\begin{exercise}Use the data from the ESC experiment shown in Table~\ref{summaryStatsForSheepHeartDataWhoReceivedMiceESCsForCalcSubsection} and a calculator to construct a 90\% confidence interval.\footnote{The interval is $(4.3543, 11.307)$ with $df=12.2$.}
+\begin{termBox}{\tBoxTitle[]{\videohref{casio_2_mean_inference} Casio fx-9750GII: 2-sample $T$ confidence interval}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
+\item If necessary, enter the data into a list.
+\item Choose the \calctext{INTR} option (\calcbutton{F4} button).
+\item Choose the \calctext{t} option (\calcbutton{F2} button).
+\item Choose the \calctext{2-S} option (\calcbutton{F2} button).
+\item Choose either the \calctext{Var} option (\calcbutton{F2}) or enter the data in using the \calctext{List} option.
+\item Specify the test details:
+  \begin{itemize}
+  \setlength{\itemsep}{0mm}
+  \item Confidence level of interest for \calctext{C-Level}.
+  \item If using the \calctext{Var} option, enter the summary statistics for each group. If using \calctext{List}, specify the lists and leave \calctext{Freq} values at \calctext{1}.
+  \item Choose whether to pool the data or not.
+  \end{itemize}
+\item Hit the \calcbutton{EXE} button, which returns \\[1mm]
+\begin{tabular}{ll}
+  \calctext{Left}, \calctext{Right} & ends of the confidence interval \\
+  \calctext{df} & degrees of freedom \\
+  $\calctextmath{\bar{x}1}$, $\calctextmath{\bar{x}2}$ & sample means \\
+  \calctext{sx1}, \calctext{sx2} & sample standard deviations \\
+  \calctext{n1}, \calctext{n2} & sample sizes
+\end{tabular}
+\end{enumerate}
+}
+\end{termBox}
+
+\begin{exercise}Use the data from the ESC experiment shown in Table~\ref{summaryStatsForSheepHeartDataWhoReceivedMiceESCsForCalcSubsection} and a calculator to \Add{find the appropriate degrees of freedom and }construct a 90\% confidence interval.\footnote{The interval is $(4.3543, 11.307)$ with $df=12.2$.}
 \end{exercise}
 
 \begin{table}
@@ -1201,7 +1372,7 @@ control		& 9		& -4.33		& 2.76  	 \\
 \label{summaryStatsForSheepHeartDataWhoReceivedMiceESCsForCalcSubsection}
 \end{table}
 
-\begin{exercise}Use the data from the ESC example and a calculator to find an appropriate statistic, degrees of freedom, and p-value for a two-sided hypothesis test.\footnote{$t=4.008$, $df=12.2$, and p-value$=0.00168$.}
+\begin{exercise}Use the data from the ESC example and a calculator to find an appropriate statistic, degrees of freedom, and p-value for a two-sided hypothesis test.\footnote{$T=4.008$, $df=12.2$, and p-value$=0.00168$.}
 \end{exercise}
 
 
