@@ -7,7 +7,7 @@ CorrelationPlot <- function(x, y, ...) {
        xlab = '',
        ...)
   box()
-  mtext(paste('R =', format(c(round(cor(x,y), 2), 0.01))[1]),
+  mtext(paste('r =', format(c(round(cor(x,y), 2), 0.01))[1]),
         side = 1,
         line = 1,
         cex = 1.1)

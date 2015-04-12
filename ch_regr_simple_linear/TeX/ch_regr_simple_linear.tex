@@ -38,8 +38,6 @@ It is rare for all of the data to fall on a straight line, as seen in the three 
    \label{imperfLinearModel}
 \end{figure}
 
-\textPE{\pagebreak}
-
 We will also see examples in this chapter where fitting a straight line to the data, even if there is a clear relationship between the variables, is not helpful. One such case is shown in Figure~\ref{notGoodAtAllForALinearModel} where there is a very strong relationship between the variables even though the trend is not linear. We will discuss nonlinear trends in this chapter\MultipleRegressionChapter{ and the next}{}, but the details of fitting nonlinear models are saved for a later course.
 
 \begin{figure}
@@ -174,8 +172,6 @@ The standard deviation of the residuals tells us the average size of the residua
 The standard deviation of the residuals, often denoted by the letter $s$, tells us the average error in the predictions using the regression model.  It can be estimated from a residual plot.}
 \end{termBox}
 
-\textPE{\newpage}
-
 \begin{figure}
    \centering
    \includegraphics[width=0.73\textwidth]{ch_regr_simple_linear/figures/scattHeadLTotalLResidualPlot/scattHeadLTotalLResidualPlot}
@@ -214,8 +210,6 @@ $r$\\\footnotesize correlation}
 We can compute the correlation coefficient (or just correlation for short) using a formula, just as we did with the sample mean and standard deviation. However, this formula is rather complex,\footnote{Formally, we can compute the correlation for observations $(x_1, y_1)$, $(x_2, y_2)$, ..., $(x_n, y_n)$ using the formula
 $r = \frac{1}{n-1}\sum_{i=1}^{n} \frac{x_i-\bar{x}}{s_x}\frac{y_i-\bar{y}}{s_y}$, 
 where $\bar{x}$, $\bar{y}$, $s_x$, and $s_y$ are the sample means and standard deviations for each variable.} so we generally perform the calculations on a computer or calculator. Figure~\ref{posNegCorPlots} shows eight plots and their corresponding correlations. Only when the relationship is perfectly linear is the correlation either -1 or 1. If the relationship is strong and positive, the correlation will be near +1. If it is strong and negative, it will be near -1. If there is no apparent linear relationship between the variables, then the correlation will be near zero.
-
-\Comment{L: I thought we changed all the R to lower case r for correlation coefficient.  Can we change these for Figure 8.10?}
 
 \begin{figure}
    \centering
@@ -310,8 +304,6 @@ When a residual plot appears as a random cloud of points, a linear model is gene
 
 
 Be cautious about applying regression to data collected sequentially in what is called a \term{time series}. Such data may have an underlying structure that should be considered in a model and analysis.
-
-\textPE{\pagebreak}
 
 \begin{figure}
 \centering
@@ -409,8 +401,6 @@ family\_\hspace{0.3mm}income & -0.0431 & 0.0108 & -3.98 & 0.0002 \\
 \label{rOutputForIncomeAidLSRLine}
 \end{table}
 
-\textPE{\pagebreak}
-
 \begin{example}{Examine the second, third, and fourth columns in Table~\ref{rOutputForIncomeAidLSRLine}. Can you guess what they represent?}
 We'll describe the meaning of the columns using the second row, which corresponds to~$\beta_1$. The first column provides the point estimate for $\beta_1$, as we calculated in an earlier example: -0.0431. The second column is a standard error for this point estimate: 0.0108. The third column is a $T$ test statistic for the null hypothesis that $\beta_1 = 0$: $T=-3.98$. The last column is the p-value for the $T$ test statistic for the null hypothesis $\beta_1=0$ and a two-sided alternative hypothesis: 0.0002. We will get into more of these details in Section~\ref{inferenceForLinearRegression}.
 \end{example}
@@ -432,17 +422,7 @@ Interpreting the slope parameter is helpful in almost any application. For each 
 The estimated intercept $b_0=24.3$ (in \$1000s) describes the average aid if a student's family had no income. The meaning of the intercept is relevant to this application since the family income for some students at Elmhurst is \$0. In other applications, the intercept may have little or no practical value if there are no observations where $x$ is near zero.
 \end{example}
 
-\begin{termBox}{\tBoxTitle{Interpreting parameters in a linear model\color{red} CUT THIS BOX}
-\vspace{-4mm}
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item The slope, $b_1$, describes the estimated difference in the $y$ variable if the explanatory variable $x$ for a case happened to be one unit larger. 
-\item The y-intercept, $b_0$, describes the average or predicted outcome of $y$ if $x=0$.  The linear model must be valid all the way to $x=0$ for this to make sense, which in many applications is not the case.
-\end{itemize}
-}
-\end{termBox}
-
-\begin{termBox}{\tBoxTitle{Interpreting parameters in a linear model\color{red} ADD THIS BOX}
+\begin{termBox}{\tBoxTitle{Interpreting parameters in a linear model}
 \vspace{-4mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
@@ -453,6 +433,7 @@ The estimated intercept $b_0=24.3$ (in \$1000s) describes the average aid if a s
 \end{termBox}
 
 \index{least squares regression!interpreting parameters|)}
+
 
 \subsection{Extrapolation is treacherous}
 
@@ -520,7 +501,8 @@ If a linear model has an $R^2$ or explained variance of 0.94, what is the correl
 
 \subsection{Calculator: linear correlation and regression}
 
-\begin{termBox}{\tBoxTitle{TI-84: finding $b_0$, $b_1$, $R^2$, and $r$ for a linear model}Use \textbf{STAT, CALC, LinReg(a + bx)}.
+\begin{termBox}{\tBoxTitle{TI-84: finding $b_0$, $b_1$, $R^2$, and $r$ for a linear model}
+Use \textbf{STAT, CALC, LinReg(a + bx)}.
 \begin{enumerate}
 \item Choose STAT.
 \item Right arrow to CALC.
@@ -542,7 +524,8 @@ r & \quad$r$, the correlation coefficient
 }
 \end{termBox} 
 
-\begin{tipBox}{\tipBoxTitle{What to do if $r^2$ and $r$ do not show up on a TI-83/84}If $r^2$ and $r$ do now show up when doing STAT, CALC, LinReg, the \emph{diagnostics} must be turned on.  This only needs to be once and the diagnostics will remain on.
+\begin{tipBox}{\tipBoxTitle{What to do if $r^2$ and $r$ do not show up on a TI-83/84}
+If $r^2$ and $r$ do now show up when doing STAT, CALC, LinReg, the \emph{diagnostics} must be turned on.  This only needs to be once and the diagnostics will remain on.
 \begin{enumerate}
 \item Hit 2ND 0 (i.e. CATALOG).
 \item Scroll down until the arrow points at DiagnosticOn
@@ -630,8 +613,6 @@ The slope indicates that, on average, new games sell for about \$10.90 more than
 \begin{tipBox}{\tipBoxTitle{Interpreting model estimates for categorical predictors.}
 The estimated intercept is the value of the response variable for the first category (i.e. the category corresponding to an indicator value of 0). The estimated slope is the average change in the response variable between the two categories.}
 \end{tipBox}
-
-\textPE{\newpage}
 
 
 
@@ -749,7 +730,7 @@ We will rely on statistical software to compute the standard error and leave the
 The entries in the first column represent the least squares estimates, $b_0$ and $b_1$, and the values in the second column correspond to the standard errors of each estimate.
 \end{example}
 
-We previously used a $T$ test statistic for hypothesis testing in the context of numerical data. Regression is very similar. In the hypotheses we consider, the null value for the slope is 0, so we can compute the test statistic using the $T$\Cut{(or Z)} score formula:
+We previously used a $T$ test statistic for hypothesis testing in the context of numerical data. Regression is very similar. In the hypotheses we consider, the null value for the slope is 0, so we can compute the test statistic using the $T$ score formula:
 \begin{align*}
 T = \frac{\text{estimate} - \text{null value}}{\text{SE}} = \frac{-1.0010 - 0}{0.8717} = -1.15
 \end{align*}
@@ -762,12 +743,12 @@ We can look for the one-sided p-value -- shown in Figure~\ref{oneSidedTailForMid
 \label{oneSidedTailForMidtermUnemploymentHT}
 \end{figure}
 
-\textPE{\pagebreak}
+\Comment{L - the regression summary does not include the degrees of freedom.
 
-\Comment{L: the regression summary does not include the degrees of freedom}
+D - Should it be added, or is the $df = n - 2$ something they need to know?}
 
-\begin{example}{\Cut{The regression summary offers the degrees of freedom for the test statistic $T$: $df=25$.}\Add{In this example, the sample size $n=27$.}  Identify the \Add{degrees of freedom and }p-value for the hypothesis test.}
-\Add{The degrees of freedom for this test is $n-2$, or 27-2 = 25 $df$.  }Looking in the 25 degrees of freedom row in Appendix~\ref{tDistributionTable}, we see that the absolute value of the test statistic is smaller than any value listed, which means the tail area and therefore also the p-value is larger than 0.100 (one tail!). Because the p-value is so large, we fail to reject the null hypothesis. That is, the data do not provide convincing evidence that a higher unemployment rate has any correspondence with smaller or larger losses for the President's party in the House of Representatives in midterm elections.
+\begin{example}{In this example, the sample size $n=27$. Identify the degrees of freedom and p-value for the hypothesis test.}
+The degrees of freedom for this test is $n-2$, or $df = 27-2 = 25$. Looking in the 25 degrees of freedom row in Appendix~\ref{tDistributionTable}, we see that the absolute value of the test statistic is smaller than any value listed, which means the tail area and therefore also the p-value is larger than 0.100 (one tail!). Because the p-value is so large, we fail to reject the null hypothesis. That is, the data do not provide convincing evidence that a higher unemployment rate has any correspondence with smaller or larger losses for the President's party in the House of Representatives in midterm elections.
 \index{data!midterm elections|)}
 \end{example}
 
@@ -786,17 +767,15 @@ While the relationship between the variables is not perfect, there is an evident
 
 Recall that $b_1=r\frac{s_y}{s_x}$.  If the slope of the true regression line is zero, the population correlation coefficient must also be zero.  The linear regression test for $\beta_1=0$ is equivalent, then, to a test for the population correlation coefficient $\rho=0$.
 
-\textPE{\pagebreak}
-
 \begin{exercise}
-The regression summary below shows statistical software output from fitting the least squares regression line shown in Figure~\ref{elmhurstScatterWLSROnly}. Use this output to formally evaluate the following hypotheses. $H_0$: The true \Cut{coefficient for family income}\Add{slope of the regression line} is zero. $H_A$: The true\Cut{coefficient for family income}\Add{slope of the regression line} is not zero.\footnote{We look in the second row corresponding to the family income variable. We see the point estimate of the slope of the line is -0.0431, the standard error of this estimate is 0.0108, and the $T$ test statistic is -3.98. The p-value corresponds exactly to the two-sided test we are interested in: 0.0002. The p-value is so small that we reject the null hypothesis and conclude that family income and financial aid at Elmhurst College for freshman entering in the year 2011 are negatively correlated and the true slope parameter is indeed less than 0, just as we believed in Example~\ref{overallAidIncomeInformalAssessmentOfRegressionLineSlope}.}
+The regression summary below shows statistical software output from fitting the least squares regression line shown in Figure~\ref{elmhurstScatterWLSROnly}. Use this output to formally evaluate the following hypotheses. $H_0$: The true slope of the regression line is zero. $H_A$: The true slope of the regression line is not zero.\footnote{We look in the second row corresponding to the family income variable. We see the point estimate of the slope of the line is -0.0431, the standard error of this estimate is 0.0108, and the $T$ test statistic is -3.98. The p-value corresponds exactly to the two-sided test we are interested in: 0.0002. The p-value is so small that we reject the null hypothesis and conclude that family income and financial aid at Elmhurst College for freshman entering in the year 2011 are negatively correlated and the true slope parameter is indeed less than 0, just as we believed in Example~\ref{overallAidIncomeInformalAssessmentOfRegressionLineSlope}.}
 \end{exercise}
 
 \begin{tipBox}{\texttt{The regression equation is} \\
 
 \texttt{aid = 24.31933 - 0.04307 family\_income} \\
 
-\texttt{Predictor \ \ \ \ \ \ \ Coef \ \ \ \ \ \ \ SE Coef \ \ \ \ \ \ T \ \ \ \ \ \ \ P} \\
+\texttt{Predictor \ \ \ \ \ \ \ Coef \ \ \ \ \ \ \ SE Coef \ \ T \ \ \ \ \ \ \ P} \\
 \texttt{Constant \ \ \ \ \ \ \ \  24.31933 \ \ \ 1.29145 \ \ 18.831 \ \ < 2e-16} \\
 \texttt{family\_income\ \ \ \ -0.04307 \ \ \ 0.01081 \ \ -3.985 \ \ 0.000229} \\
 
@@ -814,12 +793,12 @@ If conditions for fitting the regression line do not hold, then the methods pres
 \begin{termBox}{\tBoxTitle{Hypothesis test for the slope of regression line\vspace{-1.5mm}}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the test being used.
+\item State the name of the test being used.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item Linear regression $T$ test
 \end{itemize}
-\item Verify conditions.
+\item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item The residual plot has no pattern.
@@ -831,7 +810,7 @@ If conditions for fitting the regression line do not hold, then the methods pres
 \item H$_A$: $\beta_1 \ne,\text{ or }<, \text{ or }>0$, There is a significant or significant negative or significant positive linear relationship between [x] and [y].  
 \end{itemize}
 \item Identify the significance level $\alpha$.
-\item Calculate the test statistic and $df$: $T = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$
+\item Calculate the test statistic and $df$: $T = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item The point estimate is $b_1$
@@ -843,15 +822,15 @@ If conditions for fitting the regression line do not hold, then the methods pres
 \end{enumerate}}
 \end{termBox}
 
-\begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for the slope of regression line \vspace{-1mm}}
+\begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for the slope of regression line}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the CI being used.
+\item State the name of the CI being used.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item $T$ CI for slope of regression line
 \end{itemize}
-\item Verify conditions.
+\item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item The residual plot has no pattern.
@@ -900,8 +879,6 @@ r & \quad$r$, the correlation coefficient\\
 \end{enumerate}
 }
 \end{termBox} 
-
-\textPE{\newpage}
 
 \begin{termBox}{\tBoxTitle{TI-84: $T$ Confidence Interval for $\beta_1$}
 Use \textbf{STAT, TESTS, LinRegTInt}.
