@@ -108,8 +108,8 @@ A complete solution to a confidence interval question for a single proportion in
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item a simple random sample
-\item $n\hat{p} \geq10$ and $n(1-\hat{p})\geq10$
+\item A simple random sample.
+\item $n\hat{p} \geq10$ and $n(1-\hat{p})\geq10$.
 \end{itemize}
 \item Plug in the numbers and write the interval in the form\vspace{-1.5mm}
 \begin{align*}
@@ -117,8 +117,8 @@ A complete solution to a confidence interval question for a single proportion in
 \end{align*}
 \begin{itemize}
 \item The point estimate is $\hat{p}$.
-\item Critical value $z^\star=1.96$ a 95\% CI \\
-otherwise find $z^\star$ using the $t$ table at row $\infty$
+\item Critical value $z^\star=1.96$ a 95\% CI, \\
+otherwise find $z^\star$ using the $t$ table at row $\infty$.
 \item Use $SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$.
 \end{itemize}
 \item Evaluate the CI and write in the form (\underline{\ \ \ \ \ }, \underline{\ \ \ \ \ }).
@@ -132,13 +132,13 @@ Identify each of the six steps for constructing a confidence interval in the Sup
 \end{exercise}
 
 \begin{example}{A poll randomly selected 1,042 adults residing in the state of New York and asked the question, ``Regardless of whether the person shows symptoms or not, do you support or oppose a 21 day quarantine for anyone who has come in contact with someone with the Ebola virus?"\footnote{\oiRedirect{ebola_quarantine_poll_2014}{NBC 4 New York / The Wall Street Journal / Marist Poll. October 31, 2014.}} Among the sample, 82\% said``support", 15\% said ``oppose", and 3\% said ``unsure". Carry out the appropriate 95\% confidence interval procedure to estimate the true proportion of adults in New York who supported a quarantine.  Is there evidence that the true percent is greater than 75\%?}
-We will construct a 1-proportion $Z$ interval.  The poll can be considered a simple random sample of adults form New York.  Also, $1042\times 0.82\ge10$ and $1042\times (1-0.82)\ge10$, so the conditions for the test are satisfied.  The standard error and confidence interval can be calculated as
+We will construct a 1-proportion $Z$ interval.  The poll can be considered a simple random sample of adults form New York.  Also, $1042\times 0.82\ge10$ and $1042\times (1-0.82)\ge10$, so the conditions for the confidence interval are satisfied. The standard error and confidence interval can be calculated as
 \begin{align*}
 SE=&\sqrt{\frac{0.82(1-0.82)}{1042}}=0.0119 \\
 0.82\ \pm&\  1.96 \times 0.0119 \\
 (0.796&,\ 0.843)
 \end{align*}
-We are 95\% confident that the true proportion of adults in New York who supported a 21 quarantine for anyone who has come in contact with someone with the Ebola virus lies between 0.796 and 0.843.  Because the entire interval is above 0.75, the interval does provide evidence that the true percent is greater than 75\%.
+We are 95\% confident that the true proportion of adults in New York who supported a 21 day quarantine for anyone who has come in contact with someone with the Ebola virus lies between 0.796 and 0.843.  Because the entire interval is above 0.75, the interval provides evidence that the true percent is greater than 75\%.
 \end{example}
 
 \subsection{Hypothesis testing for a proportion}
@@ -213,8 +213,8 @@ A complete solution to a test of hypothesis problem for a single proportion shou
 \item Verify conditions to ensure the standard error estimate is reasonable and the point estimate is nearly normal and unbiased.\vspace{-1.5mm}
   \begin{itemize}
   \setlength{\itemsep}{0mm}
-  \item a simple random sample
-  \item $np_0\geq10$ and $n(1-p_0)\geq10$ (Use hypothesized $p$, not sample $\hat{p}$.)
+  \item A simple random sample.
+  \item $np_0\geq10$ and $n(1-p_0)\geq10$ (use hypothesized $p$, not sample $\hat{p}$).
   \end{itemize}
 \item Write the hypotheses in plain language and mathematical notation.\vspace{-1.5mm}
   \begin{itemize}
@@ -226,8 +226,8 @@ A complete solution to a test of hypothesis problem for a single proportion shou
 \vspace{-1.5mm}
 \item Calculate the test statistic: $\text{Z} = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$
   \begin{itemize}
-  \item The point estimate is $\hat{p}$
-  \item Use $SE = \sqrt{\frac{p_0(1-p_0)}{n}}$ (Plug in hypothesized $p$, not sample $\hat{p}$.)
+  \item The point estimate is $\hat{p}$.
+  \item Use $SE = \sqrt{\frac{p_0(1-p_0)}{n}}$ (plug in hypothesized $p$, not sample $\hat{p}$).
   \end{itemize}
 \item Find the p-value and compare it to $\alpha$ to determine whether to reject or not reject $H_0$.
 \item Write the conclusion in the context of the question.
@@ -242,15 +242,15 @@ Identify each of the seven steps for conducting a hypothesis test in the example
 In Example~\ref{TooheyInferenceExample}, the data did not show strong evidence that Toohey's campaign manager was correct. Does this mean the manager was wrong?\footnote{Not necessarily. While we did not reject the null hypothesis, that does not mean it is true. It is possible that Toohey does have support above 50\%, but that the sample did not provide enough evidence to convincingly show this.}
 \end{exercise}
 
-\Comment{L: added this exercise - TODO(David) fix formatting as needed}
+\Comment{D - I tweaked the exercise below to make it clear why we'd want to use a 1-sided test for motivations (other than that $\hat{p} > 0.5$). Please review to make sure everything is looking alright following the edits.}
 
-\begin{exercise}According to a Gallup poll\footnote{\urlwofont{http://www.gallup.com/poll/182180/support-nuclear-energy.aspx?utm_source=Politics&utm_medium=newsfeed&utm_campaign=tiles}}  conducted in March of 2015, 51\% of respondents reported that they support nuclear energy.  (This result was similar to the result from a poll conducted two years before, but down from the peak of 62\% found five years before.)  The survey was based on telephone interviews from a random sample of 1,025 adults in the United States.  Is there convincing evidence that the true percent of adults in the United States that support nuclear energy is greater than 50\%?  Carry out an appropriate test at the 0.10 significance level.\footnote{We will perform a 1-proportion $Z$ test.  We will assume that the sample can be treated as a simple random sample of adults from the United States.  Our null value will be $p$=0.5 and $1025\times 0.5=1025\times(1-0.5)\ge10$ so the conditions for the test are satisfied. We will use a one-sided test with the following hypotheses:
+\begin{exercise}
+A Gallup poll conducted in March of 2015 found that 51\% of respondents support nuclear energy.\footnote{\urlwofont{http://www.gallup.com/poll/182180/support-nuclear-energy.aspx}} The survey was based on telephone interviews from a random sample of 1,025 adults in the United States. Before the poll was conducted, a nuclear energy advocacy group claimed a majority of US adults support nuclear energy. Does the poll provide strong evidence that supports their claim? Carry out an appropriate test at the 0.10 significance level.\footnote{We will perform a 1-proportion $Z$ test.  We will assume that the sample can be treated as a simple random sample of adults from the United States.  Our null value will be $p_0 = 0.5$, and $1025\times 0.5=1025\times(1-0.5)\ge10$ so the conditions for the test are satisfied. We will use a one-sided test with the following hypotheses:
 \begin{itemize}
 \item[$H_0$:] $p = 0.5$. Support for nuclear energy is 50\%.
 \item[$H_A$:] $p > 0.5$. Support for nuclear energy is higher than 50\%.
 \end{itemize}
-We will use a significance level of $\alpha = 0.10$ for the test. We can compute the standard error as $SE = \sqrt{\frac{p_0 (1 - p_0)}{n}} = \sqrt{\frac{0.5 (1 - 0.5)}{1025}} = 0.0156$.  The test statistic can be computed as: $Z = \frac{\hat{p} - p_0}{SE} = \frac{0.51 - 0.50}{0.0156} = 0.656$ and the p-value for this one-sided test is 0.256.  $0.256>0.10$, so we do not reject $H_0$.  We do not have evidence that the true percent of adults in the United States that support nuclear energy is greater than 50\%.  
- }
+We will use a significance level of $\alpha = 0.10$ for the test. We can compute the standard error as $SE = \sqrt{\frac{p_0 (1 - p_0)}{n}} = \sqrt{\frac{0.5 (1 - 0.5)}{1025}} = 0.0156$.  The test statistic can be computed as: $Z = \frac{\hat{p} - p_0}{SE} = \frac{0.51 - 0.50}{0.0156} = 0.656$ and the p-value for this one-sided test is 0.256.  $0.256>0.10$, so we do not reject $H_0$.  We do not have strong evidence that the true percent of adults in the United States that support nuclear energy is greater than 50\%. That is, the poll does not provide evidence supporting the nuclear energy advocacy group's claim.}
 \end{exercise}
 
 
@@ -390,30 +390,27 @@ Using a calculator, confirm the earlier result from Example~\ref{TooheyInference
 
 Planning a sample size before collecting data is important. If we collect too little data, the standard error of our point estimate may be so large that the data are not very useful. On the other hand, collecting data in some contexts is time-consuming and expensive, so we don't want to waste resources on collecting more data than we need.
 
-\Add{
 When considering the sample size, we want to put an upper bound on the margin of error. The \term{margin of error} is defined as quantity that follows the +/- in the confidence interval. It is half the total width of the confidence interval.
-}
 
-\begin{termBox}{\tBoxTitle{Margin of error\color{red}ADD THIS BOX}
+\begin{termBox}{\tBoxTitle{Margin of error}
 The margin of error of a confidence interval is given by: 
 \begin{align*}
-\text{critical value}\times SE 
+ME = \text{critical value}\times SE
 \end{align*}
 The margin of error is affected by both the sample size and the confidence level.
 }
 \end{termBox}
 
-\Add{
-\begin{example}{All other things being equal, will the margin of error be bigger for a 90\% confidence interval or a 95\% confidence interval?}Because a 95\% confidence interval must be wider, it will have a larger margin of error.
+\begin{example}{All other things being equal, will the margin of error be bigger for a 90\% confidence interval or a 95\% confidence interval?}
+A 95\% confidence interval is wider than a 90\% confidence interval, so the 95\% confidence interval will have a larger margin of error.
 \end{example}
 
-\begin{example}{All other things being equal, what happens to the margin of error as the sample size increases?}As the sample size $n$ increases, the $SE$ will decrease.  Thus, as $n$ increases, the margin of error will decrease.  This makes sense as we expect less error with a larger sample.\
+\begin{example}{All other things being equal, what happens to the margin of error as the sample size increases?}
+As the sample size $n$ increases, the $SE$ will decrease, so the margin of error will decrease as $n$ increases. This makes sense as we expect less error with a larger sample.
 \end{example}
-}
 
 \begin{example}{Suppose we are conducting a university survey to determine whether students support a \$200 per year increase in fees to pay for a new football stadium, how big of a sample is needed to be sure the margin of error is less than 0.04 using a 95\% confidence level? Find the smallest sample size $n$ so that the margin of error of the point estimate $\hat{p}$ will be no larger than $m=0.04$ when using a 95\% confidence interval.}
-For a 95\% confidence level, the value $z^{\star}$ corresponds to 1.96. 
-We want:
+For a 95\% confidence level, the value $z^{\star}$ corresponds to 1.96. We want:
 \begin{align*}
 ME \leq 0.04 \\
 1.96 \times SE \leq 0.04 \\
@@ -560,21 +557,22 @@ We are 90\% confident that the approval rating for the 2010 healthcare law chang
 \begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for the difference of two proportion}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the CI being used.
+\item State the name of the CI being used.\vspace{-1.5mm}
 \begin{itemize}
 \item 2-proportion $Z$ Interval
 \end{itemize}
-\item Verify conditions.
+\item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
-\item 2 independent random samples OR 2 randomly allocated treatments
+\item 2 independent random samples OR 2 randomly allocated treatments.
 \item $n_1\hat{p}_1\geq10$, $n_1(1-\hat{p}_1)\geq10$  \newline $n_2\hat{p}_2\geq10$, $n_2(1-\hat{p}_2)\geq10$
 \end{itemize}
 \item Plug in the numbers and write the interval in the form
 $$\text{point estimate } \pm z^\star \times \text{SE of estimate}$$
 \begin{itemize}
-\item The point estimate is $\hat{p}_1-\hat{p}_2$
-\item Use critical value $z^*$ = 1.96 for a 95\% CI\newline otherwise find $z^*$ using the $t$~table at row $\infty$.
-\item Use SE = $\sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$
+\item The point estimate is $\hat{p}_1-\hat{p}_2$.
+\item Use critical value $z^*$ = 1.96 for a 95\% CI,\\
+	otherwise find $z^*$ using the $t$~table at row $\infty$.
+\item Use SE = $\sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$.
 \end{itemize}
 \item Evaluate the CI and write in the form (\underline{\ \ \ \ \ }, \underline{\ \ \ \ \ }).
 \item Interpret the interval: ``We are [XX]\% confident that the true difference in the proportion of [...] is between [...] and [...].
@@ -724,8 +722,8 @@ Looking up $Z=2.58$ in the normal probability table: 0.9951. However this is the
 \item Identify the significance level $\alpha$.
 \item Calculate the test statistic: $\text{Z} = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$
   \begin{itemize}
-  \item The point estimate is $\hat{p}_1 - \hat{p}_2$
-  \item Use $SE$ = $\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$
+  \item The point estimate is $\hat{p}_1 - \hat{p}_2$.
+  \item Use $SE$ = $\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$.
   \end{itemize}
 \item Find the p-value and compare it to $\alpha$ to determine whether to reject or not reject $H_0$.
 \item Write the conclusion in the context of the question.
@@ -815,7 +813,7 @@ $\hat{p}_2$
 }
 \end{termBox}
 
-\Comment{edit footnote to be non-specific to TI?}
+\Comment{TODO: edit footnotes in both exercises below to be non-specific to TI calculator. (D - we shouldn't have to repeat the instructions and should just provide the answer that students should confirm.)}
 
 \begin{exercise}{Use the data in Table~\ref{24DAndCancerInDogsTableInCalcSection} and a calculator to find a 95\% confidence interval for the difference in proportion of dogs with cancer that have been exposed to 2,4-D versus not exposed to 2,4-D.}\footnote{Use STAT, TESTS, 2-PropZInt. Let x1 be 191 and n1 be $191+304$. Let x2 be 300 and n2 be $300+641$. Let C-Level be 0.95 and Calculate. The interval is (0.01484, 0.11926). Note that there is no value given for the pooled proportion since we do not pool for confidence intervals.}
 \end{exercise}
@@ -1221,7 +1219,7 @@ There are two conditions that must be checked before performing a chi-square goo
 \begin{termBox}{\tBoxTitle[]{Goodness of fit test for a one-way table}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the test being used.
+\item State the name of the test being used.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item $X^2$ goodness of fit test.
@@ -1229,8 +1227,8 @@ There are two conditions that must be checked before performing a chi-square goo
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item a simple random sample
-\item all expected counts $\ge 5$ (calculate and record expected counts)
+\item A simple random sample.
+\item All expected counts $\ge 5$ (calculate and record expected counts).
 \end{itemize}
 \item Write the hypotheses in plain language. No mathematical notation is needed for this test.\vspace{-1.5mm}
 \begin{itemize}
@@ -1347,7 +1345,7 @@ Because the data provided strong evidence that the geometric distribution is not
 
 \subsection{Calculator: chi-square goodness of fit test\vspace{-3mm}}
 
-\begin{termBox}{\tBoxTitle{\videohref{ti84_chisq_GOF_test} TI -84: Chi-square goodness of fit test\vspace{0.5mm}}
+\begin{termBox}{\tBoxTitle{\videohref{ti84_chisq_GOF_test} TI-84: Chi-square goodness of fit test\vspace{0.5mm}}
 Use \textbf{STAT, TESTS, $X^2$GOF-Test}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1661,8 +1659,8 @@ There are two conditions that must be checked before performing a chi-square tes
 \item Verify conditions.
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item multiple random samples or treatments
-\item all expected counts $\ge 5$ (calculate and recorded expected counts.)
+\item Multiple random samples or treatments.
+\item All expected counts $\ge 5$ (calculate and record expected counts).
 \end{itemize}
 \item Write the hypotheses in plain language. No mathematical notation is needed for this test.\vspace{-2mm}
 \begin{itemize}
@@ -1683,16 +1681,16 @@ df &= (\# \text{ of rows} - 1) \times (\# \text{ of columns} - 1)
 \begin{termBox}{\tBoxTitle[]{$X^2$ test of independence}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State the name of the test being used.
+\item State the name of the test being used.\vspace{-2mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item $X^2$ test of independence
 \end{itemize}
-\item Verify conditions.
+\item Verify conditions.\vspace{-2mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item a simple random sample
-\item all expected counts $\ge 5$ (calculate and record expected counts.)
+\item A simple random sample.
+\item All expected counts $\ge 5$ (calculate and record expected counts).
 \end{itemize}
 \item Write the hypotheses in plain language. No mathematical notation is needed for this test.\vspace{-2mm}
 \begin{itemize}
