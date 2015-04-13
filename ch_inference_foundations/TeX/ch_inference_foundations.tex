@@ -350,7 +350,7 @@ Studying randomness of this form is a key focus of statistics. How large would t
 \index{data!medical consultant|(}
 People providing an organ for donation sometimes seek the help of a special medical consultant. These consultants assist the patient in all aspects of the surgery, with the goal of reducing the possibility of complications during the medical procedure and recovery. Patients might choose a consultant based in part on the historical complication rate of the consultant's clients.
 
-One consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10\%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. She claims this is strong evidence that her work meaningfully contributes to reducing complications (and therefore she should be~hired!).
+One consultant tried to attract patients by noting the overall complication rate for liver donor surgeries in the US is about 10\%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. She claims this is strong evidence that her work meaningfully contributes to reducing complications (and therefore she should be~hired!).
 
 \begin{example}{We will let $p$ represent the true complication rate for liver donors working with this consultant. Estimate $p$ using the data, and label this value $\hat{p}$.}
 The sample proportion for the complication rate is 3~complications divided by the 62~surgeries the consultant has worked on: $\hat{p} = 3/62 = 0.048$.
@@ -360,8 +360,8 @@ The sample proportion for the complication rate is 3~complications divided by th
 No. The claim implies that there is a causal connection, but the data are observational. For example, maybe patients who can afford a medical consultant can afford better medical care, which can also lead to a lower complication rate.
 \end{example}
 
-\begin{example}{
-While it is not possible to assess the causal claim, it is still possible to ask whether the low complication rate of $\hat{p} = 0.048$ provides evidence that the consultant's true complication rate is different than the average complication rate in the US. Why might we be tempted to immediately conclude that the consultant's true complication rate is different than the average complication rate? Can we draw this conclusion?}Her sample complication rate is $\hat{p} = 0.048$, 0.052 lower than the average complication rate in the US of 10\%. However, we cannot yet be sure if the observed difference represents a real difference or is just the result of random variation. We wouldn't expect the sample proportion to be \emph{exactly} 0.10, even if the truth was that her real complication rate was 0.10.
+\begin{example}{While it is not possible to assess the causal claim, it is still possible to ask whether the low complication rate of $\hat{p} = 0.048$ provides evidence that the consultant's true complication rate is different than the US complication rate. Why might we be tempted to immediately conclude that the consultant's true complication rate is different than the US complication rate? Can we draw this conclusion?}
+Her sample complication rate is $\hat{p} = 0.048$, 0.052 lower than the US complication rate of 10\%. However, we cannot yet be sure if the observed difference represents a real difference or is just the result of random variation. We wouldn't expect the sample proportion to be \emph{exactly} 0.10, even if the truth was that her real complication rate was 0.10.
 \end{example}
 
 
@@ -379,7 +379,7 @@ We can set up two competing hypotheses about the consultant's true complication 
 
 \begin{example}{Identify the null and alternative claim regarding the consultant's complication rate.}
 \begin{itemize}
-\item[$H_0$:] The true complication rate for the consultant's clients is the \emph{same as} the average complication rate in the US of~10\%.
+\item[$H_0$:] The true complication rate for the consultant's clients is the \emph{same as} the US complication rate of~10\%.
 \item[$H_A$:] The true complication rate for the consultant's clients is different than~10\%.
 \end{itemize}
 \end{example}
@@ -403,8 +403,8 @@ The \term{null value} is the value hypothesized for the parameter in $H_0$, and 
 
 In the medical consultant case study, the parameter is $p$ and the null value is $p_0 = 0.10$. We can write the null and alternative hypothesis as numerical statements as follows.
 \begin{itemize}
-\item $H_0$: $p=0.10$ (The complication rate for the consultant's clients is equal to the US average of 10\%.)
-\item $H_A$: $p \neq 0.10$ (The complication rate for the consultant's clients is not equal to the US average of 10\%.)
+\item $H_0$: $p=0.10$ (The complication rate for the consultant's clients is equal to the US complication rate of 10\%.)
+\item $H_A$: $p \neq 0.10$ (The complication rate for the consultant's clients is not equal to the US complication rate of 10\%.)
 \end{itemize}
 
 \begin{termBox}{\tBoxTitle{Hypothesis testing}
@@ -429,8 +429,8 @@ When the alternative claim uses a $\neq$, we call the test a \term{two-sided} te
 If the researchers are only interested in showing an increase or a decrease, but not both, use a one-sided test. If the researchers would be interested in any difference from the null value -- an increase or decrease -- then the test should be two-sided.\vspace{0.5mm}}
 \end{tipBox}
 
-\begin{example}{For the example of the consultant's complication rate, we knew that her sample complication rate was 0.048, which was lower than average US complication rate of 0.10. Why did we conduct a two-sided hypothesis test for this setting?}
-The setting was framed in the context of the consultant being helpful, but what if the consultant actually performed worse than the average? Would we care? More than ever! Since we care about a finding in either direction, we should run a two-sided~test.
+\begin{example}{For the example of the consultant's complication rate, we knew that her sample complication rate was 0.048, which was lower than the US complication rate of 0.10. Why did we conduct a two-sided hypothesis test for this setting?}
+The setting was framed in the context of the consultant being helpful, but what if the consultant actually performed worse than the US complication rate? Would we care? More than ever! Since we care about a finding in either direction, we should run a two-sided~test.
 \end{example}
 
 %\Comment{add a couple more examples of 1, 2 sided}.
@@ -565,7 +565,7 @@ If the p-value is greater than the significance level $\alpha$, we say that the 
 Recall that the null claim is the claim of no difference. If we reject $H_0$, we are asserting that there is a real difference. If we do not reject $H_0$, we are saying that the null claim is reasonable, but \emph{it has not been proven}.
 
 \begin{exercise} \label{plainLanguageExplanationOfHTConclusionForLiverDonorSurgicalConsultant}
-Because the p-value is 0.2444, which is larger than the significance level 0.05, we do not reject the null hypothesis. Explain what this means in the context of the problem using plain language.\footnote{The data do not provide evidence that the consultant's complication rate is significantly lower or higher that the average US rate of 10\%.}
+Because the p-value is 0.2444, which is larger than the significance level 0.05, we do not reject the null hypothesis. Explain what this means in the context of the problem using plain language.\footnote{The data do not provide evidence that the consultant's complication rate is significantly lower or higher that the US complication rate of 10\%.}
 \end{exercise}
 
 \begin{example}{In the previous exercise, we did not reject $H_0$. This means that we did not disprove the null claim. Is this equivalent to proving the null claim is~true?}

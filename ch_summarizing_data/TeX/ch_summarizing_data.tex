@@ -545,22 +545,13 @@ IQR = Q_3 - Q_1
 where $Q_1$ and $Q_3$ are the $25^{th}$ and $75^{th}$ percentiles.}
 \end{termBox}
 
-\Comment{D - added a definition for outlier for the AP Stat exam below. Probably needs to be tweaked. I've also added some additional text and tweaked the box plot figure to say ``outlier'' rather than ``suspected outlier''. $Q_2$ has also been added to the median label in the figure.}
-
-\begin{termBox}{\tBoxTitle{Outlier definition for the AP Statistics exam}
-The AP Statistics exam defines an outlier using the box plot criteria: if an \mbox{observation} is more than $1.5 \times IQR$ above $Q_3$ or $1.5 \times IQR$ below $Q_1$, then it is an \term{outlier}, and it is marked using a dot or asterisk in a box plot.}
+\begin{termBox}{\tBoxTitle{Outliers in the context of a box plot}
+When in the context of a box plot, define an \term{outlier} as an \mbox{observation} that is more than $1.5 \times IQR$ above $Q_3$ or $1.5 \times IQR$ below $Q_1$. Such points are marked using a dot or asterisk in a box plot.}
 \end{termBox}
 
 To build a box plot, draw an axis (vertical or horizontal) and draw a scale. Draw a dark line denoting $Q_2$, the median. Next, draw a line at $Q_1$ and at $Q_3$. Connect the $Q_1$ and $Q_3$ lines to form a rectangle. The width of the rectangle corresponds to the IQR and the middle 50\% of the data is in this interval.
 
-\Comment{D - The proposed updates here need work. What was broken about the original description? The description seem to be too much stream-of-thought: whiskers extend to max / min, except when there are outliers, but we haven't yet given a definition of outlier in the context of a boxplot. I think we should revert the changes in this paragraph, which Chris, Mine, and myself had spent a lot of time discussing and crafting to avoid confusion on this topic (the proposed description looks more like one of the earlier drafts of this content).}
-
-\Comment{D (April 5th) - this paragraph is a proposed new version that is hopefully more AP Statistics friendly.} \Add{Extending out from the rectangle, the \term{whiskers} attempt to capture all of the data remaining outside of the box, except outliers. In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$ and are outliers, so it extends only to the last point below this limit.\footnote{You might wonder, isn't the choice of $1.5 \times IQR$ for defining an outlier arbitrary? It is! In practical data analyses, we tend to avoid a strict definition since what is an unusual observation is highly dependent on the context of the data.} The lower whisker stops at the lowest value, 33, since there are no additional data to reach. Outliers are each marked with a dot or asterisk. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.}
-
-\Add{Now the whiskers usually extend out on either end to the minimum and maximum values. However, if there are outliers, then we denote those outliers with a special symbol (a dot or an asterisk), and extend the whiskers to the smallest and largest values in the data set that are not outliers. Here, we define an outlier as a value that is more than $1.5\times IQR$ below $Q_1$ or above $Q_3$.\footnote{While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.}  In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit. There are no values below $Q_1 - 1.5\times IQR$j, so the lower whisker stops at the minimum. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data, with outliers escaping their reach.} 
-\Cut{
-Extending out from the rectangle, the \term{whiskers} attempt to capture the data remaining outside of the box; however, their reach cannot be more than $1.5\times IQR$. In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit. The lower whisker stops at the lowest value, 33, since there is no additional data to reach. \Add{Observations that fall beyond the whiskers are marked with dots or asterisks.} In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data. We will call a value an \hiddenterm{outlier} if it is more than $1.5\times IQR$ below $Q_1$ or above $Q_3$.\footnote{While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.}
-}
+Extending out from the rectangle, the \term{whiskers} attempt to capture all of the data remaining outside of the box, except outliers. In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$ and are outliers, so it extends only to the last point below this limit.\footnote{You might wonder, isn't the choice of $1.5 \times IQR$ for defining an outlier arbitrary? It is! In practical data analyses, we tend to avoid a strict definition since what is an unusual observation is highly dependent on the context of the data.} The lower whisker stops at the lowest value, 33, since there are no additional data to reach. Outliers are each marked with a dot or asterisk. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.
 
 \begin{example}{Compare the box plot to the graphs previously discussed: stem-and-leaf plot, dot plot, frequency and relative frequency histogram. What can we learn more easily from a box plot? What can we learn more easily from the other graphs?}
 It is easier to immediately identify the quartiles from a box plot. The box plot also more prominently highlights outliers. However, a box plot, unlike the other graphs, does not show the \emph{distribution} of the data. For example, we cannot generally identify modes using a box plot.
@@ -573,6 +564,8 @@ It is easier to immediately identify the quartiles from a box plot. The box plot
 \begin{exercise}
 True or false: there is more data between the median and $Q_3$ than between $Q_1$ and the median.\footnote{False. Since $Q_1$ is the 25th percentile and the median is the 50th percentile, 25\% of the data fall between $Q_1$ and the median. Similarly, 25\% of the data fall between $Q_2$ and the median. The distance between the median and $Q_3$ is larger because that 25\% of the data is more spread out.}
 \end{exercise}
+
+\Comment{TODO(Leah) - Add example or exercise around calculating $Q_1 - 1.5 \times IQR$ and $Q_3 + 1.5 \times IQR$.}
 
 %\Comment{TODO(David)  create another box plot using different data set}
 %\Comment{TODO(Leah) redo exercise}
@@ -587,9 +580,7 @@ True or false: there is more data between the median and $Q_3$ than between $Q_1
 \subsection{Calculator: summarize 1-variable statistics\textPE{\vspace{-3mm}}}
 \label{TIsummarizedata}
 
-\Comment{Change all \"TI calculator" headings to \"TI-84 calculator"?}
-
-\begin{termBox}{\tBoxTitle{TI calculator:  Entering data}
+\begin{termBox}{\tBoxTitle{TI-83/84:  Entering data}
 The first step in summarizing data or making a graph is to  enter the data set into a list. Use \textbf{STAT, Edit}.
 \begin{enumerate}
 \item Press STAT.
@@ -599,7 +590,9 @@ The first step in summarizing data or making a graph is to  enter the data set i
 }
 \end{termBox}
 
-\begin{termBox}{\tBoxTitle{TI calculator:  Calculating Summary Statistics}
+\Comment{D - Should the box below be TI-83/84?}
+
+\begin{termBox}{\tBoxTitle{TI-84:  Calculating Summary Statistics}
 Use the \textbf{STAT, CALC, 1-VarStats} command to find summary statistics such as mean, standard deviation, and quartiles.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -633,7 +626,7 @@ n & (sample size or \# of data points)
 \end{tabular}
 \end{center}
 
-\begin{termBox}{\tBoxTitle{TI calculator:  Drawing a box plot}
+\begin{termBox}{\tBoxTitle{TI-83/84:  Drawing a box plot}
 Occasionally, we may want just a quick sketch of the box plot. In these instances we can use the graphing calculator to speed up the process. Use \textbf{2ND Y=}.
 \begin{enumerate}
 \item Enter the data to be graphed as described previously.
@@ -653,9 +646,7 @@ Occasionally, we may want just a quick sketch of the box plot. In these instance
 \end{center}
 \end{example}
 
-%\CommentA{added tipbox}
-
-\begin{tipBox}{\tipBoxTitle[]{TI calculator: What to do if you cannot find L1 or another list\vspace{-5mm}}
+\begin{tipBox}{\tBoxTitle[]{TI-83/84: What to do if you cannot find L1 or another list}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Press STAT.

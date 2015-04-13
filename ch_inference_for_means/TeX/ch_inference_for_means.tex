@@ -114,17 +114,13 @@ Just like a normal probability problem, we first draw the picture in Figure~\ref
 \label{tDistDF18LeftTail2Point10}
 \end{figure}
 
-\Comment{D - tweaked both questions below. Please double check the solution to the second example. (I've changed the answer, which disagreed with what was listed, so I want to get a sanity check.)}
-
-\Add{
 \begin{example}{For the $t$ distribution with 18 degrees of freedom, what percent of the curve is contained between -1.330 and +1.330?}
-Using row $df = 18$, we find 1.330 in the table. The area in each tail is 0.100, which leaves 0.800 in the middle between -1.33 and +1.33.
+Using row $df = 18$, we find 1.330 in the table. The area in each tail is 0.100 for a total of 0.200, which leaves 0.800 in the middle between -1.33 and +1.33. This corresponds to a confidence level of 80\%.
 \end{example}
 
 \begin{example}{For the $t$ distribution with 3 degrees of freedom, as shown in the left panel of Figure~\ref{tDistDF3_and_20}, what should the value of $t^{\star}$ be so that 95\% of the area of the curve falls between -$t^{\star}$ and +$t^{\star}$?}
-We can look at the column in the $t$ table that says 95\% at the bottom row for the confidence level and trace it up to row $df = 3$ to find that $t^{\star} = 3.18$.
+We can look at the column in the $t$ table that says 95\% at the bottom row for the confidence level and trace it up to row $df = 3$ to find that $t^{\star} = 3.182$.
 \end{example}
-}
 
 \begin{example}{A $t$ distribution with 20 degrees of freedom is shown in the right panel of Figure~\ref{tDistDF3_and_20}. Estimate the proportion of the distribution falling above 1.65.}
 We identify the row in the $t$ table using the degrees of freedom: $df=20$. Then we look for 1.65; it is not listed. It falls between the first and second columns. Since these values bound 1.65, their tail areas will bound the tail area corresponding to 1.65. We identify the one tail area of the first and second columns, 0.050 and 0.10, and we conclude that between 5\% and 10\% of the distribution is more than 1.65 standard deviations above the mean. If we like, we can identify the precise area using statistical software: 0.0573.
@@ -151,7 +147,6 @@ Use the $t$ distribution for inference of the sample mean when observations are 
 
 \index{data!dolphins and mercury|(}
 
-%\CommentA{added n at least 30}
 To proceed with the $t$ distribution for inference about a single mean, we must check two conditions.
 \begin{description}
 \setlength{\itemsep}{0mm}
@@ -313,7 +308,7 @@ Many companies are concerned about rising healthcare costs. A company may estima
 \begin{align*}
 ME_{95\%} = 1.96\times\frac{\sigma_{employee}}{\sqrt{n}}
 \end{align*}
-The challenge in this case is to find the sample size $n$ so that this margin of error is less than or equal to 4, which we write as an inequality:
+The challenge in this case is to find the sample size $n$ so that this margin of error is less than or equal to $m = 4$, which we write as an inequality:
 \begin{align*}
 1.96\times \frac{\sigma_{employee}}{\sqrt{n}} \leq 4
 \end{align*}
@@ -330,8 +325,6 @@ The minimum sample size that meets the condition is 151. We round up because the
 \end{example}
 
 A potentially controversial part of Example~\ref{sampleSizeComputationForSystolicBloodPressure} is the use of the U.S. standard deviation for the employee standard deviation. Usually the standard deviation is not known. In such cases, it is reasonable to review scientific literature or market research to make an educated guess about the standard deviation.
-
-\Comment{D - divided the term box that was below into 2 separate boxes. They should be reviewed.}
 
 \begin{termBox}{\tBoxTitle{Margin of error for a sample mean}
 The \index{margin of error!sample mean}margin of error for a sample mean is similar to the formula we add and subtract in a confidence interval:
@@ -359,9 +352,6 @@ Sample size computations are helpful in planning data collection, and they requi
 \label{oneSampleTTests}
 
 \index{data!SAT prep company|(}
-
-%\CommentA{encountered major problem - this example actually uses paired data, which has not yet been discussed in this edition!!!  I am replacing it with example from ISRS and will use this example in the paired section.}
-%CONSIDER: replacing the following application.
 
 Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Run, comparing runners in 2006 and 2012. Technological advances in shoes, training, and diet might suggest runners would be faster in 2012. An opposing viewpoint might say that with the average body mass index on the rise, people tend to run slower. In fact, all of these components might be influencing run time.
 
@@ -423,8 +413,6 @@ The sample mean and sample standard deviation are 95.61 and 15.78 minutes, respe
 
 \begin{exercise}Recall the example about the mercury content in croaker white fish (Pacific). Based on a sample of 15, a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. Carry out an appropriate test to determine if 0.25 is a reasonable value for the average mercury content.\footnote{We should carry out a 1-sample $T$ test. The conditions have already been checked. $H_0: \mu=0.25$; The true average mercury content is 0.25 ppm. $H_A: \mu \ne 0.25$; The true average mercury content is not equal to 0.25 ppm. Let $\alpha=0.05$. $SE = \frac{0.069}{\sqrt{15}} = 0.0178$. $T=\frac{0.287-0.25}{0.0178}=2.07$  $df=15-1=14$. p-value$=0.057>0.05$, so we do not reject the null hypothesis. We do not have sufficient evidence that the average mercury content in croaker white fish is not 0.25.}
 \end{exercise}
-
-%\CommentA{for the next edition, this example should be put sooner and in the context of proportions. thought of that after I had already written this.}
 
 \begin{example}{Recall that the 95\% confidence interval for the average mercuy content in croaker white fish was (0.249, 0.325). Discuss whether the conclusion of the test of hypothesis is consistent or inconsistent with the conclusion of the hypothesis test.}It is consistent because 0.25 is located (just barely) inside the confidence interval, so it is a reasonable value. Our hypothesis test did not reject the hypothesis that $\mu=0.25$, implying that it is a plausible value. Note, though, that the hypothesis test did not \emph{prove} that $\mu=.25$. A hypothesis cannot prove that the mean is a specific value. It can only find evidence that it is not a specific value. Note also that the p-value was close to the cutoff of 0.05. This is because the value 0.25 was close to edge of the confidence interval.
 \end{example}
@@ -549,8 +537,6 @@ The average time for all runners who finished the Cherry Blossom Run in 2006 was
 
 \index{paired data|(}
 \index{data!textbooks|(}
-
-%\Comment{moved matched pairs section here and redid using t}
 
 Are textbooks actually cheaper online? Here we compare the price of textbooks at UCLA's bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10\% of all UCLA courses.\footnote{When a class had multiple books, only the most expensive text was considered.} A portion of this data set is shown in Table~\ref{textbooksDF}.
 
@@ -941,8 +927,6 @@ SE_{\bar{x}_1 - \bar{x}_2}
 	 = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}} \label{seOfDiffOfTwoMeansInTDistSection}
 \end{eqnarray}
 Because we will use the $t$ distribution, we will need to identify the appropriate degrees of freedom. This can be done using a calculator or computer software. An alternative technique is to use the smaller of $n_1 - 1$ and $n_2 - 1$.~\footnote{This technique for degrees of freedom is conservative with respect to a Type 1 Error; it is more difficult to reject the null hypothesis using this $df$ method.}
-
-%\Comment{In practice, students will always use calculator to find df for difference of two means.}
 
 \begin{termBox}{\tBoxTitle{Using the $t$ distribution for a difference in means}
 The $t$ distribution can be used for inference when working with the standardized difference of two means if (1) each sample meets the conditions for using the $t$ distribution and (2) the samples are independent. We estimate the standard error of the difference of two means using Equation~(\ref{seOfDiffOfTwoMeansInTDistSection}).}

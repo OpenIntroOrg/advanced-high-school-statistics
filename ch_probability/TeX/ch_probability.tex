@@ -187,8 +187,6 @@ Let's consider calculations for two events that are not disjoint in the context 
 \label{venn}
 \end{figure}
 
-\textPE{\pagebreak}
-
 \begin{exercise}
 Using the Venn diagram, verify $P($face card$) = 12/52=3/13$.\footnote{The Venn diagram shows face cards split up into ``face card but not {\color{redcards}$\diamondsuit$}'' and ``face card and {\color{redcards}$\diamondsuit$}''. Since these correspond to disjoint events, $P($face card$)$ is found by adding the two corresponding probabilities: $\frac{3}{52} + \frac{9}{52} = \frac{12}{52} = \frac{3}{13}$.}
 \end{exercise}
@@ -352,8 +350,6 @@ P(A_1) \times  P(A_2)\times  \cdots \times  P(A_k)
 \end{eqnarray*}\vspace{-6mm}}
 \end{termBox}
 
-\textPE{\pagebreak}
-
 \begin{exercise} \label{ex2Handedness}
 About 9\% of people are left-handed. Suppose 2 people are selected at random from the U.S. population. Because the sample size of 2 is very small relative to the population, it is reasonable to assume these two people are independent. (a)~What is the probability that both are left-handed? (b)~What is the probability that both are right-handed?\footnote{(a) The probability the first person is left-handed is $0.09$, which is the same for the second person. We apply the Multiplication Rule for independent processes to determine the probability that both will be left-handed: $0.09\times 0.09 = 0.0081$.
 
@@ -444,8 +440,6 @@ Are students more likely to use marijuana when their parents used drugs? The \da
 \caption{A Venn diagram using boxes for the \data{drug\_\hspace{0.3mm}use} data set.}
 \label{drugUseVenn}
 \end{figure}
-
-\textPE{\pagebreak}
 
 \begin{example}{If at least one parent used drugs, what is the chance their child (\var{student}) {uses}?}
 We will estimate this probability using the data. Of the 210 cases in this data set where \var{parents} \resp{used}, 125 represent cases where \var{student} \resp{uses}:
@@ -592,8 +586,6 @@ P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
 (a) Write out the following statement in conditional probability notation: ``\emph{The probability a random case has \var{parents} \resp{did not use} if it is known that \var{student} \resp{does not use}}''. Notice that the condition is now based on the {student}, not the {parent}. (b)~Determine the probability from part (a). Table~\vref{drugUseProbTable} may be helpful.\footnote{(a) $P(\text{\var{parents}  \resp{did not use}} | \text{ \var{student} \resp{does not use}})$. (b) Equation~(\ref{condProbEq}) for conditional probability indicates we should first find $P(\text{\var{parents} \resp{did not use} and \var{student} \resp{does not use}})=0.32$ and $P(\text{\var{student} \resp{does not use}})=0.51$. Then the ratio represents the conditional probability: $0.32/0.51 = 0.63$.}
 \end{exercise}
 
-\textPE{\pagebreak}
-
 \begin{exercise}\label{whyCondProbSumTo1}
 (a)~Determine the probability that one of the parents had used drugs if it is known the student does not use drugs.
 (b)~Using the answers from part (a) and Guided Practice~\ref{drugUseProbOfParentsEqualNotGivenStudents}(b), compute \vspace{-1.5mm}
@@ -730,8 +722,6 @@ What rule permitted us to multiply the probabilities in Example~\ref{3woRep}?\fo
 \end{eqnarray*}
 Using the General Multiplication Rule, the product of these three probabilities is the probability of not being picked in 3 questions.}
 \end{exercise}
-
-\textPE{\pagebreak}
 
 \begin{example}{Suppose the professor randomly picks without regard to who she already selected, i.e. students can be picked more than once. What is the probability that you will not be picked for any of the three questions?}\label{3wRep}
 Each pick is independent, and the probability of not being picked for any individual question is $14/15$. Thus, we can use the Multiplication Rule for independent processes.
@@ -1186,7 +1176,7 @@ P(x = 3) &= (\text{\# of combinations with 3 blue})\times P(\text{3 blue and 2 r
 \subsection{Calculator: binomial probabilities}
 \label{calculatorBinomial}
 
-\begin{termBox}{\tBoxTitle{TI calculator: Computing the binomial coefficient: ${n\choose k}$\vspace{01mm}}
+\begin{termBox}{\tBoxTitle{TI-83/84: Computing the binomial coefficient: ${n\choose k}$\vspace{1mm}}
 Use \textbf{MATH, PRB, nCr} to evaluate $n$ choose $r$. Here r and k are different letters for the same quantity. e.g.: 5 nCr 3 means 5 choose 3.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1199,7 +1189,9 @@ Use \textbf{MATH, PRB, nCr} to evaluate $n$ choose $r$. Here r and k are differe
 \end{enumerate}}
 \end{termBox}
 
-\begin{termBox}{\tBoxTitle{TI: calculator: Computing binomial formula: $P(x = k)={n\choose k}p^k(1-p)^{n-k}$\vspace{1mm}} 
+\Comment{D - TI-83/84 for the two boxes below, or just TI-84?}
+
+\begin{termBox}{\tBoxTitle{TI-84: Computing binomial formula: $P(x = k)={n\choose k}p^k(1-p)^{n-k}$\vspace{1mm}} 
 Use \textbf{2ND VARS, binompdf} to evaluate the probability of \emph{exactly} $k$ occurrences out of $n$ independent trials of an event with probability $p$. 
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1216,7 +1208,7 @@ Use \textbf{2ND VARS, binompdf} to evaluate the probability of \emph{exactly} $k
 }
 \end{termBox}
 
-\begin{termBox}{\tBoxTitle{TI calculator: Computing $P(x \le k)= {n\choose 0}p^0(1-p)^{n-0} + ... + {n\choose k}p^k(1-p)^{n-k}$} 
+\begin{termBox}{\tBoxTitle{TI-84: Computing $P(x \le k)= {n\choose 0}p^0(1-p)^{n-0} + ... + {n\choose k}p^k(1-p)^{n-k}$} 
 Use \textbf{2ND VARS, binomcdf} to evaluate the cumulative probability of \emph{at most} $k$ occurrences out of $n$ independent trials of an event with probability $p$. 
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1232,8 +1224,6 @@ Use \textbf{2ND VARS, binomcdf} to evaluate the cumulative probability of \emph{
 \end{enumerate}
 }
 \end{termBox}
-
-\textPE{\pagebreak}
 
 \begin{exercise}Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnote{Use 5 nCr 3 to get 10. }
 \end{exercise}
@@ -1394,8 +1384,6 @@ E(X) = \mu_x &= x_1\times p_1 + x_2\times p_2 + \cdots + x_n\times p_n \notag \\
 \end{termBox}
 
 The expected value for a random variable represents the average outcome. For example, $E(X)=117.85$ represents the average amount the bookstore expects to make from a single student, which we could also write as $\mu=117.85$. While the bookstore will make more than this on some students and less than this on other students, the average of many randomly selected students will be near \$117.85.
-
-\textPE{\pagebreak}
 
 It is also possible to compute the expected value of a continuous random variable (see Section~\ref{contDist}). However, it requires a little calculus and we save it for a later class.\footnote{$\mu_x = \int xf(x)dx$ where $f(x)$ represents a function for the density curve.}
 
@@ -1771,8 +1759,6 @@ This smooth curve represents a \term{probability density function} (also called 
 
 \index{hollow histogram|)}
 
-\textPE{\pagebreak}
-
 
 \subsection{Probabilities from continuous distributions}
 
@@ -1794,8 +1780,6 @@ The probability that a randomly selected person is between \resp{180} and \resp{
 \caption{Density for heights in the US adult population with the area between 180 and 185 cm shaded. Compare this plot with Figure~\ref{usHeightsHist180185}.}
 \label{fdicHeightContDistFilled}
 \end{figure}
-
-\textPE{\pagebreak}
 
 \begin{exercise}
 Three US adults are randomly selected. The probability a single adult is between \resp{180} and \resp{185} cm is 0.1157.\footnote{Brief answers: (a) $0.1157 \times 0.1157 \times 0.1157 = 0.0015$. (b) $(1-0.1157)^3 = 0.692$} \vspace{-1.5mm}
