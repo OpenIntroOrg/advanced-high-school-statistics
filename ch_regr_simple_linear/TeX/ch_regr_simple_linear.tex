@@ -501,54 +501,79 @@ If a linear model has an $R^2$ or explained variance of 0.94, what is the correl
 
 \subsection{Calculator: linear correlation and regression}
 
-\begin{termBox}{\tBoxTitle{TI-84: finding $b_0$, $b_1$, $R^2$, and $r$ for a linear model}
-Use \textbf{STAT, CALC, LinReg(a + bx)}.
+\begin{termBox}{\tBoxTitle{\videohref{ti84_calculating_regression_summary_statistics} TI-84: finding $b_0$, $b_1$, $R^2$, and $r$ for a linear model}
+Use \calctext{STAT}, \calctext{CALC}, \calctext{LinReg(a + bx)}.
 \begin{enumerate}
-\item Choose STAT.
-\item Right arrow to CALC.
-\item Down arrow and choose 8: LinReg(a+bx).  \newline (Caution: choosing 4:LinReg(ax+b) will reverse $a$ and $b$.)
-\item Let Xlist be L1 and Ylist be L2 (don't forget to enter the $x$ and $y$ values in L1 and L2 before doing this calculation).  
-\item Let FreqList be 1.
-\item Leave Store RegEQ blank.
-\item Choose Calculate and hit ENTER, which returns: \\
+\setlength{\itemsep}{0mm}
+\item Choose \calctext{STAT}.
+\item Right arrow to \calctext{CALC}.
+\item Down arrow and choose \calctext{8:LinReg(a+bx)}.\vspace{-1.5mm}
+  \begin{itemize}
+  \item Caution: choosing \calctext{4:LinReg(ax+b)} will reverse $a$ and $b$.
+  \end{itemize}
+\item Let \calctext{Xlist} be \calctext{L1} and \calctext{Ylist} be \calctext{L2} (don't forget to enter the $x$ and $y$ values in L1 and \calctext{L2} before doing this calculation).  
+\item Leave \calctext{FreqList} blank.
+\item Leave \calctext{Store RegEQ} blank.
+\item Choose Calculate and hit \calctext{ENTER}, which returns: \\[1mm]
 \begin{tabular}{l l}
-a & \quad $b_0$, the y-intercept of the best fit line \\
-b & \quad $b_1$, the slope of the best fit line \\
-r$^2$ & \quad \text{$R^2$, the explained variance} \\
-r & \quad$r$, the correlation coefficient
+\calctext{a} & $b_0$, the y-intercept of the best fit line \\
+\calctext{b} & $b_1$, the slope of the best fit line \\
+$\calctextmath{r^2}$ & $R^2$, the explained variance \\
+\calctext{r} & $r$, the correlation coefficient
 \end{tabular}
-\begin{itemize}
-\item[TI-83: ] Do steps 1 - 3, then enter the $x$ list and $y$ list separated by a comma, e.g. LinReg(a+bx) L1, L2, then hit ENTER.  
-\end{itemize}
 \end{enumerate}
-}
+TI-83: Do steps 1-3, then enter the $x$ list and $y$ list separated by a comma, e.g. \calctext{LinReg(a+bx) L1, L2}, then hit \calctext{ENTER}.}
 \end{termBox} 
 
 \begin{tipBox}{\tipBoxTitle{What to do if $r^2$ and $r$ do not show up on a TI-83/84}
-If $r^2$ and $r$ do now show up when doing STAT, CALC, LinReg, the \emph{diagnostics} must be turned on.  This only needs to be once and the diagnostics will remain on.
+If $r^2$ and $r$ do now show up when doing \calctext{STAT}, \calctext{CALC}, \calctext{LinReg}, the \emph{diagnostics} must be turned on.  This only needs to be once and the diagnostics will remain on.
 \begin{enumerate}
-\item Hit 2ND 0 (i.e. CATALOG).
-\item Scroll down until the arrow points at DiagnosticOn
-\item Hit ENTER and ENTER again.
-\begin{description}
-\item[] The screen should now say: 
-\end{description}
+\setlength{\itemsep}{0mm}
+\item Hit \calctext{2ND} \calctext{0} (i.e. \calctext{CATALOG}).
+\item Scroll down until the arrow points at \calctext{DiagnosticOn}.
+\item Hit \calctext{ENTER} and \calctext{ENTER} again. The screen should now say: \\[1mm]
 \begin{tabular}{l l}
-DiagnosticOn & \\
-& Done \\
+\calctext{DiagnosticOn} & \\
+& \calctext{Done} \\
 \end{tabular}
 \end{enumerate}
 }
 \end{tipBox} 
 
-\begin{tipBox}{\tipBoxTitle{What to do if a TI-83/84 returns: ERR: DIM MISMATCH }This error means that the lists, generally L1 and L2, do not have the same length.
+\begin{tipBox}{\tipBoxTitle{What to do if a TI-83/84 returns: \calctext{ERR:}~\calctext{DIM MISMATCH}}
+This error means that the lists, generally L1 and L2, do not have the same length.
 \begin{enumerate}
-\item Choose 1: Quit
-\item Choose STAT, Edit and make sure that the lists have the same number of entries.
+\setlength{\itemsep}{0mm}
+\item Choose \calctext{1:Quit}.
+\item Choose \calctext{STAT},~\calctext{Edit} and make sure that the lists have the same number of entries.
 \end{enumerate}
 }
 \end{tipBox} 
 
+\begin{termBox}{\tBoxTitle[]{\videohref{casio_calculating_regression_summary_statistics} Casio fx-9750GII: finding $b_0$, $b_1$, $R^2$, and $r$ for a linear model}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
+\item Enter the $x$ and $y$ data into 2 separate lists, e.g. $x$ values in \calctext{List 1} and $y$ values in \calctext{List 2}. Observation ordering should be the same in the two lists. For example, if $(5, 4)$ is the second observation, then the second value in the $x$ list should be 5 and the second value in the $y$ list should be 4.
+\item Navigate to \calctext{CALC} (\calcbutton{F2}) and then \calctext{SET} (\calcbutton{F6}) to set the regression context.\vspace{-1.5mm}
+  \begin{itemize}
+  \item To change the \calctext{2Var XList}, navigate to it, select \calctext{List} (\calcbutton{F1}), and enter the proper list number. Similarly, set \calctext{2Var YList} to the proper list.
+  \end{itemize}
+\item Hit \calcbutton{EXIT}.
+\item Select \calctext{REG} (\calcbutton{F3}), \calctext{X} (\calcbutton{F1}), and \calctext{a+bx} (\calcbutton{F2}), which returns: \\[1mm]
+\begin{tabular}{l l}
+\calctext{a} & $b_0$, the y-intercept of the best fit line \\
+\calctext{b} & $b_1$, the slope of the best fit line \\
+\calctext{r} & $r$, the correlation coefficient \\
+$\calctextmath{r^2}$ & $R^2$, the explained variance \\
+\calctext{MSe} & Mean squared error, which you can ignore
+\end{tabular} \\[1mm]
+If you select \calctext{ax+b} (\calcbutton{F1}), the \calctext{a} and \calctext{b} meanings will be reversed.
+\end{enumerate}}
+\end{termBox} 
+
+\begin{table}[h]
+\centering
 \begin{tabular}{ccc}
 \hline
 &\var{fed\_\hspace{0.3mm}spend} & \var{poverty} \\
@@ -562,8 +587,12 @@ DiagnosticOn & \\
   7  & 6.70 & 7.9 \\ 
 \hline
 \end{tabular}
+\caption{Data for Guided Practice~\ref{subsetOfCountyForRegressionGP}.}
+\label{subsetOfCountyForRegression}
+\end{table}
 
-\begin{exercise}The table above contains values of federal spending per capita (rounded to the nearand percent of population in poverty for seven counties.  This is a a subset of the ~\ref{countyDF} data set from Chapter 1.  Use the table a calculator to find the equation of the least squares regression line for this partial data set.\footnote{$a=5.136$ and $b=1.056$, therefore $\hat{y}=5.136 + 1.056x$.}
+\begin{exercise}\label{subsetOfCountyForRegressionGP}
+Table~\ref{subsetOfCountyForRegression} contains values of federal spending per capita (rounded to the nearand percent of population in poverty for seven counties.  This is a a subset of the \data{countyDF} data set from Chapter 1.  Use the table a calculator to find the equation of the least squares regression line for this partial data set.\footnote{$a=5.136$ and $b=1.056$, therefore $\hat{y}=5.136 + 1.056x$.}
 \end{exercise}
 
 \subsection{Categorical predictors with two levels (special topic)}
@@ -786,7 +815,7 @@ If conditions for fitting the regression line do not hold, then the methods pres
 
 \subsection{Summarizing inference procedures for linear regression}
 
-\begin{termBox}{\tBoxTitle{Hypothesis test for the slope of regression line\vspace{-1.5mm}}
+\begin{termBox}{\tBoxTitle[]{Hypothesis test for the slope of regression line}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item State the name of the test being used.\vspace{-1.5mm}
@@ -846,56 +875,81 @@ $$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
 \end{enumerate}}
 \end{termBox}
 
-\subsection{Calculator: The Linear Regression $T$ test and CI}
+\subsection{Calculator: the linear regression $T$ test and CI}
 
 When doing this type of inference, we generally make use of computer output that provides us with the necessary quantities: $b$ and $s_b$.  The calculator functions below require knowing all of the data and are, therefore, rarely used.  We describe them here for the sake of completion. 
 
-\begin{termBox}{\tBoxTitle{TI-83/84: Linear Regression $T$ test on $\beta_1$}
-Use \textbf{STAT, TESTS, LinRegTTest}.
+\begin{termBox}{\tBoxTitle{\videohref{ti84_regression_t_test} TI-83/84: Linear regression $T$ test on $\beta_1$}
+Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Choose STAT.
-\item Right arrow to TESTS.
-\item Down arrow and choose F: LinRegTest. (On TI-83 it is E: LinRegTTest).
-\item Let Xlist be L1 and Ylist be L2 (don't forget to enter the $x$ and $y$ values in L1 and L2 before doing this test).  
-\item Let Freq be 1.
-\item Choose $\ne$, $<$, or $>$ to correspond to H$_A$.
-\item Leave RegEQ blank.
-\item Choose Calculate and hit ENTER, which returns: \\
-\begin{tabular}{l l}
-t & \quad t statistic \\
-p & \quad \text{p-value} \\
-df & \quad \text{degrees of freedom associated with this test} \\
-a & \quad $b_0$, the y-intercept of the best fit line of the sample data\\
-b & \quad $b_1$, the slope of the best fit line of the sample data \\
-s & \quad \text{the standard deviation of the regression line} \\
-r$^2$ & \quad \text{$R^2$, the explained variance} \\
-r & \quad$r$, the correlation coefficient\\
+\item Choose \calctext{STAT}.
+\item Right arrow to \calctext{TESTS}.
+\item Down arrow and choose \calctext{F:LinRegTest}. (On TI-83 it is \calctext{E:LinRegTTest}).
+\item Let \calctext{Xlist} be \calctext{L1} and \calctext{Ylist} be \calctext{L2}. (Don't forget to enter the $x$ and $y$ values in \calctext{L1} and \calctext{L2} before doing this test.)
+\item Let \calctext{Freq} be \calctext{1}.
+\item Choose $\calctextmath{\ne}$, $\calctextmath{<}$, or $\calctextmath{>}$ to correspond to H$_A$.
+\item Leave \calctext{RegEQ} blank.
+\item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\[1mm]
+\begin{tabular}{ll l ll}
+\calctext{t} & t statistic &\quad&
+	\calctext{b} & $b_1$, slope of the line \\
+\calctext{p} & p-value &&
+	\calctext{s} & st.~dev.~of the residuals \\
+\calctext{df} & degrees of freedom for the test &&
+	$\calctextmath{r^2}$ & $R^2$, explained variance \\
+\calctext{a} & $b_0$, y-intercept of the line &&
+	\calctext{r} & $r$, correlation coefficient
 \end{tabular}
 \end{enumerate}
 }
 \end{termBox} 
 
-\begin{termBox}{\tBoxTitle{TI-84: $T$ Confidence Interval for $\beta_1$}
-Use \textbf{STAT, TESTS, LinRegTInt}.
+\begin{termBox}{\tBoxTitle[]{\videohref{casio_regression_t_test} Casio fx-9750GII: Linear regression $T$ test on $\beta_1$}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Choose STAT.
-\item Right arrow to TESTS.
-\item Down arrow and choose G: LinRegTest. (This test is not built into the TI-83).
-\item Let Xlist be L1 and Ylist be L2 (don't forget to enter the $x$ and $y$ values in L1 and L2 before doing this interval).  
-\item Let Freq be 1.
+\item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
+\item Enter your data into 2 lists.
+\item Select \calctext{TEST} (\calcbutton{F3}), \calctext{t} (\calcbutton{F2}), and \calctext{REG} (\calcbutton{F3}).
+\item If needed, update the sidedness of the test and the \calctext{XList} and \calctext{YList} lists. The \calctext{Freq} should be set to \calctext{1}.
+\item Hit \calcbutton{EXE}, which returns: \\[1mm]
+\begin{tabular}{ll l ll}
+\calctext{t} & t statistic &\quad&
+	\calctext{b} & $b_1$, slope of the line \\
+\calctext{p} & p-value &&
+	\calctext{s} & st.~dev.~of the residuals \\
+\calctext{df} & degrees of freedom for the test &&
+	\calctext{r} & $r$, correlation coefficient \\
+\calctext{a} & $b_0$, y-intercept of the line &&
+	$\calctextmath{r^2}$ & $R^2$, explained variance
+\end{tabular}
+\end{enumerate}
+}
+\end{termBox} 
+
+\begin{termBox}{\tBoxTitle{\videohref{ti84_regression_t_confint} TI-84: $T$ confidence interval for $\beta_1$}
+Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTInt}.
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Choose \calctext{STAT}.
+\item Right arrow to \calctext{TESTS}.
+\item Down arrow and choose \calctext{G:} \calctext{LinRegTest}.\vspace{-1.5mm}
+  \begin{itemize}
+  \item This test is not built into the TI-83.
+  \end{itemize}
+\item Let \calctext{Xlist} be \calctext{L1} and \calctext{Ylist} be \calctext{L2}. (Don't forget to enter the $x$ and $y$ values in \calctext{L1} and \calctext{L2} before doing this interval.)
+\item Let \calctext{Freq} be \calctext{1}.
 \item Enter the desired confidence level.
-\item Leave RegEQ blank.
-\item Choose Caculate and hit ENTER, which returns: \\
+\item Leave \calctext{RegEQ} blank.
+\item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\[1mm]
 \begin{tabular}{l l}
-( $\_$ , $\_$ )& \quad the confidence interval \\
-b & \quad \text{$b_1$, the slope of best fit line of the sample data} \\
-df & \quad \text{degrees of freedom associated with this test} \\
-s & \quad \text{the standard deviation of the regression line} \\
-a & \quad $b_0$, the y-intercept of the best fit line of the sample data \\
-r$^2$ & \quad \text{$R^2$, the explained variance} \\
-r & \quad$r$, the correlation coefficient\\
+\calctext{(\underline{\ \ },\underline{\ \ })} & the confidence interval \\
+\calctext{b} & $b_1$, the slope of best fit line of the sample data \\
+\calctext{df} &degrees of freedom associated with this confidence interval \\
+\calctext{s} & standard deviation of the residuals \\
+\calctext{a} & $b_0$, the y-intercept of the best fit line of the sample data \\
+$\calctextmath{r^2}$ & $R^2$, the explained variance \\
+\calctext{r} & $r$, the correlation coefficient \\
 \end{tabular}
 \end{enumerate}
 }

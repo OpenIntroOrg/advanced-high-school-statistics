@@ -242,8 +242,6 @@ Identify each of the seven steps for conducting a hypothesis test in the example
 In Example~\ref{TooheyInferenceExample}, the data did not show strong evidence that Toohey's campaign manager was correct. Does this mean the manager was wrong?\footnote{Not necessarily. While we did not reject the null hypothesis, that does not mean it is true. It is possible that Toohey does have support above 50\%, but that the sample did not provide enough evidence to convincingly show this.}
 \end{exercise}
 
-\Comment{D - I tweaked the exercise below to make it clear why we'd want to use a 1-sided test for motivations (other than that $\hat{p} > 0.5$). Please review to make sure everything is looking alright following the edits.}
-
 \begin{exercise}
 A Gallup poll conducted in March of 2015 found that 51\% of respondents support nuclear energy.\footnote{\urlwofont{http://www.gallup.com/poll/182180/support-nuclear-energy.aspx}} The survey was based on telephone interviews from a random sample of 1,025 adults in the United States. Before the poll was conducted, a nuclear energy advocacy group claimed a majority of US adults support nuclear energy. Does the poll provide strong evidence that supports their claim? Carry out an appropriate test at the 0.10 significance level.\footnote{We will perform a 1-proportion $Z$ test.  We will assume that the sample can be treated as a simple random sample of adults from the United States.  Our null value will be $p_0 = 0.5$, and $1025\times 0.5=1025\times(1-0.5)\ge10$ so the conditions for the test are satisfied. We will use a one-sided test with the following hypotheses:
 \begin{itemize}
@@ -254,31 +252,25 @@ We will use a significance level of $\alpha = 0.10$ for the test. We can compute
 \end{exercise}
 
 
-\subsection{Calculator: The 1-proportion $Z$ test and CI\vspace{-3mm}}
+\subsection{Calculator: The 1-proportion $Z$ test and CI}
 
 We can use a calculator to compute a confidence interval or to evaluate the test statistic and the p-value. Remember to show work and first substitute in all numbers before using the calculator.
 
 \begin{termBox}{\tBoxTitle{\videohref{ti84_1_prop_CI} TI-83/84: 1-proportion $Z$ confidence interval}
-Use \textbf{STAT, TESTS, 1-PropZInt}.
+Use \calcbutton{STAT}, \calctext{TESTS}, \calctext{1-PropZInt}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Choose STAT.
-\item Right arrow to TESTS.
-\item Down arrow and choose A: 1-PropZInt.
-\item Let x be the \emph{number} of yes's (must be an integer).
-\item Let n be the sample size.
-\item Let C-Level be the desired confidence level.
-\item Choose Calculate and hit ENTER.
-\begin{description}
-\item[] This returns
-\end{description}
+\item Choose \calcbutton{STAT}.
+\item Right arrow to \calctext{TESTS}.
+\item Down arrow and choose \calctext{A:1-PropZInt}.
+\item Let \calctext{x} be the \emph{number} of yes's (must be an integer).
+\item Let \calctext{n} be the sample size.
+\item Let \calctext{C-Level} be the desired confidence level.
+\item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns\\[1mm]
 \begin{tabular}{l l}
-($\_$ , $\_$)
-	&\quad  the confidence interval \\
-$\hat{p}$
-	&\quad	the sample proportion \\
-n
-	&\quad	the sample size
+\calctext{(\underline{\ \ },\underline{\ \ })} & the confidence interval \\
+$\calctextmath{\hat{p}}$ & the sample proportion \\
+\calctext{n} & the sample size
 \end{tabular}
 \end{enumerate}
 }
@@ -292,8 +284,9 @@ n
 \item Choose the \calctext{INTR} option (\calcbutton{F4} button).
 \item Choose the \calctext{Z} option (\calcbutton{F1} button).
 \item Choose the \calctext{1-P} option (\calcbutton{F3} button).
-\item Specify the interval details:
+\item Specify the interval details:\vspace{-1.5mm}
   \begin{itemize}
+  \setlength{\itemsep}{0mm}
   \item Confidence level of interest for \calctext{C-Level}.
   \item Enter the number of successes, \calctext{x}.
   \item Enter the sample size, \calctext{n}.
@@ -313,25 +306,22 @@ Using a calculator, confirm the earlier result from Example~\ref{90CIForJobSupre
 \end{exercise}
 
 \begin{termBox}{\tBoxTitle{\videohref{ti84_1_prop_HT} TI-83/84: 1-proportion $Z$ test}
-Use \textbf{STAT, TESTS, 1-PropZTest}.
+Use \calcbutton{STAT}, \calctext{TESTS}, \calctext{1-PropZTest}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Choose STAT.
-\item Right arrow to TESTS.
-\item Down arrow and choose 5: 1-PropZTest.
-\item Let p$_0$ be the null or hypothesized value of p.
-\item Let x be the \emph{number} of yes's (must be an integer).
-\item Let n be the sample size.
-\item Choose $\ne$, $<$, or $>$ to correspond to H$_A$.
-\item Choose Calculate and hit ENTER.
-\begin{description}
-\item[] This returns
-\end{description}
+\item Choose \calcbutton{STAT}.
+\item Right arrow to \calctext{TESTS}.
+\item Down arrow and choose \calctext{5:1-PropZTest}.
+\item Let $\calctextmath{p_0}$ be the null or hypothesized value of p.
+\item Let \calctext{x} be the \emph{number} of yes's (must be an integer).
+\item Let \calctext{n} be the sample size.
+\item Choose $\calctextmath{\ne}$, $\calctextmath{<}$, or $\calctextmath{>}$ to correspond to H$_A$.
+\item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns \\[1mm]
 \begin{tabular}{l l}
-\text{z} &\quad  \text{Z statistic} \\
-\text{p} &\quad  \text{p-value} \\
-$\hat{p}$ &\quad  \text{the sample proportion} \\
-\text{n} &\quad  \text{the sample size}
+\calctext{z} & Z statistic \\
+\calctext{p} & p-value \\
+$\calctextmath{\hat{p}}$ &  the sample proportion \\
+\calctext{n} & the sample size
 \end{tabular}
 \end{enumerate}
 }
@@ -749,33 +739,25 @@ Looking up $Z=2.58$ in the normal probability table: 0.9951. However this is the
 %\end{example}
 
 
-\subsection{Calculator: The 2-proportion $Z$ test and CI\vspace{-3mm}}
+\subsection{Calculator: The 2-proportion $Z$ test and CI}
 
 \begin{termBox}{\tBoxTitle{\videohref{ti84_2_prop_CI} TI-83/84: 2-proportion $Z$ confidence interval}
-Use \textbf{STAT, TESTS, 2-PropZInt}.
+Use \calcbutton{STAT}, \calctext{TESTS}, \calctext{2-PropZInt}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Choose STAT.
-\item Right arrow to TESTS.
-\item Down arrow and choose B: 2-PropZInt.
-\item Let x1 be the \emph{number} of yes's (must be an integer) in sample 1 and let n1 be the size of sample 1.
-\item Let x2 be the \emph{number} of yes's (must be an integer) in sample 2 and let n2 be the size of sample 2.
-\item Let C-Level be the desired confidence level.
-\item Choose Calculate and hit ENTER, which returns: \\
-\begin{tabular}{l ll ll}
-\hspace{3mm}&
-(\underline{\ \ \ }, \underline{\ \ \ })
-	&\quad  the confidence interval \\
-&
-$\hat{p}_1$
-	&\quad  sample 1 proportion
-	&\quad	$n_1$
-	&\quad  size of sample 1 \\
-&
-$\hat{p}_2$
-	&\quad  sample 2 proportion
-	&\quad	$n_2$
-	&\quad  size of sample 2
+\item Choose \calcbutton{STAT}.
+\item Right arrow to \calctext{TESTS}.
+\item Down arrow and choose \calctext{B:2-PropZInt}.
+\item Let \calctext{x1} be the \emph{number} of yes's (must be an integer) in sample 1 and let \calctext{n1} be the size of sample 1.
+\item Let \calctext{x2} be the \emph{number} of yes's (must be an integer) in sample 2 and let \calctext{n2} be the size of sample 2.
+\item Let \calctext{C-Level} be the desired confidence level.
+\item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\
+\begin{tabular}{ll l ll}
+\calctext{(\underline{\ \ },\underline{\ \ })} & the confidence interval \\
+$\calctextmath{\hat{p}_1}$ & sample 1 proportion &\quad&
+	$\calctextmath{n_1}$ & size of sample 1 \\
+$\calctextmath{\hat{p}_2}$ & sample 2 proportion &&
+	$\calctextmath{n_2}$ &  size of sample 2
 \end{tabular}
 \end{enumerate}
 }
@@ -823,30 +805,22 @@ no 2,4-D & 300 & 641 \\
 \end{table}
 
 \begin{termBox}{\tBoxTitle{\videohref{ti84_2_prop_HT} TI-83/84: 2-proportion $Z$ test}
-Use \textbf{STAT, TESTS, 2-PropZTest}.
+Use \calcbutton{STAT}, \calctext{TESTS}, \calctext{2-PropZTest}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Choose STAT.
-\item Right arrow to TESTS.
-\item Down arrow and choose 6: 2-PropZTest.
-\item Let x1 be the \emph{number} of yes's (must be an integer) in sample 1 and let n1 be the size of sample 1.
-\item Let x2 be the \emph{number} of yes's (must be an integer) in sample 2 and let n2 be the size of sample 2.
-\item Choose $\ne$, $<$, or $>$ to correspond to H$_A$.
-\item Choose Calculate and hit ENTER, which returns:\\
-\begin{tabular}{l ll ll}
-\hspace{3mm}&
-\text{z}
-	&\quad  Z statistic
-	&\quad	$p$
-	&\quad  p-value \\
-&
-$\hat{p}_1$
-	&\quad  sample 1 proportion
-	&\quad	$\hat{p}$
-	&\quad  pooled sample proportion \\
-&
-$\hat{p}_2$
-	&\quad  sample 2 proportion
+\item Choose \calcbutton{STAT}.
+\item Right arrow to \calctext{TESTS}.
+\item Down arrow and choose \calctext{6:2-PropZTest}.
+\item Let \calctext{x1} be the \emph{number} of yes's (must be an integer) in sample 1 and let \calctext{n1} be the size of sample 1.
+\item Let \calctext{x2} be the \emph{number} of yes's (must be an integer) in sample 2 and let \calctext{n2} be the size of sample 2.
+\item Choose $\calctextmath{\ne}$, $\calctextmath{<}$, or $\calctextmath{>}$ to correspond to H$_A$.
+\item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns:\\
+\begin{tabular}{ll l ll}
+\calctext{z} & Z statistic &\quad&
+	\calctext{p} & p-value \\
+$\calctextmath{\hat{p}_1}$ & sample 1 proportion &&
+	$\calctextmath{\hat{p}}$ & pooled sample proportion \\
+$\calctextmath{\hat{p}_2}$ & sample 2 proportion
 \end{tabular}
 \end{enumerate}}
 \end{termBox}
@@ -1090,24 +1064,21 @@ The cutoff 4.3 falls between the second and third columns in the 2 degrees of fr
 
 Using a calculator or statistical software allows us to get more precise areas under the chi-square curve than we can get from the table alone.
 
-\begin{termBox}{\tBoxTitle{TI-84: Finding upper tail areas under the chi-square curve}
-Use the \textbf{$X^2$cdf} command to find areas under the chi-square curve.
+\begin{termBox}{\tBoxTitle{\videohref{ti84_chisq_tail_area} TI-84: Finding an upper tail area under the chi-square curve}
+Use the $\calctextmath{X^2}$\calctext{cdf} command to find areas under the chi-square curve.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Hit 2ND VARS (i.e. DISTR).
-\item Choose 8: $X^2$cdf.
-\item Enter the lower bound (generally the chi-square value).
-\item Enter the upper bound (use a large number, such as 1000).
+\item Hit \calcbutton{2ND} \calcbutton{VARS} (i.e. \calctext{DISTR}).
+\item Choose \calctext{8:}$\calctextmath{X^2}$\calctext{cdf}.
+\item Enter the lower bound, which is generally the chi-square value.
+\item Enter the upper bound. Use a large number, such as 1000.
 \item Enter the degrees of freedom.
-\item Choose Paste and hit ENTER.
-\begin{itemize}
-\item[TI-83: ] Do steps 1 - 2, then type the lower bound, upper bound, and degrees of freedom separated by commas. e.g. $X^2$cdf(5, 1000, 3), and hit ENTER.
-\end{itemize}
+\item Choose \calctext{Paste} and hit \calcbutton{ENTER}.
 \end{enumerate}
-}
+TI-83: Do steps~1-2, then type the lower bound, upper bound, and degrees of freedom separated by commas. e.g. $\calctextmath{X^2}$\calctext{cdf(5, 1000, 3)}, and hit \calcbutton{ENTER}.}
 \end{termBox}
 
-\begin{termBox}{\tBoxTitle[]{Casio fx-9750GII: Finding upper tail areas under the chi-square curve}
+\begin{termBox}{\tBoxTitle[]{\videohref{casio_chisq_tail_area} Casio fx-9750GII: Finding an upper tail area under the chi-sq.~curve}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
@@ -1333,35 +1304,26 @@ Because the data provided strong evidence that the geometric distribution is not
 \index{data!S\&P500 stock data|)}
 \end{example}
 
-\subsection{Calculator: chi-square goodness of fit test\vspace{-3mm}}
+\subsection{Calculator: chi-square goodness of fit test}
 
 \begin{termBox}{\tBoxTitle{\videohref{ti84_chisq_GOF_test} TI-84: Chi-square goodness of fit test\vspace{0.5mm}}
-Use \textbf{STAT, TESTS, $X^2$GOF-Test}.
+Use \calctext{STAT}, \calctext{TESTS}, $\calctextmath{X^2}$\calctext{GOF-Test}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Enter the observed counts into list L1 and the expected counts into list L2.
-\item Choose STAT.
-\item Right arrow to TESTS.
-\item Down arrow and choose D: $X^2$GOF-Test.
-\item Leave Observed: L1 and Expected: L2.
-\item Enter the degrees of freedom after df:
-\item Choose Calculate and hit ENTER, which returns: \\
+\item Enter the observed counts into list \calctext{L1} and the expected counts into list \calctext{L2}.
+\item Choose \calctext{STAT}.
+\item Right arrow to \calctext{TESTS}.
+\item Down arrow and choose \calctext{D:}$\calctextmath{X^2}$\calctext{GOF-Test}.
+\item Leave \calctext{Observed:~L1} and \calctext{Expected:~L2}.
+\item Enter the degrees of freedom after \calctext{df}:
+\item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\[1mm]
 \begin{tabular}{l ll}
-\hspace{3mm}&
-	$X^2$
-	&\quad chi-square value \\
-&
-	\text{p}
-	&\quad p-value \\
-&
-	df
-	&\quad  degrees of freedom
+$\calctextmath{X^2}$ & chi-square test statistic \\
+\calctext{p} & p-value \\
+\calctext{df} & degrees of freedom
 \end{tabular}
-\begin{itemize}
-\item[TI-83: ] Unfortunately the TI-83 does not have this test built in. To carry out the test manually, make list L3 = (L1 - L2)$^2$ / L2 and do 1-Var-Stats on L3. The sum of L3 will correspond to the value of $X^2$ for this test.
-\end{itemize}
 \end{enumerate}
-}
+TI-83: Unfortunately the TI-83 does not have this test built in. To carry out the test manually, make list \calctext{L3 = (L1 - L2)}$\calctextmath{^2}$\calctext{ / L2} and do \calctext{1-Var-Stats} on \calctext{L3}. The sum of \calctext{L3} will correspond to the value of $X^2$ for this test.}
 \end{termBox}
 
 \begin{termBox}{\tBoxTitle[]{\videohref{casio_chisq_GOF_test} Casio fx-9750GII: Chi-square goodness of fit test\vspace{0.5mm}}
@@ -1377,7 +1339,7 @@ Use \textbf{STAT, TESTS, $X^2$GOF-Test}.
 \item Specify a list where the contributions to the test statistic will be reported using~\calctext{CNTRB}. This list number should be different from the others.
 \item Hit the \calcbutton{EXE} button, which returns \\[1mm]
   \begin{tabular}{l ll}
-  $\calctextmath{x^2}$ & chi-square value \\
+  $\calctextmath{x^2}$ & chi-square test statistic \\
   \calctext{p} & p-value \\
   \calctext{df} & degrees of freedom \\
   \calctext{CNTRB} & list showing the test statistic contributions
@@ -1636,7 +1598,7 @@ There are two conditions that must be checked before performing a chi-square tes
 \end{tipBox}
 
 
-\subsection{Summarizing the chi-square tests for two-way tables\vspace{-3mm}}
+\subsection{Summarizing the chi-square tests for two-way tables}
 
 \begin{termBox}{\tBoxTitle[]{$X^2$ test of homogeneity}
 \begin{enumerate}
@@ -1738,27 +1700,28 @@ We do not reject H$_0$. We do not have evidence that gender and knowing how to a
 \begin{termBox}{\tBoxTitle[]{\videohref{ti84_chisq_2_way_test} TI-83/84: Entering data into a two-way table}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Hit 2ND $x^{-1}$ (i.e. MATRIX).
-\item Right arrow to EDIT.
-\item Hit 1 or ENTER to select matrix A.
-\item Enter the dimensions by typing \#rows, ENTER, \#columns, ENTER.
+\item Hit \calcbutton{2ND} $\calctextmath{x^{-1}}$ (i.e. \calctext{MATRIX}).
+\item Right arrow to \calctext{EDIT}.
+\item Hit \calcbutton{1} or \calcbutton{ENTER} to select matrix \calctext{A}.
+\item Enter the dimensions by typing \#rows, \calcbutton{ENTER}, \#columns, \calcbutton{ENTER}.
 \item Enter the data from the two-way table.
-\end{enumerate}}
+\end{enumerate}
+}
 \end{termBox}
 
 \begin{termBox}{\tBoxTitle{\videohref{ti84_chisq_2_way_test} TI-83/84: Chi-square test of homogeneity and independence}
-Use \textbf{STAT, TESTS, $X^2$-Test}.
+Use \calctext{STAT}, \calctext{TESTS}, $\calctextmath{X^2}$\calctext{-Test}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item First enter two-way table data as described in the previous box.
-\item Choose STAT.
-\item Right arrow to TESTS.
-\item Down arrow and choose C: $X^2$-Test.
-\item Down arrow, choose Calculate, and hit ENTER, which returns \\[1mm]
+\item Choose \calctext{STAT}.
+\item Right arrow to \calctext{TESTS}.
+\item Down arrow and choose \calctext{C:}$\calctextmath{X^2}$\calctext{-Test}.
+\item Down arrow, choose \calctext{Calculate}, and hit \calcbutton{ENTER}, which returns \\[1mm]
 \begin{tabular}{l l}
-$X^2$ & \quad \text{chi-square value} \\
-\text{p} &\quad \text{p-value} \\
-\text{df} &\quad \text{degrees of freedom}
+$\calctextmath{X^2}$ & chi-square test statistic \\
+\calctext{p} & p-value \\
+\calctext{df} & degrees of freedom
 \end{tabular}
 \end{enumerate}
 }
@@ -1769,9 +1732,9 @@ $X^2$ & \quad \text{chi-square value} \\
 \setlength{\itemsep}{0mm}
 \item First enter two-way table data as described previously.
 \item Carry out the chi-square test of homogeneity or independence as described in previous box.
-\item Hit 2ND $x^{-1}$ (i.e. MATRIX).
-\item Right arrow to EDIT.
-\item Hit 2 to see matrix B.
+\item Hit \calctext{2ND} $\calctextmath{x^{-1}}$ (i.e. \calctext{MATRIX}).
+\item Right arrow to \calctext{EDIT}.
+\item Hit \calcbutton{2} to see matrix \calctext{B}.
 \begin{description}
 \item[] This matrix contains the expected counts.
 \end{description}
@@ -1798,7 +1761,7 @@ $X^2$ & \quad \text{chi-square value} \\
 \item Enter the \calctext{Expected} matrix where the expected values will be stored (e.g.~\calcbutton{D}).
 \item Hit the \calcbutton{EXE} button, which returns \\[1mm]
   \begin{tabular}{l ll}
-  $\calctextmath{x^2}$ & chi-square value \\
+  $\calctextmath{x^2}$ & chi-square test statistic \\
   \calctext{p} & p-value \\
   \calctext{df} & degrees of freedom \\
   \end{tabular}
