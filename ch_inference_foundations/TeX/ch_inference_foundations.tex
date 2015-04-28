@@ -421,7 +421,7 @@ We will find it most useful if we always list the null hypothesis as an equality
 \end{tipBox}
 
 \begin{exercise}
-According to US census data, in 2012 the percent of male residents in the state of Alaska was 52.1\%.\footnote{\urlwofont{http://www.census.gov/newsroom/releases/archives/population/cb13-112.html}} A researcher plans to take a random sample of residents from Alaska to test whether or not this is still the case. Write out the hypotheses that the researcher should test in both plain and statistical language.~\footnote{$H_0$: $p=0.521$; The proportion of male residents in Alaska is \emph{unchanged} from 2012. $H_A$: $p \neq 0.521$; The proportion of male residents in Alaska has changed from 2012. Note that it could have increased or decreased.}
+According to US census data, in 2013 the percent of male residents in the state of Alaska was 52.4\%.\footnote{\oiRedirect{textbook-census_quick_facts_alaska}{quickfacts.census.gov/qfd/states/02000.html}} A researcher plans to take a random sample of residents from Alaska to test whether or not this is still the case. Write out the hypotheses that the researcher should test in both plain and statistical language.~\footnote{$H_0$: $p=0.524$; The proportion of male residents in Alaska is \emph{unchanged} from 2012. $H_A$: $p \neq 0.524$; The proportion of male residents in Alaska has changed from 2012. Note that it could have increased or decreased.}
 \end{exercise}
 
 When the alternative claim uses a $\neq$, we call the test a \term{two-sided} test, because either extreme provides evidence against $H_0$. When the alternative claim uses a $<$ or a $>$, we call it a \term{one-sided} test.
@@ -463,94 +463,6 @@ When examining a a proportion, we interpret the \term{p-value}\index{hypothesis 
 \item[$H_A: p \ne p_0.$] The p-value is the probability of observing data at least as far from the null value as what was observed in the current data set, if the null hypothesis were true.
 \end{description}}
 \end{termBox}
-
-%\CommentA{I added this section to try to clarify the logic of a test, since it is so important .}
-%
-%\Add{
-%The p-value is actually a conditional probability. It is, for example: 
-%\begin{align*}
-%P\text{(getting data at least as far from the null value as we observed $|$ $H_0$ is true)}
-%\end{align*}
-%
-%It is NOT: $P(H_0$ is true $|$ we got data this far from the null value)
-%
-%\noindent In a test of hypothesis, we always begin by assuming the null hypothesis is true, and then we calculate the likelihood of getting sample data such as we observed. If this probability is very small, that causes us to doubt the original hypothesis. This type of argument is known as an \emph{argument by contradiction}.
-%
-%\begin{example}{Consider the following scenario. Mika walks into a restaurant. She buys and eats a hamburger. Is she a vegetarian? How do we know?}She cannot be a vegetarian. The argument by contradiction is as follows: if she were a vegetarian, she would not eat a hamburger. But she \emph{did} eat a hamburger, so she is not a vegetarian.
-%\end{example}
-%
-%\begin{example}{Consider the following scenario. James walks into a restaurant. He buys and eats a grilled cheese sandwich. Is he a vegetarian? How do we know?}In this case, the argument by contradiction does not work because there is no contradiction. We have do not have evidence that he is not a vegetarian. However, this does not imply that he must be a vegetarian. Even carnivores can enjoy a grilled cheese sandwich!
-%\end{example}
-%
-%\begin{example}{When the p-value is very small, we reject the null hypothesis. When the p-value is not very small, we do not reject the null hypothesis. Using the examples above as a guide, explain why this is the case.}We assume that the null hypothesis is true. A small p-value means that our sample observation is unlikely if the null hypothesis is true. But we did get our sample observation, so the null hypothesis seems faulty. A large p-value means that our sample observation is not unlikely if the null hypothesis is true. There is no inconsistency here so we do not have reason to reject the null hypothesis.
-%\end{example}
-%
-%\begin{tipBox}{\tipBoxTitle{Smaller p-values provide greater evidence \emph{against} null hypothesis.}
-%The smaller the p-value, the less likely it is that the sample result can be explained by random variation and the greater the evidence there is against the null hypothesis.
-%
-%If the p-value$<\alpha$, reject the null hypothesis.
-%
-%If the p-value$>\alpha$, do not reject the null hypothesis.
-%}
-%\end{tipBox}
-%}
-%
-%\Add{
-%We typically use a summary statistic of the data, such as a Z score, to help compute the p-value and evaluate the~hypotheses. When the alternative hypothesis is a $>$, we use the area upper tail as the p-value. When the alternative hypothesis is a $<$ we use the area in the lower tail as the p-value. When the alternative is a $\ne$ we add up the two tails to get the p-value.
-%}
-%
-%\CommentA{TODO(David) IMPORTANT add figure to show right, left, and both tails shaded.}.
-%
-%When the p-value is small, i.e. less than a previously set threshold, we say the results are \term{statistically significant}. This means the data provide such strong evidence against $H_0$ that we reject the null hypothesis in favor of the alternative hypothesis. The threshold, called the \term{significance level}\index{hypothesis testing!significance level}\index{significance level} and often represented by $\alpha$ (the Greek letter \emph{alpha}\label{alphadiscussion})\marginpar[\raggedright\vspace{-4mm}
-%
-%$\alpha$\\\footnotesize significance\\level of a\\hypothesis test]{\raggedright\vspace{-4mm}
-%
-%$\alpha$\\\footnotesize significance\\level of a\\hypothesis test}, is typically set to $\alpha = 0.05$, but can vary depending on the field or the application. Using a significance level of $\alpha = 0.05$ in the discrimination study, we can say that the data provided statistically significant evidence against the null hypothesis.
-%
-%\begin{termBox}{\tBoxTitle{Statistical significance}
-%We say that the data provide \term{statistically significant}\index{hypothesis testing!statistically significant|textbf} evidence against the null hypothesis if the p-value is less than some reference value, usually~$\alpha=0.05$.}
-%\end{termBox}
-%
-%Recall that the null claim is the claim of no difference. If we reject $H_0$, we are asserting that there is a real difference. If we do not reject $H_0$, we are saying that the null claim is \emph{reasonable}. That is, we have not disproved it.
-%
-%\begin{exercise} \label{plainLanguageExplanationOfHTConclusionForLiverDonorSurgicalConsultant}
-%Because the p-value is 0.2444, which is larger than the significance level 0.05, we do not reject the null hypothesis. Explain what this means in the context of the problem using plain language.\footnote{The data do not provide evidence that the consultant's complication rate is significantly lower or higher that the average US rate of 10\%.}
-%\end{exercise}
-%
-%\begin{example}{In the previous exercise, we did not reject $H_0$. This means that we did not disprove the null claim. Is this equivalent to proving the null claim is~true?}
-%No. We did not prove that the consultant's complication rate is \emph{exactly} equal to 10\%. Recall that the test of hypothesis starts by \emph{assuming the null claim is true}. \emph{If the null claim is true}, there is a 0.2444 chance of seeing a sample proportion as far from 10\% as we saw in our sample. Because 0.2444 is large, it is within the realm of chance error and we cannot say the null hypothesis is unreasonable.
-%\end{example}
-%
-%
-%\begin{tipBox}{\tipBoxTitle{Double negatives can sometimes be used in statistics}
-%In many statistical explanations, we use double negatives. For instance, we might say that the null hypothesis is \emph{not implausible} or we \emph{failed to reject} the null hypothesis. Double negatives are used to communicate that while we are not rejecting a position, we are also not saying that we know it to be true.}
-%\end{tipBox}
-%
-%\begin{example}{Does the conclusion in Guided Practice~\ref{plainLanguageExplanationOfHTConclusionForLiverDonorSurgicalConsultant} imply for certain there is no real association between the surgical consultant's work and the risk of complications? Explain.}
-%No. It might be that the consultant's work is associated with a lower or higher risk of complications. However, the data did not provide enough information to reject the null hypothesis. %However, we currently don't have enough data to say whether the corresponding complication rate is any different than 0.10.
-%\index{data!medical consultant|)}
-%\end{example}
-%
-%%The 2-in-100 chance is what we call a \term{p-value}, which is a probability quantifying the strength of the evidence against the null hypothesis and in favor of the alternative. %Formally the p-value is a conditional probability, which is basically\footnote{Want to learn more probability? Check out~Appendix~\ref{probability}.}
-%
-%
-%%\begin{termBox}{\tBoxTitle{Significance level}
-%%If the null hypothesis is true, the significance level $\alpha$ defines the probability that we will make a Type~1 Error.}
-%%\end{termBox}
-%
-%\begin{example}{An experiment was conducted where study participants were randomly divided into two groups. Both were given the opportunity to purchase a DVD, but the one half was reminded that the money, if not spent on the DVD, could be used for other purchases in the future while the other half was not. The half that were reminded that the money could be used on other purchases were 20\% less likely to continue with a DVD purchase. We determined that such a large difference would only occur about 1-in-150 times if the reminder actually had no influence on student decision-making. What is the p-value in this study? Was the result statistically significant?}
-%The p-value was 0.006 (about 1/150). Since the p-value is less than 0.05, the data provide statistically significant evidence that US college students were actually influenced by the reminder.
-%\end{example}
-%
-%\begin{termBox}{\tBoxTitle{What's so special about 0.05?}
-%We often use a threshold of 0.05 to determine whether a result is statistically significant. But why 0.05? Maybe we should use a bigger number, or maybe a smaller number. If you're a little puzzled, that probably means you're reading with a critical eye -- good job! We've made a video to help clarify \emph{why 0.05}:
-%\begin{center}
-%\href{http://www.openintro.org/why05}{www.openintro.org/why05}
-%\end{center}
-%Sometimes it's also a good idea to deviate from the standard. We'll discuss when to choose a threshold different than 0.05 in Section~\ref{significanceLevel}.\vspace{0.5mm}}
-%\end{termBox}
-%
-%Statistical inference is the practice of making decisions and conclusions from data in the context of uncertainty. Errors do occur, just like rare events, and the data set at hand might lead us to the wrong conclusion. While a given data set may not always lead us to a correct conclusion, statistical inference gives us tools to control and evaluate how often these errors occur.
 
 When the p-value is small, i.e. less than a previously set threshold, we say the results are \term{statistically significant}. This means the data provide such strong evidence against $H_0$ that we reject the null hypothesis in favor of the alternative hypothesis. The threshold, called the \term{significance level}\index{hypothesis testing!significance level}\index{significance level} and often represented by $\alpha$ (the Greek letter \emph{alpha}\label{alphadiscussion})\marginpar[\raggedright\vspace{-4mm}
 
@@ -597,7 +509,7 @@ The p-value was 0.006 (about 1/150). Since the p-value is less than 0.05, the da
 \begin{termBox}{\tBoxTitle{What's so special about 0.05?}
 We often use a threshold of 0.05 to determine whether a result is statistically significant. But why 0.05? Maybe we should use a bigger number, or maybe a smaller number. If you're a little puzzled, that probably means you're reading with a critical eye -- good job! We've made a video to help clarify \emph{why 0.05}:
 \begin{center}
-\href{http://www.openintro.org/why05}{www.openintro.org/why05}
+\oiRedirect{textbook-why05}{www.openintro.org/why05}
 \end{center}
 Sometimes it's also a good idea to deviate from the standard. We'll discuss when to choose a threshold different than 0.05 in Section~\ref{significanceLevel}.\vspace{0.5mm}}
 \end{termBox}

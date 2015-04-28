@@ -36,7 +36,7 @@ This chapter focuses on collecting data. We'll discuss basic properties of data,
 
 Section~\ref{basicExampleOfStentsAndStrokes} introduces a classic challenge in statistics: evaluating the efficacy of a medical treatment. Terms in this section, and indeed much of this chapter, will all be revisited later in the text. The plan for now is simply to get a sense of the role statistics can play in practice.
 
-In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke.\footnote{Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011. Stenting versus Aggressive Medical Therapy for Intracranial Arterial Stenosis. New England Journal of Medicine 365:993-1003. \urlwofont{http://www.nejm.org/doi/full/10.1056/NEJMoa1105335}. NY Times article reporting on the study: \urlwofont{http://www.nytimes.com/2011/09/08/health/research/08stent.html}.} Stents are devices put inside blood vessels that assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
+In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke.\footnote{Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011. Stenting versus Aggressive Medical Therapy for Intracranial Arterial Stenosis. New England Journal of Medicine 365:993-1003. \oiRedirect{textbook-nejm_stent_study}{www.nejm.org/doi/full/10.1056/NEJMoa1105335}. NY Times article reporting on the study: \oiRedirect{textbook-nytimes_stent_study}{www.nytimes.com/2011/09/08/health/research/08stent.html}.} Stents are devices put inside blood vessels that assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
 \begin{quote}
 Does the use of stents reduce the risk of stroke?
 \end{quote}
@@ -171,7 +171,7 @@ Data matrices are a convenient way to record and store data. If another individu
 We consider a publicly available data set that summarizes information about the 3,143 counties in the United States, and we call this the \data{county} data set. This data set includes information about each county: its name, the state where it resides, its population in 2000 and 2010, per capita federal spending, poverty rate, and five additional characteristics. How might these data be organized in a data matrix? Reminder: look in the footnotes for answers to in-text exercises.\footnote{Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,143 rows and 11 columns could hold these data, where each row represents a county and each column represents a particular piece of information.}
 \end{exercise}
 
-\noindent Seven rows of the \data{county} data set are shown in Table~\ref{countyDF}, and the variables are summarized in Table~\ref{countyVariables}. These data were collected from the US Census website.\footnote{\urlwofont{http://quickfacts.census.gov/qfd/index.html}}
+\noindent Seven rows of the \data{county} data set are shown in Table~\ref{countyDF}, and the variables are summarized in Table~\ref{countyVariables}. These data were collected from the US Census website.\footnote{\oiRedirect{textbook-census_quick_facts}{quickfacts.census.gov/qfd/index.html}}
 
 
 \subsection{Types of variables}
@@ -293,7 +293,7 @@ It appears that the larger the fraction of units in multi-unit structures, the l
 \begin{figure}
    \centering
    \includegraphics[width=0.8\textwidth]{ch_data_collection/figures/multiunitsVsOwnership/multiunitsVsOwnership}
-   \caption{A scatterplot of homeownership versus the percent of units that are in multi-unit structures for all 3,143 counties. Interested readers may find an image of this plot with an additional third variable, county population, presented at \href{http://www.openintro.org/stat/down/MHP.png}{www.openintro.org/stat/down/MHP.png}.}
+   \caption{A scatterplot of homeownership versus the percent of units that are in multi-unit structures for all 3,143 counties. Interested readers may find an image of this plot with an additional third variable, county population, presented at \oiRedirect{textbook-homeownership_vs_multi_unit_structures}{www.openintro.org/stat/down/MHP.png}.}
    \label{multiunitsVsOwnership}
 \end{figure}
 
@@ -412,7 +412,7 @@ To identify the explanatory variable in a pair of variables, identify which of t
 {Labeling variables as \emph{explanatory} and \emph{response} does not guarantee the relationship between the two is actually causal, even if there is an association identified between the two variables. We use these labels only to keep track of which variable we suspect affects the other.}
 \end{caution}
 
-In many cases, the relationship is complex or unknown. It may be unclear whether variable $A$ explains variable $B$ or whether variable $B$ explains variable $A$. For example, it is now known that a particular protein called REST is much depleted in people suffering from Alzheimer's disease. While this raises hopes of a possible approach for treating Alzheimer's, it is still unknown whether the lack of the protein causes brain deterioration, whether brain deterioration causes depletion in the REST protein, or whether some third variable causes both brain deterioration and REST depletion. That~is, we do not know if the lack of the protein is an explanatory variable or a response variable. Perhaps it is both.\footnote{\urlwofont{http://www.nytimes.com/2014/03/20/health/fetal-gene-may-protect-brain-from-alzheimers-study-finds.html}}
+In many cases, the relationship is complex or unknown. It may be unclear whether variable $A$ explains variable $B$ or whether variable $B$ explains variable $A$. For example, it is now known that a particular protein called REST is much depleted in people suffering from Alzheimer's disease. While this raises hopes of a possible approach for treating Alzheimer's, it is still unknown whether the lack of the protein causes brain deterioration, whether brain deterioration causes depletion in the REST protein, or whether some third variable causes both brain deterioration and REST depletion. That~is, we do not know if the lack of the protein is an explanatory variable or a response variable. Perhaps it is both.\footnote{\oiRedirect{textbook-nytimes_gene_alzheimers_study}{nytimes.com/2014/03/20/health/fetal-gene-may-protect-brain-from-alzheimers-study-finds.html}}
 
 
 \subsection{Observational studies versus experiments}
@@ -474,7 +474,7 @@ In the same way, the \data{county} data set is an observational study with confo
 Figure~\ref{multiunitsVsOwnership} shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county. However, it is unreasonable to conclude that there is a causal relationship between the two variables. Suggest one or more other variables that might explain the relationship visible in Figure~\ref{multiunitsVsOwnership}.\footnote{Answers will vary. Population density may be important. If a county is very dense, then this may require a larger fraction of residents to live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.}
 \end{exercise}
 
-Observational studies come in two forms: prospective and retrospective studies. A \term{prospective study} identifies individuals and collects information as events unfold. For instance, medical researchers may identify and follow a group of similar individuals over many years to assess the possible influences of behavior on cancer risk. One example of such a study is The Nurses’ Health Study, started in 1976 and expanded in 1989.\footnote{\urlwofont{http://www.channing.harvard.edu/nhs/}} This prospective study recruits registered nurses and then collects data from them using questionnaires. \termsub{Retrospective studies}{retrospective studies} collect data after events have taken place, e.g. researchers may review past events in medical records. Some data sets, such as \data{county}, may contain both prospectively- and retrospectively-collected variables. Local governments prospectively collect some variables as events unfolded (e.g. retails sales) while the federal government retrospectively collected others during the 2010 census (e.g. county population counts).
+Observational studies come in two forms: prospective and retrospective studies. A \term{prospective study} identifies individuals and collects information as events unfold. For instance, medical researchers may identify and follow a group of similar individuals over many years to assess the possible influences of behavior on cancer risk. One example of such a study is The Nurses Health Study, started in 1976 and expanded in 1989.\footnote{\oiRedirect{textbook-channing_nurse_study}{www.channing.harvard.edu/nhs}} This prospective study recruits registered nurses and then collects data from them using questionnaires. \termsub{Retrospective studies}{retrospective studies} collect data after events have taken place, e.g. researchers may review past events in medical records. Some data sets, such as \data{county}, may contain both prospectively- and retrospectively-collected variables. Local governments prospectively collect some variables as events unfolded (e.g. retails sales) while the federal government retrospectively collected others during the 2010 census (e.g. county population counts).
 
 
 \subsection{Sampling from a population}
@@ -648,15 +648,6 @@ The patients are not the only ones who should be blinded: doctors and researcher
 \begin{exercise}
 Look back to the study in Section~\ref{basicExampleOfStentsAndStrokes} where researchers were testing whether stents were effective at reducing strokes in at-risk patients. Is this an experiment? Was the study blinded? Was it double-blinded?\footnote{The researchers assigned the patients into their treatment groups, so this study was an experiment. However, the patients could distinguish what treatment they received, so this study was not blind. The study could not be double-blind since it was not blind.}
 \end{exercise}
-
-%\Comment{this section can be omitted as it might be interesting, but not relevant}
-%
-%\Add{Randomized, controlled, double-blind experiments are the gold standard of data collection, so much so that this method is being employed to investigate the efficacy of certain surgical procedures. Placebo surgery, also known as ``sham"' surgery, is a controversial but existing practice wherein subjects undergo a real surgical intervention but do not receive the treatment or therapy being investigated.
-%\begin{example}{Placebo surgery has been used in evaluating surgical procedures for, most notably, Parkinson Disease, knee injury, and back pain. Describe some arguments for and against using a placebo surgery.}In these situations, the response variable being measured is not an objective yes or no. It is a continuum of pain or debilitation. Without a placebo, the researchers cannot be entirely confident that any improvement from the surgery is not partially or entirely due to the placebo effect. Because the surgery is costly and can involve complications, doctors (and insurance companies) want to be certain that it is truly effective before carry it out on a large number of patients. However, all surgeries involve some inherent risk. There is debate in the medical community as to whether the knowledge that can be gained from these placebo surgeries justifies the risk posed to the patients.\footnote{Read more about this topic here: \urlwofont{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3703438/}
-%}
-%\end{example}
-%
-%}
 
 
 \subsection{Principles of experimental design}
