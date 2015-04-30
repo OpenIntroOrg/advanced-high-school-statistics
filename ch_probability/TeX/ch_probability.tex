@@ -1256,16 +1256,54 @@ TI-83: Do steps 1-2, then enter the values for $n$, $p$, and $k$ separated by co
 }
 \end{termBox}
 
-\begin{exercise}Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnote{Use 5 nCr 3 to get 10. }
+\Comment{I made the answers calculator agnostic}
+\begin{exercise}
+Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnote{Use $n$ = 5 and $k$ = 3 to get 10.}
 \end{exercise}
 
-\begin{exercise}There are 13 marbles in a bag.  4 are blue and 9 are red.  Randomly draw 5 marbles \emph{with replacement}.  Find the probability you get exactly 3 blue marbles.\footnote{Use binompdf(5, 4/13, 3) to get 0.1396.}
+\begin{exercise}There are 13 marbles in a bag.  4 are blue and 9 are red.  Randomly draw 5 marbles \emph{with replacement}.  Find the probability you get exactly 3 blue marbles.\footnote{Use $n$ = 5, $p$ = 4/13, and $x$ ($k$) = 3 to get 0.1396.}
 \end{exercise}
 
-\begin{exercise}There are 13 marbles in a bag.  4 are blue and 9 are red.  Randomly draw 5 marbles \emph{with replacement}.  Find the probability you get \emph{at most} 3 blue marbles (i.e. less than or equal to 3 blue marbles).\footnote{Use binomcdf(5, 4/13, 3) to get 0.9662.}
+\begin{exercise}There are 13 marbles in a bag.  4 are blue and 9 are red.  Randomly draw 5 marbles \emph{with replacement}.  Find the probability you get \emph{at most} 3 blue marbles (i.e. less than or equal to 3 blue marbles).\footnote{Use $n$ = 5, $p$ = 4/13, and $x$ = 3) to get 0.9662.}
 \end{exercise}
 
+%_________________
+\section{Simulations}
+\label{simulations}
+\index{simulations(}
 
+In the previous section we saw how to apply the binomial formula to find the probability of exactly $k$ successes in $n$ independent trials of an event that has probability $p$.  Sometimes, though, we have a problem we wish to solve for which we do not know the appropriate formula.  Worse, a formula may not even exist.  In this case, one approach is to estimate the probability via \term{simulation}.
+
+You may already be familiar with physical or empirical simulations.  Want to know the probability of rolling a sum of 7 with a pair of dice?  Roll a pair of dice many, many, many times and see what proportion of times the sum was 7.  The more times you roll the pair of dice, the better the estimate should tend to be.  Of course such an experiment is time consuming and may not be feasible.
+
+In this section, we consider simulations using \term{random numbers}.  Random numbers (or technically, \emph{psuedo-random numbers}) can be produced using a calculator or computer.  Random digits are produced such that each digit, 0-9, is equally likely to come up in each spot.  This means that it is possible to have runs of digits, but in the long run, each digit should appear with same relative frequency.
+
+\Comment{TODO: David - add random digit table here, and a full page random digit table in appendix}.
+
+\begin{example}{Imani's favorite brand of cereal s running a special.  20\% of the boxes contain a special prize.  Imani really wants that prize.  If her mother buys 6 boxes of the cereal over the next few months, what is the probability Imani will get a prize? }
+To solve this problem using simulation, we need to be able to assign digits to outcomes.  Each box should have a 20\% chance of having a prize and an 80\% chance of not having a prize.  Therefore, a valid assignment would be:
+\begin{align*}
+0,1 &\rightarrow \text{prize}\\
+2-9 &\rightarrow \text{no prize}
+\end{align*}
+Here, one trial will consist of 6 boxes of cereal, therefore one trial will require five digits (each digit corresponds to one box of cereal).  We will repeat the simulation for 20 trials.  Therefore we will need 20 sets of 6 digits.  Let's begin on the first row of the random digit table.  
+\end{example}
+
+\begin{example}{We can also use simulations to estimate quantities other than probabilities.  Let's say that instead of buying exactly 6 boxes of cereal, Imani's mother agrees to buy boxes of this cereal \emph{until} she finds one with a prize.  On average, how many boxes of cereal would one have to buy until one gets a prize?}
+For this question, we can use the same digit assignment.  However, our stopping rule is different.  Each trial may require a different number of digits.  For each trial, the stopping rule is:  look at digits until we encounter a 0 or a 1. Then, record how many digits/boxes of cereal it took.  Repeat the simulation for 20 trials, and then average the numbers from each trial.
+
+\end{example}
+
+\begin{example}{Now, consider a case where the probability of interest is not 20\%, but rather 28\%.  Which digits should correspond to success and which to failure?}
+This example is more complicated because with only 10 digits, there is no way to select exactly 28\% of them.  Therefore, each observation will have to consist of \emph{two} digits.  We can use two digits at a time and assign pairs of digits as follows:
+\begin{align*}
+00-27 &\rightarrow \text{success}\\
+28-99 &\rightarrow \text{failure}
+\end{align*}
+\end{example}
+
+\begin{exercise}Assume the probability of winning a particular casino game is 45\%.  We want to carry out a simulation to estimate the probability that we will win at least 5 times in 10 plays.  We will use 30 trials of the simulation.  Assign digits to outcomes.  Also, how many total digits will we require to run this simulation?\footnote{One possible assignment is: 00-44 $\rightarrow$win and 45-99$\rightarrow$lose.  Each trial requires 10 pairs of digits, so we will need 30 sets of 10 pairs of digits for a total of 30$\times$10$\times$2=600 digits.}
+\end{exercise}
 
 
 %_________________
