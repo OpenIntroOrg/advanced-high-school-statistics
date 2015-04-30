@@ -1272,26 +1272,67 @@ Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnote{
 \label{simulations}
 \index{simulations(}
 
-In the previous section we saw how to apply the binomial formula to find the probability of exactly $k$ successes in $n$ independent trials of an event that has probability $p$.  Sometimes, though, we have a problem we wish to solve for which we do not know the appropriate formula.  Worse, a formula may not even exist.  In this case, one approach is to estimate the probability via \term{simulation}.
+In the previous section we saw how to apply the binomial formula to find the probability of exactly $k$ successes in $n$ independent trials of an event that has probability $p$.  Sometimes, though, we have a problem we want to solve but we don't know the appropriate formula, or even worse, a formula may not even exist. In this case, one approach is to estimate the probability via \term{simulation}.
 
-You may already be familiar with physical or empirical simulations.  Want to know the probability of rolling a sum of 7 with a pair of dice?  Roll a pair of dice many, many, many times and see what proportion of times the sum was 7.  The more times you roll the pair of dice, the better the estimate should tend to be.  Of course such an experiment is time consuming and may not be feasible.
+You may already be familiar with simulations.  Want to know the probability of rolling a sum of 7 with a pair of dice?  Roll a pair of dice many, many, many times and see what proportion of times the sum was 7.  The more times you roll the pair of dice, the better the estimate will tend to be.  Of course, such an experiment is time consuming and may not be feasible.
 
-In this section, we consider simulations using \term{random numbers}.  Random numbers (or technically, \emph{psuedo-random numbers}) can be produced using a calculator or computer.  Random digits are produced such that each digit, 0-9, is equally likely to come up in each spot.  This means that it is possible to have runs of digits, but in the long run, each digit should appear with same relative frequency.
+In this section, we consider simulations using \term{random numbers}.  Random numbers (or technically, \emph{psuedo-random numbers}) can be produced using a calculator or computer.  Random digits are produced such that each digit, 0-9, is equally likely to come up in each spot.  You'll find that occasionally we may have the same number in a row -- sometimes multiple times -- but in the long run, each digit should appear with same relative frequency.
 
-\Comment{TODO: David - add random digit table here, and a full page random digit table in appendix}.
+\Comment{TODO: David - add random digit table in appendix}.
 
-\begin{example}{Imani's favorite brand of cereal s running a special.  20\% of the boxes contain a special prize.  Imani really wants that prize.  If her mother buys 6 boxes of the cereal over the next few months, what is the probability Imani will get a prize? }
+\begin{table}[h]
+\centering
+\begin{tabular}{cc cc cc cc cc}
+& \multicolumn{7}{c}{Column} \\
+  \cline{2-8}
+\quad\ Row\quad\ \  & 1-5 && 6-10 && 11-15 && 16-20 \\
+  \hline
+1 & 43087 & \quad & 11864 & \quad & 51009 & \quad & 39689 \\
+2 & 63432 & \quad & 72132 & \quad & 40269 & \quad & 56100 \\
+3 & 19025 & \quad & 83056 & \quad & 62511 & \quad & 52598 \\
+4 & 85117 & \quad & 46706 & \quad & 31083 & \quad & 24816 \\
+5 & 16285 & \quad & 56280 & \quad & 01494 & \quad & 10243 \\
+  \hline
+6 & 91342 & \quad & 18473 & \quad & 50845 & \quad & 77757 \\
+7 & 65099 & \quad & 14136 & \quad & 39052 & \quad & 50235 \\
+8 & 37537 & \quad & 58839 & \quad & 56876 & \quad & 02960 \\
+9 & 04510 & \quad & 16172 & \quad & 90838 & \quad & 15210 \\
+10 & 27217 & \quad & 12151 & \quad & 52645 & \quad & 96218 \\
+  \hline
+\end{tabular}
+\caption{Random number table. A full page of random numbers may be found in Appendix~\ref{TBD}.}
+\label{sampleRandomNumberTable}
+\end{table}
+%set.seed(25)
+%rand <- sample(0:9, 200, replace = TRUE)
+%tab <- array(rand, dim = c(10,20))
+%rownames(tab) <- NULL
+%colnames(tab) <- NULL
+%tab <- apply(tab, 1, function(x) {
+%  c(paste(x[1:5], collapse = ""), paste(x[6:10], collapse = ""),
+%     paste(x[11:15], collapse = ""), paste(x[16:20], collapse = ""))
+%})
+%tab <- t(tab)
+%to.print <- paste(1:10, "&", apply(tab, 1, paste, collapse = " & \\quad & "), "\\\\", collapse = "\n")
+%cat(to.print)
+
+\begin{example}{Imani's favorite brand of cereal s running a special where 20\% of the cereal boxes contain a special prize.  Imani really wants that prize.  If her mother buys 6 boxes of the cereal over the next few months, what is the probability Imani will get a prize?}
 To solve this problem using simulation, we need to be able to assign digits to outcomes.  Each box should have a 20\% chance of having a prize and an 80\% chance of not having a prize.  Therefore, a valid assignment would be:
 \begin{align*}
 0,1 &\rightarrow \text{prize}\\
 2-9 &\rightarrow \text{no prize}
 \end{align*}
-Here, one trial will consist of 6 boxes of cereal, therefore one trial will require five digits (each digit corresponds to one box of cereal).  We will repeat the simulation for 20 trials.  Therefore we will need 20 sets of 6 digits.  Let's begin on the first row of the random digit table.  
+\Add{Of the ten possible digits (0, 1, 2, ..., 8, 9), two of them, i.e. 20\% of them, correspond to winning a prize, which exactly matches the odds that a cereal box contains a prize.} \Comment{D - I think reiterating this is helpful. Not sure if the proposed wording I've put here is ideal or not, but could be starter text.}
+
+In Imani's simulation, one trial will consist of 6 boxes of cereal, and therefore a trial will require six digits (each digit will correspond to one of the boxes of cereal). We will repeat the simulation for 20 trials. Therefore we will need 20 sets of 6 digits. Let's begin on the first row of the random digit table, shown in Table~\ref{sampleRandomNumberTable}.
+
+\Comment{TODO(Leah) - Finish up example. (I realize you know this, but just putting comments as precautionary.)}
 \end{example}
 
 \begin{example}{We can also use simulations to estimate quantities other than probabilities.  Let's say that instead of buying exactly 6 boxes of cereal, Imani's mother agrees to buy boxes of this cereal \emph{until} she finds one with a prize.  On average, how many boxes of cereal would one have to buy until one gets a prize?}
 For this question, we can use the same digit assignment.  However, our stopping rule is different.  Each trial may require a different number of digits.  For each trial, the stopping rule is:  look at digits until we encounter a 0 or a 1. Then, record how many digits/boxes of cereal it took.  Repeat the simulation for 20 trials, and then average the numbers from each trial.
 
+\Comment{TODO(Leah) - Finish up example. (I realize you know this, but just putting comments as precautionary.)}
 \end{example}
 
 \begin{example}{Now, consider a case where the probability of interest is not 20\%, but rather 28\%.  Which digits should correspond to success and which to failure?}
@@ -1302,8 +1343,14 @@ This example is more complicated because with only 10 digits, there is no way to
 \end{align*}
 \end{example}
 
+\Comment{D - Worth having an example where the probability is something like 1-in-7 where they will need to discard some of the random digits?}
+
 \begin{exercise}Assume the probability of winning a particular casino game is 45\%.  We want to carry out a simulation to estimate the probability that we will win at least 5 times in 10 plays.  We will use 30 trials of the simulation.  Assign digits to outcomes.  Also, how many total digits will we require to run this simulation?\footnote{One possible assignment is: 00-44 $\rightarrow$win and 45-99$\rightarrow$lose.  Each trial requires 10 pairs of digits, so we will need 30 sets of 10 pairs of digits for a total of 30$\times$10$\times$2=600 digits.}
 \end{exercise}
+
+\Comment{D - I added this paragraph. Could be dropped. Feel free to edit or discard.}
+\Add{Does anyone still perform simulations like this? Sort of. Simulations are used a lot in statistics, and these often require the same principles covered in this section to properly set up those simulations. The difference is in implementation after the setup. Rather than use a random number table, a statistician will write a program that uses a pseudo-random number generator in a computer to run the simulations very quickly -- often times millions of trials each second.}
+
 
 
 %_________________
