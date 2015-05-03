@@ -635,7 +635,7 @@ SD &= \sqrt{\frac{p(1-p)}{n_c} + \frac{p(1-p)}{n_n}} \\
 	&= \sqrt{p(1-p)}\sqrt{\frac{1}{n_c} + \frac{1}{n_n}}
 \end{align*}
 We don't know the exposure rate, $p$, but we can obtain a good estimate of it by \emph{pooling} the results of both samples to find $\hat{p}$:
-$$\hat{p} = \frac{\text{\# of ``successes''}}{\text{\# of cases}} = \frac{191 + 304}{191+300+304+641} = 0.345$$
+$$\hat{p} = \frac{\text{\# of ``successes''}}{\text{\# of cases}} = \frac{191 + 300}{191+300+304+641} = 0.342$$
 This is called the \term{pooled estimate} of the sample proportion, and we use it to compute the standard error when the null hypothesis is that $p_1 = p_2$ (e.g. $p_c = p_n$ or $p_c - p_n = 0$). We also typically use it to verify the success-failure condition.
 
 \begin{termBox}{\tBoxTitle{Pooled estimate of a proportion}
@@ -656,16 +656,16 @@ SE =\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
 \end{tipBox}
 
 \begin{exercise}\label{verifySEOfPooledEstimateOf24DWithCancerNoCancerDogs}
-Using Equation~\eqref{seOfDiffInPropUsingPooledEstimate}, $\hat{p}=0.345$, $n_1 = 491$, and $n_2=945$, verify the estimate for the standard error in the context of a hypothesis test is $SE = 0.026$.
+Using Equation~\eqref{seOfDiffInPropUsingPooledEstimate}, $\hat{p}=0.342$, $n_1 = 491$, and $n_2=945$, verify the estimate for the standard error in the context of a hypothesis test is $SE = 0.026$.
 \end{exercise}
 
 \begin{example}{Complete the hypothesis test using a significance level of 0.01.}
 We will complete a 2-proportion $Z$ test. The conditions are met  - we will assume that there two independent random samples. Using the pooled proportion:
 \begin{align*}
-n_1\hat{p} &= 491 \times 0.345 = 169.4
-	& n_1(1 - \hat{p}) &= 491 \times 0.655 = 321.6 \\
-n_2\hat{p} &= 945 \times 0.345 = 326
-	& n_2(1 - \hat{p}) &= 945 \times 0.655 = 619
+n_1\hat{p} &= 491 \times 0.342 = 167.9
+	& n_1(1 - \hat{p}) &= 491 \times 0.658 = 323.1 \\
+n_2\hat{p} &= 945 \times 0.342 = 323.2
+	& n_2(1 - \hat{p}) &= 945 \times 0.658 = 621.8
 \end{align*}
 are all at least 10. Now we set up hypotheses, which were identified in Guided Practice~\ref{htFor24DAndCancerInDogs}:
 \begin{itemize}
@@ -849,7 +849,7 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion
 \end{enumerate}}
 \end{termBox}
 
-\begin{exercise}{Use the data in Table~\ref{24DAndCancerInDogsTableInCalcSection} and a calculator to find the Z score and p-value for one sided test with H$_A$: dogs with cancer are more likely to have been exposed to 2,4-D than dogs without cancer, $p_c - p_n > 0$.}\footnote{Correctly going through the calculator steps should lead to a solution with $Z=2.55$ and p-value$=0.0055$. The pooled proportion is $\hat{p}=0.342$.}
+\begin{exercise}{Use the data in Table~\ref{24DAndCancerInDogsTableInCalcSection} and a calculator to find the Z score and p-value for one sided test with H$_A$: dogs with cancer are more likely to have been exposed to 2,4-D than dogs without cancer, $p_c - p_n > 0$.}\footnote{Correctly going through the calculator steps should lead to a solution with $Z=2.55$ and $\text{p-value}=0.0055$. The pooled proportion is $\hat{p}=0.342$.}
 \end{exercise}
 
 
@@ -1095,7 +1095,7 @@ TI-83: Do steps~1-2, then type the lower bound, upper bound, and degrees of free
 \end{termBox}
 
 \begin{exercise}
-Figure~\ref{chiSquareAreaAbove5Point1WithDF5} shows an upper tail for a chi-square distribution with 5 degrees of freedom and a cutoff of 5.1. Find the tail area using a calculator.\footnote{Using $X^2$cdf(5.1, 1000, 5) gives 0.4038.}
+Figure~\ref{chiSquareAreaAbove5Point1WithDF5} shows an upper tail for a chi-square distribution with 5 degrees of freedom and a cutoff of 5.1. Find the tail area using a calculator.\footnote{Using $df = 5$ and a \emph{lower} bound of $5.1$ for the tail, the upper tail area is 0.4038.}
 \end{exercise}
 
 \begin{exercise}
@@ -1244,7 +1244,7 @@ Observed &		& 1532 & 760 & 338 & 194 & 74 & 33 & 17 & & 2948 \\
 \label{sAndP500For1990To2011TimeToPosTrade}
 \end{table}
 
-We consider how many days one must wait until observing an \resp{Up} day on the S\&P500 stock exchange. If the stock activity was independent from one day to the next and the probability of a positive trading day was constant, then we would expect this waiting time to follow a \emph{geometric distribution}. We can organize this into a hypothesis framework:
+We consider how many days one must wait until observing an \resp{Up} day on the S\&P500 stock index. If the stock activity was independent from one day to the next and the probability of a positive trading day was constant, then we would expect this waiting time to follow a \emph{geometric distribution}. We can organize this into a hypothesis framework:
 \begin{itemize}
 \item[$H_0$:] The stock market being up or down on a given day is independent from all other days. We will consider the number of days that pass until an \resp{Up} day is observed. Under this hypothesis, the number of days until an \resp{Up} day should follow a geometric distribution.
 \item[$H_A$:] The stock market being up or down on a given day is not independent from all other days. Since we know the number of days until an \resp{Up} day would follow a geometric distribution under the null, we look for deviations from the geometric distribution, which would support the alternative hypothesis.
@@ -1362,7 +1362,7 @@ Geometric Model &  & 1569 & 734 & 343 & 161 & 75 & 35 & 31 & & 2948 \\
 \end{table}
 
 \begin{exercise}
-Use the data above and a calculator to find the $X^2$ statistic, df, and p-value for chi-square goodness of fit test.\footnote{First enter the observed values into L1 and the expected values into L2. Use STAT, TESTS, $X^2$GOF-Test. $X^2=15.08$, $df=6$, p-value$=0.0196$.}
+Use the data above and a calculator to find the $X^2$ statistic, df, and p-value for chi-square goodness of fit test.\footnote{You should find that $X^2=15.08$, $df=6$, and $\text{p-value}=0.0196$.}
 \end{exercise}
 
 
@@ -1493,7 +1493,7 @@ The chi-square test statistic for a two-way table is found the same way it is fo
 \end{align*}
 Adding the computed value for each cell gives the chi-square test statistic $X^2$:
 $$X^2 = 0.222 + 0.237 + \dots + 3.220 = 6.120$$
-Just like before, this test statistic follows a chi-square distribution. However, the degrees of freedom are computed a little differently for a two-way table.\footnote{Recall: in the one-way table, the degrees of freedom was the number of cells minus 1.} For two way tables, the degrees of freedom is equal to
+Just like before, this test statistic follows a chi-square distribution. However, the degrees of freedom are computed a little differently for a two-way table.\footnote{Recall: in the one-way table, the degrees of freedom was the number of groups minus 1.} For two way tables, the degrees of freedom is equal to
 \begin{align*}
 df = \text{(number of rows - 1)}\times \text{(number of columns - 1)}
 \end{align*}
@@ -1573,7 +1573,7 @@ Total					   & & 1458    & 1382 & 1383 & 				& 4223 \\
 \end{table}
 
 \begin{exercise}
-A chi-square test for a two-way table may be used to test the hypotheses in Example~\ref{hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection}. As a first step, compute the expected values for each of the six table cells.\footnote{The expected count for row one / column one is found by multiplying the row one total (2119) and column one total (1458), then dividing by the table total (4223): $\frac{2119\times 1458}{3902} = 731.6$. Similarly for the first column and the second row: $\frac{2104\times 1458}{4223} = 726.4$. Column 2: 693.5 and 688.5. Column 3: 694.0 and 689.0}
+A chi-square test for a two-way table may be used to test the hypotheses in Example~\ref{hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection}. As a first step, compute the expected values for each of the six table cells.\footnote{The expected count for row one / column one is found by multiplying the row one total (2119) and column one total (1458), then dividing by the table total (4223): $\frac{2119\times 1458}{4223} = 731.6$. Similarly for the first column and the second row: $\frac{2104\times 1458}{4223} = 726.4$. Column 2: 693.5 and 688.5. Column 3: 694.0 and 689.0}
 % R <- c(2119, 2104); C <- c(1458, 1382, 1383); R*C[1]/sum(C); R*C[2]/sum(C); R*C[3]/sum(C)
 \end{exercise}
 
@@ -1788,7 +1788,8 @@ Total					   & & 1458    & 1382 & 1383 & 				& 4223 \\
  
 
 \begin{exercise}
-Use Table~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercisesAgain} and a calculator to find the expected values and the $X^2$ statistic, $df$, and p-value for the corresponding chi-square test.\footnote{Enter the $2\times 3$ table into a MATRIX A. Do STAT, TESTS, $X^2$-Test. $X^2=106.4$, $\text{\mbox{p-value}} = 8.06 \times 10^{-24}\approx 0$, and $df=2$. Editing MATRIX B, gives the following expected values.
+Use Table~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercisesAgain} and a calculator to find the expected values and the $X^2$ statistic, $df$, and p-value for the corresponding chi-square test.\footnote{First create a $2\times 3$ matrix ith the data. The final summaries should be $X^2=106.4$, $\text{\mbox{p-value}} = 8.06 \times 10^{-24}\approx 0$, and $df=2$. Below is the matrix of expected values:
+\begin{center}
 \begin{tabular}{l ccc}
 &Obama  &Congr. Dem. & Congr. Rep. \\
 \hline
@@ -1796,5 +1797,6 @@ Approve				    & 731.59    & 693.45 & 693.96   \\
 Disapprove			    & 726.41    & 688.55 & 689.04  \\
 \hline
 \end{tabular}
+\end{center}
 }
 \end{exercise}

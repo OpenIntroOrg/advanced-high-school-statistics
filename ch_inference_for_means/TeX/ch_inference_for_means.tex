@@ -74,7 +74,7 @@ The degrees of freedom describe the shape of the $t$ distribution. The larger th
 
 When the degrees of freedom is about 30 or more, the $t$ distribution is nearly indistinguishable from the normal distribution. In Section~\ref{tDistSolutionToSEProblem}, we relate degrees of freedom to sample size.
 
-We will find it very useful to become familiar with the $t$ distribution, because it plays a very similar role to the normal distribution during inference for numerical data. We use a \term{t table}, partially shown in Table~\ref{tTableSample}, in place of the normal probability table for numerical data when the population standard deviation is unknown, especially when the sample size is small. A~larger table is presented in Appendix~\ref{tDistributionTable}.
+We will find it very useful to become familiar with the $t$ distribution, because it plays a very similar role to the normal distribution during inference for numerical data. We use a \term{t table}, partially shown in Table~\ref{tTableSample_ch_inf_means}, in place of the normal probability table for numerical data when the population standard deviation is unknown, especially when the sample size is small. A~larger table is presented in Appendix~\ref{tDistributionTable}.
 
 \begin{table}[hht]
 \centering
@@ -97,10 +97,10 @@ Confidence level C  &  {\normalsize  80\%} & {\normalsize 90\%} & {\normalsize 9
 \hline
 \end{tabular}
 \caption{An abbreviated look at the $t$ table. Each row represents a different $t$ distribution. The columns describe the cutoffs for specific tail areas. The row with $df=18$ has been \highlightO{highlighted}.}
-\label{tTableSample}
+\label{tTableSample_ch_inf_means}
 \end{table}
 
-Each row in the $t$ table represents a $t$ distribution with different degrees of freedom. The columns correspond to tail probabilities. For instance, if we know we are working with the $t$ distribution with $df=18$, we can examine row 18, which is \highlightO{highlighted} in Table~\ref{tTableSample}. If we want the value in this row that identifies the cutoff for an upper tail of 10\%, we can look in the column where \emph{one tail} is 0.100. This cutoff is 1.33. If we had wanted the cutoff for the lower 10\%, we would use -1.33. Just like the normal distribution, all $t$ distributions are symmetric.
+Each row in the $t$ table represents a $t$ distribution with different degrees of freedom. The columns correspond to tail probabilities. For instance, if we know we are working with the $t$ distribution with $df=18$, we can examine row 18, which is \highlightO{highlighted} in Table~\ref{tTableSample_ch_inf_means}. If we want the value in this row that identifies the cutoff for an upper tail of 10\%, we can look in the column where \emph{one tail} is 0.100. This cutoff is 1.33. If we had wanted the cutoff for the lower 10\%, we would use -1.33. Just like the normal distribution, all $t$ distributions are symmetric.
 
 
 \begin{example}{What proportion of the $t$ distribution with 18 degrees of freedom falls below -2.10?}
@@ -236,7 +236,7 @@ In our current example, we should use the $t$ distribution with $df=19-1=18$ deg
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item For a 95\% confidence interval, we want to find the cutoff $t^{\star}_{18}$ such that 95\% of the $t$ distribution is between -$t^{\star}_{18}$ and $t^{\star}_{18}$.
-\item We look in the $t$ table on page~\pageref{tTableSample}, find the column with 95\% along the bottom row and then the row with 18 degrees of freedom: $t^{\star}_{18} = 2.10$.
+\item We look in the $t$ table on page~\pageref{tTableSample_ch_inf_means}, find the column with 95\% along the bottom row and then the row with 18 degrees of freedom: $t^{\star}_{18} = 2.10$.
 \end{itemize}
 Generally the value of $t^{\star}_{df}$ is slightly larger than what we would get under the normal model with~$z^{\star}$.
 
@@ -840,9 +840,13 @@ $\calctextmath{\bar{x}}$ & the sample mean of the differences \\
 \label{textbooksDFPartial}
 \end{table}
 
-\begin{exercise}Use the first 7 values of the ~\ref{textbooksDF} data set produced above and calculate the $T$ score and p-value to test whether, on average, Amazon's textbook price is cheaper that UCLA's price.\footnote{Enter the data into L1  and L2 on a calculator. Let $L3 = L1-L2$. After selecting TTest, choose DATA, let $\mu_0$ be 0, and let List be \textbf{L3}. Let Freq be 1 and  select $>$. $T=3.076$ and p-value$=0.0109$.}\end{exercise}
+\begin{exercise}
+Use the first 7 values of the ~\ref{textbooksDF} data set produced above and calculate the $T$ score and p-value to test whether, on average, Amazon's textbook price is cheaper that UCLA's price.\footnote{Create a list of the differences, and use the data or list option to perform the test. Let $\mu_0$ be 0, and select the appropriate list. Freq should be 1, and the test sidedness should be $>$. $T=3.076$ and p-value$=0.0109$.}
+\end{exercise}
 
-\begin{exercise}Use the first 7 values of the ~\ref{textbooksDF} data set produced above and calculate a 95\% confidence interval for the average difference in textbook price between Amazon and UCLA.\footnote{The data have already been entered into L1  and L2 and the differences should be in L3. After selecting TInterval, choose DATA, let List be \textbf{L3}. Let Freq be 1 and let C-Level be 0.95. The interval is (.80354, 7.0507).}\end{exercise}
+\begin{exercise}
+Use the data from Table~\ref{textbooksDFPartial} to calculate a 95\% confidence interval for the average difference in textbook price between Amazon and UCLA.\footnote{Choose a C-Level of 0.95, and the final result should be (0.80354, 7.0507).}
+\end{exercise}
 
 %__________________
 \section{Difference of two means using the $t$ distribution}
@@ -1401,7 +1405,7 @@ Write the null and corresponding alternative hypotheses in plain language.\footn
 \textB{\pagebreak}
 
 \begin{example}{The player positions have been divided into four groups: outfield (\resp{OF}), infield (\resp{IF}), designated hitter (\resp{DH}), and catcher (\resp{C}). What would be an appropriate point estimate of the on-base percentage by outfielders, $\mu_{\resp{OF}}$?}
-A good estimate of the on-base percentage by outfielders would be the sample average of \var{AVG} for just those players whose position is outfield: $\bar{x}_{OF} = 0.334$.
+A good estimate of the on-base percentage by outfielders would be the sample average of \var{OBP} for just those players whose position is outfield: $\bar{x}_{OF} = 0.334$.
 \end{example}
 
 Table~\ref{mlbHRPerABSummaryTable} provides summary statistics for each group. A side-by-side box plot for the on-base percentage is shown in Figure~\ref{mlbANOVABoxPlot}. Notice that the variability appears to be approximately constant across groups; nearly constant variance across groups is an important assumption that must be satisfied before we consider the ANOVA approach.
@@ -1443,7 +1447,7 @@ Suppose we are to measure the aptitude for students in 20 classes in a large ele
 
 For additional information on the ideas expressed in Example~\ref{multipleComparisonExampleThatIncludesDiscussionOfClassrooms}, we recommend reading about the \term{prosecutor's fallacy}.\footnote{See, for example, \oiRedirect{textbook-prosecutors_fallacy}{andrewgelman.com/2007/05/18/the\_prosecutors}.}
 
-In the next section we will learn how to use the $F$ statistic and ANOVA to test whether observed differences in means could have happened just by chance even if there was no difference in the respective population means.
+In the next section we will learn how to use the $F$ statistic and ANOVA to test whether observed differences in sample means could have happened just by chance even if there was no difference in the respective population means.
 
 
 \subsection{Analysis of variance (ANOVA) and the F test}
@@ -1526,7 +1530,7 @@ There are three conditions we must check for an ANOVA analysis: all observations
 
 \begin{description}
 \item[Independence.] If the data are a simple random sample from less than 10\% of the population, this condition is satisfied. For processes and experiments, carefully consider whether the data may be independent (e.g. no pairing). For example, in the MLB data, the data were not sampled. However, there are not obvious reasons why independence would not hold for most or all observations.
-\item[Approximately normal.] As with one- and two-sample testing for means, the normality assumption is especially important when the sample size is quite small. The normal probability plots for each group of the MLB data are shown in Figure~\ref{mlbANOVADiagNormalityGroups}; there is some deviation from normality for infielders, but this isn't a substantial concern since there are about 150 observations in that group and the outliers are not extreme. Sometimes in ANOVA there are so many groups or so few observations per group that checking normality for each group isn't reasonable. See the footnote\footnote{First calculate the \termsub{residuals}{residual} of the baseball data, which are calculated by taking the observed values and subtracting the corresponding group means. For example, an outfielder with OBP of 0.435 would have a residual of $0.405 - \bar{x}_{OF} = 0.071$. Then to check the normality condition, create a normal probability plot using all the residuals simultaneously.} for guidance on how to handle such instances.
+\item[Approximately normal.] As with one- and two-sample testing for means, the normality assumption is especially important when the sample size is quite small. The normal probability plots for each group of the MLB data are shown in Figure~\ref{mlbANOVADiagNormalityGroups}; there is some deviation from normality for infielders, but this isn't a substantial concern since there are about 150 observations in that group and the outliers are not extreme. Sometimes in ANOVA there are so many groups or so few observations per group that checking normality for each group isn't reasonable. See the footnote\footnote{First calculate the \termsub{residuals}{residual} of the baseball data, which are calculated by taking the observed values and subtracting the corresponding group means. For example, an outfielder with OBP of 0.405 would have a residual of $0.405 - \bar{x}_{OF} = 0.071$. Then to check the normality condition, create a normal probability plot using all the residuals simultaneously.} for guidance on how to handle such instances.
 
 \begin{figure}[hhh]
 \centering

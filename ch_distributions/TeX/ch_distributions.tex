@@ -298,11 +298,11 @@ Always first sketch a graph:\footnote{normalcdf gives the result without drawing
 \begin{center}
 \includegraphics[width=0.57\textwidth]{ch_distributions/figures/zscoreleftof1point5/zscoreleftof1point5}\vspace{-2mm}
 \end{center}
-To find an area under the normal curve using a calculator, first identify a lower bound and an upper bound. Theoretically, we want all of the area to the left of 1.5, so the left endpoint should be -$\infty$. However, the area under the curve is nearly negligible when $Z$ is smaller than -4, so we will use -5 as the lower bound when not given a lower bound (any other negative number smaller than -5 will also work).  Doing 2nd VARS, 2:normalcdf, and using a lower bound of -5 and an upper bound of 1.5, we get $P(Z < 1.5) = 0.933$.
+To find an area under the normal curve using a calculator, first identify a lower bound and an upper bound. Theoretically, we want all of the area to the left of 1.5, so the left endpoint should be -$\infty$. However, the area under the curve is nearly negligible when $Z$ is smaller than -4, so we will use -5 as the lower bound when not given a lower bound (any other negative number smaller than -5 will also work). Using a lower bound of -5 and an upper bound of 1.5, we get $P(Z < 1.5) = 0.933$.
 \end{example}
 
 \begin{exercise}
-Find the area under the the normal curve to right of $Z=2$.~\footnote{Now we want to shade to the right. Therefore our lower bound will be 2 and the upper bound will be +5 to get $P(Z > 2) = 0.023$.}
+Find the area under the the normal curve to right of $Z=2$.~\footnote{Now we want to shade to the right. Therefore our lower bound will be 2 and the upper bound will be +5 (or a number bigger than 5) to get $P(Z > 2) = 0.023$.}
 \end{exercise}
 
 \begin{exercise}Find the area under the the normal curve between -1.5 and~1.5.~\footnote{Here we are given both the lower and the upper bound. Lower bound is -1.5 and upper bound is 1.5. The area under the normal curve between -1.5 and 1.5 = $P(-1.5 < Z < 1.5) = 0.866$.}
@@ -340,8 +340,8 @@ TI-83: Do steps 1-2, then enter the percentile as a decimal, e.g.~\mbox{\calctex
 \begin{exercise}Find the Z score such that 20 percent of the area is to the right of that Z score.\footnote{If 20\% of the area is the right, then 80\% of the area is to the left. Letting area be 0.80, we get $Z = 0.841$.}
 \end{exercise}	
 
-\begin{example}{In a large study of birth weight of newborns, the weights of 23,419 newborn boys were recorded.\footnote{\oiRedirect{textbook-birthweight_for_Scottish_singleton_births}{www.biomedcentral.com/1471-2393/8/5}} The distribution of weights was approximately normal with a mean of 7.44 lbs (3376 grams) and a standard deviation of 1.33 lbs (603 grams). The government classifies a newborn as having low birth weight if the weight is less than 5.5 pounds. What percent of these newborns were of low birth weight?}
-First we find a Z score, then we find an area under the normal curve using ShadeNorm with a lower bound of -5. The upper bound will be the Z score that we calculate. There is no need to write calculator commands in a solution. Instead, continue to use standard statistical notation. 
+\begin{example}{In a large study of birth weight of newborns, the weights of 23,419 newborn boys were recorded.\footnote{\oiRedirect{textbook-birthweight_for_Scottish_singleton_births}{www.biomedcentral.com/1471-2393/8/5}} The distribution of weights was approximately normal with a mean of 7.44 lbs (3376 grams) and a standard deviation of 1.33 lbs (603 grams). The government classifies a newborn as having low birth weight if the weight is less than 5.5 pounds. What percent of these newborns had a low birth weight?}
+We find an area under the normal curve between -5 (or a number smaller than -5, e.g. -10) and a Z score that we will calculate. There is no need to write calculator commands in a solution. Instead, continue to use standard statistical notation. 
 \begin{align*}
 Z&=\frac{5.5-7.44}{1.33}\\
 &=-1.49\\
@@ -353,10 +353,10 @@ Approximately 6.8\% of the newborns were of low birth weight.
 \begin{exercise}Approximately what percent of these babies weighed greater than 10 pounds?\footnote{$Z=\frac{10-7.44}{1.33}=1.925$. Using a lower bound of 2 and an upper bound of 5, we get $P(Z > 1.925) = 0.027$. Approximately 2.7\% of the newborns weighed over 10 pounds.}
 \end{exercise}
 
-\begin{exercise}Approximately \emph{how many} of these newborns weighed greater than 10 pounds?\footnote{Approximately 2.7\% of the newborns weighed over 10 pounds. Because there were 23,419 of them, $0.027 \times 23419 \approx 632$ weighed greater than 10 pounds.}
+\begin{exercise}Approximately \emph{how many} of these newborns weighed greater than 10 pounds?\footnote{Approximately 2.7\% of the newborns weighed over 10 pounds. Because there were 23,419 of them, about $0.027 \times 23419 \approx 632$ weighed greater than 10 pounds.}
 \end{exercise}
 
-\begin{exercise}How much would a newborn have to weigh in order to be at the 90th percentile among this group?\footnote{Because we have the percentile, this is the inverse problem. To get the $Z$ score, use invNorm of 0.90 to get $Z =  1.28$. Then solve for $x$ in $1.28=\frac{x - 7.44}{1.33}$ to get $x = 9.15$. To be at the 90th percentile among this group, a newborn would have to weigh 9.15 pounds.}
+\begin{exercise}How much would a newborn have to weigh in order to be at the 90th percentile among this group?\footnote{Because we have the percentile, this is the inverse problem. To get the $Z$ score, use the inverse normal option with 0.90 to get $Z = 1.28$. Then solve for $x$ in $1.28 = \frac{x - 7.44}{1.33}$ to get $x = 9.15$. To be at the 90th percentile among this group, a newborn would have to weigh 9.15 pounds.}
 \end{exercise}
 
 
@@ -680,25 +680,21 @@ This brings us to the \term{Central Limit Theorem}, the most fundamental theorem
 When taking a random sample of independent observations from a population with a fixed mean and standard deviation, the distribution of $\bar{x}$ approaches the normal distribution as $n$ increases.}
 \end{termBox}
 
-%We discussed in Section~\ref{seOfTheMean} that the sample standard deviation, $s$, could be used as a substitute of the population standard deviation, $\sigma$, when computing the standard error. This estimate tends to be reasonable when $n\geq30$. We will encounter alternative distributions for smaller sample sizes in Chapters~\ref{inferenceForNumericalData} and~\ref{inferenceForCategoricalData}.
-
-\Comment{TODO(ddiez) - Swap out the poker example below.}
-
 \begin{example}{Sometimes we do not know what the population distribution looks like.  We have to infer it based on the distribution of a single sample.  Figure~\ref{pokerProfitsCanApplyNormalToSampMean} shows a histogram of 20 observations. These represent winnings and losses from 20 consecutive days of a professional poker player. Based on this sample data, can the normal approximation be applied to the distribution of the sample mean?}
 We should consider each of the required conditions.
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[(1)] These are referred to as \term{time series data}, because the data arrived in a particular sequence. If the player wins on one day, it may influence how she plays the next. To make the assumption of independence we should perform careful checks on such data. \Cut{While the supporting analysis is not shown, no evidence was found to indicate the observations are not independent.}
+\item[(1)] These are referred to as \term{time series data}, because the data arrived in a particular sequence. If the player wins on one day, it may influence how she plays the next. To make the assumption of independence we should perform careful checks on such data.
 \item[(2)] The sample size is 20, which is smaller than 30.
-\item[(3)] There are two outliers in the data, one very extreme, which suggests the population may not be normal, but rather may be very strongly skewed or have distant outliers.  Outliers can play an important role and affect the distribution of the sample mean and the estimate of the standard error.
+\item[(3)] There are two outliers in the data, both quite extreme, which suggests the population may not be normal and instead may be very strongly skewed or have distant outliers.  Outliers can play an important role and affect the distribution of the sample mean and the estimate of the standard error.
 \end{itemize}
-Since we should be skeptical of the independence of observations and the very extreme upper outlier poses a challenge, we should not use the normal model for the sample mean of these 20 observations. If we can obtain a much larger sample, \Cut{perhaps several hundred observations,} then the concerns about skew and outliers would no longer apply.
+Since we should be skeptical of the independence of observations and the extreme upper outliers pose a challenge, we should not use the normal model for the sample mean of these 20 observations. If we can obtain a much larger sample, then the concerns about skew and outliers would no longer apply.
 \end{example}
 
 \begin{figure}[ht]
    \centering
    \includegraphics[height=58mm]{ch_distributions/figures/pokerProfitsCanApplyNormalToSampMean/pokerProfitsCanApplyNormalToSampMean}
-   \caption{Sample distribution of poker winnings. These data include some very clear outliers. These are problematic when considering the normality of the sample mean. For example, outliers are often an indicator of very strong skew\index{skew!example: very strong}.}
+   \caption{Sample distribution of poker winnings. These data include two very clear outliers. These are problematic when considering the normality of the sample mean. For example, outliers are often an indicator of very strong skew\index{skew!example: very strong}.}
    \label{pokerProfitsCanApplyNormalToSampMean}
 \end{figure}
 
