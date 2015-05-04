@@ -49,7 +49,7 @@ We will also see examples in this chapter where fitting a straight line to the d
 
 
 %__________________
-\section{Line fitting, residuals, and correlation}
+\section[Line fitting, residuals, and correlation]{Line fitting, residuals, and correlation \sectionvideohref{youtube-mPvtZhdPBhQ&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}}
 \label{lineFittingResidualsCorrelation}
 
 It is helpful to think deeply about the line fitting process. In this section, we examine criteria for identifying a linear model and introduce a new statistic, \emph{correlation}.
@@ -241,7 +241,7 @@ The correlation between two variables should not be dependent upon the units in 
 
 
 %__________________
-\section{Fitting a line by least squares regression}
+\section[Fitting a line by least squares regression]{Fitting a line by least squares regression \sectionvideohref{youtube-z8DmwG2G4Qc&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}}
 \label{fittingALineByLSR}
 
 \index{least squares regression|(}
@@ -591,7 +591,7 @@ If you select \calctext{ax+b} (\calcbutton{F1}), the \calctext{a} and \calctext{
 \end{table}
 
 \begin{exercise}\label{subsetOfCountyForRegressionGP}
-Table~\ref{subsetOfCountyForRegression} contains values of federal spending per capita (rounded to the nearand percent of population in poverty for seven counties.  This is a a subset of the \data{countyDF} data set from Chapter 1.  Use the table a calculator to find the equation of the least squares regression line for this partial data set.\footnote{$a=5.136$ and $b=1.056$, therefore $\hat{y}=5.136 + 1.056x$.}
+Table~\ref{subsetOfCountyForRegression} contains values of federal spending per capita (rounded to the nearand percent of population in poverty for seven counties.  This is a subset of the \data{countyDF} data set from Chapter 1.  Use a calculator to find the equation of the least squares regression line for this partial data set.\footnote{$a=5.136$ and $b=1.056$, therefore $\hat{y}=5.136 + 1.056x$.}
 \end{exercise}
 
 \subsection{Categorical predictors with two levels (special topic)}
@@ -645,7 +645,7 @@ The estimated intercept is the value of the response variable for the first cate
 
 
 %__________________
-\section{Types of outliers in linear regression}
+\section[Types of outliers in linear regression]{Types of outliers in linear regression \sectionvideohref{youtube-jZEKAlo1E54&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}}
 \label{typesOfOutliersInLinearRegression}
 
 In this section, we identify criteria for determining which outliers are important and influential.
@@ -690,7 +690,7 @@ It is tempting to remove outliers. Don't do this without a very good reason. Mod
 
 
 %__________________
-\section{Inference for the slope of a regression line}
+\section[Inference for the slope of a regression line]{Inference for the slope of a regression line \sectionvideohref{youtube-depiT-hTaGA&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}}
 \label{inferenceForLinearRegression}
 
 In this section we discuss uncertainty in the estimates of the slope and y-intercept for a regression line. Just as we identified standard errors for point estimates in previous chapters, we first discuss standard errors for these new estimates. However, in the case of regression, we will identify standard errors using statistical software.
@@ -954,3 +954,66 @@ $\calctextmath{r^2}$ & $R^2$, the explained variance \\
 \end{enumerate}
 }
 \end{termBox}
+
+
+
+\section{Plots for transforming variables section or subsection}
+
+\Comment{D - Just sticking plots here so they are easy to grab. I'm not sure which spot is best to place the transformations stuff, so move around to where you think is best.}
+
+\subsection{Untransformed}
+
+\begin{figure}[hhh]
+   \centering
+   \includegraphics[width=0.9\textwidth]{ch_regr_simple_linear/figures/acs_2012_log_lin_reg/acs2012LinReg}
+   \caption{Annual income versus age from ACS.}
+   \label{acs2012LinReg}
+\end{figure}
+
+\begin{figure}[hhh]
+   \centering
+   \includegraphics[width=0.9\textwidth]{ch_regr_simple_linear/figures/acs_2012_log_lin_reg/acs2012LinRegWRes}
+   \caption{Annual income versus age from ACS, and a residual plot.}
+   \label{acs2012LinRegWRes}
+\end{figure}
+
+\begin{tipBox}{\texttt{The regression equation is} \\
+
+\texttt{income = 46579.2 - 155.7 age} \\
+
+\texttt{Predictor \ \ \ \ \ \ \ Coef \ \ \ SE Coef \ \ \ \ \ \ T \ \ \ \ \ \ \ \ \ P} \\
+\texttt{Constant \ \ \ \ \  46579.2 \ \ \ 13599.5 \ \ 3.425 \ \ 0.000664} \\
+\texttt{age \ \ \ \ \ \ \ \ \ \ \ \ 155.7 \ \ \ \ \ 297.0 \ \ 0.524 \ \ 0.600317} \\
+
+\texttt{S = 58440\ \ \ \ R-Sq = 0.05376\% \ \ \ R-Sq(adj) = -0.1418\%}}
+\end{tipBox}
+
+
+\subsection{Transformed}
+
+\begin{figure}[hhh]
+   \centering
+   \includegraphics[width=0.9\textwidth]{ch_regr_simple_linear/figures/acs_2012_log_lin_reg/acs2012LogLinReg}
+   \caption{Natural log of annual income versus age from ACS.}
+   \label{acs2012LogLinReg}
+\end{figure}
+
+\begin{figure}[hhh]
+   \centering
+   \includegraphics[width=0.9\textwidth]{ch_regr_simple_linear/figures/acs_2012_log_lin_reg/acs2012LogLinRegWRes}
+   \caption{Natural log of annual income versus age from ACS and a residual plot.}
+   \label{acs2012LogLinRegWRes}
+\end{figure}
+
+\begin{tipBox}{\texttt{The regression equation is} \\
+
+\texttt{income = 9.80548 - 0.01378 ln(age)} \\
+
+\texttt{Predictor \ \ \ \ \ \ \ Coef \ \ \ SE Coef \ \ \ \ \ \ \ T \ \ \ \ \ \ \ \ P} \\
+\texttt{Constant \ \ \ \ \  9.80548 \ \ \ 0.25595 \ \ 38.310 \ \ < 2e-16} \\
+\texttt{ln(age) \ \ \ \ \ \ 0.01378 \ \ \ 0.00559 \ \ \ 2.464 \ \ \ 0.0141} \\
+
+\texttt{S = 1.1\ \ \ \ R-Sq = 1.174\% \ \ \ R-Sq(adj) = 0.9809\%}}
+\end{tipBox}
+
+
