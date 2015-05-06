@@ -24,13 +24,13 @@ histPlot(pHat[pHat <= X / n],
          breaks = (-1:(2 * M) + 0.75) / 2 / n,
          col = COL[1],
          add = TRUE)
-x <- seq(0, M / n + 0.05, length.out = 50)
+x <- seq(0, M / n + 0.05, length.out = 500)
 y <- n.sim * dnorm(x, p, sqrt(p * (1 - p) / n)) / n
-# these <- which(x > 2 * p - X / n)
-# polygon(x[c(these[1], these, tail(these, 1))],
-#         c(0, y[these], 0),
-#         border = "#00000000",
-#         col = COL[1,3])
+these <- which(x > 2 * p - X / n - 0.002)
+polygon(x[c(these[1], these, tail(these, 1))],
+        c(0, y[these], 0),
+        border = "#00000000",
+        col = COL[1,3])
 lines(x, y, lwd = 1.5, col = COL[5, 4])
 arrows(0.16, 500, 0.15, 300, length = 0.1)
 text(0.185, 750,
