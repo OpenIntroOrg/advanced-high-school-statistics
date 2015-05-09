@@ -449,16 +449,16 @@ The \data{family\_\hspace{0.3mm}college} data set contains a sample of 792 cases
 \end{figure}
 
 \begin{example}{If at least one parent completed a college degree, what is the chance their teenager attended college right after high school?}
-We can estimate this probability using the data. Of the 272 cases in this data set where \var{parents} takes value \resp{degree}, 231 represent cases where the \var{teen} variable takes value \resp{college}:
+We can estimate this probability using the data. Of the 280 cases in this data set where \var{parents} takes value \resp{degree}, 231 represent cases where the \var{teen} variable takes value \resp{college}:
 \begin{eqnarray*}
-P(\text{\var{teen} $\to$ \resp{college} given \var{parents} $\to$ \resp{degree}}) = \frac{231}{280} = 0.825
+P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
 \end{eqnarray*}
 \end{example}
 
 \begin{example}{A teenager is randomly selected from the sample and she did not attend college right after high school. What is the probability that at least one of her parents has a college degree?}\label{collegeProbOfParentsGivenStudentNot}
 If the teenager did not attend, then she is one of the 347 teens in the second row. Of~these 347 teens, 49 had at least one parent who got a college degree:
 \begin{eqnarray*}
-P(\text{\var{parents} $\to$ \resp{degree} given \var{teen} $\to$ \resp{not}}) = \frac{49}{347} = 0.141
+P(\text{\var{parents} \resp{degree} given \var{teen} \resp{not}}) = \frac{49}{347} = 0.141
 \end{eqnarray*}
 \end{example}
 
@@ -470,17 +470,17 @@ P(\text{\var{parents} $\to$ \resp{degree} given \var{teen} $\to$ \resp{not}}) = 
 
 Table~\ref{contTableOfParStCollege} includes row and column totals for each variable separately in the \data{family\_\hspace{0.3mm}college} data set. These totals represent \termsub{marginal probabilities}{marginal probability} for the sample, which are the probabilities based on a single variable without conditioning on any other variables. For instance, a probability based solely on the \var{teen} variable is a marginal probability:
 \begin{align*}
-P(\text{\var{teen} $\to$ \resp{college}}) = \frac{445}{792} = 0.56
+P(\text{\var{teen} \resp{college}}) = \frac{445}{792} = 0.56
 \end{align*}
 A probability of outcomes for two or more variables or processes is called a \termsub{joint \mbox{probability}}{joint probability}:
 \begin{align*}
-P(\text{\var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{not}}) = \frac{214}{792} = 0.27
+P(\text{\var{teen} \resp{college} and \var{parents} \resp{not}}) = \frac{214}{792} = 0.27
 \end{align*}
 It is common to substitute a comma for ``and'' in a joint probability, although either is acceptable. That is,
 \begin{center}
-$P(\text{\var{teen} $\to$ \resp{college}, \var{parents} $\to$ \resp{not}})$ \\[2mm]
+$P(\text{\var{teen} \resp{college}, \var{parents} \resp{not}})$ \\[2mm]
 means the same thing as \\[2mm]
-$P(\text{\var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{not}})$
+$P(\text{\var{teen} \resp{college} and \var{parents} \resp{not}})$
 \end{center}
 
 \begin{termBox}{\tBoxTitle{Marginal and joint probabilities}
@@ -511,10 +511,10 @@ Total & 0.35 & 0.65 & 1.00 \\
   \hline
 Joint outcome & Probability \\
   \hline
-\var{parents} $\to$ \resp{degree}, \var{teen} $\to$ \resp{college} & 0.29 \\
-\var{parents} $\to$ \resp{degree}, \var{teen} $\to$ \resp{not} & 0.06 \\
-\var{parents} $\to$ \resp{not}, \var{teen} $\to$ \resp{college} & 0.27 \\
-\var{parents} $\to$ \resp{not}, \var{teen} $\to$ \resp{not} & 0.38 \\
+\var{parents} \resp{degree} and \var{teen} \resp{college} & 0.29 \\
+\var{parents} \resp{degree} and \var{teen} \resp{not} & 0.06 \\
+\var{parents} \resp{not} and \var{teen} \resp{college} & 0.27 \\
+\var{parents} \resp{not} and \var{teen} \resp{not} & 0.38 \\
    \hline
 Total & 1.00 \\
 \hline
@@ -529,9 +529,9 @@ Verify Table~\ref{familyCollegeDistribution} represents a probability distributi
 
 We can compute marginal probabilities using joint probabilities in simple cases. For example, the probability a random teenager from the study went to college is found by summing the outcomes from Table~\ref{familyCollegeDistribution} where \var{teen} takes value \resp{college}:\index{marginal probability|)}\index{joint probability|)}
 \begin{align*}
-P(\text{\underline{\color{black}\var{teen} $\to$ \resp{college}}})
-&=  P(\text{\var{parents} $\to$ \resp{degree}, \underline{\color{black}\var{teen} $\to$ \resp{college}}}) \\
-& \quad \quad + P(\text{\var{parents} $\to$ \resp{not}, \underline{\color{black}\var{teen} $\to$ \resp{college}}}) \\
+P(\text{\underline{\color{black}\var{teen} \resp{college}}})
+&=  P(\text{\var{parents} \resp{degree} and \underline{\color{black}\var{teen} \resp{college}}}) \\
+& \quad \quad + P(\text{\var{parents} \resp{not} and \underline{\color{black}\var{teen} \resp{college}}}) \\
 &= 0.28 + 0.27 \\
 &= 0.56
 \end{align*}
@@ -545,14 +545,14 @@ There is some connection between education level of parents and of the teenager:
 
 The probability that a random teenager from the study attended college is 0.56. Could we update this probability if we knew that one of the teen's parents has a college degree? Absolutely. To do so, we limit our view to only those 280 cases where a parent has a college degree and look at the fraction where the teenager attended college:
 \begin{eqnarray*}
-P(\text{\var{teen} $\to$ \resp{college} given \var{parents} $\to$ \resp{degree}}) = \frac{231}{280} = 0.825
+P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
 \end{eqnarray*}
 We call this a \term{conditional probability} because we computed the probability under a condition: a parent has a college degree. There are two parts to a conditional probability, \term{the outcome of interest} and the \term{condition}. It is useful to think of the condition as information we know to be true, and this information usually can be described as a known outcome or~event.
 
 We separate the text inside our probability notation into the outcome of interest and the condition:
 \begin{eqnarray}
-&& P(\text{\var{teen} $\to$ \resp{college} given \var{parents} $\to$ \resp{degree}}) \notag \\
-&& = P(\text{\var{teen} $\to$ \resp{college}}\ |\ \text{\var{parents} $\to$ \resp{degree}}) = \frac{231}{280} = 0.825
+&& P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) \notag \\
+&& = P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
 \label{probStudentUsedIfParentsUsedInFormalNotation}
 \end{eqnarray}
 \marginpar[\raggedright\vspace{-10mm}
@@ -563,18 +563,18 @@ $P(A | B)$\vspace{1mm}\\\footnotesize Probability of\\outcome $A$\\given $B$}The
 
 In Equation~\eqref{probStudentUsedIfParentsUsedInFormalNotation}, we computed the probability a teen attended college based on the condition that at least one parent has a college degree as a fraction:\vspaceB{-1mm}
 \begin{eqnarray}
-&& P(\text{\var{teen} $\to$ \resp{college}}\ |\ \text{\var{parents} $\to$ \resp{degree}}) \notag \\
-&&\quad = \frac{\text{\# cases where \var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{degree}}}{\text{\# cases where \var{parents} $\to$ \resp{degree}}} \label{ratioOfBothToRatioOfConditionalForParentsAndStudent} \\
+&& P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) \notag \\
+&&\quad = \frac{\text{\# cases where \var{teen} \resp{college} and \var{parents} \resp{degree}}}{\text{\# cases where \var{parents} \resp{degree}}} \label{ratioOfBothToRatioOfConditionalForParentsAndStudent} \\
 &&\quad = \frac{231}{280} = 0.825 \notag
 \end{eqnarray}
-We considered only those cases that met the condition, \var{parents} $\to$ \resp{degree}, and then we computed the ratio of those cases that satisfied our outcome of interest, the teenager attended college.
+We considered only those cases that met the condition, \var{parents} \resp{degree}, and then we computed the ratio of those cases that satisfied our outcome of interest, the teenager attended college.
 
 Frequently, marginal and joint probabilities are provided instead of count data. For example, disease rates are commonly listed in percentages rather than in a count format. We would like to be able to compute conditional probabilities even when no counts are available, and we use Equation~(\ref{ratioOfBothToRatioOfConditionalForParentsAndStudent}) as an example demonstrating this technique.
 
-We considered only those cases that satisfied the condition, \var{parents} $\to$ \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} $\to$ \resp{college}. Suppose we were provided only the information in Table~\ref{familyCollegeProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} $\to$ \resp{degree}). Similarly, we would expect about 6\% or $0.06\times 1000 = 60$ to meet both the information criterion and represent our outcome of interest. Thus, the conditional probability could be computed:
+We considered only those cases that satisfied the condition, \var{parents} \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} \resp{college}. Suppose we were provided only the information in Table~\ref{familyCollegeProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} \resp{degree}). Similarly, we would expect about 6\% or $0.06\times 1000 = 60$ to meet both the information criterion and represent our outcome of interest. Thus, the conditional probability could be computed:
 \begin{align}
-&P(\text{\var{teen} $\to$ \resp{college}}\ |\ \text{\var{parents} $\to$ \resp{degree}}) \notag \\
-	&= \frac{\text{\# (\var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{degree})}}{\text{\# (\var{parents} $\to$ \resp{degree})}} \notag \\
+&P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) \notag \\
+	&= \frac{\text{\# (\var{teen} \resp{college} and \var{parents} \resp{degree})}}{\text{\# (\var{parents} \resp{degree})}} \notag \\
 	&= \frac{60}{350}
 		= \frac{0.06}{0.35}
 		= 0.171
@@ -582,9 +582,9 @@ We considered only those cases that satisfied the condition, \var{parents} $\to$
 \end{align}
 In Equation~(\ref{stUserPUsedHypSampSize}), we examine exactly the fraction of two probabilities, 0.06 and 0.35, which we can write as
 \begin{align*}
-P(\text{\var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{degree}})
+P(\text{\var{teen} \resp{college} and \var{parents} \resp{degree}})
 	\quad\text{and}\quad
-	P(\text{\var{parents} $\to$ \resp{degree}}).
+	P(\text{\var{parents} \resp{degree}}).
 \end{align*}
 The fraction of these probabilities is an example of the general formula for conditional probability.
 
@@ -598,17 +598,17 @@ P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
 
 \begin{exercise}\label{familyCollegeProbOfParentsEqualNotGivenTeen}
 (a) Write out the following statement in conditional probability notation: ``\emph{The probability a random case where neither parent has a college degree if it is known that the teenager didn't attend college right after high school}''. Notice that the condition is now based on the {teenager}, not the {parent}. \\[1mm]
-(b)~Determine the probability from part (a). Table~\vref{familyCollegeProbTable} may be helpful.\footnote{(a) $P(\text{\var{parents} $\to$ \resp{not}}\ |\ \text{\var{teen} $\to$ \resp{not}})$. (b)~Equation~(\ref{condProbEq}) for conditional probability indicates we should first find $P(\text{\var{parents} $\to$ \resp{not}, \var{teen} $\to$ \resp{not}}) = 0.38$ and $P(\text{\var{teen} $\to$ \resp{not}})=0.44$. Then the ratio represents the conditional probability: $0.38/0.44 = 0.864$.}
+(b)~Determine the probability from part (a). Table~\vref{familyCollegeProbTable} may be helpful.\footnote{(a) $P(\text{\var{parents} \resp{not}}\ |\ \text{\var{teen} \resp{not}})$. (b)~Equation~(\ref{condProbEq}) for conditional probability indicates we should first find $P(\text{\var{parents} \resp{not} and \var{teen} \resp{not}}) = 0.38$ and $P(\text{\var{teen} \resp{not}}) = 0.44$. Then the ratio represents the conditional probability: $0.38 / 0.44 = 0.864$.}
 \end{exercise}
 
 \begin{exercise}\label{whyCondProbSumTo1}
 (a)~Determine the probability that one of the parents has a college degree if it is known the teenager did not attend college. \\[1mm]
 (b)~Using the answers from part~(a) and Guided Practice~\ref{familyCollegeProbOfParentsEqualNotGivenTeen}(b), compute
 \begin{align*}
-&P(\text{\var{parents} $\to$ \resp{degree}}\ |\ \text{\var{teen} $\to$ \resp{not}}) \\
-&+ P(\text{\var{parents} $\to$ \resp{not}}\ |\ \text{\var{teen} $\to$ \resp{not}})
+&P(\text{\var{parents} \resp{degree}}\ |\ \text{\var{teen} \resp{not}}) \\
+&+ P(\text{\var{parents} \resp{not}}\ |\ \text{\var{teen} \resp{not}})
 \end{align*}
-(c)~Provide an intuitive argument to explain why the sum in (b) is~1.\footnote{(a)~This probability is $\frac{P(\text{\var{parents} $\to$ \resp{degree}, \var{teen} $\to$ \resp{not}})}{P(\text{\var{teen} $\to$ \resp{not}})} = \frac{0.06}{0.44} = 0.136$. (b)~The total equals~1. (c)~Under the condition the teenager didn't attend college, the parents must either have a college degree or not. The complement still works, provided the probabilities condition on the same information.}
+(c)~Provide an intuitive argument to explain why the sum in (b) is~1.\footnote{(a)~This probability is $\frac{P(\text{\var{parents} \resp{degree}, \var{teen} \resp{not}})}{P(\text{\var{teen} \resp{not}})} = \frac{0.06}{0.44} = 0.136$. (b)~The total equals~1. (c)~Under the condition the teenager didn't attend college, the parents must either have a college degree or not. The complement still works, provided the probabilities condition on the same information.}
 \end{exercise}
 
 \begin{exercise}
@@ -690,7 +690,7 @@ P(\text{\resp{lived} and \resp{not inoculated}})
 \end{eqnarray*}
 and we are given that
 \begin{eqnarray*}
-P(\text{\resp{lived}}|\text{ \resp{not inoculated}})=0.8588 \\
+P(\text{\resp{lived}}\ |\ \text{\resp{not inoculated}})=0.8588 \\
 P(\text{\resp{not inoculated}})=0.9608
 \end{eqnarray*}
 Among the 96.08\% of people who were not inoculated, 85.88\% survived:
@@ -732,8 +732,8 @@ For the first question, she will pick someone else with probability $14/15$. Whe
 \begin{exercise}
 What rule permitted us to multiply the probabilities in Example~\ref{3woRep}?\footnote{The three probabilities we computed were actually one marginal probability, $P($\var{Q1}$ = $\resp{not\_\hspace{0.3mm}picked}$)$, and two conditional probabilities:
 \begin{eqnarray*}
-&&P(\text{\var{Q2}} =  \text{\resp{not\_\hspace{0.3mm}picked}}|\text{ \var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}}) \\
-&&P(\text{\var{Q3}} =  \text{\resp{not\_\hspace{0.3mm}picked}}|\text{ \var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q2}} = \text{\resp{not\_\hspace{0.3mm}picked}})
+&&P(\text{\var{Q2}} =  \text{\resp{not\_\hspace{0.3mm}picked}}\ |\ \text{\var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}}) \\
+&&P(\text{\var{Q3}} =  \text{\resp{not\_\hspace{0.3mm}picked}}\ |\ \text{\var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q2}} = \text{\resp{not\_\hspace{0.3mm}picked}})
 \end{eqnarray*}
 Using the General Multiplication Rule, the product of these three probabilities is the probability of not being picked in 3 questions.}
 \end{exercise}
@@ -771,7 +771,7 @@ Had we repeated Guided Practice~\ref{raffleOf30TicketsWWOReplacement} with 300 t
 If two processes are independent, then knowing the outcome of one should provide no information about the other. We can show this is mathematically true using conditional probabilities.
 
 \begin{exercise} \label{condProbOfRollingA1AfterOne1}
-Let $X$ and $Y$ represent the outcomes of rolling two dice. (a)~What is the probability that the first die, $X$, is \resp{1}? (b)~What is the probability that both $X$ and $Y$ are \resp{1}? (c)~Use the formula for conditional probability to compute $P(Y =$ \resp{1} $| X = $ \resp{1}$)$. (d)~What is $P(Y=1)$? Is this different from the answer from part (c)? Explain.\footnote{Brief solutions: (a) $1/6$. (b) $1/36$. (c)~$\frac{P(Y = \text{ \resp{1} and}X=\text{ \resp{1}})}{P(X=\text{ \resp{1}})} = \frac{1/36}{1/6} = 1/6$. (d)~The probability is the same as in part~(c): $P(Y=1)=1/6$. The probability that $Y=1$ was unchanged by knowledge about $X$, which makes sense as $X$ and $Y$ are independent.}
+Let $X$ and $Y$ represent the outcomes of rolling two dice. (a)~What is the probability that the first die, $X$, is \resp{1}? (b)~What is the probability that both $X$ and $Y$ are \resp{1}? (c)~Use the formula for conditional probability to compute $P(Y =$ \resp{1} $| X = $ \resp{1}$)$. (d)~What is $P(Y=1)$? Is this different from the answer from part (c)? Explain.\footnote{Brief solutions: (a) $1/6$. (b) $1/36$. (c)~$\frac{P(Y = \text{ \resp{1} and }X=\text{ \resp{1}})}{P(X=\text{ \resp{1}})} = \frac{1/36}{1/6} = 1/6$. (d)~The probability is the same as in part~(c): $P(Y=1)=1/6$. The probability that $Y=1$ was unchanged by knowledge about $X$, which makes sense as $X$ and $Y$ are independent.}
 \end{exercise}
 
 We can show in Guided Practice~\ref{condProbOfRollingA1AfterOne1}(c) that the conditioning information has no influence by using the Multiplication Rule for independence processes:
@@ -793,7 +793,7 @@ If $A$ and $B$ are independent events, then the probability of $A$ being true is
 \begin{align*}
 P(A|B) &= P(A)
 \end{align*}
-The General Multiplication Rule states that $P(A\text{ and }B) \text{ equals}P(A | B)\times P(B)$. If $A$ and $B$ are independent events, we can replace $P(A|B)$ with $P(A)$ and the following multiplication rule applies:
+The General Multiplication Rule states that $P(A\text{ and }B)$ equals $P(A | B)\times P(B)$. If $A$ and $B$ are independent events, we can replace $P(A|B)$ with $P(A)$ and the following multiplication rule applies:
 \begin{align*}
 P(A\text{ and }B) &= P(A)\times P(B)
 \end{align*}
@@ -810,13 +810,13 @@ If the equation that is checked holds true (the left and right sides are equal),
 \begin{example}{Are teenager college attendance and parent college degrees independent or dependent? Table~\ref{contTableOfParStCollegeCopy} may be helpful.}\label{teenParentCollegeIndependentExample}
 We'll use the first equation above to check for independence. If the \var{teen} and \var{parents} variables are independent, it must be true that
 \begin{align*}
-P(\text{\var{teen} $\to$ \resp{college}}\ |\ \text{\var{parent} $\to$ \resp{degree}})
-	&= P(\text{\var{teen} $\to$ \resp{college}})
+P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parent} \resp{degree}})
+	&= P(\text{\var{teen} \resp{college}})
 \end{align*}
 Using Table~\ref{contTableOfParStCollegeCopy}, we check whether equality holds in this equation.
 \begin{align*}
-P(\text{\var{teen} $\to$ \resp{college}}\ |\ \text{\var{parent} $\to$ \resp{degree}})
-	&\overset{?}{=} P(\text{\var{teen} $\to$ \resp{college}}) \\
+P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parent} \resp{degree}})
+	&\overset{?}{=} P(\text{\var{teen} \resp{college}}) \\
 0.83 &\neq 0.56
 \end{align*}
 The value 0.83 came from a probability calculation using Table~\ref{contTableOfParStCollegeCopy}: $\frac{231}{280} \approx 0.83$. Because the sides are not equal, teenager college attendance and parent degree are dependent. That is, we estimate the probability a teenager attended college to be higher if we know that one of the teen's parents has a college degree.
@@ -841,7 +841,7 @@ The value 0.83 came from a probability calculation using Table~\ref{contTableOfP
 \begin{exercise}
 Use the second equation in the box above to show that teenager college attendance and parent college degrees are dependent.\footnote{We check for equality in the following equation:
 \begin{align*}
-P(\text{\var{teen} $\to$ \resp{college}, \var{parent} $\to$ \resp{degree}})&\overset{?}{=} P(\text{\var{teen} $\to$ \resp{college}})\times P(\text{\var{parent} $\to$ \resp{degree}})\\
+P(\text{\var{teen} \resp{college}, \var{parent} \resp{degree}})&\overset{?}{=} P(\text{\var{teen} \resp{college}})\times P(\text{\var{parent} \resp{degree}})\\
 \frac{231}{792}=0.292 &\neq \frac{445}{792}\times \frac{280}{792}=0.199
 \end{align*}
 These terms are not equal, which confirms what we learned in Example~\ref{teenParentCollegeIndependentExample}: teenager college attendance and parent college degrees are dependent.}
@@ -880,7 +880,7 @@ If the equation that is checked holds true (the left and right sides are equal),
 \begin{example}{Are teen college attendance and parent college degrees mutually exclusive?}
 Looking in the table, we see that there are 231 instances where both the teenager attended college and parents have a degree, indicating the probability of both events occurring is greater than 0. Since we have found an example where both of these events happen together, these two events are not mutually exclusive. We could more formally show this by computing the probability both events occur at the same time:
 \begin{align*}
-P(\text{\var{teen} $\to$ \resp{college}, \var{parent} $\to$ \resp{degree}}) = \frac{231}{792}\neq 0
+P(\text{\var{teen} \resp{college}, \var{parent} \resp{degree}}) = \frac{231}{792}\neq 0
 \end{align*}
 Since this probability is not zero, teenager college attendance and parent college degrees are not mutually exclusive.
 \end{example}
@@ -912,11 +912,11 @@ The \data{smallpox} data fit this description. We see the population as split by
 
 Tree diagrams are annotated with marginal and conditional probabilities, as shown in Figure~\ref{smallpoxTreeDiagram}. This tree diagram splits the smallpox data by \var{inoculation} into the \resp{yes} and \resp{no} groups with respective marginal probabilities 0.0392 and 0.9608. The secondary branches are conditioned on the first, so we assign conditional probabilities to these branches. For example, the top branch in Figure~\ref{smallpoxTreeDiagram} is the probability that \resp{lived} conditioned on the information that \resp{inoculated}. We may (and usually do) construct joint probabilities at the end of each branch in our tree by multiplying the numbers we come across as we move from left to right. These joint probabilities are computed using the General Multiplication Rule:
 \begin{align*}
-P(\text{\var{inoculated} and \resp{lived}}) &= P(\text{\var{inoculated}})\times P(\text{\resp{lived}}|\text{ \var{inoculated}}) \\
+P(\text{\var{inoculated} and \resp{lived}}) &= P(\text{\var{inoculated}})\times P(\text{\resp{lived}}\ |\ \text{\var{inoculated}}) \\
 	&= 0.0392\times 0.9754 \\
 	&=0.0382
 \end{align*}
-\begin{example}{What is the probability that a randomly selected person who was inoculated died?}This is equivalent to $P(\text{\resp{died}} | \text{\var{ inoculated}})$. This conditional probability can be found in the second branch as 0.0246.
+\begin{example}{What is the probability that a randomly selected person who was inoculated died?}This is equivalent to $P(\text{\resp{died}}\ |\ \text{\var{inoculated}})$. This conditional probability can be found in the second branch as 0.0246.
 \end{example}
 
 \begin{example}{What is the probability that a randomly selected person lived?}There are two ways that a person could have lived:  be inoculated \emph{and} live OR not be inoculated \emph{and} live. To find this probability, we sum the two disjoint probabilities:
@@ -946,18 +946,18 @@ After an introductory statistics course, 78\% of students can successfully const
 
 In many instances, we are given a conditional probability of the form
 \begin{align*}
-P(\text{statement about variable 1} | \text{ statement about variable 2})
+P(\text{statement about variable 1}\ |\ \text{statement about variable 2})
 \end{align*}
 but we would really like to know the inverted conditional probability:
 \begin{align*}
-P(\text{statement about variable 2} | \text{ statement about variable 1})
+P(\text{statement about variable 2}\ |\ \text{statement about variable 1})
 \end{align*}
 For example, instead of wanting to know $P($lived $|$ inoculated$)$, we might want to know $P($inoculated $|$ lived$)$. This is more challenging because it cannot be read directly from the tree diagram. In these instances we use \term{Bayes' Theorem}. Let's begin by looking at a new example.
 
 \begin{example}{In Canada, about 0.35\% of women over 40 will develop breast cancer in any given year. A common screening test for cancer is the mammogram, but this test is not perfect. In about 11\% of patients with breast cancer, the test gives a \term{false negative}: it indicates a woman does not have breast cancer when she does have breast cancer. Similarly, the test gives a \term{false positive} in 7\% of patients who do not have breast cancer: it indicates these patients have breast cancer when they actually do not.\footnote{The probabilities reported here were obtained using studies reported at \oiRedirect{textbook-breastCancerDotOrg_20090831b}{www.breastcancer.org} and \oiRedirect{textbook-ncbi_nih_breast_cancer}{www.ncbi.nlm.nih.gov/pmc/articles/PMC1173421}.} If we tested a random woman over 40 for breast cancer using a mammogram and the test came back positive -- that is, the test suggested the patient has cancer -- what is the probability that the patient actually has breast cancer?}\label{probabilityOfBreastCancerGivenPositiveTestExample}
 We are given sufficient information to quickly compute the probability of testing positive if a woman has breast cancer ($1.00 - 0.11 = 0.89$). However, we seek the inverted probability of cancer given a positive test result:
 \begin{align*}
-P(\text{has BC} | \text{ mammogram$^+$})
+P(\text{has BC}\ |\ \text{mammogram$^+$})
 \end{align*}
 Here, ``has BC'' is an abbreviation for the patient actually having breast cancer, and ``mammogram$^+$'' means the mammogram screening was positive, which in this case means the test suggests the patient has breast cancer. (Watch out for the non-intuitive medical language: a~\emph{positive} test result suggests the possible presence of cancer in a mammogram screening.) We can use the conditional probability formula from the previous section: $P(A|B) = \frac{P(A \text{ and } B)}{P(B)}$. Our conditional probability can be found as follows:
 \begin{align*}
@@ -1223,8 +1223,6 @@ Example: \calctext{5 nCr 3} means \emph{5 choose 3}.}
 }
 \end{termBox}
 
-\Comment{D - TI-83/84 for the two boxes below, or just TI-84?}
-
 \begin{termBox}{\tBoxTitle{\videohref{ti84_binomial_formula} TI-84: Computing the binomial formula, $P(X = k)={n\choose k}p^k(1-p)^{n-k}$}
 Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{binompdf} to evaluate the probability of \emph{exactly} $k$ occurrences out of $n$ independent trials of an event with probability $p$. 
 \begin{enumerate}
@@ -1319,7 +1317,7 @@ In this section, we consider simulations using \term{random numbers}. Random num
 \end{table}
 
 
-\begin{example}{Imani's favorite brand of cereal is running a special where 20\% of the cereal boxes contain a prize. Imani really wants that prize. If her mother buys 6 boxes of the cereal over the next few months, what is the probability Imani will get a prize?}
+\begin{example}{MikaMika's favorite brand of cereal is running a special where 20\% of the cereal boxes contain a prize. Mika really wants that prize. If her mother buys 6 boxes of the cereal over the next few months, what is the probability Mika will get a prize?}
 To solve this problem using simulation, we need to be able to assign digits to outcomes. Each box should have a 20\% chance of having a prize and an 80\% chance of not having a prize. Therefore, a valid assignment would be:
 \begin{align*}
 \emph{0, 1} &\rightarrow \text{prize}\\
@@ -1327,12 +1325,12 @@ To solve this problem using simulation, we need to be able to assign digits to o
 \end{align*}
 Of the ten possible digits (\emph{0, 1, 2, ..., 8, 9}), two of them, i.e. 20\% of them, correspond to winning a prize, which exactly matches the odds that a cereal box contains a prize.
 
-In Imani's simulation, one trial will consist of 6 boxes of cereal, and therefore a trial will require six digits (each digit will correspond to one box of cereal). We will repeat the simulation for 20 trials. Therefore we will need 20 sets of 6 digits. Let's begin on row 1 of the random digit table, shown in Table~\ref{sampleRandomNumberTable}. If a trial consisted of 5 digits, we could use the first 5 digits going across: \emph{43087}. Because here a trial consists of 6 digits, it may be easier to read down the table, rather than read across. We will let trial 1 consist of the the first 6 digits in column 1 (\emph{461819}), trial 2 consist of the first 6 digits in column 2 (\emph{339564}), etc. For this simulation, we will end up using the first 6 rows of each of the 20 columns. 
+In Mika's simulation, one trial will consist of 6 boxes of cereal, and therefore a trial will require six digits (each digit will correspond to one box of cereal). We will repeat the simulation for 20 trials. Therefore we will need 20 sets of 6 digits. Let's begin on row 1 of the random digit table, shown in Table~\ref{sampleRandomNumberTable}. If a trial consisted of 5 digits, we could use the first 5 digits going across: \emph{43087}. Because here a trial consists of 6 digits, it may be easier to read down the table, rather than read across. We will let trial 1 consist of the the first 6 digits in column 1 (\emph{461819}), trial 2 consist of the first 6 digits in column 2 (\emph{339564}), etc. For this simulation, we will end up using the first 6 rows of each of the 20 columns. 
 
 In trial 1, there are two \emph{1}'s, so we record that as a success; in this trial there were actually two prizes. In trial 2 there were no \emph{0}'s or \emph{1}'s, therefore we do not record this as a success. In trial 3 there were three prizes, so we record this as a success. The rest of this exercise is left as a Guided Practice problem for you to complete.
 \end{example}
 
-\begin{exercise}Finish the simulation above and report the estimate for the probability that Imani will get a prize if her mother buys 6 boxes of cereal where each one has a 20\% chance of containing a prize.\footnote{The trials that contain at least one 0 or 1 and therefore are successes are trials: 1, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, and 20. There were 17 successes among the 20 trials, so our estimate of the probability based on this simulation is 17/20 = 0.85.}
+\begin{exercise}Finish the simulation above and report the estimate for the probability that Mika will get a prize if her mother buys 6 boxes of cereal where each one has a 20\% chance of containing a prize.\footnote{The trials that contain at least one 0 or 1 and therefore are successes are trials: 1, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, and 20. There were 17 successes among the 20 trials, so our estimate of the probability based on this simulation is 17/20 = 0.85.}
 \end{exercise}
 
 \begin{exercise}In the previous example, the probability that a box of cereal contains a prize is 20\%. The question presented is equivalent to asking, what is the probability of getting at least one prize in six randomly selected boxes of cereal. This probability question can be solved explicitly using the method of complements. Find this probability. How does the estimate arrived at by simulation compare to this probability?\footnote{The true probability is given by $1 - P(\text{no prizes in six boxes}) = 1- 0.8^6 = 0.74$. The estimate arrived at by simulation was 11\% too high. Note: We only repeated the simulation 20 times. If we had repeated it 1000 times, we would (very likely) have gotten an estimate closer to the true probability.}
@@ -1340,7 +1338,7 @@ In trial 1, there are two \emph{1}'s, so we record that as a success; in this tr
 
 We can also use simulations to estimate quantities other than probabilities. Consider the following example.
 
-\begin{example}{Let's say that instead of buying exactly 6 boxes of cereal, Imani's mother agrees to buy boxes of this cereal \emph{until} she finds one with a prize. On average, how many boxes of cereal would one have to buy until one gets a prize?}
+\begin{example}{Let's say that instead of buying exactly 6 boxes of cereal, Mika's mother agrees to buy boxes of this cereal \emph{until} she finds one with a prize. On average, how many boxes of cereal would one have to buy until one gets a prize?}
 For this question, we can use the same digit assignment. However, our stopping rule is different. Each trial may require a different number of digits. For each trial, the stopping rule is:  look at digits until we encounter a \emph{0} or a \emph{1}. Then, record how many digits/boxes of cereal it took. Repeat the simulation for 20 trials, and then average the numbers from each trial.
 
 Let's begin again at row 1. We can read across or down, depending upon what is most convenient. Since there are 20 columns and we want 20 trials, we will read down the columns. Starting at column 1, we count how many digits (boxes of cereal) we encounter until we reach a \emph{0} or \emph{1} (which represent a prize). For trial 1 we see \emph{461}, so we record 3. For trial 2 we see \emph{3395641}, so we record 7. For trial 3, we see \emph{0}, so we record 1. The rest of this exercise is left as a Guided Practice problem for you to complete.
