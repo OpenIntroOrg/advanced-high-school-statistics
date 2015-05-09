@@ -565,7 +565,30 @@ It is easier to immediately identify the quartiles from a box plot. The box plot
 True or false: there is more data between the median and $Q_3$ than between $Q_1$ and the median.\footnote{False. Since $Q_1$ is the 25th percentile and the median is the 50th percentile, 25\% of the data fall between $Q_1$ and the median. Similarly, 25\% of the data fall between $Q_2$ and the median. The distance between the median and $Q_3$ is larger because that 25\% of the data is more spread out.}
 \end{exercise}
 
-\Comment{TODO(Leah) - Add example or exercise around calculating $Q_1 - 1.5 \times IQR$ and $Q_3 + 1.5 \times IQR$.}
+\begin{example}
+{Consider the following ordered data set.
+\begin{center}
+\begin{tabular}{ccc ccc ccc}
+5 & 5 & 9 & 10 & 15 & 16 & 20 & 30 & 80 
+\end{tabular}
+\end{center}
+Find the 5 number summary and identify how small or large a value would need to be to be considered an outlier.  Are there any outliers in this data set?}
+There are nine numbers in this data set.  Because $n$ is odd, the median is the middle number: 15.  When finding $Q_1$, we find the median of the lower half of the data, which in this case includes 4 numbers (we do not include the 15 as belonging to either half of the data set).  $Q_1$ then is the average of 5 and 9, which is $Q_1 = 7$, and $Q_3$ is the average of 20 and 30, so $Q_3 = 35$.  The min is 5 and the max is 80.  To see small a number needs to be to be an outlier on the low end we do:
+\begin{align*}
+Q_1 - 1.5 \times IQR
+	&= Q_1 - 1.5 \times (Q_3 - Q_1) \\
+	& = 7 - 1.5 \times (35 - 7) \\
+	& = -35
+\end{align*}
+On the high end we need:
+\begin{align*}
+Q_3 + 1.5 \times IQR
+	& = Q_3 + 1.5 \times (Q_3-Q_1) \\
+	& = 35 + 1.5 \times (35 - 7) \\
+	& = 77
+\end{align*}
+There are no numbers less than -41, so there are no outliers on the low end. The observation at 80 is greater than 77, so 80 is an outlier on the high end.
+\end{example}
 
 %\Comment{TODO(David)  create another box plot using different data set}
 %\Comment{TODO(Leah) redo exercise}
@@ -600,8 +623,6 @@ The first step in summarizing data or making a graph is to  enter the data set i
 \end{enumerate}
 }
 \end{termBox}
-
-\Comment{D - Should the box below be TI-83/84?}
 
 \begin{termBox}{\tBoxTitle{\videohref{ti84_calculating_summary_statistics} TI-84: Calculating Summary Statistics}
 Use the \calcbutton{STAT}, \calctext{CALC}, \calctext{1-Var Stats} command to find summary statistics such as mean, standard deviation, and quartiles.
