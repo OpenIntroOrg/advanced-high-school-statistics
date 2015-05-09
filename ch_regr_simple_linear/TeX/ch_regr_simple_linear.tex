@@ -733,10 +733,10 @@ We would reject $H_0$ in favor of $H_A$ if the data provide strong evidence that
 \subsection{Understanding regression output from software}
 \label{testStatisticForTheSlope}
 
-Just like other point estimates we have seen before, we can compute a standard error and test statistic for $b_1$. We will generally label the test statistic using a $T$, since it follows the $t$ distribution.
+Just like other point estimates we have seen before, we can compute a standard error and test statistic for $b_1$. We will generally label the test statistic using a $T$, since it follows the $t$-distribution.
 
 \begin{tipBox}{\tipBoxTitle{Hypothesis tests on the slope of the regression line}
-Use a $T$ test with $n - 2$ degrees of freedom when performing a hypothesis test on the slope of a regression line.}
+Use a $t$-test with $n - 2$ degrees of freedom when performing a hypothesis test on the slope of a regression line.}
 \end{tipBox}
 
 
@@ -762,7 +762,7 @@ We previously used a $T$ test statistic for hypothesis testing in the context of
 \begin{align*}
 T = \frac{\text{estimate} - \text{null value}}{\text{SE}} = \frac{-1.0010 - 0}{0.8717} = -1.15
 \end{align*}
-We can look for the one-sided p-value -- shown in Figure~\ref{oneSidedTailForMidtermUnemploymentHT} -- using the probability table for the $t$ distribution in Appendix~\ref{tDistributionTable} on page~\pageref{tDistributionTable}.
+We can look for the one-sided p-value -- shown in Figure~\ref{oneSidedTailForMidtermUnemploymentHT} -- using the probability table for the $t$-distribution in Appendix~\ref{tDistributionTable} on page~\pageref{tDistributionTable}.
 
 \begin{figure}
 \centering
@@ -779,7 +779,7 @@ The degrees of freedom for this test is $n-2$, or $df = 27-2 = 25$. Looking in t
 We could have identified the $T$ test statistic from the software output of the regression model, shown in the \var{unemp} row and third column (t value). The entry in the \var{unemp} row and last column represents the p-value for the two-sided hypothesis test where the null value is zero. The corresponding one-sided test would have a p-value half of the listed value.
 
 \begin{termBox}{\tBoxTitle{Inference for regression}
-We usually rely on statistical software to identify point estimates and standard errors for parameters of a regression line. After verifying conditions hold for fitting a line, we can use the methods learned in Section~\ref{oneSampleMeansWithTDistribution} for the $t$ distribution to create confidence intervals for regression parameters or to evaluate hypothesis tests.}
+We usually rely on statistical software to identify point estimates and standard errors for parameters of a regression line. After verifying conditions hold for fitting a line, we can use the methods learned in Section~\ref{oneSampleMeansWithTDistribution} for the $t$-distribution to create confidence intervals for regression parameters or to evaluate hypothesis tests.}
 \end{termBox}
 
 \begin{caution}{Don't carelessly use the p-value from regression output}
@@ -821,7 +821,7 @@ If conditions for fitting the regression line do not hold, then the methods pres
 \item State the name of the test being used.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item Linear regression $T$ test
+\item Linear regression $t$-test
 \end{itemize}
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
@@ -853,7 +853,7 @@ If conditions for fitting the regression line do not hold, then the methods pres
 \item State the name of the CI being used.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item $T$ CI for slope of regression line
+\item $t$-interval for slope of regression line
 \end{itemize}
 \item Verify conditions.\vspace{-1.5mm}
 \begin{itemize}
@@ -866,7 +866,7 @@ $$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
 \setlength{\itemsep}{0mm}
 \item The point estimate is $b_1$.
 \item $df = n-2$
-\item The critical value $t^*$ can be found on the $t$~table at row $df = n-2$
+\item The critical value $t^*$ can be found on the $t$-table at row $df = n-2$
 \item $SE$ can be located on regression summary table next to value of $b_1$
 \end{itemize}
 \item Evaluate the CI and write in the form ( $\_$ , $\_$ ).
@@ -875,11 +875,11 @@ $$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
 \end{enumerate}}
 \end{termBox}
 
-\subsection{Calculator: the linear regression $T$ test and CI}
+\subsection{Calculator: the linear regression $t$-test and $t$-interval}
 
 When doing this type of inference, we generally make use of computer output that provides us with the necessary quantities: $b$ and $s_b$.  The calculator functions below require knowing all of the data and are, therefore, rarely used.  We describe them here for the sake of completion. 
 
-\begin{termBox}{\tBoxTitle{\videohref{ti84_regression_t_test} TI-83/84: Linear regression $T$ test on $\beta_1$}
+\begin{termBox}{\tBoxTitle{\videohref{ti84_regression_t_test} TI-83/84: Linear regression $t$-test on $\beta_1$}
 Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -905,7 +905,7 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
 }
 \end{termBox} 
 
-\begin{termBox}{\tBoxTitle[]{\videohref{casio_regression_t_test} Casio fx-9750GII: Linear regression $T$ test on $\beta_1$}
+\begin{termBox}{\tBoxTitle[]{\videohref{casio_regression_t_test} Casio fx-9750GII: Linear regression $t$-test on $\beta_1$}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
@@ -927,7 +927,7 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
 }
 \end{termBox} 
 
-\begin{termBox}{\tBoxTitle{\videohref{ti84_regression_t_confint} TI-84: $T$ confidence interval for $\beta_1$}
+\begin{termBox}{\tBoxTitle{\videohref{ti84_regression_t_confint} TI-84: $t$-interval for $\beta_1$}
 Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTInt}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -959,18 +959,16 @@ $\calctextmath{r^2}$ & $R^2$, the explained variance \\
 
 \section{Transformations for nonlinear data}
 
-\Comment{TODO: David: Please put the scatter and residual plots here for the untransformed and transformed data.  For the scatterplots, please don't include the best fit line.  Also, for the residual plots, can you change the label on the vertical axis to say residual.  Also, include the two regression outputs.  Thanks.}
-
 \subsection{Untransformed}
 
 \begin{example}{Consider the scatterplot and residual plot in Figure~\ref{NeedsTransform-PreTransform}. The regression output is also provided.  Would a linear model be a good model for the data shown?}
-First, we can note the $R^2$ value is fairly large.  However, this alone does not mean that the model is good.  Another model might be much better.  When assessing the appropriateness of a linear model, we should look at the residual plot.  The U pattern in the residual plot tells us the the original data has a curve. If we inspect the two plots, we can see that for small and large values of $x$ we tend to underestimate $y$, whereas for middle values of $x$, we tend to overestimate $y$.  Because of the this, the model is not appropriate, and we should not carry out a linear regression $t$-test because the conditions for inference are not met.  However, the data might be better modeled using a transformation.
+First, we can note the $R^2$ value is fairly large.  However, this alone does not mean that the model is good.  Another model might be much better.  When assessing the appropriateness of a linear model, we should look at the residual plot.  The U pattern in the residual plot tells us the the original data is curved. If we inspect the two plots, we can see that for small and large values of $x$ we systematically underestimate $y$, whereas for middle values of $x$, we systematically overestimate $y$.  Because of the this, the model is not appropriate, and we should not carry out a linear regression $t$-test because the conditions for inference are not met.  However, we might be able to use a transformation to linearize the data.
 \end{example}
 
 \begin{figure}
    \centering
    \includegraphics[width=0.7\textwidth]{ch_regr_simple_linear/figures/NeedsTransform/NeedsTransform-PreTransform}
-   \caption{Variables $y$ is plotted against $x$. A nonlinear relationship is evident by the ``U'' shown in the residual plot. The curvature is also visible in the original plot.}
+   \caption{Variable $y$ is plotted against $x$. A nonlinear relationship is evident by the ``U'' shown in the residual plot. The curvature is also visible in the original plot.}
    \label{NeedsTransform-PreTransform}
 \end{figure}
 
@@ -982,10 +980,8 @@ First, we can note the $R^2$ value is fairly large.  However, this alone does no
 \texttt{Constant \ \ \ -52.3564 \ \ \ 7.2757 \ \ \ -7.196 \ \ \ \ \ 3e-08} \\
 \texttt{x \ \ \ \ \ \ \ \ \ \ \ \ 2.7842 \ \ \ 0.1768 \ \ \ 15.752 \ \ \ < 2e-16} \\
 
-
 \texttt{S = 13.76\ \ \ \ R-Sq = 88.26\% \ \ \ R-Sq(adj) = 87.91\%}}
 \end{tipBox}
-
 
 
 \subsection{Transformed}
@@ -1019,7 +1015,7 @@ $\widehat{log(y)} = 1.723 +0.053 x$
 \begin{enumerate}[(a)]
 \item There is an apparent linear relationship between $x$ and $y$.
 \item There is an apparent linear relationship between $x$ and $\widehat{log(y)}$.
-\item The model provided by Regression I yields a better fit.
-\item The model provided by Regression II yields a better fit.
+\item The model provided by Regression I ($\hat{y} = -52.3564 + 2.7842 x$) yields a better~fit.
+\item The model provided by Regression II ($\widehat{log(y)} = 1.723 +0.053 x$) yields a better~fit.
 \end{enumerate}
 \end{exercise}
