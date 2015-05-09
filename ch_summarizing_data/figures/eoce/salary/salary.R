@@ -1,5 +1,3 @@
-setwd("/Users/mine/Desktop/Open Intro/EOCE - Second Edition/01/figures/eoce/salary")
-
 set.seed(956)
 
 salSymm = rnorm(40, mean = 65000, sd = 2000)
