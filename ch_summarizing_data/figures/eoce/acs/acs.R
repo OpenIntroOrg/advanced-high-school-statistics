@@ -1,6 +1,5 @@
 library(openintro)
-data(acs12)
-#load("acs.RData")
+load("acs.RData")
 
 # drop unemployed
 acs = acs[acs$employment == "employed" & !is.na(acs$employment) & acs$income > 0 & !is.na(acs$income), ]
@@ -25,14 +24,14 @@ dev.off()
 
 myPDF("income_age_male.pdf", 5, 3.3)
 par(mar=c(3.6,3.6,1,1), mgp=c(2.5,0.7,0), cex.lab = 1.25, cex.axis = 1.25)
-plot(acs20$income[acs20$gender == "male"] ~ acs20$age[acs20$gender == "male"], xlab='Age', ylab='Income', pch=19, col=COL[2,2], axes = FALSE, ylim = c(0, 120000), xlim = c(15,65))
+plot(acs20$income[acs20$gender == "male"] ~ acs20$age[acs20$gender == "male"], xlab='Age', ylab='Income', pch=19, col=COL[2,2], axes = FALSE, ylim = c(0, 120000), xlim = c(15,65), main = "Males")
 axis(1)
 axis(2, at = seq(0, 120000, 20000), labels = c(0, "20K", "40K", "60K", "80K", "100K", "120K"), las = 1)
 dev.off()
 
 myPDF("income_age_female.pdf", 5, 3.3)
 par(mar=c(3.6,3.6,1,1), mgp=c(2.5,0.7,0), cex.lab = 1.25, cex.axis = 1.25)
-plot(acs20$income[acs20$gender == "female"] ~ acs20$age[acs20$gender == "female"], xlab='Age', ylab='Income', pch=19, col=COL[4,2], axes = FALSE, ylim = c(0, 120000), xlim = c(15,65))
+plot(acs20$income[acs20$gender == "female"] ~ acs20$age[acs20$gender == "female"], xlab='Age', ylab='Income', pch=19, col=COL[4,2], axes = FALSE, ylim = c(0, 120000), xlim = c(15,65), main = "Females")
 axis(1)
 axis(2, at = seq(0, 120000, 20000), labels = c(0, "20K", "40K", "60K", "80K", "100K", "120K"), las = 1)
 dev.off()

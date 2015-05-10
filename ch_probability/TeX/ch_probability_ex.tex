@@ -1,8 +1,5 @@
 \section{Exercises}
 
-%\Comment{33 and 34  are 53 and 54 from original binomial distr section.  35 and 36 are 42 and 41 from bin distr section.  Unfortunately the part I and part II have been separated for 36 and 37.  }
-%\Comment{incorportated the questions on sampling from a small population into the corresponding chapter (used to be its own section)}
-
 %_________________
 \subsection{Defining probability}
 
@@ -18,9 +15,9 @@
 
 % 2
 
-\eoce{\qt{Roulette wheel\label{roulette_wheel}} The game of roulette involves spinning a wheel with 38 slots: 18 red, 18 black, and 2 green. A ball is spun onto the wheel and will eventually land in a slot, where each slot has an equal chance of capturing the ball. \footfullcite{rouletteWheelPic}
+\eoce{\qt{Roulette wheel\label{roulette_wheel}} The game of roulette involves spinning a wheel with 38 slots: 18 red, 18 black, and 2 green. A ball is spun onto the wheel and will eventually land in a slot, where each slot has an equal chance of capturing the ball.
 
-\noindent\begin{minipage}[c]{0.725\textwidth}
+\noindent\begin{minipage}[c]{0.68\textwidth}
 \begin{parts}
 \item You watch a roulette wheel spin 3 consecutive times and the ball lands on a red slot each time. What is the probability that the ball will land on a red slot on the next spin?
 \item You watch a roulette wheel spin 300 consecutive times and the ball lands on a red slot each time. What is the probability that the ball will land on a red slot on the next spin?
@@ -29,8 +26,13 @@
 \end{minipage}
 \begin{minipage}[c]{0.025\textwidth}
 \end{minipage}
-\begin{minipage}[c]{0.25\textwidth}
-\hfill\includegraphics[width = 0.94\textwidth]{ch_probability/figures/eoce/images/roulette_wheel}
+\begin{minipage}[c]{0.28\textwidth}
+\begin{center}
+\includegraphics[width = \textwidth]{ch_probability/figures/eoce/images/roulette_wheel} \\
+{\footnotesize Photo by H\r{a}kan Dahlstr\"{o}m \\
+  (\oiRedirect{textbook-flickr_hakan_dahlstrom_roulette_wheel}{http://flic.kr/p/93fEzp}) \\
+  \oiRedirect{textbook-CC_BY_2}{CC~BY~2.0~license}}
+\end{center}
 \end{minipage}
 }{}
 
@@ -186,28 +188,26 @@
 % 14
 \textPE{\pagebreak}
 
-\eoce{\qt{Weight and health coverage, Part I\label{healthCovBMI}} The Behavioral Risk Factor Surveillance System (BRFSS) is an annual telephone survey designed to identify risk factors in the adult population and report emerging health trends. The following table summarizes two variables for the respondents: weight status using body mass index (BMI) and health coverage, which describes whether each respondent had health insurance. \footfullcite{data:BRFSS2010}
+\eoce{\qt{Health and health coverage, Part I\label{healthCovHealth}} The Behavioral Risk Factor Surveillance System (BRFSS) is an annual telephone survey designed to identify risk factors in the adult population and report emerging health trends. The following table summarizes two variables for the respondents: health status and health coverage, which describes whether each respondent had health insurance. \footfullcite{data:BRFSS2010}
 
 \begin{center}
-\begin{tabular}{ll  ccc  c} 
-			&	\multicolumn{1}{c}{}	& \multicolumn{3}{c}{\textit{Weight Status}} & \\ 
-\cline{3-5}
-			&		& Neither overweight 	& Overweight 	& Obese	&   \\
-			&		& nor obese (BMI $<$ 25)&(25 $\le$ BMI $<$ 30) & (BMI $\ge$ 30) & Total \\
-\cline{2-6}
-\textit{Health}	&Yes 	& 134,801 	& 141,699 	& 107,301 		& 383,801\\
-\textit{Coverage}&No 	& 15,098 		& 15,327 		& 14,412			& 44,837 \\
-\cline{2-6}
-			&Total	& 149,899		&157,026		& 121,713			& 428,638
+\begin{tabular}{rrrrrrrr}
+& &	 \multicolumn{5}{c}{\textit{Health Status}} &  \\ 
+\cline{3-7}
+& &	 	Excellent & Very good & Good & Fair & Poor & Total\\ 
+\cline{2-8}
+\textit{Health} & No & 459 & 727 & 854 & 385 &  99 & 2,524 \\ 
+\textit{Coverage} & Yes & 4,198 & 6,245 & 4,821 & 1,634 & 578 & 17,476 \\ 
+\cline{2-8}
+& Total & 4657 & 6,972 & 5,675 & 2,019 & 677 & 20,000
 \end{tabular}
 \end{center}
 
 \begin{parts}
-\item If we draw one individual at random, what is the probability that the respondent is overweight and doesn't have health coverage?
-\item If we draw one individual at random, what is the probability that the respondent is overweight or doesn't have health coverage?
+\item If we draw one individual at random, what is the probability that the respondent has excellent health and doesn't have health coverage?
+\item If we draw one individual at random, what is the probability that the respondent has excellent health or doesn't have health coverage?
 \end{parts}
 }{}
-
 
 %_________________
 \subsection{Conditional probability}
@@ -234,7 +234,6 @@
 }{}
 
 % 17
-\textPE{\pagebreak}
 
 \eoce{\qt{Global warming} A 2010 Pew Research poll asked 1,306 Americans ``From what you've read and heard, is there solid evidence that the average temperature on earth has been getting warmer over the past few decades, or not?". The table below shows the distribution of responses by party and ideology, where the counts have been replaced with relative frequencies.\footfullcite{globalWarming}
 \begin{center}
@@ -253,6 +252,7 @@
 \end{tabular}
 \end{center}
 \begin{parts}
+\item Are being the earth is warming and being a liberal Democrat mutually exclusive?
 \item What is the probability that a randomly chosen respondent believes the earth is warming or is a liberal Democrat?
 \item What is the probability that a randomly chosen respondent believes the earth is warming given that he is a liberal Democrat?
 \item What is the probability that a randomly chosen respondent believes the earth is warming given that he is a conservative Republican?
@@ -263,32 +263,31 @@
 
 % 18
 
-\eoce{\qt{Weight and health coverage, Part II} Exercise~\ref{healthCovBMI} introduced a contingency table summarizing the relationship between weight status, which is determined based on body mass index (BMI), and health coverage for a sample of 428,638 Americans. In the table below, the counts have been replaced by relative frequencies (probability estimates).
+\eoce{\qt{Health and health coverage, Part II\label{healthCovHealth}} introduced a contingency table summarizing the relationship between health status and health coverage for a sample of 20,000 Americans. In the table below, the counts have been replaced by relative frequencies (probability estimates).
 
 \begin{center}
-\begin{tabular}{ll  ccc  c} 
-			&	\multicolumn{1}{c}{}	& \multicolumn{3}{c}{\textit{Weight Status}} & \\ 
-\cline{3-5}
-			&		& Neither overweight 	& Overweight 	& Obese	&   \\
-			&		& nor obese (BMI $<$ 25)&(25 $\le$ BMI $<$ 30) & (BMI $\ge$ 30) & Total \\
-\cline{2-6}
-\textit{Health}	&Yes 	& 0.3145	 	& 0.3306	 	& 0.2503	 		& 0.8954\\
-\textit{Coverage}&No 	& 0.0352 		& 0.0358 		& 0.0336			& 0.1046 \\
-\cline{2-6}
-			&Total	& 0.3497		&0.3664		& 0.2839			& 1.0000
+\begin{tabular}{rrrrrrrr}
+& &	 \multicolumn{5}{c}{\textit{Health Status}} &  \\ 
+\cline{3-7}
+& &	 	Excellent & Very good & Good & Fair & Poor & Total\\ 
+\cline{2-8}
+\textit{Health} & No & 0.0230 & 0.0364 & 0.0427 & 0.0192 & 0.0050 & 0.1262  \\ 
+\textit{Coverage} & Yes & 0.2099 & 0.3123 & 0.2410 & 0.0817 & 0.0289 & 0.8738 \\ 
+\cline{2-8}
+& Total & 0.2329 & 0.3486 & 0.2838 & 0.1009 & 0.0338 & 1.0000
 \end{tabular}
 \end{center}
 
 \begin{parts}
-\item What is the probability that a randomly chosen individual is obese?
-\item What is the probability that a randomly chosen individual is obese given that he has health coverage?
-\item What is the probability that a randomly chosen individual is obese given that he doesn't have health coverage?
-\item Do being overweight and having health coverage appear to be independent?
+\item Are being in excellent health and having health coverage mutually exclusive?
+\item What is the probability that a randomly chosen individual has excellent health?
+\item What is the probability that a randomly chosen individual has excellent health given that he has health coverage?
+\item What is the probability that a randomly chosen individual has excellent health given that he doesn't have health coverage?
+\item Do having excellent health and having health coverage appear to be independent?
 \end{parts}
 }{}
 
 % 19
-\textPE{\pagebreak}
 
 \eoce{\qt{Burger preferences} A 2010 SurveyUSA poll asked 500 Los Angeles residents, ``What is the best hamburger place in Southern California? Five Guys Burgers? In-N-Out Burger? Fat Burger? Tommy's Hamburgers? Umami Burger? Or somewhere else?'' The distribution of responses by gender is shown below. \footfullcite{burgers}
 \begin{center}
@@ -309,6 +308,7 @@
 \end{tabular}
 \end{center}
 \begin{parts}
+\item Are being female and liking Five Guys Burgers mutually exclusive?
 \item What is the probability that a randomly chosen male likes In-N-Out the best?
 \item What is the probability that a randomly chosen female likes In-N-Out the best?
 \item What is the probability that a man and a woman who are dating both like In-N-Out the best? Note any assumption you make and evaluate whether you think that assumption is reasonable.
@@ -342,7 +342,6 @@
 
 
 % 21
-\textPE{\pagebreak}
 
 \eoce{\qt{Urns and marbles, Part I\label{urnWithMarbles}} Imagine you have an urn containing 5 red, 3 blue, and 2 orange marbles in it. 
 \begin{parts}
@@ -357,13 +356,16 @@
 % 22
 
 \eoce{\qt{Socks in a drawer} In your sock drawer you have 4 blue, 5 gray, and 3 black socks. Half asleep one morning you grab 2 socks at random and put them on. Find the probability you end up wearing
+\begin{multicols}{3}
 \begin{parts}
 \item 2 blue socks
 \item no gray socks
 \item at least 1 black sock
 \item a green sock
 \item matching socks
+\item[]
 \end{parts}
+\end{multicols}
 }{}
 
 
@@ -379,7 +381,7 @@
 }{}
 
 % 24
-
+\textPE{\newpage}
 
 \eoce{\qt{Books on a bookshelf} The table below shows the distribution of books on a bookcase based on whether they are nonfiction or fiction and hardcover or paperback. \vspace{-2.5mm}
 \begin{center}
@@ -409,7 +411,6 @@
 }{}
 
 % 26
-\textPE{\pagebreak}
 
 \eoce{\qt{The birthday problem} Suppose we pick three people at random. For each of the following questions, ignore the special case where someone might be born on February 29th, and assume that births are evenly distributed throughout the year.
 \begin{parts}
@@ -439,19 +440,15 @@
 }{}
 
 % 30
+\textPE{\newpage}
 
 \eoce{\qt{Exit poll} Edison Research gathered exit poll results from several sources for the Wisconsin recall election of Scott Walker. They found that 53\% of the respondents voted in favor of Scott Walker. Additionally, they estimated that of those who did vote in favor for Scott Walker, 37\% had a college degree, while 44\% of those who voted against Scott Walker had a college degree. Suppose we randomly sampled a person who participated in the exit poll and found that he had a college degree. What is the probability that he voted in favor of Scott Walker?\footfullcite{data:scott}
 }{}
 
 % 31
 
-\eoce{\qt{It's never lupus} Lupus is a medical phenomenon where antibodies that are supposed to attack foreign cells to prevent infections instead see plasma proteins as foreign bodies, leading to a high risk of blood clotting. It is believed that 2\% of the population suffer from this disease. The test is 98\% accurate if a person actually has the disease. The test is 74\% accurate if a person does not have the disease. 
-
-There is a line from the Fox television show \emph{House} that is often used after a patient tests positive for lupus: ``It's never lupus." Do you think there is truth to this statement? Use appropriate probabilities to support your answer.
+\eoce{\qt{It's never lupus} Lupus is a medical phenomenon where antibodies that are supposed to attack foreign cells to prevent infections instead see plasma proteins as foreign bodies, leading to a high risk of blood clotting. It is believed that 2\% of the population suffer from this disease. The test is 98\% accurate if a person actually has the disease. The test is 74\% accurate if a person does not have the disease. There is a line from the Fox television show \emph{House} that is often used after a patient tests positive for lupus: ``It's never lupus." Do you think there is truth to this statement? Use appropriate probabilities to support your answer.
 }{}
-
-%\Comment{the solution to this prob doesn't seem to match question}
-
 
 % 32
 
@@ -461,13 +458,11 @@ There is a line from the Fox television show \emph{House} that is often used aft
 %__________________
 \subsection{The binomial formula}
 
-
-
 % 33
 
 \eoce{\qt{Exploring combinations} The formula for the number of ways to arrange $n$ objects is $n! = n\times(n-1)\times \cdots \times 2 \times 1$. This exercise walks you through the derivation of this formula for a couple of special cases.
 
-\indent A small company has five employees: Anna, Ben, Carl, Damian, and Eddy. There are five parking spots in a row at the company, none of which are assigned, and each day the employees pull into a random parking spot. That is, all possible orderings of the cars in the row of spots are equally likely.
+\noindent A small company has five employees: Anna, Ben, Carl, Damian, and Eddy. There are five parking spots in a row at the company, none of which are assigned, and each day the employees pull into a random parking spot. That is, all possible orderings of the cars in the row of spots are equally likely.
 \begin{parts}
 \item On a given day, what is the probability that the employees park in alphabetical order?
 \item If the alphabetical order has an equal chance of occurring relative to all other possible orderings, how many ways must there be to arrange the five cars?
@@ -486,19 +481,19 @@ There is a line from the Fox television show \emph{House} that is often used aft
 }{}
 
 % 35
+\textPE{\pagebreak}
 
 \eoce{\qt{Underage drinking, Part I} \label{alcohol} The Substance Abuse and Mental Health Services Administration estimated that 70\% of 18-20 year olds consumed alcoholic beverages in 2008.\footfullcite{webpage:alcohol} \vspaceB{-0.5mm}
 \begin{parts}
 \item Suppose a random sample of ten 18-20 year olds is taken. Is the use of the binomial distribution appropriate for calculating the probability that exactly six consumed alcoholic beverages? Explain.
 \item Calculate the probability that exactly 6 out of 10 randomly sampled 18-20 year olds consumed an alcoholic drink.
-\item What is the probability that exactly four out of the ten 18-20 year olds have \textit{not} consumed an alcoholic beverage?
+\item What is the probability that exactly 4 out of the ten 18-20 year olds have \textit{not} consumed an alcoholic beverage?
 \item What is the probability that at most 2 out of 5 randomly sampled 18-20 year olds have consumed alcoholic beverages?
 \item What is the probability that at least 1 out of 5 randomly sampled 18-20 year olds have consumed alcoholic beverages?
 \end{parts}
 }{}
 
 % 36
-\textPE{\pagebreak}
 
 \eoce{\qt{Chickenpox, Part I} \label{chickenpox} The National Vaccine Information Center estimates that 90\% of Americans have had chickenpox by the time they reach adulthood.  \footfullcite{webpage:chickenpox} \vspaceB{-0.5mm}
 \begin{parts}
@@ -511,13 +506,55 @@ There is a line from the Fox television show \emph{House} that is often used aft
 }{}
 
 
+%_________________
+\subsection{Simulations}
+% 37
 
+\eoce{\qt{Smog check, Part I} \label{smogCheck} Suppose 16\% of cars fail pollution tests (smog checks) in California. We would like to estimate the probability that an entire fleet of seven cars would pass using a simulation. We assume each car is independent. We only want to know if the entire fleet passed, i.e. none of the cars failed. What is wrong with each of the following simulations to represent whether an entire (simulated) fleet passed?
+\begin{parts}
+\item Flip a coin seven times where each toss represents a car. A head means the car passed and a tail means it failed. If all cars passed, we report PASS for the fleet. If at least one car failed, we report FAIL.
+\item Read across a random number table starting at line 5. If a number is a 0 or 1, let it represent a failed car. Otherwise the car passes. We report PASS if all cars passed and FAIL otherwise.
+\item Read across a random number table, looking at two digits for each simulated car. If a pair is in the range [00-16], then the corresponding car failed. If it is in [17-99], the car passed. We report PASS if all cars passed and FAIL otherwise.
+\end{parts}
+}{}
 
+% 38
+
+\eoce{\qt{Left-handed} Studies suggest that approximately 10\% of the world population is left-handed. Use ten simulations to answer each of the following questions. For each question, describe your simulation scheme clearly.
+\begin{parts}
+\item What is the probability that at least one out of eight people are left-handed?
+\item On average, how many people would you have to sample until the first person who is left-handed?
+\item On average, how many left-handed people would you expect to find among a random sample of six people?
+\end{parts}
+}{}
+
+% 39
+
+\eoce{\qt{Smog check, Part II} Consider the fleet of seven cars in Exercise~\ref{smogCheck}. Remember that 16\% of cars fail pollution tests (smog checks) in California, and that we assume each car is independent.
+\begin{parts}
+\item Write out how to calculate the probability of the fleet failing, i.e. at least one of the cars in the fleet failing, via simulation.
+\item Simulate 5 fleets. Based on these simulations, estimate the probability at least one car will fail in a fleet.
+\item Compute the probability at least one car fails in a fleet of seven.
+\end{parts}
+}{}
+
+% 40
+
+\eoce{\qt{To catch a thief} \label{thief} Suppose that at a retail store, $1/5^{th}$ of all employees steal some amount of merchandise. The stores would like to put an end to this practice, and one idea is to use lie detector tests to catch and fire thieves. However, there is a problem: lie detectors are not 100\% accurate. Suppose it is known that a lie detector has a failure rate of 25\%. A thief will slip by the test 25\% of the time and an honest employee will only pass 75\% of the time. 
+\begin{parts}
+\item Describe how you would simulate whether an employee is honest or is a thief using a random number table. Write your simulation very carefully so someone else can read it and follow the directions exactly.
+\item Using a random number table, simulate 20 employees working at this store and determine if they are honest or not. Make sure to record the random digits assigned to each employee as you will refer back to these in part (c).
+\item Determine the result of the lie detector test for each simulated employee  from part (b) using a new simulation scheme.
+\item How many of these employees are ``honest and passed" and how many are ``honest and failed"?
+\item How many of these employees are ``thief and passed" and how many are ``thief and failed"?
+\item Suppose the management decided to fire everyone who failed the lie detector test. What percent of fired employees were honest? What percent of not fired employees were thieves?
+\end{parts}
+}{}
 
 %_________________
 \subsection{Random variables}
 
-% 37
+% 41
 
 \eoce{\qt{College smokers} At a university, 13\% of students smoke.
 \begin{parts}
@@ -526,7 +563,7 @@ There is a line from the Fox television show \emph{House} that is often used aft
 \end{parts}
 }{}
 
-% 38
+% 42
 
 \eoce{\qt{Card game} Consider the following card game with a well-shuffled deck of cards. If you draw a red card, you win nothing. If you get a spade, you win \$5. For any club, you win \$10 plus an extra \$20 for the ace of clubs.
 \begin{parts}
@@ -535,7 +572,8 @@ There is a line from the Fox television show \emph{House} that is often used aft
 \end{parts}
 }{}
 
-% 39
+% 43
+\textPE{\newpage}
 
 \eoce{\qt{Another card game} In a new card game, you start with a well-shuffled full deck and draw 3 cards without replacement. If you draw 3 hearts, you win \$50. If you draw 3 black cards, you win \$25. For any other draws, you win nothing.
 \begin{parts}
@@ -545,7 +583,7 @@ There is a line from the Fox television show \emph{House} that is often used aft
 \end{parts}
 }{}
 
-% 40
+% 44
 
 \eoce{\qtq{Is it worth it} Andy is always looking for ways to make money fast. Lately, he has been trying to make money by gambling. Here is the game he is considering playing: The game costs \$2 to play. He draws a card from a deck. If he gets a number card (2-10), he wins nothing. For any face card (jack, queen or king), he wins \$3. For any ace, he wins \$5, and he wins an \textit{extra} \$20 if he draws the ace of clubs.
 \begin{parts}
@@ -589,6 +627,7 @@ There is a line from the Fox television show \emph{House} that is often used aft
 }{}
 
 % 46
+\textPE{\newpage}
 
 \eoce{\qt{Selling on Ebay} Marcie has been tracking the following two items on Ebay:
 \begin{itemize}
@@ -612,7 +651,6 @@ There is a line from the Fox television show \emph{House} that is often used aft
 
 
 % 48
-\textPE{\pagebreak}
 
 \eoce{\qt{Ice cream} Ice cream usually comes in 1.5 quart boxes (48 fluid ounces), and ice cream scoops hold about 2 ounces. However, there is some variability in the amount of ice cream in a box as well as the amount of ice cream scooped out. We represent the amount of ice cream in the box as $X$ and the amount scooped out as $Y$. Suppose these random variables have the following means, standard deviations, and variances:
 \begin{center}
@@ -633,6 +671,7 @@ $Y$ & 2	   & 0.25	& 0.0625	\\
 }{}
 
 
+\textPE{\newpage}
 %_________________
 \subsection{Continuous distributions}
 
@@ -657,7 +696,6 @@ $\:$
 }{}
 
 % 50
-\textPE{\pagebreak}
 
 \eoce{\qt{Income and gender} The relative frequency table below displays the distribution of annual total personal income (in 2009 inflation-adjusted dollars) for a representative sample of 96,420,486 Americans. These data come from the American Community Survey for 2005-2009. This sample is comprised of 59\% males and 41\% females. \footfullcite{acsIncome2005-2009} \\
 

@@ -1,14 +1,197 @@
-% EOCE Deletions:
-% 2.22 and 2.23 were deleted (one on transformations, the other on mapping)
-% 2.27 and 2.28 on mosaic plots
-% exercises renumbered to not skip numbers
-
 \section{Exercises}
 
 %_________________
 \subsection{Examining numerical data}
 
 % 1
+
+\eoce{\qt{ACS, Part I} Each year, the US Census Bureau surveys about 3.5 million households with The American Community Survey (ACS). Data collected from the ACS have been crucial in government and policy decisions, helping to determine the allocation of federal and state funds each year. Some of the questions asked on the survey are about their income, age (in years), and gender. The table below contains this information for a random sample of 20 respondents to the 2012 ACS. \footfullcite{data:acs:2012} \label{acs_age_income}
+\begin{center}
+\begin{minipage}[c]{0.4\textwidth}
+{\small
+\begin{tabular}{rrrl}
+  \hline
+ & Income & Age & Gender \\ 
+  \hline
+1 & 53,000 &  28 & male \\ 
+  2 & 1600 &  18 & female \\ 
+  3 & 70,000 &  54 & male \\ 
+  4 & 12,800 &  22 & male \\ 
+  5 & 1,200 &  18 & female \\ 
+  6 & 30,000 &  34 & male \\ 
+  7 & 4,500 &  21 & male \\ 
+  8 & 20,000 &  28 & female \\ 
+  9 & 25,000 &  29 & female \\ 
+  10 & 42,000 &  33 & male \\ 
+   \hline
+\end{tabular}
+}
+\end{minipage}
+\begin{minipage}[c]{0.4\textwidth}
+{\small
+\begin{tabular}{rrrl}
+  \hline
+ & Income & Age & Gender \\ 
+  \hline
+  11 & 670 &  34 & female \\ 
+  12 & 29,000 &  55 & female \\ 
+  13 & 44,000 &  33 & female \\ 
+  14 & 48,000 &  41 & male \\ 
+  15 & 30,000 &  47 & female \\ 
+  16 & 60,000 &  30 & male \\ 
+  17 & 108,000 &  61 & male \\ 
+  18 & 5,800 &  50 & female \\ 
+  19 & 50,000 &  24 & female \\ 
+  20 & 11,000 &  19 & male \\ 
+   \hline
+\end{tabular}
+}
+\end{minipage}
+\end{center}
+\begin{parts}
+\item Create a scatterplot of income vs. age, and describe the relationship between these two variables.
+\item Now create two scatterplots: one for income vs. age for males and another for females.
+\item How, if at all, do the relationships between income and age differ for males and females?
+\end{parts}
+}{}
+
+% 2
+
+\eoce{\qt{MLB stats} A baseball team's success in a season is usually measured by their number of wins. In order to win, the team has to have scored more points (runs) than their opponent in any given game. As such, number of runs is often a good proxy for the success of the team. The table below shows number of runs, home runs, and batting averages for a random sample of 10 teams in the 2014 Major League Baseball season. \footfullcite{data:MLB:2014}
+\begin{center}
+{\small
+\begin{tabular}{rlrrr}
+  \hline
+ & Team & Runs & Home runs & Batting avg. \\ 
+  \hline
+1 & Baltimore &  705 &  211 & 0.256 \\ 
+  2 & Boston &  634 &  123 & 0.244 \\ 
+  3 & Cincinnati &  595 &  131 & 0.238 \\ 
+  4 & Cleveland &  669 &  142 & 0.253 \\ 
+  5 & Detroit &  757 &  155 & 0.277 \\ 
+  6 & Houston &  629 &  163 & 0.242 \\ 
+  7 & Minnesota &  715 &  128 & 0.254 \\ 
+  8 & NY Yankees &  633 &  147 & 0.245 \\ 
+  9 & Pittsburgh &  682 &  156 & 0.259 \\ 
+  10 & San Francisco &  665 &  132 & 0.255 \\ 
+   \hline
+\end{tabular}
+}
+\end{center}
+\begin{parts}
+\item Draw a scatterplot of runs vs. home runs.
+\item Draw a scatterplot of runs vs. batting averages.
+\item Are home runs or batting averages more strongly associated with number of runs? Explain your reasoning.
+\end{parts}
+}{}
+
+% 3
+
+\eoce{\qt{Fiber in your cereal} \label{fiber_cereal} The Cereal FACTS report provides information on nutrition content of cereals as well as who they are targeted for (adults, children, families). We have selected a random sample of 20 cereals from the data provided in this report. Shown below are the fiber contents (percentage of fiber per gram of cereal) for these cereals. \footfullcite{Harris:2012}
+\begin{center}
+\begin{minipage}[c]{0.49\textwidth}
+{\small
+\begin{tabular}{rlr}
+  \hline
+ & Brand & Fiber \% \\ 
+  \hline
+1 & Pebbles Fruity & 0.0\% \\ 
+  2 & Rice Krispies Treats & 0.0\% \\ 
+  3 & Pebbles Cocoa & 0.0\% \\ 
+  4 & Pebbles Marshmallow & 0.0\% \\ 
+  5 & Frosted Rice Krispies & 0.0\% \\ 
+  6 & Rice Krispies  & 3.0\% \\ 
+  7 & Trix  & 3.1\% \\ 
+  8 & Honey Comb  & 3.1\% \\ 
+  9 & Rice Krispies Gluten Free & 3.3\% \\ 
+  10 & Frosted Flakes  & 3.3\% \\ 
+   \hline
+\end{tabular}
+}
+\end{minipage}  
+ \begin{minipage}[c]{0.49\textwidth}
+{\small
+\begin{tabular}{rlr}
+  \hline
+ & Brand & Fiber \% \\ 
+   \hline 
+  11 & Cinnamon Toast Crunch & 3.3\% \\ 
+  12 & Reese's Puffs  & 3.4\% \\ 
+  13 & Cheerios Honey Nut & 7.1\% \\ 
+  14 & Lucky Charms  & 7.4\% \\ 
+  15 & Pebbles Boulders Chocolate PB & 7.4\% \\ 
+  16 & Corn Pops  & 9.4\% \\ 
+  17 & Frosted Flakes Reduced Sugar & 10.0\% \\ 
+  18 & Clifford Crunch  & 10.0\% \\ 
+  19 & Apple Jacks  & 10.7\% \\ 
+  20 & Dora the Explorer  & 11.1\% \\ 
+   \hline
+\end{tabular}
+}
+\end{minipage}  
+\end{center}
+\begin{parts}
+\item Create a stem and leaf plot of the distribution of the fiber content of these cereals.
+\item Create a dot plot of the fiber content of these cereals.
+\item Create a histogram and a relative frequency histogram of the fiber content of these cereals.
+\item What percent of cereals contain more than 0.7\% fiber?
+\end{parts}
+}{}
+
+% 4
+
+\eoce{\qt{Sugar in your cereal} The Cereal FACTS report from Exercise~\ref{fiber_cereal} also provides information on sugar content of cereals. We have selected a random sample of 20 cereals from the data provided in this report. Shown below are the sugar contents (percentage of sugar per gram of cereal) for these cereals.
+\begin{center}
+\begin{minipage}[c]{0.49\textwidth}
+{\small
+\begin{tabular}{rlr}
+  \hline
+ & Brand & Sugar \% \\ 
+  \hline
+1 & Rice Krispies Gluten Free & 3\% \\ 
+  2 & Rice Krispies  & 12\% \\ 
+  3 & Dora the Explorer  & 22\% \\ 
+  4 & Frosted Flakes Red. Sugar & 27\% \\ 
+  5 & Clifford Crunch  & 27\% \\ 
+  6 & Rice Krispies Treats & 30\% \\ 
+  7 & Pebbles Boulders Choc. PB & 30\% \\ 
+  8 & Cinnamon Toast Crunch & 30\% \\ 
+  9 & Trix  & 31\% \\ 
+  10 & Honey Comb  & 31\% \\ 
+   \hline
+\end{tabular}
+}
+\end{minipage}  
+ \begin{minipage}[c]{0.49\textwidth}
+{\small
+\begin{tabular}{rlr}
+  \hline
+ & Brand & Sugar \% \\ 
+   \hline 
+  11 & Corn Pops  & 31\% \\ 
+  12 & Cheerios Honey Nut & 32\% \\ 
+  13 & Reese's Puffs  & 34\% \\ 
+  14 & Pebbles Fruity & 37\% \\ 
+  15 & Pebbles Cocoa & 37\% \\ 
+  16 & Lucky Charms  & 37\% \\ 
+  17 & Frosted Flakes  & 37\% \\ 
+  18 & Pebbles Marshmallow & 37\% \\ 
+  19 & Frosted Rice Krispies & 40\% \\ 
+  20 & Apple Jacks  & 43\% \\
+   \hline
+\end{tabular}
+}
+\end{minipage}  
+\end{center}
+\begin{parts}
+\item Create a stem and leaf plot of the distribution of the sugar content of these cereals.
+\item Create a dot plot of the sugar content of these cereals.
+\item Create a histogram and a relative frequency histogram of the sugar content of these cereals.
+\item What percent of cereals contain more than 30\% sugar?
+\end{parts}
+}{}
+
+% 5
 
 \eoce{\qt{Mammal life spans} Data were collected on life spans (in years) and gestation lengths (in days) for 62 mammals. A scatterplot of life span versus length of gestation is shown below. \footfullcite{Allison+Cicchetti:1975}
 
@@ -21,21 +204,14 @@
 \end{minipage}
 \begin{minipage}[c]{0.5\textwidth}
 \begin{center}
-\includegraphics[width = 60mm]{ch_data_collection/figures/eoce/mammals/mammals_lifeSpanGest}
+\includegraphics[width = 60mm]{ch_summarizing_data/figures/eoce/mammals/mammals_lifeSpanGest}
 \end{center}
 \end{minipage}
 }{}
 
+% 6
 
-% 2
-
-\eoce{\qt{Office productivity} Office productivity is relatively low when the employees feel no stress about their work or job security. However, high levels of stress can also lead to reduced employee productivity. Sketch a plot to represent the relationship between stress and productivity.
-}{}
-
-
-% 3
-
-\eoce{\qt{Associations} Indicate which of the plots show a \\[1mm]
+\eoce{\qt{Associations, Part I} Indicate which of the plots show a \\[1mm]
 \noindent\begin{minipage}[b]{0.35\textwidth}
 \begin{parts}
 \item positive association
@@ -45,24 +221,38 @@
 Also determine if the positive and negative associations are linear or nonlinear. Each part may refer to more than one plot. \vspace{24mm}
 \end{minipage}%
 \begin{minipage}[b]{0.62\textwidth}
-\hfill\includegraphics[width = 0.8\textwidth]{ch_data_collection/figures/eoce/associationPlots/associationPlots}
+\hfill\includegraphics[width = 0.8\textwidth]{ch_summarizing_data/figures/eoce/associationPlots/associationPlots}
 \end{minipage}
 }{}
 
+% 7
+
+\eoce{\qt{Office productivity} Office productivity is relatively low when the employees feel no stress about their work or job security. However, high levels of stress can also lead to reduced employee productivity. Sketch a plot to represent the relationship between stress and productivity.
+}{}
+
+% 8
+
+\eoce{\qt{Reproducing bacteria} Suppose that there is only sufficient space and nutrients to support one million bacterial cells in a petri dish. You place a few bacterial cells in this petri dish, allow them to reproduce freely, and record the number of bacterial cells in the dish over time. Sketch a plot representing the relationship between number of bacterial cells and time.
+}{}
 
 
-% 4
+%_________________
+\subsection{Numerical summaries and box plots}
 
+% 9
+
+\eoce{\qt{Sleeping in college} A recent article in a college newspaper stated that college students get an average of 5.5 hrs of sleep each night. A student who was skeptical about this value decided to conduct a survey by randomly sampling 25 students. On average, the sampled students slept 6.25 hours per night. Identify which value represents the sample mean and which value represents the claimed population mean.
+}{}
+
+% 10
 \eoce{\qt{Parameters and statistics} Identify which value represents the sample mean and which value represents the claimed population mean.
 \begin{parts}
-\item A recent article in a college newspaper stated that college students get an average of 5.5 hrs of sleep each night. A student who was skeptical about this value decided to conduct a survey by randomly sampling 25 students. On average, the sampled students slept 6.25 hours per night.
 \item American households spent an average of about \$52 in 2007 on Halloween merchandise such as costumes, decorations and candy. To see if this number had changed, researchers conducted a new survey in 2008 before industry numbers were reported. The survey included 1,500 households and found that average Halloween spending was \$58 per household.
 \item The average GPA of students in 2001 at a private university was 3.37. A survey on a sample of 203 students from this university yielded an average GPA of 3.59 in Spring semester of 2012.
 \end{parts}
 }{}
 
-
-% 5
+% 11
 
 \eoce{\qt{Make-up exam} In a class of 25 students, 24 of them took an exam in class and 1 student took a make-up exam the following day. The professor graded the first batch of 24 exams and found an average score of 74 points with a standard deviation of 8.9 points. The student who took the make-up the following day scored 64 points on the exam.
 \begin{parts}
@@ -73,35 +263,34 @@ Also determine if the positive and negative associations are linear or nonlinear
 }{}
 
 
-% 6
+% 12
 
 \eoce{\qt{Days off at a mining plant} Workers at a particular mining site receive an average of 35 days paid vacation, which is lower than the national average. The manager of this plant is under pressure from a local union to increase the amount of paid time off. However, he does not want to give more days off to the workers because that would be costly. Instead he decides he should fire 10 employees in such a way as to raise the average number of days off that are reported by his employees. In order to achieve this goal, should he fire employees who have the most number of days off, least number of days off, or those who have about the average number of days off?
 }{}
 
 
-% 7
+% 13
 
-\eoce{\qt{Smoking habits of UK residents, Part I\label{UKSmoking_amounts}} Exercise~\ref{UKSmoking_datamatrix} introduces a data set on the smoking habits of UK residents. Below are histograms displaying the distributions of the number of cigarettes smoked on weekdays and weekends, excluding non-smokers. Describe the two distributions and compare them.
+\eoce{\qt{Smoking habits of UK residents, Part I\label{UKSmoking_amounts}} A survey was conducted to study the smoking habits of UK residents. The histograms below display the distributions of the number of cigarettes smoked on weekdays and weekends, and they exclude data from people who identified themselves as non-smokers. Describe the two distributions and compare them. \footfullcite{data:smoking}
 \begin{center}
-\includegraphics[width = 0.7\textwidth]{ch_data_collection/figures/eoce/smoking/smoking_amountHist}
+\includegraphics[width = 0.7\textwidth]{ch_summarizing_data/figures/eoce/smoking/smoking_amountHist}
 \end{center}
 }{}
 
 
-% 8
+% 14
 
-\eoce{\qt{Stats scores\label{introStatsFinalScores}} Below are the final scores of 20 introductory statistics students.
+\eoce{\qt{Stats scores, Part I\label{introStatsFinalScores}} Below are the final exam scores of twenty introductory statistics students.
 \begin{center}
-79, 83, 57, 82, 94, 83, 72, 74, 73, 71, \\
-66, 89, 78, 81, 78, 81, 88, 69, 77, 79
+79, 83, 57, 82, 94, 83, 72, 74, 73, 71, 66, 89, 78, 81, 78, 81, 88, 69, 77, 79
 \end{center}
 Draw a histogram of these data and describe the distribution.
 }{}
 
 
-% 9
+% 15
 
-\eoce{\qt{Smoking habits of UK residents, Part II} A random sample of 5 smokers from the data set discussed in Exercises~\ref{UKSmoking_datamatrix} and \ref{UKSmoking_amounts} is provided below.
+\eoce{\qt{Smoking habits of UK residents, Part II} \label{UKSmoking_amounts_data} A random sample of 5 smokers from the data set discussed in Exercise~\ref{UKSmoking_amounts} is provided below.
 {\footnotesize
 \begin{center}
 \begin{tabular}{ccccccc}
@@ -123,8 +312,7 @@ Female &  51 & Married & $\pounds$2,600 to $\pounds$5,200 & Yes &  20 cig/day & 
 \end{parts}
 }{}
 
-
-% 10
+% 16
 
 \eoce{\qt{Factory defective rate} A factory quality control manager decides to investigate the percentage of defective items produced each day. Within a given work week (Monday through Friday) the percentage of defective items produced was 2\%, 1.4\%, 4\%, 3\%, 2.2\%.
 \begin{parts}
@@ -134,7 +322,7 @@ Female &  51 & Married & $\pounds$2,600 to $\pounds$5,200 & Yes &  20 cig/day & 
 }{}
 
 
-% 11
+% 17
 
 \eoce{\qt{Medians and IQRs} For each part, compare distributions (1) and (2) based on their medians and IQRs. You do not need to calculate these statistics; simply state how the medians and IQRs compare. Make sure to explain your reasoning. 
 \begin{multicols}{2}
@@ -152,7 +340,7 @@ Female &  51 & Married & $\pounds$2,600 to $\pounds$5,200 & Yes &  20 cig/day & 
 }{}
 
 
-% 12
+% 18
 
 \eoce{\qt{Means and SDs} For each part, compare distributions (1) and (2) based on their means and standard deviations. You do not need to calculate these statistics; simply state how the means and the standard deviations compare. Make sure to explain your reasoning. \textit{Hint:} It may be useful to sketch dot plots of the distributions.
 \begin{multicols}{2}
@@ -170,9 +358,9 @@ Female &  51 & Married & $\pounds$2,600 to $\pounds$5,200 & Yes &  20 cig/day & 
 }{}
 
 
-% 13
+% 19
 
-\eoce{\qt{Box plot} Create a box plot for the data given in Exercise~\ref{introStatsFinalScores}. The five number summary provided below may be useful.
+\eoce{\qt{Stats scores, Part II} Create a box plot for the final exam scores of twenty introductory statistics students given in Exercise~\ref{introStatsFinalScores}. The five number summary provided below may be useful.
 \begin{center}
 \renewcommand\arraystretch{1.5}
 \begin{tabular}{ccccc}
@@ -184,7 +372,7 @@ Min	& Q1	& Q2 (Median)	& Q3	& Max \\
 }{}
 
 
-% 14
+% 20
 
 \eoce{\qt{Infant mortality} The infant mortality rate is defined as the number of infant deaths per 1,000 live births. This rate is often used as an indicator of the level of health in a country. The relative frequency histogram below shows the distribution of estimated infant death rates in 2012 for 222 countries. \footfullcite{data:ciaFactBookInfMort:2012}
 
@@ -196,26 +384,25 @@ Min	& Q1	& Q2 (Median)	& Q3	& Max \\
 \vspace{18mm}
 \end{minipage}
 \begin{minipage}[c]{0.52\textwidth}
-\hfill\includegraphics[width = 0.95\textwidth]{ch_data_collection/figures/eoce/country/country_infMort}
+\hfill\includegraphics[width = 0.95\textwidth]{ch_summarizing_data/figures/eoce/country/country_infMort}
 \end{minipage}
 }{}
 
 
-% 15
-\textPE{\pagebreak}
+% 21
 
 \eoce{\qt{Matching histograms and box plots} Describe the distribution in the histograms below and match them to the box plots. \\
 \begin{center}
-\includegraphics[width=0.97\textwidth]{ch_data_collection/figures/eoce/histBoxMatch/histBoxMatch}
+\includegraphics[width=0.97\textwidth]{ch_summarizing_data/figures/eoce/histBoxMatch/histBoxMatch}
 \end{center}
 }{}
 
 
-% 16
+% 22
 
 \eoce{\qt{Air quality\label{durhamAQI}} Daily air quality is measured by the air quality index (AQI) reported by the Environmental Protection Agency. This index reports the pollution level and what associated health effects might be a concern. The index is calculated for five major air pollutants regulated by the Clean Air Act and takes values from 0 to 300, where a higher value indicates lower air quality. AQI was reported for a sample of 91 days in 2011 in Durham, NC. The relative frequency histogram below shows the distribution of the AQI values on these days. \footfullcite{data:durhamAQI:2011}
 \begin{center}
-\includegraphics[width = 0.64\textwidth]{ch_data_collection/figures/eoce/durhamAQI/durhamAQI_hist} 
+\includegraphics[width = 0.64\textwidth]{ch_summarizing_data/figures/eoce/durhamAQI/durhamAQI_hist} 
 \end{center}
 \begin{parts}
 \item Estimate the median AQI value of this sample.
@@ -225,42 +412,125 @@ Min	& Q1	& Q2 (Median)	& Q3	& Max \\
 }{}
 
 
-% 17
+% 23
 
 \eoce{\qt{Histograms and box plots} Compare the two plots below. What characteristics of the distribution are apparent in the histogram and not in the box plot? What characteristics are apparent in the box plot but not in the histogram?
 \begin{center}
-\includegraphics[width = 0.7\textwidth]{ch_data_collection/figures/eoce/bimodalHistBox/bimodalHistBox}
+\includegraphics[width = 0.7\textwidth]{ch_summarizing_data/figures/eoce/bimodalHistBox/bimodalHistBox}
 \end{center}
 }{}
 
 
-% 18
+% 24
 
 \eoce{\qt{Marathon winners\label{NYMarathon}} The histogram and box plots below show the distribution of finishing times for male and female winners of the New York Marathon between 1970 and 1999.
 \begin{center}
-\includegraphics[width=0.9\textwidth]{ch_data_collection/figures/eoce/marathon/marathon_histBox}
+\includegraphics[width=0.9\textwidth]{ch_summarizing_data/figures/eoce/marathon/marathon_histBox}
 \end{center}
 \begin{parts}
 \item What features of the distribution are apparent in the histogram and not the box plot? What features are apparent in the box plot but not in the histogram?
 \item What may be the reason for the bimodal distribution? Explain.
 \item Compare the distribution of marathon times for men and women based on the box plot shown below.
 \begin{center}
-\includegraphics[width=0.7\textwidth]{ch_data_collection/figures/eoce/marathon/marathon_genderBox}
+\includegraphics[width=0.7\textwidth]{ch_summarizing_data/figures/eoce/marathon/marathon_genderBox}
 \end{center}
 \item The time series plot shown below is another way to look at these data. Describe what is visible in this plot but not in the others.
 \end{parts}
 \begin{center}
-\includegraphics[width=0.95\textwidth]{ch_data_collection/figures/eoce/marathon/marathon_genderTimeSeries} \\
+\includegraphics[width=0.95\textwidth]{ch_summarizing_data/figures/eoce/marathon/marathon_genderTimeSeries} \\
 \end{center}
 }{}
 
 
-% 19
-\textPE{\pagebreak}
+% 25
 
-\eoce{\qt{Robust statistics} The first histogram below shows the distribution of the yearly incomes of 40 patrons at a college coffee shop. Suppose two new people walk into the coffee shop: one making \$225,000 and the other \$250,000. The second histogram shows the new income distribution. Summary statistics are also provided. \\
+\eoce{\qt{ACS, Part II} The hollow histograms below show the distribution of incomes of respondents to the American Community Survey introduced in Exercise~\ref{acs_age_income}. \\
+\begin{minipage}[c]{0.5\textwidth}
+\begin{parts}
+\item Compare the distributions of incomes of males and females.
+\item Suggest an alternative visualization for displaying and comparing the distributions of incomes of males and females.
+\item[]
+\item[]
+\item[]
+\end{parts}
+\end{minipage}
+\begin{minipage}[c]{0.5\textwidth}
+\begin{center}
+\includegraphics[width = 60mm]{ch_summarizing_data/figures/eoce/acs/income_male_female}
+\end{center}
+\end{minipage}
+}{}
+
+% 26
+
+\eoce{\qt{AP Stats} The table below shows scores (out of 100) of twenty college students on a college level statistical reasoning test given at the beginning of the semester in their introductory statistics course. Ten of these students have taken AP Stats in high school, and the other ten have not taken AP Stats.
+\begin{itemize}
+\item[] Took AP stats: 52.5, 57.5, 60, 65, 70, 70, 72.5, 77.5, 80, 85
+\item[] Did not take AP stats: 40, 45, 45, 50, 52.5, 57.5, 57.5, 60, 65, 72.5
+\end{itemize}
+\begin{parts}
+\item Create a relative frequency histogram of all students' scores on the statistical reasoning test.
+\item What percent of all students scored above 50 on this test?
+\item Compare the performances of students who did and did not take AP stats. The side-by-side box plots and the hollow histograms shown below might be helpful for this task.
+\end{parts}
+\begin{center}
+\includegraphics[width = 120mm]{ch_summarizing_data/figures/eoce/apstats/apstats_box_hollow}
+\end{center}
+}{}
+
+% 27
+
+\eoce{\qt{Distributions and appropriate statistics, Part I} For each of the following, describe whether you expect the distribution to be symmetric, right skewed, or left skewed. Also specify whether the mean or median would best represent a typical observation in the data and whether the variability of observations would be best represented using the standard deviation or IQR.
+\begin{parts}
+\item Number of pets per household. 
+\item Distance to work, i.e. number of miles between work and home.
+\item Heights of adult males.
+\end{parts}
+}{}
+
+% 28
+
+\eoce{\qt{Distributions and appropriate statistics, Part II} For each of the following, describe whether you expect the distribution to be symmetric, right skewed, or left skewed. Also specify whether the mean or median would best represent a typical observation in the data, and whether the variability of observations would be best represented using the standard deviation or IQR.
+\begin{parts}
+\item Housing prices in a country where 25\% of the houses cost below \$350,000, 50\% of the houses cost below \$450,000, 75\% of the houses cost below \$1,000,000 and there are a meaningful number of houses that cost more than \$6,000,000.
+\item Housing prices in a country where 25\% of the houses cost below \$300,000, 50\% of the houses cost below \$600,000, 75\% of the houses cost below \$900,000 and very few houses that cost more than \$1,200,000.
+\item Number of alcoholic drinks consumed by college students in a given week. Assume that most of these students don't drink since they are under 21 years old, and only a few drink excessively.
+\item Annual salaries of the employees at a Fortune 500 company where only a few high level executives earn much higher salaries than the all other employees.
+\end{parts}
+}{}
+
+% 29
+
+\eoce{\qt{TV watchers} Students in an AP Statistics class were asked how many hours of television they watch per week (including online streaming). This sample yielded an average of 4.71 hours, with a standard deviation of 4.18 hours. Is the distribution of number of hours students watch television weekly symmetric? If not, what shape would you expect this distribution to have? Explain your reasoning.
+}{}
+
+% 30
+
+\eoce{\qt{Exam scores} The average on a history exam (scored out of 100 points) was 85, with a standard deviation of 15. Is the distribution of the scores on this exam symmetric? If not, what shape would you expect this distribution to have? Explain your reasoning.
+}{}
+
+% 31
+
+\eoce{\qt{Facebook friends} Facebook data indicate that 50\% of Facebook users have 100 or more friends, and that the average friend count of users is 190. What do these findings suggest about the shape of the distribution of number of friends of Facebook users? \footfullcite{Backstrom:2011}
+}{}
+
+% 32
+
+\eoce{\qt{A new statistic} The statistic $\frac{\bar{x}}{median}$ can be used as a measure of skewness. Suppose we have a distribution where all observations are greater than 0, $x_i > 0$. What is the expected shape of the distribution under the following conditions? Explain your reasoning.
+\begin{multicols}{3}
+\begin{parts}
+\item $\frac{\bar{x}}{median} = 1$
+\item $\frac{\bar{x}}{median} < 1$
+\item $\frac{\bar{x}}{median} > 1$
+\end{parts}
+\end{multicols}
+}{}
+
+% 33
+
+\eoce{\qt{Income at the coffee shop, Part I} \label{incomeCoffeeShop} The first histogram below shows the distribution of the yearly incomes of 40 patrons at a college coffee shop. Suppose two new people walk into the coffee shop: one making \$225,000 and the other \$250,000. The second histogram shows the new income distribution. Summary statistics are also provided. \\
 \begin{minipage}[c]{0.57\textwidth}
-\includegraphics[width=\textwidth]{ch_data_collection/figures/eoce/salary/salary}
+\includegraphics[width=\textwidth]{ch_summarizing_data/figures/eoce/salary/salary}
 \end{minipage}
 \begin{minipage}[c]{0.4\textwidth}
 \begin{center}
@@ -286,59 +556,72 @@ n & 40 & 42 \\
 \end{parts}
 }{}
 
+% 34
 
-% 20
-
-\eoce{\qt{Distributions and appropriate statistics} For each of the following, describe whether you expect the distribution to be symmetric, right skewed, or left skewed. Also specify whether the mean or median would best represent a typical observation in the data, and whether the variability of observations would be best represented using the standard deviation or IQR.
-\begin{parts}
-\item Housing prices in a country where 25\% of the houses cost below \$350,000, 50\% of the houses cost below \$450,000, 75\% of the houses cost below \$1,000,000 and there are a meaningful number of houses that cost more than \$6,000,000.
-\item Housing prices in a country where 25\% of the houses cost below \$300,000, 50\% of the houses cost below \$600,000, 75\% of the houses cost below \$900,000 and very few houses that cost more than \$1,200,000.
-\item Number of alcoholic drinks consumed by college students in a given week.
-\item Annual salaries of the employees at a Fortune 500 company.
-\end{parts}
+\eoce{\qt{Midrange} The \textit{midrange} of a distribution is defined as the average of the maximum and the minimum of that distribution. Is this statistic robust to outliers and extreme skew? Explain your reasoning
 }{}
 
-
-% 21
+% 35
 
 \noindent\begin{minipage}[c]{0.4\textwidth}
-\eoce{\qt{Commuting times, Part I\label{workTravel}} The histogram to the right shows the distribution of mean commuting times in 3,143 US counties in 2010. Describe the distribution and comment on whether or not a log transformation may be advisable for these data.
+\eoce{\qt{Commute times, Part I\label{workTravel}} The histogram to the right shows the distribution of mean commute times in 3,143 US counties in 2010. Describe the distribution and comment on whether or not a log transformation may be advisable for these data.
 }{} \vspace{5mm}
 \end{minipage}%
 \begin{minipage}[c]{0.58\textwidth}
 \begin{center}
-\includegraphics[width=\textwidth]{ch_data_collection/figures/eoce/county/county_workTravelHist}
+\includegraphics[width=\textwidth]{ch_summarizing_data/figures/eoce/county/county_workTravelHist}
 \end{center}
 \end{minipage}
 
-
-% 22
-\textPE{\pagebreak}
+% 36
 
 \eoce{\qt{Hispanic population, Part I\label{hispHist}} The histogram below shows the distribution of the percentage of the population that is Hispanic in 3,143 counties in the US in 2010. Also shown is a histogram of logs of these values. Describe the distribution and comment on why we might want to use log-transformed values in analyzing or modeling these data.
 \begin{center}
-\includegraphics[width=0.49\textwidth]{ch_data_collection/figures/eoce/county/county_hispHist}
-\includegraphics[width=0.49\textwidth]{ch_data_collection/figures/eoce/county/county_hispHistLog}
+\includegraphics[width=0.49\textwidth]{ch_summarizing_data/figures/eoce/county/county_hispHist}
+\includegraphics[width=0.49\textwidth]{ch_summarizing_data/figures/eoce/county/county_hispHistLog}
 \end{center}
 }{}
 
+% 37
+
+\eoce{\qt{Income at the coffee shop, Part II} Suppose each of the 40 people in the coffee shop in Exercise~\ref{incomeCoffeeShop} got a 5\% raise. What would the new mean, median, and the standard deviation of their incomes be?
+}{}
+
+% 38
+
+\eoce{\qt{LA weather} The temperatures in June in Los Angeles have a mean of 77\degree F, with a standard deviation of 5\degree F. To convert from Celsius to Fahrenheit, we use the following conversion:
+\[ x_{C} =  (x_{F} - 32) \frac{5}{9} \]
+\begin{parts}
+\item What is the mean temperature in June in LA in degrees Celcius?
+\item What is the standard deviation of temperatures in June in LA in degrees Celcius?
+\end{parts}
+}{}
 
 
-% 23
+% 39
 
-\eoce{\qt{Commuting times, Part II} Exercise~\ref{workTravel} displays histograms of mean commuting times in 3,143 US counties in 2010. Describe the spatial distribution of commuting times using the map below.
+\eoce{\qt{Smoking habits of UK residents, Part III} The UK residents in Exercise~\ref{UKSmoking_amounts_data} smoke on average 16 cigarettes per day on weekdays, with a standard deviation of 4.18. Suppose these residents participated in a smoking cessation program and at the end of the first week of the program reduced their weekday smoking by 3 cigarettes / day. Find the new mean and standard deviation of the number of cigarettes they smoke on weekdays.
+}{}
+
+
+% 40
+
+\eoce{\qt{Stats scores, Part III} The introductory statistics students in Exercise~\ref{introStatsFinalScores} scored on average 77.7 points, with a standard deviation of 8.44. The median score was 78.5. Suppose these students completed an extra credit exercise that earned them additional two points on their exams. Calculate the new mean, median, standard deviation, and IQR of their scores.
+}{}
+
+% 41
+
+\eoce{\qt{Commute times, Part II} Exercise~\ref{workTravel} displays histograms of mean commute times in 3,143 US counties in 2010. Describe the spatial distribution of commuting times using the map below.
 \begin{center}
-\includegraphics[width=\textwidth]{ch_data_collection/figures/eoce/county/county_workTravelMap}
+\includegraphics[width=\textwidth]{ch_summarizing_data/figures/eoce/county/county_workTravelMap}
 \end{center}
 }{}
 
-
-% 24
-\textPE{\pagebreak}
+% 42
 
 \eoce{\qt{Hispanic population, Part II} Exercise~\ref{hispHist} displays histograms of the distribution of the percentage of the population that is Hispanic in 3,143 counties in the US in 2010.
 \begin{center}
-\includegraphics[width=\textwidth]{ch_data_collection/figures/eoce/county/county_hispMap}
+\includegraphics[width=\textwidth]{ch_summarizing_data/figures/eoce/county/county_hispMap}
 \end{center}
 \begin{parts}
 \item What features of this distribution are apparent in the map but not in the histogram? 
@@ -351,7 +634,7 @@ n & 40 & 42 \\
 %_________________
 \subsection{Considering categorical data}
 
-% 25
+% 43
 
 \eoce{\qt{Antibiotic use in children} The bar plot and the pie chart below show the distribution of pre-existing medical conditions of children involved in a study on the optimal duration of antibiotic use in treatment of tracheitis, which is an upper respiratory infection.
 \begin{parts}
@@ -359,13 +642,12 @@ n & 40 & 42 \\
 \item What features are apparent in the pie chart but not in the bar plot?
 \item Which graph would you prefer to use for displaying these categorical data?
 \end{parts}
-\includegraphics[width = 0.6\textwidth]{ch_data_collection/figures/eoce/tracheitis/tracheitis_bar}
-\includegraphics[width = 0.35\textwidth]{ch_data_collection/figures/eoce/tracheitis/tracheitis_pie}
+\includegraphics[width = 0.6\textwidth]{ch_summarizing_data/figures/eoce/tracheitis/tracheitis_bar}
+\includegraphics[width = 0.35\textwidth]{ch_summarizing_data/figures/eoce/tracheitis/tracheitis_pie}
 }{}
 
 
-% 26
-\textPE{\pagebreak}
+% 44
 
 \eoce{\qt{Views on immigration\label{immigration}} 910 randomly sampled registered voters from Tampa, FL were asked if they thought workers who have illegally entered the US should be (i) allowed to keep their jobs and apply for US citizenship, (ii) allowed to keep their jobs as temporary guest workers but not allowed to apply for US citizenship, or (iii) lose their jobs and have to leave the country. The results of the survey by political ideology are shown below.\footfullcite{survey:immigFL:2012}
 \begin{center}
@@ -391,18 +673,10 @@ n & 40 & 42 \\
 \end{parts}
 }{}
 
-
-
-
-
-
-
 %_________________
 \subsection{Case study: gender discrimination (special topic)}
 
-
-
-% 27
+% 45
 
 \eoce{\qt{Side effects of Avandia, Part I\label{AvandiaTrueFalse}} Rosiglitazone is the active ingredient in the controversial type~2 diabetes medicine Avandia and has been linked to an increased risk of serious cardiovascular problems such as stroke, heart failure, and death. A common alternative treatment is pioglitazone, the active ingredient in a diabetes medicine called Actos. In a nationwide retrospective observational study of 227,571 Medicare beneficiaries aged  65 years or older, it was found that 2,593 of the 67,593 patients using rosiglitazone and 5,386 of the 159,978 using pioglitazone had serious cardiovascular problems. These data are summarized in the contingency table below. \footfullcite{Graham:2010}
 \begin{center}
@@ -426,7 +700,7 @@ Determine if each of the following statements is true or false. If false, explai
 \end{parts}
 }{}
 
-% 28
+% 46
 
 \eoce{\qt{Heart transplants} The Stanford University Heart Transplant Study was conducted to determine whether an experimental heart transplant program increased lifespan. Each patient entering the program was designated an official heart transplant candidate, meaning that he was gravely ill and would most likely benefit from a new heart. Some patients got a transplant and some did not. The variable \texttt{transplant} indicates which group the patients were in; patients in the treatment group got a transplant and those in the control group did not. Another variable called \texttt{survived} was used to indicate whether or not the patient was alive at the end of the study. Of the 34 patients in the control group, 4 were alive at the end of the study. Of the 69 patients in the treatment group, 24 were alive. The contingency table below summarizes these results.\footfullcite{Turnbull+Brown+Hu:1974}
 \begin{center}
@@ -454,12 +728,11 @@ We write \textit{alive} on \rule{2cm}{0.5pt} cards representing patients who wer
 \end{subparts}
 \end{parts}
 \begin{center}
-\includegraphics[width = 0.4\textwidth]{ch_data_collection/figures/eoce/heartTr/heartTr_RandHist} \\
+\includegraphics[width = 0.4\textwidth]{ch_summarizing_data/figures/eoce/heartTr/heartTr_RandHist} \\
 \end{center}
 }{}
 
-
-% 29
+% 47
 
 \eoce{\qt{Side effects of Avandia, Part II} Exercise~\ref{AvandiaTrueFalse} introduces a study that compares the rates of serious cardiovascular problems for diabetic patients on rosiglitazone and pioglitazone treatments. The table below summarizes the results of the study.
 \begin{center}
@@ -484,14 +757,12 @@ We write \textit{alive} on \rule{2cm}{0.5pt} cards representing patients who wer
 \item What do the simulation results suggest about the relationship between taking rosiglitazone and having cardiovascular problems in diabetic patients?
 \end{subparts}
 \begin{center}
-\includegraphics[width = 0.75\textwidth]{ch_data_collection/figures/eoce/avandia/avandia_RandHist} \\
+\includegraphics[width = 0.75\textwidth]{ch_summarizing_data/figures/eoce/avandia/avandia_RandHist} \\
 \end{center}
 \end{parts}
 }{}
 
-
-% 30
-\textPE{\pagebreak}
+% 48
 
 \eoce{\qt{Sinusitis and antibiotics, Part II} Researchers studying the effect of antibiotic treatment compared to symptomatic treatment for acute sinusitis randomly assigned 166 adults diagnosed with sinusitis into two groups (as discussed in Exercise~\ref{sinusitis}). Participants in the antibiotic group received a 10-day course of an antibiotic, and the rest received symptomatic treatments as a placebo. These pills had the same taste and packaging as the antibiotic. At the end of the 10-day period patients were asked if they experienced improvement in symptoms since the beginning of the study. The distribution of responses is summarized below. \footfullcite{Garbutt:2012}
 \begin{center}

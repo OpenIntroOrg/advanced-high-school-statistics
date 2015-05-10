@@ -33,21 +33,21 @@ stem(child_20$fiber_perc_g*100)
 # dot plot
 myPDF("cereal_fiber_dot.pdf", 7.5, 1.5,
       mar = c(3.6, 1, 0, 1), las = 1,
-      mgp = c(2.5, 0.7, 0), tcl = -0.4)
+      mgp = c(2.5, 0.7, 0), tcl = -0.4, cex.lab = 1.5, cex.axis = 1.5)
 BHH2::dotPlot(child_20$fiber_perc_g, pch = 19, xlab = "fiber content (% of grams)")
 dev.off()
 
 # histogram
 myPDF("cereal_fiber_hist.pdf", 7.5, 4,
       mar = c(3.6, 3.6, 0, 1), las = 1,
-      mgp = c(2.5, 0.7, 0), tcl = -0.4)
+      mgp = c(2.5, 0.7, 0), tcl = -0.4, cex.lab = 1.5, cex.axis = 1.5)
 histPlot(child_20$fiber_perc_g, xlab = "fiber content (% of grams)", col = COL[1])
 dev.off()
 
 # relative frequency
 myPDF("cereal_fiber_relhist.pdf", 7.5, 4,
       mar = c(3.6, 3.6, 0, 1), las = 1,
-      mgp = c(2.5, 0.7, 0), tcl = -0.4)
+      mgp = c(2.5, 0.7, 0), tcl = -0.4, cex.lab = 1.5, cex.axis = 1.5)
 histPlot(child_20$fiber_perc_g, xlab = "fiber content (% of grams)", col = COL[1], axes = FALSE, ylab = "relative frequency", ylim = c(0,7))
 axis(1)
 axis(2, at = c(0:7), label = c(0, NA, 2, NA, 4, NA, 6, NA)/20, las = 2)
@@ -68,21 +68,21 @@ stem(child_20$sugar_perc_g)
 # dot plot
 myPDF("cereal_sugar_dot.pdf", 7.5, 1.5,
       mar = c(3.6, 1, 0, 1), las = 1,
-      mgp = c(2.5, 0.7, 0), tcl = -0.4)
+      mgp = c(2.5, 0.7, 0), tcl = -0.4, cex.lab = 1.5, cex.axis = 1.5)
 BHH2::dotPlot(child_20$sugar_perc_g, pch = 19, xlab = "sugar content (% of grams)")
 dev.off()
 
 # histogram
 myPDF("cereal_sugar_hist.pdf", 7.5, 4,
       mar = c(3.6, 3.6, 0, 1), las = 1,
-      mgp = c(2.5, 0.7, 0), tcl = -0.4)
+      mgp = c(2.5, 0.7, 0), tcl = -0.4, cex.lab = 1.5, cex.axis = 1.5)
 histPlot(child_20$sugar_perc_g, xlab = "sugar content (% of grams)", col = COL[1])
 dev.off()
 
 # relative frequency
 myPDF("cereal_sugar_relhist.pdf", 7.5, 4,
       mar = c(3.6, 3.6, 0, 1), las = 1,
-      mgp = c(2.5, 0.7, 0), tcl = -0.4)
+      mgp = c(2.5, 0.7, 0), tcl = -0.4, cex.lab = 1.5, cex.axis = 1.5)
 histPlot(child_20$sugar_perc_g, xlab = "sugar content (% of grams)", col = COL[1], axes = FALSE, ylab = "relative frequency")
 axis(1)
 axis(2, at = c(0:6), label = c(0:6)/20, las = 2)
