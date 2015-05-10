@@ -119,7 +119,7 @@ We can be \termsub{95\% confident}{confident} this interval captures the true va
 \end{termBox}
 
 \begin{exercise}
-Compute the area between -1.96 and 1.96 for a normal distribution with mean 0 and standard deviation 1.~\footnote{We will leave it to you to draw a picture. The Z scores are $Z_{left} = -1.96$ and $Z_{right} = 1.96$. The area between these two Z scores is $0.9500$. This is where ``1.96'' comes from in the 95\% confidence interval formula.}
+Compute the area between -1.96 and 1.96 for a normal distribution with mean 0 and standard deviation 1.~\footnote{We will leave it to you to draw a picture. The Z-scores are $Z_{left} = -1.96$ and $Z_{right} = 1.96$. The area between these two Z-scores is $0.9500$. This is where ``1.96'' comes from in the 95\% confidence interval formula.}
 \end{exercise}
 
 \begin{example}{The point estimate from the smoking example was 15\%. In the next chapters we will determine when we can apply a normal model to a point estimate. For now, assume that the normal model is reasonable. The standard error for this point estimate was calculated to be $SE = 0.04$. Construct a 95\% confidence interval.}
@@ -194,10 +194,10 @@ The 95\% confidence interval structure provides guidance in how to make interval
 There are three components to this interval: the point estimate, ``1.96'', and the standard error. The choice of $1.96\times SE$ was based on capturing 95\% of the distribution since the estimate is within 1.96 standard deviations of the true value about 95\% of the time. The choice of 1.96 corresponds to a 95\% confidence level. 
 
 \begin{exercise} \label{leadInForMakingA99PercentCIExercise}
-If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?\footnote{This is equivalent to asking how often the $Z$ score will be larger than -2.58 but less than 2.58. (For a picture, see Figure~\ref{choosingZForCI}.) There is $\approx$ 0.99 probability that the unobserved random variable $X$ will be within 2.58 standard deviations of the mean.}
+If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?\footnote{This is equivalent to asking how often the Z-score will be larger than -2.58 but less than 2.58. (For a picture, see Figure~\ref{choosingZForCI}.) There is $\approx$ 0.99 probability that the unobserved random variable $X$ will be within 2.58 standard deviations of the mean.}
 \end{exercise}
 
-To create a 99\% confidence interval, change 1.96 in the 95\% confidence interval formula to be $2.58$. Guided Practice~\ref{leadInForMakingA99PercentCIExercise} highlights that 99\% of the time a normal random variable will be within 2.58 standard deviations of its mean. This approach -- using the Z scores in the normal model to compute confidence levels -- is appropriate when the point estimate is associated with a normal distribution and we can properly compute the standard error. Thus, the formula for a 99\% confidence interval is
+To create a 99\% confidence interval, change 1.96 in the 95\% confidence interval formula to be $2.58$. Guided Practice~\ref{leadInForMakingA99PercentCIExercise} highlights that 99\% of the time a normal random variable will be within 2.58 standard deviations of its mean. This approach -- using the Z-scores in the normal model to compute confidence levels -- is appropriate when the point estimate is associated with a normal distribution and we can properly compute the standard error. Thus, the formula for a 99\% confidence interval is
 \begin{eqnarray}
 \text{point estimate}\ \pm\ 2.58\times SE
 \label{99PercCIForMean}
@@ -226,7 +226,7 @@ If the point estimate follows the normal model with standard error $SE$, then a 
 where $z^{\star}$ depends on the confidence level selected.}
 \end{termBox}
 
-Finding the value of $z^{\star}$ that corresponds to a particular confidence level is most easily accomplished by using a new table, called the t table. For now, what is noteworthy about this table is that the bottom row corresponds to confidence levels. The numbers inside the table are the critical values, but which row should we use? Later in this book, we will see that a t curve with infinite degrees of freedom corresponds to the normal curve. For this reason, when finding using the t table to find the appropriate $z^{\star}$, always use row $\infty$.
+Finding the value of $z^{\star}$ that corresponds to a particular confidence level is most easily accomplished by using a new table, called the $t$-table. For now, what is noteworthy about this table is that the bottom row corresponds to confidence levels. The numbers inside the table are the critical values, but which row should we use? Later in this book, we will see that a t curve with infinite degrees of freedom corresponds to the normal curve. For this reason, when finding using the $t$-table to find the appropriate $z^{\star}$, always use row $\infty$.
 
 \begin{table}[hht]
 \centering
@@ -243,17 +243,17 @@ $\infty$   &  {\normalsize  1.282} & {\normalsize  1.645} & {\normalsize  1.960}
 Confidence level C  &  {\normalsize  80\%} & {\normalsize 90\%} & {\normalsize 95\%} & {\normalsize  98\%} & {\normalsize  99\%}  \\
 \hline
 \end{tabular}
-\caption{An abbreviated look at the $t$ table. The columns correspond to confidence levels. Row $\infty$ corresponds to the normal curve.}
+\caption{An abbreviated look at the $t$-table. The columns correspond to confidence levels. Row $\infty$ corresponds to the normal curve.}
 \label{tTableSample}
 \end{table}
 
 
 \begin{tipBox}{\tipBoxTitle{Finding $z^{\star}$ for a particular confidence level}
-We select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. Use the t table at row $\infty$ to find the critical value $z^{\star}$.}
+We select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. Use the $t$-table at row $\infty$ to find the critical value $z^{\star}$.}
 \end{tipBox}
 
 \begin{exercise} \label{find90CIForRun10AgeExercise}
-In Example~\ref{stentStroke95CI_CIsection} we found that implanting a stent in the brain of a patient at risk for a stroke \emph{increased} the risk of a stroke. The study estimated a 9\% increase in the number of patients who had a stroke, and the standard error of this estimate was about $SE = 2.8\%$ or 0.028. Compute a 90\% confidence interval for the effect. Note: the conditions for normality had earlier been confirmed for us.\footnote{We must find $z^{\star}$ such that 90\% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model. Using the t table with a confidence level of 90\% at row $\infty$ gives 1.645. Thus $z^{\star}=1.645$. The 90\% confidence interval can then be computed as
+In Example~\ref{stentStroke95CI_CIsection} we found that implanting a stent in the brain of a patient at risk for a stroke \emph{increased} the risk of a stroke. The study estimated a 9\% increase in the number of patients who had a stroke, and the standard error of this estimate was about $SE = 2.8\%$ or 0.028. Compute a 90\% confidence interval for the effect. Note: the conditions for normality had earlier been confirmed for us.\footnote{We must find $z^{\star}$ such that 90\% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model. Using the $t$-table with a confidence level of 90\% at row $\infty$ gives 1.645. Thus $z^{\star}=1.645$. The 90\% confidence interval can then be computed as
 \begin{align*}
 \text{point estimate}\ &\pm\ z^{\star}\times SE \\
 0.09 \ &\pm \ 1.645\times 0.028 \\
@@ -444,7 +444,6 @@ The setting was framed in the context of the consultant being helpful, but what 
 
 \subsection{Evaluating the hypotheses with a p-value}
 
-
 \begin{example}
 {There were 142 patients in the consultant's sample. If the null claim is true, how many would we expect to have had a complication?}If the null claim is true, we would expect about 10\% of the patients, or about 14.2 to have a complication.
 \end{example}
@@ -454,8 +453,15 @@ The consultant's complication rate for her 142 clients was 0.063 ($0.063 \times 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.65\textwidth]{ch_inference_foundations/figures/MedicalConsultant/MedConsNullNormal}
-\caption{The shaded area represents the p-value. We observed $\hat{p} = 0.063$, so any observations smaller than this are at least as extreme relative to the null value, $p_0 = 0.1$, and so the lower tail is shaded. However, since this is a 2-sided test, values above 0.137 are also at least as extreme as 0.063 (relative to 0.1), and so they also contribute to the p-value. The tail areas together total of about 0.1754 when calculated using a simulation technique in Section~\ref{calcPValueUsingSimulationSubSection}.}
+\caption{The shaded area represents the p-value. We observed $\hat{p} = 0.063$, so any observations smaller than this are at least as extreme relative to the null value, $p_0 = 0.1$, and so the lower tail is shaded. However, since this is a two-sided test, values above 0.137 are also at least as extreme as 0.063 (relative to 0.1), and so they also contribute to the p-value. The tail areas together total of about 0.1754 when calculated using a simulation technique in Section~\ref{calcPValueUsingSimulationSubSection}.}
 \label{MedConsNullNormal}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{ch_inference_foundations/figures/sidedness/sidedness_example_figures}
+\caption{When the alternative hypothesis takes the form $p <$ null value, the p-value is represented by the lower tail. When it takes the form $p >$ null value, the p-value is represented by the upper tail. When using $p \neq$ null value, then the p-value is represented by both tails.}
+\label{sidedness_example_figures}
 \end{figure}
 
 \begin{termBox}{\tBoxTitle{Finding and interpreting the p-value}
@@ -464,7 +470,7 @@ When examining a proportion, we find and interpret the \term{p-value}\index{hypo
 \setlength{\itemsep}{0mm}
 \item[$H_A: p > p_0.$ ] The p-value is the probability of observing a sample proportion as large as we saw in our sample, if the null hypothesis were true. The p-value corresponds to the area in the \emph{upper} tail.
 \item[$H_A: p < p_0.$ ]The p-value is the probability of observing a sample proportion as small as we saw in our sample, if the null hypothesis were true. The p-value corresponds to the area in the \emph{lower} tail.
-\item[$H_A: p \ne p_0.$] The p-value is the probability of observing data at least as far from the null value as what was observed in the current data set, if the null hypothesis were true. The p-value corresponds to the area in \emph{both} tails.
+\item[$H_A: p \ne p_0.$] The p-value is the probability of observing a sample proportion as far from the null value as what was observed in the current data set, if the null hypothesis were true. The p-value corresponds to the area in \emph{both} tails.
 \end{description}}
 \end{termBox}
 
@@ -546,7 +552,7 @@ However, this is not our p-value! Remember that we are conducting a two-sided te
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.8\textwidth]{ch_inference_foundations/figures/MedicalConsultant/MedConsNullSim}
-\caption{The null distribution for $\hat{p}$, created from 10,000 simulated studies. The left tail contains 8.77\% of the simulations. For a 2-sided test, we double the tail area to get the p-value. This doubling accounts for the observations we might have observed in the upper tail, which are also at least as extreme (relative to 0.10) as what we observed, $\hat{p} = 0.063$.}
+\caption{The null distribution for $\hat{p}$, created from 10,000 simulated studies. The left tail contains 8.77\% of the simulations. For a two-sided test, we double the tail area to get the p-value. This doubling accounts for the observations we might have observed in the upper tail, which are also at least as extreme (relative to 0.10) as what we observed, $\hat{p} = 0.063$.}
 \label{MedConsNullSim}
 \end{figure}
 
