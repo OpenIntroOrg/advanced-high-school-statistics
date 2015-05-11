@@ -3,7 +3,7 @@ data(countyComplete)
 cc <- countyComplete
 data(COL)
 
-w3  <- 1 == 0
+w3  <- FALSE
 
 if(w3){
   myPNG("MHP.png", 1200, 800,
@@ -11,8 +11,8 @@ if(w3){
         mgp = c(2.4, 0.5, 0),
         cex = 2)
 } else {
-  myPDF("multiunitsVsOwnership.pdf", 6, 3.5,
-        mar = c(3, 3.5, 0.5, 0.5),
+  myPDF("multiunitsVsOwnership.pdf", 5.4, 3.15,
+        mar = c(3, 3.5, 0.5, 0.7),
         mgp = c(2.4, 0.4, 0))
 }
 pch    <- 1

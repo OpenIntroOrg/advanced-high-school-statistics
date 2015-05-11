@@ -8,7 +8,7 @@ mean(m); sd(m)
 f <- run10Samp$time[run10Samp$gender=='F']
 mean(f); sd(f)
 
-myPDF('cbrRunTimesMenWomen.pdf', 3.8, 3,
+myPDF('cbrRunTimesMenWomen.pdf', 3, 2,
       mgp = c(2.5, 0.7, 0),
       mar = c(2, 4, 0.5, 1))
 boxPlot(m,

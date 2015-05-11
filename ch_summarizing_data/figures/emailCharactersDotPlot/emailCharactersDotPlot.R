@@ -54,7 +54,7 @@ dev.off()
 
 
 myPDF("emailCharactersDotPlotStackedRounded.pdf", 7, 1.4,
-      mar = c(3.1, 1, 0.5, 1), las = 1,
+      mar = c(3.1, 1, 0, 1), las = 1,
       mgp = c(2, 0.7, 0))
 cex  <- 1
 tmp  <- table(round(d) + 0.2)
@@ -63,9 +63,9 @@ y    <- unlist((sapply(tmp, function(x) 1:x)))
 plot(x, y,
      xlab = "Number of Characters (in thousands)",
      axes = FALSE, ylab = "", xlim = c(0, 70),
-     ylim = c(0, max(tmp)),
+     ylim = c(0.5, max(tmp) + 0.5),
      col = COL[1], cex = cex, pch = 19)
-abline(h = 0)
+abline(h = 0.4)
 axis(1, at = seq(0, 80, 10))
 dev.off()
 

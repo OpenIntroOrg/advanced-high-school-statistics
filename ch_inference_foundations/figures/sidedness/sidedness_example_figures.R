@@ -1,7 +1,7 @@
 library(openintro)
 data(COL)
 
-myPDF("sidedness_example_figures.pdf", 6, 1,
+myPDF("sidedness_example_figures.pdf", 5, 0.85,
       mar = c(1.7, 1, 0.5, 1),
       mgp = c(0.5, 0.6, 0),
       mfrow = c(1, 3))

@@ -1,7 +1,7 @@
 library(openintro)
 data(COL)
 
-myPDF("sunCausesCancer.pdf", 4.7, 1.2,
+myPDF("sunCausesCancer.pdf", 4.7, 1.1,
       mar = rep(0, 4))
 plot(c(-0.05, 1.2),
      c(0.39, 1),

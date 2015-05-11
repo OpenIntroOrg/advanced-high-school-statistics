@@ -18,7 +18,7 @@ dev.off()
 
 # life exp vs. internet users
 
-pdf("county_lifeExpInter.pdf", 5.5, 4.3)
+pdf("county_lifeExpInter.pdf", 6.5, 5.3)
 par(mar=c(3.6,4,1,0.2), las=1, mgp=c(2.5,0.7,0))
 
 plot(country$life_exp ~ country$internet, xlab="% Internet users", ylab="", pch=20, col=oiB, cex.lab = 1.5, cex.axis = 1.5)

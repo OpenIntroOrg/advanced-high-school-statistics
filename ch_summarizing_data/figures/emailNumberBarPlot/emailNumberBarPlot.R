@@ -2,7 +2,7 @@ require(openintro)
 data(email)
 data(COL)
 
-myPDF('emailNumberBarPlot.pdf', 6.5, 2.8, mar=c(3.6, 4.5, 1, 1.5), mgp=c(3.4, 0.7, 0), las=1, mfrow=1:2)
+myPDF('emailNumberBarPlot.pdf', 7.8, 3.5, mar=c(3.6, 4.5, 1, 1.5), mgp=c(3.4, 0.7, 0), las=1, mfrow=1:2)
 t <- table(email$number)
 barplot(t, axes=TRUE, xlab='', ylab='count', main='', ylim=c(0,2700), col=COL[1])
 abline(h=0)

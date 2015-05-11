@@ -7,8 +7,8 @@ set.seed(12345)
 
 bimod = c(rnorm(300, mean = 5, sd = 1), rnorm(300, mean = 12, sd = 1), runif(25, min = 13, max = 28))
 
-pdf("bimodalHistBox.pdf", height = 3, width = 7)
-par(mar=c(3.6,2.2,1,1), las=1, mgp=c(2.5,0.7,0), cex.lab = 1.75)
+pdf("bimodalHistBox.pdf", height = 2.5, width = 7)
+par(mar=c(1.8,2.2,0.1,1), las=1, mgp=c(2.5,0.7,0), cex.lab = 1.75)
 layout(matrix(1:2, 1), 2:1)
 
 histPlot(bimod, xlab = "", ylab = "", yaxt = "n", col = oiB)

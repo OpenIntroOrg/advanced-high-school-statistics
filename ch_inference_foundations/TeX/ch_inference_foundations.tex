@@ -14,6 +14,10 @@ In the last chapter we encountered a probability problem in which we calculated 
 
 Statistical inference is concerned primarily with understanding the quality of parameter estimates. In this chapter, we will focus on the case of estimating a proportion from a random sample. While the equations and details change depending on the setting, the foundations for inference are the same throughout all of statistics. We introduce these common themes in this chapter, setting the stage for inference on other parameters. Understanding this chapter will make the rest of this book, and indeed the rest of statistics, seem much more familiar.
 
+
+
+\textA{\newpage}
+
 \section[Estimating unknown parameters]{Estimating unknown parameters \sectionvideohref{youtube-DNIauUrRIEM&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}}
 \subsection{Point estimates}
 \label{pointEstimates}
@@ -57,6 +61,8 @@ How can we quantify the expected variability in a point estimate $\hat{p}$? The 
 \begin{align*}
 SD_{\hat{p}}&=\sqrt{\frac{p(1-p)}{n}}
 \end{align*}
+
+\textA{\pagebreak}
 
 \begin{example}{Calculate the standard deviation of $\hat{p}$ for smoking example, where $\hat{p}$ = 0.15 is the proportion in a sample of size 80 that smoke.}It may seem easy to calculate the SD at first glance, but there is a serious problem: $p$ is \emph{unknown}. In fact, when doing inference, $p$ must be unknown, otherwise it is illogical to try to estimate it. We cannot calculate the SD, but we can estimate it using, you might have guessed, the sample proportion $\hat{p}$.
 \end{example}
@@ -119,14 +125,15 @@ We can be \termsub{95\% confident}{confident} this interval captures the true va
 \end{termBox}
 
 \begin{exercise}
-Compute the area between -1.96 and 1.96 for a normal distribution with mean 0 and standard deviation 1.~\footnote{We will leave it to you to draw a picture. The Z-scores are $Z_{left} = -1.96$ and $Z_{right} = 1.96$. The area between these two Z-scores is $0.9500$. This is where ``1.96'' comes from in the 95\% confidence interval formula.}
+Compute the area between -1.96 and 1.96 for a normal distribution with mean 0 and standard deviation 1.\footnote{We will leave it to you to draw a picture. The Z-scores are $Z_{left} = -1.96$ and $Z_{right} = 1.96$. The~area between these two Z-scores is $0.9500$. This is where ``1.96'' comes from in the 95\% confidence interval~formula.}
 \end{exercise}
 
 \begin{example}{The point estimate from the smoking example was 15\%. In the next chapters we will determine when we can apply a normal model to a point estimate. For now, assume that the normal model is reasonable. The standard error for this point estimate was calculated to be $SE = 0.04$. Construct a 95\% confidence interval.}
+\textA{\vspace{-6mm}}
 \begin{align*}
 \text{point estimate}\ &\pm \ 1.96\times SE \\
 0.15\  &\pm \ 1.96\times 0.04\\
-(0.0716&\text{ , } 0.2284)
+(0.0716&\text{, } 0.2284)
 \end{align*}
 We are 95\% confident that the true percent of smokers in this population is between 7.16\% and 22.84\%.
 \end{example}
@@ -167,13 +174,15 @@ We can be 95\% confident that a 95\% confidence interval contains the true popul
 
 \begin{figure}[hht]
 \centering
-\includegraphics[width=\textwidth]{ch_inference_foundations/figures/95PercentConfidenceInterval/95PercentConfidenceInterval}
+\includegraphics[width=0.95\textwidth]{ch_inference_foundations/figures/95PercentConfidenceInterval/95PercentConfidenceInterval}
 \caption{Twenty-five samples of size $n=300$ were simulated when $p = 0.30$. For each sample, a confidence interval was created to try to capture the true proportion $p$. However,~1~of these~25 intervals did not capture $p = 0.30$.}
 \label{95PercentConfidenceInterval}
 \end{figure}
 
+\textA{\pagebreak}
+
 \begin{exercise}
-In Figure~\ref{95PercentConfidenceInterval}, one interval does not contain the true proportion, $p = 0.3$. Does this imply that there was a problem with the simulations run?\footnote{No. Just as some observations occur more than 1.96 standard deviations from the mean, some point estimates will be more than 1.96 standard errors from the parameter. A confidence interval only provides a plausible range of values for a parameter. While we might say other values are implausible based on the data, this does not mean they are impossible.}
+In Figure~\ref{95PercentConfidenceInterval}, one interval does not contain the true proportion, $p = 0.3$. Does this imply that there was a problem with the simulations?\footnote{No. Just as some observations occur more than 1.96 standard deviations from the mean, some point estimates will be more than 1.96 standard errors from the parameter. A confidence interval only provides a plausible range of values for a parameter. While we might say other values are implausible based on the data, this does not mean they are impossible.}
 \end{exercise}
 
 
@@ -336,6 +345,8 @@ So far, the \term{critical value} has taken the form $z^\star$.
 
 
 
+\textA{\newpage}
+
 \section[Introducing hypothesis testing]{Introducing hypothesis testing \sectionvideohref{youtube-NVbPE1_Cbx8&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}}
 
 \index{hypothesis testing|(}
@@ -452,7 +463,7 @@ The consultant's complication rate for her 142 clients was 0.063 ($0.063 \times 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.65\textwidth]{ch_inference_foundations/figures/MedicalConsultant/MedConsNullNormal}
+\includegraphics[width=0.7\textwidth]{ch_inference_foundations/figures/MedicalConsultant/MedConsNullNormal}
 \caption{The shaded area represents the p-value. We observed $\hat{p} = 0.063$, so any observations smaller than this are at least as extreme relative to the null value, $p_0 = 0.1$, and so the lower tail is shaded. However, since this is a two-sided test, values above 0.137 are also at least as extreme as 0.063 (relative to 0.1), and so they also contribute to the p-value. The tail areas together total of about 0.1754 when calculated using a simulation technique in Section~\ref{calcPValueUsingSimulationSubSection}.}
 \label{MedConsNullNormal}
 \end{figure}
@@ -463,6 +474,8 @@ The consultant's complication rate for her 142 clients was 0.063 ($0.063 \times 
 \caption{When the alternative hypothesis takes the form $p <$ null value, the p-value is represented by the lower tail. When it takes the form $p >$ null value, the p-value is represented by the upper tail. When using $p \neq$ null value, then the p-value is represented by both tails.}
 \label{sidedness_example_figures}
 \end{figure}
+
+\textA{\newpage}
 
 \begin{termBox}{\tBoxTitle{Finding and interpreting the p-value}
 When examining a proportion, we find and interpret the \term{p-value}\index{hypothesis testing!p-value|textbf} according to the nature of the alternative hypothesis.\vspace{-1mm}
@@ -693,6 +706,8 @@ Verification of conditions for statistical tools is always necessary. Whenever c
 
 Finally, we caution that there may be no inference tools helpful when considering data that include unknown biases, such as convenience samples. For this reason, there are books, courses, and researchers devoted to the techniques of sampling and experimental design. See Sections~\ref{overviewOfDataCollectionPrinciples}-\ref{experimentsSection} for basic principles of data collection.
 
+
+\textA{\newpage}
 
 \subsection{Statistical significance versus practical significance}
 

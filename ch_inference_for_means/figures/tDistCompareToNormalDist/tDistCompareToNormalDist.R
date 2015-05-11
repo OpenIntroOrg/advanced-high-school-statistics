@@ -1,8 +1,8 @@
 library(openintro)
 data(COL)
 
-myPDF('tDistCompareToNormalDist.pdf', 4.3, 2.3,
-      mar = c(2, 1, 1, 1),
+myPDF('tDistCompareToNormalDist.pdf', 4.3, 2,
+      mar = c(1.8, 1, 0, 1),
       mgp = c(5, 0.6, 0))
 plot(c(-4.2, 4.2),
      c(0, dnorm(0)),

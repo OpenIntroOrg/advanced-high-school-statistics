@@ -2,7 +2,7 @@ library(openintro)
 data(county)
 data(COL)
 
-myPDF("county_fed_spendVsPoverty.pdf", 6, 3.5,
+myPDF("county_fed_spendVsPoverty.pdf", 6.5, 3.8,
       mar = c(3, 3.5, 0.5, 0.5),
       mgp = c(2.4, 0.5, 0))
 plot(county$poverty, county$fed_spend, 

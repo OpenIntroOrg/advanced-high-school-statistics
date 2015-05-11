@@ -24,10 +24,10 @@ dev.off()
 
 # marathon_genderBox
 
-pdf("marathon_genderBox.pdf", height = 2, width = 5)
-par(mar=c(2,4,1,1), las=1, mgp=c(2.5,0.7,0), mfrow = c(1,1), cex.lab = 1.75)
+pdf("marathon_genderBox.pdf", height = 1.5, width = 5)
+par(mar=c(2,4,0,1), las=1, mgp=c(2.5,0.7,0), mfrow = c(1,1), cex.lab = 1.75)
 
-boxPlot(marathon$Time, horiz = TRUE, fact = marathon$Gender, xlim = c(2,3.2), axes = FALSE, col = fadeColor(oiB, 80))
+boxPlot(marathon$Time, horiz = TRUE, fact = marathon$Gender, xlim = c(2,3.2), axes = FALSE, col = fadeColor(oiB, 80), ylim = c(0.5, 2.5))
 axis(1, at = seq(2,3.2,0.4))
 axis(2, at = c(1,2), labels = c("females","males"))
 

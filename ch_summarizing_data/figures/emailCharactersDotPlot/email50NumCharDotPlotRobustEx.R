@@ -4,7 +4,7 @@ data(COL)
 source("dotPlotStack.R")
 
 cex  <- 1
-text.cex <- 1.3
+text.cex <- 1.6
 cex.lab  <- 1.3
 upshifts <- c(0, 8, 16, 23)
 
@@ -32,21 +32,21 @@ plot(x, y,
      col = COL[1], cex = cex, pch = 19)
 lines(c(-10, xlim[2]), rep(upshifts[3], 2), col = COL[5,3])
 axis(1, at = seq(0,150,50))
-text(-5, upshifts[3] + 4, 'Original', pos = 2, cex = text.cex)
+text(-2, upshifts[3] + 4, 'Original', pos = 2, cex = text.cex)
 
 tmp  <- table(round(p2) + 0.2)
 x    <- rep(as.numeric(names(tmp)), tmp)
 y    <- unlist((sapply(tmp, function(x) 1:x))) + upshifts[2]
 points(x, y, col = COL[1], cex = cex, pch = 19)
 lines(c(-10, xlim[2]), rep(upshifts[2], 2), col = COL[5,3])
-text(-5, upshifts[2] + 4, 'Drop 64,401', pos = 2, cex = text.cex)
+text(-2, upshifts[2] + 4, 'Drop 64,401', pos = 2, cex = text.cex)
 
 tmp  <- table(round(p3) + 0.2)
 x    <- rep(as.numeric(names(tmp)), tmp)
 y    <- unlist((sapply(tmp, function(x) 1:x)))
 points(x, y, col = COL[1], cex = cex, pch = 19)
 lines(c(-10, xlim[2]), rep(upshifts[1], 2) + 0, col = COL[5,3])
-text(-5, upshifts[1] + 4, '64,401 to 150,000', pos = 2, cex = text.cex)
+text(-2, upshifts[1] + 4, '64,401 to 150,000', pos = 2, cex = text.cex)
 dev.off()
 
 

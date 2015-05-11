@@ -4,7 +4,7 @@ library(openintro)
 X <- seq(0, 6, len = 300)
 Y <- df(X, 3, 323)
 
-myPDF("fDist3And323.pdf", 5, 2.7,
+myPDF("fDist3And323.pdf", 4.3, 2.2,
       mar = c(2.8, 0.5, 0.5, 0.5),
       mgp = c(1.8, 0.4, 0))
 plot(X, Y,

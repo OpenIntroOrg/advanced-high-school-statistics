@@ -42,11 +42,14 @@ We will also see examples in this chapter where fitting a straight line to the d
 
 \begin{figure}
    \centering
-   \includegraphics[width=115mm]{ch_regr_simple_linear/figures/notGoodAtAllForALinearModel/notGoodAtAllForALinearModel}
+   \includegraphics[width=0.9\textwidth]{ch_regr_simple_linear/figures/notGoodAtAllForALinearModel/notGoodAtAllForALinearModel}
    \caption{A linear model is not useful in this nonlinear case. These data are from an introductory physics experiment.}
    \label{notGoodAtAllForALinearModel}
 \end{figure}
 
+
+
+\textA{\newpage}
 
 %__________________
 \section[Line fitting, residuals, and correlation]{Line fitting, residuals, and correlation \sectionvideohref{youtube-mPvtZhdPBhQ&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}}
@@ -92,6 +95,9 @@ Straight lines should only be used when the data appear to have a linear relatio
 \begin{caution}{Watch out for curved trends}
 {We only consider models based on straight lines in this chapter. If data show a nonlinear trend, like that in the right panel of Figure~\ref{scattHeadLTotalLTube}, more advanced techniques should be used.\vspace{0.7mm}}
 \end{caution}
+
+
+\textA{\newpage}
 
 \subsection{Fitting a line by eye}
 
@@ -175,10 +181,12 @@ The standard deviation of the residuals, often denoted by the letter $s$, tells 
 
 \begin{figure}
    \centering
-   \includegraphics[width=0.73\textwidth]{ch_regr_simple_linear/figures/scattHeadLTotalLResidualPlot/scattHeadLTotalLResidualPlot}
+   \includegraphics[width=0.9\textwidth]{ch_regr_simple_linear/figures/scattHeadLTotalLResidualPlot/scattHeadLTotalLResidualPlot}
    \caption{Residual plot for the model in Figure~\ref{scattHeadLTotalLLine}.}
    \label{scattHeadLTotalLResidualPlot}
 \end{figure}
+
+\textA{\newpage}
 
 \begin{example}{One purpose of residual plots is to identify characteristics or patterns still apparent in data after fitting a model. Figure~\ref{sampleLinesAndResPlots} shows three scatterplots with linear models in the first row and residual plots in the second row. Can you identify any patterns remaining in the residuals?}
 
@@ -195,6 +203,9 @@ The second data set shows a pattern in the residuals. There is some curvature in
 The last plot shows very little upwards trend, and the residuals also show no obvious patterns. It is reasonable to try to fit a linear model to the data. However, it is unclear whether there is statistically significant evidence that the slope parameter is different from zero. The point estimate of the slope parameter, labeled $b_1$, is not zero, but we might wonder if this could just be due to chance. We will address this sort of scenario in Section~\ref{inferenceForLinearRegression}.
 \index{residual|)}
 \end{example}
+
+
+\textA{\newpage}
 
 \subsection{Describing linear relationships with correlation}
 
@@ -234,7 +245,7 @@ It appears no straight line would fit any of the datasets represented in Figure~
 \end{exercise}
 
 \begin{example}
-{Take a look at Figure~\ref{scattHeadLTotalLLine}.  How would this correlation change if head length were measured in cm rather than mm?  What if head length were measure in inches rather than mm?}Here, changing the units of $y$ corresponds to multiplying all the $y$ values by a certain number.  This would change the mean and the standard deviation of $y$, but it would not change the correlation.  To see this, imagine dividing every number on the vertical axes by 10.  The units of $y$ are now cm rather than mm, but the graph has remain exactly the same
+{Take a look at Figure~\ref{scattHeadLTotalLLine} on page~\pageref{scattHeadLTotalLLine}.  How would this correlation change if head length were measured in cm rather than mm?  What if head length were measure in inches rather than mm?}Here, changing the units of $y$ corresponds to multiplying all the $y$ values by a certain number.  This would change the mean and the standard deviation of $y$, but it would not change the correlation.  To see this, imagine dividing every number on the vertical axes by 10.  The units of $y$ are now cm rather than mm, but the graph has remain exactly the same
 \end{example}
 
 \begin{termBox}{\tBoxTitle{Changing units of $x$ and $y$ does not affect $r$.}
@@ -461,6 +472,9 @@ Applying a model estimate to values outside of the realm of the original data is
 
 \index{least squares regression!extrapolation|)}
 
+
+\textA{\newpage}
+
 \subsection{Using $R^2$ to describe the strength of a fit}
 
 \index{least squares regression!R-squared ($R^2$)|(}
@@ -575,6 +589,7 @@ If you select \calctext{ax+b} (\calcbutton{F1}), the \calctext{a} and \calctext{
 
 \begin{table}[h]
 \centering
+{\small
 \begin{tabular}{ccc}
 \hline
 &\var{fed\_\hspace{0.3mm}spend} & \var{poverty} \\
@@ -587,7 +602,7 @@ If you select \calctext{ax+b} (\calcbutton{F1}), the \calctext{a} and \calctext{
 6 &  8.71 & 5.6\\ 
   7  & 6.70 & 7.9 \\ 
 \hline
-\end{tabular}
+\end{tabular}}
 \caption{Data for Guided Practice~\ref{subsetOfCountyForRegressionGP}.}
 \label{subsetOfCountyForRegression}
 \end{table}
@@ -689,6 +704,7 @@ It is tempting to remove outliers. Don't do this without a very good reason. Mod
 \begin{caution}{Outliers for a categorical predictor with two levels}
 {Be cautious about using a categorical predictor when one of the levels has very few observations. When this happens, those few observations become influential points.}
 \end{caution}
+
 
 
 %__________________
@@ -849,6 +865,8 @@ If conditions for fitting the regression line do not hold, then the methods pres
 \end{enumerate}}
 \end{termBox}
 
+\textA{\newpage}
+
 \begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for the slope of regression line}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -876,6 +894,9 @@ $$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
 \item State the conclusion to the original question.
 \end{enumerate}}
 \end{termBox}
+
+
+\textA{\newpage}
 
 \subsection{Calculator: the linear regression $t$-test and $t$-interval}
 
@@ -929,6 +950,8 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
 }
 \end{termBox} 
 
+\textA{\newpage}
+
 \begin{termBox}{\tBoxTitle{\videohref{ti84_regression_t_confint} TI-84: $t$-interval for $\beta_1$}
 Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTInt}.
 \begin{enumerate}
@@ -974,6 +997,8 @@ First, we can note the $R^2$ value is fairly large.  However, this alone does no
    \label{NeedsTransform-PreTransform}
 \end{figure}
 
+\textA{\newpage}
+
 \begin{tipBox}{\texttt{The regression equation is} \\
 
 \texttt{y = -52.3564 + 2.7842 x} \\
@@ -989,6 +1014,8 @@ First, we can note the $R^2$ value is fairly large.  However, this alone does no
 \subsection{Transformed}
 
 Regression analysis is easier to perform on linear data.  When data are nonlinear, we sometimes \term{transform} the data in a way that makes the resulting relationship linear.  The most common \term{transformation} is log (or ln) of the $y$ values. Sometimes we also apply a transformation to the $x$ values.  We generally use the residuals as a way to evaluate whether the transformed data are more linear. If so, we can say that a better model has been found.
+
+\textA{\newpage}
 
 \begin{example}{Using the regression output for the transformed data, write the new linear regression equation}
 $\widehat{log(y)} = 1.723 +0.053 x$

@@ -3,7 +3,7 @@ data(COL)
 
 fn <- paste0('pValueForCampaignManagerClaimOf',
              'MoreThan50PercentSupport.pdf')
-myPDF(fn, 3.5, 1.7,
+myPDF(fn, 3.5, 1.3,
       mar=c(1.7, 0, 0.1, 0),
       mgp=c(3, 0.5, 0))
 normTail(U = 0.89, col = COL[1], axes = FALSE)

@@ -1,8 +1,8 @@
 library(openintro)
 data(COL)
 
-myPDF('tDistConvergeToNormalDist.pdf', 5.94, 2.53,
-      mar = c(2, 1, 1, 1),
+myPDF('tDistConvergeToNormalDist.pdf', 5.94, 2.33,
+      mar = c(2, 1, 0.1, 1),
       mgp = c(5, 0.6, 0))
 plot(c(-3.5, 8),
      c(0, dnorm(0)),
