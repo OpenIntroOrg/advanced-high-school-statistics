@@ -571,16 +571,16 @@ We considered only those cases that met the condition, \var{parents} \resp{degre
 
 Frequently, marginal and joint probabilities are provided instead of count data. For example, disease rates are commonly listed in percentages rather than in a count format. We would like to be able to compute conditional probabilities even when no counts are available, and we use Equation~(\ref{ratioOfBothToRatioOfConditionalForParentsAndStudent}) as an example demonstrating this technique.
 
-We considered only those cases that satisfied the condition, \var{parents} \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} \resp{college}. Suppose we were provided only the information in Table~\ref{familyCollegeProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} \resp{degree}). Similarly, we would expect about 6\% or $0.06\times 1000 = 60$ to meet both the information criterion and represent our outcome of interest. Thus, the conditional probability could be computed:
+We considered only those cases that satisfied the condition, \var{parents} \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} \resp{college}. Suppose we were provided only the information in Table~\ref{familyCollegeProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} \resp{degree}). Similarly, we would expect about 29\% or $0.29\times 1000 = 290$ to meet both the information criterion and represent our outcome of interest. Thus, the conditional probability could be computed:
 \begin{align}
 &P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) \notag \\
 	&= \frac{\text{\# (\var{teen} \resp{college} and \var{parents} \resp{degree})}}{\text{\# (\var{parents} \resp{degree})}} \notag \\
-	&= \frac{60}{350}
-		= \frac{0.06}{0.35}
-		= 0.171
+	&= \frac{290}{350}
+		= \frac{0.29}{0.35}
+		= 0.829\quad\text{(different from 0.825 due to rounding error)}
 \label{stUserPUsedHypSampSize}
 \end{align}
-In Equation~(\ref{stUserPUsedHypSampSize}), we examine exactly the fraction of two probabilities, 0.06 and 0.35, which we can write as
+In Equation~(\ref{stUserPUsedHypSampSize}), we examine exactly the fraction of two probabilities, 0.29 and 0.35, which we can write as
 \begin{align*}
 P(\text{\var{teen} \resp{college} and \var{parents} \resp{degree}})
 	\quad\text{and}\quad
