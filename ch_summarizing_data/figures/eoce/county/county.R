@@ -1,4 +1,5 @@
 library(openintro)
+library(OIdata)
 data(countyComplete)
 
 #library(openintro)
@@ -42,7 +43,7 @@ dev.off()
 pdf("county_hispHistLog.pdf", 6, 4)
 par(mar=c(3.8,3.5,0.5,0.5), las=1, mgp=c(2.5,0.7,0), cex.lab = 1.5, cex.axis = 1.5)
 
-histPlot(log(countyComplete$hispanic), breaks=25, xlab = "% Hispanic", ylab = "", col = oiB, axes = TRUE)
+histPlot(log(countyComplete$hispanic), breaks=25, xlab = "Log of % Hispanic", ylab = "", col = oiB, axes = TRUE)
 dev.off()
 
 # work travel hist
