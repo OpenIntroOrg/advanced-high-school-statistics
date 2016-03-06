@@ -4,7 +4,7 @@ data(COL)
 source("normalExamples-data.R")
 source("normalExamples-helpers.R")
 
-myPDF("normalExamples.pdf", 6.6, 4,
+myPDF("normalExamples.pdf", 7.3, 4.4,
       mfrow = c(2, 3),
       mgp = c(2, 0.7, 0),
       mar = c(3, 0, 1, 1))
