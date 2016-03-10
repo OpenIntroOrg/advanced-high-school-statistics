@@ -1,8 +1,10 @@
-makeCircle <- function(x,y,r,...){
+library(openintro)
+
+makeCircle <- function(x,y,r, col = COL[1], ...){
 	t <- seq(0,2*pi, length.out=99)
 	X <- x + r*cos(t)
 	Y <- y + r*sin(t)
-	lines(X,Y,...)
+	polygon(X, Y, col = col, ...)
 }
 
 makeLayout <- function(nrow,ncol,labels=NULL, lcex=1, pch=TRUE, ...){
@@ -13,8 +15,10 @@ makeLayout <- function(nrow,ncol,labels=NULL, lcex=1, pch=TRUE, ...){
 			makeCircle(i,j,0.4, ...)
 			if(!is.null(labels[1])){
 				l <- labels[(i-1)*ncol+j]
+				makeCircle(i,j,0.4, col = COL[l], ...)
 				if(pch==TRUE){
-					points(i,j,pch=l,cex=lcex, lwd = 2)
+					points(i,j,pch=l,cex=lcex, lwd = 4)
+					points(i,j,pch=l,cex=lcex, col = "white", lwd = 2)
 				} else {
 					text(i,j,l, cex=lcex)
 				}
