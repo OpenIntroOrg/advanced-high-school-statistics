@@ -172,10 +172,10 @@ Data matrices are a convenient way to record and store data. If another individu
 \index{data!county|(}
 
 \begin{exercise}
-We consider a publicly available data set that summarizes information about the 3,143 counties in the United States, and we call this the \data{county} data set. This data set includes information about each county: its name, the state where it resides, its population in 2000 and 2010, per capita federal spending, poverty rate, and five additional characteristics. How might these data be organized in a data matrix? Reminder: look in the footnotes for answers to Guided Practice exercises.\footnote{Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,143 rows and 11 columns could hold these data, where each row represents a county and each column represents a particular piece of information.}
+We consider a publicly available data set that summarizes information about the 3,143 counties in the United States, and we call this the \data{county} data set. This data set includes information about each county: its name, the state where it resides, its population in 2000 and 2010, per capita federal spending (in thousands of dollars), poverty rate, and five additional characteristics. How might these data be organized in a data matrix? Reminder: look in the footnotes for answers to Guided Practice exercises.\footnote{Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,143 rows and 11 columns could hold these data, where each row represents a county and each column represents a particular piece of information.}
 \end{exercise}
 
-\noindent Seven rows of the \data{county} data set are shown in Table~\ref{countyDF}, and the variables are summarized in Table~\ref{countyVariables}. These data were collected from the US Census website.\footnote{\oiRedirect{textbook-census_quick_facts}{quickfacts.census.gov/qfd/index.html}}
+\noindent Seven rows of the \data{county} data set are shown in Table~\ref{countyDF}, and the variables are summarized in Table~\ref{countyVariables}. These data were collected from the US Census website.\footnote{\oiRedirect{textbook-census_quick_facts}{census.gov/quickfacts}}
 
 
 \subsection{Types of variables}
@@ -234,7 +234,7 @@ Finally, consider the \var{smoking\_\hspace{0.3mm}ban} variable, which describes
 \var{state} & State where the county resides (also including the District of Columbia) \\
 \var{pop2000} & Population in 2000 \\
 \var{pop2010} & Population in 2010 \\
-\var{fed\_\hspace{0.3mm}spend} & Federal spending per capita \\
+\var{fed\_\hspace{0.3mm}spend} & Federal spending per capita (in thousands of dollars) \\
 \var{poverty}  &  Percent of the population in poverty \\
 \var{homeownership}  &  Percent of the population that lives in their own home or lives with the owner (e.g. children living with parents who own the home) \\
 \var{multiunit}  &  Percent of living units that are in multi-unit structures (e.g. apartments) \\
@@ -274,12 +274,12 @@ Many analyses are motivated by a researcher looking for a relationship between t
 
 To answer these questions, data must be collected, such as the \data{county} data set shown in Table~\ref{countyDF}. Examining summary statistics \index{summary statistic} could provide insights for each of the three questions about counties. Additionally, graphs can be used to visually summarize data and are useful for answering such questions as well.
 
-\indexthis{Scatterplots}{scatterplot} are one type of graph used to study the relationship between two numerical variables. Figure~\ref{county_fed_spendVsPoverty} compares the variables \var{fed\_\hspace{0.3mm}spend} and \var{poverty}. Each point on the plot represents a single county. For instance, the highlighted dot corresponds to County~1088 in the \data{county} data set: Owsley County, Kentucky, which had a poverty rate of 41.5\% and federal spending of \$21.50 per capita. The scatterplot suggests a relationship between the two variables: counties with a high poverty rate also tend to have slightly more federal spending. We might brainstorm as to why this relationship exists and investigate each idea to determine which is the most reasonable explanation.
+\indexthis{Scatterplots}{scatterplot} are one type of graph used to study the relationship between two numerical variables. Figure~\ref{county_fed_spendVsPoverty} compares the variables \var{fed\_\hspace{0.3mm}spend} and \var{poverty}. Each point on the plot represents a single county. For instance, the highlighted dot corresponds to County~1088 in the \data{county} data set: Owsley County, Kentucky, which had a poverty rate of 41.5\% and federal spending of 21.50 thousand dollars per capita. The scatterplot suggests a relationship between the two variables: counties with a high poverty rate also tend to have slightly more federal spending. We might brainstorm as to why this relationship exists and investigate each idea to determine which is the most reasonable explanation.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.84\textwidth]{ch_data_collection/figures/county_fed_spendVsPoverty/county_fed_spendVsPoverty}
-\caption{A scatterplot showing \var{fed\_\hspace{0.3mm}spend} against \var{poverty}. Owsley County of Kentucky, with a poverty rate of 41.5\% and federal spending of \$21.50 per capita, is highlighted.}
+ \href{\oiRedirectUrl{tableau_scatter_fed_spending}}{\includegraphics[width=0.84\textwidth]{ch_data_collection/figures/county_fed_spendVsPoverty/county_fed_spendVsPoverty}}
+\caption{A scatterplot showing \var{fed\_\hspace{0.3mm}spend} against \var{poverty}. Owsley County of Kentucky, with a poverty rate of 41.5\% and federal spending of 21.50 thousand dollars per capita, is highlighted.}
 \label{county_fed_spendVsPoverty}
 \end{figure}
 
@@ -296,7 +296,7 @@ It appears that the larger the fraction of units in multi-unit structures, the l
 
 \begin{figure}
    \centering
-   \includegraphics[width=0.72\textwidth]{ch_data_collection/figures/multiunitsVsOwnership/multiunitsVsOwnership}
+ \href{\oiRedirectUrl{tableau_scatter_homeownership}}{ \includegraphics[width=0.72\textwidth]{ch_data_collection/figures/multiunitsVsOwnership/multiunitsVsOwnership}}
    \caption{A scatterplot of homeownership versus the percent of units that are in multi-unit structures for all 3,143 counties. Interested readers may find an image of this plot with an additional third variable, county population, presented at \oiRedirect{textbook-homeownership_vs_multi_unit_structures}{www.openintro.org/stat/down/MHP.png}.}
    \label{multiunitsVsOwnership}
 \end{figure}
