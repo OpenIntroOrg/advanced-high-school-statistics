@@ -590,7 +590,7 @@ To analyze paired data, it is often useful to look at the difference in outcomes
 \begin{eqnarray*}
 \text{UCLA price} - \text{Amazon price}
 \end{eqnarray*}
-for each book. It is important that we always subtract using a consistent order; here Amazon prices are always subtracted from UCLA prices. If this difference is positive, the UCLA price is higher. If ths difference is negative, the Amazon price is higher. If this difference is zero, the two prices are equal. A histogram of these differences is shown in Figure~\ref{diffInTextbookPricesS10}. Using differences between paired observations is a common and useful way to analyze paired data.
+for each book. It is important that we always subtract using a consistent order; here Amazon prices are always subtracted from UCLA prices. If this difference is positive, the UCLA price is higher. If this difference is negative, the Amazon price is higher. If this difference is zero, the two prices are equal. A histogram of these differences is shown in Figure~\ref{diffInTextbookPricesS10}. Using differences between paired observations is a common and useful way to analyze paired data.
 
 \begin{figure}
 \centering
@@ -612,7 +612,7 @@ To analyze a paired data set, we use the exact same tools that we developed in t
 \centering
 \begin{tabular}{ccccc}
 \hline
-$n_{_{diff}}$	&\hspace{3mm}& $\bar{x}_{_{diff}}$	&\hspace{3mm}& $s_{_{diff}}$ \vspace{1mm}\\
+$n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $s_{_{\text{\emph{diff}}}}$ \vspace{1mm}\\
 73			&& 12.76				&& 14.26 \\
 \hline
 \end{tabular}
@@ -625,14 +625,14 @@ $n_{_{diff}}$	&\hspace{3mm}& $\bar{x}_{_{diff}}$	&\hspace{3mm}& $s_{_{diff}}$ \v
 There are two scenarios: there is no difference or there is some difference in average prices. The \emph{no difference} scenario is always the null hypothesis:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[$H_0$:] $\mu_{diff}=0$. There is no difference in the average textbook price.
-\item[$H_A$:] $\mu_{diff} \neq 0$. There is a difference in average prices.
+\item[$H_0$:] $\mu_{\text{\emph{diff}}}=0$. There is no difference in the average textbook price.
+\item[$H_A$:] $\mu_{\text{\emph{diff}}} \neq 0$. There is a difference in average prices.
 \end{itemize}
 The standard deviation of all of the differences is unknown, so we will use the standard deviation of the sample differences. The observations are based on a simple random sample from less than 10\% of all books sold at the bookstore, so independence is reasonable; the distribution of differences, shown in Figure~\ref{diffInTextbookPricesS10}, is strongly skewed, but the sample size $n=73$ is well over 30. Because all three conditions are reasonably satisfied, we can conclude the $t$-test is reasonable.
 
-We compute the standard error associated with $\bar{x}_{diff}$ using the standard deviation of the differences ($s_{_{diff}}=14.26$) and the number of differences ($n_{_{diff}}=73$):
-$$SE_{\bar{x}_{diff}} = \frac{s_{diff}}{\sqrt{n_{diff}}} = \frac{14.26}{\sqrt{73}} = 1.67$$
-To visualize the p-value, the sampling distribution of $\bar{x}_{diff}$ is drawn as though $H_0$ is true, which is shown in Figure~\ref{textbooksS10HTTails}. The p-value is represented by the two (very) small tails.
+We compute the standard error associated with $\bar{x}_{\text{\emph{diff}}}$ using the standard deviation of the differences ($s_{_{\text{\emph{diff}}}}=14.26$) and the number of differences ($n_{_{\text{\emph{diff}}}}=73$):
+$$SE_{\bar{x}_{\text{\emph{diff}}}} = \frac{s_{\text{\emph{diff}}}}{\sqrt{n_{\text{\emph{diff}}}}} = \frac{14.26}{\sqrt{73}} = 1.67$$
+To visualize the p-value, the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ is drawn as though $H_0$ is true, which is shown in Figure~\ref{textbooksS10HTTails}. The p-value is represented by the two (very) small tails.
 
 \begin{figure}
 \centering
@@ -641,8 +641,8 @@ To visualize the p-value, the sampling distribution of $\bar{x}_{diff}$ is drawn
 \label{textbooksS10HTTails}
 \end{figure}
 
-To find the tail areas, we compute the test statistic, which is the $T$ score of $\bar{x}_{diff}$ under the null condition that the actual mean difference is 0:
-$$t = \frac{\bar{x}_{diff} - 0}{SE_{x_{diff}}} = \frac{12.76 - 0}{1.67} = 7.65  \quad \quad \quad df=72$$
+To find the tail areas, we compute the test statistic, which is the $T$ score of $\bar{x}_{\text{\emph{diff}}}$ under the null condition that the actual mean difference is 0:
+$$t = \frac{\bar{x}_{\text{\emph{diff}}} - 0}{SE_{\bar{x}_{\text{\emph{diff}}}_{\text{\emph{diff}}}}} = \frac{12.76 - 0}{1.67} = 7.65  \quad \quad \quad df=72$$
 This $T$ score is so large it isn't even in the table, which ensures the single tail area will be 0.0002 or smaller. A calculator gives a tail area as $4.5\times 10^{-11}$. Since the p-value corresponds to both tails in this case and the $t$-distribution is symmetric, the p-value can be estimated as twice the one-tail area:
 $$\text{p-value} = 2\times (\text{one tail area}) \approx 2\times 4.5\times 10^{-11} = 9\times 10^{-11}\approx 0$$
 Because the p-value is less than 0.05, we reject the null hypothesis. We have found convincing evidence that Amazon is, on average, cheaper than the UCLA bookstore for UCLA course textbooks.
@@ -662,21 +662,21 @@ Because the p-value is less than 0.05, we reject the null hypothesis. We have fo
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item Paired data from a random sample or experiment.
-\item Population of differences is known to be normal OR $n_{diff}\ge 30$ OR graph of sample differences is approximately symmetric with no outliers, making the assumption that population of differences is normal a reasonable one.
+\item Population of differences is known to be normal OR $n_{\text{\emph{diff}}}\ge 30$ OR graph of sample differences is approximately symmetric with no outliers, making the assumption that population of differences is normal a reasonable one.
 \end{itemize}
 \item Write the hypotheses in plain language, then set them up in mathematical notation.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item H$_0: \mu_{diff}=0$
-\item H$_0: \mu_{diff} \ne \text{or} < \text{or} > 0$
+\item H$_0: \mu_{\text{\emph{diff}}}=0$
+\item H$_0: \mu_{\text{\emph{diff}}} \ne \text{or} < \text{or} > 0$
 \end{itemize}
 \item Identify the significance level $\alpha$.
 \item Calculate the test statistic and $df$: $\text{t} = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item The point estimate is $\bar{x}_{diff}$
-\item Use $SE = \frac{s_{diff}}{\sqrt{n_{diff}}}$
-\item $df=n_{diff}-1$
+\item The point estimate is $\bar{x}_{\text{\emph{diff}}}$
+\item Use $SE = \frac{s_{\text{\emph{diff}}}}{\sqrt{n_{\text{\emph{diff}}}}}$
+\item $df=n_{\text{\emph{diff}}}-1$
 \end{itemize}
 \item Find the p-value and compare it to $\alpha$ to determine whether to reject or not reject $H_0$.
 \item Write the conclusion in the context of the question.
@@ -694,7 +694,7 @@ Because the p-value is less than 0.05, we reject the null hypothesis. We have fo
 
 \begin{exercise}An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, and so we have a difference in scores for each student. We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$ as a sample to evaluate the company's claim. The distribution of the differences, shown in Figure~\ref{satImprovementHTDataHistogram}, has mean 135.9 and standard deviation 82.2. Do these data provide convincing evidence to back up the company's claim?
 \footnote{These are \emph{paired data}, so we analyze the score differences with a matched pairs $t$-test. Conditions: This is a random sample from less than 10\% of the company's students (assuming they have more than 300 former students), so the independence condition is reasonable. $n=30\ge 30$.
-This is a one-sided test. $H_0$: student scores do not improve by more than 100 after taking the company's course. $\mu_{_{diff}} = 100$  $H_A$: students scores improve by more than 100 points on average after taking the company's course. $\mu_{_{diff}} > 100$.
+This is a one-sided test. $H_0$: student scores do not improve by more than 100 after taking the company's course. $\mu_{_{\text{\emph{diff}}}} = 100$  $H_A$: students scores improve by more than 100 points on average after taking the company's course. $\mu_{_{\text{\emph{diff}}}} > 100$.
 Let
 \begin{align*}
 \alpha&=0.05
@@ -714,7 +714,7 @@ Because we rejected the null hypothesis, does this mean that taking the company'
 
 
 
-\subsection{Confidence intervals for the mean of a difference $\mu_{diff}$}
+\subsection{Confidence intervals for the mean of a difference $\mu_{\text{\emph{diff}}}$}
 
 In the previous examples, we carried out a matched pairs $t$-test, where the null hypothesis was that the true average of the paired differences is zero. Sometimes we want to estimate the true average of paired differences with a confidence interval, and we use a \termsub{matched pairs $t$-interval}{confidence interval!matched pairs}. Consider again the table of data on the difference in price between UCLA and Amazon for each of the 73 books sampled.
 
@@ -722,7 +722,7 @@ In the previous examples, we carried out a matched pairs $t$-test, where the nul
 \centering
 \begin{tabular}{ccccc}
 \hline
-$n_{_{diff}}$	&\hspace{3mm}& $\bar{x}_{_{diff}}$	&\hspace{3mm}& $s_{_{diff}}$ \vspace{1mm}\\
+$n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $s_{_{\text{\emph{diff}}}}$ \vspace{1mm}\\
 73			&& 12.76				&& 14.26 \\
 \hline
 \end{tabular}
@@ -756,16 +756,16 @@ We are 95\% confident that the UCLA bookstore is, on average, between \$9.42 and
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item Paired data from a random sample or experiment.
-\item Population of diferrences is known to be normal OR $n_{diff}\ge 30$ OR graph of sample differences is approximately symmetric with no outliers, making the assumption that the population of differences is normal a reasonable one.
+\item Population of diferrences is known to be normal OR $n_{\text{\emph{diff}}}\ge 30$ OR graph of sample differences is approximately symmetric with no outliers, making the assumption that the population of differences is normal a reasonable one.
 \end{itemize}
 \item Plug in the numbers and write the interval in the form
 $$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item The point estimate of $\bar{x}_{diff}$
-\item $df=n_{diff}-1$
-\item Plug in the critical value $t^\star$ using the $t$-table at row $n_{diff}-1$
-\item Use $SE = \frac{s_{diff}}{\sqrt{n_{diff}}}$
+\item The point estimate of $\bar{x}_{\text{\emph{diff}}}$
+\item $df=n_{\text{\emph{diff}}}-1$
+\item Plug in the critical value $t^\star$ using the $t$-table at row $n_{\text{\emph{diff}}}-1$
+\item Use $SE = \frac{s_{\text{\emph{diff}}}}{\sqrt{n_{\text{\emph{diff}}}}}$
 \end{itemize}
 \item Evaluate the CI and write in the form ( $\_$ , $\_$ ).
 \item Interpret the interval: ``We are [XX]\% confident that the true mean of the differences in [...] is between [...] and [...]."
@@ -773,7 +773,7 @@ $$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
 \end{enumerate}}
 \end{termBox}
 
-\begin{exercise}In the SAT preparation company example, we saw that $\bar{x}_{diff}$ was 135.9 and $s_{diff}$ was 82.2. That~is, the average change in students' scores after the class was a 135.9 point increase and the SD of the change or difference in their scores was 82.2 points. Construct a 95\% confidence interval to estimate the true average change in score after taking the class. Is there evidence for the company's claim that students score an average of 100 points higher after the class?\footnote{Because this is a before and after scenario, we use a matched pairs $t$-interval. The conditions were verified in the previous section. The confidence interval is : $135.9\ \pm 2.045(15.0) \to (105.2, 166.6)$. We can be 95\% confident that the true \emph{average} increase in scores after the prep class is between 105.2 and 166.6. Because the entire interval is above 100, there is evidence that on average students score more than 100 points higher after the course. Recall that this does not prove that the increase is \emph{due to}  the course.}
+\begin{exercise}In the SAT preparation company example, we saw that $\bar{x}_{\text{\emph{diff}}}$ was 135.9 and $s_{\text{\emph{diff}}}$ was 82.2. That~is, the average change in students' scores after the class was a 135.9 point increase and the SD of the change or difference in their scores was 82.2 points. Construct a 95\% confidence interval to estimate the true average change in score after taking the class. Is there evidence for the company's claim that students score an average of 100 points higher after the class?\footnote{Because this is a before and after scenario, we use a matched pairs $t$-interval. The conditions were verified in the previous section. The confidence interval is : $135.9\ \pm 2.045(15.0) \to (105.2, 166.6)$. We can be 95\% confident that the true \emph{average} increase in scores after the prep class is between 105.2 and 166.6. Because the entire interval is above 100, there is evidence that on average students score more than 100 points higher after the course. Recall that this does not prove that the increase is \emph{due to}  the course.}
 \end{exercise}
 
 \textA{\newpage}
@@ -794,7 +794,7 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{T-Test}.
 \item Right arrow to \calctext{TESTS}.
 \item Down arrow and choose \calctext{2:T-Test}.
 \item Choose \calctext{Data} if you have all the data or \calctext{Stats} if you have the mean and standard deviation.
-\item Let $\calctextmath{\mu_0}$ be the null or hypothesized value of $\mu_{diff}$.\vspace{-1.5mm}
+\item Let $\calctextmath{\mu_0}$ be the null or hypothesized value of $\mu_{\text{\emph{diff}}}$.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item If you choose \calctext{Data}, let \calctext{List} be \calctext{L3} or the list in which you entered the differences (don't forget to enter the differences!) and let \calctext{Freq} be \calctext{1}.
