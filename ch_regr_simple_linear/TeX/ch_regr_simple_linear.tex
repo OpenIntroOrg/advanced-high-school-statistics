@@ -782,7 +782,7 @@ The entries in the first column represent the least squares estimates, $b_0$ and
 
 We previously used a $T$ test statistic for hypothesis testing in the context of numerical data. Regression is very similar. In the hypotheses we consider, the null value for the slope is 0, so we can compute the test statistic using the $T$ score formula:
 \begin{align*}
-T = \frac{\text{estimate} - \text{null value}}{\text{SE}} = \frac{-1.0010 - 0}{0.8717} = -1.15
+T = \frac{\text{estimate} - \text{null value}}{SE} = \frac{-1.0010 - 0}{0.8717} = -1.15
 \end{align*}
 We can look for the one-sided p-value -- shown in Figure~\ref{oneSidedTailForMidtermUnemploymentHT} -- using the probability table for the $t$-distribution in Appendix~\ref{tDistributionTable} on page~\pageref{tDistributionTable}.
 
@@ -853,11 +853,11 @@ If conditions for fitting the regression line do not hold, then the methods pres
 \item Write the hypotheses in plain language.  No mathematical notation is needed for this test.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item H$_0$: $\beta_1=0$, There is no significant linear relationship between [x] and~[y]. 
-\item H$_A$: $\beta_1 \ne,\text{ or }<, \text{ or }>0$, There is a significant or significant negative or significant positive linear relationship between [x] and [y].  
+\item $H_0$: $\beta_1=0$, There is no significant linear relationship between [x] and~[y]. 
+\item $H_A$: $\beta_1 \ne,\text{ or }<, \text{ or }>0$, There is a significant or significant negative or significant positive linear relationship between [x] and [y].  
 \end{itemize}
 \item Identify the significance level $\alpha$.
-\item Calculate the test statistic and $df$: $T = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$\vspace{-1.5mm}
+\item Calculate the test statistic and $df$: $T = \frac{\text{point estimate} - \text{null value}}{SE \text{ of estimate}}$\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item The point estimate is $b_1$
@@ -885,7 +885,7 @@ If conditions for fitting the regression line do not hold, then the methods pres
 \item The residual plot has no pattern.
 \end{itemize}
 \item Plug in the numbers and write the interval in the form
-$$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
+$$\text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}$$
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item The point estimate is $b_1$.
@@ -893,7 +893,7 @@ $$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
 \item The critical value $t^*$ can be found on the $t$-table at row $df = n-2$
 \item $SE$ can be located on regression summary table next to value of $b_1$
 \end{itemize}
-\item Evaluate the CI and write in the form ( $\_$ , $\_$ ).
+\item Evaluate the CI and write in the form (\underline{\ \ \ \ \ }, \underline{\ \ \ \ \ }).
 \item Interpret the interval:  ``We are [XX]\% confident that this interval contains the true average increase in [y] for each additional [unit] of [x].
 \item State the conclusion to the original question.
 \end{enumerate}}
@@ -912,10 +912,10 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
 \setlength{\itemsep}{0mm}
 \item Choose \calctext{STAT}.
 \item Right arrow to \calctext{TESTS}.
-\item Down arrow and choose \calctext{F:LinRegTest}. (On TI-83 it is \calctext{E:LinRegTTest}).
+\item Down arrow and choose \calctext{F:LinRegTTest}. (On TI-83 it is \calctext{E:LinRegTTest}).
 \item Let \calctext{Xlist} be \calctext{L1} and \calctext{Ylist} be \calctext{L2}. (Don't forget to enter the $x$ and $y$ values in \calctext{L1} and \calctext{L2} before doing this test.)
 \item Let \calctext{Freq} be \calctext{1}.
-\item Choose $\calctextmath{\ne}$, $\calctextmath{<}$, or $\calctextmath{>}$ to correspond to H$_A$.
+\item Choose $\calctextmath{\ne}$, $\calctextmath{<}$, or $\calctextmath{>}$ to correspond to $H_A$.
 \item Leave \calctext{RegEQ} blank.
 \item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\[1mm]
 \begin{tabular}{ll l ll}
@@ -962,7 +962,7 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTInt}.
 \setlength{\itemsep}{0mm}
 \item Choose \calctext{STAT}.
 \item Right arrow to \calctext{TESTS}.
-\item Down arrow and choose \calctext{G:} \calctext{LinRegTest}.\vspace{-1.5mm}
+\item Down arrow and choose \calctext{G:} \calctext{LinRegTInt}.\vspace{-1.5mm}
   \begin{itemize}
   \item This test is not built into the TI-83.
   \end{itemize}

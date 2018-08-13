@@ -27,9 +27,9 @@ When certain conditions are satisfied, the sampling distribution associated with
 \subsection{Using the z-distribution for inference when $\mu$ is unknown and $\sigma$ is known}
 \label{nearlyNormalPopWithKnownSD}
 
-We have seen in Section~\ref{distributionofxbar} that the distribution of a sample mean is normal if the population is normal or if the sample size is at least 30. In these problems, we used the population mean and population standard deviation to find a Z-score. However, in the case of inference, the parameters will be unknown. In rare circumstances we may know the standard deviation of a population, even though we do not know its mean. For example, in some industrial process, the mean may be known to shift over time, while the standard deviation of the process remains the same. In these cases, we can use the normal model as the basis for our inference procedures. We use $\bar{x}$ as our point estimate for $\mu$ and the SD formula calculated in Section~\ref{distributionofxbar}: $SD =\frac{\sigma}{\sqrt{n}}$.
+We have seen in Section~\ref{distributionofxbar} that the distribution of a sample mean is normal if the population is normal or if the sample size is at least 30. In these problems, we used the population mean and population standard deviation to find a Z-score. However, in the case of inference, the parameters will be unknown. In rare circumstances we may know the standard deviation of a population, even though we do not know its mean. For example, in some industrial process, the mean may be known to shift over time, while the standard deviation of the process remains the same. In these cases, we can use the normal model as the basis for our inference procedures. We use $\bar{x}$ as our point estimate for $\mu$ and the $SD$ formula calculated in Section~\ref{distributionofxbar}: $SD =\frac{\sigma}{\sqrt{n}}$.
 \begin{align*}
-\text{CI:  } \bar{x} &\ \pm \ Z^*\frac{\sigma}{\sqrt{n}}
+\text{CI:  } \bar{x} &\ \pm \ z^{\star}\frac{\sigma}{\sqrt{n}}
 &&Z = \frac{\bar{x} - \text{null value}}{\frac{\sigma}{\sqrt{n}}}
 \end{align*}
 
@@ -37,7 +37,7 @@ What happens if we do not know the population standard deviation $\sigma$, as is
 \begin{align*}
 SE= \frac{s}{\sqrt{n}}
 \end{align*}
-However, when we do this we run into a problem:  when carrying out our inference procedures we will be trying to estimate \emph{two} quantities: both the mean and the standard deviation. Looking at the SD and SE formulas, we can make some important observations that will give us a hint as to what will happen when we use $s$ instead of $\sigma$.
+However, when we do this we run into a problem:  when carrying out our inference procedures we will be trying to estimate \emph{two} quantities: both the mean and the standard deviation. Looking at the $SD$ and $SE$ formulas, we can make some important observations that will give us a hint as to what will happen when we use $s$ instead of $\sigma$.
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item For a given population, $\sigma$ is a fixed number and does not vary.
@@ -164,8 +164,8 @@ To proceed with the $t$-distribution for inference about a single mean, we must 
 \end{description}
 When examining a sample mean and estimated standard deviation from a sample of $n$ independent and nearly normal observations, we use a $t$-distribution with $n-1$ degrees of freedom~($df$). For example, if the sample size was 19, then we would use the $t$-distribution with $df=19-1=18$ degrees of freedom and proceed exactly as we did in Chapter~\ref{foundationsForInference}, except that \emph{now we use the $t$-table}.
 
-\begin{termBox}{\tBoxTitle{The $t$-distribution and the SE of a mean}
-In general, when the population mean is unknown, the population standard deviation will also be unknown. When this is the case, we estimate the population standard deviation with the sample standard deviation and we use SE instead of~SD.
+\begin{termBox}{\tBoxTitle{The $t$-distribution and the $SE$ of a mean}
+In general, when the population mean is unknown, the population standard deviation will also be unknown. When this is the case, we estimate the population standard deviation with the sample standard deviation and we use $SE$ instead of~$SD$.
 \begin{align*}
 SE_{\bar{x}}=\frac{s}{\sqrt{n}}
 \end{align*}
@@ -281,14 +281,14 @@ where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confiden
 \item Population is known to be normal OR $n\ge 30$ OR graph of sample is approximately symmetric with no outliers, making the assumption that the population is normal a reasonable one.
 \end{itemize}
 \item Plug in the numbers and write the interval in the form
-$$\text{point estimate } \pm  t^\star \times \text{SE of estimate}$$
+$$\text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}$$
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item The point estimate is $\bar{x}$
 \item $df = n-1$
-\item Plug in a critical value $t^\star$ using the $t$-table at row$=n-1$
+\item Plug in a critical value $t^{\star}$ using the $t$-table at row$=n-1$
 \item Use $SE = \frac{s}{\sqrt{n}}$
-\item Evaluate the CI and write in the form ( $\_$ , $\_$ )
+\item Evaluate the CI and write in the form (\underline{\ \ \ \ \ }, \underline{\ \ \ \ \ })
 \end{itemize}
 \item Interpret the interval:  ``We are [XX]\% confident that the true average of [...] is between [...] and [...]."
 \item State the conclusion to the original question.
@@ -403,11 +403,11 @@ The sample mean and sample standard deviation are 95.61 and 15.78 minutes, respe
 \item Write the hypotheses in plain language, then set them up in mathematical notation.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item H$_0: \mu = \mu_0$
-\item H$_0: \mu \ne \text{or} < \text{or} > \mu_0$
+\item $H_0$: $\mu = \mu_0$
+\item $H_A$: $\mu \ne \text{or} < \text{or} > \mu_0$
 \end{itemize}
 \item Identify the significance level $\alpha$.
-\item Calculate the test statistic and $df$: $T = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$
+\item Calculate the test statistic and $df$: $T = \frac{\text{point estimate} - \text{null value}}{SE \text{ of estimate}}$
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item The point estimate is $\bar{x}$
@@ -419,7 +419,7 @@ The sample mean and sample standard deviation are 95.61 and 15.78 minutes, respe
 \end{enumerate}}
 \end{termBox}
 
-\begin{exercise}Recall the example about the mercury content in croaker white fish (Pacific). Based on a sample of 15, a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. Carry out an appropriate test to determine if 0.25 is a reasonable value for the average mercury content.\footnote{We should carry out a 1-sample $t$-test. The conditions have already been checked. $H_0: \mu=0.25$; The true average mercury content is 0.25 ppm. $H_A: \mu \ne 0.25$; The true average mercury content is not equal to 0.25 ppm. Let $\alpha=0.05$. $SE = \frac{0.069}{\sqrt{15}} = 0.0178$. $T=\frac{0.287-0.25}{0.0178}=2.07$  $df=15-1=14$. p-value$=0.057>0.05$, so we do not reject the null hypothesis. We do not have sufficient evidence that the average mercury content in croaker white fish is not 0.25.}
+\begin{exercise}Recall the example about the mercury content in croaker white fish (Pacific). Based on a sample of 15, a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. Carry out an appropriate test to determine if 0.25 is a reasonable value for the average mercury content.\footnote{We should carry out a 1-sample $t$-test. The conditions have already been checked. $H_0$: $\mu=0.25$; The true average mercury content is 0.25 ppm. $H_A$: $\mu \ne 0.25$; The true average mercury content is not equal to 0.25 ppm. Let $\alpha=0.05$. $SE = \frac{0.069}{\sqrt{15}} = 0.0178$. $T=\frac{0.287-0.25}{0.0178}=2.07$  $df=15-1=14$. p-value$=0.057>0.05$, so we do not reject the null hypothesis. We do not have sufficient evidence that the average mercury content in croaker white fish is not 0.25.}
 \end{exercise}
 
 \textA{\newpage}
@@ -440,9 +440,9 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{T-Test}.
 \item Let $\mu_0$ be the null or hypothesized value of $\mu$.
 \begin{itemize}
 \item If you choose \calctext{Data}, let \calctext{List} be \calctext{L1} or the list in which you entered your data (don't forget to enter the data!) and let \calctext{Freq} be \calctext{1}.
-\item If you choose \calctext{Stats}, enter the mean, SD, and sample size.
+\item If you choose \calctext{Stats}, enter the mean, $SD$, and sample size.
 \end{itemize}
-\item Choose $\calctextmath{\ne}$, $\calctextmath{<}$, or $\calctextmath{>}$ to correspond to H$_A$.
+\item Choose $\calctextmath{\ne}$, $\calctextmath{<}$, or $\calctextmath{>}$ to correspond to $H_A$.
 \item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\
 \begin{tabular}{ll l ll}
 \calctext{t} & t statistic &\quad&
@@ -497,14 +497,14 @@ Use \calcbutton{STAT}, \calctext{TESTS}, \calctext{TInterval}.
 \item Choose \calctext{Data} if you have all the data or \calctext{Stats} if you have the mean and standard deviation.
 \begin{itemize}
 \item If you choose \calctext{Data}, let \calctext{List} be \calctext{L1} or the list in which you entered your data (don't forget to enter the data!) and let \calctext{Freq} be \calctext{1}.
-\item If you choose \calctext{Stats}, enter the mean, SD, and sample size.
+\item If you choose \calctext{Stats}, enter the mean, $SD$, and sample size.
 \end{itemize}
 \item Let \calctext{C-Level} be the desired confidence level.
 \item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns:\\
 \begin{tabular}{l l}
 \calctext{(\underline{\ \ },\underline{\ \ })} & the confidence interval \\
 $\calctextmath{\bar{x}}$ & the sample mean \\
-\calctext{Sx} & the sample SD \\
+\calctext{Sx} & the sample $SD$ \\
 \calctext{n} & the sample size
 \end{tabular}
 \end{enumerate}
@@ -642,7 +642,7 @@ To visualize the p-value, the sampling distribution of $\bar{x}_{\text{\emph{dif
 \end{figure}
 
 To find the tail areas, we compute the test statistic, which is the $T$ score of $\bar{x}_{\text{\emph{diff}}}$ under the null condition that the actual mean difference is 0:
-$$t = \frac{\bar{x}_{\text{\emph{diff}}} - 0}{SE_{\bar{x}_{\text{\emph{diff}}}_{\text{\emph{diff}}}}} = \frac{12.76 - 0}{1.67} = 7.65  \quad \quad \quad df=72$$
+$$t = \frac{\bar{x}_{\text{\emph{diff}}} - 0}{SE_{\bar{x}_{\text{\emph{diff}}}}}= \frac{12.76 - 0}{1.67} = 7.65  \quad \quad \quad df=72$$
 This $T$ score is so large it isn't even in the table, which ensures the single tail area will be 0.0002 or smaller. A calculator gives a tail area as $4.5\times 10^{-11}$. Since the p-value corresponds to both tails in this case and the $t$-distribution is symmetric, the p-value can be estimated as twice the one-tail area:
 $$\text{p-value} = 2\times (\text{one tail area}) \approx 2\times 4.5\times 10^{-11} = 9\times 10^{-11}\approx 0$$
 Because the p-value is less than 0.05, we reject the null hypothesis. We have found convincing evidence that Amazon is, on average, cheaper than the UCLA bookstore for UCLA course textbooks.
@@ -667,11 +667,11 @@ Because the p-value is less than 0.05, we reject the null hypothesis. We have fo
 \item Write the hypotheses in plain language, then set them up in mathematical notation.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item H$_0: \mu_{\text{\emph{diff}}}=0$
-\item H$_0: \mu_{\text{\emph{diff}}} \ne \text{or} < \text{or} > 0$
+\item $H_0$: $\mu_{\text{\emph{diff}}}=0$
+\item $H_A$: $\mu_{\text{\emph{diff}}} \ne \text{or} < \text{or} > 0$
 \end{itemize}
 \item Identify the significance level $\alpha$.
-\item Calculate the test statistic and $df$: $\text{t} = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$
+\item Calculate the test statistic and $df$: $\text{t} = \frac{\text{point estimate} - \text{null value}}{SE \text{ of estimate}}$
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item The point estimate is $\bar{x}_{\text{\emph{diff}}}$
@@ -759,21 +759,21 @@ We are 95\% confident that the UCLA bookstore is, on average, between \$9.42 and
 \item Population of diferrences is known to be normal OR $n_{\text{\emph{diff}}}\ge 30$ OR graph of sample differences is approximately symmetric with no outliers, making the assumption that the population of differences is normal a reasonable one.
 \end{itemize}
 \item Plug in the numbers and write the interval in the form
-$$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
+$$\text{point estimate}\ \pm \ t^{\star} \times SE \ \text{of estimate}$$
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item The point estimate of $\bar{x}_{\text{\emph{diff}}}$
 \item $df=n_{\text{\emph{diff}}}-1$
-\item Plug in the critical value $t^\star$ using the $t$-table at row $n_{\text{\emph{diff}}}-1$
+\item Plug in the critical value $t^{\star}$ using the $t$-table at row $n_{\text{\emph{diff}}}-1$
 \item Use $SE = \frac{s_{\text{\emph{diff}}}}{\sqrt{n_{\text{\emph{diff}}}}}$
 \end{itemize}
-\item Evaluate the CI and write in the form ( $\_$ , $\_$ ).
+\item Evaluate the CI and write in the form (\underline{\ \ \ \ \ }, \underline{\ \ \ \ \ }).
 \item Interpret the interval: ``We are [XX]\% confident that the true mean of the differences in [...] is between [...] and [...]."
 \item State the conclusion to the original question.
 \end{enumerate}}
 \end{termBox}
 
-\begin{exercise}In the SAT preparation company example, we saw that $\bar{x}_{\text{\emph{diff}}}$ was 135.9 and $s_{\text{\emph{diff}}}$ was 82.2. That~is, the average change in students' scores after the class was a 135.9 point increase and the SD of the change or difference in their scores was 82.2 points. Construct a 95\% confidence interval to estimate the true average change in score after taking the class. Is there evidence for the company's claim that students score an average of 100 points higher after the class?\footnote{Because this is a before and after scenario, we use a matched pairs $t$-interval. The conditions were verified in the previous section. The confidence interval is : $135.9\ \pm 2.045(15.0) \to (105.2, 166.6)$. We can be 95\% confident that the true \emph{average} increase in scores after the prep class is between 105.2 and 166.6. Because the entire interval is above 100, there is evidence that on average students score more than 100 points higher after the course. Recall that this does not prove that the increase is \emph{due to}  the course.}
+\begin{exercise}In the SAT preparation company example, we saw that $\bar{x}_{\text{\emph{diff}}}$ was 135.9 and $s_{\text{\emph{diff}}}$ was 82.2. That~is, the average change in students' scores after the class was a 135.9 point increase and the $SD$ of the change or difference in their scores was 82.2 points. Construct a 95\% confidence interval to estimate the true average change in score after taking the class. Is there evidence for the company's claim that students score an average of 100 points higher after the class?\footnote{Because this is a before and after scenario, we use a matched pairs $t$-interval. The conditions were verified in the previous section. The confidence interval is : $135.9\ \pm \ 2.045(15.0) \to (105.2, 166.6)$. We can be 95\% confident that the true \emph{average} increase in scores after the prep class is between 105.2 and 166.6. Because the entire interval is above 100, there is evidence that on average students score more than 100 points higher after the course. Recall that this does not prove that the increase is \emph{due to}  the course.}
 \end{exercise}
 
 \textA{\newpage}
@@ -798,15 +798,15 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{T-Test}.
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item If you choose \calctext{Data}, let \calctext{List} be \calctext{L3} or the list in which you entered the differences (don't forget to enter the differences!) and let \calctext{Freq} be \calctext{1}.
-\item If you choose \calctext{Stats}, enter the mean, SD, and sample size of the differences.
+\item If you choose \calctext{Stats}, enter the mean, $SD$, and sample size of the differences.
 \end{itemize}
-\item Choose $\calctextmath{\ne}$, $\calctext{<}$, or $\calctext{>}$ to correspond to H$_A$.
+\item Choose $\calctextmath{\ne}$, $\calctext{<}$, or $\calctext{>}$ to correspond to $H_A$.
 \item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns:
 \begin{tabular}{l l}
 \calctext{t} & t statistic \\
 \calctext{p} & p-value \\
 $\calctextmath{\bar{x}}$ & the sample mean of the differences \\
-\calctext{Sx} & the sample SD of the differences \\
+\calctext{Sx} & the sample $SD$ of the differences \\
 \calctext{n} & the sample size of the differences
 \end{tabular}
 \end{enumerate}
@@ -825,14 +825,14 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{TInterval}.
 \item Choose \calctext{Data} if you have all the data or \calctext{Stats} if you have the mean and standard deviation.\vspace{-1.5mm}
 \begin{itemize}
 \item If you choose \calctext{Data}, let \calctext{List} be \calctext{L3} or the list in which you entered the differences (don't forget to enter the differences!) and let \calctext{Freq} be \calctext{1}.
-\item If you choose \calctext{Stats}, enter the mean, SD, and sample size of the differences.
+\item If you choose \calctext{Stats}, enter the mean, $SD$, and sample size of the differences.
 \end{itemize}
 \item Let \calctext{C-Level} be the desired confidence level.
 \item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\[1mm]
 \begin{tabular}{l l}
 \calctext{(\underline{\ \ },\underline{\ \ })} & the confidence interval for the mean of the differences \\
 $\calctextmath{\bar{x}}$ & the sample mean of the differences \\
-\calctext{Sx} & the sample SD of the differences \\
+\calctext{Sx} & the sample $SD$ of the differences \\
 \calctext{n} & the number of differences in the sample
 \end{tabular}
 \end{enumerate}
@@ -1049,11 +1049,11 @@ As before, we provide a summary of the steps to perform when carrying out such a
 \item Write the hypotheses in plain language, then set them up in mathematical notation.\vspace{-1.5mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item H$_0: \mu_1 = \mu_2$ or  $\mu_1 - \mu_2 = 0$
-\item H$_0: \mu_1 \ne \text{or} < \text{or} > \mu_2$
+\item $H_0$: $\mu_1 = \mu_2$ or  $\mu_1 - \mu_2 = 0$
+\item $H_A$: $\mu_1 \ne \text{or} < \text{or} > \mu_2$
 \end{itemize}
 \item Identify the significance level $\alpha$.
-\item Calculate the test statistic and $df$: $T = \frac{\text{point estimate} - \text{null value}}{\text{SE of estimate}}$
+\item Calculate the test statistic and $df$: $T = \frac{\text{point estimate} - \text{null value}}{SE \text{ of estimate}}$
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item The point estimate is $\bar{x}_1-\bar{x}_2$
@@ -1117,9 +1117,9 @@ Confidence intervals take the form
 \begin{align*}
 \text{point estimate} \ \pm \text{critical value }\times SE
 \end{align*}
-Using the point estimate and the SE calculated in the previous section, we get the general form of a confidence interval for a difference in means, $\mu_1-\mu_2$.
+Using the point estimate and the $SE$ calculated in the previous section, we get the general form of a confidence interval for a difference in means, $\mu_1-\mu_2$.
 \begin{align*}
-(\bar{x}_1-\bar{x}_2) \ \pm \ t^\star\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
+(\bar{x}_1-\bar{x}_2) \ \pm \ t^{\star}\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
 \end{align*}
 
 \begin{exercise}
@@ -1151,15 +1151,15 @@ That is, we are 99\% confident that the true improvement in heart pumping functi
 \item Both populations are known to be normal OR $n_1 \text{ and } n_2\ge 30$ OR graphs of both samples are approximately symmetric with no outliers, i.e. the assumption that the populations are normal is reasonable.
 \end{itemize}
 \item Plug in the numbers and write the interval in the form
-$$\text{point estimate } \pm t^\star \times \text{SE of estimate}$$
+$$\text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}$$
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item The point estimate is $\bar{x}_1-\bar{x}_2$
 \item Find and record the $df$ using a calculator
-\item Find the critical value $t^\star$ using the $t$-table at row = $df$ (round down to nearest integer)
+\item Find the critical value $t^{\star}$ using the $t$-table at row = $df$ (round down to nearest integer)
 \item Use $SE = \sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}$
 \end{itemize}
-\item Evaluate the CI and write in the form ( $\_$ , $\_$ ).
+\item Evaluate the CI and write in the form (\underline{\ \ \ \ \ }, \underline{\ \ \ \ \ }).
 \item Interpret the interval:  ``We are [XX]\% confident that the true difference in the mean of [...] is between [...] and [...]."
 \item State the conclusion to the original question.
 \end{enumerate}}
@@ -1210,7 +1210,7 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{2-SampTTest}.
 \item If you choose \calctext{Data}, let \calctext{List1} be \calctext{L1} or the list that contains sample 1 and let \calctext{List2} be \calctext{L2} or the list that contains sample 2 (don't forget to enter the data!). Let \calctext{Freq1} and \calctext{Freq2} be \calctext{1}.
 \item If you choose \calctext{Stats}, enter the mean, SD, and sample size for sample 1 and for sample 2
 \end{itemize}
-\item Choose $\calctextmath{\ne}$, $\calctextmath{<}$, or $\calctextmath{>}$ to correspond to H$_A$.
+\item Choose $\calctextmath{\ne}$, $\calctextmath{<}$, or $\calctextmath{>}$ to correspond to $H_A$.
 \item Let \calctext{Pooled} be \calctext{NO}.
 \item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\[1mm]
 \begin{tabular}{ll l ll}
