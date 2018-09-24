@@ -93,34 +93,38 @@ We are 90\% confident that the true percent of Americans who approve of the job 
 \textA{\newpage}
 
 \begin{termBox}{\tBoxTitle{Constructing a confidence interval for a proportion}
-A complete solution to a confidence interval question for a single proportion includes the following steps:
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item State the name of the confidence interval being used.\vspace{-1.5mm}
+To carry out a complete confidence interval procedure to estimate a single proportion $p$,
+\\
+\\
+\inferencestep{Identify} \vspace{-1mm}
+\begin{itemize} 
+\item[] the parameter, e.g. the true proportion of U.S. residents that are over age 65, and the confidence level, C\%, to be used.  
+\end{itemize}
+\inferencestep{Choose} \vspace{-1mm}
+\begin{itemize}
+\item[] \term{1-proportion Z-interval} 
+\end{itemize}
+\inferencestep{Check}\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item 1-proportion Z-interval
+\item[] 1. Data come from a random sample.
+\item[] 2. $n\hat{p}\ge 10$ and $n(1-\hat{p})\ge 10$  \quad  (Make sure to plug in numbers.) 
+
 \end{itemize}
-\item Verify conditions.\vspace{-1.5mm}
+\inferencestep{Calculate}  
 \begin{itemize}
-\setlength{\itemsep}{0mm}
-\item A simple random sample.
-\item $n\hat{p} \geq10$ and $n(1-\hat{p})\geq10$.
-\end{itemize}
-\item Plug in the numbers and write the interval in the form\vspace{-1.5mm}
-\begin{align*}
-\text{point estimate}\ \pm \ z^{\star} \times SE \ \text{of estimate}
-\end{align*}
+\item[] $\text{point estimate}\ \pm\ z^{\star} \times SE\ \text{of estimate}$
 \begin{itemize}
-\item The point estimate is $\hat{p}$.
-\item Critical value $z^{\star}=1.96$ for a 95\% CI, \\
-otherwise find $z^{\star}$ using the $t$-table at row $\infty$.
-\item Use $SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$.
+\item[] point estimate: the sample proportion $\hat{p}$
+\item[] $SE$ of estimate:  $\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$
+\item[] $z^{\star}$: use a $t$-table at row $\infty$ and confidence level C\%
 \end{itemize}
-\item Evaluate the CI and write in the form (\underline{\ \ \ \ \ }, \underline{\ \ \ \ \ }).
-\item Interpret the interval:  ``We are C\% confident that the true \emph{proportion} of [...] is between \underline{\ \ \ \ \ } and \underline{\ \ \ \ \ }."
-\item State the conclusion to the original question.
-\end{enumerate}}
+\item[] (\underline{\ \ \ \ \ }, \underline{\ \ \ \ \ })
+\end{itemize}
+\inferencestep{Conclude}\vspace{-1mm}
+\begin{itemize}
+\item[] We are C\%  confident that the true \emph{proportion} of [...] is between \underline{\ \ \ \ \ } and  \underline{\ \ \ \ \ }. If applicable, draw a conclusion based on whether the interval is entirely above, is entirely below, or contains the value of interest. 
+\end{itemize}}
 \end{termBox}
 
 \begin{exercise}
@@ -199,37 +203,42 @@ A picture featuring the p-value is shown in Figure~\ref{pValueForCampaignManager
 \label{pValueForCampaignManagerClaimOfMoreThan50PercentSupport}
 \end{figure}
 
-\begin{termBox}{\tBoxTitle{Hypothesis test for a proportion}
-A complete solution to a test of hypothesis problem for a single proportion should include the following steps:
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item State the name of the test being used.
+\begin{termBox}{\tBoxTitle{Hypothesis testing for a proportion}
+To carry out a complete hypothesis test to test the claim that a single proportion $p$ is equal to a null value $p_0$,
+\\
+\\
+\inferencestep{Identify}\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item 1-proportion Z-test
+\item[] $H_0$: $p = p_0$  
+\item[]  $H_A$: $p \ne p_0$;  \quad $H_A$: $p > p_0$; \quad or \quad $H_A$: $p < p_0$ 
+\item[] and the significance level $\alpha$ to be used.
+\end{itemize} 
+\inferencestep{Choose}  \vspace{-1mm}
+\begin{itemize}
+\item[] \term{1-proportion Z-test} 
 \end{itemize}
-\item Verify conditions to ensure the standard error estimate is reasonable and the point estimate is nearly normal and unbiased.\vspace{-1.5mm}
-  \begin{itemize}
-  \setlength{\itemsep}{0mm}
-  \item A simple random sample.
-  \item $np_0\geq10$ and $n(1-p_0)\geq10$ (use hypothesized $p_0$, not sample $\hat{p}$).
-  \end{itemize}
-\item Write the hypotheses in plain language and mathematical notation.\vspace{-1.5mm}
-  \begin{itemize}
-  \setlength{\itemsep}{0mm}
-  \item $H_0$: $p = p_0$, where $p_0$ is the hypothesized value of $p$
-  \item $H_A$: $p \ne \text{or} < \text{or} > p_0$
-  \end{itemize}
-\item Identify the significance level $\alpha$.
-\vspace{-1.5mm}
-\item Calculate the test statistic: $Z = \frac{\text{point estimate} - \text{null value}}{SE \text{ of estimate}}$
-  \begin{itemize}
-  \item The point estimate is $\hat{p}$.
-  \item Use $SE = \sqrt{\frac{p_0(1-p_0)}{n}}$ \quad(plug in hypothesized $p_0$, not sample $\hat{p}$).
-  \end{itemize}
-\item Find the p-value and compare it to $\alpha$ to determine whether to reject or not reject $H_0$.
-\item Write the conclusion in the context of the question.
-\end{enumerate}}
+ \inferencestep{Check}\vspace{-1mm}
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[] 1. Data come from a random sample.
+\item[] 2. $np_0\geq10$ and $n(1-p_0)\geq10$ \quad  (Make sure to plug in numbers.) 
+\end{itemize}
+ \inferencestep{Calculate}  
+\begin{itemize}
+\item[] $Z = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}$
+\begin{itemize}
+\item[] point estimate: the sample proportion $\hat{p}$
+\item[] $SE$ of estimate:  $\sqrt{\frac{p_0(1-p_0)}{n}}$
+\item[] null value: $p_0$
+\end{itemize}
+\item[] p-value = (based on the Z-statistic and the direction of $H_A$)
+\end{itemize}
+ \inferencestep{Conclude}   \vspace{-1mm}
+\begin{itemize}
+\item[] The p-value is $< \alpha$, so we reject $H_0$; there is sufficient evidence that [$H_A$ in context]. \quad OR
+\item[] The p-value is $> \alpha$, so we do not reject $H_0$; there is not sufficient evidence that [$H_A$ in context].
+\end{itemize}}
 \end{termBox}
 
 \begin{exercise}
@@ -544,31 +553,42 @@ We are 90\% confident that the approval rating for the 2010 healthcare law chang
 \index{data!health care|)}
 \end{example}
 
-\begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for the difference of two proportion}
-\begin{enumerate}
+\begin{termBox}{\tBoxTitle{Constructing a confidence interval for the difference of two proportions}
+To carry out a complete confidence interval procedure to estimate the difference of two proportions $p_1-p_2$,
+\\
+\\
+ \inferencestep{Identify} \vspace{-1mm}
+\begin{itemize}
+\item[]  the parameter, e.g. the true difference in the proportion of 17 and 18 year olds with a summer job [prop. of 18 year olds $-$ prop. of 17 year olds], and the confidence level, C\%, to be used.  
+\end{itemize} \vspace{-1mm}
+\inferencestep{Choose} \vspace{-1mm}
+\begin{itemize}
+\item[] \term{2-proportion Z-interval} 
+\end{itemize}
+ \inferencestep{Check}\vspace{-1mm}
+\begin{itemize}
 \setlength{\itemsep}{0mm}
-\item State the name of the CI being used.\vspace{-1.5mm}
-\begin{itemize}
-\item 2-proportion Z-interval
+\item[] 1.  Data come from 2 independent random samples or from 2 randomly
+\item[] \quad \  assigned treatments.
+\item[] 2.  $n_1\hat{p}_1\geq10$, $n_1(1-\hat{p}_1)\geq10$,  $n_2\hat{p}_2\geq10$, and $n_2(1-\hat{p}_2)\geq10$
 \end{itemize}
-\item Verify conditions.\vspace{-1.5mm}
+ \inferencestep{Calculate}  
 \begin{itemize}
-\item 2 independent random samples OR 2 randomly allocated treatments.
-\item $n_1\hat{p}_1\geq10$, $n_1(1-\hat{p}_1)\geq10$  \newline $n_2\hat{p}_2\geq10$, $n_2(1-\hat{p}_2)\geq10$
-\end{itemize}
-\item Plug in the numbers and write the interval in the form
-$$\text{point estimate}\ \pm \ z^{\star} \times SE \ \text{of estimate}$$
+\item[] $\text{point estimate}\ \pm\ z^{\star} \times SE\ \text{of estimate}$
 \begin{itemize}
-\item The point estimate is $\hat{p}_1-\hat{p}_2$.
-\item Use critical value $z^{\star}$ = 1.96 for a 95\% CI,\\
-	otherwise find $z^{\star}$ using the $t$-table at row $\infty$.
-\item Use $SE = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$.
+\item[] point estimate:  the difference of sample proportions $\hat{p}_1 - \hat{p}_2$
+\item[] $SE$ of estimate:  $\sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$\item[] $z^{\star}$: use a $t$-table at row $\infty$ and confidence level C\%
 \end{itemize}
-\item Evaluate the CI and write in the form (\underline{\ \ \ \ \ }, \underline{\ \ \ \ \ }).
-\item Interpret the interval: ``We are C\% confident that the true \emph{difference in the proportion of} [...] is between \underline{\ \ \ \ \ } and \underline{\ \ \ \ \ }.
-\item State the conclusion to the original question.
-\end{enumerate}}
+\item[] (\underline{\ \ \ \ \ }, \underline{\ \ \ \ \ })
+\end{itemize}
+ \inferencestep{Conclude}\vspace{-1mm}
+\begin{itemize}
+\item[] We are C\% confident that the true \emph{difference in the proportion} of [...]  is between \underline{\ \ \ \ \ } and \underline{\ \ \ \ \ }.  If applicable, draw a conclusion based on whether the interval is entirely above, is entirely below, or contains the value 0.  
+
+\end{itemize}}
 \end{termBox}
+
+
 \textA{\newpage}
 
 \begin{example}{A remote control car company is considering a new manufacturer for wheel gears. The new manufacturer would be more expensive but their higher quality gears are more reliable, resulting in happier customers and fewer warranty claims. However, management must be convinced that the more expensive gears are worth the conversion before they approve the switch. The quality control engineer collects a sample of gears, examining 1000 gears from each company and finds that 899 gears pass inspection from the current supplier and 958 pass inspection from the prospective supplier. Using these data, construct a 95\% confidence interval for the difference in the proportion that pass inspection.}
@@ -687,42 +707,50 @@ We will use a significance level of $\alpha = 0.01$. All values are much larger 
 
 Next, we compute the test statistic using the standard error using the result of Guided Practice~\ref{verifySEOfPooledEstimateOf24DWithCancerNoCancerDogs}:
 \begin{eqnarray*}
-Z = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{0.067 - 0}{0.026} = 2.58
+Z = \frac{\text{point estimate} - \text{null value}}{SE\ \text{of estimate}}= \frac{0.067 - 0}{0.026} = 2.58
 \end{eqnarray*}
 Looking up $Z=2.58$ in the normal probability table: 0.9951. However this is the lower tail, and the upper tail represents the p-value: $1-0.9951 = 0.0049$. Because the p-value is smaller than $\alpha = 0.01$, we reject the null hypothesis and conclude that there is an association between dogs getting cancer and owners using 2,4-D.
 \end{example}
  
 \textA{\newpage}
 
-\begin{termBox}{\tBoxTitle[]{Hypothesis test for the difference of two proportions}
-\begin{enumerate}
+\begin{termBox}{\tBoxTitle{Hypothesis testing for the difference of two proportions}
+To carry out a complete hypothesis test to test the claim that two proportions $p_1$ and $p_2$ are equal to each other,
+\\
+\\
+\inferencestep{Identify}
+\begin{itemize}\vspace{-1mm}
 \setlength{\itemsep}{0mm}
-\item State the name of the test being used.
-\vspace{-1.5mm}
-\begin{itemize}
-\item 2-proportion Z-test
+\item[] $H_0$: $p_1=p_2$  
+\item[] $H_A$: $p_1\ne p_2$; \quad $H_A$: $p_1>p_2$; \quad or \quad $H_A$: $p_1<p_2$ 
+\item[] and the significance level $\alpha$ to be used.
 \end{itemize}
-\item Verify conditions to ensure the standard error estimate is reasonable and the point estimate is nearly normal and unbiased.\vspace{-1.5mm}
-  \begin{itemize}
-  \setlength{\itemsep}{0mm}
-  \item 2~independent random samples OR 2 randomly allocated treatments. 
-  \item Calculate the pooled sample proportion $\hat{p}$ and verify $n_1\hat{p}$, $n_2\hat{p}$, $n_1(1 - \hat{p})$, and $n_2(1 - \hat{p})$ are greater than or equal to 10.
-  \end{itemize}
-\item Write the hypotheses in plain language and using mathematical notation.\vspace{-1.5mm}
-  \begin{itemize}
-  \setlength{\itemsep}{0mm}
-  \item $H_0$: $p_1 = p_2$ (or $p_1 - p_2 = 0$)
-  \item $H_A$: $p_1 \ne \text{or} < \text{or} > p_2$
-  \end{itemize}
-\item Identify the significance level $\alpha$.
-\item Calculate the test statistic: $Z = \frac{\text{point estimate} - \text{null value}}{SE \text{ of estimate}}$
-  \begin{itemize}
-  \item The point estimate is $\hat{p}_1 - \hat{p}_2$.
-  \item Use $SE$ = $\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$.
-  \end{itemize}
-\item Find the p-value and compare it to $\alpha$ to determine whether to reject or not reject $H_0$.
-\item Write the conclusion in the context of the question.
-\end{enumerate}}
+ \inferencestep{Choose} \vspace{-1mm}
+\begin{itemize}
+\item[] \term{2-proportion Z-test} 
+\end{itemize}
+ \inferencestep{Check}\vspace{-1mm}
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[] 1.  Data come from 2 independent random samples or from 2 randomly
+\item[] \quad \  assigned treatments.
+\item[] 2.  $n_1\hat{p}_1\geq 10$, $n_1(1-\hat{p}_1)\geq 10$, $n_2\hat{p}_2\geq 10$, and $n_2(1-\hat{p}_2)\geq 10$
+\end{itemize}
+ \inferencestep{Calculate}  
+\begin{itemize}
+\item[] $Z = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}$
+\begin{itemize}
+\item[] point estimate: the difference of sample proportions $\hat{p}_1 - \hat{p}_2$
+\item[] $SE$ of estimate:  $\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$, where $\hat{p}$ is the pooled proportion
+\item[] null value: 0
+\end{itemize}
+\item[] p-value = (based on the Z-statistic and the direction of $H_A$)
+\end{itemize}
+ \inferencestep{Conclude}\vspace{-1mm}
+\begin{itemize}
+\item[] The p-value is $< \alpha$, so we reject $H_0$; there is sufficient evidence that [$H_A$ in context].  \quad OR
+\item[]The p-value is $> \alpha$, so we do not reject $H_0$; there is not sufficient evidence that [$H_A$ in context].
+\end{itemize}}
 \end{termBox}
 
 
@@ -1149,35 +1177,41 @@ There are two conditions that must be checked before performing a chi-square goo
 
 \subsection{Evaluating goodness of fit for a distribution}
 
-\begin{termBox}{\tBoxTitle[]{Goodness of fit test for a one-way table}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item State the name of the test being used.\vspace{-1.5mm}
+\begin{termBox}{\tBoxTitle{Goodness of fit test for a one-way table}
+ When there is one sample and we are comparing the distribution of a categorical variable to a specified or population distribution, e.g. using sample values to determine if a machine is producing M\&Ms with the specified distribution of color, 
+\\
+\\
+\inferencestep{Identify} \vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item $X^2$ goodness of fit test.
+\item[]  $H_0$: The distribution of [...] matches the specified or population distribution. 
+\item[] $H_A$: The distribution of [...] doesn't match the specified or population
+\item[] \quad \quad \ population distribution. 
+\item[] and the significance level $\alpha$ to be used.
 \end{itemize}
-\item Verify conditions.\vspace{-1.5mm}
+\inferencestep{Choose}\vspace{-1mm}
+\begin{itemize}
+\item[]  \term{$\mathbf{\chi^2}$ goodness of fit test}
+\end{itemize}
+\inferencestep{Check}\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item A simple random sample.
-\item All expected counts $\ge 5$ (calculate and record expected counts).
+\item[] 1.  Data come from a random sample.
+\item[] 2.  All expected counts are $\ge$ 5.  (Make sure to calculate expected counts!)
 \end{itemize}
-\item Write the hypotheses in plain language. No mathematical notation is needed for this test.\vspace{-1.5mm}
+\inferencestep{Calculate}\vspace{-1mm}  
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item $H_0$: The distribution of [...] matches [the expected distribution].
-\item $H_A$: The distribution of [....] does not match [the expected distribution]
+\item[] test statistic:  $\chi^2 =\sum{ \frac{\text{(observed } - \text{ expected})^2}{\text{expected}}}$ 
+\item[] $df =$ \# of categories $-$ 1
+\item[] p-value = (area to the \emph{right} of $\chi^2$-statistic with the appropriate $df$)
 \end{itemize}
-\item Identify the significance level $\alpha$.
-\item Calculate the test statistic and degrees of freedom.\vspace{-2mm}
-\begin{align*}
-X^2 &= \sum{\frac{\text{(observed counts - expected counts)}^2}{\text{expected counts}}} \\
-df &= (\# \text{ of categories} - 1)
-\end{align*}
-\item Find the p-value and compare it to $\alpha$ to determine whether to reject or not reject $H_0$.
-\item Write the conclusion in the context of the question.
-\end{enumerate}}
+\inferencestep{Conclude}
+\begin{itemize}\vspace{-1mm}
+\setlength{\itemsep}{0mm}
+\item[] The p-value is $< \alpha$, so we reject $H_0$; there is sufficient evidence that [$H_A$ in context]. \quad OR
+\item[] The p-value is $> \alpha$,so we do not reject $H_0$; there is not sufficient evidence that [$H_A$ in context].  
+\end{itemize}}
 \end{termBox}
 
 %\Comment{I propose removing this who section/example in favor of a simpler example}
@@ -1496,7 +1530,7 @@ When analyzing 2-by-2 contingency tables, use the two-proportion methods introdu
 There are two conditions that must be checked before performing a chi-square test of homogeneity. If these conditions are not met, this test should not be used.\vspace{-1mm}
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Mutliple random samples or randomly allocated treatments. ]Data collected by multiple independent random samples or multiple randomlly allocated treatments. Data can then be organized into a two-way table.
+\item[Mutliple random samples or randomly assigned treatments. ]Data collected by multiple independent random samples or multiple randomlly assigned treatments. Data can then be organized into a two-way table.
 \item[All Expected Counts at least 5. ] All of the expected counts must be at least~5.
 \vspace{-1mm}
 \end{description}}
@@ -1518,7 +1552,7 @@ Looking in Appendix~\ref{chiSquareProbabilityTable} on page~\pageref{chiSquarePr
 
 \subsection{The chi-square test of independence for two-way tables}
 
-The chi-square test of Independence proceeds exactly like the chi-square test of homogeneity, except that it applies when there is only one random sample (versus multiple random samples or an experiment with multiple randomly allocated treatments). The null claim is always that two variables are independent, while the alternate claim is that the variables are dependent.
+The chi-square test of Independence proceeds exactly like the chi-square test of homogeneity, except that it applies when there is only one random sample (versus multiple random samples or an experiment with multiple randomly assigned treatments). The null claim is always that two variables are independent, while the alternate claim is that the variables are dependent.
 
 \begin{example}{\index{data!approval ratings|(}Table~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises} summarizes the results of a Pew Research poll.\footnote{See the Pew Research website: {\scriptsize\oiRedirect{textbook-obama_and_congress_approval_2012}{www.people-press.org/2012/03/14/romney-leads-gop-contest-trails-in-matchup-with-obama}}. The counts in Table~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises} are approximate.} We would like to determine if three groups and approval ratings are associated. What are appropriate hypotheses for such a test?}\label{hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection}
 \begin{itemize}
@@ -1572,67 +1606,83 @@ There are two conditions that must be checked before performing a chi-square tes
 
 \subsection{Summarizing the chi-square tests for two-way tables}
 
-\begin{termBox}{\tBoxTitle[]{$X^2$ test of homogeneity}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item State the name of the test being used.
+\begin{termBox}{\tBoxTitle{$\chi^2$ test of homogeneity}
+ When there are multiple samples or treatments and we are comparing the distributionof a categorical variable across several groups, e.g. comparing the distribution ofrural/urban/suburban dwellers among 4 states, 
+\\
+\\
+\inferencestep{Identify} \vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item $X^2$ test of homogeneity
+\item[] $H_0$: The distribution of [...] is the same for each population/treatment.  
+\item[] $H_A$: The distribution of [...] is not the same for each population/treatment.   
+\item[] and the significance level $\alpha$ to be used.
 \end{itemize}
-\item Verify conditions.
+\inferencestep{Choose}\vspace{-1mm}
+\begin{itemize}
+\item[]  \term{$\mathbf{\chi^2}$ test of homogeneity}
+\end{itemize}
+\inferencestep{Check}\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item Multiple random samples or treatments.
-\item All expected counts $\ge 5$ (calculate and record expected counts).
+\item[] 1.  Data come from multiple random samples or from multiple randomly 
+\item[] \quad \ assigned treatments.
+\item[] 2.  All expected counts are $\ge 5$ (calculate and record expected counts).
 \end{itemize}
-\item Write the hypotheses in plain language. No mathematical notation is needed for this test.\vspace{-2mm}
+\inferencestep{Calculate}\vspace{-1mm}  
 \begin{itemize}
-\item $H_0$: distribution of [variable 1] matches the distribution of [variable 2].
-\item $H_A$: distribution of [variable 1] does not match the distribution of [variable 2].
+\setlength{\itemsep}{0mm}
+\item[] test statistic:  $\chi^2 =\sum{ \frac{\text{(observed } - \text{ expected})^2}{\text{expected}}}$ 
+\item[] $df = (\# \text{ of rows} - 1) \times (\# \text{ of columns} - 1)$
+\item[] p-value = (area to the \emph{right} of $\chi^2$-statistic with the appropriate $df$)
 \end{itemize}
-\item Identify the significance level $\alpha$.
-\item Calculate the test statistic and degrees of freedom.\vspace{-2mm}{\small
-\begin{align*}
-X^2 &= \sum{\frac{\text{(observed counts - expected counts)}^2}{\text{expected counts}}} \\
-df &= (\# \text{ of rows} - 1) \times (\# \text{ of columns} - 1)
-\end{align*}}%
-\item Find the p-value and compare it to $\alpha$ to determine whether to reject or not reject $H_0$.
-\item Write the conclusion in the context of the question.
-\end{enumerate}}
+\inferencestep{Conclude}
+\begin{itemize}\vspace{-1mm}
+\setlength{\itemsep}{0mm}
+\item[] The p-value is $< \alpha$, so we reject $H_0$; there is sufficient evidence that [$H_A$ in context]. \quad OR
+\item[] The p-value is $> \alpha$,so we do not reject $H_0$; there is not sufficient evidence that [$H_A$ in context].  
+\end{itemize}}
 \end{termBox}
+
 
 \textA{\newpage}
 
-\begin{termBox}{\tBoxTitle[]{$X^2$ test of independence}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item State the name of the test being used.\vspace{-2mm}
+\begin{termBox}{\tBoxTitle{$\chi^2$ test of independence}
+When there is one sample and we are looking for association or dependence between two categorical variables, e.g. testing for an association between gender and political party,
+\\
+\\
+\inferencestep{Identify} \vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item $X^2$ test of independence
+\item[] $H_0$: [variable 1] and [variable 2] are independent.
+\item[] $H_A$: [variable 1] and [variable 2] are dependent.
+\item[] and the significance level $\alpha$ to be used.
 \end{itemize}
-\item Verify conditions.\vspace{-2mm}
+\inferencestep{Choose}\vspace{-1mm}
+\begin{itemize}
+\item[]  \term{$\mathbf{\chi^2}$ test of independence}
+\end{itemize}
+\inferencestep{Check}\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item A simple random sample.
-\item All expected counts $\ge 5$ (calculate and record expected counts).
+\item[] 1. Data come from multiple random samples or from multiple randomly
+\item[] \quad \  assigned treatments.
+\item[] 2. All expected counts are $\ge 5$ (calculate and record expected counts).
 \end{itemize}
-\item Write the hypotheses in plain language. No mathematical notation is needed for this test.\vspace{-2mm}
+\inferencestep{Calculate}\vspace{-1mm}  
 \begin{itemize}
-\item $H_0$: [variable 1] and [variable 2] are independent.
-\item $H_A$: [variable 1] and [variable 2] are dependent.
+\setlength{\itemsep}{0mm}
+\item[] test statistic:  $\chi^2 =\sum{ \frac{\text{(observed } - \text{ expected})^2}{\text{expected}}}$ 
+\item[] $df = (\# \text{ of rows} - 1) \times (\# \text{ of columns} - 1)$
+\item[] p-value = (area to the \emph{right} of $\chi^2$-statistic with the appropriate $df$)
 \end{itemize}
-\item Identify the significance level $\alpha$.
-\item Calculate the test statistic and degrees of freedom.\vspace{-2mm}{\small
-\begin{align*}
-X^2 &= \sum{\frac{\text{(observed counts - expected counts)}^2}{\text{expected counts}}} \\
-df &= (\# \text{ of rows} - 1) \times (\# \text{ of columns} - 1)
-\end{align*}}%
-\item Find the p-value and compare it to $\alpha$ to determine whether to reject or not reject $H_0$.
-\item Write the conclusion in the context of the question.
-\end{enumerate}}
+\inferencestep{Conclude}
+\begin{itemize}\vspace{-1mm}
+\setlength{\itemsep}{0mm}
+\item[] The p-value is $< \alpha$, so we reject $H_0$; there is sufficient evidence that [$H_A$ in context]. \quad OR
+\item[] The p-value is $> \alpha$, so we do not reject $H_0$; there is not sufficient evidence that [$H_A$ in context].  
+\end{itemize}}
 \end{termBox}
+
 
 %\Comment{stole chapter exercise number 45 - not sure about footnote cite}
 

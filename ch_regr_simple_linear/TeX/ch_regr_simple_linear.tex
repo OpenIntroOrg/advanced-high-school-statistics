@@ -837,68 +837,81 @@ If conditions for fitting the regression line do not hold, then the methods pres
 
 \subsection{Summarizing inference procedures for linear regression}
 
-\begin{termBox}{\tBoxTitle[]{Hypothesis test for the slope of regression line}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item State the name of the test being used.\vspace{-1.5mm}
+\begin{termBox}{\tBoxTitle{Hypothesis test for the slope of regression line}
+To carry out a complete hypothesis test to test the claim that there is no linear relationship between two numerical variables, i.e. that $\beta_1=0$, 
+\\
+\\
+\inferencestep{Identify}\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item Linear regression $t$-test
+\item[] $H_0$: $\beta_1 = 0$  
+\item[]  $H_A$: $\beta_1 \ne 0$;  \quad $H_A$: $\beta_1 > 0$; \quad or \quad $H_A$: $\beta_1 < 0$ 
+\item[] and the significance level $\alpha$ to be used.
+\end{itemize} 
+\inferencestep{Choose}  \vspace{-1mm}
+\begin{itemize}
+\item[] \term{$t$-test for slope of regression line} 
 \end{itemize}
-\item Verify conditions.\vspace{-1.5mm}
+ \inferencestep{Check}\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item The residual plot has no pattern.
+\item[] 1.  Data come from a random sample or randomized experiment.
+\item[] 2.  The residual plot shows no pattern implying that a linear model is 
+\item[] \quad \ reasonable.\footnote{Technically, the residuals should be independent, nearly normal, and have constant standard deviation.}
 \end{itemize}
-\item Write the hypotheses in plain language.  No mathematical notation is needed for this test.\vspace{-1.5mm}
+ \inferencestep{Calculate}  
 \begin{itemize}
-\setlength{\itemsep}{0mm}
-\item $H_0$: $\beta_1=0$, There is no significant linear relationship between [x] and~[y]. 
-\item $H_A$: $\beta_1 \ne,\text{ or }<, \text{ or }>0$, There is a significant or significant negative or significant positive linear relationship between [x] and [y].  
-\end{itemize}
-\item Identify the significance level $\alpha$.
-\item Calculate the test statistic and $df$: $T = \frac{\text{point estimate} - \text{null value}}{SE \text{ of estimate}}$\vspace{-1.5mm}
+\item[] $T= \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}$, \quad $df=n-2$
 \begin{itemize}
-\setlength{\itemsep}{0mm}
-\item The point estimate is $b_1$
-\item $SE$ can be located on regression summary table next to value of $b_1$
-\item $df = n-2$
+\item[] point estimate: the sample slope $b_1$
+\item[] $SE$ of estimate:  $SE$ of slope (find using computer output)
+\item[] null value: 0
 \end{itemize}
-\item Find the p-value, compare it to $\alpha$, and state whether to reject or not reject the null hypothesis.
-\item Write the conclusion in the context of the question.
-\end{enumerate}}
+\item[] p-value = (based on the $t$-statistic, the $df$, and the direction of $H_A$)
+\end{itemize}
+ \inferencestep{Conclude}   \vspace{-1mm}
+\begin{itemize}
+\item[] The p-value is $< \alpha$, so we reject $H_0$; there is sufficient evidence that [$H_A$ in context]. \quad OR
+\item[] The p-value is $> \alpha$, so we do not reject $H_0$; there is not sufficient evidence that [$H_A$ in context].
+\end{itemize}}
 \end{termBox}
 
 \textA{\newpage}
 
-\begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for the slope of regression line}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item State the name of the CI being used.\vspace{-1.5mm}
+\begin{termBox}{\tBoxTitle{Constructing a confidence interval for the slope of regression line}
+To carry out a complete confidence interval procedure to estimate the true slope $\beta_1$ of a regression line,
+\\
+\\
+\inferencestep{Identify} \vspace{-1mm}
+\begin{itemize} 
+\item[] the parameter, e.g. the true slope of the regression line relating air quality index to average rainfall per year for each city in the United States, and the confidence level, C\%, to be used.
+\end{itemize}
+\inferencestep{Choose} \vspace{-1mm}
+\begin{itemize}
+\item[] \term{$t$-interval for slope of regression line} 
+\end{itemize}
+\inferencestep{Check}\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item $t$-interval for slope of regression line
+\item[] 1.  Data come from a random sample or randomized experiment.
+\item[] 2.  The residual plot shows no pattern implying that a linear model is 
+\item[] \quad \ reasonable.\footnote{Technically, the residuals should be independent, nearly normal, and have constant standard deviation.}
 \end{itemize}
-\item Verify conditions.\vspace{-1.5mm}
+\inferencestep{Calculate}  
 \begin{itemize}
-\setlength{\itemsep}{0mm}
-\item The residual plot has no pattern.
-\end{itemize}
-\item Plug in the numbers and write the interval in the form
-$$\text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}$$
+\item[] $\text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}$, \quad $df = n - 2$
 \begin{itemize}
-\setlength{\itemsep}{0mm}
-\item The point estimate is $b_1$.
-\item $df = n-2$
-\item The critical value $t^*$ can be found on the $t$-table at row $df = n-2$
-\item $SE$ can be located on regression summary table next to value of $b_1$
+\item[] point estimate: the sample slope $b_1$
+\item[] $SE$ of estimate: $SE$ of slope (find using computer output)
+\item[] $t^{\star}$: use a $t$-table at row $df = n-2$ and confidence level C\%
 \end{itemize}
-\item Evaluate the CI and write in the form (\underline{\ \ \ \ \ }, \underline{\ \ \ \ \ }).
-\item Interpret the interval:  ``We are C\% confident that the true \emph{slope} of the regression line relating  [y] to [x] is between \underline{\ \ \ \ \ } and \underline{\ \ \ \ \ }.
-\item State the conclusion to the original question.
-\end{enumerate}}
+\item[] (\underline{\ \ \ \ \ }, \underline{\ \ \ \ \ })
+\end{itemize}
+\inferencestep{Conclude}\vspace{-1mm}
+\begin{itemize}
+\item[] We are C\%  confident that the true \emph{slope} of the regression line relating [y] to [x] is between \underline{\ \ \ \ \ } and \underline{\ \ \ \ \ }. If applicable, draw a conclusion based on whether the interval is entirely above, is entirely below, or contains the value 0. 
+\end{itemize}}
 \end{termBox}
-
 
 \textA{\newpage}
 
