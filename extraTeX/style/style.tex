@@ -4,21 +4,41 @@
 % 4 Counters and Parameters
 % 5 Section Coloring
 % 6 Utilities
-% 7 
+% 7 Inference Steps
 % 8 Figures and Captions
 % 9 Examples and Exercises
 % 10 Special Boxes
+
+%\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+%                    \thispagestyle{fancy}%
+%                    \global\@topnum\z@
+%                    \@afterindentfalse
+%                    \secdef\@chapter\@schapter}
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyhead[RO,RE]{\thepage} %RO=right odd, RE=right even
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+\raggedbottom
 
 
 
 %-------------------------------------------------------------
 % 1 Page Parameters
-% 1.1 Amazon
-\setlength\paperheight{10in}
-\setlength\textheight{8.25in}
-\setlength\paperwidth{8in}
-\setlength\textwidth{5.45in}
-\setlength\voffset{-10mm}
+% 1.1
+\setlength\paperheight{11in}
+\setlength\paperwidth{8.5in}
+\newcommand{\officialtextheight}{9.7in}
+\newcommand{\officialtextwidth}{6in}
+%\setlength\paperheight{10in}
+%\setlength\paperwidth{8in}
+%\newcommand{\officialtextheight}{8.7in}
+%\newcommand{\officialtextwidth}{6in}
+\newcommand{\officialvoffset}{-0.6in}
+\setlength\textheight{\officialtextheight}
+\setlength\textwidth{\officialtextwidth}
+\setlength\voffset{\officialvoffset}
+\renewcommand{\baselinestretch}{1.0}
 % 1.2 Margin Size
 % 1.2.1 Slim
 %\setlength\hoffset{0.25in}
@@ -43,16 +63,30 @@
 % 1.4 Margin Spacing
 \setlength{\marginparsep}{5mm}
 \setlength{\marginparwidth}{20mm}
+% 1.5 Page Header
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+\fancyfoot[c]{}
+\fancyheadoffset[RO,LE]{0.9in}
+
 
 
 % Tablet Version
-%\setlength\paperheight{8.82in}\setlength\textheight{8.25in}\setlength\paperwidth{5.7in}\setlength\textwidth{5.45in}\setlength\voffset{-23.5mm}\setlength\hoffset{-27mm}\setlength\oddsidemargin{5mm}\setlength\evensidemargin{5mm}\setlength{\marginparsep}{5mm}\setlength{\marginparwidth}{35mm}
+%\setlength\paperheight{8.82in}\setlength\textheight{8.25in}\setlength\paperwidth{5.7in}\setlength\textwidth{5.45in}\setlength\voffset{-23.5mm}\setlength\hoffset{-27mm}\setlength\oddsidemargin{5mm}\setlength\evensidemargin{5mm}\setlength{\marginparsep}{5mm}\setlength{\marginparwidth}{35mm}\fancyheadoffset[RO,LE]{0.2in}
 
 
 
 
 %-------------------------------------------------------------
 % 2 Special Commands for Editions
+\newcommand{\referrer}{ahss2_pdf}
+\newcommand{\vspaceB}[1]{\vspace{#1}}
+\newcommand{\hspaceB}[1]{\hspace{#1}}
+\newcommand{\textB}[1]{}
+\newcommand{\textC}[1]{#1}
 \newcommand{\textA}[1]{#1}
 
 
@@ -93,30 +127,149 @@
 \newlength{\exampleBelowBar}
 \setlength{\exampleAboveBar}{-3.15mm}
 \setlength{\exampleBelowBar}{-1.15mm}
+\newlength{\nexampleAboveBar}
+\newlength{\nexampleBelowBar}
+\setlength{\nexampleAboveBar}{-1mm}
+\setlength{\nexampleBelowBar}{-1mm}
 % 4.3 Chapter Declarations
 \newcommand\includechapter[2]{
   \setcounter{chapter}{#1}
   \addtocounter{chapter}{-1}
   \normalsize
   \include{#2/TeX/#2}
-  \include{#2/TeX/#2_ex}}
+  \include{#2/TeX/#2_ex}
+  }
 
 
 
 %-------------------------------------------------------------
-% 5 Section Coloring
+% 5 Section Headers
+
+%-------------------------------------------------------------
+% 5 Section Headers
+
+% 5.0 Spacings
+\newcommand{\chapterpagepadding}[0]{7mm}
+\newcommand{\chapterpagepaddingtopinner}[0]{45mm}
+\newcommand{\chapterpagepaddingrightinner}[0]{30mm}
+\newcommand{\chapterpagepaddinginner}[0]{20mm}
+\newcommand{\sectionheaderspaceA}{1mm}
+\newcommand{\sectionheaderspaceB}{4mm}
+\newcommand{\setupfont}
+    {\normalfont\LARGE\bfseries\fontfamily{phv}\selectfont}
+\newcommand{\setfontsize}[1]{\fontsize{#1}{#1}\selectfont}
+
 % 5.1 Chapter
+\newcommand{\titlebreak}[1][5mm]{\\[#1]}
+\newcommand{\chaptertitle}[2][30]{{\color{white}\titlerule[1.5mm]}\addvspace{\sectionheaderspaceB}
+    {\setupfont{}\color{gray}\setfontsize{#1}#2} \\[2mm]
+        {\color{white}\titlerule[1.5mm]}
+
+~\vspace{15mm}
+
+}
 \titleformat{\chapter}[display]
-{\color{oiB}\normalfont\huge\bfseries\raggedright}{\chaptertitlename\
-\thechapter}{20pt}{\Huge}
+{\color{oiB}\normalfont\Huge\bfseries\raggedright}{\chaptertitlename\
+\thechapter}{20pt}{{\setupfont{}\Huge #1}}
+\newenvironment{chapterpage}[1]{
+%\newpage
+\noindent\begin{fullminipage}[left=\chapterpagepadding{},right=\chapterpagepadding{},top=\chapterpagepadding{},bottom=\chapterpagepadding{},bgcolor=seaBackground]
+%\noindent\rule{\textwidth}{0.3pt}\vspace{-6mm}
+\begin{mdframed}[%
+    topline=false,
+    rightline=false,
+    leftline=false,
+    bottomline=false,
+    innerleftmargin=\chapterpagepaddinginner{},
+    innerrightmargin=\chapterpagepaddingrightinner{},
+    innertopmargin=\chapterpagepaddingtopinner{},
+    innerbottommargin=\chapterpagepaddinginner{},
+    backgroundcolor=seaBackground]
+\chapter{#1}%{\pagewidth-10mm}
+%\textbf{\color{oiB}\small\fontfamily{phv}%
+%\selectfont{\MakeUppercase{#1}}} \\[1mm]
+}{
+\end{mdframed}
+%\rule{\textwidth}{0.3pt}
+\end{fullminipage}}
+\titleformat{\chapter}
+    {}
+    {\setupfont{}\setfontsize{92}\color{oiB}Chapter~\thechapter}% \quad #1}
+    {1em}
+    {}
+    []
+\titlespacing{\chapter}
+   {0pt}% left
+   {0pt}% before sep
+   {\baselineskip}% after sep% 5.3 Subsection
+\newcommand{\chaptersection}[1]{\Large\fontfamily{phv}%
+\selectfont\textbf{\ref{#1}~\nameref{#1}} \\[4mm]}
+
+% 5.1.1 Chapter introduction
+\newcommand{\chapterintro}[1]{
+  ~\vspace{15mm}
+
+  {\color{oiB}\titlerule[1.5mm]}\addvspace{7mm}
+
+  {\Large
+  \begingroup\onehalfspacing
+  \noindent%
+  #1\vspace{7mm}\par
+  \endgroup}
+
+  {\color{oiB}\titlerule[0.5mm]}
+
+  \vfill
+
+  \noindent%
+  \includegraphics[height=10mm]{extraTeX/icons/video_and_slides.png}
+  \vspace{5mm}
+
+  {\color{oiB}\titlerule[0.5mm]}
+
+  ~\vspace{5mm}
+
+  {\Large\noindent%
+  For videos, slides, and other resources, please visit \\[2mm]
+  \oiRedirect{ahss}{\textbf{\color{oiB}www.openintro.org/ahss}}}%
+      \vspace{5mm}
+
+  ~
+}
+
 % 5.2 Section
+\newcommand{\clearpageforsection}{\clearpage}
+\let\oldsection\section
+\renewcommand\section{\clearpage\oldsection}
 \titleformat{\section}
-{\color{oiB}\normalfont\Large\bfseries}
-{\color{oiB}\thesection}{1em}{}
-% 5.3 Subsection
+   % {{\color{oiR}\titlerule[1mm]}\addvspace{\sectionheaderspaceA}\color{oiB}\normalfont\LARGE\bfseries%
+       % \fontfamily{phv}%
+        %\selectfont}
+    {{\color{oiR}\titlerule[1mm]}\addvspace{\sectionheaderspaceA}\color{oiB}\setupfont{}}
+    {\color{oiB}\thesection \quad #1}
+    {1em}
+    { }
+    [\addvspace{\sectionheaderspaceA}{\color{oiR}\titlerule[1mm]}]
+\titlespacing{\section}
+   {0pt}% left
+   {0pt}% before sep
+   {\baselineskip}% after sep% 5.3 Subsection
 \titleformat{\subsection}
-{\color{oiB}\normalfont\large\bfseries}
-{\color{oiB}\thesubsection}{1em}{}
+    {{\color{grayDark}\titlerule[0.1mm]}\vspace{2mm}\color{oiB}\normalfont\large%
+        \bfseries\fontfamily{phv}%
+        \selectfont}
+    {\color{oiB}\thesubsection}
+    {1em}
+    {#1}
+\titlespacing{\subsection}
+   {0pt}% left
+   {8mm}% before sep
+   {\baselineskip}% after sep% 5.3 Subsection
+% 5.4 Section Introduction
+\newcommand{\sectionintro}[1]{\begin{spacing}{1.1}\large
+#1
+\end{spacing}}
+\newcommand{\nsubsection}[1]{\subsection{\MakeUppercase{#1}}}
 
 
 %-------------------------------------------------------------
@@ -128,6 +281,7 @@
 \newcommand{\note}[1]{\Comment{#1}}
 % 6.2 Special Symbols
 \newcommand{\degree}{\ensuremath{^\circ}}
+\newcommand{\R}{\textbf{\textsf{R}}}
 % 6.3 Text Commands (Terms, Data, Variable, Response)
 \newcommand{\term}[1]{\textbf{#1}\index{#1|textbf}}
 \newcommand{\termsub}[2]{\textbf{#1}\index{#2|textbf}}
@@ -136,11 +290,14 @@
 \newcommand{\indexthis}[2]{#1\index{#2}}
 \newcommand{\termO}[1]{\textbf{\color{termOColor}#1}}
 \newenvironment{data}[1]{\texttt{#1}}{}
+\newcommand{\datalink}[1]{\index{#1|textbf}\texttt{\href{http://www.openintro.org/redirect.php?go=data_#1&referrer=\referrer}{#1}}}
 \newenvironment{var}[1]{\texttt{#1}}{}
 \newenvironment{resp}[1]{\texttt{#1}}{}
 \newenvironment{calctext}[1]{{\color{oiB}\texttt{#1}}}{}
 \newenvironment{calctextmath}[1]{{\color{oiB}\mathtt{#1}}}{}
 \newenvironment{calcbutton}[1]{{\color{oiB}\texttt{#1}}}{}
+\newenvironment{learningobj}[1]{{\color{oiB}\normalfont\large \bfseries\fontfamily{phv} \selectfont{#1}}}{}
+\newcommand{\codeindent}{\hspace{5mm}}
 % 6.4 Highlighting
 \newenvironment{highlight}{\textbf}{}
 \newcommand{\highlightO}[1]{\textbf{\color{oiB}#1}}
@@ -151,7 +308,7 @@
 \newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
 \newcommand{\oiRedirectUrl}[1]{http://www.openintro.org/redirect.php?go=#1&referrer=ahss_pdf}
 %\newcommand{\oiRedirect}[2]{\href{\oiRedirectUrl{#1}}{#2}}
-\newcommand{\oiRedirect}[2]{\href{\oiRedirectUrl{#1}}{#2}}
+\newcommand{\oiRedirect}[2]{\lowercase{\href{\oiRedirectUrl{#1}}}{#2}}
 \newcommand{\videohref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
 \newcommand{\slideshref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides}}}}
 \newcommand{\videomarginhref}[2][4mm]{\oiRedirect{#2}{\raisebox{-3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
@@ -159,12 +316,14 @@
 \newcommand{\sectionslideshref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides}}}}
 \newcommand{\MarginVideo}[1]{\marginpar[{\videomarginhref{#1}}]{{\videomarginhref{#1}}}}
 
-
+% 6.7 Helper commands
+\newcommand{\us}{\_\hspace{0.3mm}}
+\newcommand{\indfunc}[2]{\var{#1}_{\resp{#2}}}
 
 %-------------------------------------------------------------
-% 7 
+% 7 Inference steps
 
-
+\newcommand{\inferencestep}[1]{\textbf{#1}:}
 
 %-------------------------------------------------------------
 % 8 Figures and Captions
@@ -178,6 +337,10 @@
 \newlength{\mycaptionwidth}
 \setlength{\mycaptionwidth}{0.825\textwidth}
 \setlength{\captionwidth}{\mycaptionwidth}
+\newcommand{\Figure}[2]{\includegraphics[width=#1\textwidth]{\chapterfolder/figures/#2/#2}}
+\newcommand{\Figures}[3]{\includegraphics[width=#1\textwidth]{\chapterfolder/figures/#2/#3}}
+\newcommand{\Figuress}[3]{\includegraphics[width=#1]{\chapterfolder/figures/#2/#3}}
+\newcommand{\chapterfolder}{}
 
 
 
@@ -189,7 +352,9 @@
 \newcommand{\excolor}[1]{{\color{excolor}#1}}
 \newenvironment{exercise}
 {
-\begin{itemize}\item[\color{oiB}$\bigodot$]\refstepcounter{equation}\noindent\normalsize\textbf{\color{oiB}Guided Practice \theexercise}\hspace{3mm}}
+\begin{itemize}\item[\color{oiB}$\bigodot$]\refstepcounter{equation}\noindent\normalsize\textbf{\color{oiB}Guided Practice \theexercise}%\hspace{3mm}
+
+}
 {\normalsize
 
 \addvspace{3mm}
@@ -201,7 +366,9 @@
 \newcommand\theexample{\thechapter.\arabic{equation}}
 \newenvironment{example}[1]
 {\begin{itemize}
-\item[\color{oiB}\Large$\CIRCLE$]\refstepcounter{equation}\noindent\textbf{\color{oiB}Example \theexample}\hspace{0.3cm}#1\vspace{\exampleAboveBar}
+\item[\color{oiB}\Large$\CIRCLE$]\refstepcounter{equation}\noindent\textbf{\color{oiB}Example \theexample}
+
+#1\vspace{\exampleAboveBar}
 
 {\color{examplegray}\rule{20mm}{0.1mm}}
 
@@ -212,9 +379,55 @@
 \end{itemize}
 \addvspace{3mm}
 }
+% 9.2.2 Wrappers
+%\reversemarginpar
+\def\warningsymbol{\protect\marginsymbolhelper}
+\def\marginsymbolhelper{\tabto*{0mm} {\dbend} \tabto*{0mm}}
+\newcommand{\exampleicon}[1]{\vspace{#1} \raggedleft\includegraphics[width=5mm]{extraTeX/icons/example.png}\hspace{2mm}\ }
+\newenvironment{gpewrapper}[1]{\addvspace{4mm}
+
+\noindent\hspace{-12.45mm}\begin{minipage}[c]{\textwidth+8mm}
+\begin{minipage}[c]{8.4mm}
+\hspace{0.5mm}\includegraphics[width=5mm]{extraTeX/icons/#1.png}
+\end{minipage}\begin{minipage}[c]{\textwidth-0.45mm}\begin{mdframed}[%
+   topline=false,
+    rightline=false,
+    bottomline=false,
+    linewidth=0.5mm,
+    linecolor=oiB]}{\end{mdframed}\end{minipage}\end{minipage}
+
+    \addvspace{4mm}}
+\newenvironment{examplewrap}
+    {\begin{gpewrapper}{example}}
+    {\end{gpewrapper}}
+\newenvironment{exercisewrap}
+    {\begin{gpewrapper}{guided_practice}}
+    {\end{gpewrapper}}
+% 9.2.3 Example Title
+\newcommand{\exampletitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
+\selectfont{\MakeUppercase{Example~#1}}} \\[1mm]}
+\newcommand{\exercisetitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
+\selectfont{\MakeUppercase{Guided Practice~#1}}} \\[1mm]}
+% 9.2.4 NEW Example and Guided Practice Environment
+\newcommand{\exspace}{\vspace{3mm}}
+\newenvironment{nexample}[1]{\addvspace{6mm}
+
+\refstepcounter{equation}\exampletitle{\theexample}
+#1
+
+\addvspace{\nexampleAboveBar}
+
+{\color{examplegray}\rule{20mm}{0.1mm}}
+
+\addvspace{\nexampleBelowBar}
+
+\setlength{\parskip}{2mm}}{}
+\newenvironment{nexercise}{\addvspace{6mm}
+
+\refstepcounter{equation}\exercisetitle{\theexample}}{}
+
 % 9.3 EOCEs: End of Chapter Exercises
 % 9.3.1 Environment
-%ZZQ
 \newenvironment{eoce}[2][]
 {\refstepcounter{eoce}\noindent\small\textbf{\textcolor{oiB}{{\hypersetup{linkcolor=oiB}\ref{eoce_sol_\arabic{chapter}_\arabic{eoce}}}\label{eoce_\arabic{chapter}_\arabic{eoce}}}}\hspace{2mm} #1#2
 
@@ -230,6 +443,7 @@
 \addvspace{2mm}
 
 }
+{
 \newcommand{\eocesol}[1]{\refstepcounter{eocesol}\noindent\textbf{\color{oiB}{\hypersetup{linkcolor=oiB}\ref{eoce_\arabic{eocesolch}_\arabic{eocesol}}}\label{eoce_sol_\arabic{eocesolch}_\arabic{eocesol}}}\hspace{2mm}{\small#1}\makebox[0pt]{\color{white}\tiny \refstepcounter{eocesol}\label{eoce_sol_\arabic{eocesolch}_\arabic{eocesol}}}
 
 \addvspace{1mm}
@@ -268,6 +482,7 @@
 }
 {\end{enumerate}
 }
+
 
 
 
@@ -337,6 +552,24 @@
 
 \addvspace{1mm}}
 
+% 10.4 One Box
+\newenvironment{onebox}[1]{
+\addvspace{4mm}
+\noindent\begin{minipage}{\textwidth}
+\noindent\rule{\textwidth}{0.3pt}\vspace{-6mm}
+\begin{mdframed}[%
+    topline=false,
+    rightline=false,
+    leftline=false,
+    bottomline=false,
+    backgroundcolor=grayBackground]
+\textbf{\color{oiR}\small\fontfamily{phv}%
+\selectfont{\MakeUppercase{#1}}} \\[1mm]}{
+\end{mdframed}\vspace{-4.2mm}
+\rule{\textwidth}{0.3pt}
+\end{minipage}
+
+\addvspace{4mm}}
 
 
 

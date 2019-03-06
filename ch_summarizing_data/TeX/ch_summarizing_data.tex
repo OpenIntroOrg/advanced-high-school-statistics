@@ -1,13 +1,42 @@
-\chapter{Summarizing data}
-\label{summarizingData}
+\begin{chapterpage}{Summarizing data}
+  \chaptertitle{Summarizing data}
+  \label{summarizingData}
+  \label{ch_summarizing_data}
+  \chaptersection{numericalData}
+\chaptersection{numericalSummariesAndBoxPlots}
+  \chaptersection{categoricalData}
+  \chaptersection{caseStudyGenderDiscrimination}
+\end{chapterpage}
+\renewcommand{\chapterfolder}{ch_summarizing_data}
 
-After collecting data, the next stage in the investigative process is to summarize the data. Graphical displays allow us to visualize and better understand the important features of a data set.
+\chapterintro{After collecting data, the next stage in the investigative process is to summarize the data. In this chapter, we will look at ways to summarize  numerical and categorical data graphically, numerically, and verbally. While in practice, numerical and graphical summaries are done using computer software, it is helpful to understand how these summaries are created and it is especially important to understand how to interpret and communicate these findings. }
 
-\section[Examining numerical data]{Examining numerical data \sectionvideohref{youtube-Xm0PPtci3JE&list=PLkIselvEzpM63OIePIrp5P4oFQH6WpYWo} \sectionslideshref{gdoc_aps_slides_2-1}}
+%______________________________________________
+\section[Examining numerical data]{Examining numerical data }
 \label{numericalData}
+
+\sectionintro{
+
 In this section we will focus on numerical variables. The \data{email50} and \data{county} data sets from Section~\ref{dataBasics} provide rich opportunities for examples. Recall that outcomes of numerical variables are numbers on which it is reasonable to perform basic arithmetic operations. For example, the \var{pop2010} variable, which represents the populations of counties in 2010, is numerical since we can sensibly discuss the difference or ratio of the populations in two counties. On the other hand, area codes and zip codes are not numerical, but rather they are~categorical variables.
 
 
+%%
+\subsection*{Learning objectives}
+\begin{enumerate}
+\item Use scatterplots to see the relationship between two numerical variables.  Describe the direction, form, and strength of the relationship, as well as any unusual observations.
+
+\item Understand what the term distribution means and how to summarize it in a table or a graph.
+
+\item Create stem-and-leaf plots, dot plots, and histograms to visualize the distribution of a numerical variable.  Be able to read off specific information and summary information from these graphs.
+
+\item Identify the shape of a distribution as approximately symmetric, right skewed, or left skewed.  Also, identify whether a distribution is unimodal, bimodal, multimodal, or uniform.
+
+\item Read and interpret a cumulative frequency or cumulative relative frequency histogram.
+
+\end{enumerate}
+}
+
+%%
 \subsection{Scatterplots for paired data}
 \label{scatterPlots}
 
@@ -28,30 +57,33 @@ A \term{scatterplot} provides a case-by-case view of data that illustrates the r
 
 \setlength{\captionwidth}{\mycaptionwidth}
 
-\begin{example}{A scatterplot requires paired data. What does \term{paired data} mean?}
+\begin{examplewrap}\begin{nexample}{A scatterplot requires paired data. What does \term{paired data} mean?}
 We say observations are \emph{paired} when the two observations correspond to each other. In unpaired data, there is no such correspondence. Here the two observations correspond to a particular email.
-\end{example}
+\end{nexample}\end{examplewrap}
 
 The variable that is suspected to be the response variable is plotted on the vertical (y)~axis and the variable that is suspected to be the explanatory variable is plotted on the horizontal (x)~axis. In this example, the variables could be switched since either variable could reasonably serve as the explanatory variable or the response variable.
 
-\begin{tipBox}{\tipBoxTitle{Drawing scatterplots}
+\begin{onebox}{Drawing scatterplots}
 (1)~Decide which variable should go on each axis, and draw and label the two axes. \\
 (2)~Note the range of each variable, and add tick marks and scales to each~axis. \\
-(3)~Plot the dots as you would on an $x,y$-coordinate plane.}
-\end{tipBox}
+(3)~Plot the dots as you would on an ($x,y$) coordinate plane.\end{onebox}
 
 The association between two variables can be \termsub{positive}{positive association} or \termsub{negative}{negative association}, or there can be no association. Positive association means that larger values of the first variable are associated with larger values of the second variable. Additionally, the association can follow a linear trend or a curved (nonlinear) trend.
 
-\begin{exercise}What would it mean for two variables to have a \emph{negative} association? What about \emph{no} association?\footnote{Negative association implies that larger values of the first variable are associated with smaller values of the second variable. No association implies that the values of the second variable tend to be independent of changes in the first variable.}
-\end{exercise}
+\begin{examplewrap}
+\begin{nexample}
+{What would it mean for two variables to have a \emph{negative} association? What about \emph{no} association?}Negative association implies that larger values of the first variable are associated with smaller values of the second variable. No association implies that the values of the second variable tend to be independent of changes in the first variable.
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercise}
-What does the scatterplot in Figure~\ref{email50LinesCharacters} reveal about the email data?\footnote{The association between the number of characters in an email and the number of lines in an email is positive (when one is larger, the other tends to be larger as well). As the number of characters increases, number of lines increases is an approximately linear fashion.}
-\end{exercise}
+\begin{examplewrap}
+\begin{nexample}
+{What does the scatterplot in Figure~\ref{email50LinesCharacters} reveal about the email data?}The association between the number of characters in an email and the number of lines in an email is positive (when one is larger, the other tends to be larger as well). As the number of characters increases, number of lines increases is an approximately linear fashion.
+\end{nexample}
+\end{examplewrap}
 
 \index{data!cars|(}
-\begin{example}{Consider a new data set of 54 cars with two variables: vehicle price and~weight.\footnote{Subset of data from \oiRedirect{textbook-1993_car_data}{www.amstat.org/publications/jse/v1n1/datasets.lock.html}} A scatterplot of vehicle price versus weight is shown in Figure~\ref{carsPriceVsWeight}. What can be said about the relationship between these variables?}
-The relationship is evidently nonlinear, as highlighted by the dashed line. This is different from previous scatterplots we've seen, such as Figure~\vref{county_fed_spendVsPoverty} and Figure~\ref{email50LinesCharacters}, which show relationships that are very linear.
+
 
 \begin{figure}[h]
    \centering
@@ -59,14 +91,23 @@ The relationship is evidently nonlinear, as highlighted by the dashed line. This
    \caption{A scatterplot of \var{price} versus \var{weight} for 54 cars.}
    \label{carsPriceVsWeight}
 \end{figure}
-\end{example}
+
+\begin{examplewrap}
+\begin{nexample}{Consider a new data set of 54 cars with two variables: vehicle price and~weight.\footnotemark \ A scatterplot of vehicle price versus weight is shown in Figure~\ref{carsPriceVsWeight}. What can be said about the relationship between these variables?}
+The relationship is evidently nonlinear, as highlighted by the dashed line. This is different from previous scatterplots we've seen, such as Figure~\vref{county_fed_spendVsPoverty} and Figure~\ref{email50LinesCharacters}, which show relationships that are very linear.
+\end{nexample}
+\end{examplewrap}
+\footnotetext{Subset of data from \oiRedirect{textbook-1993_car_data}{www.amstat.org/publications/jse/v1n1/datasets.lock.html}}
 \index{data!cars|)}
 
-\begin{exercise}
-Describe two variables that would have a horseshoe shaped (i.e. ``U"-shaped) association in a scatterplot.\footnote{Consider a variable that represents something that is only good in moderation. Water consumption fits this description since water becomes toxic when consumed in excessive quantities. If health was represented on the vertical axis and water consumption on the horizontal axis, then we would create an upside down ``U''~shape.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
+Describe two variables that would have a horseshoe shaped (i.e. ``U"-shaped) association in a scatterplot.\footnotemark\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Consider a variable that represents something that is only good in moderation. Water consumption fits this description since water becomes toxic when consumed in excessive quantities. If health was represented on the vertical axis and water consumption on the horizontal axis, then we would create an upside down ``U''~shape.}
 
 
+%%
 \subsection{Stem-and-leaf plots and dot plots}
 \label{dotPlot}
 
@@ -108,8 +149,9 @@ Rather than look at the data as a list of numbers, which makes the distribution 
 \label{stemandleafemail50}
 \end{figure}
 
-\begin{exercise}There are a lot of numbers on the first row of the stem-and-leaf plot. Why is this the case?\footnote{There are a lot of numbers on the first row because there are a lot of values in the data set less than 10 thousand.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}There are a lot of numbers on the first row of the stem-and-leaf plot. Why is this the case?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{There are a lot of numbers on the first row because there are a lot of values in the data set less than 10 thousand.}
 
 When there are too many numbers on one row or there are only a few stems, we \emph{split} each row into two halves, with the leaves from 0-4 on the first half and the leaves from 5-9 on the second half. The resulting graph is called a \termsub{split stem-and-leaf plot}{stem-and-leaf plot!split stem-and-leaf plot}. Figure~\ref{splitstemandleaf50email} shows the previous stem-and-leaf redone as a split stem-and-leaf.
 
@@ -135,9 +177,10 @@ When there are too many numbers on one row or there are only a few stems, we \em
 \label{splitstemandleaf50email}
 \end{figure}
 
-\begin{exercise}
-What is the smallest number in this data set? What is the largest?\footnote{The smallest number is less than 1 thousand, and the largest is 64 thousand. That is a big range!}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+What is the smallest number in this data set? What is the largest?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{The smallest number is less than 1 thousand, and the largest is 64 thousand. That is a big range!}
 
 %\Add{Many emails are short, but some are very long. An investigation of the data would reveal that most of the long emails use the HTML format, which means most of the characters in those emails are used to format the email rather than provide text.} % Omitting since it doesn't have any clear connection to the surrounding text.
 
@@ -150,42 +193,44 @@ Another simple graph for numerical data is a dot plot. A~\term{dot plot} uses do
    \label{emailCharactersDotPlotStacked}
 \end{figure}
 
-\begin{exercise}
-Imagine rotating the dot plot 90 degrees clockwise. What do you notice?\footnote{It has a similar shape as the stem-and-leaf plot! The values on the horizontal axis correspond to the stems and the number of dots in each interval correspond the number of leaves needed for each stem.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+Imagine rotating the dot plot 90 degrees clockwise. What do you notice?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{It has a similar shape as the stem-and-leaf plot! The values on the horizontal axis correspond to the stems and the number of dots in each interval correspond the number of leaves needed for each stem.}
 
 These graphs make it easy to observe important features of the data, such as the location of clusters and presence of gaps.
 
-\begin{example}{Based on both the stem-and-leaf and dot plot, where are the values clustered and where are the gaps for the \data{email50} data set?}
+\begin{examplewrap}\begin{nexample}{Based on both the stem-and-leaf and dot plot, where are the values clustered and where are the gaps for the \data{email50} data set?}
 There is a large cluster in the 0 to less than 20 thousand range, with a peak around 1 thousand. There are gaps between 30 and 40 thousand and between the two values in the 40 thousands and the largest value of approximately 64 thousand.
-\end{example}
+\end{nexample}\end{examplewrap}
 
 Additionally, we can easily identify any observations that appear to be unusually distant from the rest of the data. Unusually distant observations are called \termsub{outliers}{outlier}. Later in this chapter we will provide numerical rules of thumb for identifying outliers. For now, it is sufficient to identify them by observing gaps in the graph. In this case, it would be reasonable to classify the emails with character counts of 42 thousand, 43 thousand, and 64 thousand as outliers since they are numerically distant from most of the data.
 
 
-\begin{termBox}{\tBoxTitle{Outliers are extreme}
-An \term{outlier} is an observation that appears extreme relative to the rest of the data.}
-\end{termBox}
+\begin{onebox}{Outliers are extreme}
+An \term{outlier} is an observation that appears extreme relative to the rest of the data.\end{onebox}
 
 
-\begin{tipBox}{\tipBoxTitle{Why it is important to look for outliers}
+\begin{onebox}{Why it is important to look for outliers}
 Examination of data for possible outliers serves many useful purposes, including\vspace{-2mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Identifying asymmetry in the distribution.
 \item Identifying data collection or entry errors. For instance, we re-examined the email purported to have 64 thousand characters to ensure this value was accurate.
 \item Providing insight into interesting properties of the data.\vspace{0.5mm}
-\end{enumerate}}
-\end{tipBox}
+\end{enumerate}\end{onebox}
 
-\begin{exercise}
-The observation 64 thousand, a suspected outlier, was found to be an accurate observation. What would such an observation suggest about the nature of character counts in emails?\footnote{That occasionally there may be very long emails.}\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+The observation 64 thousand, a suspected outlier, was found to be an accurate observation. What would such an observation suggest about the nature of character counts in emails?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{That occasionally there may be very long emails.}
 
-\begin{exercise}
-Consider a data set that consists of the following numbers:  12, 12, 12, 12, 12, 13, 13, 14, 14, 15, 19. Which graph would better illustrate the data: a stem-and-leaf plot or a dot plot? Explain.\footnote{Because all the values begin with 1, there would be only one stem (or two in a split stem-and-leaf). This would not provide a good sense of the distribution. For example, the gap between 15 and 19 would not be visually apparent. A dot plot would be better here.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+Consider a data set that consists of the following numbers:  12, 12, 12, 12, 12, 13, 13, 14, 14, 15, 19. Which graph would better illustrate the data: a stem-and-leaf plot or a dot plot? Explain.\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{Because all the values begin with 1, there would be only one stem (or two in a split stem-and-leaf). This would not provide a good sense of the distribution. For example, the gap between 15 and 19 would not be visually apparent. A dot plot would be better here.}
 
-
+%%
 \subsection{Histograms}
 \label{histogramsAndShape}
 
@@ -219,26 +264,26 @@ Count & 19 & 12 & 6 & 2 & 3 & 5 & $\cdots$ & 0 & 1 \\
    \label{email50NumCharHist}
 \end{figure}
 
-\begin{exercise}
-What can you see in the dot plot and stem-and-leaf plot that you cannot see in the frequency histogram?\footnote{Character counts for individual emails.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+What can you see in the dot plot and stem-and-leaf plot that you cannot see in the frequency histogram?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{Character counts for individual emails.}
 
-\begin{tipBox}{\tipBoxTitle{Drawing histograms}
+\begin{onebox}{Drawing histograms}
 1. The variable is always placed on the horizontal axis. Before drawing the histogram, label both axes and draw a scale for each. \\[2mm]
-2. Draw bars such that the height of the bar is the frequency of that bin and the width of the bar corresponds to the bin width.}
-\end{tipBox}
+2. Draw bars such that the height of the bar is the frequency of that bin and the width of the bar corresponds to the bin width.\end{onebox}
 
 Histograms provide a view of the \term{data density}. Higher bars represent where the data are relatively more common. For instance, there are many more emails between 0 and 10,000 characters than emails between 10,000 and 20,000 in the data set. The bars make it easy to see how the density of the data changes relative to the number of characters.
 
-\begin{example}{How many emails had fewer than 10 thousand characters?}The height of the bars corresponds to frequency. There were 19 cases from 0 to less than 5 thousand and 12 cases from 5 thousand to less than 10 thousand, so there were $19+12=31$ emails with fewer than 10 thousand characters.
-\end{example}
+\begin{examplewrap}\begin{nexample}{How many emails had fewer than 10 thousand characters?}The height of the bars corresponds to frequency. There were 19 cases from 0 to less than 5 thousand and 12 cases from 5 thousand to less than 10 thousand, so there were $19+12=31$ emails with fewer than 10 thousand characters.
+\end{nexample}\end{examplewrap}
 
-\begin{example}{Approximately how many emails had fewer than 1 thousand chacters?} Based just on this histogram, we cannot know the exact answer to this question. We only know that 19 emails had between 0 and 5 thousand characters. If the number of emails is evenly distribution on this interval, then we can estimate that approximately 19/5~$\approx$ 4 emails fell in the range between 0 and 1 thousand.
-\end{example}
+\begin{examplewrap}\begin{nexample}{Approximately how many emails had fewer than 1 thousand chacters?} Based just on this histogram, we cannot know the exact answer to this question. We only know that 19 emails had between 0 and 5 thousand characters. If the number of emails is evenly distribution on this interval, then we can estimate that approximately 19/5~$\approx$ 4 emails fell in the range between 0 and 1 thousand.
+\end{nexample}\end{examplewrap}
 
-\begin{example}{What \emph{percent} of the emails had 10 thousand or more characters?}
+\begin{examplewrap}\begin{nexample}{What \emph{percent} of the emails had 10 thousand or more characters?}
 From the first example, we know that 31 emails had fewer than 10 thousand characters. Since there are 50 emails in total, there must be 19 emails that have 10 thousand or more characters. To find the percent, compute $19/50 = 0.38 = 38\%$.
-\end{example}
+\end{nexample}\end{examplewrap}
 
 Sometimes questions such as the ones above can be answered more easily with a \term{cumulative frequency histogram}. This type of histogram shows cumulative, or total, frequency achieved by each bin, rather than the frequency in that particular bin.
 
@@ -264,35 +309,37 @@ Frequency &  \raisebox{1.5ex}[0pt]{19} & \raisebox{1.5ex}[0pt]{31} & \raisebox{1
    \label{email50NumCharCumulativeFreqHist}
 \end{figure}
 
-\begin{example}{How many of the emails had fewer than 20 thousand characters?}
+\begin{examplewrap}\begin{nexample}{How many of the emails had fewer than 20 thousand characters?}
 By tracing the height of the 15-20 thousand bin over to the vertical axis, we can see that it has a height just under 40 on the cumulative frequency scale. Therefore, we estimate that $\approx$39 of the emails had fewer than 30 thousand characters. Note that, unlike with a regular frequency histogram, we do not add up the height of the bars in a cumulative frequency histogram because each bar already represents a cumulative sum.
-\end{example}
+\end{nexample}\end{examplewrap}
 
-\begin{example}{Using the cumulative frequency histogram, how many of the emails had 10-15 thousand characters?}
+\begin{examplewrap}\begin{nexample}{Using the cumulative frequency histogram, how many of the emails had 10-15 thousand characters?}
 To answer this question, we do a subtraction. $\approx$39 had fewer than 15-20 thousand emails and $\approx$37 had fewer than 10-15 thousand emails, so $\approx$2 must have had between 10-15 thousand emails.
-\end{example}
+\end{nexample}\end{examplewrap}
 
-\begin{example}{Approximately 25 of the emails had fewer than how many characters?}
+\begin{examplewrap}\begin{nexample}{Approximately 25 of the emails had fewer than how many characters?}
 This time we are given a cumulative frequency, so we start at 25 on the vertical axis and trace it across to see which bin it hits. It hits the 5-10 thousand bin, so 25 of the emails had fewer than a value somewhere between 5 and 10 thousand characters.
-\end{example}
+\end{nexample}\end{examplewrap}
 
 Knowing that 25 of the emails had fewer than a value between 5 and 10 thousand characters is useful information, but it is even more useful if we know what percent of the total 25 represents. Knowing that there were 50 total emails tells us that $25 / 50 = 0.5 = 50\%$ of the emails had fewer than a value between 5 and 10 thousand characters. When we want to know what fraction or percent of the data meet a certain criteria, we use relative frequency instead of frequency. \termsub{Relative frequency}{relative frequency} is a fancy term for percent or proportion. It tells us how large a number is relative to the total.
 
 Just as we constructed a frequency table, frequency histogram, and cumulative frequency histogram, we can construct a relative frequency table, relative frequency histogram, and cumulative relative frequency histogram.
 
-\begin{exercise}
-How will the \emph{shape} of the relative frequency histograms differ from the frequency histograms?\footnote{The shape will remain exactly the same. Changing from frequency to relative frequency involves dividing all the frequencies by the same number, so only the vertical scale (the numbers on the y-axis) change.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+How will the \emph{shape} of the relative frequency histograms differ from the frequency histograms?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{The shape will remain exactly the same. Changing from frequency to relative frequency involves dividing all the frequencies by the same number, so only the vertical scale (the numbers on the y-axis) change.}
 
-\begin{caution}{Pay close attention to the vertical axis of a histogram}
+\begin{onebox}{Pay close attention to the vertical axis of a histogram}
 {We can misinterpret a histogram if we forget to check whether the vertical axis represents frequency, relative frequency, cumulative frequency, or cumulative relative frequency.}
-\end{caution}
+\end{onebox}
 
 %\Comment{insert relative frequency table and relative frequency histogram here?}
 
 %\Comment{reference the relative frequency graph here since it is closer}
 
 
+%%
 \subsection{Describing Shape}
 \label{shape}
 
@@ -300,17 +347,19 @@ Frequency and relative frequency histograms are especially convenient for descri
 
 Data sets with the reverse characteristic -- a long, thin tail to the left -- are said to be \termsub{left skewed}{skew!left skewed}. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called \term{symmetric}.\index{skew!symmetric}
 
-\begin{termBox}{\tBoxTitle{Long tails to identify skew}
-When data trail off in one direction, the distribution has a \term{long tail}. \index{skew!long tail|textbf} If a distribution has a long left tail, it is left skewed. If a distribution has a long right tail, it is right skewed.}
-\end{termBox}
+\begin{onebox}{Long tails to identify skew}
+When data trail off in one direction, the distribution has a \term{long tail}. \index{skew!long tail|textbf} If a distribution has a long left tail, it is left skewed. If a distribution has a long right tail, it is right skewed.\end{onebox}
 
-\begin{exercise}
-Take a look at the dot plot in Figure~\ref{emailCharactersDotPlotStacked}. Can you see the skew in the data? Is it easier to see the skew in the frequency histogram, the dot plot, or the stem-and-leaf plot?\footnote{The skew is visible in all three plots. However, it is not easily visible in the cumulative frequency histogram.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+Take a look at the dot plot in Figure~\ref{emailCharactersDotPlotStacked}. Can you see the skew in the data? Is it easier to see the skew in the frequency histogram, the dot plot, or the stem-and-leaf plot?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{The skew is visible in all three plots. However, it is not easily visible in the cumulative frequency histogram.}
 
-\begin{exercise}
-Would you expect the distribution of number of pets per household to be right skewed, left skewed, or approximately symmetric?  Explain.\footnote{We suspect most households would have 0, 1, or 2 pets but that a smaller number of households will have 3, 4, 5, or more pets, so there will be greater density over the small numbers, suggesting the distribution will have a long right tail and be right skewed.}
-\end{exercise}
+
+\begin{exercisewrap}\begin{nexercise}
+Would you expect the distribution of number of pets per household to be right skewed, left skewed, or approximately symmetric?  Explain.\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{We suspect most households would have 0, 1, or 2 pets but that a smaller number of households will have 3, 4, 5, or more pets, so there will be greater density over the small numbers, suggesting the distribution will have a long right tail and be right skewed.}
 
 In addition to looking at whether a distribution is skewed or symmetric, histograms, stem-and-leaf plots, and dot plots can be used to identify modes. A \term{mode} is represented by a prominent peak in the distribution.\footnote{Another definition of mode, which is not typically used in statistics, is the value with the most occurrences. It is common to have \emph{no} observations with the same value in a data set, which makes this other definition useless for many real data sets.} There is only one prominent peak in the histogram of \var{num\_\hspace{0.3mm}char}.
 
@@ -323,19 +372,64 @@ Figure~\ref{singleBiMultiModalPlots} shows histograms that have one, two, or thr
    \label{singleBiMultiModalPlots}
 \end{figure}
 
-\begin{exercise}
-Height measurements of young students and adult teachers at a K-3 elementary school were taken. How many modes would you anticipate in this height data set?\footnote{There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+Height measurements of young students and adult teachers at a K-3 elementary school were taken. How many modes would you anticipate in this height data set?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.}
 
-\begin{tipBox}{\tipBoxTitle{Looking for modes}
-Looking for modes isn't about finding a clear and correct answer about the number of modes in a distribution, which is why \emph{prominent} is not rigorously defined in this book. The important part of this examination is to better understand your data and how it might be structured.}
-\end{tipBox}
+\begin{onebox}{Looking for modes}
+Looking for modes isn't about finding a clear and correct answer about the number of modes in a distribution, which is why \emph{prominent} is not rigorously defined in this book. The important part of this examination is to better understand your data and how it might be structured.\end{onebox}
+
+%%
+%%
+\subsection*{Section summary}
+
+\begin{itemize}
+  \item A \term{scatterplot} is a statistical graph illustrating the relationship between two numerical variables.  The variables must be \term{paired}, which is to say that they correspond to one another.  The linear association between two variables can be positive or negative, or there can be no association. \term{Positive association} means that larger values of the first variable are associated with larger values of the second variable. \term{Negative association} means that larger values of the first variable are associated with smaller values of the second variable.  Additionally, the association can follow a linear trend or a curved (nonlinear) trend.
+  \item When looking at a single variable, researchers want to understand the distribution of the variable.  The term \term{distribution} refers to the values that a variable takes and the frequency of those values.  When looking at a distribution, note the presence of clusters, gaps, and \term{outliers}.
+\item Distributions may be \term{symmetric} or they may have a long tail.  If a distribution has a long left tail (with greater density over the higher numbers), it is \term{left skewed}. If a distribution has a long right tail (with greater density over the smaller numbers), it is \term{right skewed}.
+\item Distributions may be \term{unimodal}, \term{bimodal}, or \term{multimodal}.  
+\item Two graphs that are useful for showing the distribution of a small number of observations are the \term{stem-and-leaf plot} and \term{dot plot}.  These graphs are ideal for displaying data from small samples because they show the exact values of the observations and how frequently they occur. However, they are impractical for larger data sets. 
+\item For larger data sets it is common to use a \term{frequency histogram} or a \term{relative frequency histogram} to display the distribution of a variable.  This requires choosing bins of an appropriate width.
+\item To see cumulative amounts, use a \term{cumulative frequency histogram}.  A \term{cumulative relative frequency histogram} is ideal for showing \term{percentiles}.
+\end{itemize}
+
+
 
 %\Comment{maybe a separate section here on numerical summaries of (numerical) data}
 
-\section[Numerical summaries and box plots]{Numerical summaries and box plots \sectionvideohref{youtube-Xm0PPtci3JE&list=PLkIselvEzpM63OIePIrp5P4oFQH6WpYWo} \sectionslideshref{gdoc_aps_slides_2-2}}
+%______________________________________________
+\section[Numerical summaries and box plots]{Numerical summaries and box plots }
 \label{numericalSummariesAndBoxPlots}
 
+\sectionintro{
+
+%%
+\subsection{Learning objectives}
+\begin{enumerate}
+\item Calculate, interpret, and compare the two measures of center (mean and median) and the three  measures of spread (standard deviation, interquartile range, and range).
+
+\item Understand how the shape of a distribution affects the relationship between the mean and the median.
+
+\item Identify and apply the two rules of thumb for identify outliers (one involving standard deviation and mean and the other involving $Q_1$ and $Q_3$).
+
+\item Describe the distribution a numerical variable with respect to center, spread, and shape, noting the presence of outliers.
+  
+\item Find the 5 number summary and IQR, and draw a box plot with outliers shown.
+
+\item Understand the effect changing units has on each of the summary quantities.
+
+\item Use the empirical rule to summarize approximately symmetric data sets.
+
+\item Use quartiles, percentiles, and Z-scores to measure the relative position of a data point within the data set.
+
+\item Compare the distribution of a numerical variable using dot plots / histograms with the same scale, back-to-back stemplots, or parallel boxplots.  Compare the distributions with respect to center, spread, shape, and outliers.
+
+\end{enumerate}
+}
+
+
+%%
 \subsection{Measures of center}
 \label{center}
 
@@ -346,37 +440,38 @@ The \term{mean}, sometimes called the \indexthis{average}{mean!average}, is a co
 \bar{x} = \frac{21.7 + 7.0 + \cdots + 15.8}{50} = 11.6
 \label{sampleMeanEquation}
 \end{eqnarray}
-The sample mean is often labeled $\bar{x}$\marginpar[\raggedright$\bar{x}$\\\footnotesize sample\\ mean]{\raggedright$\bar{x}$\\\footnotesize sample\\ mean}. The letter $x$ is being used as a generic placeholder for the variable of interest, \var{num\_\hspace{0.3mm}char}, and the bar on the $x$ communicates that the average number of characters in the 50 emails was 11,600.
+The sample mean is often labeled $\bar{x}$. The letter $x$ is being used as a generic placeholder for the variable of interest, \var{num\_\hspace{0.3mm}char}, and the bar on the $x$ communicates that the average number of characters in the 50 emails was 11,600.
 
-\begin{termBox}{\tBoxTitle{Mean}
+\begin{onebox}{Mean}
 The sample mean of a numerical variable is computed as the sum of all of the observations divided by the number of observations:
 \begin{eqnarray}
 \bar{x} = \frac{1}{n}\sum{x_{i}} = \frac{x_1+x_2+\cdots+x_n}{n}
 \label{meanEquation}
 \end{eqnarray}
 where $\sum$ is the capital Greek letter sigma and $\sum{x_{i}}$ means take the sum of all the individual $x$ values.
- $x_1, x_2, \dots, x_n$ represent the $n$ observed values.}
-\end{termBox}
+ $x_1, x_2, \dots, x_n$ represent the $n$ observed values.\end{onebox}
 
-\begin{exercise}
-Examine Equations~\eqref{sampleMeanEquation} and~\eqref{meanEquation} above. What does $x_1$ correspond to? And $x_2$? What does $x_i$ represent?\footnote{$x_1$ corresponds to the number of characters in the first email in the sample (21.7, in thousands), $x_2$ to the number of characters in the second email (7.0, in thousands), and $x_i$ corresponds to the number of characters in the $i^{th}$ email in the data set.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+Examine Equations~\eqref{sampleMeanEquation} and~\eqref{meanEquation} above. What does $x_1$ correspond to? And $x_2$? What does $x_i$ represent?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{$x_1$ corresponds to the number of characters in the first email in the sample (21.7, in thousands), $x_2$ to the number of characters in the second email (7.0, in thousands), and $x_i$ corresponds to the number of characters in the $i^{th}$ email in the data set.}
 
-\begin{exercise}
-What was $n$ in this sample of emails?\footnote{The sample size was $n=50$.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+What was $n$ in this sample of emails?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{The sample size was $n=50$.}
 
-The \data{email50} data set represents a sample from a larger population of emails that were received in January and March. We could compute a mean for this population in the same way as the sample mean, however, the population mean has a special label: $\mu$\marginpar[\raggedright$\mu$\\\footnotesize population\\ mean]{\raggedright$\mu$\\\footnotesize population\\ mean}. \index{Greek!mu@mu ($\mu$)} The symbol $\mu$ is the Greek letter \emph{mu} and represents the average of all observations in the population. Sometimes a subscript, such as $_x$, is used to represent which variable the population mean refers to, e.g. $\mu_x$.
+The \data{email50} data set represents a sample from a larger population of emails that were received in January and March. We could compute a mean for this population in the same way as the sample mean, however, the population mean has a special label: $\mu$. \index{Greek!mu@mu ($\mu$)} The symbol $\mu$ is the Greek letter \emph{mu} and represents the average of all observations in the population. Sometimes a subscript, such as $_x$, is used to represent which variable the population mean refers to, e.g. $\mu_x$.
 
 \textA{\pagebreak}
 
-\begin{example}{The average number of characters across all emails can be estimated using the sample data. Based on the sample of 50 emails, what would be a reasonable estimate of $\mu_x$, the mean number of characters in all emails in the \data{email} data set? (Recall that \data{email50} is a sample from \data{email}.)}
+\begin{examplewrap}\begin{nexample}{The average number of characters across all emails can be estimated using the sample data. Based on the sample of 50 emails, what would be a reasonable estimate of $\mu_x$, the mean number of characters in all emails in the \data{email} data set? (Recall that \data{email50} is a sample from \data{email}.)}
 The sample mean, 11,600, may provide a reasonable estimate of $\mu_x$. While this number will not be perfect, it provides a \emph{point estimate} of the population mean. In Chapter~\ref{foundationsForInference} and beyond, we will develop tools to characterize the reliability of point estimates, and we will find that point estimates based on larger samples tend to be more reliable than those based on smaller samples.
-\end{example}
+\end{nexample}\end{examplewrap}
 
-\begin{example}{We might like to compute the average income per person in the US. To do so, we might first think to take the mean of the per capita incomes across the 3,143 counties in the \data{county} data set. What would be a better approach?} \label{wtdMeanOfIncome}
+\begin{examplewrap}\begin{nexample}{We might like to compute the average income per person in the US. To do so, we might first think to take the mean of the per capita incomes across the 3,142 counties in the \data{county} data set. What would be a better approach?} \label{wtdMeanOfIncome}
 The \data{county} data set is special in that each county actually represents many individual people. If we were to simply average across the \var{income} variable, we would be treating counties with 5,000 and 5,000,000 residents equally in the calculations. Instead, we should compute the total income for each county, add up all the counties' totals, and then divide by the number of people in all the counties. If we completed these steps with the \data{county} data, we would find that the per capita income for the US is \$27,348.43. Had we computed the \emph{simple} mean of per capita income across counties, the result would have been just \$22,504.70!
-\end{example}
+\end{nexample}\end{examplewrap}
 
 Example~\ref{wtdMeanOfIncome} used what is called a \term{weighted mean}\index{mean!weighted mean}, which will not be a key topic in this textbook. However, we have provided an online supplement on weighted means for interested readers:
 \begin{center}
@@ -385,9 +480,8 @@ Example~\ref{wtdMeanOfIncome} used what is called a \term{weighted mean}\index{m
 
 The median provides another measure of center. The \term{median} splits an ordered data set in half. There are 50 character counts in the \data{email50} data set (an even number) so the data are perfectly split into two groups of~25. We take the median in this case to be the average of the two middle observations: $(\text{6,768} + \text{7,012}) / 2 = \text{6,890}$. When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in this case that observation is the median (no average needed).
 
-\begin{termBox}{\tBoxTitle{Median: the number in the middle}
-In an ordered data set, the \term{median} is the observation right in the middle. If there are an even number of observations, the median is the average of the two middle values.}
-\end{termBox}
+\begin{onebox}{Median: the number in the middle}
+In an ordered data set, the \term{median} is the observation right in the middle. If there are an even number of observations, the median is the average of the two middle values.\end{onebox}
 
 Graphically, we can think of the mean as the balancing point. The median is the value such that 50\% of the \emph{area} is to the left of it and 50\% of the \emph{area} is to the right of it.
 
@@ -400,35 +494,34 @@ Graphically, we can think of the mean as the balancing point. The median is the 
    \label{email50NumCharHistWMeanMedian}
 \end{figure}
 
-\begin{example}{Based on the data, why is the mean greater than the median in this data set?}
+\begin{examplewrap}\begin{nexample}{Based on the data, why is the mean greater than the median in this data set?}
 Consider the three largest values of 42 thousand, 43 thousand, and 64 thousand. These values drag up the mean because they substantially increase the sum (the~total). However, they do not drag up the median because their magnitude does not change the location of the middle value.
-\end{example}
+\end{nexample}\end{examplewrap}
 
 %\Comment{add box}.
 
-\begin{termBox}{\tBoxTitle{The mean follows the tail}
+\begin{onebox}{The mean follows the tail}
 In a right skewed distribution, the mean is greater than the median.
 
 In a left skewed distribution, the mean is less than the median.
 
-In a symmetric distribution, the mean and median are approximately equal.}
-\end{termBox}
+In a symmetric distribution, the mean and median are approximately equal.\end{onebox}
 
-\begin{exercise}Consider the distribution of individual income in the United States. Which is greater: the mean or median? Why?\footnote{Because a small percent of individuals earn extremely large amounts of money while the majority earn a modest amount, the distribution is skewed to the right. Therefore, the mean is greater than the median.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}Consider the distribution of individual income in the United States. Which is greater: the mean or median? Why?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{Because a small percent of individuals earn extremely large amounts of money while the majority earn a modest amount, the distribution is skewed to the right. Therefore, the mean is greater than the median.}
 
+%%
 \subsection{Standard deviation as a measure of spread}
 \label{variability}
 
-The U.S. Census Bureau reported that in 2012, the median family income was \$62,241 and the mean family income was \$82,743.\footnote{\oiRedirect{textbook-census_hhes_income}{www.census.gov/hhes/www/income/}}
+The U.S. Census Bureau reported that in 2017, the median family income was \$73,891 and the mean family income was \$99,114.\footnote{\oiRedirect{factfinder-gov-income}{\mbox{\url{https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_17_1YR_S1901}}}} Is a family income of \$60,000 far from the mean or somewhat close to the mean? In order to answer this question, it is not enough to know the center of the data set and its \term{range} (maximum value - minimum value). We must know about the variability\index{variability} of the data set within that range. Low variability or small spread means that the values tend to be more clustered together. High variability or large spread means that the values tend to be far apart.
 
-Is a family income of \$60,000 far from the mean or somewhat close to the mean? In order to answer this question, it is not enough to know the center of the data set and its \term{range} (maximum value - minimum value). We must know about the variability\index{variability} of the data set within that range. Low variability or small spread means that the values tend to be more clustered together. High variability or large spread means that the values tend to be far apart.
-
-\begin{example}{Is it possible for two data sets to have the same range but different spread? If so, give an example. If not, explain why not.}
+\begin{examplewrap}\begin{nexample}{Is it possible for two data sets to have the same range but different spread? If so, give an example. If not, explain why not.}
 Yes. An example is:  {1, 1, 1, 1, 1, 9, 9, 9, 9, 9} and {1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 9}.
 
 The first data set has a larger spread because values tend to be farther away from each other while in the second data set values are clustered together at the mean.
-\end{example}
+\end{nexample}\end{examplewrap}
 
 Here, we introduce the standard deviation as a measure of spread. Though its formula is a bit tedious to calculate by hand, the standard deviation is very useful in data analysis and roughly describes how far away, on average, the observations are from the mean.
 
@@ -441,7 +534,7 @@ x_3^{}-\bar{x} &= 0.6 - 11.6 = -11.0 \\
 x_{50}^{}-\bar{x} &= 15.8 - 11.6 = 4.2
 \end{align*}
 % library(openintro); d <- email50$num_char; round(mean(d),1); d[c(1,2,3,50)]; d[c(1,2,3,50)] - round(mean(d),1); (d[c(1,2,3,50)] - round(mean(d)))^2; sum((d - round(mean(d)))^2)/49; sqrt(sum((d - round(mean(d)))^2)/49); var(d); sd(d)
-If we square these deviations and then take an average, the result is about equal to the sample \term{variance}\label{varianceIsDefined}, denoted by $s_{}^2$\marginpar[\raggedright$s^2_{}$\\\footnotesize sample variance]{\raggedright$s^2_{}$\\\footnotesize sample variance}:
+If we square these deviations and then take an average, the result is about equal to the sample \term{variance}\label{varianceIsDefined}, denoted by $s_{}^2$:
 \begin{align*}
 s_{}^2 &= \frac{10.1_{}^2 + (-4.6)_{}^2 + (-11.0)_{}^2 + \cdots + 4.2_{}^2}{50-1} \\
 	&= \frac{102.01 + 21.16 + 121.00 + \cdots + 17.64}{49} \\
@@ -451,26 +544,21 @@ We divide by $n-1$, rather than dividing by $n$, when computing the variance; yo
 
 The \term{standard deviation} is defined as the square root of the variance:
 $$s=\sqrt{172.44} = 13.13$$
-\marginpar[\raggedright\vspace{-10mm}
 
-$s$\\\footnotesize sample standard deviation]{\raggedright\vspace{-10mm}
-
-$s$\\\footnotesize sample standard deviation
-}\index{s@$s$}The standard deviation of the number of characters in an email is about 13.13 thousand. A subscript of $_x$ may be added to the variance and standard deviation, i.e. $s_x^2$ and $s_x^{}$, as a reminder that these are the variance and standard deviation of the observations represented by $x_1^{}$, $x_2^{}$, ..., $x_n^{}$. The $_{x}$ subscript is usually omitted when it is clear which data the variance or standard deviation is referencing.
+The standard deviation of the number of characters in an email is about 13.13 thousand. A subscript of $_x$ may be added to the variance and standard deviation, i.e. $s_x^2$ and $s_x^{}$, as a reminder that these are the variance and standard deviation of the observations represented by $x_1^{}$, $x_2^{}$, ..., $x_n^{}$. The $_{x}$ subscript is usually omitted when it is clear which data the variance or standard deviation is referencing.
 
 %\Add{The variance is roughly the average squared distance from the mean and the standard deviation is the square root of the variance.}
 
-\begin{termBox}{\tBoxTitle{Calculating the standard deviation}
+\begin{onebox}{Calculating the standard deviation}
 The standard deviation is the square root of the variance. It is roughly the average distance of the observations from the mean.
 \begin{eqnarray}
 \label{sdEquation}
 s = \sqrt{\frac{1}{n-1} \sum{(x_i -  \bar{x})^2}}
 \end{eqnarray}
-}
-\end{termBox}
+\end{onebox}
 
 The variance is useful for mathematical reasons, but the standard deviation is easier to interpret because it has the same units as the data set. The units for variance will be the units squared (e.g. meters$^2$).
-Formulas and methods used to compute the variance and standard deviation for a population are similar to those used for a sample.\footnote{The only difference is that the population variance has a division by $n$ instead of $n-1$.} However, like the mean, the population values have special symbols: $\sigma_{}^2$\marginpar[\raggedright$\sigma_{}^2$\\\footnotesize population variance\\ \hspace{2mm}]{\raggedright$\sigma_{}^2$\\\footnotesize population variance\\ \hspace{2mm}} for the variance and $\sigma$\marginpar[\raggedright$\sigma$\\\footnotesize population standard deviation\\ \hspace{2mm}]{\raggedright$\sigma$\\\footnotesize population standard deviation\\ \hspace{2mm}} for the standard deviation. The symbol $\sigma$ \index{Greek!sigma@sigma ($\sigma$)} is the Greek letter \emph{sigma}.
+Formulas and methods used to compute the variance and standard deviation for a population are similar to those used for a sample.\footnote{The only difference is that the population variance has a division by $n$ instead of $n-1$.} However, like the mean, the population values have special symbols: $\sigma_{}^2$ for the variance and $\sigma$ for the standard deviation. The symbol $\sigma$ \index{Greek!sigma@sigma ($\sigma$)} is the Greek letter \emph{sigma}.
 
 \begin{figure}
 \centering
@@ -479,9 +567,8 @@ Formulas and methods used to compute the variance and standard deviation for a p
 \label{emailCharactersDotPlotStackedRoundedWithSD}
 \end{figure}
 
-\begin{tipBox}{\tipBoxTitle{thinking about the standard deviation}
-It is useful to think of the standard deviation as the average distance that observations fall from the mean.}
-\end{tipBox}
+\begin{onebox}{thinking about the standard deviation}
+It is useful to think of the standard deviation as the average distance that observations fall from the mean.\end{onebox}
 
 The \term{empirical rule} tells us that usually about 68\% of the data will be within one standard deviation of the mean and about 95\% will be within two standard deviations of the mean. However, as seen in Figures~\ref{emailCharactersDotPlotStackedRoundedWithSD} and~\ref{severalDiffDistWithSdOf1}, these percentages are not strict rules.\footnote{We will learn where these two numbers come from in Chapter 4 when we study the normal distribution.}
 
@@ -492,18 +579,18 @@ The \term{empirical rule} tells us that usually about 68\% of the data will be w
 \label{severalDiffDistWithSdOf1}
 \end{figure}
 
-\begin{exercise}
-On page~\pageref{shapeFirstDiscussed}, the concept of shape of a distribution was introduced. A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side. Using Figure~\ref{severalDiffDistWithSdOf1} as an example, explain why such a description is important.\footnote{Figure~\ref{severalDiffDistWithSdOf1} shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a~distribution.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+On page~\pageref{shapeFirstDiscussed}, the concept of shape of a distribution was introduced. A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side. Using Figure~\ref{severalDiffDistWithSdOf1} as an example, explain why such a description is important.\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{Figure~\ref{severalDiffDistWithSdOf1} shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a~distribution.}
 
-\begin{example}{Earlier we reported that the mean family income in the U.S. in 2012 was \$82,743. Estimating the standard deviation of income as approximately \$50,000, is a family income of \$60,000 unusually far from the mean or relatively close to the mean?}
+\begin{examplewrap}\begin{nexample}{Earlier we reported that the mean family income in the U.S. in 2012 was \$82,743. Estimating the standard deviation of income as approximately \$50,000, is a family income of \$60,000 unusually far from the mean or relatively close to the mean?}
 Because \$60,000 is less that one standard deviation from the mean, it is relatively close to the mean. If the value were more than 2 standard deviations away from the mean, we would consider it far from the mean.
-\end{example}
+\end{nexample}\end{examplewrap}
 
 When describing any distribution, comment on the three important characteristics of center, spread, and shape. Also note any especially unusual cases.
 
-\begin{example}{In the data's context (the number of characters in emails), describe the distribution of the \var{num\_\hspace{0.3mm}char} variable using the histogram in Figure~\ref{email50NumCharHistCopy}.}
-The distribution of email character counts is unimodal and very strongly skewed to the right. Many of the counts fall near the mean at 11,600, and most fall within one standard deviation (13,130) of the mean. There is one exceptionally long email with about 65,000 characters.
+\Comment{check on placement of figure}
 
 \begin{figure}
    \centering
@@ -512,11 +599,17 @@ The distribution of email character counts is unimodal and very strongly skewed 
    \label{email50NumCharHistCopy}
 \end{figure}
 
-\end{example}
+\begin{examplewrap}\begin{nexample}{In the data's context (the number of characters in emails), describe the distribution of the \var{num\_\hspace{0.3mm}char} variable using the histogram in Figure~\ref{email50NumCharHistCopy}.}
+The distribution of email character counts is unimodal and very strongly skewed to the right. Many of the counts fall near the mean at 11,600, and most fall within one standard deviation (13,130) of the mean. There is one exceptionally long email with about 65,000 characters.
+
+
+
+\end{nexample}\end{examplewrap}
 
 In this chapter we use standard deviation as a descriptive statistic to describe the variability in a given data set. In Chapter~\ref{foundationsForInference} we will use the standard deviation to assess how close a sample mean is to the population mean.
 
 
+%%
 \subsection{Box plots and quartiles}
 
 A \term{box plot} summarizes a data set using five summary statistics while also plotting unusual observations, called \hiddenterm{outliers}. Figure~\ref{boxPlotLayoutNumVar} provides a box plot of the \var{num\_\hspace{0.3mm}char} variable from the \data{email50} data set.
@@ -537,35 +630,34 @@ $Q_1$\index{Q$_1$} represents the \term{first quartile}, which is the 25th perce
 
 We calculate the variability in the data using the range of the middle 50\% of the data: $Q_3 - Q_1 = \text{13,375}$. This quantity is called the \term{interquartile range} (\hiddenterm{IQR}, for short). It, like the standard deviation, is a measure of \indexthis{variability}{variability} or \term{spread} in data. The more variable the data, the larger the standard deviation and~IQR tend to be.
 
-\begin{termBox}{\tBoxTitle{Interquartile range (IQR)}
+\begin{onebox}{Interquartile range (IQR)}
 The IQR\index{interquartile range} is the length of the box in a box plot. It is computed as
 \begin{eqnarray*}
 IQR = Q_3 - Q_1
 \end{eqnarray*}
-where $Q_1$ and $Q_3$ are the $25^{th}$ and $75^{th}$ percentiles.}
-\end{termBox}
+where $Q_1$ and $Q_3$ are the $25^{th}$ and $75^{th}$ percentiles.\end{onebox}
 
-\begin{termBox}{\tBoxTitle{Outliers in the context of a box plot}
-When in the context of a box plot, define an \term{outlier} as an \mbox{observation} that is more than $1.5 \times IQR$ above $Q_3$ or $1.5 \times IQR$ below $Q_1$. Such points are marked using a dot or asterisk in a box plot.}
-\end{termBox}
+\begin{onebox}{Outliers in the context of a box plot}
+When in the context of a box plot, define an \term{outlier} as an \mbox{observation} that is more than $1.5 \times IQR$ above $Q_3$ or $1.5 \times IQR$ below $Q_1$. Such points are marked using a dot or asterisk in a box plot.\end{onebox}
 
 To build a box plot, draw an axis (vertical or horizontal) and draw a scale. Draw a dark line denoting $Q_2$, the median. Next, draw a line at $Q_1$ and at $Q_3$. Connect the $Q_1$ and $Q_3$ lines to form a rectangle. The width of the rectangle corresponds to the IQR and the middle 50\% of the data is in this interval.
 
 Extending out from the rectangle, the \term{whiskers} attempt to capture all of the data remaining outside of the box, except outliers. In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$ and are outliers, so it extends only to the last point below this limit.\footnote{You might wonder, isn't the choice of $1.5 \times IQR$ for defining an outlier arbitrary? It is! In practical data analyses, we tend to avoid a strict definition since what is an unusual observation is highly dependent on the context of the data.} The lower whisker stops at the lowest value, 33, since there are no additional data to reach. Outliers are each marked with a dot or asterisk. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.
 
-\begin{example}{Compare the box plot to the graphs previously discussed: stem-and-leaf plot, dot plot, frequency and relative frequency histogram. What can we learn more easily from a box plot? What can we learn more easily from the other graphs?}
+\begin{examplewrap}\begin{nexample}{Compare the box plot to the graphs previously discussed: stem-and-leaf plot, dot plot, frequency and relative frequency histogram. What can we learn more easily from a box plot? What can we learn more easily from the other graphs?}
 It is easier to immediately identify the quartiles from a box plot. The box plot also more prominently highlights outliers. However, a box plot, unlike the other graphs, does not show the \emph{distribution} of the data. For example, we cannot generally identify modes using a box plot.
-\end{example}
+\end{nexample}\end{examplewrap}
 
-\begin{example}
+\begin{examplewrap}\begin{nexample}
 {Is it possible to identify skew from the box plot?} Yes. Looking at the lower and upper whiskers of this box plot, we see that the lower 25\% of the data is squished into a shorter distance than the upper 25\% of the data, implying that there is greater density in the low values and a tail trailing to the upper values. This box plot is right skewed.
-\end{example}
+\end{nexample}\end{examplewrap}
 
-\begin{exercise}
-True or false: there is more data between the median and $Q_3$ than between $Q_1$ and the median.\footnote{False. Since $Q_1$ is the 25th percentile and the median is the 50th percentile, 25\% of the data fall between $Q_1$ and the median. Similarly, 25\% of the data fall between $Q_2$ and the median. The distance between the median and $Q_3$ is larger because that 25\% of the data is more spread out.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+True or false: there is more data between the median and $Q_3$ than between $Q_1$ and the median.\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{False. Since $Q_1$ is the 25th percentile and the median is the 50th percentile, 25\% of the data fall between $Q_1$ and the median. Similarly, 25\% of the data fall between $Q_2$ and the median. The distance between the median and $Q_3$ is larger because that 25\% of the data is more spread out.}
 
-\begin{example}
+\begin{examplewrap}\begin{nexample}
 {Consider the following ordered data set.
 \begin{center}
 \begin{tabular}{ccc ccc ccc}
@@ -588,22 +680,23 @@ Q_3 + 1.5 \times IQR
 	& = 77
 \end{align*}
 There are no numbers less than -41, so there are no outliers on the low end. The observation at 80 is greater than 77, so 80 is an outlier on the high end.
-\end{example}
+\end{nexample}\end{examplewrap}
 
 %\Comment{TODO(David)  create another box plot using different data set}
 %\Comment{TODO(Leah) redo exercise}
 
 %\Cut{
-%\begin{exercise}
+%\begin{exercisewrap}%\begin{nexercise}
 %Using Figure~\ref{boxPlotLayoutNumVar}, estimate the following values for \var{num\_\hspace{0.3mm}char} in the \data{email50} data set: (a) $Q_1$, (b) $Q_3$, and (c) IQR.\footnote{These visual estimates will vary a little from one person to the next: $Q_1=$ 3,000, $Q_3=$ 15,000, $\text{IQR}=Q_3 - Q_1 = $ 12,000. (The true values: $Q_1=$ 2,536, $Q_3=$ 15,411, $\text{IQR} = $ 12,875.)}
-%\end{exercise}
+%\end{nexercise}%\end{exercisewrap}
 %}
 
 
+%%
 \subsection{Calculator: summarizing 1-variable statistics}
-\label{TIsummarizedata}
+\label{summarizedata}
 
-\begin{termBox}{\tBoxTitle{\videohref{ti84_entering_data} TI-83/84: Entering data}
+\begin{onebox}{\videohref{ti84_entering_data} TI-83/84: Entering data}
 The first step in summarizing data or making a graph is to  enter the data set into a list. Use \calcbutton{STAT}, \calctext{Edit}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -611,22 +704,21 @@ The first step in summarizing data or making a graph is to  enter the data set i
 \item Choose \calctext{1:Edit}.
 \item Enter data into \calctext{L1} or another list.
 \end{enumerate}
-}
-\end{termBox}
+\end{onebox}
 
 \textA{\newpage}
 
-\begin{termBox}{\tBoxTitle[]{\videohref{casio_1_var_stats_and_box_plot} Casio fx-9750GII: Entering data}
+\begin{onebox}[]{\videohref{casio_1_var_stats_and_box_plot} Casio fx-9750GII: Entering data}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
 \item Optional: use the left or right arrows to select a particular list.
 \item Enter each numerical value and hit \calcbutton{EXE}.
 \end{enumerate}
-}
-\end{termBox}
+\end{onebox}
 
-\begin{termBox}{\tBoxTitle{\videohref{ti84_calculating_summary_statistics} TI-84: Calculating Summary Statistics}
+\begin{onebox}{\videohref{ti84_calculating_summary_statistics} TI-84: Calculating Summary Statistics}
+\label{summstat}
 Use the \calcbutton{STAT}, \calctext{CALC}, \calctext{1-Var Stats} command to find summary statistics such as mean, standard deviation, and quartiles.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -639,8 +731,7 @@ Use the \calcbutton{STAT}, \calctext{CALC}, \calctext{1-Var Stats} command to fi
 \item Choose \calctext{Calculate} and hit \calcbutton{ENTER}.
 \end{enumerate}
 TI-83: Do steps 1-4, then type \calctext{L1} (i.e. \calcbutton{2nd} \calcbutton{1}) or the list's name and hit \calcbutton{ENTER}.
-}
-\end{termBox}
+\end{onebox}
 
 Calculating the summary statistics will return the following information. It will be necessary to hit the down arrow to see all of the summary statistics.
 
@@ -658,7 +749,8 @@ $\calctextmath{\sigma x}$ & Population standard deviation &&
 \end{tabular}
 \end{center}
 
-\begin{termBox}{\tBoxTitle[]{\videohref{ti84_box_plot} TI-83/84:  Drawing a box plot}
+\begin{onebox}[]{\videohref{ti84_box_plot} TI-83/84:  Drawing a box plot}
+\label{boxplot}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Enter the data to be graphed as described previously.
@@ -669,10 +761,9 @@ $\calctextmath{\sigma x}$ & Population standard deviation &&
 \item Down arrow again and make \calctext{Xlist:}~\calctext{L1} and \calctext{Freq:}~\calctext{1}.
 \item Choose \calctext{ZOOM} and then \calctext{9:ZoomStat} to get a good viewing window.
 \end{enumerate}
-}
-\end{termBox}
+\end{onebox}
 
-\begin{termBox}{\tBoxTitle[]{\videohref{casio_1_var_stats_and_box_plot} Casio fx-9750GII: Drawing a box plot and 1-variable statistics}
+\begin{onebox}[]{\videohref{casio_1_var_stats_and_box_plot} Casio fx-9750GII: Drawing a box plot and 1-variable statistics}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU}, then hit \calcbutton{2}) and enter the data into a list.
@@ -686,27 +777,25 @@ $\calctextmath{\sigma x}$ & Population standard deviation &&
 \item Hit \calcbutton{EXE} and then choose the graph where you set the parameters \calcbutton{F1} (most common), \calcbutton{F2}, or \calcbutton{F3}.
 \item If desired, explore 1-variable statistics by selecting \calctext{1-Var} (\calcbutton{F1}).
 \end{enumerate}
-}
-\end{termBox}
+\end{onebox}
 
-\begin{example}{Enter the following 10 data points into the first list on a calculator: {5, 8, 1, 19, 3, 1, 11, 18, 20, 5}. Find the summary statistics and make a box plot of the data.}
+\begin{examplewrap}\begin{nexample}{Enter the following 10 data points into the first list on a calculator: {5, 8, 1, 19, 3, 1, 11, 18, 20, 5}. Find the summary statistics and make a box plot of the data.}
 The summary statistics should be $\calctextmath{\bar{x}} = 9.1$, $\calctextmath{Sx} = 7.475$, $\calctextmath{Q1} = 3$, etc. The box plot should be as follows.
 \begin{center}
 \includegraphics[width=0.45\textwidth]{ch_summarizing_data/figures/TI83_box_plot_A/TI83_box_plot_A}
 \end{center}
-\end{example}
+\end{nexample}\end{examplewrap}
 
-\begin{tipBox}{\tBoxTitle{TI-83/84: What to do if you cannot find \calctext{L1} or another list}
+\begin{onebox}{TI-83/84: What to do if you cannot find {L1} or another list}
 Restore lists \calctext{L1}-\calctext{L6} using the following steps:
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Press \calcbutton{STAT}.
 \item Choose \calctext{5:SetUpEditor}.
 \item Hit \calcbutton{ENTER}.
-\end{enumerate}}
-\end{tipBox}
+\end{enumerate}\end{onebox}
 
-\begin{tipBox}{\tBoxTitle[]{\videohref{casio_1_var_stats_and_box_plot} Casio fx-9750GII: Deleting a data list}
+\begin{onebox}{\videohref{casio_1_var_stats_and_box_plot} Casio fx-9750GII: Deleting a data list}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU}, then hit \calcbutton{2}).
@@ -714,27 +803,29 @@ Restore lists \calctext{L1}-\calctext{L6} using the following steps:
 \item Select $\calctextmath{\triangleright}$ (\calcbutton{F6}) to see more options.
 \item Select \calctext{DEL-A} (\calcbutton{F4}) and then \calcbutton{F1} to confirm.
 \end{enumerate}
-}
-\end{tipBox}
+\end{onebox}
 
 
+%%
 \subsection{Outliers and robust statistics}
 
-\begin{termBox}{\tBoxTitle{Rules of thumb for identifying outliers}
+\begin{onebox}{Rules of thumb for identifying outliers}
 There are two rules of thumb for identifying outliers:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item More than 1.5$\times$ IQR below $Q_1$ or above $Q_3$
 \item More than 2 standard deviations above or below the mean.
 \end{itemize}
-Both are important for the AP exam. In practice, consider these to be only rough guidelines.}
-\end{termBox}
+Both are important for the AP exam. In practice, consider these to be only rough guidelines.\end{onebox}
 
-\begin{exercise}For the \data{email50} data set,$Q_1=$ 2,536 and $Q_3=15,411$. $\bar{x}$ = 11,600  and $s$ = 13,130. What values would be considered an outlier on the low end using each rule?\footnote{ $Q_1 - 1.5\times IQR = 2536 - 1.5 \times (15411 - 2536) = -16,749.5$, so values less than -16,749.5 would be considered an outlier using the first rule of thumb. Using the second rule of thumb, a value less than $\bar{x} - 2\times s = 11,600 - 2 \times 13,130 = -14,660$ would be considered an outlier. Note tht these are just rules of thumb and yield different values.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}For the \data{email50} data set,$Q_1=$ 2,536 and $Q_3=15,411$. $\bar{x}$ = 11,600  and $s$ = 13,130. What values would be considered an outlier on the low end using each rule?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{ $Q_1 - 1.5\times IQR = 2536 - 1.5 \times (15411 - 2536) = -16,749.5$, so values less than -16,749.5 would be considered an outlier using the first rule of thumb. Using the second rule of thumb, a value less than $\bar{x} - 2\times s = 11,600 - 2 \times 13,130 = -14,660$ would be considered an outlier. Note tht these are just rules of thumb and yield different values.}
 
-\begin{exercise} Because there are no negative values in this data set, there can be no outliers on the low end. What does the fact that there are outliers on the high end but not on the low end suggestion?\footnote{It suggests that the distribution has a right hand tail, that~is, that it is right skewed.}
-\end{exercise}
+
+\begin{exercisewrap}\begin{nexercise} Because there are no negative values in this data set, there can be no outliers on the low end. What does the fact that there are outliers on the high end but not on the low end suggestion?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{It suggests that the distribution has a right hand tail, that~is, that it is right skewed.}
 
 How are the \indexthis{sample statistics}{sample statistic} of the \data{num\_\hspace{0.3mm}char} data set affected by the observation, 64,401? What would have happened if this email wasn't observed? What would happen to these \indexthis{summary statistics}{summary statistic} if the observation at 64,401 had been even larger, say 150,000? These scenarios are plotted alongside the original data in Figure~\ref{email50NumCharDotPlotRobustEx}, and sample statistics are computed under each scenario in Table~\ref{robustOrNotTable}.
 
@@ -764,35 +855,38 @@ move 64,401 to 150,000		&& 6,890 & 12,875 && 13,310 & 22,434 \\
 \label{robustOrNotTable}
 \end{table}
 
-\begin{exercise} \label{numCharWhichIsMoreRobust}
-(a) Which is more affected by extreme observations, the mean or median? Table~\ref{robustOrNotTable} may be helpful. (b) Is the standard deviation or IQR more affected by extreme observations?\footnote{(a) Mean is affected more. (b) Standard deviation is affected more. Complete explanations are provided in the material following Guided Practice~\ref{numCharWhichIsMoreRobust}.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise} \label{numCharWhichIsMoreRobust}
+(a) Which is more affected by extreme observations, the mean or median? Table~\ref{robustOrNotTable} may be helpful. (b) Is the standard deviation or IQR more affected by extreme observations?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{(a) Mean is affected more. (b) Standard deviation is affected more. Complete explanations are provided in the material following Guided Practice~\ref{numCharWhichIsMoreRobust}.}
 
 The median and IQR are called \term{robust estimates} because extreme observations have little effect on their values. The mean and standard deviation are much more affected by changes in extreme observations.
 
-\begin{example}{The median and IQR do not change much under the three scenarios in Table~\ref{robustOrNotTable}. Why might this be the case?}
+\begin{examplewrap}\begin{nexample}{The median and IQR do not change much under the three scenarios in Table~\ref{robustOrNotTable}. Why might this be the case?}
 Since there are no large gaps between observations around the three quartiles, adding, deleting, or changing one value, no matter how extreme that value, will have little effect on their values.
-\end{example}
+\end{nexample}\end{examplewrap}
 
-\begin{exercise}
-The distribution of vehicle prices tends to be right skewed, with a few luxury and sports cars lingering out into the right tail. If you were searching for a new car and cared about price, should you be more interested in the mean or median price of vehicles sold, assuming you are in the market for a regular car?\footnote{Buyers of a ``regular car'' should be concerned about the median price. High-end car sales can drastically inflate the mean price while the median will be more robust to the influence of those sales.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+The distribution of vehicle prices tends to be right skewed, with a few luxury and sports cars lingering out into the right tail. If you were searching for a new car and cared about price, should you be more interested in the mean or median price of vehicles sold, assuming you are in the market for a regular car?\footnotemark\end{nexercise}\end{exercisewrap}
+\footnotetext{Buyers of a ``regular car'' should be concerned about the median price. High-end car sales can drastically inflate the mean price while the median will be more robust to the influence of those sales.}
 
 
+%%
 \subsection{Linear transformations of data}
 \label{linearTransformationOfData}
 
-\begin{example}{Begin with the following list:  {1, 1, 5, 5}. Multiply all of the numbers by 10. What happens to the mean? What happens to the standard deviation? How do these compare to the mean and the standard deviation of the original list?}
-The original list has a mean of 3 and a standard deviation of 2. The new list: {10, 10, 50, 50} has a mean of 30 with a standard deviation of 20. Because all of the values were multiplied by 10, both the mean and the standard deviation were multiplied by~10.~\footnote{Here, the population standard deviation was used in the calculation. These properties can be proven mathematically using properties of sigma (summation).}
-\end{example}
+\begin{examplewrap}\begin{nexample}{Begin with the following list:  {1, 1, 5, 5}. Multiply all of the numbers by 10. What happens to the mean? What happens to the standard deviation? How do these compare to the mean and the standard deviation of the original list?}
+The original list has a mean of 3 and a standard deviation of 2. The new list: {10, 10, 50, 50} has a mean of 30 with a standard deviation of 20. Because all of the values were multiplied by 10, both the mean and the standard deviation were multiplied by~10.~\footnotemark
+\end{nexample}\end{examplewrap}
+\footnotetext{Here, the population standard deviation was used in the calculation. These properties can be proven mathematically using properties of sigma (summation).}
 
-\begin{example}{Start with the following list:  {1, 1, 5, 5}. Multiply all of the numbers by \mbox{-0.5}. What happens to the mean? What happens to the standard deviation? How do these compare to the mean and the standard deviation of the original list?}
+\begin{examplewrap}\begin{nexample}{Start with the following list:  {1, 1, 5, 5}. Multiply all of the numbers by \mbox{-0.5}. What happens to the mean? What happens to the standard deviation? How do these compare to the mean and the standard deviation of the original list?}
 The new list: {-0.5, -0.5, -2.5, -2.5} has a mean of -1.5 with a standard deviation of~1. Because all of the values were multiplied by~\mbox{-0.5}, the mean was multiplied by~\mbox{-0.5}. Multiplying all of the values by a negative flipped the sign of numbers, which affects the location of the center, but not the spread. Multiplying all of the values by \mbox{-0.5} multiplied the standard deviation by +0.5 since the standard deviation cannot be negative.
-\end{example}
+\end{nexample}\end{examplewrap}
 
-\begin{example}{Again, start with the following list: {1, 1, 5, 5}. Add 100 to every entry. How do the new mean and standard deviation compare to the original mean and standard deviation?}
+\begin{examplewrap}\begin{nexample}{Again, start with the following list: {1, 1, 5, 5}. Add 100 to every entry. How do the new mean and standard deviation compare to the original mean and standard deviation?}
 The new list is: {101, 101, 105, 105}. The new mean of 103 is 100 greater than the original mean of 3. The new standard deviation of 2 is the \emph{same} as the original standard deviation of 2. Adding a constant to every entry shifted the values, but did not stretch them.
-\end{example}
+\end{nexample}\end{examplewrap}
 
 Suppose that a researcher is looking at a list of 500 temperatures recorded in Celsius~(C). The mean of the temperatures listed is given as 27\degree C with a standard deviation of 3\degree C. Because she is not familiar with the Celsius scale, she would like to convert these summary statistics into Fahrenheit~(F). To convert from Celsius to Fahrenheit, we use the following conversion:
 \begin{align*}
@@ -818,16 +912,16 @@ Using the examples as a guide, we can solve this temperature-conversion problem.
 
 %\Comment{TODO(David) THIS WOULD BE NICE add picture}
 
-\begin{termBox}{\tBoxTitle{Adding shifts the values, multiplying stretches or contracts them}
-Adding a constant to every value in a data set shifts the mean but does not affect the standard deviation. Multiplying the values in a data set by a constant will change the mean and the standard deviation by the same multiple, except that the standard deviation will always remain positive.}
-\end{termBox}
+\begin{onebox}{Adding shifts the values, multiplying stretches or contracts them}
+Adding a constant to every value in a data set shifts the mean but does not affect the standard deviation. Multiplying the values in a data set by a constant will change the mean and the standard deviation by the same multiple, except that the standard deviation will always remain positive.\end{onebox}
 
-\begin{example}{Consider the temperature example. How would converting from Celsuis to Fahrenheit affect the median? The IQR?}
+\begin{examplewrap}\begin{nexample}{Consider the temperature example. How would converting from Celsuis to Fahrenheit affect the median? The IQR?}
 The median is affected in the same way as the mean and the IQR is affected in the same way as the standard deviation. To get the new median, multiply the old median by $9/5$ and add 32. The IQR is computed by subtracting $Q_1$ from $Q_3$. While $Q_1$ and $Q_3$ are each affected in the same way as the median, the additional 32 added to each will cancel when we take $Q_3 - Q_1$. That is, the IQR will be increase by a factor of $9/5$ but will be unaffected by the addition of~32.
 
 For a more mathematical explanation of the IQR calculation, see the footnote.\footnote{new IQR = $\left(\frac{9}{5} Q_3 + 32\right) - \left(\frac{9}{5} Q_1 + 32\right) = \frac{9}{5} \left(Q_3 - Q_1\right) = \frac{9}{5} \times \text{(old IQR)}$.}
-\end{example}
+\end{nexample}\end{examplewrap}
 
+%%
 \subsection{Comparing numerical data across groups}
 \label{comparingAcrossGroups}
 
@@ -902,32 +996,33 @@ The \term{parallel box plot} \index{box plot!parallel box plot} is a traditional
 
 Another useful plotting method uses \termsub{hollow histograms}{hollow histogram} to compare numerical data across groups. These are just the outlines of histograms of each group put on the same plot, as shown in the right panel of Figure~\ref{countyIncomeSplitByPopGain}.
 
-\begin{exercise} \label{comparingPriceByTypeExercise}
-Use the plots in Figure~\ref{countyIncomeSplitByPopGain} to compare the incomes for counties across the two groups. What do you notice about the approximate center of each group? What do you notice about the variability between groups? Is the shape relatively consistent between groups? How many \emph{prominent} modes are there for each group?\footnote{Answers may vary a little. The counties with population gains tend to have higher income (median of about \$45,000) versus counties without a gain (median of about \$40,000). The variability is also slightly larger for the population gain group. This is evident in the IQR, which is about 50\% bigger in the \emph{gain} group. Both distributions show slight to moderate right skew\index{skew!example: slight to moderate} and are unimodal. There is a secondary small bump at about \$60,000 for the \emph{no gain} group, visible in the hollow histogram plot, that seems out of place. (Looking into the data set, we would find that 8 of these 15 counties are in Alaska and Texas.) The box plots indicate there are many observations far above the median in each group, though we should anticipate that many observations will fall beyond the whiskers when using such a large data set.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise} \label{comparingPriceByTypeExercise}
+Use the plots in Figure~\ref{countyIncomeSplitByPopGain} to compare the incomes for counties across the two groups. What do you notice about the approximate center of each group? What do you notice about the variability between groups? Is the shape relatively consistent between groups? How many \emph{prominent} modes are there for each group?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{Answers may vary a little. The counties with population gains tend to have higher income (median of about \$45,000) versus counties without a gain (median of about \$40,000). The variability is also slightly larger for the population gain group. This is evident in the IQR, which is about 50\% bigger in the \emph{gain} group. Both distributions show slight to moderate right skew\index{skew!example: slight to moderate} and are unimodal. There is a secondary small bump at about \$60,000 for the \emph{no gain} group, visible in the hollow histogram plot, that seems out of place. (Looking into the data set, we would find that 8 of these 15 counties are in Alaska and Texas.) The box plots indicate there are many observations far above the median in each group, though we should anticipate that many observations will fall beyond the whiskers when using such a large data set.}
 
-\begin{tipBox}{\tipBoxTitle{Comparing distributions}
-When comparing distributions, compare them with respect to center, spread, and shape as well as any unusual observations. Such descriptions should be in context.}
-\end{tipBox}
+\begin{onebox}{Comparing distributions}
+When comparing distributions, compare them with respect to center, spread, and shape as well as any unusual observations. Such descriptions should be in context.\end{onebox}
 
-\begin{exercise}
-What components of each plot in Figure~\ref{countyIncomeSplitByPopGain} do you find most useful?\footnote{Answers will vary. The parallel box plots are especially useful for comparing centers and spreads, while the hollow histograms are more useful for seeing distribution shape, skew, and groups of anomalies.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+What components of each plot in Figure~\ref{countyIncomeSplitByPopGain} do you find most useful?\footnotemark\end{nexercise}\end{exercisewrap}
+\footnotetext{Answers will vary. The parallel box plots are especially useful for comparing centers and spreads, while the hollow histograms are more useful for seeing distribution shape, skew, and groups of anomalies.}
 
-\begin{exercise}
-Do these graphs tell us about any association between income for the two groups?\footnote{No, to see association we require a scatterplot. Moreover, these data are not paired, so the discussion of association does not make sense here.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+Do these graphs tell us about any association between income for the two groups?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{No, to see association we require a scatterplot. Moreover, these data are not paired, so the discussion of association does not make sense here.}
 
 Looking at an association is different than comparing distributions. When comparing distributions, we are interested in questions such as, ``Which distribution has a greater average?'' and ``How do the shapes of the distribution differ?'' The number of elements in each data set need not be the same (e.g. height of women and height of men). When we look at association, we are interested in whether there is a positive, negative, or no association between the variables. This requires two data sets of equal length that are essentially paired (e.g. height and weight of individuals).
 
-\begin{tipBox}{\tipBoxTitle{Comparing distributions versus looking at association}
-We compare two distributions with respect to center, spread, and shape.  To compare the distributions visually, we use 2 single-variable graphs, such as two histograms, two dot plots, parallel box plots, or a back-to-back stem-and-leaf. When looking at association, we look for a positive, negative, or no relationship between the variables. To see association visually, we require a scatterplot.}
-\end{tipBox}
+\begin{onebox}{Comparing distributions versus looking at association}
+We compare two distributions with respect to center, spread, and shape.  To compare the distributions visually, we use 2 single-variable graphs, such as two histograms, two dot plots, parallel box plots, or a back-to-back stem-and-leaf. When looking at association, we look for a positive, negative, or no relationship between the variables. To see association visually, we require a scatterplot.\end{onebox}
 
 
 \index{data!email50|)}
 
 
+%%
 \subsection{Mapping data (special topic)}
 
 \index{intensity map|(}
@@ -950,28 +1045,93 @@ The \data{county} data set offers many numerical variables that we could plot us
 \label{countyIntensityMaps2}
 \end{figure}
 
-\begin{example}{What interesting features are evident in the \var{fed\_\hspace{0.3mm}spend} and \var{poverty} intensity maps?}
+\begin{examplewrap}\begin{nexample}{What interesting features are evident in the \var{fed\_\hspace{0.3mm}spend} and \var{poverty} intensity maps?}
 The federal spending intensity map shows substantial spending in the Dakotas and along the central-to-western part of the Canadian border, which may be related to the oil boom in this region. There are several other patches of federal spending, such as a vertical strip in eastern Utah and Arizona and the area where Colorado, Nebraska, and Kansas meet. There are also seemingly random counties with very high federal spending relative to their neighbors. If we did not cap the federal spending range at \$18 per capita, we would actually find that some counties have extremely high federal spending while there is almost no federal spending in the neighboring counties. These high-spending counties might contain military bases, companies with large government contracts, or other government facilities with many employees.
 
 Poverty rates are evidently higher in a few locations. Notably, the deep south shows higher poverty rates, as does the southwest border of Texas. The vertical strip of eastern Utah and Arizona, noted above for its higher federal spending, also appears to have higher rates of poverty (though generally little correspondence is seen between the two variables). High poverty rates are evident in the Mississippi flood plains a little north of New Orleans and also in a large section of Kentucky and West Virginia.
-\end{example}
+\end{nexample}\end{examplewrap}
 
-\begin{exercise}
-What interesting features are evident in the \var{med\_\hspace{0.3mm}income} intensity map?\footnote{Note: answers will vary. There is a very strong correspondence between high earning and metropolitan areas. You might look for large cities you are familiar with and try to spot them on the map as dark spots.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+What interesting features are evident in the \var{med\_\hspace{0.3mm}income} intensity map?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{Note: answers will vary. There is a very strong correspondence between high earning and metropolitan areas. You might look for large cities you are familiar with and try to spot them on the map as dark spots.}
 
 \index{intensity map|)}
 \index{data!county|)}
 
+\textA{\newpage}
+%%
+%%
+\subsection*{Section summary}
 
-\section[Considering categorical data]{Considering categorical data \sectionvideohref{youtube-7NhNeADL8fA&list=PLkIselvEzpM63OIePIrp5P4oFQH6WpYWo} \sectionslideshref{gdoc_aps_slides_2-3}}
+\begin{itemize}
+ \item In this section we looked at two measures of \term{center} and two measures of \term{spread}.  
+\item When \term{summarizing} or \term{comparing distributions}, always comment on center, spread, and shape.  Also, mention outliers or gaps if applicable.  Put descriptions in \textit{context}, that is, identify the variable(s) being summarized by name and include relevant units.  Remember:  \textit{Center, Spread, and Shape!  In context!}
+\item \term{Mean} and \term{median} are measures of center.  (A common mistake is to report \term{mode} as a measure of center. However, a mode can appear anywhere in a distribution.)  
+
+\begin{itemize}
+\item   The \term{mean} is the sum of all the observations divided by the
+  number of observations, $n$. \\
+  $\bar{x} = \frac{1}{n}\sum{x_{i}} = \frac{x_1 + x_2 + ... + x_n}{n}$\\
+  
+\item In an ordered data set, the \term{median} is the middle number when $n$ is odd.  When $n$ is even, the median is the average of the two middle numbers. 
+
+\end{itemize} 
+
+\item Because large values exert more ``pull" on the mean, large values on the high end tend to increase the mean more than they increase the median.  In a \term{right skewed} distribution, therefore, the mean is greater than the median.  Analogously, in a \term{left skewed} distribution, the mean is less than the median.  Remember: \textit{The mean follows the tail!  The skew is the tail!}
+
+\item \term{Standard deviation (SD)} and \term{Interquartile range (IQR)} are measures of spread.  SD measures the typical spread from the mean, whereas IQR measures the spread of the middle 50\% of the data.
+\begin{itemize}
+\item To calculate the standard deviation, subtract the average from each value, square all those differences, add them up, divide by $n -1$, then take the square root.  Note:  The standard deviation is the square root of the variance. 
+
+\item[]   $s = \sqrt{\frac{1}{n-1} \sum{(x_i -  \bar{x})^2}}$ 
+
+\item The IQR is the difference between the third quartile $Q_3$ and the first quartile $Q_1$.
+
+\item[] $IQR = Q_3 - Q_1$ 
+\end{itemize}
+
+\item \term{Outliers} are observations that are extreme relative to the rest of the data.  Two rules of thumb for identifying observations as outliers are:
+\begin{itemize}\vspace{-1mm}
+\setlength{\itemsep}{0mm}
+\item more than 2 standard deviations above or below the mean
+\item more than $1.5 \times IQR$ below $Q_1$ or above $Q_3$
+\end{itemize}
+Note: These rules of thumb generally produce different cutoffs.
+\item Mean and SD are sensitive to outliers.  Median and IQR are more robust and less sensitive to outliers.
+
+\item The \term{empirical rule} states that for approximately symmetric data, about 68\% of the data will be within one standard deviation of the mean and about 95\% will be within two standard deviations of the mean.
+\item \term{Linear transformations of data}.  Adding a constant to every value in a data set shifts the mean but does not affect the standard deviation. Multiplying the values in a data set by a constant will multiply the mean and the standard deviation by that constant, except that the standard deviation must always remain positive. 
+
+\item \term{Range} is defined as the difference between the maximum value and the minimum value, i.e. $max - min$.
+\item \term{Box plots} do not show the \textit{distribution} of a data set in the way that histograms do.  Rather, they provide a visual depiction of the \term{5-number summary}, which consists of: $min, Q_1, Q_2, Q_3, max$.  It is important to be able to identify the median, $IQR$, and direction of skew from a box plot.  
+
+
+\end{itemize}
+
+%______________________________________________
+\section[Considering categorical data]{Considering categorical data }
 \label{categoricalData}
-
 \index{data!email|(}
+
+\sectionintro{
 
 Like numerical data, categorical data can also be organized and analyzed. In this section, we will introduce tables and other basic tools for categorical data that are used throughout this book. The \data{email50} data set represents a sample from a larger email data set called \data{email}. This larger data set contains information on 3,921 emails. In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam.
 % library(openintro); data(email); dim(email)
 
+%%
+\subsection*{Learning objectives}
+\begin{enumerate}
+\item Use a one-way table or a bar graph to summarize a categorical variable.  Use counts (frequency) or proportions (relative frequency).
+
+\item Compare distributions of a categorical variable using a two-way table or a side-by-side or segmented bar plot. 
+
+\item Calculate marginal and joint frequencies for two-way tables.
+
+\end{enumerate}
+}
+
+%%
 \subsection{Contingency tables and bar plots}
 
 Table~\ref{emailSpamNumberTableTotals} summarizes two variables: \var{spam} and \var{number}. Recall that \var{number} is a categorical variable that describes whether an email contains no numbers, only small numbers (values under 1 million), or at least one big number (a value of 1 million or more). A table that summarizes data for two categorical variables in this way is called a \term{contingency table}. Each value in the table represents the number of times a particular combination of variable outcomes occurred. For example, the value 149 corresponds to the number of emails in the data set that are spam \emph{and} had no number listed in the email. Row and column totals are also included. The \term{row totals} \index{contingency table!row totals} provide the total counts across each row (e.g. $149 + 168 + 50 = 367$), and \term{column totals} \index{contingency table!column totals} are total counts down each column.
@@ -1023,6 +1183,7 @@ A bar plot is a common way to display a single categorical variable. The left pa
 \end{figure}
 
 
+%%
 \subsection{Row and column proportions}
 
 Table~\ref{rowPropSpamNumber} shows the row proportions for Table~\ref{emailSpamNumberTableTotals}. The \termsub{row proportions}{contingency table!row proportions} are computed as the counts divided by their row totals. The value 149 at the intersection of \resp{spam} and \resp{none} is replaced by $149/367=0.406$, i.e. 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the proportion of spam emails in the sample that do not include any numbers in the message.
@@ -1070,19 +1231,20 @@ Total & 1.000 & 1.000 & 1.000 & 1.000 \\
 
 We could also have checked for an association between \var{spam} and \var{number} in Table~\ref{rowPropSpamNumber} using row proportions. When comparing these row proportions, we would look down columns to see if the fraction of emails with no numbers, small numbers, and big numbers varied from \resp{spam} to \resp{not~spam}.
 
-\begin{exercise}
-What does 0.458 represent in Table~\ref{rowPropSpamNumber}? What does 0.059 represent in Table~\ref{colPropSpamNumber}?\footnote{0.458 represents the proportion of spam emails that had a small number. 0.059 represents the fraction of emails with small numbers that are spam.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+What does 0.458 represent in Table~\ref{rowPropSpamNumber}? What does 0.059 represent in Table~\ref{colPropSpamNumber}?\footnotemark\end{nexercise}\end{exercisewrap}
+\footnotetext{0.458 represents the proportion of spam emails that had a small number. 0.059 represents the fraction of emails with small numbers that are spam.}
 
-\begin{exercise}
-What does 0.139 at the intersection of \resp{not~spam} and \resp{big} represent in Table~\ref{rowPropSpamNumber}? What does 0.908 represent in the Table~\ref{colPropSpamNumber}?\footnote{0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+What does 0.139 at the intersection of \resp{not~spam} and \resp{big} represent in Table~\ref{rowPropSpamNumber}? What does 0.908 represent in the Table~\ref{colPropSpamNumber}?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.}
 
-\begin{example}{Data scientists use statistics to filter spam from incoming email messages. By noting specific characteristics of an email, a data scientist may be able to classify some emails as spam or not spam with high accuracy. One of those characteristics is whether the email contains no numbers, small numbers, or big numbers. Another characteristic is whether or not an email has any HTML content. A contingency table for the \var{spam} and \var{format} variables from the \data{email} data set are shown in Table~\ref{emailSpamHTMLTableTotals}. Recall that an HTML email is an email with the capacity for special formatting, e.g. bold text. In Table~\ref{emailSpamHTMLTableTotals}, which would be more helpful to someone hoping to classify email as spam or regular email: row or column proportions?}\label{weighingRowColumnProportions}
+\begin{examplewrap}\begin{nexample}{Data scientists use statistics to filter spam from incoming email messages. By noting specific characteristics of an email, a data scientist may be able to classify some emails as spam or not spam with high accuracy. One of those characteristics is whether the email contains no numbers, small numbers, or big numbers. Another characteristic is whether or not an email has any HTML content. A contingency table for the \var{spam} and \var{format} variables from the \data{email} data set are shown in Table~\ref{emailSpamHTMLTableTotals}. Recall that an HTML email is an email with the capacity for special formatting, e.g. bold text. In Table~\ref{emailSpamHTMLTableTotals}, which would be more helpful to someone hoping to classify email as spam or regular email: row or column proportions?}\label{weighingRowColumnProportions}
 Such a person would be interested in how the proportion of spam changes within each email format. This corresponds to column proportions: the proportion of spam in plain text emails and the proportion of spam in HTML emails.
 
 If we generate the column proportions, we can see that a higher fraction of plain text emails are spam ($209/1195 = 17.5\%$) than compared to HTML emails ($158/2726 = 5.8\%$). This information on its own is insufficient to classify an email as spam or not spam, as over 80\% of plain text emails are not spam. Yet, when we carefully combine this information with many other characteristics, such as \var{number} and other variables, we stand a reasonable chance of being able to classify some email as spam or not spam.
-\end{example}
+\end{nexample}\end{examplewrap}
 
 \begin{table}[ht]
 \centering
@@ -1103,11 +1265,13 @@ Total & 1195 & 2726 & 3921 \\
 
 Example~\ref{weighingRowColumnProportions} points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.
 
-\begin{exercise}
-Look back to Tables~\ref{rowPropSpamNumber} and~\ref{colPropSpamNumber}. Which would be more useful to someone hoping to identify spam emails using the \var{number} variable?\footnote{The column proportions in Table~\ref{colPropSpamNumber} will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9\% of the time (relatively rare). We would also see that about 27.1\% of emails with no numbers are spam, and 9.2\% of emails with big numbers are spam.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+Look back to Tables~\ref{rowPropSpamNumber} and~\ref{colPropSpamNumber}. Which would be more useful to someone hoping to identify spam emails using the \var{number} variable?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{The column proportions in Table~\ref{colPropSpamNumber} will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9\% of the time (relatively rare). We would also see that about 27.1\% of emails with no numbers are spam, and 9.2\% of emails with big numbers are spam.}
 
 
+%%
 \subsection{Segmented bar plots}
 \label{segmentedBarPlotsAndIndependence}
 
@@ -1129,15 +1293,16 @@ A \termsub{segmented bar plot}{bar plot!segmented bar plot} is a graphical displ
 \label{emailSpamNumberSegBarPlot}
 \end{figure}
 
-\begin{example}{Examine both of the segmented bar plots. Which is more useful?}
+\begin{examplewrap}\begin{nexample}{Examine both of the segmented bar plots. Which is more useful?}
 Figure~\ref{emailSpamNumberSegBar} contains more information, but Figure~\ref{emailSpamNumberSegBarSta} presents the information more clearly. This second plot makes it clear that emails with no number have a relatively high rate of spam email -- about 27\%! On the other hand, less than 10\% of email with small or big numbers are spam.
-\end{example}
+\end{nexample}\end{examplewrap}
 
 Since the proportion of spam changes across the groups in Figure~\ref{emailSpamNumberSegBarSta}, we can conclude the variables are dependent, which is something we were also able to discern using table proportions. Because both the \resp{none} and \resp{big} groups have relatively few observations compared to the \resp{small} group, the association is more difficult to see in Figure~\ref{emailSpamNumberSegBar}.
 
 In some other cases, a segmented bar plot that is not standardized will be more useful in communicating important information. Before settling on a particular segmented bar plot, create standardized and non-standardized forms and decide which is more effective at communicating features of the data.
 
 
+%%
 \subsection{The only pie chart you will see in this book}
 
 While pie charts are well known, they are not typically as useful as other charts in a data analysis. A \term{pie chart} is shown in Figure~\ref{emailNumberPieChart} alongside a bar plot. It is generally more difficult to compare group sizes in a pie chart than in a bar plot, especially when categories have nearly identical counts or proportions. In the case of the \resp{none} and \resp{big} categories, the difference is so slight you may be unable to distinguish any difference in group sizes for either~plot!
@@ -1151,21 +1316,49 @@ While pie charts are well known, they are not typically as useful as other chart
 
 \index{data!email|)}
 
+%%
+%%
+\subsection*{Section summary}
+\begin{itemize}
+\item \term{Categorical variables}, unlike numerical variables, are simply summarized by \term{counts} (how many) and \term{proportions}.  These are referred to as frequency and relative frequency, respectively.
+
+\item When summarizing one categorical variable, a \term{one-way frequency table} is useful.  For summarizing two categorical variables and their relationship, use a \term{two-way frequency table} (also known as a contingency table).
+
+\item To graphically summarize a single categorical variable, use a \term{bar plot}.  To summarize and compare two categorical variables, use \term{side-by-side} or \term{segmented} (stacked) bar plots.  
+
+\item \term{Pie charts} are another option for summarizing categorical data, but they are more difficult to read and bar charts are generally a better option.  
+\end{itemize}
+
 
 %___________________________________________
-\section[Case study: gender discrimination (special topic)]{Case study: gender discrimination (special topic) \sectionvideohref{youtube-2pHhjx9hyM4&list=PLkIselvEzpM63OIePIrp5P4oFQH6WpYWo}~\sectionslideshref{gdoc_aps_slides_2-4}}
+\section[Case study: gender discrimination (special topic)]{Case study: gender discrimination (special topic)}
 \label{caseStudyGenderDiscrimination}
-
 \index{data!discrimination|(}
+\Comment{padding}
 
-\begin{example}{Suppose your professor splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not {exactly} equal $\hat{p}_{_R}$?}\label{classRightLeftSideApple}
+\sectionintro{
+
+\begin{examplewrap}\begin{nexample}{Suppose your professor splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not {exactly} equal $\hat{p}_{_R}$?}\label{classRightLeftSideApple}
 While the proportions would probably be close to each other, it would be unusual for them to be exactly the same. We would probably observe a small difference due to {chance}.
-\end{example}
+\end{nexample}\end{examplewrap}
 
-\begin{exercise}
-If we don't think the side of the room a person sits on in class is related to whether the person owns an Apple product, what assumption are we making about the relationship between these two variables?\footnote{We would be assuming that these two variables are independent.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+If we don't think the side of the room a person sits on in class is related to whether the person owns an Apple product, what assumption are we making about the relationship between these two variables?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{We would be assuming that these two variables are independent.}
 
+%%
+\subsection{Learning objectives}
+\begin{enumerate}
+
+\item Recognize that an observed difference in sample statistics may be due to random chance and that we use hypothesis testing to determine if this difference statistically significant (i.e. too large to be attributed to random chance).
+
+\item Set up competing hypotheses and use the results of a simulation to evaluate the degree of support the data provide against the null hypothesis and for the alternative hypothesis.
+
+\end{enumerate}
+}
+
+%%
 \subsection{Variability within data}
 \label{variabilityWithinData}
 
@@ -1173,9 +1366,10 @@ We consider a study investigating gender discrimination in the 1970s, which is s
 
 The participants in this study are 48 male bank supervisors attending a management institute at the University of North Carolina in 1972. They were asked to assume the role of the personnel director of a bank and were given a personnel file to judge whether the person should be promoted to a branch manager position. The files given to the participants were identical, except that half of them indicated the candidate was male and the other half indicated the candidate was female. These files were randomly assigned to the subjects.
 
-\begin{exercise}
-Is this an observational study or an experiment? What implications does the study type have on what can be inferred from the results?\footnote{The study is an experiment, as subjects were randomly assigned a male file or a female file. Since this is an experiment, the results can be used to evaluate a causal relationship between gender of a candidate and the promotion decision.}
-\end{exercise}
+\begin{exercisewrap}\begin{nexercise}
+Is this an observational study or an experiment? What implications does the study type have on what can be inferred from the results?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{The study is an experiment, as subjects were randomly assigned a male file or a female file. Since this is an experiment, the results can be used to evaluate a causal relationship between gender of a candidate and the promotion decision.}
 
 For each supervisor we record the gender associated with the assigned file and the promotion decision. Using the results of the study summarized in Table~\ref{discriminationResults}, we would like to evaluate if females are unfairly discriminated against in promotion decisions. In this study, a smaller proportion of females are promoted than males (0.583 versus 0.875), but it is unclear whether the difference provides \emph{convincing evidence} that females are unfairly discriminated against.
 
@@ -1196,9 +1390,9 @@ For each supervisor we record the gender associated with the assigned file and t
 \label{discriminationResults}
 \end{table}
 
-\begin{example}{Statisticians are sometimes called upon to evaluate the strength of evidence. When looking at the rates of promotion for males and females in this study, what comes to mind as we try to determine whether the data show convincing evidence of a real difference?} \label{discriminationResultsWhatIsConvincingEvidence}
+\begin{examplewrap}\begin{nexample}{Statisticians are sometimes called upon to evaluate the strength of evidence. When looking at the rates of promotion for males and females in this study, what comes to mind as we try to determine whether the data show convincing evidence of a real difference?} \label{discriminationResultsWhatIsConvincingEvidence}
 The observed promotion rates (58.3\% for females versus 87.5\% for males) suggest there might be discrimination against women in promotion decisions. However, we cannot be sure if the observed difference represents discrimination or is just from random chance. Generally there is a little bit of fluctuation in sample data, and we wouldn't expect the sample proportions to be \emph{exactly} equal, even if the truth was that the promotion decisions were independent of gender.
-\end{example}
+\end{nexample}\end{examplewrap}
 
 Example~\ref{discriminationResultsWhatIsConvincingEvidence} is a reminder that the observed outcomes in the sample may not perfectly reflect the true relationships between variables in the underlying population. Table~\ref{discriminationResults} shows there were 7 fewer promotions in the female group than in the male group, a difference in promotion rates of 29.2\% $\left( \frac{21}{24} - \frac{14}{24} = 0.292 \right)$. This difference is large, but the sample size for the study is small, making it unclear if this observed difference represents discrimination or whether it is simply due to chance. We label these two competing claims, $H_0$ and $H_A$:
 \begin{itemize}
@@ -1213,6 +1407,7 @@ Consider the alternative model: bankers were influenced by which gender was list
 
 We choose between these two competing claims by assessing if the data conflict so much with $H_0$ that the independence model cannot be deemed reasonable. If this is the case, and the data support $H_A$, then we will reject the notion of independence and conclude there was discrimination.
 
+%%
 \subsection{Simulating the study}
 \label{simulatingTheStudy}
 
@@ -1236,13 +1431,14 @@ In this \term{simulation}, we thoroughly shuffle 48 personnel files, 24 labeled 
 \label{discriminationRand1}
 \end{table}
 
-\begin{exercise} \label{sampleDifferenceInMaleAndFemaleDiscrimination}
-What is the difference in promotion rates between the two simulated groups in Table~\ref{discriminationRand1}? How does this compare to the observed 29.2\% in the actual groups?\footnote{$18/24 - 17/24=0.042$ or about 4.2\% in favor of the men. This difference due to chance is much smaller than the difference observed in the actual groups.}
-\end{exercise}
-
+\begin{exercisewrap}\begin{nexercise} \label{sampleDifferenceInMaleAndFemaleDiscrimination}
+What is the difference in promotion rates between the two simulated groups in Table~\ref{discriminationRand1}? How does this compare to the observed 29.2\% in the actual groups?\footnotemark
+\end{nexercise}\end{exercisewrap}
+\footnotetext{$18/24 - 17/24=0.042$ or about 4.2\% in favor of the men. This difference due to chance is much smaller than the difference observed in the actual groups.}
 
 \textA{\newpage}
 
+%%
 \subsection{Checking for independence}
 
 We computed one possible difference under the independence model in Guided Practice~\ref{sampleDifferenceInMaleAndFemaleDiscrimination}, which represents one difference due to chance. While in this first simulation, we physically dealt out files, it is more efficient to perform this simulation using a computer. Repeating the simulation on a computer, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the \emph{distribution of differences from chance alone}. Figure~\ref{discRandDotPlot} shows a plot of the differences found from 100 simulations, where each dot represents a simulated difference between the proportions of male and female files that were recommended for promotion.
@@ -1256,9 +1452,9 @@ We computed one possible difference under the independence model in Guided Pract
 
 Note that the distribution of these simulated differences is centered around 0. We simulated these differences assuming that the independence model was true, and under this condition, we expect the difference to be zero with some random fluctuation. We would generally be surprised to see a difference of \emph{exactly} 0: sometimes, just by chance, the difference is higher than 0, and other times it is lower than zero.
 
-\begin{example}{How often would you observe a difference of at least 29.2\% (0.292) according to Figure~\ref{discRandDotPlot}? Often, sometimes, rarely, or never?}
+\begin{examplewrap}\begin{nexample}{How often would you observe a difference of at least 29.2\% (0.292) according to Figure~\ref{discRandDotPlot}? Often, sometimes, rarely, or never?}
 It appears that a difference of at least 29.2\% due to chance alone would only happen about 2\% of the time according to Figure~\ref{discRandDotPlot}. Such a low probability indicates a rare event.
-\end{example}
+\end{nexample}\end{examplewrap}
 
 The difference of 29.2\% being a rare event suggests two possible interpretations of the results of the study:
 \begin{itemize}
@@ -1271,3 +1467,25 @@ Based on the simulations, we have two options. (1)~We conclude that the study re
 \index{data!discrimination|)}
 
 One field of statistics, statistical inference, is built on evaluating whether such differences are due to chance. In statistical inference, statisticians evaluate which model is most reasonable given the data. Errors do occur, just like rare events, and we might choose the wrong model. While we do not always choose correctly, statistical inference gives us tools to control and evaluate how often these errors occur. In Chapter~\ref{foundationsForInference}, we give a formal introduction to the problem of model selection. We spend the next two chapters building a foundation of probability and theory necessary to make that discussion rigorous.
+
+%______________________________________________
+\section{Chapter highlights}
+
+A raw data matrix/table may have thousands of rows.  The data need to be summarized in order to makes sense of all the information.  In this chapter, we looked at ways to summarize data \term{graphically}, \term{numerically}, and \term{verbally}.  
+\\
+\\\term{Categorical data }
+\begin{itemize}
+\item A single \term{categorical variable} is summarized with \term{counts} or \term{proportions} in a \term{one-way table}.  A \term{bar graph} is used to show the frequency or relative frequency of the categories that the variable takes on.
+\item Two categorical variables can be summarized in a \term{two-way table} and with a \term{side-by-side bar plot} or a \term{segmented bar plot}.
+\end{itemize}
+\term{Numerical data}
+\begin{itemize}
+\item When looking at a single \term{numerical variable}, we try to understand the \term{distribution} of the variable.  The distribution of a variable can be represented with a frequency table and with a graph, such as a \term{stem-and-leaf plot} or \term{dot plot} for small data sets, or a \term {histogram} for larger data sets.  If only a summary is desired, a \term{box plot} may be used.
+\item The \term{distribution} of a variable can be described and summarized with \term{center} (mean or median), \term{spread} (SD or IQR), and \term{shape} (right skewed, left skewed, approximately symmetric). 
+\item \term{Z-scores} and \term{percentiles} are useful for identifying a data point's relative position within a data set.
+\item \term{Outliers} are values that appear extreme relative to the rest of the data.  Investigating outliers can provide insight into properties of the data or may reveal data collection/entry errors.
+\item When \term{comparing} the distribution of two variables, use two dot plots, two histograms, a back-to-back stem-and-leaf, or parallel box plots.
+\item To look at the \term{association} between two numerical variables, use a \term{scatter plot}.
+\end{itemize}
+Graphs and numbers can summarize data, but they alone are insufficient.  It is the role of the researcher or statistician to ask questions, to use these tools to identify patterns and departure from patterns, and to make sense of this in the context of the data.  Strong writing skills are critical for being able to communicate the results to a wider audience.  
+

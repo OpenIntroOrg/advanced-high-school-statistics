@@ -7,7 +7,7 @@ t.test(x-100)
 mean(x)
 sd(x)
 
-myPDF('satImprovementHTDataHistogram.pdf', 3.9, 2.2,
+myPDF('satImprovementHTDataHistogram.pdf', 3.6, 1.5,
       mar = c(1.6, 2, 0.2, 1),
       mgp = c(0, 0.45, 0))
 histPlot(x,

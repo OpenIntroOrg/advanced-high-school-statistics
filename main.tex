@@ -1,54 +1,88 @@
-\documentclass[10pt,openany]{book}
+\documentclass[10pt,openany]%,oneside]
+{book}
  
-\usepackage{geometry, graphicx, varioref, soul, verbatim, amsmath, calc, caption, wasysym, footmisc, makeidx, ifthen, subfigure, multicol, epstopdf, enumerate, wrapfig, textcomp, multirow, changepage, setspace, lscape, titlesec}
-\usepackage[usenames,dvipsnames]{color}  
+\usepackage{
+  amsmath, calc,
+  caption, changepage,
+  endnotes, enumerate,
+  epstopdf,
+  fancyhdr,
+  fix-cm,
+  fncychap,
+  footmisc,
+  fullminipage,
+  geometry, graphicx,
+  ifthen, lscape,
+  makeidx, manfnt,
+  marginnote,
+  mdframed,
+  multicol, multirow,
+  setspace, soul, subfigure, 
+  tabto,
+  textcomp,
+url,
+  varioref, verbatim,
+  wasysym, wrapfig
+}
+\usepackage[explicit]{titlesec}
+\usepackage{remreset}
+\usepackage{layouts}
+
+%\usepackage[usenames,dvipsnames]{color}  
 %\newcommand{\href}[2]{#2} \newcommand{\url}[1]{#1} \newcommand{\urlstyle}[1]{}
 \include{extraTeX/style/colors}
 
 % _____ Online Version _____ %
 \usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
-\newcommand{\versiondate}[0]{August 12th, 2017}
+\newcommand{\versiondate}[0]{March 5th, 2019}
+\newcommand{\printlocation}[0]{}
 
-% _____ B&W Print Version _____ %
+% _____ Print Version _____ %
 %\definecolor{oiB}{rgb}{0,0,0}\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
 
 % _____ COLOR PRINT Version _____ %
-%\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
+%\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref} \renewcommand{\printlocation}[0]{\noindent Printed in China. \\}
 
 \usepackage[style=authortitle-ibid, maxnames=2,natbib=true,sortcites=true,block=space,backend=bibtex]{biblatex}
 \bibliography{eoce.bib}
 
 \makeindex
 \include{extraTeX/style/style}
-\include{extraTeX/style/tablet}
-\include{extraTeX/preamble/title}%_derivative}
+%\include{extraTeX/style/tablet} % This is currently busted.
+%\include{extraTeX/preamble/title}%_derivative}
 \date{}
 \setcounter{tocdepth}{1}
 
 \begin{document}
-\setcounter{page}{1}
+\include{extraTeX/preamble/review_copy}
 \renewcommand{\thepage}{}
-\maketitle
-\include{extraTeX/preamble/copyright}%_derivative}
-\renewcommand{\thepage}{\arabic{page}}
-\tableofcontents
-\include{extraTeX/preamble/preface}
+%\maketitle\addtocounter{page}{4}
 
-\includechapter{1}{ch_data_collection}
-\includechapter{2}{ch_summarizing_data}
-\includechapter{3}{ch_probability}
-\includechapter{4}{ch_distributions}
+\include{extraTeX/preamble/copyright_draft}%_derivative}
+\renewcommand{\thepage}{\arabic{page}}
+%\tableofcontents
+%\include{extraTeX/preamble/preface}
+\normalsize
+%\includechapter{1}{ch_data_collection}
+%\includechapter{2}{ch_summarizing_data}
+%\includechapter{3}{ch_probability}
+%\includechapter{4}{ch_distributions}
 \includechapter{5}{ch_inference_foundations}
 \includechapter{6}{ch_inference_for_props}
 \includechapter{7}{ch_inference_for_means}
-\includechapter{8}{ch_regr_simple_linear}
+%\includechapter{8}{ch_regr_simple_linear}
 
-\appendix
+
+\include{extraTeX/style/style_appendices}
+\appendix{}
+
 \include{extraTeX/eoceSolutions/eoceSolutions}
+%\include{extraTeX/data/data}
 \include{extraTeX/appendix/TeX/randomNumberTable}
 \include{extraTeX/appendix/TeX/zTable}
 \include{extraTeX/appendix/TeX/tTable}
 \include{extraTeX/appendix/TeX/chiSquareTable}
+\include{extraTeX/calculatorIndex/calculatorIndex}
 
 \include{extraTeX/index/index}
 \printindex

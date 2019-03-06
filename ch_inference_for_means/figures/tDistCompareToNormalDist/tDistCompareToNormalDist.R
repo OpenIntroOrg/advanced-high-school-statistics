@@ -8,7 +8,8 @@ plot(c(-4.2, 4.2),
      c(0, dnorm(0)),
      type = 'n',
      axes = FALSE)
-axis(1)
+at <- seq(-6, 6, 2)
+axis(1, at)
 abline(h = 0)
 
 X <- seq(-5, 5, 0.01)
