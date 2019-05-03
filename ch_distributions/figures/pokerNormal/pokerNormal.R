@@ -22,10 +22,11 @@ myPDF("pokerNormal.pdf", 6.5, 2.7,
       mgp = c(2, 0.5, 0),
       mar = c(3, 0.5, 0.5, 2))
 histPlot(obs,
-         xlab = 'Poker earnings (US$)',
+         xlab = 'Poker Earnings (US$)',
          ylab = '',
          axes = FALSE,
          main = '',
+         yaxs="i",
          xlim = c(-2000, 4000),
          probability = TRUE,
          col = COL[1])
@@ -44,9 +45,12 @@ qqnorm(obs,
        axes = FALSE,
        xlab = '',
        ylab = '')
-mtext('Theoretical quantiles',
+mtext('Theoretical Quantiles',
       line = 2,
       side = 1)
+mtext('Observed',las=0,
+                     line = 2.5,
+                     side = 2)
 axis(1)
 axis(2)
 dev.off()

@@ -50,7 +50,7 @@ myPDF('diceSumDist.pdf', 5.5, 3,
 probDist(at, prob,
          xlab = 'Dice sum',
          ylab = '',
-         thickness = 1,
+         thickness = 1,yaxs="i",
          col = COL[1])
 abline(h = 0)
 axis(2)

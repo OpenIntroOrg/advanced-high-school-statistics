@@ -17,7 +17,8 @@ plot(X, Y,
      xlim = c(60, 100),
      axes = FALSE,
      xlab = "",
-     ylab = "")
+     ylab = "",
+     yaxs="i")
 polygon(c(69, 69, 71, 71),
         dnorm(c(-1000, 69, 71, -1000), 80, 8),
         col = COL[1])

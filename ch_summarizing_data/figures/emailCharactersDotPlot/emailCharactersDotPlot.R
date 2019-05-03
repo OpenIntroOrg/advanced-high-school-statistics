@@ -63,7 +63,7 @@ y    <- unlist((sapply(tmp, function(x) 1:x)))
 plot(x, y,
      xlab = "Number of Characters (in thousands)",
      axes = FALSE, ylab = "", xlim = c(0, 70),
-     ylim = c(0.5, max(tmp) + 0.5),
+     ylim = c(0.5, max(tmp) + 0.5),yaxs="i",
      col = COL[1], cex = cex, pch = 19)
 abline(h = 0.4)
 axis(1, at = seq(0, 80, 10))
@@ -80,7 +80,7 @@ x    <- rep(as.numeric(names(tmp)), tmp)
 y    <- unlist((sapply(tmp, function(x) 1:x)))
 plot(x, y, type = "n",
      xlab = "Number of Characters (in thousands)",
-     axes = FALSE, ylab = "", xlim = c(0, 70),
+     axes = FALSE, ylab = "", xlim = c(0, 70),yaxs="i",
      ylim = c(0, max(tmp) + 1))
 M <- mean(round(d))
 SD <- sd(round(d))
@@ -108,10 +108,10 @@ plot(x, 3 * y - 1.5,
      xlab = "Number of Characters (in thousands)",
      axes = FALSE, ylab = "", xlim = c(0, 70),
      ylim = c(0, 5 * max(tmp)),
-     col = COL[1], cex = cex, pch = 19)
+     col = COL[1], cex = cex, pch = 19, yaxs="i")
 histPlot(d, breaks = 15, add = TRUE)
 abline(h = 0)
-axis(1, at = seq(0, 80, 10))
+axis(1, at = seq(0, 65, 5))
 dev.off()
 
 

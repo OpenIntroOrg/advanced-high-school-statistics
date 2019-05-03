@@ -6,5 +6,6 @@ myPDF("oneSidedTailForMidtermUnemploymentHT.pdf", 6.325, 2.875,
 normTail(0, 0.8717,
          L = -1.07,
          df = 25,
-         col = COL[1])
+         col = COL[1],
+         yaxs="i")
 dev.off()

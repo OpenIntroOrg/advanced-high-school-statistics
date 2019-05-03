@@ -11,7 +11,7 @@ PHatPlot <- function(p, n, lwd = 3, type = "ignored",
   x <- seq(0, n)
   y <- dbinom(x, n, p)
   plot(x / n, y, type = "n", axes = FALSE,
-       xlab = xlab, ylab = ylab, ...)
+       xlab = xlab, ylab = ylab,yaxs="i", ...)
   x <- x[y > max(y) / 2000]
   y <- y[y > max(y) / 2000]
   segments(x / n, 0, x / n, y, col = COL[1], lwd = lwd)

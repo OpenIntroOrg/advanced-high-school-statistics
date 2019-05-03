@@ -11,5 +11,6 @@ myPDF('pokerProfitsCanApplyNormalToSampMean.pdf', 5, 3,
 histPlot(winnings,
          xlab = 'Poker Winnings and Losses (US$)',
          ylab = 'Frequency',
+         yaxs="i",
          col = COL[1])
 dev.off()

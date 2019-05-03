@@ -16,7 +16,7 @@ boxPlot(m,
         xlim = c(0.5, 2.5),
         ylim = c(45, 150),
         axes = FALSE,
-        ylab = 'run time (minutes)',
+        ylab = 'Run Time (minutes)',
         lcol = COL[1],
         col = COL[1,3],
         lwd = 1)
@@ -26,6 +26,6 @@ boxPlot(f,
         lcol = COL[1],
         col = COL[1, 3],
         lwd = 1)
-axis(1, at = 1:2, labels = c('men', 'women'))
+axis(1, at = 1:2, labels = c('Men', 'Women'))
 axis(2, at = c(50, 100, 150))
 dev.off()

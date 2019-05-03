@@ -9,7 +9,7 @@ pdf("ipod_popdist.pdf", height = 3, width = 6)
 
 par(mar=c(3.7,2.2,1,1), las=1, mgp=c(2.5,0.7,0), mfrow = c(1,1), cex.lab = 1.25)
 
-histPlot(ipod$songLength, col = oiB, xlab = "Length of song", ylab = "")
+histPlot(ipod$song_length, col = oiB, xlab = "Length of song", ylab = "",yaxs="i")
 
 dev.off()
 
@@ -23,7 +23,7 @@ m = 3.45
 s = 1.63/sqrt(100)
 u = 3.6
 
-normTail(m = m, s = s, U = u, col = oiB, axes = FALSE)
+normTail(m = m, s = s, U = u, col = oiB, axes = FALSE,yaxs="i")
 axis(1, at = c(m - 3*s,m,u,m + 3*s), label = c(NA,m,u,NA), cex.axis = 1.25)
 
 dev.off()

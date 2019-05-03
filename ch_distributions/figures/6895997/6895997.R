@@ -9,6 +9,7 @@ plot(X, Y,
      type = 'n',
      axes = FALSE,
      xlim = c(-3.2, 3.2),
+     yaxs="i",
      ylim = c(0, 0.4))
 abline(h = 0, col = COL[6])
 at <- -3:3

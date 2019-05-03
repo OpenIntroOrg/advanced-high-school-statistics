@@ -11,6 +11,7 @@ plot(X, Y,
      type = "l",
      xlab = "F",
      ylab = "",
+     yaxs="i",
      axes = FALSE,
      lwd = 1.5)
 abline(h = 0)
@@ -25,6 +26,7 @@ plot(X, Y,
      type = "l",
      xlab = "F",
      ylab = "",
+     yaxs="i",
      axes = FALSE)
 abline(h = 0)
 axis(1)

@@ -18,6 +18,7 @@ normTail(L = -abs(m),
          # xlim = 5 * c(-1, 1),
          col = COL[1],
          # border = COL[4],
+         yaxs="i",
          axes = FALSE)
 at <- c(-100, 0, m, 100)
 labels <- expression(0, mu[0]*' = 0', bar(x)[diff]*" = 2.98", 0)

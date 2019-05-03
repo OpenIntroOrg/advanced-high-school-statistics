@@ -11,6 +11,7 @@ histPlot(d$diff, axes = FALSE,
          xlim = c(-20, 80),
          xlab = "UCLA price - Amazon price (USD)",
          ylab = "",
+         yaxs="i",
          col = COL[1])
 mtext("Frequency", 2, 2.1, las = 0)
 axis(1, cex.axis = 0.87, tck = -0.03)

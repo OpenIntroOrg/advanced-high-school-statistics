@@ -29,7 +29,8 @@ Each section in Chapter~\ref{inferenceForNumericalData} explores a new situation
 
 
 \sectionintro{
-\noindent When looking at numerical variables, we often wish to estimate a mean or ask whether the average has changed from a previously known value.  
+\Add{
+\noindent In this section we turn our attention to numerical variables and we answer questions such as the following:  
 \begin{itemize}
 \item How well  can we estimate the mean income of people in a certain city, county, or state?
 \item What is the average mercury content in various types of fish?
@@ -37,11 +38,11 @@ Each section in Chapter~\ref{inferenceForNumericalData} explores a new situation
 \item How does the sample size affect the expected error in our estimates?
 \item When does the point estimate follow a normal distribution, and when will we need to use a new distribution, known as the $t$-distribution?
 \end{itemize}
-
+}
 %%
 \subsection*{Learning objectives}
 \begin {enumerate}
-\item Understand the relationship between the $t$-distribution and the normal distribution, and explain why we use the $t$-distribution for inference on a mean.
+\item Understand the relationship between a $t$-distribution and a normal distribution, and explain why we use a $t$-distribution for inference on a mean.
 
 \item State and verify whether or not the conditions for inference for a mean based on the $t$-distribution are met.  Understand when it is necessary to look at the distribution of the sample data.
 
@@ -60,7 +61,7 @@ Each section in Chapter~\ref{inferenceForNumericalData} explores a new situation
 %subsection[Nearly normal population with known SD]{Nearly normal population with known SD}
 %%
 %%
-\subsection{Using the normal distribution for inference when $\sigma$ is known}
+\subsection{Using a normal distribution for inference when $\sigma$ is known}
 \label{nearlyNormalPopWithKnownSD}
 
 In Section~\ref{distributionofxbar} we saw that the distribution of a sample mean is normal if the population is normal or if the sample size is at least 30. In these problems, we used the population mean and population standard deviation to find a Z-score. However, in the case of inference, these values will be unknown. In rare circumstances we may know the standard deviation of a population, even though we do not know its mean. For example, in some industrial processes, the mean may be known to shift over time, while the standard deviation of the process remains the same. In these cases, we can use the normal model as the basis for our inference procedures. We use $\bar{x}$ as our point estimate for $\mu$ and the $SD$ formula for a sample mean calculated in Section~\ref{distributionofxbar}: $\sigma_{\bar{x}} =\frac{\sigma}{\sqrt{n}}$.  That leads to a confidence interval and a test statistic as follows:
@@ -86,7 +87,7 @@ For this reason, the normal model still works well when the sample size is large
 
 %%
 %%
-\subsection{Introducing the $t$-distribution}
+\subsection[Introducing the $t$-distribution]{Introducing the \pmb{$t$}-distribution}
 \label{introducingTheTDistribution}
 
 \index{$t$-distribution|(}
@@ -109,12 +110,13 @@ The $t$-distribution, always centered at zero, has a single parameter: degrees o
 \label{tDistConvergeToNormalDist}
 \end{figure}
 
-\begin{onebox}{Degrees of freedom (df)}
-The degrees of freedom describe the shape of the $t$-distribution. The larger the degrees of freedom, the more closely the distribution resembles the standard normal~distribution.\end{onebox}
+\begin{onebox}{Degrees of freedom}
+The degrees of freedom describes the shape of the $t$-distribution. The larger the degrees of freedom, the more closely the distribution resembles the standard normal~distribution.\end{onebox}
 
-When the degrees of freedom is large, about 100 or more, the $t$-distribution is nearly indistinguishable from the normal distribution. In Section~\ref{tDistSolutionToSEProblem}, we will see how degrees of freedom relates to sample size.
+When the degrees of freedom is large, about 30 or more, the $t$-distribution is nearly indistinguishable from the normal distribution. In Section~\ref{tDistSolutionToSEProblem}, we will see how degrees of freedom relates to sample size.
 
-We will find it useful to become familiar with the $t$-distribution, because it plays a very similar role to the normal distribution during inference.  We use a \term{$t$-table}, partially shown in Table~\ref{tTableSample_ch_inf_means}, in place of the normal probability table when the population standard deviation is unknown, especially when the sample size is small. A~larger table is presented in Appendix~\ref{tDistributionTable}.
+We will find it useful to become familiar with the $t$-distribution, because it plays a very similar role to the normal distribution during inference.  We use a \termsub{$\pmb{t}$-table}
+    {t-table@$t$-table}, partially shown in Table~\ref{tTableSample_ch_inf_means}, in place of the normal probability table when the population standard deviation is unknown, especially when the sample size is small. A~larger table is presented in Appendix~\ref{tDistributionTable}.
 
 \begin{table}[hht]
 \centering
@@ -178,11 +180,11 @@ When the desired degrees of freedom is not listed on the table, choose a conserv
 
 %%
 %%
-\subsection{Calculator: finding area under the $t$-distribution}
+\subsection[Calculator: finding area under the $t$-distribution]{Calculator: finding area under the \pmb{$t$}-distribution}
 
 It is possible to find areas under a $t$-distribution on a calculator.
 
-\begin{onebox}{TI-84: Finding area under the $t$-curve}
+\begin{onebox}{TI-84: Finding area under the T-curve}
 Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{tcdf} to find an area/proportion/probability between two $t$-scores or to the left or right of a $t$-score.\vspace{-1mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -200,7 +202,7 @@ Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{tcdf} to find an area/proporti
 \end{enumerate}
 TI-83: Do steps 1-2, then enter the lower bound, upper bound, degrees of freedom, e.g. \calctext{tcdf(2, 100, 5)}, and hit \calcbutton{ENTER}.\end{onebox}
 
-\begin{onebox}{Casio fx-9750GII: Finding area under the $t$-distribution}
+\begin{onebox}{Casio fx-9750GII: Finding area under the T-distribution}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU}, then hit \calcbutton{2}).
@@ -227,7 +229,7 @@ TI-83: Do steps 1-2, then enter the lower bound, upper bound, degrees of freedom
 
 \textA{\newpage}
 %%
-\subsection{Checking conditions for inference on a mean using the $t$-distribution}
+\subsection[Checking conditions for inference on a mean using the $t$-distribution]{Checking conditions for inference on a mean using the \pmb{$t$}-distribution}
 \label{tDistSolutionToSEProblem}
 
 Using the $t$-distribution for inference on a mean requires two assumptions, namely that the observations are independent and that the theoretical sampling distribution of the sample mean $\bar{x}$ is nearly normal.  In practice, we check whether these assumptions are reasonable by verifying that certain conditions are met.  
@@ -235,13 +237,11 @@ Using the $t$-distribution for inference on a mean requires two assumptions, nam
 
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Independent.] Observations can be considered independent when the data are collected from a \emph{random process}, such as tossing a coin, or from a \emph{random sample} from a large population.\footnote{Recall from Chapter~\ref{ch_inference_for_props} that when sampling without replacement, the observations can be considered independent when sampling less than 10\% of the population.  However, with a random sample of greater than 10\% of the population the assumption of independence leads to more conservative estimates for the standard error and therefore our \mbox{$t$-procedures} are still reasonable.  In this case though, one would want to use a modified formula for the standard error that better reflects the expected error in the point estimate when sampling without replacement.}  Without a random sample or process, the standard error formula would not apply, and it is unclear to what population the inference would apply. 
+\item[Independent.] Observations can be considered independent when the data are collected from a \emph{random process}, such as tossing a coin, or from a \emph{random sample}.    Without a random sample or process, the standard error formula would not apply, and it is unclear to what population the inference would apply.  Recall from Chapter~\ref{ch_inference_for_props} that when sampling without replacement from a finite population, the observations can be considered independent when sampling less than 10\% of the population.  
 \item[Nearly normal sampling distribution.] We saw in Section~\ref{distributionofxbar} that the sampling distribution of a sample mean will be nearly normal when the sample is drawn from a nearly normal population or when the sample size is at least 30 ($n\ge 30$).     
 \end{description}
 
-
-
-What should we do when the sample size is small and we are not sure whether the population distribution is nearly normal?  In this case, the best we can do is look at the data for excessive skew.  If the data are very skewed or have obvious outliers, this suggests that the sample did not come from a nearly normal population.  However, if the data do not show obvious skew or outliers, then the idea of a nearly normal population is considered \emph{reasonable}, making the assumption of a nearly normal sampling distribution for $\bar{x}$ reasonable as well.
+What should we do when the sample size is small and we are not sure whether the population distribution is nearly normal?  In this case, the best we can do is look at the data for excessive skew.  If the data are very skewed or have obvious outliers, this suggests that the sample did not come from a nearly normal population.  However, if the data do not show obvious skew or outliers, then the idea of a nearly normal population is generally considered \emph{reasonable}, making the assumption of a nearly normal sampling distribution for $\bar{x}$ reasonable as well.
 
 Note that by looking at a small data set, we cannot \emph{prove} that the population distribution is nearly normal.  However, the data can suggest to us whether the population distribution being nearly normal is an unreasonable assumption.  
 
@@ -256,7 +256,7 @@ As the sample size goes up, it becomes less necessary to check for skew in the d
 
 
 %%
-\subsection{One sample \pmb{$t$}-interval for a mean}
+\subsection[One sample $t$-interval for a mean]{One sample \pmb{$t$}-interval for a mean}
 \label{oneSampleTConfidenceIntervals}
 
 Dolphins are at the top of the oceanic food chain, which causes dangerous substances such as mercury to concentrate in their organs and muscles. This is an important problem for both dolphins and other animals, like humans, who eat them.
@@ -290,7 +290,7 @@ $n$ & $\bar{x}$ & $s$ & minimum & maximum \\
 \label{summaryStatsOfHgInMuscleOfRissosDolphins}
 \end{table}
 
-Because we are estimating a mean, we would like to construct a $t$-interval, but first we must check whether the conditions for using a $t$-interval are met.  We will start by assuming that the sample of 19 Risso's dolphins constitutes a random sample.  Next, we note that the sample size is small (less than 30) and we do not know whether the distribution of mercury content for all dolphins is nearly normal.  Therefore, we must look at the data.  Since we do not have all of the data to graph, we look at the summary statistics provided in Table~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}. These summary statistics do not suggest any strong skew or outliers; all observations are within 2.5 standard deviations of the mean. Based on this evidence, we believe it is reasonable that the population distribution of mercury content in dolphins could be nearly normal.  
+Because we are estimating a mean, we would like to construct a $t$-interval, but first we must check whether the conditions for using a $t$-interval are met.  We will start by assuming that the sample of 19 Risso's dolphins constitutes a random sample.  Next, we note that the sample size is small (less than 30), and we do not know whether the distribution of mercury content for all dolphins is nearly normal.  Therefore, we must look at the data.  Since we do not have all of the data to graph, we look at the summary statistics provided in Table~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}. These summary statistics do not suggest any strong skew or outliers; all observations are within 2.5 standard deviations of the mean. Based on this evidence, we believe it is reasonable that the population distribution of mercury content in dolphins could be nearly normal.  
 
 With both conditions met, we will construct a 95\% confidence interval.  Recall that a confidence interval has the following form:
 \begin{eqnarray*}
@@ -369,7 +369,7 @@ To carry out a complete confidence interval procedure to estimate a single \mbox
 \end{itemize}\end{onebox}
 
 \begin{examplewrap}\begin{nexample}
-{The FDA's webpage provides some data on mercury content of fish.\footnotemark\, Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. Construct an appropriate 95\% confidence interval for the true average mercury content of croaker white fish (Pacific). Is there evidence that the average mercury content is greater than 0.275 ppm?  Use the five step framework described previously to organize your work.  
+{The FDA's webpage provides some data on mercury content of fish.\footnotemark\, Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. Construct an appropriate 95\% confidence interval for the true average mercury content of croaker white fish (Pacific). Is there evidence that the average mercury content is greater than 0.275 ppm?  Use the five step framework to organize your work.  
 }
 \label{croakerWhiteFishPacificExerConditions}
 \begin{description}
@@ -406,10 +406,10 @@ No.  The interval estimates the \emph{average} amount of mercury with 95\% confi
 
 \textA{\newpage}
 %%
-\subsection{Calculator: the 1-sample $t$-interval}
+\subsection[Calculator: the 1-sample $t$-interval]{Calculator: the 1-sample \pmb{$t$}-interval}
 \label{1SampTint}
 
-\begin{onebox}{\videohref{ti84_1_mean_CI} TI-83/84: 1-sample $t$-interval}
+\begin{onebox}{\videohref{ti84_1_mean_CI} TI-83/84: 1-sample T-interval}
 Use \calcbutton{STAT}, \calctext{TESTS}, \calctext{TInterval}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -432,7 +432,7 @@ $\calctextmath{\bar{x}}$ & the sample mean \\
 \end{enumerate}
 \end{onebox}
 
-\begin{onebox}{\videohref{casio_1_mean_inference} Casio fx-9750GII: 1-sample $t$-interval}
+\begin{onebox}{\videohref{casio_1_mean_inference} Casio fx-9750GII: 1-sample T-interval}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
@@ -550,7 +550,7 @@ To answer this question we will find the test statistic and p-value for the hypo
 T = \frac{\text{point estimate } - \text{null value}}{SE\text{ of estimate}}
 \end{align*}
 
-As we saw before, when carrying out inference on a single mean, the degrees of freedom are given by $n-1$.  
+As we saw before, when carrying out inference on a single mean, the degrees of freedom is given by $n-1$.  
 
 
 \begin{onebox}{The T-statistic}
@@ -659,17 +659,17 @@ Because $H_A$ is a two-tailed test ( $\ne$ ), the p-value corresponds to the are
 
 \end{nexample}\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}Recall that the 95\% confidence interval for the average mercury content in croaker white fish was (0.249, 0.325). Discuss whether the conclusion of the hypothesis test is consistent or inconsistent with the conclusion of the confidence interval.\footnotemark
+\begin{exercisewrap}\begin{nexercise}Recall that the 95\% confidence interval for the average mercury content in croaker white fish was (0.249, 0.325). Discuss whether the conclusion of the hypothesis test in the previous example is consistent or inconsistent with the conclusion of the confidence interval.\footnotemark
 \end{nexercise}\end{exercisewrap}
 \footnotetext{It is consistent because 0.25 is located (just barely) inside the confidence interval, so it is considered a reasonable value. Our hypothesis test did not reject the hypothesis that $\mu=0.25$, also implying that it is a reasonable value. Note that the p-value was just over the cutoff of 0.05. This is consistent with the value of 0.25 being just inside the confidence interval.  Also note that the hypothesis test did not \emph{prove} that $\mu=0.25$.  The value 0.25 is just one of many reasonable values for the true mean.}
 
 \textA{\newpage}
 
 %%
-\subsection{Calculator: 1-sample $t$-test}
+\subsection[Calculator: 1-sample $t$-test]{Calculator: 1-sample \pmb{$t$}-test}
 \label{1SampTtest}
 
-\begin{onebox}{\videohref{ti84_1_mean_HT} TI-83/84: 1-sample $t$-test}
+\begin{onebox}{\videohref{ti84_1_mean_HT} TI-83/84: 1-sample T-test}
 Use \calctext{STAT}, \calctext{TESTS}, \calctext{T-Test}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -695,7 +695,7 @@ $\calctextmath{\bar{x}}$ & the sample mean
 \end{enumerate}
 \end{onebox}
 
-\begin{onebox}{\videohref{casio_1_mean_inference} Casio fx-9750GII: 1-sample $t$-test}
+\begin{onebox}{\videohref{casio_1_mean_inference} Casio fx-9750GII: 1-sample T-test}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
@@ -780,6 +780,11 @@ $z^{\star}$ depends on the desired confidence level and $\sigma$ is the standard
 
 \end{itemize}
 
+
+%%%%%Section exercises
+{\input{ch_inference_for_means/TeX/one-sample_means_with_the_t-distribution.tex}}
+
+
 %_______________________________________
 \section[Inference for paired data]{Inference for paired data }
 
@@ -790,13 +795,14 @@ $z^{\star}$ depends on the desired confidence level and $\sigma$ is the standard
 \index{data!textbooks|(}
 
 \sectionintro{
-\noindent When we have two observations on each person or each case, we can answer questions such as the following.
+\Add{
+\noindent When we have two observations on each person or each case, we can answer questions such as the following:
 \begin{itemize}
 \item Do students do better on reading or writing sections of standardized tests?
 \item How much have temperatures increased between 1968 and 2008 across the U.S.?
 \item Are Amazon textbook prices lower than the college bookstore prices?  If so, how much lower, on average?
 \end{itemize}
-
+}
 
 %%
 \subsection*{Learning objectives}
@@ -899,11 +905,12 @@ is a common and useful way to analyze paired data.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{ch_inference_for_means/figures/textbooksF18/diffInTextbookPricesF18}
+\href{\oiRedirectUrl{tableau-hist-textbookdiff-summ}}{
+\includegraphics[width=0.7\textwidth]{ch_inference_for_means/figures/textbooksF18/diffInTextbookPricesF18}}
 \caption{Histogram of the difference in price for
     each book sampled.
     These data are very strongly skewed.
-    \index{skew!example: very strong}}
+    \index{skew!example: very strong}. Explore this data set on Tableau Public\tableauhref{tableau-hist-textbookdiff-summ}.}
 \label{diffInTextbookPricesF18}
 \end{figure}
 
@@ -939,7 +946,7 @@ $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\h
 \label{textbooksSummaryStats}
 \end{figure}
 
-{We will set up and implement a hypothesis test to determine whether, on average, there is a difference in textbook prices between Amazon the UCLA bookstore.}
+{We will set up and implement a hypothesis test to determine whether, on average, there is a difference in textbook prices between Amazon and the UCLA bookstore.}
 \label{htForDiffInUCLAAndAmazonTextbookPrices}
 We are considering two scenarios: there is no difference in prices or there is some difference in prices.
 \begin{itemize}
@@ -954,7 +961,7 @@ so independence is reasonable.
 While the distribution of the data is very strongly skewed,
 we do have $n = \uclabookN{}$ observations.  This sample size is large enough that we do not have to worry about whether the population distribution for difference in price might be nearly normal or not.
 Because the conditions are satisfied,
-we can apply the $t$-distribution to this setting.
+we can use the $t$-distribution to this setting.
 
 We compute the standard error associated with
 $\bar{x}_{\text{\emph{diff}}}$ using the standard
@@ -982,7 +989,7 @@ $H_0$ is true.  This is shown in
 Figure~\ref{textbooksF18HTTails}.  Because this is a two-sided test, the p-value corresponds to the area in both tails.  Using statistical software, we find the area in the tails to be 0.0312.
 
 Because the p-value of 0.0312 is less than 0.05,
-we reject the null hypothesis.  We have evidence that, on average, there is a differences in textbook prices.  In particular, we can say that, on average, Amazon prices are lower than the
+we reject the null hypothesis.  We have evidence that, on average, there is a difference in textbook prices.  In particular, we can say that, on average, Amazon prices are lower than the
 UCLA Bookstore prices for UCLA course textbooks.
 
 
@@ -1038,7 +1045,7 @@ To carry out a complete hypothesis test to test the claim that a mean of differe
 \begin{itemize}
 \item[] Here we choose the \term{matched pairs  $t$-test}.
 \end{itemize}
- \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ is be nearly normal.\vspace{-1mm}
+ \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[] 1. There is paired data from a random sample or from a matched pairs experiment.
@@ -1071,11 +1078,11 @@ To carry out a complete hypothesis test to test the claim that a mean of differe
 \centering
 \includegraphics[width=0.54\textwidth]{ch_inference_for_means/figures/satImprovementHTDataHistogram/satImprovementHTDataHistogram}
 \caption{SAT score after course - SAT score before course. }
-\label{satImprovementHTDataHistogram}
+\label{satImprovementHTDataHistogramrepeat}
 \end{figure}
 
 \begin{examplewrap}\begin{nexample}
-{An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, so we have a difference in scores for each student. We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$ as a sample to evaluate the company's claim. The distribution of the differences, shown in Figure~\ref{satImprovementHTDataHistogram}, has a mean of 135.9 and a standard deviation of 82.2. Do these data provide convincing evidence to back up the company's claim?  Use the five step framework described previously to organize your work.  
+{An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, so we have a difference in scores for each student. We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$ as a sample to evaluate the company's claim. The distribution of the differences, shown in Figure~\ref{satImprovementHTDataHistogramrepeat}, has a mean of 135.9 and a standard deviation of 82.2. Do these data provide convincing evidence to back up the company's claim?  Use the five step framework to organize your work.  
 }
 \label{SATCI}
 \begin{description}
@@ -1109,7 +1116,7 @@ T = \frac{135.9-100}{\frac{82.2}{\sqrt{30}}} = \frac{135.9-100}{15.0}=2.4 \qquad
 
 The p-value is the area to the right of 2.4 under the $t$-distribution with 29 degrees of freedom.  The p-value = 0.012.
 
-\item[\inferencestep{Conclude}]  p-value $=0.012<\alpha$ so we reject the null hypothesis. The data provide convincing evidence to support the company's claim that student scores improve by more than 100 points, on average, following the class.
+\item[\inferencestep{Conclude}]  p-value $=0.012<\alpha$ so we reject the null hypothesis. The data provide convincing evidence to support the company's claim that students' scores improve by more than 100 points, on average, following the class.
 
 
 \end{description}
@@ -1123,14 +1130,14 @@ Because we found evidence to support the company's claim, does this mean that a 
 \index{data!SAT prep company|)}
 
 \end{nexercise}\end{exercisewrap}
-\footnotetext{No.  First, this is an observational study, so we cannot make a causal conclusion.  Maybe SAT test takers tend to improve their score over time even if they don't take this SAT class.  Secondly, students' scored improved by more than 100 points \emph{on average}.  That does not imply that each student improved by more than 100 points.  With a sample standard deviation of 82.2 and a mean of 135.9, some students did worse after the SAT class.  This can be verified by looking at Figure~\ref{satImprovementHTDataHistogram}.}
+\footnotetext{No.  First, this is an observational study, so we cannot make a causal conclusion.  Maybe SAT test takers tend to improve their score over time even if they don't take this SAT class.  Secondly, students' scores improved by more than 100 points \emph{on average}.  That does not imply that each student improved by more than 100 points.  With a sample standard deviation of 82.2 and a mean of 135.9, some students did worse after the SAT class.  This can be verified by Figure~\ref{satImprovementHTDataHistogramrepeat}.}
 
 %%
-\subsection{Calculator: the matched pairs $t$-test}
+\subsection[Calculator: the matched pairs $t$-test]{Calculator: the matched pairs \pmb{$t$}-test}
 The matched pairs $t$-test is a one sample $t$-test. Instead of using the data or the summary statistics from a sample, make sure to use the data of \emph{differences} or the summary statistics for the \emph{differences}.
 \label{matchedpairsttest}
 
-\begin{onebox}{TI-83/84: matched pairs $t$-test}
+\begin{onebox}{TI-83/84: matched pairs T-test}
 Use \calctext{STAT}, \calctext{TESTS}, \calctext{T-Test}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1157,7 +1164,7 @@ $\calctextmath{\bar{x}}$ & the sample mean of the differences \\
 \end{onebox}
 
 
-\begin{onebox}{Casio fx-9750GII: matched pairs $t$-test}
+\begin{onebox}{Casio fx-9750GII: matched pairs T-test}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Compute the paired differences of the observations.
@@ -1168,6 +1175,7 @@ $\calctextmath{\bar{x}}$ & the sample mean of the differences \\
 \textA{\newpage}
 %%
 \subsection{Confidence intervals for the mean of a difference}
+\label{ciMeanOfDifferences}
 
 In the previous examples, we carried out a matched pairs $t$-test, where the null hypothesis was that the true average of the paired differences is zero. Sometimes we want to estimate the true average of paired differences with a confidence interval, and we use a \termsub{matched pairs $t$-interval}{confidence interval!matched pairs}. Consider again the table summarizing data on: UCLA Bookstore price $-$ Amazon price, for each of the 68 books sampled.
 
@@ -1185,7 +1193,7 @@ $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\h
 \label{textbooksSummaryStats}
 \end{figure}
 
-We construct a 95\% confidence interval for the average price difference between books at the UCLA Bookstore and on Amazon. Conditions have already verified, namely, that the we have paired data from a random sample and that the number of differences is at least 30.  We must find the critical value, $t^{\star}$. Since $df = 67$ is not on the $t$-table, round the $df$ down to 60 to get a $t^{\star}$ of 2.00 for 95\% confidence. (See Section~\ref{matchedpairstint} for how to get a more precise interval using a calculator.)  Plugging the $t^{\star}$ value, point estimate, and standard error into the confidence interval formula, we get:
+We construct a 95\% confidence interval for the average price difference between books at the UCLA Bookstore and on Amazon. Conditions have already verified, namely, that we have paired data from a random sample and that the number of differences is at least 30.  We must find the critical value, $t^{\star}$. Since $df = 67$ is not on the $t$-table, round the $df$ down to 60 to get a $t^{\star}$ of 2.00 for 95\% confidence. (See Section~\ref{matchedpairstint} for how to get a more precise interval using a calculator.)  Plugging the $t^{\star}$ value, point estimate, and standard error into the confidence interval formula, we get:
 \begin{align*}
 \text{point estimate} \ &\pm\ t^{\star}\times SE\ \text{of estimate}
 	\\
@@ -1216,7 +1224,7 @@ To carry out a complete confidence interval procedure to estimate a mean of diff
 \end{itemize}
 \inferencestep{Choose} Choose the appropriate interval procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{Matched pairs $t$-interval}.
+\item[] Here we choose the \term{matched pairs $t$-interval}.
 \end{itemize}
 \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
@@ -1250,10 +1258,10 @@ To carry out a complete confidence interval procedure to estimate a mean of diff
 \end{center}
 %\caption{SAT score after course - SAT score before course. }
 %\end{figure}
-\label{satImprovementHTDataHistogram}
+\label{satImprovementHTDataHistogram3}
 
 \begin{examplewrap}\begin{nexample}
-{An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, so we have a difference in scores for each student. We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$ as a sample to evaluate the company's claim. The distribution of the differences, shown above, has a mean of 135.9 and a standard deviation of 82.2. Construct a confidence interval to estimate the true average increase in SAT after taking the company's course.  Is there evidence at the 95\% confidence level that students score an average of more than 100 points higher after the class?  Use the five step framework described previously to organize your work.  
+{An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, so we have a difference in scores for each student. We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$ as a sample to evaluate the company's claim. The distribution of the differences, shown above, has a mean of 135.9 and a standard deviation of 82.2. Construct a confidence interval to estimate the true average increase in SAT after taking the company's course.  Is there evidence at the 95\% confidence level that students score an average of more than 100 points higher after the class?  Use the five step framework to organize your work.  
 }
 \label{SATCI}
 \begin{description}
@@ -1288,20 +1296,19 @@ The 95\% confidence interval is given by:
 \textA{\newpage}
 
 \begin{exercisewrap}\begin{nexercise}
-Based on the interval calculated previously: (105.2, 166.6), can we say that 95\% of student scores increased between 105.2 and 166.6 points after taking the company's course?  
+Based on the interval (105.2, 166.6), calculated previously, can we say that 95\% of student scores increased between 105.2 and 166.6 points after taking the company's course?  
 
 \index{data!SAT prep company|)}
 
 \end{nexercise}\end{exercisewrap}
-\footnotetext{No.  This interval is attempting to capture the \emph{average} increase.  It is not attempting to capture 95\% of the increases.  Looking at Figure~\ref{satImprovementHTDataHistogram}, we see than only a small percent had increases between 015.2 and 166.6.}
-
+\footnotetext{No.  This interval is attempting to capture the \emph{average} increase.  It is not attempting to capture 95\% of the increases.  Looking at Figure~\ref{satImprovementHTDataHistogram3}, we see that only a small percent had increases between 105.2 and 166.6.}
 
 %%
-\subsection{Calculator: the matched pairs $t$-interval}
+\subsection[Calculator: the matched pairs $t$-interval]{Calculator: the matched pairs \pmb{$t$}-interval}
 \label{matchedpairstint}
 
 
-\begin{onebox}{TI-83/84: matched pairs $t$-interval}
+\begin{onebox}{TI-83/84: matched pairs T-interval}
 Use \calctext{STAT}, \calctext{TESTS}, \calctext{TInterval}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1324,7 +1331,7 @@ $\calctextmath{\bar{x}}$ & the sample mean of the differences \\
 \end{enumerate}
 \end{onebox}
 
-\begin{onebox}{Casio fx-9750GII: matched pairs $t$- interval}
+\begin{onebox}{Casio fx-9750GII: matched pairs T-interval}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Compute the paired differences of the observations.
@@ -1388,13 +1395,16 @@ Here the point estimate is the mean of sample differences: $\bar{x}_{\text{\emph
 \end{itemize}
 
 
+%%%%%Section exercises
+{\input{ch_inference_for_means/TeX/paired_data.tex}}
+
 %________________________________
 \section[Inference for the difference of two means]{Inference for the difference of two means}
 \label{theTDistributionForTheDifferenceOfTwoMeans}%
 
 \sectionintro{
-
-\noindent Often times we wish to compare two groups to each other.  We want to answer questions such as the following.
+\Add{
+\noindent Often times we wish to compare two groups to each other.  We want to answer questions such as the following:
 
 \begin{itemize}
 \item Does treatment using embryonic stem cells (ESCs) help improve heart function following a heart attack?
@@ -1402,7 +1412,7 @@ Here the point estimate is the mean of sample differences: $\bar{x}_{\text{\emph
 \item Is there statistically significant evidence that one variation of an exam is harder than another variation?
 \item Are faculty willing to pay someone named ``John" more than someone named ``Jennifer"?  If so, how much more?
 \end{itemize}
-
+}
 
 
 
@@ -1456,15 +1466,15 @@ As before, if the sample sizes are small and the population distributions are no
 \newcommand{\jennifern}{64}
 \newcommand{\johnmean}{30,238}
 \newcommand{\jennifermean}{26,508}
-\newcommand{\johnsd}{5359}
-\newcommand{\jennifersd}{7457}
+\newcommand{\johnsd}{5567}
+\newcommand{\jennifersd}{7247}
 \newcommand{\johnjenniferSE}{1151}
 
-What’s in a name?  Are employers more likely to offer interviews or higher pay to prospective employees when the name on a resume suggests the candidate is a man versus a woman?  This is a challenging question to tackle, because employers are influenced by many aspects of a resume.  Thinking back to Chapter 1 on data collection, we could imagine a host of confounding factors associated with name and gender.  How could we possibly isolate just the factor of name?  We would need an experiment where name was the only variable and everything else was held constant.  
+What’s in a name?  Are employers more likely to offer interviews or higher pay to prospective employees when the name on a resume suggests the candidate is a man versus a woman?  This is a challenging question to tackle, because employers are influenced by many aspects of a resume.  Thinking back to Chapter 1 on data collection, we could imagine a host of confounding factors associated with name and gender.  How could we possibly isolate just the factor of name?  We would need an experiment in which name was the only variable and everything else was held constant.  
 
-Researchers at Yale carried out precisely this experiment.  Their results were published in the Proceedings of the National Academy of Sciences (PNAS).\footnote{\oiRedirect{textbook-jennifer-john}{https://www.pnas.org/content/109/41/16474}} The researchers sent out resumes to faculty at academic institutions for a lab manager position.  The resumes were identical, except that on half of them the applicant’s name was John and on the other half, the applicants name was Jennifer.  They wanted to see if faculty, specifically faculty trained in conducting scientifically objective research, held implicit gender biases.  
+Researchers at Yale carried out precisely this experiment.  Their results were published in the Proceedings of the National Academy of Sciences (PNAS).\footnote{\oiRedirect{textbook-jennifer-john}{https://www.pnas.org/content/109/41/16474}} The researchers sent out resumes to faculty at academic institutions for a lab manager position.  The resumes were identical, except that on half of them the applicant’s name was John and on the other half, the applicant's name was Jennifer.  They wanted to see if faculty, specifically faculty trained in conducting scientifically objective research, held implicit gender biases.  
 
-Unlike in the matched pairs scenario, each faculty member received only one resume.  We are interested in comparing the mean salary offered to John and the mean salary offered to Jennifer.  Instead of taking the average of a set of paired differences, we find the average of each group separately and take their difference.  Let
+Unlike in the matched pairs scenario, each faculty member received only one resume.  We are interested in comparing the mean salary offered to John relative to the mean salary offered to Jennifer.  Instead of taking the average of a set of paired differences, we find the average of each group separately and take their difference.  Let
 \begin{align*}
 \bar{x}_1:& \text{ mean salary offered to John}\\
 \bar{x}_2: &\text{ mean salary offered to Jennifer}
@@ -1490,7 +1500,7 @@ We can calculate the difference as
 \begin{examplewrap}
 \begin{nexample}
 {Interpret the point estimate 3730.  Why might we want to construct a confidence interval?}
-The average salary offered to John was \$3,730 higher than the average salary offered to Jennifer.  Because there is randomness in which faculty ended up in the John group and which faculty ended up in the Jennifer group, we want to see if the difference of \$3,730 is beyond what could be expected by random variation.  In order to answer this we will need to calculate the $SE$ for the difference of sample means.
+The average salary offered to John was \$3,730 higher than the average salary offered to Jennifer.  Because there is randomness in which faculty ended up in the John group and which faculty ended up in the Jennifer group, we want to see if the difference of \$3,730 is beyond what could be expected by random variation.  In order to answer this, we will first want to calculate the $SE$ for the difference of sample means.
 \end{nexample}
 \end{examplewrap}
 
@@ -1500,37 +1510,38 @@ The average salary offered to John was \$3,730 higher than the average salary of
 \begin{align*}
 SE = \sqrt{\frac{s_{1}^2}{n_{1}} + \frac{s_{2}^2}{n_{2}}} = \sqrt{\frac{(\johnsd{})^2}{\johnn{}} + \frac{(\jennifersd{})^2}{\jennifern{}}} = \johnjenniferSE{}
 \end{align*}
-The typical error in our estimate of $\mu_1-\mu_2$, the real difference in mean salary that the faculty would offer John vs Jennifer, is \$\johnjenniferSE{}.
+The typical error in our estimate of $\mu_1-\mu_2$, the real difference in mean salary that the faculty would offer John versus Jennifer, is \$\johnjenniferSE{}.
 \end{nexample}
 \end{examplewrap}
 
-We see that the difference of sample means of \$3730 is more than 3 $SE$ above 0, which makes us think that the difference being 0 is unreasonable.  We would like to construct a 95\% confidence interval for the theoretical difference in mean salary that would be offered to John versus Jennifer.  The one piece of information we still need is the degrees of freedom associated with a two-sample $t$-test.  
+We see that the difference of sample means of \$3,730 is more than 3 $SE$ above 0, which makes us think that the difference being 0 is unreasonable.  We would like to construct a 95\% confidence interval for the theoretical difference in mean salary that would be offered to John versus Jennifer.  For this, we need the degrees of freedom associated with a two-sample $t$-interval.  
 
 For the one-sample $t$-procedure, the degrees of freedom is given by the simple expression $n-1$, where $n$ is the sample size.  For the two-sample $t$-procedures, however, there is a complex formula for calculating the degrees of freedom, which is based on the two sample sizes and the two sample standard deviations.  In practice, we find the degrees of freedom using software or a calculator (see Section~\ref{2SampTint}).  If this is not possible, the alternative is to use the smaller of $n_1-1$ and $n_2-1$.
 
 \begin{onebox}
-{Degrees of freedom for two-sample $t$ procedures}
-Use statistical software or a calculator to compute the degrees of freedom for two-sample $t$-procedures.  If this is not possible, use the smaller of $n_1-1$ and $n_2-1$.
+{Degrees of freedom for two-sample T-procedures}
+Use statistical software or a calculator to compute the degrees of freedom for two-sample \mbox{$t$-procedures}.  If this is not possible, use the smaller of $n_1-1$ and $n_2-1$.
 \end{onebox}
 
 \begin{examplewrap}
 \begin{nexample}{Verify that conditions are met for a two-sample $t$-test.  Then, construct the 95\% confidence interval for the difference of means.}
 We noted previously that this is an experiment and that the two treatments (name Jennifer and name John) were randomly assigned.  Also, both sample sizes are well over 30, so the distribution of $\bar{x}_1-\bar{x}_2$ is nearly normal.  Using a calculator, we find that $df= 114.4$.  Since 114 is not on the $t$-table, we round the degrees of freedom down to 100.\footnotemark  \ Using a $t$-table at row $df=100$ with 95\% confidence, we get a $t^{\star}$ = 1.984. We calculate the confidence interval as follows. 
 \begin{align*}
-\text{point estimate } &\pm t^{\star}\times SE \text{ of estimate}\\
-3730&\pm 1.984\times \johnjenniferSE{}\\
-= (144&6, 6014)
+\text{point estimate } &\pm \ t^{\star}\times SE \text{ of estimate}\\
+3730\ &\pm \ 1.984\times \johnjenniferSE{}\\
+= 3730\ &\pm \ 2284\\
+= (1446&, 6014)
 \end{align*}
 \end{nexample}
 \end{examplewrap}
 \footnotetext{Using technology, we get a more precise interval, based on 114.4 $df$: (1495, 6055).}
 
-Based on this interval, we are 95\% confident that the true difference in salary that these faculty would offer John vs Jennifer is between \$1,495 and \$6,055, that is, we are 95\% confident that the faculty would offer John between \$1,446 and \$6,014 \emph{more} in salary for a lab manager position.
+Based on this interval, we are 95\% confident that the true difference in mean salary that these faculty would offer John versus Jennifer is between \$1,495 and \$6,055.  That is, we are 95\% confident that the mean salary these faculty would offer John for a lab manager position is between \$1,446 and \$6,014 \emph{more} than the mean salary they would offer Jennifer for the position.
 
-The results of these studies and others like it are are alarming and disturbing.\footnote{A similar study sent out identical resumes with different names to investigate the importance of perceived race.  Resumes with a name commonly perceived to be for a White person (e.g. Emily) were 50\% more likely to receive a callback than the same resume that with a name commonly perceived to be for a Black person (e.g. Lakisha).  \oiRedirect{textbook-emily-lakisha}{https://www.nber.org/papers/w9873}}   One aspect that makes this bias so difficult to address is that the experiment, as well-designed as it was, cannot send us much signal about \emph{which} faculty are
+The results of these studies and others like it are alarming and disturbing.\footnote{A similar study sent out identical resumes with different names to investigate the importance of perceived race.  Resumes with a name commonly perceived to be for a White person (e.g. Emily) were 50\% more likely to receive a callback than the same resume with a name commonly perceived to be for a Black person (e.g. Lakisha).  \oiRedirect{textbook-emily-lakisha}{https://www.nber.org/papers/w9873}}   One aspect that makes this bias so difficult to address is that the experiment, as well-designed as it was, cannot send us much signal about \emph{which} faculty are
 discriminating.  Each faculty member received only one of the resumes.  A faculty member that offered ``Jennifer" a very low salary may have also offered ``John" a very low salary.  
 
-We might imagine an experiment where each faculty received both resumes, so that we could compare how much they would offer a Jennifer versus a John.  However, the match pairs scenario is clearly not possible in this case, because what makes the experiment work is that the resumes are \emph{exactly the same} except for the name. An employer would notice something fishy if they received two identical resumes.  It is only possible to say that overall, the faculty were willing to offer John more money for the lab manager position than Jennifer.  Finding proof of bias for individual cases is a persistent challenge in enforcing anti-discrimination laws.
+We might imagine an experiment in which each faculty received both resumes, so that we could compare how much they would offer a Jennifer versus a John.  However, the matched pairs scenario is clearly not possible in this case, because what makes the experiment work is that the resumes are \emph{exactly the same} except for the name. An employer would notice something fishy if they received two identical resumes.  It is only possible to say that overall, the faculty were willing to offer John more money for the lab manager position than Jennifer.  Finding proof of bias for individual cases is a persistent challenge in enforcing anti-discrimination laws.
 
 
 \begin{onebox}{Constructing a confidence interval for the difference of two means}
@@ -1549,10 +1560,10 @@ To carry out a complete confidence interval procedure to estimate the difference
  \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_1-\bar{x}_2$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from 2 independent random sample or 2 randomly assigned treatments. 
+\item[] 1. Data come from 2 independent random samples or 2 randomly assigned treatments. 
 \item[] 2. $n_1\ge 30$ and $n_2\ge 30$ or both population distributions are nearly normal.
 \item[] \quad \ If the sample sizes are less than 30 and the population distributions are unknown, 
-\item[] \quad \ check for strong skew or outliers in either data set.  If none are found, the condition 
+\item[] \quad \ check for strong skew or outliers in either data set.  If neither is found, the condition 
 \item[] \quad \ that both population distributions are nearly normal is considered reasonable.  
 \end{itemize}
  \inferencestep{Calculate}  Calculate the confidence interval and record it in interval form.
@@ -1618,10 +1629,10 @@ The 95\% confidence interval is given by:
 
 \textA{\newpage}
 %%
-\subsection{Calculator: the 2-sample $t$-interval}
+\subsection[Calculator: the 2-sample $t$-interval]{Calculator: the 2-sample \pmb{$t$}-interval}
 \label{2SampTint}
 
-\begin{onebox}{\videohref{ti84_2_mean_CI} TI-83/84: 2-sample $t$-interval}
+\begin{onebox}{\videohref{ti84_2_mean_CI} TI-83/84: 2-sample T-interval}
 Use \calctext{STAT}, \calctext{TESTS}, \calctext{2-SampTInt}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1649,7 +1660,7 @@ $\calctextmath{\bar{x}_2}$ & mean of sample 2 &&
 \end{enumerate}
 \end{onebox}
 
-\begin{onebox}{\videohref{casio_2_mean_inference} Casio fx-9750GII: 2-sample $t$-interval}
+\begin{onebox}{\videohref{casio_2_mean_inference} Casio fx-9750GII: 2-sample T-interval}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
@@ -1699,7 +1710,7 @@ B		& 30		& 74.1		& 20		& 32		& 100 \\
 
 \index{data!baby\_smoke|(}
 
-Four cases from a data set called \data{ncbirths}, which represents mothers and their newborns in North Carolina, are shown in Figure~\ref{babySmokeDF}. We are particularly interested in two variables: \var{weight} and \var{smoke}. The \var{weight} variable represents the weights of the newborns and the \var{smoke} variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke? The smoking group includes includes a random sample of 50 cases and the nonfsmoking group contains a random sample of 100 cases, represented in Figure~\ref{babySmokePlotOfTwoGroupsToExamineSkew}.
+Four cases from a data set called \data{ncbirths}, which represents mothers and their newborns in North Carolina, are shown in Figure~\ref{babySmokeDF}. We are particularly interested in two variables: \var{weight} and \var{smoke}. The \var{weight} variable represents the weights of the newborns and the \var{smoke} variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke? The smoking group includes a random sample of 50 cases and the nonsmoking group contains a random sample of 100 cases, represented in Figure~\ref{babySmokePlotOfTwoGroupsToExamineSkew}.
 
 \begin{figure}[h]
 \centering
@@ -1736,7 +1747,7 @@ Let $\mu_{1}$ represent the mean for mothers that did smoke and $\mu_2$ represen
 \end{nexample}
 \end{examplewrap}
 
-We check the two conditions necessary to apply the $t$-distribution to the difference in sample means. (1)~Because the data come from a sample, we need there to be two independent random samples.  In fact, there was only one random sample, but it is reasonable that the two groups here are independent of each other, so we will consider the assumption of independence reasonable.  (2)~The sample sizes of 50 and 100 are well over 30, so we do not worry about the distributions of the original populations.  Since both conditions are satisfied, the difference in sample means may be modeled using a $t$-distribution.
+We check the two conditions necessary to use the $t$-distribution to the difference in sample means. (1)~Because the data come from a sample, we need there to be two independent random samples.  In fact, there was only one random sample, but it is reasonable that the two groups here are independent of each other, so we will consider the assumption of independence reasonable.  (2)~The sample sizes of 50 and 100 are well over 30, so we do not worry about the distributions of the original populations.  Since both conditions are satisfied, the difference in sample means may be modeled using a $t$-distribution.
 
 %Summary statistics are shown for each sample in Figure~\ref{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers}.
 
@@ -1844,10 +1855,10 @@ To carry out a complete hypothesis test to test the claim that two means $\mu_1$
  \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_1-\bar{x}_2$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from 2 independent random sample or 2 randomly assigned treatments. 
+\item[] 1. Data come from 2 independent random samples or 2 randomly assigned treatments. 
 \item[] 2. $n_1\ge 30$ and $n_2\ge 30$ or both population distributions are nearly normal.
 \item[] \quad \ If the sample sizes are less than 30 and the population distributions are unknown, 
-\item[] \quad \ check for strong skew or outliers in either data set.  If none are found, the condition 
+\item[] \quad \ check for excessive skew or outliers in either data set.  If neither is found, the condition 
 \item[] \quad \ that both population distributions are nearly normal is considered reasonable.  
 \end{itemize}
  \inferencestep{Calculate}  Calculate the $t$-statistic, $df$, and p-value.
@@ -1923,10 +1934,10 @@ Because $H_A$ is an upper tail test ( $>$ ), the p-value corresponds to the area
 
 \textA{\newpage}
 %%
-\subsection{Calculator: the 2-sample $t$-test}
+\subsection[Calculator: the 2-sample $t$-test]{Calculator: the 2-sample \pmb{$t$}-test}
 \label{2SampTtest}
 
-\begin{onebox}{\videohref{ti84_2_mean_HT} TI-83/84: 2-sample $t$-test}
+\begin{onebox}{\videohref{ti84_2_mean_HT} TI-83/84: 2-sample T-test}
 Use \calctext{STAT}, \calctext{TESTS}, \calctext{2-SampTTest}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1956,7 +1967,7 @@ $\calctextmath{\bar{x}_2}$ & mean of sample 2
 \end{enumerate}
 \end{onebox}
 
-\begin{onebox}{\videohref{casio_2_mean_inference} Casio fx-9750GII: 2-sample $t$-test}
+\begin{onebox}{\videohref{casio_2_mean_inference} Casio fx-9750GII: 2-sample T-test}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
@@ -2024,7 +2035,7 @@ control		& 9		& -4.33		& 2.76  	 \\
 \begin{itemize}
 \item[1.] The data come from 2 independent random samples or 2 randomly assigned treatments.
 \item[2.] $n_1\ge 30$ and $n_2\ge 30$ or both population distributions are nearly normal.
-\item[]  If the sample sizes are less than 30 and it is not know that both population distributions are nearly normal, we argue that both population distributions could be nearly normal if there is no strong skew or outliers in either data set.
+\item[]  If the sample sizes are less than 30 and it is not known that both population distributions are nearly normal, check for excessive skew or outliers in the data.  If neither exists, the condition that both population distributions could be nearly normal is considered reasonable.
 \end{itemize}
 
 
@@ -2042,8 +2053,11 @@ Here the point estimate is the difference of sample means: $\bar{x}_1-\bar{x}_2$
 
 \end{itemize}
 
+%%%%%Section exercises
+{\input{ch_inference_for_means/TeX/difference_of_two_means.tex}}
+
 %______________________________________________
-\section{Chapter Highlights}
+\section{Chapter highlights}
 \noindent We've reviewed a wide set of inference procedures over the last 3 chapters. Let's revisit each and discuss the similarities and differences among them.  The following confidence intervals and tests are structurally the same -- they all involve inference on a population parameter, where that parameter is a proportion, a difference of proportions, a mean, a mean of differences, or a difference of means. \vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
@@ -2075,5 +2089,7 @@ While formulas and conditions vary, all of these procedures follow the same basi
 \item Calculate the confidence interval or the test statistic and p-value, as well as the $df$ if applicable.
 \item Interpret the results and draw a conclusion based on the data.
 \end{itemize}
+For a summary of these hypothesis test and confidence interval procedures (including one more that we will encounter in Section~\ref{inferenceForLinearRegression}), see the Inference Guide in Appendix~\ref{inferenceGuide}.
+
 
 

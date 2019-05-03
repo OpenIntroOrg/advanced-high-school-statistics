@@ -7,5 +7,7 @@ myPDF('chiSquareAreaAbove11Point7WithDF7.pdf', 5, 3,
 ChiSquareTail(11.7,
               7,
               xlim = c(0, 25),
+              axes=FALSE,
               col = COL[1])
+axis(1,pos=0)
 dev.off()

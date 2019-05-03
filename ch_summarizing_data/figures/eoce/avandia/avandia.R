@@ -20,7 +20,7 @@ load("results.rda")
 pdf("avandia_RandHist.pdf", 6, 4)
 par(mar=c(4.2,3,1,1), las=1, mgp=c(3.2,0.9,0), mfrow = c(1,1), cex.lab = 1.2, cex.axis = 1.2)
 
-histPlot(rosigY, main="", breaks=25, xlab="Simulated rosiglitazone cardiovascular events \nunder independence model", ylab="", col = COL[1], axes = FALSE)
+histPlot(rosigY, main="", yaxs="i",breaks=25, xlab="Simulated rosiglitazone cardiovascular events \nunder independence model", ylab="", col = COL[1], axes = FALSE)
 axis(1, at = seq(2250,2550,100))
 axis(2, at=(0:4)*N/40, labels=c(0, NA, 2, NA, 4)/40)
 abline(h = 0)

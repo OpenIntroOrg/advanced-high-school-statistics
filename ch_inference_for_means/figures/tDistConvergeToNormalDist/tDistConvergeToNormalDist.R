@@ -7,6 +7,7 @@ myPDF('tDistConvergeToNormalDist.pdf', 5.54, 2.33,
 plot(c(-4.5, 4.5),
      c(0, dnorm(0)),
      type = 'n',
+     yaxs="i",
      axes = FALSE)
 at <- seq(-6, 6, 2)
 axis(1, at)

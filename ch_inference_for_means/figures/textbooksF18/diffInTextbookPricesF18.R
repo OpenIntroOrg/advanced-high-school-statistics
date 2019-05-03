@@ -10,7 +10,8 @@ myPDF('diffInTextbookPricesF18.pdf', 6, 3,
       mgp = c(1.8, 0.5, 0))
 histPlot(d, axes = FALSE, # breaks = 20,
          xlab = "UCLA Bookstore Price - Amazon Price (USD)",
-         ylab = "",
+         ylab = "Frequency",
+         yaxs="i",
          col = COL[1])
 AxisInDollars(1, at = pretty(d), tck = -0.03)
 axis(2, at = seq(0, 30, 10), tck = -0.02)

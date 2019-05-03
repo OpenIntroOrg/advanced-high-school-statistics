@@ -6,5 +6,7 @@ myPDF('googleHTForDiffAlgPerformancePValue.pdf', 5, 2.25,
 ChiSquareTail(6.12,
               2,
               c(0, 16),
+              axes=FALSE,
               col = COL[1])
+axis(1,pos=0)
 dev.off()

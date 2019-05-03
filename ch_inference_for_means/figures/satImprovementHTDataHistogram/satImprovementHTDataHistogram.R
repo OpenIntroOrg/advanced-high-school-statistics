@@ -8,12 +8,13 @@ mean(x)
 sd(x)
 
 myPDF('satImprovementHTDataHistogram.pdf', 3.6, 1.5,
-      mar = c(1.6, 2, 0.2, 1),
+      mar = c(1.6, 2, 0.4, 1),
       mgp = c(0, 0.45, 0))
 histPlot(x,
          xlab = '',
          ylab = '',
          main = '',
+         yaxs="i",
          axes = FALSE,
          col = COL[1])
 axis(1)

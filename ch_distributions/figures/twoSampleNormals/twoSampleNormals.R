@@ -15,7 +15,7 @@ X <- seq(-4,4,0.01)
 Y <- dnorm(X)
 plot(X, Y,
      type = 'l',
-     axes = FALSE,
+     axes = FALSE,yaxs="i",
      xlim = c(-3.4, 3.4))
 axis(1, at = -3:3)
 for (i in 1:length(hold$counts)) {
@@ -29,7 +29,7 @@ abline(h = 0)
 # curve 2
 X <- seq(3,35,0.01)
 Y <- dnorm(X, 19, 4)
-plot(X, Y, type = 'l', axes = F, xlim = c(5.4,32.6))
+plot(X, Y, type = 'l', axes = F, xlim = c(5.4,32.6),yaxs="i")
 axis(1, at = 19+4*(-3:3))
 
 for (i in 1:length(hold$counts)) {

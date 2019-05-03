@@ -11,7 +11,7 @@ pdf("bimodalHistBox.pdf", height = 2.5, width = 7)
 par(mar=c(1.8,2.2,0.1,1), las=1, mgp=c(2.5,0.7,0), cex.lab = 1.75)
 layout(matrix(1:2, 1), 2:1)
 
-histPlot(bimod, xlab = "", ylab = "", yaxt = "n", col = oiB)
+histPlot(bimod, xlab = "", ylab = "", yaxt = "n", yaxs="i",col = oiB)
 boxPlot(bimod, col = fadeColor(oiB, 80), xlim=c(0.4, 1.6))
 
 dev.off()

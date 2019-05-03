@@ -10,7 +10,7 @@ Y <- dnorm(X)
 
 plot(X, Y,
      type = 'l',
-     axes = FALSE,
+     axes = FALSE, yaxs="i",
      xlim = c(-3.4, 3.4))
 at = c(-5, -0.8, 0, 5)
 labels = c(-5, '-Z', 0, 5)
@@ -27,7 +27,7 @@ lines(c(0, 0), c(0, dnorm(0)),
 
 plot(X, Y,
      type = 'l',
-     axes = FALSE,
+     axes = FALSE,yaxs="i",
      xlim = c(-3.4, 3.4))
 axis(1,
      at = c(-5, 0.8, 0, 5),

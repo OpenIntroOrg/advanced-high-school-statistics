@@ -15,11 +15,9 @@ In this chapter,
 we apply the methods and ideas from Chapter~\ref{ch_foundations_for_inf}
 in several contexts for categorical data.
 We'll start by revisiting what we learned for a single
-proportion, where the normal distribution can be used
+proportion, where a normal distribution can be used
 to model the uncertainty in the sample proportion.
-Next, we apply these same ideas, using the normal
-model to analyze the difference of two proportions
-when conditions are satisfied.
+Next, we apply these same ideas to analyze the difference of two proportions using a normal model.
 Later in the chapter we will encounter contingency tables,
 and we will use a different distribution, though the core
 ideas of hypothesis testing remain the same.}
@@ -31,26 +29,27 @@ ideas of hypothesis testing remain the same.}
 \label{singleProportion}
 
 \sectionintro{
-\noindent In this section, we will apply the inferential procedures introduced in Chapter~\ref{ch_inference_foundations} to the context of a single proportion.  We will also explore how to do sample size calculations for data collection purposes.  We will answer questions such as the following.
+\Add{
+\noindent In this section, we will apply the inferential procedures introduced in Chapter~\ref{ch_inference_foundations} to the context of a single proportion and we will explore how to do sample~size calculations for data collection purposes.  We will answer questions such as the following:
 \begin{itemize}
 \item Do greater than half of adults in the U.S. oppose nuclear energy?
 \item What percent of adults in the U.S. approve of the way the Supreme Court is handling its job?  \item How much error is associated with this estimate?  
 \item What interval of values are reasonable at the 95\% confidence level?
-\item How large a sample size would we need to take to estimate this with 95\% confidence and a margin of error no greater than 3\%?
-
+\item How large a sample~size would we need to take to estimate this with 95\% confidence and a margin of error no greater than 3\%?
 
 \end{itemize}
+}
 
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
-\item Verify whether or not the conditions for inference on a proportion using the normal distribution are met.
+\item Verify whether or not the conditions for inference on a proportion using a normal distribution are met.
 
 \item Recognize that the success-failure condition and the standard error calculation are different for the test and for the confidence interval and explain why this is the case.
 
 \item Carry out a complete hypothesis test and confidence interval procedure for a single proportion.
 
-\item Find the minimum sample size needed to estimate a proportion with C\% confidence and a margin of error no greater than a certain value.
+\item Find the minimum sample~size needed to estimate a proportion with C\% confidence and a margin of error no greater than a certain value.
 
 \item Recognize that margin of error calculations only measure sampling error, and that other types of errors may be present.
 
@@ -71,14 +70,15 @@ The sampling distribution of a sample proportion, $\hat{p}$, based on a random s
 \end{enumerate}
 If these conditions are met, then the sampling distribution of $\hat{p}$ is nearly normal with mean $\mu_{\hat{p}}=p$ and standard deviation $\sigma_{\hat{p}} = \sqrt{\frac{\ p(1-p)\ }{n}}$.\index{standard error!single proportion}\end{onebox}
 
-\subsection{Checking conditions for inference using the normal distribution}
+\subsection{Checking conditions for inference using a normal distribution}
 We can use a normal model for inference for a proportion when the observations are independent and the sampling distribution of the sample proportion is nearly normal.  We check that these assumptions are reasonable by verifying the following conditions.
 
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Independent.] Observations can be considered independent when the data are collected from a \emph{random process}, such as tossing a coin, or from a \emph{random sample}.  Without a random sample or process, the standard error formula would not apply, and it is unclear to what population the inference would apply.  When sampling without replacement, the observations can be considered independent when sampling less than 10\% of the population.  However, with a random sample of greater than 10\% of the population the assumption of independence leads to more conservative estimates for the standard error and therefore the normal model is still acceptable. 
-\item[Nearly normal sampling distribution.] We saw in Section~\ref{distributionphat} that the sampling distribution of a sample proportion will be nearly normal when the success-failure condition is met, that is, when the expected number of success and failures are both at least 10.  
+\item[Independent.] Observations can be considered independent when the data are collected from a \emph{random process}, such as tossing a coin, or from a \emph{random sample}.  Without a random sample or process, the standard error formula would not apply, and it is unclear to what population the inference would apply.  When sampling without replacement from a finite population, the observations can be considered independent when sampling less than 10\% of the population.\footnote{When sampling without replacement and sampling greater than 10\% of the population, a modified standard error formula should be used.}
+\item[Nearly normal sampling distribution.] We saw in Section~\ref{distributionphat} that the sampling distribution of a sample proportion will be nearly normal when the success-failure condition is met, i.e. when the expected number of success and failures are both at least 10.  
 \end{description}
+In our examples, we generally sample from large populations, such as the United States.  In these cases, we do not explicitly verify that the sample~size is less than 10\% of the population size.  However, in borderline cases, one should remember to check this condition as well to ensure that the standard error estimate is reasonable.
 
 %%
 \subsection{Confidence intervals for a proportion}
@@ -90,14 +90,14 @@ We can use a normal model for inference for a proportion when the observations a
 
 The Gallup organization began measuring the public's view of the Supreme Court's job performance in 2000, and has measured it every year since then with the question: ``Do you approve or disapprove of the way the Supreme Court is handling its job?".  In 2018, the Gallup poll randomly sampled 1,033 adults in the U.S. and found that 53\% of them approved.\footnote{\oiRedirect{textbook-gallup_supreme_court_approval_2018}{\scriptsize https://news.gallup.com/poll/237269/supreme-court-approval-highest-2009.aspx}}  We know that 53\% is just a point estimate.  What range of values are reasonable estimates for the percent of the population that approved of the job the Supreme Court is doing?  We can use the confidence interval procedure introduced in the previous chapter to answer this question, but first we must clearly identify the parameter we're trying to estimate and be sure that a Z-interval will be appropriate.  The following examples walk through the various steps for carrying out a confidence interval procedure using the Gallup poll data.
 
-
+\textA{\newpage}
 \begin{examplewrap}\begin{nexample}{Identify the population of interest and the parameter of interest for the Gallup poll about the U.S. Supreme Court. }
 Gallup sampled from U.S. adults, therefore the population of interest, and the population to which we can make an inference, is U.S. adults.  We know the percent of the sample that said they approve of the job the Supreme Court is doing.  However, we do not know what percent of the population would approve.  The parameter of interest, which is unknown, is the percent of \emph{all} U.S. adults that approve of the job the Supreme Court is doing.  This is the quantity that we seek to estimate with the confidence interval.
 \end{nexample}\end{examplewrap}
 
 
 \begin{examplewrap}\begin{nexample}{Can the sample proportion $\hat{p}$ be modeled using a normal distribution?}
-In order to construct a Z-interval, the sample statistic must be able to be modeled using a normal distribution.  Gallup took a random sample, so the first condition (the independence condition) is satisfied.  We must also test the second condition (the success-failure condition) to ensure that the sample size is large enough for the central limit theorem to apply.  The success-failure condition is met when $np$ and $n(1-p)$ are at least 10. Since $p$ is always unknown when constructing a confidence interval for $p$, we use the sample proportion $\hat{p}$ to check this condition.  Here we have:
+In order to construct a Z-interval, the sample statistic must be able to be modeled using a normal distribution.  Gallup took a random sample, so the first condition (the independence condition) is satisfied.  We must also test the second condition (the success-failure condition) to ensure that the sample~size is large enough for the central limit theorem to apply.  The success-failure condition is met when $np$ and $n(1-p)$ are at least 10. Since $p$ is always unknown when constructing a confidence interval for $p$, we use the sample proportion $\hat{p}$ to check this condition.  Here we have:
 \begin{align*}
 n\hat{p} = 1033 \times 0.53 = 547\text{ (``successes'')} \\
  n(1-\hat{p}) = 1033 \times (1 - 0.53) = 486\text{ (``failures'')}
@@ -234,7 +234,7 @@ The 95\% confidence interval is given by:
 True or False:  There is a 95\% probability that between 65.1\% and 70.9\% of U.S. adults think that there is intelligent life on other planets.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{False.  The true percent of U.S. adults that think there is intelligent life on other planets either falls in that interval or it doesn't.  A correct interpretation of the confidence level would be that if we were to repeat this process over and over, about 95\% of the 95\% confidence intervals constructed would contain the true value.    }
+\footnotetext{False.  The true percent of U.S. adults that think there is intelligent life on other planets either falls in that interval or it doesn't.  A correct interpretation of the confidence level would be that if we were to repeat this process over and over, about 95\% of the 95\% confidence intervals constructed would contain the true value.  }
 \newpage
 
 %%
@@ -250,13 +250,13 @@ Use \calcbutton{STAT}, \calctext{TESTS}, \calctext{1-PropZInt}.
 \item Right arrow to \calctext{TESTS}.
 \item Down arrow and choose \calctext{A:1-PropZInt}.
 \item Let \calctext{x} be the \emph{number} of yes's (must be an integer).
-\item Let \calctext{n} be the sample size.
+\item Let \calctext{n} be the sample~size.
 \item Let \calctext{C-Level} be the desired confidence level.
 \item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns\\[1mm]
 \begin{tabular}{l l}
 \calctext{(\underline{\ \ },\underline{\ \ })} & the confidence interval \\
 $\calctextmath{\hat{p}}$ & the sample proportion \\
-\calctext{n} & the sample size
+\calctext{n} & the sample~size
 \end{tabular}
 \end{enumerate}
 \end{onebox}
@@ -274,34 +274,34 @@ $\calctextmath{\hat{p}}$ & the sample proportion \\
   \setlength{\itemsep}{0mm}
   \item Confidence level of interest for \calctext{C-Level}.
   \item Enter the number of successes, \calctext{x}.
-  \item Enter the sample size, \calctext{n}.
+  \item Enter the sample~size, \calctext{n}.
   \end{itemize}
 \item Hit the \calcbutton{EXE} button, which returns \\[1mm]
   \begin{tabular}{ll}
   \calctext{Left}, \calctext{Right} & ends of the confidence interval \\
   $\calctextmath{\hat{p}}$ & sample proportion \\
-  \calctext{n} & sample size
+  \calctext{n} & sample~size
   \end{tabular}
 \end{enumerate}
 \end{onebox}
 
 \begin{exercisewrap}\begin{nexercise}
-Using a calculator, evaluate the confidence interval from Example~\ref{IntelligentLife}.  Recall that we wanted to find a 95\% confidence interval for the proportion of U.S. adults who think there is intelligent life on other planets.  The sample percent was 68\% and the sample size was 1,033.\footnotemark
+Using a calculator, evaluate the confidence interval from Example~\ref{IntelligentLife}.  Recall that we wanted to find a 95\% confidence interval for the proportion of U.S. adults who think there is intelligent life on other planets.  The sample percent was 68\% and the sample~size was 1,033.\footnotemark
 \end{nexercise}\end{exercisewrap}
-\footnotetext{Navigate to the 1-proportion Z-interval on the calculator.  To find \calctext{x}, the number of yes responses in the sample, we multiply the sample proportion by the sample size.  Here $0.68\times 1033=702.44$.  We must round this to an integer, so we use \calctext{x} = 702.  Also, \calctext{n} =1033 and \calctext{C-Level} = 0.95.  The calculator output of (0.651, 0.708) matches our previously computed interval of (0.651, 0.709) with minor rounding difference.}
+\footnotetext{Navigate to the 1-proportion Z-interval on the calculator.  To find \calctext{x}, the number of yes responses in the sample, we multiply the sample proportion by the sample~size.  Here $0.68\times 1033=702.44$.  We must round this to an integer, so we use \calctext{x} = 702.  Also, \calctext{n} =1033 and \calctext{C-Level} = 0.95.  The calculator output of (0.651, 0.708) matches our previously computed interval of (0.651, 0.709) with minor rounding difference.}
 
 
 %%%
 
 \newpage
 %%
-\subsection{Choosing a sample size when estimating a proportion}
+\subsection{Choosing a sample~size when estimating a proportion}
 \label{moeproportion}
 \index{margin of error|(}
 
-Planning a sample size before collecting data is important. If we collect too little data, the standard error of our point estimate may be so large that the estimate is not very useful. On the other hand, collecting data in some contexts is time-consuming and expensive, so we don't want to waste resources on collecting more data than we need.
+Planning a sample~size before collecting data is important. If we collect too little data, the standard error of our point estimate may be so large that the estimate is not very useful. On the other hand, collecting data in some contexts is time-consuming and expensive, so we don't want to waste resources on collecting more data than we need.
 
-When considering the sample size, we want to put an upper bound on the margin of error. Recall that the \term{margin of error} is measured as the distance between the point estimate and the lower or upper bound of a confidence interval.  
+When considering the sample~size, we want to put an upper bound on the margin of error. Recall that the \term{margin of error} is measured as the distance between the point estimate and the lower or upper bound of a confidence interval.  
 
 \begin{onebox}{Margin of error}
 The margin of error of a confidence interval is given by: 
@@ -312,7 +312,7 @@ The margin of error tells us with a given confidence level how far off we expect
 \end{onebox}
 
 
-\begin{examplewrap}\begin{nexample}{Suppose we are conducting a university survey to determine whether students support a \$200 per year increase in fees to pay for a new football stadium.  Find the smallest sample size $n$ so that the margin of error of the point estimate $\hat{p}$ will be no larger than 0.04 when using a 95\% confidence level.}
+\begin{examplewrap}\begin{nexample}{Suppose we are conducting a university survey to determine whether students support a \$200 per year increase in fees to pay for a new football stadium.  Find the smallest sample~size $n$ so that the margin of error of the point estimate $\hat{p}$ will be no larger than 0.04 when using a 95\% confidence level.}
 Because we are working with proportions, the critical value is a $z^{\star}$ value.  We want the margin of error to be less than or equal to 0.04, so we have:
 \begin{align*}
 z^{\star}\times \sqrt{\frac{p(1-p)}{n}} \leq 0.04
@@ -325,10 +325,10 @@ There are two unknowns in the inequality: $p$ and $n$. If we have an estimate of
 	600.25 &\leq n \\
 	n=601
 \end{align*}
-The sample size must be an integer and we round up because $n$ must be greater than or equal to 600.25. We need at least 601 participants to ensure the sample proportion is within 0.04 of the true proportion with 95\% confidence.
+The sample~size must be an integer and we round up because $n$ must be greater than or equal to 600.25. We need at least 601 participants to ensure the sample proportion is within 0.04 of the true proportion with 95\% confidence.
 \end{nexample}\end{examplewrap}
 
-No estimate of the true proportion is required in sample size computations for a proportion. However, if we have a reliable estimate of the proportion, we should use it in place of the worst case estimate of~0.5.
+No estimate of the true proportion is required in sample~size computations for a proportion. However, if we have a reliable estimate of the proportion, we should use it in place of the worst case estimate of~0.5.
 
 
 \index{data!Congress approval rating|(}
@@ -337,7 +337,7 @@ No estimate of the true proportion is required in sample size computations for a
 
 
 \begin{examplewrap}\begin{nexample}
-{A recent estimate of Congress' approval rating was 17\%.\footnotemark\, If another poll were taken, what minimum sample size does this estimate suggest should be used to have a margin of error no greater than 0.04 with 95\% confidence?}
+{A recent estimate of Congress' approval rating was 17\%.\footnotemark\, If another poll were taken, what minimum sample~size does this estimate suggest should be used to have a margin of error no greater than 0.04 with 95\% confidence?}
 
 We complete the same computations as before, except now we use $0.17$ instead of $0.5$ for $p$:
 \begin{align*}
@@ -345,15 +345,15 @@ We complete the same computations as before, except now we use $0.17$ instead of
 n &\geq 338.8\\
 n &= 339
 \end{align*}
-If the true proportion is 0.17, then 339 is the minimum sample size that will ensure a margin of error no greater than 0.04 with 95\% confidence.
+If the true proportion is 0.17, then 339 is the minimum sample~size that will ensure a margin of error no greater than 0.04 with 95\% confidence.
 
 \index{data!Congress approval rating|)}
 
 \end{nexample}\end{examplewrap}
 \footnotetext{\oiRedirect{textbook-gallup_congress_2018}{news.gallup.com/poll/237176/snapshot-congressional-job-approval-july.aspx}}
 
-\begin{onebox}{Identify a sample size for a particular margin of error}
-When estimating a single proportion, we find the minimum sample size $n$ needed to achieve a margin of error no greater than $m$ with a specified confidence level as follows:
+\begin{onebox}{Identify a sample~size for a particular margin of error}
+When estimating a single proportion, we find the minimum sample~size $n$ needed to achieve a margin of error no greater than $m$ with a specified confidence level as follows:
 \begin{align*}
 z^{\star}\times \sqrt{\frac{p(1-p)}{n}} \leq m
 \end{align*}
@@ -362,7 +362,7 @@ where $z^{\star}$ depends on the confidence level.   If no reliable estimate of 
 
 \begin{exercisewrap}\begin{nexercise}To have a smaller margin or error, should one use a larger sample or a smaller sample?\footnotemark
 \end{nexercise}\end{exercisewrap}
-\footnotetext{Intuitively, a larger sample should tend to yield less error. We can also note that $n$, the sample size, is in the denominator of the $SE$ formula, so as $n$ goes up, the $SE$ and thus the margin of error go down.}
+\footnotetext{Intuitively, a larger sample should tend to yield less error. We can also note that $n$, the sample~size, is in the denominator of the $SE$ formula, so as $n$ goes up, the $SE$ and thus the margin of error go down.}
 
 \begin{exercisewrap}\begin{nexercise}
 A manager is about to oversee the mass production of a new tire model in her factory, and she would like to estimate the proportion of these tires that will be rejected through quality control. The quality control team has previously found that about 6.2\% of tires fail inspection.
@@ -375,7 +375,7 @@ A manager is about to oversee the mass production of a new tire model in her fac
 \end{itemize}
 \end{nexercise}\end{exercisewrap}
 \footnotetext{The $z^{\star}$ corresponding to a 90\% confidence level is 1.645.  Since we have an estimate for $p$ of 6.2\%, we use it.  So we have:  $1.645\times \sqrt{\frac{0.062(1-0.062)}{n}} \leq 0.02 $.  Rearranging for $n$ gives: $n \geq 393.4$, so she should use $n =394$.}
-\footnotetext{Substituting 0.017 for $p$ gives an $n$ of 114.  We can note that in this case $n\times p = 114 \times 0.017 = 1.9 <10$.  Since the success-failure condition is not met, the use of $z^{\star} = 1.645$ based on a normal model is not appropriate.  We would need additional methods than what we've covered so far to get a good estimate for the minimum sample size in this scenario.}
+\footnotetext{Substituting 0.017 for $p$ gives an $n$ of 114.  We can note that in this case $n\times p = 114 \times 0.017 = 1.9 <10$.  Since the success-failure condition is not met, the use of $z^{\star} = 1.645$ based on a normal model is not appropriate.  We would need additional methods than what we've covered so far to get a good estimate for the minimum sample~size in this scenario.}
 
 
 
@@ -552,14 +552,14 @@ Use \calcbutton{STAT}, \calctext{TESTS}, \calctext{1-PropZTest}.
 \item Down arrow and choose \calctext{5:1-PropZTest}.
 \item Let $\calctextmath{p_0}$ be the null or hypothesized value of p.
 \item Let \calctext{x} be the \emph{number} of yes's (must be an integer).
-\item Let \calctext{n} be the sample size.
+\item Let \calctext{n} be the sample~size.
 \item Choose $\calctextmath{\ne}$, $\calctextmath{<}$, or $\calctextmath{>}$ to correspond to $H_A$.
 \item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns \\[1mm]
 \begin{tabular}{l l}
 \calctext{z} & Z-statistic \\
 \calctext{p} & p-value \\
 $\calctextmath{\hat{p}}$ &  the sample proportion \\
-\calctext{n} & the sample size
+\calctext{n} & the sample~size
 \end{tabular}
 \end{enumerate}
 \end{onebox}
@@ -585,20 +585,20 @@ The steps closely match those of the 1-proportion confidence interval.
   \item Specify the sidedness of the test using the \calcbutton{F1}, \calcbutton{F2}, and \calcbutton{F3} keys.
   \item Enter the null value, \calctext{p0}.
   \item Enter the number of successes, \calctext{x}.
-  \item Enter the sample size, \calctext{n}.
+  \item Enter the sample~size, \calctext{n}.
   \end{itemize}
 \item Hit the \calcbutton{EXE} button, which returns \\[1mm]
   \begin{tabular}{ll}
   \calctext{z} &  Z-statistic \\
   \calctext{p} &  p-value \\
   $\calctextmath{\hat{p}}$ &  the sample proportion \\
-  \calctext{n} &  the sample size
+  \calctext{n} &  the sample~size
   \end{tabular}
 \end{enumerate}
 \end{onebox}
 
 \begin{exercisewrap}\begin{nexercise}
-Using a calculator, find the test statistic and p-value for the earlier Example~\ref{NuclearEnergy}.  Recall that we were looking for evidence that more than half of U.S. adults oppose nuclear energy.  The sample percent was 54\%, and the sample size was 1019.\footnotemark
+Using a calculator, find the test statistic and p-value for the earlier Example~\ref{NuclearEnergy}.  Recall that we were looking for evidence that more than half of U.S. adults oppose nuclear energy.  The sample percent was 54\%, and the sample~size was 1019.\footnotemark
 \end{nexercise}\end{exercisewrap}
 \footnotetext{Navigate to the 1-proportion Z-test on the calculator.  Let $\calctextmath{p_0}$ = 0.5.  To find \calctext{x}, do $0.54\times 1019 = 550.26$. This needs to be an integer, so round to the closest integer.  Here \calctext{x} = 550.  Also, $\calctextmath{n}=1019$.  We are looking for evidence that greater than half oppose, so choose $\calctextmath{>p_0}$.  When we do \calctext{Calculate}, we get the test statistic: \calctext{Z = 2.64} and the p-value: \calctext{p = 0.006}. }
 
@@ -642,13 +642,16 @@ Using a calculator, find the test statistic and p-value for the earlier Example~
 \item[] \quad \quad  For an Interval, use:  $SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$;  \quad for a Test, use:   $SE = \sqrt{\frac{p_0(1-p_0)}{n}}$
 
 \item The \term{margin of error} ($ME$) for one-sample confidence interval for a proportion is $z^{\star}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$. 
-\item To find the \term{minimum sample size} needed to estimate a proportion with a given confidence level and a given margin of error, $m$, set up an inequality of the form:
+\item To find the \term{minimum sample~size} needed to estimate a proportion with a given confidence level and a given margin of error, $m$, set up an inequality of the form:
 \begin{align*}
 z^{\star}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}<m
 \end{align*}
-$z^{\star}$ depends on the desired confidence level.  Unless a particular proportion is given in the problem, use \mbox{$\hat{p}=0.5$.}  We solve for the sample size $n$.  The final answer should be an \textit{integer}, since $n$ refers to a number of people or things.
+$z^{\star}$ depends on the desired confidence level.  Unless a particular proportion is given in the problem, use \mbox{$\hat{p}=0.5$.}  We solve for the sample~size $n$.  The final answer should be an \textit{integer}, since $n$ refers to a number of people or things.
 \end{itemize}
 
+
+%%%%%%%Section Exercises
+{\input{ch_inference_for_props/TeX/inference_for_a_single_proportion.tex}}
 
 
 %____________________________________________
@@ -657,18 +660,19 @@ $z^{\star}$ depends on the desired confidence level.  Unless a particular propor
 \label{differenceOfTwoProportions}
 
 \sectionintro{
-\noindent We often wish to compare to groups to each other.  We can answer questions such as the following. 
+\Add{
+\noindent We often wish to compare to groups to each other.  In this section we will answer the following questions: 
 \begin{itemize}
 \item How much more effective is a blood thinner than a placebo for those who undergo CPR for a heart attack?
 \item How different is th approval of the 2010 healthcare law under two different question phrasings?
-\item Does the use of fish oils reduce heart attacks better than a plecbo?
+\item Does the use of fish oils reduce heart attacks better than a placebo?
 \end{itemize}
-
+}
 
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
-\item State and verify whether or not the conditions for inference on the difference of two proportions using the normal distribution are met.
+\item State and verify whether or not the conditions for inference on the difference of two proportions using a normal distribution are met.
 
 \item Recognize that the standard error calculation is different for the test and for the interval and explain why that is the case.
 
@@ -685,7 +689,7 @@ Carry out a complete hypothesis test for the difference of two  proportions.
 %%
 \subsection{Sampling distribution of the difference of two proportions}
 
-When comparing two proportions to each other, it is helpful to look at the difference.  If the difference is positive it tells us that the first one is larger.  If it is negative, it tells use that the second one is larger.  If the difference is zero, it tells us that they are equal.  When comparing two proportions, then, the quantity that we want to estimate is really the difference: $p_1-p_2$.  This tells us how far apart the two proportions or percents are.  
+In this section we want to compare two proportions to each other.  We can start by taking their difference.  If the difference is positive it tells us that the first one is larger.  If it is negative, it tells use that the second one is larger.  If the difference is zero, it tells us that they are equal.  When comparing two proportions, then, the quantity that we want to estimate is really the difference: $p_1-p_2$.  This tells us how far apart the two proportions are.  
 
 Before we find a test statistic and perform inference for the two proportion case, we must investigate the sampling distribution of $\hat{p}_1-\hat{p}_2$, which will become our point estimate.  We know that the sampling distribution should be centered on $p_1-p_2$.  The standard deviation of $\hat{p}_1-\hat{p}_2$ can be computed as:
 \begin{align*}
@@ -694,10 +698,10 @@ SD_{\hat{p}_1 - \hat{p}_2}
 	= \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
 \end{align*}
 
-In addition to the mean and the standard deviation of $\hat{p}_1 - \hat{p}_2$, we would like to know the shape, specifically when the distribution of the difference can be modeled with a normal distribution. First, the sampling distribution for each sample proportion must be nearly normal, and secondly, the samples must be independent.Under these two conditions, the sampling distribution of $\hat{p}_1 - \hat{p}_2$ may be well approximated using the normal model.
+Like with $\hat{p}$, the difference of two sample proportions $\hat{p}_1-\hat{p}_2$ follows a normal distribution when certain conditions are met.  First, the sampling distribution for each sample proportion must be nearly normal, and secondly, the samples must be independent. Under these two conditions, the sampling distribution of $\hat{p}_1 - \hat{p}_2$ may be well approximated using the normal model.
 
 
-\subsection{Checking conditions for inference using the normal distribution}
+\subsection{Checking conditions for inference using a normal distribution}
 When comparing two proportions, we carry out inference on $p_1-p_2$.  The assumptions are that the observations are independent, both between groups and within groups and that the sampling distribution of $\hat{p}_1-\hat{p}_2$ is nearly normal.  We check whether these assumptions are reasonable by verifying the following conditions.
 \begin{description}
 \setlength{\itemsep}{0mm}
@@ -708,7 +712,7 @@ When comparing two proportions, we carry out inference on $p_1-p_2$.  The assump
 
 
 %%
-\subsection{Confidence Interval for $p_1 -p_2$}
+\subsection[Confidence Interval for $p_1 -p_2$]{Confidence Interval for \pmb{$p_1 -p_2$}}
 
 We consider an experiment for patients who underwent CPR for a heart attack and were subsequently admitted to a hospital. These patients were randomly divided into a treatment group where they received a blood thinner or the control group where they did not receive a blood thinner. The outcome variable of interest was whether the patients survived for at least 24 hours.
     The results are shown in  Figure~\ref{resultsForCPRStudyInSmallSampleSection}.
@@ -740,7 +744,7 @@ Here, the parameter of interest is a difference of population proportions, speci
 p_1:& \text{ proportion that would survive in treatment group, and} \\
 p_2:& \text{ proportion that would survive in control group}
 \end{align*}
-Then the parameter of interest is $p_1 - p_2$.  In order to use a Z-interval to estimate this difference, we must see if the point estimate, $\hat{p}_{1} - \hat{p}_{2}$, follows a normal distribution.  Because the patients were randomly assigned to one of the two groups and one heart attack patient is unlikely to influence the next that was in the study, the observations are considered independent, both within the samples and between the samples.  Next, the success-failure condition should be verified for each group.  We use the sample proportions along with the sample sizes to check the condition.
+Then the parameter of interest is $p_1 - p_2$.  In order to use a Z-interval to estimate this difference, we must see if the point estimate, $\hat{p}_{1} - \hat{p}_{2}$, follows a normal distribution.  Because the patients were randomly assigned to one of the two groups and one heart attack patient is unlikely to influence the next that was in the study, the observations are considered independent, both within the samples and between the samples.  Next, the success-failure condition should be verified for each group.  We use the sample proportions along with the sample~sizes to check the condition.
 \begin{align*}
 n_1\times \hat{p}_1&\ge 10 & n_1\times (1-\hat{p}_1)&\ge 10 & n_2\times \hat{p}_2&\ge 10 & n_2\times (1-\hat{p}_2)&\ge 10 \\
 40 \times \frac{14}{40} &\ge 10
@@ -820,7 +824,7 @@ To carry out a complete confidence interval procedure to estimate the difference
 \begin{description}
 \item[\inferencestep{Identify}] First we identify the parameter of interest.  Here the parameter we wish to estimate is the true difference in the proportion of gears from each supplier that would pass inspection, $p_1-p_2$.  We will take the difference as:  current $-$ prospective, so $p_1$ is the true proportion that would pass from the current supplier and $p_2$ is the true proportion that would pass from the prospective supplier.  We will estimate the difference using a 95\% confidence level.  
 \item[\inferencestep{Choose}] Because the parameter to be estimated is a difference of proportions, we will use a 2-proportion Z-interval.
-\item[\inferencestep{Check}] The samples are independent, but not necessarily random, so to proceed we must assume the gears are all independent. For this sample we will suppose this assumption is reasonable, but the engineer would be more knowledgeable as to whether this assumption is appropriate. We also must verify the minimum sample size conditions:
+\item[\inferencestep{Check}] The samples are independent, but not necessarily random, so to proceed we must assume the gears are all independent. For this sample we will suppose this assumption is reasonable, but the engineer would be more knowledgeable as to whether this assumption is appropriate. We also must verify the minimum sample~size conditions:
 \begin{align*}
 1000 \times \frac{879}{1000} &\ge 10
 	&1000 \times \frac{121}{1000} &\ge 10
@@ -841,7 +845,7 @@ So the 95\% confidence interval is given by:
 \begin{align*}
 0.879 - 0.958 \ \pm \ &1.96 \times  \sqrt{\frac{0.879(1-0.879)}{1000} +\frac{0.958(1-0.958)}{1000}}\\
 -0.079\ \pm\ &1.96 \times 0.0121 \\
-= (-0.1&03,\ -0.055)
+(-0.1&03,\ -0.055)
 \end{align*}
 
 \item[\inferencestep{Conclude}]  We are 95\% confident that the true difference (current $-$ prospective) in the proportion that would pass inspection is between -0.103 and -0.055, meaning that we are 95\% confident that the prospective supplier would have between a 5.5\% and 10.3\% \emph{greater} rate of passing inspection.  Because the entire interval is below zero, the data provide sufficient evidence that the prospective gears pass inspection more often than the current gears. The remote control car company should go with the new manufacturer.
@@ -887,14 +891,14 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion &&
   \begin{itemize}
   \item Confidence level of interest for \calctext{C-Level}.
   \item Enter the number of successes for each group, \calctext{x1} and \calctext{x2}.
-  \item Enter the sample size for each group, \calctext{n1} and \calctext{n2}.
+  \item Enter the sample~size for each group, \calctext{n1} and \calctext{n2}.
   \end{itemize}
 \item Hit the \calcbutton{EXE} button, which returns \\[1mm]
   \begin{tabular}{ll}
   \calctext{Left}, \calctext{Right}  &  the ends of the confidence interval \\
   $\calctextmath{\hat{p}1}$, $\calctextmath{\hat{p}2}$ &
   				the sample proportions \\
-  \calctext{n1}, \calctext{n2} & sample sizes
+  \calctext{n1}, \calctext{n2} & sample~sizes
   \end{tabular}
 \end{enumerate}
 \end{onebox}
@@ -906,11 +910,11 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion &&
 
 \textA{\newpage}
 %%
-\subsection{Hypothesis testing when $H_0$: $p_1 = p_2$}
+\subsection[Hypothesis testing when $H_0$: $p_1 = p_2$]{Hypothesis testing when \pmb{$H_0$: $p_1 = p_2$}}
 \label{pooledHTForProportionsSection}
 
 Here we use a new example to examine a special estimate of the standard error when the null hypothesis is that two population proportions equal each other, i.e. $H_0$: $p_1 = p_2$. We investigate 
-whether the way a question is phrased can influence a person's response. Pew Research Center conducted a survey with the following question:\footnote{\oiRedirect{textbook-health_care_bill_2012}{www.people-press.org/2012/03/26/public-remains-split-on-health-care-bill-opposed-to-mandate}. Sample sizes for each polling group are approximate.}
+whether the way a question is phrased can influence a person's response. Pew Research Center conducted a survey with the following question:\footnote{\oiRedirect{textbook-health_care_bill_2012}{www.people-press.org/2012/03/26/public-remains-split-on-health-care-bill-opposed-to-mandate}. sample~sizes for each polling group are approximate.}
 \begin{quote}
 As you may know, by 2014 nearly all Americans will be required to have health insurance. [People who do not buy insurance will pay a penalty] while [People who cannot afford it will receive financial help from the government]. Do you approve or disapprove of this policy?
 \end{quote}
@@ -920,7 +924,7 @@ As you may know, by 2014 nearly all Americans will be required to have health in
 \begin{table}[t]
 \centering
 \begin{tabular}{p{50mm}c p{13mm}p{14mm}p{16.5mm}c}
-	&\ & Sample size & Approve law (\%)	& Disapprove law (\%)	& Other \\
+	&\ & sample~size & Approve law (\%)	& Disapprove law (\%)	& Other \\
 \hline
 ``People who do not buy insurance will pay a penalty'' is given first (original order) \vspace{2.5mm}
 	& & 771	& 47	& 49	& 3 \\
@@ -1076,10 +1080,10 @@ We'll consider heart attack outcomes in these patients:
 \begin{center}
 \begin{tabular}{l ccc}
   \hline
-  & heart\_\hspace{0.3mm}attack &
-      no\_\hspace{0.3mm}event & Total \\
+  & heart\us{}attack &
+      no\us{}event & Total \\
   \hline
-  fish\_\hspace{0.3mm}oil & 145 & 12788 & 12933 \\
+  fish\us{}oil & 145 & 12788 & 12933 \\
   placebo & 200 & 12738 & 12938 \\
   \hline
 \end{tabular}
@@ -1159,14 +1163,14 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion
   \setlength{\itemsep}{0mm}
   \item Specify the sidedness of the test using the \calcbutton{F1}, \calcbutton{F2}, and \calcbutton{F3} keys.
   \item Enter the number of successes for each group, \calctext{x1} and \calctext{x2}.
-  \item Enter the sample size for each group, \calctext{n1} and \calctext{n2}.
+  \item Enter the sample~size for each group, \calctext{n1} and \calctext{n2}.
   \end{itemize}
 \item Hit the \calcbutton{EXE} button, which returns \\[1mm]
   \begin{tabular}{ll ll l}
   \calctext{z} & Z-statistic & \hspace{3mm} &
   	$\calctextmath{\hat{p}1}$, $\calctextmath{\hat{p}2}$ & sample proportions \\
   \calctext{p} & p-value && $\calctextmath{\hat{p}}$ & pooled proportion \\
-  &&& \calctext{n1}, \calctext{n2} &  sample sizes
+  &&& \calctext{n1}, \calctext{n2} &  sample~sizes
   \end{tabular}
 \end{enumerate}\end{onebox}
 
@@ -1176,17 +1180,17 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion
 \begin{center}
 \begin{tabular}{l ccc}
   \hline
-  & heart\_\hspace{0.3mm}attack &
-      no\_\hspace{0.3mm}event & Total \\
+  & heart\us{}attack &
+      no\us{}event & Total \\
   \hline
-  fish\_\hspace{0.3mm}oil & 145 & 12788 & 12933 \\
+  fish\us{}oil & 145 & 12788 & 12933 \\
   placebo & 200 & 12738 & 12938 \\
   \hline
 \end{tabular}
 \end{center}
 }
 \end{nexercise}\end{exercisewrap}
-\footnotetext{Correctly going through the calculator steps should lead to a solution with the test statistic \calctext{z} = -2.977 and the p-value \calctext{p} = 0.00145.  These two values match our calculated values from the previous example to within rounding error.  The pooled proportion is given as $\calctextmath{\hat{p}}$ = 0.0133.  Note: values for \calctext{x1} and \calctext{x2} were given in the table.  If, instead, proportions are given, find \calctext{x1} and \calctext{x2} by multiplying the proportions by the sample sizes and rounding the result to an \emph{integer}.}
+\footnotetext{Correctly going through the calculator steps should lead to a solution with the test statistic \calctext{z} = -2.977 and the p-value \calctext{p} = 0.00145.  These two values match our calculated values from the previous example to within rounding error.  The pooled proportion is given as $\calctextmath{\hat{p}}$ = 0.0133.  Note: values for \calctext{x1} and \calctext{x2} were given in the table.  If, instead, proportions are given, find \calctext{x1} and \calctext{x2} by multiplying the proportions by the sample~sizes and rounding the result to an \emph{integer}.}
 
 %%
 
@@ -1203,7 +1207,7 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion
 
 \item The sampling distribution of $\hat{p}_1-\hat{p}_2$ is nearly normal when the success-failure condition is met for \textit{both} groups and when the data is collected using 2 independent random samples or 2 randomly assigned treatments.  When the sampling distribution of $\hat{p}_1-\hat{p}_2$ is nearly normal, the standardized test statistic also follows a \term{normal} distribution.
 
-\item When the null hypothesis is that the two populations proportions are \textit{equal} to each other, use the \term{pooled sample proportion} $\hat{p}=\frac{\text{x}_1+\text{x}_2}{n_1+n_2}$, i.e. the combined number of yeses over the combined sample sizes, when finding the $SE$.  For the confidence interval, do not use the pooled sample proportion; use the separate values of  $\hat{p}_1$ and $\hat{p}_2$.  
+\item When the null hypothesis is that the two populations proportions are \textit{equal} to each other, use the \term{pooled sample proportion} $\hat{p}=\frac{\text{x}_1+\text{x}_2}{n_1+n_2}$, i.e. the combined number of yeses over the combined sample~sizes, when finding the $SE$.  For the confidence interval, do not use the pooled sample proportion; use the separate values of  $\hat{p}_1$ and $\hat{p}_2$.  
 \item When there are two samples or treatments and the parameter of interest is a difference of proportions, e.g. the true difference in proportion of 17 and 18 year olds with a summer job (proportion of 18 year olds $-$ proportion of 17 year olds): 
 \begin{itemize}
 \setlength{\itemsep}{0mm}
@@ -1229,19 +1233,25 @@ Here the point estimate is the difference of sample proportions $\hat{p}_1 - \ha
 \end{itemize}
 
 
+%%%%%%%Section Exercises
+{\input{ch_inference_for_props/TeX/difference_of_two_proportions.tex}}
+
+
 %________________________________________
 \section[Testing for goodness of fit using chi-square]{Testing for goodness of fit using chi-square }
 
 \label{oneWayChiSquare}
 
 \sectionintro{
-In this section, we develop a method for assessing a null model when the data take on more than two categories (such as yes/no).  This allows us to answer questions such as the following.
+\Add{
+In this section, we develop a method for assessing a null model when the data take on more than two categories (such as yes/no).  This allows us to answer questions such as the following:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item Are juries representative of the population in terms of race/ethnicity, or is there a bias in jury selection?
-\item Is the color distribution of actual M\&Ms consistent with what was reported on the Mars website?
+\item Is the color distribution of actual M\&M's consistent with what was reported on the Mars website?
 \item Do people choose rock, paper, scissors with the same likelihood, or is one choice favored over another?
 \end{itemize}
+}
 
 %%
 \subsection*{Learning objectives}
@@ -1371,7 +1381,7 @@ In Section~\ref{pValueForAChiSquareTest}, we will see that if the null hypothesi
 %%
 \subsection{The chi-square distribution and finding areas}
 
-The \term{chi-square distribution} is sometimes used to characterize data sets and statistics that are always positive and typically right skewed. Recall the normal distribution had two parameters -- mean and standard deviation -- that could be used to describe its exact characteristics. The chi-square distribution has just one parameter called \termsub{degrees of freedom (df)}{degrees of freedom (df)!chi-square}, which influences the shape, center, and spread of the distribution.
+The \term{chi-square distribution} is sometimes used to characterize data sets and statistics that are always positive and typically right skewed. Recall a normal distribution had two parameters -- mean and standard deviation -- that could be used to describe its exact characteristics. The chi-square distribution has just one parameter called \termsub{degrees of freedom (df)}{degrees of freedom (df)!chi-square}, which influences the shape, center, and spread of the distribution.
 
 \begin{exercisewrap}\begin{nexercise}\label{exerChiSquareDistributionDescriptionWithMoreDOF}
 Figure~\ref{chiSquareDistributionWithInceasingDF} shows three chi-square distributions. (a) How does the center of the distribution change when the degrees of freedom is larger? (b) What about the variability (spread)? (c) How does the shape change?\footnotemark
@@ -1521,7 +1531,7 @@ We determined that a large $\chi^2$ value would suggest strong evidence favoring
 In the jurors example, there were $k=4$ categories: white, black, Hispanic, and other. According to the rule above, the test statistic $\chi^2$ should then follow a chi-square distribution with $k-1 = 3$ degrees of freedom if $H_0$ is true.
 \end{nexample}\end{examplewrap}
 
-Just like we checked sample size conditions to use the normal model in earlier sections, we must also check a sample size condition to safely apply the chi-square distribution for $\chi^2$. Each expected count must be at least 5. In the juror example, the expected counts were 198, 19.25, 33, and 24.75, all easily above~5, so we can apply the chi-square model to the test statistic, $\chi^2=5.89$.
+Just like we checked sample~size conditions to use the normal model in earlier sections, we must also check a sample~size condition to safely model $\chi^2$ with a chi-square distribution. Each expected count must be at least 5. In the juror example, the expected counts were 198, 19.25, 33, and 24.75, all easily above~5, so we can model the $\chi^2$ test statistic, using a chi-square distribution.
 
 \begin{examplewrap}\begin{nexample}{If the null hypothesis is true, the test statistic $\chi^2=5.89$ would be closely associated with a chi-square distribution with three degrees of freedom. Using this distribution and test statistic, identify the p-value and state whether or not there is evidence of racial bias in the juror selection.}
 The chi-square distribution and p-value are shown in Figure~\ref{jurorHTPValueShown}. Because larger chi-square values correspond to stronger evidence against the null hypothesis, we shade the upper tail to represent the p-value. Using a calculator, we look at the chi-square curve with 3 degrees of freedom and find the area to the right of $\chi^2=5.89$.  This area, which corresponds to the p-value, is equal to 0.117.  This p-value is larger than the default significance level of 0.05, so we reject the null hypothesis.  In other words, the data do not provide convincing evidence of racial bias in the juror selection.
@@ -1548,8 +1558,8 @@ The p-value for this test statistic is found by looking at the upper tail of thi
 There are two conditions that must be checked before performing a chi-square goodness of fit test. If these conditions are not met, this test should not be used.\vspace{-1mm}
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Random.] The data must be arrived at through a random process or a random sample from a large population.  The observed counts can then be organized into a list or one-way table.
-\item[All expected counts at least 5.] Each particular bin or category must have at least \mbox{5~expected} cases under the assumption that the null hypothesis is true.
+\item[Independent.] The observations can be considered independent if the data come from a random process or a random sample.  The observed counts can then be organized into a list or one-way table.
+\item[All expected counts at least 5.] In order for the $\chi^2$-statistic to follow the chi-square distribution, each particular bin or category must have at least \mbox{5~expected} cases under the assumption that the null hypothesis is true.
 \vspace{-2mm}
 \end{description}
 \end{onebox}
@@ -1559,7 +1569,7 @@ There are two conditions that must be checked before performing a chi-square goo
 \subsection{Evaluating goodness of fit for a distribution}
 
 \begin{onebox}{Goodness of fit test for a one-way table}
- When there is one sample and we are comparing the distribution of a categorical variable to a specified or population distribution, e.g. using sample values to determine if a machine is producing M\&Ms with the specified distribution of color, 
+ When there is one sample and we are comparing the distribution of a categorical variable to a specified or population distribution, e.g. using sample values to determine if a machine is producing M\&M's with the specified distribution of color, 
 \\
 \\
 \inferencestep{Identify} Identify the hypotheses and the significance level, $\alpha$. \vspace{-1mm}
@@ -1594,12 +1604,13 @@ There are two conditions that must be checked before performing a chi-square goo
 \end{onebox}
 
 
-Have you ever wondered about the color distribution of M\&Ms?  If so, then you will be glad to know that Rick Wicklin, a statistician working at the statistical software company SAS, wondered about this too.  But he did more than wonder; he decided to collect data to test whether the distribution of M\&M colors was consistent with the stated distribution published on the Mars website in 2008.  Starting at end of 2016, over the course of several weeks, he collected a sample of 712 candies, or about 1.5 pounds.  We will investigate his results in the next example.  You can read about his adventure in the Quartz article in the footnote.\footnotemark 
+Have you ever wondered about the color distribution of M\&M's$^{\text{\textregistered}}$?  If so, then you will be glad to know that Rick Wicklin, a statistician working at the statistical software company SAS, wondered about this too.  But he did more than wonder; he decided to collect data to test whether the distribution of M\&M colors was consistent with the stated distribution published on the Mars website in 2008.  Starting at end of 2016, over the course of several weeks, he collected a sample of 712 candies, or about 1.5 pounds.  We will investigate his results in the next example.  You can read about his adventure in the Quartz article cited in the footnote below.\footnotemark 
 \footnotetext{\oiRedirect{textbook-mandms}{https://qz.com/918008/the-color-distribution-of-mms-as-determined-by-a-phd-in-statistics}. }
 
+\textA{\newpage}
 \begin{examplewrap}
 \begin{nexample}
-{The stated color distribution of M\&Ms on the Mars website in 2008 is shown in the table below, along with the observed percentages from Rick Wicklin's sample of size 712. (See the paragraph before this example for more background.) \\
+{The stated color distribution of M\&M's on the Mars website in 2008 is shown in the table below, along with the observed percentages from Rick Wicklin's sample of size 712. (See the paragraph before this example for more background.) \\
 \begin{center}
 \begin{small}
 \begin{tabular}{ll ccc ccc}
@@ -1614,7 +1625,7 @@ observed percentages:&		& 18.7\% & 18.7\% & 19.5\% & 14.5\% & 15.1\% & 13.5\%  \
 \end{center}
 
 
-Is there evidence at the 5\% significance level that the distribution of M\&Ms in 2016 is different from the stated distribution on the website in 2008? Use the five step framework to organize your work. }
+Is there evidence at the 5\% significance level that the distribution of M\&M's in 2016 is different from the stated distribution on the website in 2008? Use the five step framework to organize your work. }
 
 \begin{description}
 \item[\inferencestep{Identify}]  
@@ -1625,7 +1636,7 @@ $H_A$: The distribution of M\&M colors is different than the stated distribution
  
 
 \item[\inferencestep{Choose}] Because we have one variable (color), broken up into multiple categories, we choose the \mbox{chi-square goodness of fit test.}
-\item[\inferencestep{Check}]  We must verify that the test statistic follows a chi-square distribution.  Note that there is only one sample here.  The website percentages are considered fixed -- they are not the result of a sample and do not have sampling variability associated with them.  To carry out the chi-square goodness of fit test, we will have to assume that Wicklin's sample can be considered a random sample of M\&Ms.  Next, we need to find the expected counts.  Here, $n=712$.  If $H_0$ is true, then we would expect 24\% of the M\&Ms to be Blue, 20\% to be Orange, etc.  So the expected counts can be found as:
+\item[\inferencestep{Check}]  We must verify that the test statistic follows a chi-square distribution.  Note that there is only one sample here.  The website percentages are considered fixed -- they are not the result of a sample and do not have sampling variability associated with them.  To carry out the chi-square goodness of fit test, we will have to assume that Wicklin's sample can be considered a random sample of M\&M's.  Next, we need to find the expected counts.  Here, $n=712$.  If $H_0$ is true, then we would expect 24\% of the M\&M's to be Blue, 20\% to be Orange, etc.  So the expected counts can be found as:
 
 \begin{small}
 \begin{tabular}{ll ccc ccc}
@@ -1664,7 +1675,7 @@ expected counts:&		& 170.9 &  142.4 & 113.9 & 99.6 & 92.6 & 92.6\\
 
 Because there are six colors, the degrees of freedom is $6-1=5$.
 \\In a chi-square test, the p-value is always the area to the \emph{right} of the chi-square statistic.  Here, the area to the right of 17.36 under the chi-square curve with 5 degrees of freedom is $0.004$.  
-\item[\inferencestep{Conclude}]  The p-value of 0.004 is $< 0.05$, so we reject $H_0$; there is sufficient evidence that the distribution of M\&Ms does not match the stated distribution on the website in 2008.  
+\item[\inferencestep{Conclude}]  The p-value of 0.004 is $< 0.05$, so we reject $H_0$; there is sufficient evidence that the distribution of M\&M's does not match the stated distribution on the website in 2008.  
 \end{description}
 \end{nexample}
 \end{examplewrap}
@@ -1672,7 +1683,7 @@ Because there are six colors, the degrees of freedom is $6-1=5$.
 \begin{examplewrap}
 \begin{nexample}
 {For Wicklin's sample, which color showed the most prominent difference from the stated website distribution in 2008?}
-We can compare the website percentages with the observed percentages.  However, another approach is to look at the terms used when calculating the chi-square statistic.  We note that the largest term, 8.41, corresponds to Blue.  This means that the observed number for Blue was, relatively speaking, the farthest from the expected number among all of the colors.  This is consistent with the observation that the largest difference in website percentage and observed percentage is for Blue (24\% vs 18.7\%).  Wicklin observed far fewer Blue M\&Ms than would have been expected if the website percentages were still true.
+We can compare the website percentages with the observed percentages.  However, another approach is to look at the terms used when calculating the chi-square statistic.  We note that the largest term, 8.41, corresponds to Blue.  This means that the observed number for Blue was, relatively speaking, the farthest from the expected number among all of the colors.  This is consistent with the observation that the largest difference in website percentage and observed percentage is for Blue (24\% vs 18.7\%).  Wicklin observed far fewer Blue M\&M's than would have been expected if the website percentages were still true.
 \end{nexample}
 \end{examplewrap}
 
@@ -1736,7 +1747,7 @@ expected counts:&		& 170.9 &  142.4 & 113.9 & 99.6 & 92.6 & 92.6\\
 \end{center}
 
 \end{nexercise}\end{exercisewrap}
-\footnotetext{Enter the observed counts into \calctext{L1} and the expected counts into  \calctext{L2}.  Run the \calctext{GOF} test.  Make sure that \calctext{Observed:} is \calctext{L1} and \calctext{Expected:} is \calctext{L2}.  Let \calctext{df:} be 5.  You should find that $\chi^2=17.36$ and $\text{p-value}=0.004$.}
+\footnotetext{Enter the observed counts into \calctext{L1} and the expected counts into  \calctext{L2}.    the \calctext{GOF} test.  Make sure that \calctext{Observed:} is \calctext{L1} and \calctext{Expected:} is \calctext{L2}.  Let \calctext{df:} be 5.  You should find that $\chi^2=17.36$ and $\text{p-value}=0.004$.}
 
 
 %%
@@ -1761,7 +1772,7 @@ expected counts:&		& 170.9 &  142.4 & 113.9 & 99.6 & 92.6 & 92.6\\
 \item In a chi-square goodness of fit test, we calculate a \term{$\chi^2$-statistic}, which is a measure of how far the observed values in the sample are from the expected values under the null hypothesis. $\chi^2 =\sum{ \frac{\text{(observed } - \text{ expected})^2}{\text{expected}}}$ 
 \begin{itemize}\vspace{-1mm}
 \item Always use whole numbers (counts) for the observed values, not proportions or percents.
-\item For each category, the expected counts can be found by multiplying the sample size by the expected proportion under the null hypothesis.  Expected counts do \emph{not} need to be integers.  
+\item For each category, the expected counts can be found by multiplying the sample~size by the expected proportion under the null hypothesis.  Expected counts do \emph{not} need to be integers.  
 \item For each category, find $\frac{\text{(observed } - \text{ expected})^2}{\text{expected}}$, then add them all together to get the $\chi^2$-statistic.
 \end{itemize}
 
@@ -1770,7 +1781,7 @@ expected counts:&		& 170.9 &  142.4 & 113.9 & 99.6 & 92.6 & 92.6\\
 \item For a $\chi^2$ test, the p-value corresponds to the probability that observed sample values would differ from the expected values by \textit{more than} what we observed in this sample.  The p-value, therefore, corresponds to the area \textit{to the right} of the calculated $\chi^2$-statistic (the area in the upper tail). 
 \item A larger $\chi^2$ represents greater deviation between the observed values and the expected values under the null hypothesis.  For a fixed degrees of freedom, a larger $\chi^2$ value leads to a smaller p-value, providing greater evidence against $H_0$. 
 
-\item \term{$\chi^2$ tests for a one-way table}.  When there is one sample and we are comparing the distribution of a categorical variable to a specified or population distribution, e.g. using sample values to determine if a machine is producing M\&Ms with the specified distribution of color, the hypotheses can often be written as:
+\item \term{$\chi^2$ tests for a one-way table}.  When there is one sample and we are comparing the distribution of a categorical variable to a specified or population distribution, e.g. using sample values to determine if a machine is producing M\&M's with the specified distribution of color, the hypotheses can often be written as:
 \begin{itemize}
 \item[] $H_0$: The distribution of [...] matches the specified or population distribution. 
 \item[] $H_A$: The distribution of [...] doesn't match the specified or population distribution. 
@@ -1791,18 +1802,23 @@ expected counts:&		& 170.9 &  142.4 & 113.9 & 99.6 & 92.6 & 92.6\\
 \end{itemize}
 
 
+%%%%%%%%Section Exercises
+{\input{ch_inference_for_props/TeX/testing_for_goodness_of_fit_using_chi-square.tex}}
+
 
 %_________________________________________________
 \section[Homogeneity and independence in two-way tables]{Chi-square tests for two-way tables }
 \label{twoWayTablesAndChiSquare}
 
 \sectionintro{
-\noindent In this section we encounter two-way tables, and we learn about two new and closely related chi-square tests. We will answer questions such as the following.
+\Add{
+\noindent In this section we encounter two-way tables, and we learn about two new and closely related chi-square tests. We will answer questions such as the following:
 \begin{itemize}
 \item Does the phrasing of the question affect how likely individuals are to disclose the problems with a product?
 \item Is gender associated with whether Facebook users know how to adjust their privacy settings?
 \item Is political affiliation associated with support for the use of full body scans at airports?
 \end{itemize}
+}
 
 %%
 \subsection*{Learning objectives}
@@ -1952,7 +1968,7 @@ df = (2-1)\times (3-1) = 2
 If the null hypothesis is true (i.e. the algorithms are equally useful), then the test statistic $\chi^2 = 6.12$ closely follows a chi-square distribution with 2 degrees of freedom. Using this information, we can compute the p-value for the test, which is depicted in Figure~\ref{googleHTForDiffAlgPerformancePValue}.
 
 \begin{onebox}{Computing degrees of freedom for a two-way table}
-When applying the chi-square test to a two-way table, we use
+When using the chi-square test to a two-way table, we use
 $$ df = (R-1)\times (C-1) $$
 where $R$ is the number of rows in the table and $C$ is the number of columns.\end{onebox}
 
@@ -1984,7 +2000,7 @@ Notice that the conclusion of the test is that there is some difference in perfo
 \begin{align*}
 \text{current:} \frac{1489}{5000} = 0.298 \quad \text{test 1:} \frac{751}{2500} = 0.300 \quad \text{test 2:} \frac{682}{2500} = 0.136.
 \end{align*}
-This suggests that the current algorithm and test 1 algorithm performed better than the test 2 algorithm.  Our chi-square test tells us that the difference is in fact significant.
+This suggests that the current algorithm and test 1 algorithm performed better than the test 2 algorithm; however, to formally test this specific claim we would need to use a test that includes a multiple comparisons correction, which is beyond the scope of this textbook.
 
 
 
@@ -1999,7 +2015,7 @@ A careful reader may have noticed that when there are exactly 2 random samples o
 %March 7-11, 2012
 %1503 adults
 
-\begin{onebox}{$\chi^2$ test of homogeneity}
+\begin{onebox}{$\mathbf{\chi^2}$ test of homogeneity}
  When there are multiple samples or treatments and we are comparing the distributionof a categorical variable across several groups, e.g. comparing the distribution ofrural/urban/suburban dwellers among 4 states, 
 \\
 \\
@@ -2092,10 +2108,17 @@ Table of expected counts:\vspace{-4mm}
 \item[\inferencestep{Calculate}]  Using technology, we get $\chi^2 = 40.1$
 \newline $df = (\# \text{ of rows} - 1) \times (\# \text{ of columns} - 1) = 2\times 1 = 2$
 \newline  The p-value is the area under the chi-square curve with 2 degrees of freedom to the right of $\chi^2=40.1$.  Thus, the p-value is almost 0.
-\item[\inferencestep{Conclude}]  Because the p-value $\approx$ 0 $ < \alpha$, we reject $H_0$. We have strong evidence that the likelihood of disclosing the problem is not the same for each question type.  
+\item[\inferencestep{Conclude}]  Because the p-value $\approx$ 0 $ < \alpha$, we reject $H_0$. We have strong evidence that the likelihood of disclosing the problem is not the same for each question type.
 \end{description}
 \end{nexample}\end{examplewrap}
 \footnotetext{{\scriptsize\oiRedirect{minson_ruedy_data_source}{opim.wharton.upenn.edu/DPlab/papers/workingPapers/}}}
+
+\begin{exercisewrap}
+\begin{nexercise}
+If an error was made in the test in the previous example, would it have been a Type~I error or a Type~II error?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{In this test, the p-value was less than $\alpha$, so we rejected $H_0$.  If $H_0$ is in fact true, and we reject it, that would be committing a Type~I error.  We could not have made a Type~II error, because a Type~II error involves not rejecting $H_0$.}
 
 \textA{\newpage}
 %%
@@ -2114,7 +2137,7 @@ In Chapter~\ref{ch_probability} we looked at independence in the context of prob
 \item[$H_A$:] The group and their ratings are dependent. (There is some difference in approval ratings between the three groups, e.g. perhaps Obama's approval differs from Democrats in Congress.)
 \end{itemize}
 \end{nexample}\end{examplewrap}
-\footnotetext{See the Pew Research website: {\scriptsize\oiRedirect{textbook-obama_and_congress_approval_2012}{www.people-press.org/2012/03/14/romney-leads-gop-contest-trails-in-matchup-with-obama}}.}
+\footnotetext{{\scriptsize\oiRedirect{textbook-obama_and_congress_approval_2012}{www.people-press.org/2012/03/14/romney-leads-gop-contest-trails-in-matchup-with-obama}}.}
 
 \begin{onebox}{Conditions for the chi-square test of independence}
 There are two conditions that must be checked before performing a chi-square test of independence. If these conditions are not met, this test should not be used.\vspace{-1mm}
@@ -2142,6 +2165,8 @@ Total					   & & 1458    & 1382 & 1383 & 				& 4223 \\
 \caption{Pew Research poll results of a March 2012 poll.}
 \label{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}
 \end{table}
+
+\textA{\newpage}
 
 \begin{examplewrap}\begin{nexample}{First, we observe that the data came from a random sample of adults in the U.S.  Next, let's compute the expected values that correspond to Table~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}, if the null hypothesis is true, that is, if group and rating are independent.  }
 The expected count for row one, column one is found by multiplying the row one total (2119) and column one total (1458), then dividing by the table total (4223): $\frac{2119\times 1458}{4223} = 731.6$. Similarly for the first column and the second row: $\frac{2104\times 1458}{4223} = 726.4$. Repeating this process, we get the expected counts:  
@@ -2218,7 +2243,7 @@ When there is one sample and we are looking for association or dependence betwee
 
 %\Comment{stole chapter exercise number 45 - not sure about footnote cite}
 
-\begin{examplewrap}\begin{nexample}{A 2011 survey asked 806 randomly sampled adult Facebook users about their Facebook privacy settings. One of the questions on the survey was, ``Do you know how to adjust your Facebook privacy settings to control what people can and cannot see?" The responses are cross-tabulated based on gender. \footfullcite{data:facebookPrivacy}
+\begin{examplewrap}\begin{nexample}{A 2011 survey asked 806 randomly sampled adult Facebook users about their Facebook privacy settings. One of the questions on the survey was, ``Do you know how to adjust your Facebook privacy settings to control what people can and cannot see?" The responses are cross-tabulated based on gender. 
 \label{facebookprivacy}
 \begin{center}
 \begin{tabular}{l l c c ll}
@@ -2260,6 +2285,12 @@ Table of expected counts:\textA{\vspace{-4mm}}
 \end{description}
 \end{nexample}\end{examplewrap}
 
+\begin{exercisewrap}
+\begin{nexercise}
+In context, interpret the p-value of the test in the previous example.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The p-value in this test corresponds to the area to the right of $\chi^2 = 3.13$ under the chi-square curve with 2 degrees of freedom.  It is the probability of getting a $\chi^2$-statistic this large if $H_0$ were true.  In other words, it is the probability of our observed values being this different from the expected values if gender and response really are independent.}
 \textA{\newpage}
 
 %%
@@ -2342,7 +2373,7 @@ $\calctextmath{\chi^2}$ & chi-square test statistic \\
 
 
 \begin{exercisewrap}\begin{nexercise}
-Use Table~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercisesAgain}, reproduced below, and a calculator to find the expected values and the $\chi^2$-statistic, $df$, and p-value for the chi-square test for independence.\footnotemark
+Use Table~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}, reproduced below, and a calculator to find the expected values and the $\chi^2$-statistic, $df$, and p-value for the chi-square test for independence.\footnotemark
 
 \begin{center}
 \begin{tabular}{ll ccc ll}
@@ -2410,17 +2441,20 @@ Disapprove			    & 726.41    & 688.55 & 689.04  \\
 \end{itemize}
 
 
-%______________________________________________
-\section{Chapter Highlights}
+%%%%%%%%Section Exercises
+{\input{ch_inference_for_props/TeX/testing_for_independence_in_two-way_tables.tex}}
 
-\textit{Calculating} a confidence interval or a test statistic and p-value are generally done with statistical software.  It is important, then, to focus not on the calculations, but rather on 
+
+%______________________________________________
+\section{Chapter highlights}
+
+\noindent \textit{Calculating} a confidence interval or a test statistic and p-value are generally done with statistical software.  It is important, then, to focus not on the calculations, but rather on 
 \begin{enumerate}\vspace{-1mm}
 \setlength{\itemsep}{0mm}
 \item choosing the correct procedure 
 \item understanding when the procedures do or do not apply, and 
 \item interpreting the results.
 \end{enumerate}
-
 Choosing the correct procedure requires understanding the \textit{type of data} and the \textit{method of data collection}.    All of the inference procedures in Chapter~\thechapter~are for categorical variables.  Here we list the five tests encountered in this chapter and when to use them.  
 \begin{itemize}\vspace{-2mm}
 \setlength{\itemsep}{0mm}
@@ -2442,7 +2476,7 @@ Choosing the correct procedure requires understanding the \textit{type of data} 
 \begin{itemize}\vspace{-2mm}
 \setlength{\itemsep}{0mm}
 \item \emph{1 random sample}, a categorical variable (generally at least three categories)
-\item Compare the distribution of a categorical variable to a fixed or known population distribution; e.g. looking at distribution of color among M\&Ms. 
+\item Compare the distribution of a categorical variable to a fixed or known population distribution; e.g. looking at distribution of color among M\&M's. 
 \end{itemize}
 
 \item \term{$\chi^2$ test of homogeneity}: 
@@ -2460,7 +2494,7 @@ Choosing the correct procedure requires understanding the \textit{type of data} 
 \end{itemize}
 
 \end{itemize}
-
 Even when the data and data collection method correspond to a particular test, we must \emph{verify that conditions are met} to see if the assumptions of the test are reasonable.  All of the inferential procedures of this chapter require some type of random sample or process.  In addition, the 1-proportion Z-test/interval and the 2-proportion Z-test/interval require that the success-failure condition is met and the three $\chi^2$ tests require that all expected counts are at least 5.
-
+\\
+\\
 Finally, understanding and communicating the logic of a test and being able to accurately \emph{interpret} a confidence interval or p-value are essential.  For a refresher on this, review Chapter 5: Foundations for inference.

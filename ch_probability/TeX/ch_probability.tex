@@ -12,29 +12,39 @@
 \renewcommand{\chapterfolder}{ch_probability}
 \index{probability|(}
 
-\chapterintro{
-Probability forms a foundation for statistics. You might already be familiar with many aspects of probability.  However, formalization of the concepts is new for most. This chapter aims to introduce probability on familiar terms using processes most people have seen before.}
+\chapterintro{Probability forms a foundation of statistics,
+  and you're probably \mbox{already}
+  aware of many of the ideas.  However, formalization of the concepts is new for most. This chapter aims to introduce probability concepts
+  through examples that will be familiar to most people.}
 
 %______________________________________________
 \section[Defining probability]{Defining probability }
 \label{basicsOfProbability}
 
-\Comment{Add Complement, union, intersection for Venn diagram or remove from LO}
 
 \sectionintro{
-
+\Add{
+\noindent What is the probability of rolling an even number on a die?  Of getting 5 heads in row when tossing a coin?  Of drawing a Heart or an Ace from a deck of cards?  The study of probability is fun and interesting in its own right, but it also forms the foundation for statistical models and inferential procedures, many of which we will investigate in subsequent chapters.  
+}
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
 \item Describe the long-run relative frequency interpretation of probability and understand its relationship to the ``Law of Large Numbers".
 
-\item Draw Venn diagrams to represent events and their probabilities.  Identify union, intersection, and complement.
+\item \Add{Use Venn diagrams to represent events and their probabilities and to visualize complement, union, and intersection of events.}
 
 \item Use the General Addition Rule to find the probability that at least one of several events occurs.  
 
 \item Understand when events are disjoint (mutually exclusive) and how that simplifies the General Addition Rule.  
+
+\item \Add{Apply the Multiplication Rule for finding the joint probability of independent events.}
+
 \end{enumerate}
 }
+
+\Comment{added subsection header}
+
+\subsection{Introductory examples}
 
 \begin{examplewrap}\begin{nexample}{A ``die'', the singular of dice, is a cube with six faces numbered \resp{1}, \resp{2}, \resp{3}, \resp{4}, \resp{5}, and \resp{6}. What is the chance of getting \resp{1} when rolling a die?}\label{probOf1}
 If the die is fair, then the chance of a \resp{1} is as good as the chance of any other number. Since there are six outcomes, the chance must be 1-in-6 or, equivalently, $1/6$.
@@ -101,7 +111,7 @@ As we become more comfortable with this notation, we will abbreviate it further.
 \begin{exercisewrap}\begin{nexercise} \label{randomProcessExercise}
 Random processes include rolling a die and flipping a coin. (a) Think of another random process. (b) Describe all the possible outcomes of that process. For instance, rolling a die is a random process with potential outcomes \resp{1}, \resp{2}, ...,~\resp{6}.~\footnotemark
 \end{nexercise}\end{exercisewrap}
-\footnotetext{Here are four examples. (i) Whether someone gets sick in the next month or not is an apparently random process with outcomes \resp{sick} and \resp{not}. (ii) We can \emph{generate} a random process by randomly picking a person and measuring that person's height. The outcome of this process will be a positive number. (iii) Whether the stock market goes up or down next week is a seemingly random process with possible outcomes \resp{up}, \resp{down}, and \resp{no\_\hspace{0.3mm}change}. Alternatively, we could have used the percent change in the stock market as a numerical outcome. (iv) Whether your roommate cleans her dishes tonight probably seems like a random process with possible outcomes \resp{cleans\_\hspace{0.3mm}dishes} and \resp{leaves\_\hspace{0.3mm}dishes}.}
+\footnotetext{Here are four examples. (i) Whether someone gets sick in the next month or not is an apparently random process with outcomes \resp{sick} and \resp{not}. (ii) We can \emph{generate} a random process by randomly picking a person and measuring that person's height. The outcome of this process will be O+ number. (iii) Whether the stock market goes up or down next week is a seemingly random process with possible outcomes \resp{up}, \resp{down}, and \resp{no\us{}change}. Alternatively, we could have used the percent change in the stock market as a numerical outcome. (iv) Whether your roommate cleans her dishes tonight probably seems like a random process with possible outcomes \resp{cleans\us{}dishes} and \resp{leaves\us{}dishes}.}
 
 What we think of as random processes are not necessarily random, but they may just be too difficult to understand exactly. The fourth example in the footnote solution to Guided Practice~\ref{randomProcessExercise} suggests a roommate's behavior is a random process. However, even if a roommate's behavior is not truly random, modeling her behavior as a random process can still be useful.
 
@@ -429,6 +439,7 @@ Because the equation holds, the event that the card is a heart and the event tha
 \end{nexample}\end{examplewrap}
 
 %%
+\textA{\newpage}
 \subsection*{Section summary}
 
 \begin{itemize}
@@ -458,232 +469,479 @@ $P(A \text{ and } B) = P(A)\times P(B)$.
 
 \end{itemize}
 
+%%%%%%%%%Section Exercises
+{\input{ch_probability/TeX/defining_probability.tex}}
+
+
 
 %_________________
 \section[Conditional probability]{Conditional probability }
 \label{conditionalProbabilitySection}
 
 \sectionintro{
+\Add{
+\noindent In this section we will use conditional probabilities to answer the following questions:
+\begin{itemize}
+\item What is the likelihood that a machine learning algorithm will classify a photo as about fashion given that it is not about fashion?
 
+\item How much more likely to attend college are children whose parents attended college than children whose parents did not attend college?
+
+\item Given O+ result on a test such as an HIV test or a pregnancy test, what is the probability that one is actually positive?
+\end{itemize}
+
+
+}
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
 
-\item Draw a tree diagram with at least two branches to organize possible outcomes and their probabilities.  
+\Add{
+\item Understand conditional probability and how to calculate it.
 
-\item Understand that the second branch represents conditional probabilities and that the joint or marginal probabilities are calculated by applying the General Multiplication Rule.
+\item Calculate joint and conditional probabilities based on a two-way table.
+
+\item Use the General Multiplication Rule to find the probability of joint events.  
+
+\item Determine whether two events are independent and whether they are mutually exclusive, based on the definitions of those terms.
+ }
+
+\item Draw a tree diagram with at least two branches to organize possible outcomes and their probabilities.  Understand that the second branch represents conditional probabilities.  
 
 \item Use the tree diagram or Bayes' Theorem to solve ``inverted" conditional probabilities.
 
 \end{enumerate} 
 }
 
-\Comment{subsection name?}
 
 %%
-\subsection{Venn diagram}
-\index{data!family\_college|(}
 
-The \data{family\_\hspace{0.3mm}college} data set contains a sample of 792 cases with two variables, \var{teen} and \var{parents}, and is summarized in Table~\ref{contTableOfParStCollege}.\footnote{A simulated data set based on real population summaries at \oiRedirect{textbook-student_parent_college_2001}{nces.ed.gov/pubs2001/2001126.pdf}.} The \var{teen} variable is either \resp{college} or \resp{not}, where the teenager is labeled as \var{college} if she went to college immediately after high school. The \var{parents} variable takes the value \resp{degree} if at least one parent of the teenager completed a college degree.
+\subsection{Exploring probabilities with a contingency table}
 
-\begin{table}[ht]
-\centering
-\begin{tabular}{ll rr r rr}
-  && \multicolumn{2}{c}{\var{parents}} & \hspace{1cm} &  \\
-  \cline{3-4}
-	&& \resp{degree} & \resp{not} & Total  \\
-  \cline{2-5}
-	& \resp{college}     & 231 & 214 & 445 \\
-\raisebox{1.5ex}[0pt]{\var{teen}}	& \resp{not} \hspace{0.5cm} & 49 & 298 & 347   \\
-  \cline{2-5}
-	& Total & 280 & 512 & 792 \\
-\end{tabular}
-\caption{Contingency table summarizing the \data{family\_\hspace{0.3mm}college} data set.}
-\label{contTableOfParStCollege}
-\end{table}
-%set.seed(5); n <- 792
-%parents <- sample(c("college", "not"), n, replace = TRUE, prob = c(0.35, 0.65))
-%p <- ifelse(parents == "college", 0.82, 0.45)
-%teen <- ifelse(runif(n) < p, "college", "not")
-%table(teen, parents)
-%table(teen, parents) / n
+\index{data!photo\_classify|(}
+
+\newcommand{\fashN}{1822}
+% In order of ML, then Human
+\newcommand{\fashYY}{197}
+\newcommand{\fashYN}{22}
+\newcommand{\fashYA}{219}
+\newcommand{\fashNY}{112}
+\newcommand{\fashNN}{1491}
+\newcommand{\fashNA}{1603}
+\newcommand{\fashAY}{309}
+\newcommand{\fashAN}{1513}
+\newcommand{\fashAA}{\fashN{}}
+%\newcommand{\fashPYY}{}
+%\newcommand{\fashPYN}{}
+%\newcommand{\fashPNY}{}
+%\newcommand{\fashPNN}{}
+%\newcommand{\fashPYA}{0.12}
+%\newcommand{\fashPNA}{0.88}
+%\newcommand{\fashPAY}{}
+%\newcommand{\fashPAN}{}
+%\newcommand{\fashPYCY}{}
+%\newcommand{\fashPYCN}{}
+%\newcommand{\fashPNCY}{}
+%\newcommand{\fashPNCN}{}
+\newcommand{\fashCYPY}{0.96}
+\newcommand{\fashCYPN}{0.04}
+\newcommand{\fashCNPY}{0.07}
+\newcommand{\fashCNPN}{0.93}
+
+The \data{photo\us{}classify} data set represents
+a classifier a sample of \fashN{} photos from photo sharing website.
+Data scientists have been working to improve a classifier for
+whether the photo is about fashion or not, and these 659 photos
+represent a test for their classifier.
+Each photo gets two classifications:
+the first is called \var{mach\us{}learn} and gives
+a classification from a machine
+learning~(ML)\index{machine learning (ML)} system of
+either \resp{pred\us{}fashion} or \resp{pred\us{}not}.
+Each of these \fashN{} photos have also been classified carefully
+by a team of people, which we take to be the source of truth;
+this variable is called \var{truth} and takes values
+\resp{fashion} and \resp{not}.
+Figure~\ref{contTableOfFashionPhotos} summarizes the results.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.65\textwidth]{ch_probability/figures/familyCollegeVenn/familyCollegeVenn}
-\caption{A Venn diagram using boxes for the \data{family\_\hspace{0.3mm}college} data set.}
-\label{familyCollegeVenn}
+\begin{tabular}{ll ccc rr}
+&& \multicolumn{2}{c}{\var{truth}} & \hspace{1cm} &  \\
+\cline{3-4}
+&& \resp{fashion} & \resp{not} & Total  \\
+\cline{2-5}
+& \resp{pred\us{}fashion} &
+    \fashYY{} & \fashYN{} & \fashYA{} \\
+\raisebox{1.5ex}[0pt]{\var{pred\us{}not}}
+    & \resp{not} \hspace{0.5cm} &
+    \fashNY{} & \fashNN{} & \fashNA{}   \\
+\cline{2-5}
+& Total & \fashAY{} & \fashAN{} & \fashN{} \\
+\end{tabular}
+\caption{Contingency table summarizing the
+    \data{photo\us{}classify} data set.}
+\label{contTableOfFashionPhotos}
+\end{figure}
+% library(openintro); table(photo_classify)
+
+\begin{figure}[ht]
+  \centering
+  \Figure{0.65}{photoClassifyVenn}
+  \caption{A Venn diagram using boxes for the
+      \data{photo\us{}classify} data set.}
+  \label{photoClassifyVenn}
 \end{figure}
 
-\begin{examplewrap}\begin{nexample}{If at least one parent completed a college degree, what is the chance their teenager attended college right after high school?}
-We can estimate this probability using the data. Of the 280 cases in this data set where \var{parents} takes value \resp{degree}, 231 represent cases where the \var{teen} variable takes value \resp{college}:
-\begin{eqnarray*}
-P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
-\end{eqnarray*}
-\end{nexample}\end{examplewrap}
+\begin{examplewrap}
+\begin{nexample}{If a photo is actually about fashion,
+    what is the chance the ML classifier correctly identified
+    the photo as being about fashion?}
+  We can estimate this probability using the data.
+  Of the \fashAY{} fashion photos,
+  the ML algorithm correctly classified \fashYY{} of the photos:
+\begin{align*}
+P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    given \var{truth} is \resp{fashion}})
+  = \frac{\fashYY{}}{\fashAY{}}
+  = 0.638
+\end{align*}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{A teenager is randomly selected from the sample and she did not attend college right after high school. What is the probability that at least one of her parents has a college degree?}\label{collegeProbOfParentsGivenStudentNot}
-If the teenager did not attend, then she is one of the 347 teens in the second row. Of~these 347 teens, 49 had at least one parent who got a college degree:
-\begin{eqnarray*}
-P(\text{\var{parents} \resp{degree} given \var{teen} \resp{not}}) = \frac{49}{347} = 0.141
-\end{eqnarray*}
-\end{nexample}\end{examplewrap}
+\begin{examplewrap}
+\begin{nexample}{We sample a photo from the data set
+    and learn the ML algorithm predicted this photo
+    was not about fashion.
+    What is the probability that it was incorrect and
+    the photo is about fashion?}
+  If the ML classifier suggests a photo is not about fashion,
+  then it comes from the second row in the data set.
+  Of~these \fashNA{} photos, \fashNY{} were actually
+  about fashion:
+\begin{align*}
+P(\text{\var{truth} is \resp{fashion}
+    given \var{mach\us{}learn} is \resp{pred\us{}not}})
+  = \frac{\fashNY{}}{\fashNA{}}
+  = 0.070
+\end{align*}
+\end{nexample}
+\end{examplewrap}
 
-%%
 \subsection{Marginal and joint probabilities}
 \label{marginalAndJointProbabilities}
 
 \index{marginal probability|(}
 \index{joint probability|(}
 
-Table~\ref{contTableOfParStCollege} includes row and column totals for each variable separately in the \data{family\_\hspace{0.3mm}college} data set. These totals represent \termsub{marginal probabilities}{marginal probability} for the sample, which are the probabilities based on a single variable without conditioning on any other variables. For instance, a probability based solely on the \var{teen} variable is a marginal probability:
+Figure~\ref{contTableOfFashionPhotos} includes row and
+column totals for each variable separately in the
+\data{photo\us{}classify} data set.
+These totals represent
+\termsub{marginal probabilities}{marginal probability}
+for the sample, which are the probabilities based on a
+single variable without regard to any other variables.
+For instance, a probability based solely on the
+\var{mach\us{}learn} variable is a marginal probability:
 \begin{align*}
-P(\text{\var{teen} \resp{college}}) = \frac{445}{792} = 0.56
+P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}})
+    = \frac{\fashYA{}}{\fashN{}}
+    = 0.12
 \end{align*}
-A probability of outcomes for two or more variables or processes is called a \termsub{joint \mbox{probability}}{joint probability}:
+A probability of outcomes for two or more variables
+or processes is called a
+\termsub{joint \mbox{probability}}{joint probability}:
 \begin{align*}
-P(\text{\var{teen} \resp{college} and \var{parents} \resp{not}}) = \frac{214}{792} = 0.27
+P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{fashion}})
+  = \frac{\fashYY{}}{\fashN{}}
+  = 0.11
 \end{align*}
-It is common to substitute a comma for ``and'' in a joint probability, although either is acceptable. That is,
+It is common to substitute a comma for ``and'' in a joint
+probability, although using either the word ``and'' or a
+comma is acceptable:
 \begin{center}
-$P(\text{\var{teen} \resp{college}, \var{parents} \resp{not}})$ \\[2mm]
+$P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion},
+    \var{truth} is \resp{fashion}})$ \\[2mm]
 means the same thing as \\[2mm]
-$P(\text{\var{teen} \resp{college} and \var{parents} \resp{not}})$
+$P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{fashion}})$
 \end{center}
 
 \begin{onebox}{Marginal and joint probabilities}
-If a probability is based on a single variable, it is a \emph{\hiddenterm{marginal probability}}. The probability of outcomes for two or more variables or processes is called a \emph{\hiddenterm{joint probability}}.\end{onebox}
+  If a probability is based on a single variable,
+  it is a \emph{\hiddenterm{marginal probability}}.
+  The probability of outcomes for two or more variables
+  or processes is called a \emph{\hiddenterm{joint probability}}.
+\end{onebox}
 
-We use \term{table proportions} to summarize joint probabilities for the \data{family\_\hspace{0.3mm}college} sample. These proportions are computed by dividing each count in Table~\ref{contTableOfParStCollege} by the table's total, 792, to obtain the proportions in Table~\ref{familyCollegeProbTable}. The joint probability distribution of the \var{parents} and \var{teen} variables is shown in Table~\ref{familyCollegeDistribution}.
+We use \term{table proportions} to summarize joint probabilities
+for the \data{photo\us{}classify} sample.
+These proportions are computed by dividing each count in
+Figure~\ref{contTableOfFashionPhotos} by the table's total,
+\fashN{}, to obtain the proportions in
+Figure~\ref{photoClassifyProbTable}.
+The joint probability distribution of the \var{mach\us{}learn}
+and \var{truth} variables is shown in
+Figure~\ref{photoClassifyDistribution}.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{l rr r}
-  \hline
-& \var{parents}: \resp{degree} & \var{parents}: \resp{not} & Total  \\
-  \hline
-\var{teen}: \resp{college}     & 0.29 & 0.27 & 0.56 \\
-\var{teen}: \resp{not} \hspace{0.5cm} & 0.06 & 0.38 & 0.44  \\
-   \hline
-Total & 0.35 & 0.65 & 1.00 \\
+\hline
+& \var{truth}: \resp{fashion} &
+    \var{truth}: \resp{not} & Total  \\
+\hline
+\var{mach\us{}learn}: \resp{pred\us{}fashion} \hspace{0.5cm}
+    & 0.1081 & 0.0121 & 0.1202 \\
+\var{mach\us{}learn}: \resp{pred\us{}not}
+    & 0.0615 & 0.8183 & 0.8798  \\
+\hline
+Total & 0.1696 & 0.8304 & 1.00 \\
 \hline
 \end{tabular}
-\caption{Probability table summarizing whether at least one parent had a college degree and the teenager attended college.}
-\label{familyCollegeProbTable}
-\end{table}
+\caption{Probability table summarizing the
+    \var{photo\us{}classify} data set.}
+\label{photoClassifyProbTable}
+\end{figure}
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{l c}
   \hline
 Joint outcome & Probability \\
   \hline
-\var{parents} \resp{degree} and \var{teen} \resp{college} & 0.29 \\
-\var{parents} \resp{degree} and \var{teen} \resp{not} & 0.06 \\
-\var{parents} \resp{not} and \var{teen} \resp{college} & 0.27 \\
-\var{parents} \resp{not} and \var{teen} \resp{not} & 0.38 \\
+\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{fashion} & 0.1081 \\
+\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{not} & 0.0121 \\
+\var{mach\us{}learn} is \resp{pred\us{}not}
+    and \var{truth} is \resp{fashion} & 0.0615 \\
+\var{mach\us{}learn} is \resp{pred\us{}not}
+    and \var{truth} is \resp{not} & 0.8183 \\
    \hline
-Total & 1.00 \\
+Total & 1.0000 \\
 \hline
 \end{tabular}
-\caption{Joint probability distribution for the \data{family\_\hspace{0.3mm}college} data set.}
-\label{familyCollegeDistribution}
-\end{table}
+\caption{Joint probability distribution for the \data{photo\us{}classify} data set.}
+\label{photoClassifyDistribution}
+\end{figure}
 
-\begin{exercisewrap}\begin{nexercise}
-Verify Table~\ref{familyCollegeDistribution} represents a probability distribution: events are disjoint, all probabilities are non-negative, and the probabilities sum to~1.\footnotemark
-\end{nexercise}\end{exercisewrap}
-\footnotetext{Each of the four outcome combination are disjoint, all probabilities are indeed non-negative, and the sum of the probabilities is $0.29 + 0.06 + 0.27 + 0.38 = 1.00$.}
+\textA{\newpage}
 
-We can compute marginal probabilities using joint probabilities in simple cases. For example, the probability a random teenager from the study went to college is found by summing the outcomes from Table~\ref{familyCollegeDistribution} where \var{teen} takes value \resp{college}:\index{marginal probability|)}\index{joint probability|)}
+\begin{exercisewrap}
+\begin{nexercise}
+Verify Figure~\ref{photoClassifyDistribution} represents
+a probability distribution: events are disjoint,
+all probabilities are non-negative, and the probabilities
+sum to~1.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Each of the four outcome combination are disjoint,
+   all probabilities are indeed non-negative, and the sum of
+   the probabilities is $0.1081 + 0.0121 + 0.0615 + 0.8183 = 1.00$.}
+
+We can compute marginal probabilities using joint probabilities
+in simple cases.
+For example, the probability a randomly selected photo from the
+data set is about fashion is found by summing the outcomes where
+\var{truth} takes value \resp{fashion}:%
+\index{marginal probability|)}\index{joint probability|)}
+\newcommand{\ultruthfashion}[0]
+    {\underline{\var{truth} is \resp{fashion}}}%
 \begin{align*}
-P(\text{\underline{\color{black}\var{teen} \resp{college}}})
-&=  P(\text{\var{parents} \resp{degree} and \underline{\color{black}\var{teen} \resp{college}}}) \\
-& \quad \quad + P(\text{\var{parents} \resp{not} and \underline{\color{black}\var{teen} \resp{college}}}) \\
-&= 0.29 + 0.27 \\
-&= 0.56
+P(\text{\ultruthfashion{}})
+  &= P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+        and \ultruthfashion{}}) \\
+    & \qquad + P(\text{\var{mach\us{}learn} is \resp{pred\us{}not}
+        and \ultruthfashion{}}) \\
+  &= 0.1081 + 0.0615 \\
+  &= 0.1696
 \end{align*}
 
 
-%%
 \subsection{Defining conditional probability}
 
 \index{conditional probability|(}
 
-There is some connection between education level of parents and of the teenager: a college degree by a parent is associated with college attendance of the teenager. In this section, we discuss how to use information about associations between two variables to improve probability estimation.
+The ML classifier predicts whether a photo is about fashion,
+even if it is not perfect.
+We would like to better understand how to use information
+from a variable like \var{mach\us{}learn} to improve our
+probability estimation of a second variable, which in this
+example is \var{truth}.
 
-The probability that a random teenager from the study attended college is 0.56. Could we update this probability if we knew that one of the teen's parents has a college degree? Absolutely. To do so, we limit our view to only those 280 cases where a parent has a college degree and look at the fraction where the teenager attended college:
-\begin{eqnarray*}
-P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
-\end{eqnarray*}
-We call this a \term{conditional probability} because we computed the probability under a condition: a parent has a college degree. There are two parts to a conditional probability, \term{the outcome of interest} and the \term{condition}. It is useful to think of the condition as information we know to be true, and this information usually can be described as a known outcome or~event.
+The probability that a random photo from the data set is about
+fashion is about 0.17.
+If we knew the machine learning classifier predicted the
+photo was about fashion, could we get a better estimate of the
+probability the photo is actually about fashion?
+Absolutely.
+To do so, we limit our view to only those \fashYA{} cases
+where the ML classifier predicted that the photo was about
+fashion and look at the fraction where the photo was actually
+about fashion:
+\begin{align*}
+P(\text{\var{truth} is \resp{fashion} given
+    \var{mach\us{}learn} is \resp{pred\us{}fashion}})
+  = \frac{\fashYY{}}{\fashYA{}}
+  = 0.900
+\end{align*}
+We call this a \term{conditional probability} because
+we computed the probability under a condition:
+the ML classifier prediction said the photo was about fashion.
 
-We separate the text inside our probability notation into the outcome of interest and the condition:
-\begin{eqnarray}
-&& P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) \notag \\
-&& = P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
-\label{probStudentUsedIfParentsUsedInFormalNotation}
-\end{eqnarray}
-
+There are two parts to a conditional probability,
+the \term{outcome of interest} and the \term{condition}.
+It is useful to think of the condition as information we know
+to be true, and this information usually can be described as
+a known outcome or~event.
+We generally separate the text inside our probability notation
+into the outcome of interest and the condition with a
+vertical bar:
+\begin{align*}
+&& P(\text{\var{truth} is \resp{fashion} given
+    \var{mach\us{}learn} is \resp{pred\us{}fashion}}) \\
+&& \quad = P(\text{\var{truth} is \resp{fashion}\ }|
+    \text{\ \var{mach\us{}learn} is \resp{pred\us{}fashion}})
+  = \frac{\fashYY{}}{\fashYA{}}
+  = 0.900
+\end{align*}
 The vertical bar ``$|$'' is read as \emph{given}.
 
-In Equation~\eqref{probStudentUsedIfParentsUsedInFormalNotation}, we computed the probability a teen attended college based on the condition that at least one parent has a college degree as a fraction:\textA{\vspace{-1mm}}
-\begin{eqnarray}
-&& P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) \notag \\
-&&\quad = \frac{\text{\# cases where \var{teen} \resp{college} and \var{parents} \resp{degree}}}{\text{\# cases where \var{parents} \resp{degree}}} \label{ratioOfBothToRatioOfConditionalForParentsAndStudent} \\
-&&\quad = \frac{231}{280} = 0.825 \notag
-\end{eqnarray}
-We considered only those cases that met the condition, \var{parents} \resp{degree}, and then we computed the ratio of those cases that satisfied our outcome of interest, the teenager attended college.
+\textA{\newpage}
 
-Frequently, marginal and joint probabilities are provided instead of count data. For example, disease rates are commonly listed in percentages rather than in a count format. We would like to be able to compute conditional probabilities even when no counts are available, and we use Equation~\eqref{ratioOfBothToRatioOfConditionalForParentsAndStudent} as a template to understand this technique.
-
-We considered only those cases that satisfied the condition, \var{parents} \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} \resp{college}. Suppose we were provided only the information in Table~\ref{familyCollegeProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} \resp{degree}). Similarly, we would expect about 29\% or $0.29\times 1000 = 290$ to meet both the information criteria and represent our outcome of interest. Thus, the conditional probability could be computed:
-\begin{align}
-&P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) \notag \\
-	&= \frac{\text{\# (\var{teen} \resp{college} and \var{parents} \resp{degree})}}{\text{\# (\var{parents} \resp{degree})}} \notag \\
-	&= \frac{290}{350}
-		= \frac{0.29}{0.35}
-		= 0.829\quad\text{(different from 0.825 due to rounding error)}
-\label{stUserPUsedHypSampSize}
-\end{align}
-In Equation~(\ref{stUserPUsedHypSampSize}), we examine exactly the fraction of two probabilities, 0.29 and 0.35, which we can write as
+In the last equation, we computed the probability a photo
+was about fashion based on the condition that the ML algorithm
+predicted it was about fashion as a fraction:
 \begin{align*}
-P(\text{\var{teen} \resp{college} and \var{parents} \resp{degree}})
-	\quad\text{and}\quad
-	P(\text{\var{parents} \resp{degree}}).
+& P(\text{\var{truth} is \resp{fashion}\ }|
+    \text{\ \var{mach\us{}learn} is \resp{pred\us{}fashion}}) \\
+  &\quad = \frac{\text{\# cases where \var{truth} is \resp{fashion}
+       and \var{mach\us{}learn} is \resp{pred\us{}fashion}}}
+     {\text{\# cases where \var{truth} is \resp{fashion}}} \\
+  &\quad = \frac{\fashYY{}}{\fashYA{}}
+      = 0.900
 \end{align*}
-The fraction of these probabilities is an example of the general formula for conditional probability.
+We considered only those cases that met the condition,
+\var{mach\us{}learn} is \resp{pred\us{}fashion}, and then
+we computed the ratio of those cases that satisfied our
+outcome of interest, photo was actually about fashion.
+
+Frequently, marginal and joint probabilities are provided
+instead of count data.
+For example, disease rates are commonly listed in percentages
+rather than in a count format.
+We would like to be able to compute conditional probabilities
+even when no counts are available, and we use the last equation
+as a template to understand this technique.
+
+We considered only those cases that satisfied the condition,
+where the ML algorithm predicted fashion.
+Of these cases, the conditional probability was the
+fraction representing the outcome of interest, that the
+photo was about fashion.
+Suppose we were provided only the information in
+Figure~\ref{photoClassifyProbTable}, i.e. only probability data.
+Then if we took a sample of 1000 photos, we would anticipate
+about 12.0\% or $0.120\times 1000 = 120$ would be predicted to be
+about fashion (\var{mach\us{}learn} is \resp{pred\us{}fashion}).
+Similarly, we would expect about 10.8\% or
+$0.108\times 1000 = 108$ to meet both the information criteria
+and represent our outcome of interest.
+Then the conditional probability can be computed as
+\begin{align*}
+&P(\text{\var{truth} is \resp{fashion}}\ |\ 
+    \text{\var{mach\us{}learn} is \resp{pred\us{}fashion}}) \\
+  &= \frac{\text{\# (\var{truth} is \resp{fashion}
+      and \var{mach\us{}learn} is \resp{pred\us{}fashion})}}
+    {\text{\# (\var{mach\us{}learn} is \resp{pred\us{}fashion})}} \\
+  &= \frac{108}{120}
+		= \frac{0.108}{0.120}
+		= 0.90
+\end{align*}
+Here we are examining exactly the fraction of two probabilities,
+0.108 and 0.120, which we can write as
+\begin{align*}
+P(\text{\var{truth} is \resp{fashion} and
+    \var{mach\us{}learn} is \resp{pred\us{}fashion}})
+\quad\text{and}\quad
+P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}}).
+\end{align*}
+The fraction of these probabilities is an example of the
+general formula for conditional probability.
 
 \begin{onebox}{Conditional probability}
-The conditional probability of the outcome of interest $A$ given condition $B$ is computed as the following:
-\begin{align}
-P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
-\label{condProbEq}
-\end{align}\end{onebox}
+  The conditional probability of the outcome of interest $A$
+  given condition $B$ is computed as the following:
+  \begin{align*}
+  P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
+  \end{align*}
+\end{onebox}
 
-\begin{exercisewrap}\begin{nexercise}\label{familyCollegeProbOfParentsEqualNotGivenTeen}
-(a) Write out the following statement in conditional probability notation: ``\emph{The probability a random case where neither parent has a college degree if it is known that the teenager didn't attend college right after high school}''. Notice that the condition is now based on the {teenager}, not the {parent}. \\[1mm]
-(b)~Determine the probability from part (a). Table~\vref{familyCollegeProbTable} may be helpful.\footnotemark
-\end{nexercise}\end{exercisewrap}
-\footnotetext{(a) $P(\text{\var{parents} \resp{not}}\ |\ \text{\var{teen} \resp{not}})$. (b)~Equation~(\ref{condProbEq}) for conditional probability indicates we should first find $P(\text{\var{parents} \resp{not} and \var{teen} \resp{not}}) = 0.38$ and $P(\text{\var{teen} \resp{not}}) = 0.44$. Then the ratio represents the conditional probability: $0.38 / 0.44 = 0.864$.}
+\textA{\newpage}
 
+\begin{exercisewrap}
+\begin{nexercise}
+\label{fashionProbOfMLNotGivenTruthNot}%
+(a) Write out the following statement in conditional
+probability notation:
+``\emph{The probability that the ML prediction was correct,
+if the photo was about fashion}''.
+Here the condition is now based on the photo's
+\var{truth} status, not the ML algorithm. \\[1mm]
+(b)~Determine the probability from part (a).
+Table~\vref{photoClassifyProbTable} may be helpful.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{(a) If the photo is about fashion and the
+  ML algorithm prediction was correct, then the ML algorithm
+  my have a value of \resp{pred\us{}fashion}:
+  \begin{align*}
+  P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}}\ |
+      \ \text{\var{truth} is \resp{fashion}})
+  \end{align*}
+  (b)~The equation for conditional probability indicates we
+  should first find
+  $P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{fashion}}) = 0.1081$
+  and $P(\text{\var{truth} is \resp{not}}) = 0.1696$.
+  Then the ratio represents the conditional probability:
+  $0.1081 / 0.1696 = 0.6374$.}
 
-\begin{exercisewrap}\begin{nexercise}\label{whyCondProbSumTo1}
-(a)~Determine the probability that one of the parents has a college degree if it is known the teenager did not attend college. \\[1mm]
-(b)~Using the answers from part~(a) and Guided Practice~\ref{familyCollegeProbOfParentsEqualNotGivenTeen}(b), compute
+\begin{exercisewrap}
+\begin{nexercise}
+\label{whyCondProbSumTo1}%
+(a)~Determine the probability that the algorithm is incorrect
+if it is known the photo is about fashion. \\[1mm]
+(b)~Using the answers from part~(a) and
+Guided Practice~\ref{fashionProbOfMLNotGivenTruthNot}(b),
+compute
 \begin{align*}
-&P(\text{\var{parents} \resp{degree}}\ |\ \text{\var{teen} \resp{not}}) \\
-&+ P(\text{\var{parents} \resp{not}}\ |\ \text{\var{teen} \resp{not}})
+&P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}}
+    \ |\ \text{\var{truth} is \resp{fashion}}) \\
+&\qquad  +\ P(\text{\var{mach\us{}learn} is \resp{pred\us{}not}}
+    \ |\ \text{\var{truth} is \resp{fashion}})
 \end{align*}
-(c)~Provide an intuitive argument to explain why the sum in (b) is~1.\footnotemark
-\end{nexercise}\end{exercisewrap}
-\footnotetext{(a)~This probability is $\frac{P(\text{\var{parents} \resp{degree}, \var{teen} \resp{not}})}{P(\text{\var{teen} \resp{not}})} = \frac{0.06}{0.44} = 0.136$. (b)~The total equals~1. (c)~Under the condition the teenager didn't attend college, the parents must either have a college degree or not. The complement still works, provided the probabilities condition on the same information.}
+(c)~Provide an intuitive argument to explain why the sum
+in~(b) is~1.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{(a)~This probability is
+  $\frac{P(\text{\var{mach\us{}learn} is \resp{pred\us{}not},
+      \var{truth} is \resp{fashion}})}
+    {P(\text{\var{truth} is \resp{fashion}})}
+  = \frac{0.0615}{0.1696} = 0.3626$.
+  (b)~The total equals~1.
+  (c)~Under the condition the photo is about fashion,
+      the ML algorithm must have either predicted it was
+      about fashion or predicted it was not about fashion.
+      The complement still works for conditional probabilities,
+      provided the probabilities are conditioned on the same
+      information.}
 
-\begin{exercisewrap}\begin{nexercise}
-The data indicate there is an association between parents having a college degree and their teenager attending college. Does this mean the parents' college degree(s) \emph{caused} the teenager to go to college?\footnotemark\index{conditional probability|)}
-\index{data!family\_college|)}
-\end{nexercise}\end{exercisewrap}
-\footnotetext{No. While there is an association, the data are observational. Two potential confounding variables include \var{income} and \var{region}. Can you think of others?}
+\index{conditional probability|)}
+\index{data!photo\_classify|)}
+
 
 %%
 \subsection{Smallpox in Boston, 1721}
@@ -751,7 +1009,7 @@ If $A$ and $B$ represent two outcomes or events, then \vspace{-1.5mm}
 P(A\text{ and }B) = P(A | B)\times P(B)
 \end{eqnarray*} \vspace{-6.5mm} \par
 For the term $P(A | B)$, it is useful to think of $A$ as the outcome of interest and $B$ as the condition.\end{onebox}
-This General Multiplication Rule is simply a rearrangement of the definition for conditional probability in Equation~(\ref{condProbEq}) on page~\pageref{condProbEq}.
+This General Multiplication Rule is simply a rearrangement of the definition for conditional probability.
 
 \begin{examplewrap}\begin{nexample}{Consider the \data{smallpox} data set. Suppose we are given only two pieces of information: 96.08\% of residents were not inoculated, and 85.88\% of the residents who were not inoculated ended up surviving. How could we compute the probability that a resident was not inoculated and lived?}
 We will compute our answer using the General Multiplication Rule and then verify it using Table~\ref{smallpoxProbabilityTable}. We want to determine
@@ -785,10 +1043,11 @@ Based on the probabilities computed above, does it appear that inoculation is ef
 \end{nexercise}\end{exercisewrap}
 \footnotetext{The samples are large relative to the difference in death rates for the ``inoculated'' and ``not inoculated'' groups, so it seems there is an association between \var{inoculated} and \var{outcome}. However, as noted in the solution to Guided Practice~\ref{SmallpoxInoculationObsExpExercise}, this is an observational study and we cannot be sure if there is a causal connection. (Further research has shown that inoculation is effective at reducing death rates.)}
 
-\textA{\newpage}
 
 %%
-\subsection{Sampling from a small population}
+\Comment{changed subsection name to better align with using this concept again later for inference}
+
+\subsection{Sampling without replacement}
 \label{smallPop}
 
 \begin{examplewrap}\begin{nexample}{Professors sometimes select a student at random to answer a question. If each student has an equal chance of being selected and there are 15 people in your class, what is the chance that she will pick you for the next question?}
@@ -799,7 +1058,7 @@ If there are 15 people to ask and none are skipping class, then the probability 
 For the first question, she will pick someone else with probability $14/15$. When she asks the second question, she only has 14 people who have not yet been asked. Thus, if you were not picked on the first question, the probability you are again not picked is $13/14$. Similarly, the probability you are again not picked on the third question is $12/13$, and the probability of not being picked for any of the three questions is
 \begin{eqnarray*}
 &&P(\text{not picked in 3 questions}) \\
-&&\quad = P(\text{\var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q2}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q3}} = \text{\resp{not\_\hspace{0.3mm}picked}.}) \\
+&&\quad = P(\text{\var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}, }\text{\var{Q3}} = \text{\resp{not\us{}picked}.}) \\
 &&\quad = \frac{14}{15}\times\frac{13}{14}\times\frac{12}{13} = \frac{12}{15} = 0.80
 \end{eqnarray*}
 \end{nexample}\end{examplewrap}
@@ -807,10 +1066,10 @@ For the first question, she will pick someone else with probability $14/15$. Whe
 \begin{exercisewrap}\begin{nexercise}
 What rule permitted us to multiply the probabilities in Example~\ref{3woRep}?\footnotemark
 \end{nexercise}\end{exercisewrap}
-\footnotetext{The three probabilities we computed were actually one marginal probability, $P($\var{Q1}$ = $\resp{not\_\hspace{0.3mm}picked}$)$, and two conditional probabilities:
+\footnotetext{The three probabilities we computed were actually one marginal probability, $P($\var{Q1}$ = $\resp{not\us{}picked}$)$, and two conditional probabilities:
 \begin{align*}
-&P(\text{\var{Q2}} =  \text{\resp{not\_\hspace{0.3mm}picked}}\ |\ \text{\var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}})
-&&P(\text{\var{Q3}} =  \text{\resp{not\_\hspace{0.3mm}picked}}\ |\ \text{\var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q2}} = \text{\resp{not\_\hspace{0.3mm}picked}})
+&P(\text{\var{Q2}} =  \text{\resp{not\us{}picked}}\ |\ \text{\var{Q1}} = \text{\resp{not\us{}picked}})
+&&P(\text{\var{Q3}} =  \text{\resp{not\us{}picked}}\ |\ \text{\var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}})
 \end{align*}
 Using the General Multiplication Rule, the product of these three probabilities is the probability of not being picked in 3 questions.}
 
@@ -819,7 +1078,7 @@ Using the General Multiplication Rule, the product of these three probabilities 
 Each pick is independent, and the probability of not being picked for any individual question is $14/15$. Thus, we can use the Multiplication Rule for independent processes.
 \begin{eqnarray*}
 &&P(\text{not picked in 3 questions}) \\
-&&\quad = P(\text{\var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q2}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q3}} = \text{\resp{not\_\hspace{0.3mm}picked}.}) \\
+&&\quad = P(\text{\var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}, }\text{\var{Q3}} = \text{\resp{not\us{}picked}.}) \\
 &&\quad = \frac{14}{15}\times\frac{14}{15}\times\frac{14}{15} = 0.813
 \end{eqnarray*}
 You have a slightly higher chance of not being picked compared to when she picked a new person for each question. However, you now may be picked more than once.
@@ -842,9 +1101,14 @@ Compare your answers in Guided Practice~\ref{raffleOf30TicketsWWOReplacement}. H
 \end{nexercise}\end{exercisewrap}
 \footnotetext{There is about a 10\% larger chance of winning a prize when using sampling without replacement. However, at most one prize may be won under this sampling procedure.}
 
-Had we repeated Guided Practice~\ref{raffleOf30TicketsWWOReplacement} with 300 tickets instead of 30, we would have found something interesting: the results would be nearly identical. The probability would be 0.0233 without replacement and 0.0231 with replacement. When the sample size is only a small fraction of the population (under 10\%), observations are nearly independent even when sampling without replacement.
+Had we repeated Guided Practice~\ref{raffleOf30TicketsWWOReplacement} with 300 tickets instead of 30, we would have found something interesting: the results would be nearly identical. The probability would be 0.0233 without replacement and 0.0231 with replacement. 
 
+\Comment{turned this into a onebox and slightly reworded}
 
+\begin{onebox}{Sampling without replacement}
+When the sample size is only a small fraction of the population (under 10\%), observations can be considered independent even when sampling without replacement.
+\end{onebox}
+\label{samplingworeplacement}
 
 %%
 \subsection{Independence considerations in conditional probability}
@@ -919,7 +1183,7 @@ The value 0.83 came from a probability calculation using Table~\ref{contTableOfP
   \cline{2-5}
 	& Total & 280 & 512 & 792 \\
 \end{tabular}
-\caption{Contingency table summarizing the \data{family\_\hspace{0.3mm}college} data set.}
+\caption{Contingency table summarizing the \data{family\us{}college} data set.}
 \label{contTableOfParStCollegeCopy}
 \end{table}
 
@@ -1049,7 +1313,7 @@ For example, instead of wanting to know $P($lived $|$ inoculated$)$, we might wa
 \textA{\newpage}
 
 \begin{examplewrap}\begin{nexample}{In Canada, about 0.35\% of women over 40 will develop breast cancer in any given year. A common screening test for cancer is the mammogram, but this test is not perfect. In about 11\% of patients with breast cancer, the test gives a \term{false negative}: it indicates a woman does not have breast cancer when she does have breast cancer. Similarly, the test gives a \term{false positive} in 7\% of patients who do not have breast cancer: it indicates these patients have breast cancer when they actually do not.\footnotemark If we tested a random woman over 40 for breast cancer using a mammogram and the test came back positive -- that is, the test suggested the patient has cancer -- what is the probability that the patient actually has breast cancer?}\label{probabilityOfBreastCancerGivenPositiveTestExample}
-We are given sufficient information to quickly compute the probability of testing positive if a woman has breast cancer ($1.00 - 0.11 = 0.89$). However, we seek the inverted probability of cancer given a positive test result:
+We are given sufficient information to quickly compute the probability of testing positive if a woman has breast cancer ($1.00 - 0.11 = 0.89$). However, we seek the inverted probability of cancer given O+ test result:
 \begin{align*}
 P(\text{has BC}\ |\ \text{mammogram$^+$})
 \end{align*}
@@ -1068,9 +1332,11 @@ P(&\text{has BC $|$ mammogram$^+$}) \\
 &= \frac{0.0035(0.89)}{0.0035(0.89)+0.9965(0.07)}\\
 &= \frac{0.00312}{0.07288}\approx 0.0428
 \end{align*}
-That is, even if a patient has a positive mammogram screening, there is still only a~4\%~chance that she has breast cancer.
+That is, even if a patient has O+ mammogram screening, there is still only a~4\%~chance that she has breast cancer.
 \end{nexample}\end{examplewrap}
 \footnotetext{The probabilities reported here were obtained using studies reported at \oiRedirect{textbook-breastCancerDotOrg_20090831b}{www.breastcancer.org} and \oiRedirect{textbook-ncbi_nih_breast_cancer}{www.ncbi.nlm.nih.gov/pmc/articles/PMC1173421}.}
+
+\Comment{check placement of truth/mammogram figure}
 
 \begin{figure}[ht]
 \centering
@@ -1129,7 +1395,7 @@ Bayes' Theorem is just a generalization of what we have done using tree diagrams
 \end{itemize}
 
 \begin{exercisewrap}\begin{nexercise} \label{exerciseForParkingLotOnCampusBeingFullAndWhetherOrNotThereIsASportingEvent}
-Jose visits campus every Thursday evening. However, some days the parking garage is full, often due to college events. There are academic events on 35\% of evenings, sporting events on 20\% of evenings, and no events on 45\% of evenings. When there is an academic event, the garage fills up about 25\% of the time, and it fills up 70\% of evenings with sporting events. On evenings when there are no events, it only fills up about 5\% of the time. If Jose comes to campus and finds the garage full, what is the probability that there is a sporting event? Use a tree diagram to solve this problem.\footnote{\begin{minipage}[t]{0.47\textwidth}
+Jose visits campus every Thursday evening. However, some days the parking garage is full, often due to college events. There are academic events on 35\% of evenings, sporting events on 20\% of evenings, and no events on 45\% of evenings. When there is an academic event, the garage fills up about 25\% of the time, and it fills up 70\% of evenings with sporting events. On evenings when there are no events, it only fills up about 5\% of the time. If Jose comes to campus and finds the garage full, what is the probability that there is a sporting event? Use a tree diagram to solve this problem.\footnotetext{\begin{minipage}[t]{0.47\textwidth}
 The tree diagram, with three primary branches, is shown to the right. We want
 \begin{align*}
 P(&\text{sporting event} | \text{garage full}) \\
@@ -1176,6 +1442,11 @@ $P(A \text{ and } B) = P(A | B)\times P(B)$.
 
 \end{itemize} 
 
+%%%%%%%%%Section Exercises
+{\input{ch_probability/TeX/conditional_probability.tex}}
+
+
+
 
 
 %______________________________________________
@@ -1183,15 +1454,18 @@ $P(A \text{ and } B) = P(A | B)\times P(B)$.
 \label{binomialForm}
 
 \sectionintro{
+\Add{
+\noindent What is the probability of exactly 50 heads in 100 tosses of a coin?  Of exactly 1~left handed person in a random sample of 8 people?  Of at most 3~people exceeding their insurance deductible in a random sample of 20 people?  The binomial formula can help us answer these questions.
+}
 
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
-\item Calculate the number of possible scenarios for obtaining k successes in n trials.
+\item Calculate the number of possible scenarios for obtaining $k$ successes in $n$ trials.
 
 \item Determine whether a scenario is binomial or not.
 
-\item Calculate the probability of obtaining exactly k successes in n independent trials.  
+\item Calculate the probability of obtaining exactly $k$ successes in $n$ independent trials.  
 
 \item Recognize that the binomial formula uses the special Addition Rule for mutually exclusive events.
 
@@ -1200,139 +1474,345 @@ $P(A \text{ and } B) = P(A | B)\times P(B)$.
 \end{enumerate}
 }
 
-
-\begin{examplewrap}\begin{nexample}{Suppose we randomly selected four individuals to participate in the ``shock" study. What is the chance exactly one of them will be a success?  Let's call the four people Allen ($A$), Brittany ($B$), Caroline ($C$), and Damian ($D$) for convenience. Also, suppose 35\% of people are successes as in the previous version of this example.}\label{oneRefuser}
-Let's consider a scenario where one person refuses:
-\begin{eqnarray*}
-&&P(A=\text{\resp{refuse}},\text{ }B=\text{\resp{shock}},\text{ }C=\text{\resp{shock}},\text{ }D=\text{\resp{shock}}) \\
- &&\quad =  P(A=\text{\resp{refuse}})\ P(B=\text{\resp{shock}})\ P(C=\text{\resp{shock}})\ P(D=\text{\resp{shock}}) \\
- &&\quad =  (0.35)  (0.65)  (0.65)  (0.65) = (0.35)^1 (0.65)^3 = 0.096
-\end{eqnarray*}
-But there are three other scenarios: Brittany, Caroline, or Damian could have been the one to refuse. In each of these cases, the probability is again $(0.35)^1(0.65)^3$. These four scenarios exhaust all the possible ways that exactly one of these four people could refuse to administer the most severe shock, so the total probability is $4\times(0.35)^1(0.65)^3 = 0.38$.
-\end{nexample}\end{examplewrap}
-
-\begin{exercisewrap}\begin{nexercise}
-Verify that the scenario where Brittany is the only one to refuse to give the most severe shock has probability $(0.35)^1(0.65)^3$. \footnotemark
-\end{nexercise}\end{exercisewrap}
-\footnotetext{$P(A=\text{\resp{shock}},\text{ }B=\text{\resp{refuse}},\text{ }C=\text{\resp{shock}},\text{ }D=\text{\resp{shock}}) = (0.65)(0.35)(0.65)(0.65) = (0.35)^1(0.65)^3$.}
-
 %%
-\subsection{Understanding the formula}
-To solve the scenario outlined in Example~\ref{oneRefuser} we use what is called the \term{Binomal Formula}. The binomal formula gives the probability of having $k$ successes in $n$ independent trials where probability of an individual success in one trial is $p$ (in Example~\ref{oneRefuser}, $n=4$, $k=1$, $p=0.35$). In order to develop this formula, we reexamine each part of the example.
+\subsection{Introducing the binomial formula}
 
-There were four individuals who could have been the one to refuse, and each of these four scenarios had the same probability. Thus, we could identify the final probability as
-\begin{eqnarray}
+\newcommand{\insureSprob}{0.7}
+\newcommand{\insureSperc}{70\%}
+\newcommand{\insureFprob}{0.3}
+\newcommand{\insureFperc}{30\%}
+\newcommand{\insureDistA}{0.7}
+\newcommand{\insureDistB}{0.21}
+\newcommand{\insureDistC}{0.063}
+\newcommand{\insureDistD}{0.019}
+\newcommand{\insureDistE}{0.006}
+\newcommand{\insureCDistA}{0.7}
+\newcommand{\insureCDistB}{0.91}
+\newcommand{\insureCDistC}{0.973}
+\newcommand{\insureCDistCComplement}{0.027}
+\newcommand{\insureCDistD}{0.992}
+\newcommand{\insureCDistE}{0.998}
+\newcommand{\insureGeomMean}{1.43}
+\newcommand{\insureS}{\resp{not}}
+\newcommand{\insureF}{\resp{exceed}}
+% Doesn't consider binomial coefficient in next calculated value.
+\newcommand{\insureBinomCinDSingleScenario}{0.103}
+\newcommand{\insureBinomCinD}{0.412}
+\newcommand{\insureBinomEinHSingleScenario}{0.00454}
+\newcommand{\insureBinomEinH}{0.254}
+\newcommand{\insureBinomFourtyExpValue}{28}
+\newcommand{\insureBinomFourtySD}{2.9}
+\newcommand{\insureBinomFourtyLower}{22}
+\newcommand{\insureBinomFourtyUpper}{34}
+
+Many health insurance plans in the United States have
+a deductible, where the insured individual is responsible
+for costs up to the deductible, and then the costs above
+the deductible are shared between the individual and
+insurance company for the remainder of the year.
+
+Suppose a health insurance company found that \insureSperc{} of the
+people they insure stay below their deductible in any given year.
+Each of these people can be thought of as a \term{trial}.
+We label a person a \term{success} if her healthcare costs
+do not exceed the deductible.
+We label a person a \term{failure} if she does exceed her
+deductible in the year.
+Because 70\% of the individuals will not hit their deductible,
+we denote the \term{probability of a success} as
+$p = \insureSprob{}$.
+
+
+\begin{examplewrap}
+\begin{nexample}{Suppose the insurance agency is considering
+    a random sample of four individuals they insure.
+    What is the chance exactly one of them will exceed
+    the deductible and the other four will not?
+    Let's call the four people
+    Ariana ($A$),
+    Brittany ($B$),
+    Carlton ($C$),
+    and Damian ($D$)
+    for convenience.}
+  \label{insureOneOfFourExceedsDeductible}%
+  Let's consider a scenario where one person exceeds
+  the deductible:
+  \begin{align*}
+  &P(A=\text{\insureF{}},
+      \text{ }B=\text{\insureS{}},
+      \text{ }C=\text{\insureS{}},
+      \text{ }D=\text{\insureS{}}) \\
+    &\quad = P(A=\text{\insureF{}})\ 
+        P(B=\text{\insureS{}})\ 
+        P(C=\text{\insureS{}})\ 
+        P(D=\text{\insureS{}}) \\
+    &\quad =  (\insureFprob{})
+        (\insureSprob{})
+        (\insureSprob{})
+        (\insureSprob{}) \\
+    &\quad = (\insureSprob{})^3 (\insureFprob{})^1 \\
+    &\quad = \insureBinomCinDSingleScenario{}
+  \end{align*}
+  But there are three other scenarios: Brittany, Carlton,
+  or Damian could have been the one to exceed the deductible.
+  In each of these cases, the probability is again
+  $(\insureSprob{})^3 (\insureFprob{})^1$.
+  These four scenarios exhaust all the possible ways that
+  exactly one of these four people could have exceeded
+  the deductible, so the total probability is
+  $4 \times (\insureSprob{})^3 (\insureFprob{})^1
+      = \insureBinomCinD{}$.
+\end{nexample}
+\end{examplewrap}
+
+\begin{exercisewrap}
+\begin{nexercise}
+Verify that the scenario where Brittany is the only one
+exceed the deductible has probability
+$(\insureSprob{})^3 (\insureFprob{})^1$.~\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{
+  $P(A=\text{\insureS{}},
+      \text{ }B=\text{\insureF{}},
+      \text{ }C=\text{\insureS{}},
+      \text{ }D=\text{\insureS{}})
+    = (\insureSprob{})(\insureFprob{})
+        (\insureSprob{})(\insureSprob{})
+    = (\insureSprob{})^3 (\insureFprob{})^1$.}
+
+
+The binomial distribution describes the probability of having exactly $k$ successes
+in $n$ independent trials with probability
+of a success $p$
+(in Example~\ref{insureOneOfFourExceedsDeductible},
+$n=4$, $k=3$, $p=\insureSprob{}$).
+We would like to determine the probabilities associated
+with the binomial distribution more generally,
+i.e. we want a formula where we can use $n$, $k$, and $p$
+to obtain the probability.
+To do this, we reexamine each part of
+Example~\ref{insureOneOfFourExceedsDeductible}.
+
+There were four individuals who could have been the one
+to exceed the deductible, and each of these four scenarios
+had the same probability.
+Thus, we could identify the final probability as
+\begin{align*}
 [\text{\# of scenarios}] \times P(\text{single scenario})
-\label{genBinomialFormula}
-\end{eqnarray}
-The first component of this equation is the number of ways to arrange the $k=1$ successes among the $n=4$ trials. The second component is the probability of any of the four (equally probable) scenarios.
+\end{align*}
+The first component of this equation is the number of ways
+to arrange the $k=3$ successes among the $n=4$ trials.
+The second component is the probability of any of the four
+(equally probable) scenarios.
 
-Consider $P($single scenario$)$ under the general case of $k$ successes and $n-k$ failures in the $n$ trials. In any such scenario, we apply the Multiplication Rule for independent events:
-\begin{eqnarray*}
-p^k(1-p)^{n-k}
-\end{eqnarray*}
+Consider $P($single scenario$)$ under the general case of
+$k$ successes and $n-k$ failures in the $n$ trials.
+In any such scenario, we apply the Multiplication Rule
+for independent events:
+\begin{align*}
+p^k (1 - p)^{n - k}
+\end{align*}
 This is our general formula for $P($single scenario$)$.
 
-Secondly, we introduce a general formula for the number of ways to choose $k$ successes in $n$ trials, i.e. arrange $k$ successes and $n-k$ failures:
-\begin{eqnarray*}
-{n\choose k} = \frac{n!}{k!(n-k)!}
-\end{eqnarray*}
-The quantity ${n\choose k}$ is read \term{n choose k}.\footnote{Other notation for $n$ choose $k$ includes $_nC_k$, $C_n^k$, and $C(n,k)$.} The exclamation point notation (e.g. $k!$) denotes a \term{factorial}\label{factorialDefinitionInTheBinomialSection} expression.
-\begin{eqnarray*}
-&& 0! = 1 \label{zeroFactorial} \\
-&& 1! = 1 \\
-&& 2! = 2\times1 = 2 \\
-&& 3! = 3\times2\times1 = 6 \\
-&& 4! = 4\times3\times2\times1 = 24 \\
-&& \vdots \\
-&& n! = n\times(n-1)\times...\times3\times2\times1
-\end{eqnarray*}
-Using the formula, we can compute the number of ways to choose $k=1$ successes in $n=4$ trials:
-\begin{eqnarray*}
-{4 \choose 1} = \frac{4!}{1!(4-1)!} =  \frac{4!}{1!3!} 
-	= \frac{4\times3\times2\times1}{(1)(3\times2\times1)} = 4
-\end{eqnarray*}
-This result is exactly what we found by carefully thinking of each possible scenario in Example~\ref{oneRefuser}.
+Secondly, we introduce the \term{binomial coefficient}, which gives the number
+of ways to choose $k$ successes in $n$ trials,
+i.e. arrange $k$ successes and $n - k$ failures:
+\begin{align*}
+{n\choose k} = \frac{n!}{k! (n - k)!}
+\end{align*}
+The quantity ${n\choose k}$ is read
+\term{n choose k}.\footnote{Other notation for
+  $n$ choose $k$ includes $_nC_k$, $C_n^k$, and $C(n,k)$.}
+The exclamation point notation (e.g. $k!$) denotes
+a \term{factorial} expression.
+\begin{align*}
+& 0! = 1 \\
+& 1! = 1 \\
+& 2! = 2\times1 = 2 \\
+& 3! = 3\times2\times1 = 6 \\
+& 4! = 4\times3\times2\times1 = 24 \\
+& \vdots \\
+& n! = n\times(n-1)\times...\times3\times2\times1
+\end{align*}
+Using the formula, we can compute the number of ways
+to choose $k = 3$ successes in $n = 4$ trials:
+\begin{align*}
+{4 \choose 3} = \frac{4!}{3!(4-3)!}
+  = \frac{4!}{3!1!} 
+  = \frac{4\times3\times2\times1}{(3\times2\times1) (1)}
+  = 4
+\end{align*}
+This result is exactly what we found by carefully thinking
+of each possible scenario in
+Example~\ref{insureOneOfFourExceedsDeductible}.
 
-Substituting $n$ choose $k$ for the number of scenarios and $p^k(1-p)^{n-k}$ for the single scenario probability in Equation~(\ref{genBinomialFormula}) yields the general binomial formula.
+Substituting $n$ choose $k$ for the number of scenarios
+and $p^k(1-p)^{n-k}$ for the single scenario probability
+yields the \term{binomial formula}.
 
-%\Comment{changed ``binomial distribution" to ``binomial formula" and deleted mean, sd, and variance from termbox}
-
+\textA{\newpage}
 \begin{onebox}{Binomial formula}
 Suppose the probability of a single trial being a success is $p$. Then the probability of observing exactly $k$ successes in $n$ independent trials is given by\vspace{-1mm}
-\begin{eqnarray}
+\begin{eqnarray*}
 {n\choose k}p^k(1-p)^{n-k} = \frac{n!}{k!(n-k)!}p^k(1-p)^{n-k}
 \label{binomialFormula}
-\end{eqnarray}
+\end{eqnarray*}
 \end{onebox}
+
 
 %%
 \subsection{When and how to apply the formula}
 
 \begin{onebox}{Is it binomial? Four conditions to check.}
-\label{isItBinomialTipBox}
-(1) The trials are independent. \\
-(2) The number of trials, $n$, is fixed. \\
-(3) Each trial outcome can be classified as a \emph{success} or \emph{failure}. \\
-(4) The probability of a success, $p$, is the same for each trial.\end{onebox}
+  \label{isItBinomialTipBox}%
+  (1) The trials are independent. \\
+  (2) The number of trials, $n$, is fixed. \\
+  (3) Each trial outcome can be classified as a \emph{success}
+      or \emph{failure}. \\
+  (4) The probability of a success, $p$, is the same for
+      each trial.
+\end{onebox}
 
-\begin{examplewrap}\begin{nexample}{What is the probability that 3 of 8 randomly selected students will refuse to administer the worst shock, i.e. 5 of 8 will?}
-We would like to apply the binomial model, so we check our conditions. The number of trials is fixed ($n=8$) (condition 2) and each trial outcome can be classified as a success or failure (condition 3). Because the sample is random, the trials are independent (condition~1) and the probability of a success is the same for each trial (condition~4).
+\begin{examplewrap}
+\begin{nexample}{What is the probability that 3 of 8 randomly
+    selected individuals will have exceeded the insurance
+    deductible, i.e. that 5 of 8 will not exceed the deductible?
+    Recall that 70\% of individuals will not exceed the
+    deductible.}
+  We would like to apply the binomial model,
+  so we check the conditions.
+  The number of trials is fixed ($n = 8$) (condition 2)
+  and each trial outcome can be classified as a success
+  or failure (condition 3).
+  Because the sample is random, the trials are independent
+  (condition~1) and the probability of a success is the same
+  for each trial (condition~4).
 
-In the outcome of interest, there are $k=3$ successes in $n=8$ trials, and the probability of a success is $p=0.35$. So the probability that 3 of 8 will refuse is given by
-\begin{eqnarray*}
-{ 8 \choose 3}(0.35)^3(1-0.35)^{8-3}
-	&=& \frac{8!}{3!(8-3)!}(0.35)^3(1-0.35)^{8-3} \\
-	&=& \frac{8!}{3!5!}(0.35)^3(0.65)^5
-\end{eqnarray*}
-Dealing with the factorial part:
-\begin{eqnarray*}
-\frac{8!}{3!5!} = \frac{8\times7\times6\times5\times4\times3\times2\times1}{(3\times2\times1)(5\times4\times3\times2\times1)} = \frac{8\times7\times6}{3\times2\times1} = 56
-\end{eqnarray*}
-Using $(0.35)^3(0.65)^5 \approx 0.005$, the final probability is about $56*0.005 = 0.28$.
-\end{nexample}\end{examplewrap}
-
-\begin{onebox}{computing binomial probabilities}
-The first step in using the binomial model is to check that the model is appropriate. If it is, the next step is to identify $n$, $p$, and $k$. The final step is to apply the formulas and interpret the results.\end{onebox}
-
-\begin{exercisewrap}\begin{nexercise}
-The probability that a random smoker will develop a severe lung condition in his or her lifetime is about $0.3$. If you have 4 friends who smoke, are the conditions for the binomial model satisfied?\footnotemark
-\end{nexercise}\end{exercisewrap}
-\footnotetext{One possible answer: if the friends know each other, then the independence assumption is probably not satisfied. For example, acquaintances may have similar smoking habits.}
-
-\begin{exercisewrap}\begin{nexercise}
-\label{noMoreThanOneFriendWSevereLungCondition}%
-Suppose these four friends do not know each other and we can treat them as if they were a random sample from the population. Is the binomial model appropriate? What is the probability that (a) none of them will develop a severe lung condition? (b) One will develop a severe lung condition? (c) That no more than one will develop a severe lung condition?\footnotemark
-\end{nexercise}\end{exercisewrap}
-\footnotetext{To check if the binomial model is appropriate, we must verify the conditions. (i) Since we are supposing we can treat the friends as a random sample, they are independent. (ii) We have a fixed number of trials ($n=4$). (iii) Each outcome is a success or failure. (iv) The probability of a success is the same for each trials since the individuals are like a random sample ($p=0.3$ if we say a ``success'' is someone getting a lung condition, a morbid choice). Compute parts (a) and (b) from the binomial formula in Equation~\eqref{binomialFormula}: $P(0) =  {4 \choose 0} (0.3)^0 (0.7)^4 = 1\times1\times0.7^4 = 0.2401$, $P(1) = {4 \choose 1} (0.3)^1(0.7)^{3} = 0.4116$. Note: $0!=1$, as shown on page~\pageref{zeroFactorial}. Part (c) can be computed as the sum of parts (a) and (b): $P(0) + P(1) = 0.2401 + 0.4116 = 0.6517$. That is, there is about a 65\% chance that no more than one of your four smoking friends will develop a severe lung condition.}
-
-\begin{exercisewrap}\begin{nexercise}
-What is the probability that at least 2 of your 4 smoking friends will develop a severe lung condition in their lifetimes?\footnotemark
-\end{nexercise}\end{exercisewrap}
-\footnotetext{The complement (no more than one will develop a severe lung condition) as computed in Guided Practice~\ref{noMoreThanOneFriendWSevereLungCondition} as 0.6517, so we compute one minus this value: 0.3483.}
-
-\begin{exercisewrap}\begin{nexercise}
-Suppose you have 7 friends who are smokers and they can be treated as a random sample of smokers. What is the probability that at most 2 of your 7 friends will develop a severe lung condition.\footnotemark\end{nexercise}\end{exercisewrap}
-\footnotetext{$P($0, 1, or 2 develop severe lung condition$) = P(k=0) + P(k=1)+P(k=2) = 0.6471$.}
-
-
-Below we consider the first term in the binomial probability, $n$ choose $k$ under some special scenarios.
-
-\begin{exercisewrap}\begin{nexercise}
-Why is it true that ${n \choose 0}=1$ and ${n \choose n}=1$ for any \mbox{number~$n$}?\footnotemark
-\end{nexercise}\end{exercisewrap}
-\footnotetext{Frame these expressions into words. How many different ways are there to arrange 0 successes and $n$ failures in $n$ trials? (1 way.) How many different ways are there to arrange $n$ successes and 0 failures in $n$ trials? (1 way.)}
-
-\begin{exercisewrap}\begin{nexercise}
-How many ways can you arrange one success and $n-1$ failures in $n$ trials? How many ways can you arrange $n-1$ successes and one failure in $n$ trials?\footnotemark
-\end{nexercise}\end{exercisewrap}
-\footnotetext{One success and $n-1$ failures: there are exactly $n$ unique places we can put the success, so there are $n$ ways to arrange one success and $n-1$ failures. A similar argument is used for the second question. Mathematically, we show these results by verifying the following two equations:
-\begin{eqnarray*}
-{n \choose 1} = n, \qquad {n \choose n-1} = n
-\end{eqnarray*}}
+  In the outcome of interest, there are $k = 5$ successes
+  in $n = 8$ trials (recall that a success is an individual
+  who does \emph{not} exceed the deductible, and the
+  probability of a success is $p = \insureSprob{}$.
+  So the probability that 5 of 8 will not exceed the
+  deductible and 3 will exceed the deductible is given by
+  \begin{align*}
+  { 8 \choose 5}(\insureSprob{})^5
+  (1-\insureSprob{})^{8-5}
+    &= \frac{8!}{5!(5-3)!}
+        (\insureSprob{})^5(1-\insureSprob{})^{8-5} \\
+    &= \frac{8!}{5!3!}
+        (\insureSprob{})^5(\insureFprob{})^3
+  \end{align*}
+  Dealing with the factorial part:
+  \begin{align*}
+  \frac{8!}{5!3!}
+    = \frac{8\times7\times6\times5\times4\times3\times2\times1}
+        {(5\times4\times3\times2\times1)(3\times2\times1)}
+    = \frac{8\times7\times6}{3\times2\times1}
+    = 56
+  \end{align*}
+  Using $(\insureSprob{})^5(\insureFprob{})^3
+    \approx \insureBinomEinHSingleScenario{}$,
+  the final probability is about
+  $56 * \insureBinomEinHSingleScenario{}
+    \approx \insureBinomEinH{}$.
+\end{nexample}
+\end{examplewrap}
 
 
-\textA{\pagebreak}
+  If you must calculate the binomial coefficient by hand, it's often useful
+  to cancel out as many terms as possible in the top and
+  bottom.  See Section~\ref{calculatorBinomial} for how to evaluate the binomial coefficient and the binomial formula using a calculator.
+
+\begin{onebox}{Computing binomial probabilities}
+  The first step in using the binomial model is to check
+  that the model is appropriate.
+  The second step is to identify $n$, $p$, and $k$.
+  Finally, apply the binomial formula to determine the probability and interpret the results.%
+  \vspace{3mm}
+
+\end{onebox}
+
+\Comment{changed exercises - doesn't make sense to say the 4 friends are a random sample}
+
+
+
+%%%%%%%
+\begin{examplewrap}
+\begin{nexample}{Approximately 35\% of a population has blood type O+.  Suppose four people show up at a hospital and we want to find the probability that exactly one of them has blood type O+.  Can we use the binomial formula?  }
+To check if the binomial model is appropriate,
+  we must verify the conditions.
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item If we suppose that these 4 people comprise a random sample, then we can treat them as independent.  This seems reasonable, since one person with a particular blood type showing up at a hospital seems unlikely to affect the chance that other people with that blood type would show up at the hospital.  
+\item We have a fixed number of trials ($n=4$).
+\item Each outcome is a success or failure (blood type O+ or not blood type O+).
+\item The probability of a success is the same for each
+  trial  since the individuals are like a random sample
+  ($p=0.35$ if we say a ``success'' is someone having blood type O+).
+\end{enumerate}
+\end{nexample}
+\end{examplewrap}
+
+ \begin{exercisewrap}
+\begin{nexercise}
+The probability that a random smoker will develop a severe
+lung condition in his or her lifetime is about $0.3$.
+If you have 4 friends who smoke and you want to find the probability that 1 of them will develop a severe lung condition in his or her lifetime, can you apply the binomial formula?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{While conditions (2) and (3) are met, most likely the friends know each other, so the independence
+  assumption (1) is probably not satisfied.
+  For example, acquaintances may have similar smoking habits,
+  or those friends might make a pact to quit together.  Condition (4) is also not satisfied since this is not a random sample of people.}
+
+
+\begin{examplewrap}
+\begin{nexample}
+{Given that 35\% of a population has blood type O+, what is the probabilty that in a random sample of 4 people:  
+\begin{enumerate}[(a)]
+\setlength{\itemsep}{0mm}
+\item
+    none of them have blood type O+?
+\item
+    one will have blood type O+?
+\item
+    no more than one will have blood type O+?
+\end{enumerate}
+}
+  Compute parts~(a) and~(b) using the binomial formula:
+\begin{enumerate}[(a)]
+\item
+  $P(0)
+    = {4 \choose 0} (0.35)^0 (0.65)^4
+    = 1\times1\times 0.65^4 = 0.65^4
+    = 0.179$\\
+Note that we could have answered this question without the binomial formula, using methods from the previous section.
+\item 
+  $P(1)
+    = {4 \choose 1} (0.35)^1(0.65)^{3}
+    = 0.384$.
+  \item This can be computed as the sum of parts~(a) and~(b):
+  $P(0) + P(1) = 0.179 + 0.384 = 0.563$.
+  That is, there is about a 56.3\% chance that no more than
+  one of will have blood type O+.
+\end{enumerate}
+\label{bloodTypeOPos}
+\end{nexample}
+\end{examplewrap}
+
+\begin{exercisewrap}
+\begin{nexercise}
+What is the probability that at least 3 of 4 people in a random sample will have blood type O+ if 30\% of the population has blood type O+?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$P(\text{at least 3 of 4 have blood type O+})
+      = P(k=3) + P(k=4) = {4 \choose 3} (0.35)^3 (0.65)^1+(0.35)^4= 0.111 + 0.015 = 0.126$}
+
+\textA{\newpage}
+
+
+
 
 \begin{examplewrap}\begin{nexample}{There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{without replacement}. Find the probability you get exactly 3 blue marbles.}Because the probability of success $p$ is not the same for each trial, we cannot use the binomial formula. However, we can use the same logic to arrive at the following answer. 
 \begin{align*}
@@ -1343,12 +1823,57 @@ P(x = 3) &= (\text{\# of combinations with 3 blue})\times P(\text{3 blue and 2 r
 \end{align*}
 \end{nexample}\end{examplewrap}
 
+\begin{exercisewrap}
+\begin{nexercise}
+{Draw 4 cards without replacement from a deck of 52 cards.  What is the probability that you get at least two hearts?}\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$P\text{(at least 2 hearts in 4 draws from a deck)} = 1 - [P(0) + P(1)] = 1 - [(\frac{39}{52})(\frac{38}{51})(\frac{37}{50})(\frac{36}{49}) + {4 \choose 1}(\frac{13}{52})(\frac{39}{51})(\frac{38}{50})(\frac{37}{49})] = 1 - [.0.3038 + 0.4388] = 0.2574$.
+}
 
+Lastly, we consider the binomial coefficient,,
+$n$ choose $k$, under some special scenarios.
+
+\begin{exercisewrap}
+\begin{nexercise}
+Why is it true that ${n \choose 0}=1$ and ${n \choose n}=1$
+for any number $n$?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Frame these expressions into words.
+  How many different ways are there to arrange 0 successes
+  and $n$ failures in $n$ trials?
+  (1 way.)
+  How many different ways are there to arrange $n$ successes
+  and 0 failures in $n$ trials?
+  (1 way.)}
+
+\begin{exercisewrap}
+\begin{nexercise}
+How many ways can you arrange one success and $n-1$ failures
+in $n$ trials?
+How many ways can you arrange $n-1$ successes and one failure
+in $n$ trials?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{One success and $n-1$ failures:
+  there are exactly $n$ unique places we can put
+  the success, so there are $n$ ways to arrange one
+  success and $n-1$ failures.
+  A~similar argument is used for the second question.
+  Mathematically, we show these results by verifying
+  the following two equations:
+  \begin{align*}
+  {n \choose 1} = n,
+    \qquad {n \choose n-1} = n
+  \end{align*}}
+
+\textA{\newpage}
 %%
 \subsection{Calculator: binomial probabilities}
 \label{calculatorBinomial}
 
-\begin{onebox}{\videohref{ti84_binomial_coefficient} TI-83/84: Computing the binomial coefficient, ${n\choose k}$}
+\begin{onebox}{\videohref{ti84_binomial_coefficient} TI-83/84: Computing the binomial coefficient \MakeLowercase{\pmb{${n\choose k}$}}}
 Use \calctext{MATH}, \calctext{PRB}, \calctext{nCr} to evaluate $n$ choose $r$. Here $r$ and $k$ are different letters for the same quantity.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1361,7 +1886,7 @@ Use \calctext{MATH}, \calctext{PRB}, \calctext{nCr} to evaluate $n$ choose $r$. 
 \end{enumerate}
 Example: \calctext{5 nCr 3} means \emph{5 choose 3}.\end{onebox}
 
-\begin{onebox}[]{\videohref{casio_binomial_coefficient} Casio fx-9750GII: Computing the binomial coefficient, ${n\choose k}$}
+\begin{onebox}{\videohref{casio_binomial_coefficient} Casio fx-9750GII: Computing the binomial coefficient \MakeLowercase{\pmb{${n\choose k}$}}}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to the \calctext{RUN-MAT} section (hit \calcbutton{MENU}, then hit \calcbutton{1}).
@@ -1373,7 +1898,7 @@ Example: \calctext{5 nCr 3} means \emph{5 choose 3}.\end{onebox}
 \end{enumerate}
 \end{onebox}
 
-\begin{onebox}{\videohref{ti84_binomial_formula} TI-84: Computing the binomial formula, $P(X = k)={n\choose k}p^k(1-p)^{n-k}$}
+\begin{onebox}{\videohref{ti84_binomial_formula} TI-84: Computing the binomial formula, \pmb{$P(X = \MakeLowercase{k)={n\choose k}p^k(1-p)^{n-k}}$}}
 \label{binomialformula}
 Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{binompdf} to evaluate the probability of \emph{exactly} $k$ occurrences out of $n$ independent trials of an event with probability $p$. 
 \begin{enumerate}
@@ -1389,7 +1914,7 @@ TI-83: Do step 1, choose \calctext{0:binompdf}, then enter $n$, $p$, and $k$ sep
 	\calctext{binompdf(n,~p,~k)}. Then hit \calcbutton{ENTER}. 
 \end{onebox}
 
-\begin{onebox}{\videohref{ti84_binomial_cdf} TI-84: Computing $P(X \le k)= {n\choose 0}p^0(1-p)^{n-0} + ... + {n\choose k}p^k(1-p)^{n-k}$} 
+\begin{onebox}{\videohref{ti84_binomial_cdf} TI-84: Computing \pmb{$P(X \le \MakeLowercase{k)= {n\choose 0}p^0(1-p)^{n-0} + ... + {n\choose k}p^k(1-p)^{n-k}}$} }
 \label{binomialcumulative}
 Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{binomcdf} to evaluate the cumulative probability of \emph{at most} $k$ occurrences out of $n$ independent trials of an event with probability $p$. 
 \begin{enumerate}
@@ -1403,9 +1928,8 @@ Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{binomcdf} to evaluate the cumu
 \end{enumerate}
 TI-83: Do steps 1-2, then enter the values for $n$, $p$, and $k$ separated by commas as follows: \calctext{binomcdf(n,~p,~k)}. Then hit \calctext{ENTER}.\end{onebox}
 
-\textA{\newpage}
 
-\begin{onebox}[]{\videohref{casio_binomial_calculations} Casio fx-9750GII: Binomial calculations}
+\begin{onebox}{\videohref{casio_binomial_calculations} Casio fx-9750GII: Binomial calculations}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU}, then hit \calcbutton{2}).
@@ -1425,16 +1949,17 @@ TI-83: Do steps 1-2, then enter the values for $n$, $p$, and $k$ separated by co
 \begin{exercisewrap}\begin{nexercise}
 Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnotemark
 \end{nexercise}\end{exercisewrap}
-\footnotetext{Use $n$ = 5 and $k$ = 3 to get 10.}
+\footnotetext{Here \calctext{$n$} = 5 and \calctext{$k$} = 3.  Doing 5 \calctext{nCr} 3 gives the number of combinations as 10.}
 
 \begin{exercisewrap}\begin{nexercise}There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{with replacement}. Find the probability you get exactly 3 blue marbles.\footnotemark
 \end{nexercise}\end{exercisewrap}
-\footnotetext{Use $n$ = 5, $p$ = 4/13, and $x$ ($k$) = 3 to get 0.1396.}
+\footnotetext{Here, $n$ = 5, $p$ = 4/13, and $k$ = 3, so set \calctext{trials} = 5, \calctext{p} = 4/13 and \calctext{x value} = 3.  The probability is 0.1396.}
 
 \begin{exercisewrap}\begin{nexercise}There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{with replacement}. Find the probability you get \emph{at most} 3 blue marbles (i.e. less than or equal to 3 blue marbles).\footnotemark\end{nexercise}\end{exercisewrap}
-\footnotetext{Use $n = 5$, $p = 4/13$, and $x = 3$ to get 0.9662.}
+\footnotetext{Similarly, set \calctext{trials} = 5, \calctext{p} = 4/13 and \calctext{x value} = 3.  The cumulative probability is 0.9662.}
 
 %%
+\textA{\newpage}
 \subsection*{Section summary}
 
 \begin{itemize}
@@ -1457,13 +1982,18 @@ Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnotem
 
 \end{itemize}
 
+%%%%%%%%%Section Exercises
+{\input{ch_probability/TeX/binomial_formula.tex}}
+
+
+
 %__________________________________________
 \section[Simulations]{Simulations}
 \label{simulations}
 \index{simulations|(}
 
 \sectionintro{
-
+\Add{\noindent What is the probability of getting a sum greater than 16 in three rolls of a die?  Finding all possible combinations that satisfy this would be tedious, but we could conduct a physical simulation or a computer simulation to estimate this probability.  With modern computing power, simulations have become an important and powerful tool for statisticians.  In this section we will look at the concepts that underlie simulations.}
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
@@ -1476,7 +2006,6 @@ Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnotem
 \end{enumerate}
 }
 
-\Comment{subsection names?}
 
 \subsection{Setting up and carrying out simulations}
 In the previous section we saw how to apply the binomial formula to find the probability of exactly $k$ successes in $n$ independent trials when a success has probability $p$. Sometimes we have a problem we want to solve but we don't know the appropriate formula, or even worse, a formula may not exist. In this case, one common approach is to estimate the probability using \termsub{simulations}{simulation}.
@@ -1575,12 +2104,20 @@ Does anyone perform simulations like this? Sort of. Simulations are used a lot i
 
 \end{itemize}
 
+
+%%%%%%%%%Section Exercises
+{\input{ch_probability/TeX/simulations.tex}}
+
+
+
 %________________________________________
 \section[Random variables]{Random variables }
 \label{randomVariablesSection}
 \index{random variable|(}
 
 \sectionintro{
+\Add{\noindent The chance of landing on single number in roulette is 1/38 and the pay is 35:1.  The chance of landing on Red is 18/38 and the pay is 1:1.  Which game has the higher expected value?  The higher standard deviation?  How do we interpret these quantities in this context?  If you were to play each game 20 times, what would the \emph{distribution} of possible outcomes look like?  In this section, we define and summarize random variables such as this and look at some of their properties.
+}
 
 %%
 \subsection*{Learning objectives}
@@ -1603,7 +2140,7 @@ Does anyone perform simulations like this? Sort of. Simulations are used a lot i
 
 \Comment{subsection name?}
 %%
-\subsection{Introduction}
+\subsection{Introduction to expected value}
 
 \begin{examplewrap}\begin{nexample}{Two books are assigned for a statistics class: a textbook and its corresponding study guide. The university bookstore determined 20\% of enrolled students do not buy either book, 55\% buy the textbook only, and 25\% buy both books, and these percentages are relatively constant from one term to another. If~there are 100 students enrolled, how many books should the bookstore expect to sell to this class?}\label{bookStoreSales}
 Around 20 students will not buy either book (0 books total), about 55 will buy one book (55 books total), and approximately 25 will buy two books (totaling 50 books for these 25 students). The bookstore should expect to sell about 105 books for this class.
@@ -1629,7 +2166,7 @@ Thus, the bookstore should expect to generate about $\$7,535 + \$4,250 = \$11,78
 \begin{figure}[hhh]
 \centering
 \includegraphics[width=0.72\textwidth]{ch_probability/figures/bookCostDist/bookCostDist}
-\caption{Probability distribution for the bookstore's revenue from a single student. The distribution balances on a triangle representing the average revenue per student.}
+\caption{Probability distribution for the bookstore's revenue from one student.   The triangle represents the average revenue per student.}
 \label{bookCostDist}
 \end{figure}
 
@@ -1965,7 +2502,7 @@ For simplicity, we will suppose $X$ and $Y$ are not in percents but are in decim
 \begin{align*}
 \$6000\times X + \$2000\times Y
 \end{align*}
-If we plug in the change in the stock value for $X$ and $Y$, this equation gives the change in value of Leonard's stock portfolio for the month. A positive value represents a gain, and a negative value represents a loss.
+If we plug in the change in the stock value for $X$ and $Y$, this equation gives the change in value of Leonard's stock portfolio for the month. O+ value represents a gain, and a negative value represents a loss.
 \end{nexample}\end{examplewrap}
 
 \begin{exercisewrap}\begin{nexercise}\label{expectedChangeInLeonardsStockPortfolio}
@@ -1975,7 +2512,7 @@ Suppose Google and Exxon Mobil stocks have recently been rising 2.1\% and 0.4\% 
 \footnotetext{$E(\$6000\times X + \$2000\times Y) = \$6000\times 0.021 + \$2000\times 0.004 = \$134$.}
 
 \begin{exercisewrap}\begin{nexercise}
-You should have found that Leonard expects a positive gain in Guided Practice~\ref{expectedChangeInLeonardsStockPortfolio}. However, would you be surprised if he actually had a loss this month?\footnotemark
+You should have found that Leonard expects O+ gain in Guided Practice~\ref{expectedChangeInLeonardsStockPortfolio}. However, would you be surprised if he actually had a loss this month?\footnotemark
 \end{nexercise}\end{exercisewrap}
 \footnotetext{No. While stocks tend to rise over time, they are often volatile in the short term.}
 
@@ -2029,7 +2566,7 @@ Because $SD_Y$ = $SD_{-Y}$, the standard deviation of the difference of two vari
 SD_{X + Y + Z} = SD_{X - Y - Z}  = \sqrt{(SD_X)^2 + (SD_Y)^2 + (SD_Z)^2}
 \end{align}
 
-If we need the standard deviation of a linear combination of independent variables, such as $aX + bY$, we can consider $aX$ and $bY$ as two new variables. Recall that multiplying all of the values of variable by a positive constant multiplies the standard deviation by that constant. Thus, $SD_{aX}$ =  $a \times SD_X$ and $SD_{bY}$ =  $b \times SD_Y$. It follows that:
+If we need the standard deviation of a linear combination of independent variables, such as $aX + bY$, we can consider $aX$ and $bY$ as two new variables. Recall that multiplying all of the values of variable by O+ constant multiplies the standard deviation by that constant. Thus, $SD_{aX}$ =  $a \times SD_X$ and $SD_{bY}$ =  $b \times SD_Y$. It follows that:
 \begin{align*}
 SD_{aX + bY} = \sqrt{(a \times SD_X)^2 + (b \times SD_Y)^2}
 \end{align*}
@@ -2131,12 +2668,20 @@ The SD properties require that $X$ and $Y$ be independent.  The expected value p
 \end{itemize}
 
 
+
+%%%%%%%%%%Section Exercises
+{\input{ch_probability/TeX/random_variables.tex}}
+
+
+
+
 %_______________________________________
 \section[Continuous distributions]{Continuous distributions }
 \label{contDist}
 
 \sectionintro{
-
+\Add{\noindent So far we have looked only at cases where the random variable takes on integer values.  What happens when the we consider a smooth curve and look at intervals of values, such as wait time for a bus?  In this section we introduce the concept of a continuous distribution.  In the next chapter, you will encounter the most famous continuous distribution of all.\footnote{It's the normal distribution!}
+}
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
@@ -2254,10 +2799,14 @@ Suppose a person's height is rounded to the nearest centimeter. Is there a chanc
 
 
 
-%______________________________________________
-\section{Chapter Highlights}
+%%%%%%Section Exercises
+{\input{ch_probability/TeX/continuous_distributions.tex}}
 
-This chapter focused on understanding likelihood and chance variation, first by solving individual probability questions and then by investigating probability distributions. 
+
+%______________________________________________
+\section{Chapter highlights}
+
+\noindent This chapter focused on understanding likelihood and chance variation, first by solving individual probability questions and then by investigating probability distributions. 
 \\
 \\The main probability techniques covered in this chapter are as follows:
 \begin{itemize}

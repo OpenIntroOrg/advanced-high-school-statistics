@@ -10,12 +10,14 @@ normTail(L=-3.182,
          df = 3,
          xlim = c(-4, 4),
          col = COL[1],
+         yaxs="i",
          axes = FALSE)
 axis(1)
 normTail(U = 1.65,
          df = 20,
          xlim = c(-4, 4),
          col = COL[1],
+         yaxs="i",
          axes = FALSE)
 axis(1)
 dev.off()

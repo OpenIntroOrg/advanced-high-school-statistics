@@ -11,6 +11,7 @@ histPlot(d$time,
          main = "",
          xlab = "Time (minutes)",
          ylab = "Frequency",
+         yaxs="i",
          col = COL[1])
 axis(1, at = seq(50, 150, 10))
 dev.off()

@@ -7,28 +7,21 @@ myPDF("normalTails.pdf", 4.3, 1,
       mfrow = c(1,2))
 normTail(0, 1,
          -0.8,
-         col = COL[1],
+         col = COL[1],yaxs="i",
          axes = FALSE)
-at <- c(-5, 0, 5)
+at <- c(-5, -.8, 5)
 labels <- c(-5, 'negative Z', 5)
 cex.axis <- 0.7
-tick <- FALSE
+tick <- TRUE
 axis(1, at, labels, cex.axis = cex.axis, tick = tick)
-lines(c(0, 0),
-      dnorm(0) * c(0.01, 0.99),
-      col = COL[6],
-      lty = 3,
-      lwd = 1.5)
+
 
 normTail(0, 1,
          0.8,
          col = COL[1],
-         axes = FALSE)
+         axes = FALSE,yaxs="i")
+at2 <- c(-5, 0.8, 5)
 labels <- c(-5, 'positive Z', 5)
-axis(1, at, labels, cex.axis = cex.axis, tick = tick)
-lines(c(0, 0),
-      dnorm(0) * c(0.01, 0.99),
-      col = COL[6],
-      lty = 3,
-      lwd = 1.5)
+axis(1, at2, labels, cex.axis = cex.axis, tick = tick)
+
 dev.off()
