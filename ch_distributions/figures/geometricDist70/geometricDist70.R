@@ -12,7 +12,10 @@ plot(x, y,
      type = 'n',
      axes = FALSE,
      xlab = '',
+<<<<<<< HEAD
      yaxs="i",
+=======
+>>>>>>> 208bf7fffc5587c36bfda7c1eb1b54ddbbd51257
      ylab = 'Probability')
 mtext(paste('Number of Trials Until a Success for p =', p),
     line = 1.5, side = 1)
@@ -21,8 +24,13 @@ par(mgp = c(2.25, 0.5, 0))
 axis(2, seq(0, 0.6, 0.2))
 axis(2, seq(0, 0.7, 0.1), rep("", 8), tcl = -0.15)
 for (i in 1:14) {
+<<<<<<< HEAD
   rect(x[i] - 0.5, 0,
        x[i] + 0.5, y[i],
+=======
+  rect(x[i] - 0.4, 0,
+       x[i] + 0.4, y[i],
+>>>>>>> 208bf7fffc5587c36bfda7c1eb1b54ddbbd51257
        col = COL[1])
 }
 abline(h = 0)
