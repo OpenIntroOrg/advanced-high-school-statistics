@@ -34,7 +34,7 @@ url,
 
 % _____ Online Version _____ %
 \usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
-\newcommand{\versiondate}[0]{March 5th, 2019}
+\newcommand{\versiondate}[0]{March 27th, 2019}
 \newcommand{\printlocation}[0]{}
 
 % _____ Print Version _____ %
@@ -43,48 +43,59 @@ url,
 % _____ COLOR PRINT Version _____ %
 %\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref} \renewcommand{\printlocation}[0]{\noindent Printed in China. \\}
 
-\usepackage[style=authortitle-ibid, maxnames=2,natbib=true,sortcites=true,block=space,backend=bibtex]{biblatex}
+\usepackage[style=authortitle-ibid, maxnames=2,natbib=true,sortcites=true
+,block=space,backend=bibtex]{biblatex}
 \bibliography{eoce.bib}
 
 \makeindex
 \include{extraTeX/style/style}
 %\include{extraTeX/style/tablet} % This is currently busted.
-%\include{extraTeX/preamble/title}%_derivative}
+\include{extraTeX/preamble/title}%_derivative}
 \date{}
-\setcounter{tocdepth}{1}
+\renewcommand\contentsname{Table of Contents}
+\setcounter{tocdepth}{2}
+%\renewcommand{\cftchapfont}{\scshape}
+%\renewcommand{\cftsecfont}{\bfseries}
 
 \begin{document}
-\include{extraTeX/preamble/review_copy}
+%\include{extraTeX/preamble/review_copy}
 \renewcommand{\thepage}{}
 %\maketitle\addtocounter{page}{4}
-
-\include{extraTeX/preamble/copyright_draft}%_derivative}
+\maketitle
+%\include{extraTeX/preamble/copyright_draft}%_derivative}
 \renewcommand{\thepage}{\arabic{page}}
-%\tableofcontents
-%\include{extraTeX/preamble/preface}
+\tableofcontents
+\include{extraTeX/preamble/preface}
 \normalsize
-%\includechapter{1}{ch_data_collection}
-%\includechapter{2}{ch_summarizing_data}
-%\includechapter{3}{ch_probability}
-%\includechapter{4}{ch_distributions}
-\includechapter{5}{ch_inference_foundations}
+
+\begingroup
+\include{extraTeX/style/headers}
+\includechapter{1}{ch_data_collection}
+\includechapter{2}{ch_summarizing_data}
+\includechapter{3}{ch_probability}
+\includechapter{4}{ch_distributions}
+\includechapter{5}{ch_foundations_for_inf}
 \includechapter{6}{ch_inference_for_props}
 \includechapter{7}{ch_inference_for_means}
-%\includechapter{8}{ch_regr_simple_linear}
+\includechapter{8}{ch_regr_simple_linear}
+\endgroup
 
 
 \include{extraTeX/style/style_appendices}
 \appendix{}
 
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 \include{extraTeX/eoceSolutions/eoceSolutions}
-%\include{extraTeX/data/data}
+\include{extraTeX/data/data}
 \include{extraTeX/appendix/TeX/randomNumberTable}
 \include{extraTeX/appendix/TeX/zTable}
 \include{extraTeX/appendix/TeX/tTable}
 \include{extraTeX/appendix/TeX/chiSquareTable}
-\include{extraTeX/calculatorIndex/calculatorIndex}
-
 \include{extraTeX/index/index}
 \printindex
+\include{extraTeX/calculatorIndex/calculatorIndex}
+\include{extraTex/formulas/formulas}
+\include{extraTeX/inferenceGuide/TeX/inferenceGuide}
+
 
 \end{document}
