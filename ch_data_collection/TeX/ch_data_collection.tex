@@ -1,5 +1,5 @@
-\begin{chapterpage}{Introduction to data}
-  \chaptertitle{Introduction to data}
+\begin{chapterpage}{Data collection}
+  \chaptertitle{Data collection}
   \label{introductionToData}
   \label{ch_intro_to_data}
   \chaptersection{basicExampleOfStentsAndStrokes}
@@ -49,18 +49,22 @@ This chapter focuses on collecting data. We'll discuss basic properties of data,
 \label{basicExampleOfStentsAndStrokes}
 \index{data!stroke|(}
 
-\sectionintro{\Add{
+\sectionintro{
 \noindent We start with a case study and we consider the following questions:
 \begin{itemize}
 \item Does the use of stents reduce the risk of stroke?
 \item How do researchers collect data to answer this question?
 \item What do they do with the data once it is collected?
-\item How different do the results in the groups need to be before there is sufficient evidence of a real difference and not just random variation?
-\end{itemize}}
+\item
+    How different must the risk of stroke be in each group
+    before there is sufficient evidence that it's a real
+    difference and not just random variation?
+\end{itemize}
 
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Understand the four steps of a statistical investigation (identify a question, collect data, analyze data, form a conclusion) in the context of a real-world example.
  
 \item Consider the concept of statistical significance. 
@@ -83,9 +87,9 @@ The researchers who asked this question collected data on 451 at-risk patients. 
 \end{itemize}
 Researchers randomly assigned 224 patients to the treatment group and 227 to the control group. In this study, the control group provides a reference point against which we can measure the medical impact of stents in the treatment group.
 
-Researchers studied the effect of stents at two time points: 30~days after enrollment and 365~days after enrollment. The results of 5 patients are summarized in Table~\ref{stentStudyResultsDF}. Patient outcomes are recorded as ``stroke'' or ``no event'', representing whether or not the patient had a stroke at the end of a time period.
+Researchers studied the effect of stents at two time points: 30~days after enrollment and 365~days after enrollment. The results of 5 patients are summarized in Figure~\ref{stentStudyResultsDF}. Patient outcomes are recorded as ``stroke'' or ``no event'', representing whether or not the patient had a stroke at the end of a time period.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{l ccc}
 \hline
@@ -102,11 +106,11 @@ $\vdots$	&	$\vdots$	  &	$\vdots$ \\
 \caption{Results for five patients from the stent study.}
 \label{stentStudyResultsDF}
 % trmt <- c(rep('trmt', 224), rep('control', 227)); outcome30 <- c(rep(c('event', 'no_event'), c(33, 191)), rep(c('event', 'no_event'), c(13, 214))); outcome365 <- c(rep(c('event', 'no_event'), c(33, 191)), rep(c('event', 'no_event'), c(13, 214)))
-\end{table}
+\end{figure}
 
-Considering data from each patient individually would be a long, cumbersome path towards answering the original research question. Instead, performing a statistical data analysis allows us to consider all of the data at once. Table~\ref{stentStudyResults} summarizes the raw data in a more helpful way. In this table, we can quickly see what happened over the entire study. For instance, to identify the number of patients in the treatment group who had a stroke within 30 days, we look on the left-side of the table at the intersection of the treatment and stroke: 33.
+Considering data from each patient individually would be a long, cumbersome path towards answering the original research question. Instead, performing a statistical data analysis allows us to consider all of the data at once. Figure~\ref{stentStudyResults} summarizes the raw data in a more helpful way. In this table, we can quickly see what happened over the entire study. For instance, to identify the number of patients in the treatment group who had a stroke within 30 days, we look on the left-side of the table at the intersection of the treatment and stroke: 33.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{l cc c cc}
 & \multicolumn{2}{c}{0-30 days} &\hspace{5mm}\ & \multicolumn{2}{c}{0-365 days} \\
@@ -121,11 +125,12 @@ Total				& 46		& 405	&&	73	& 378 \\
 \end{tabular}
 \caption{Descriptive statistics for the stent study.}
 \label{stentStudyResults}
-\end{table}
+\end{figure}
 
 \begin{exercisewrap}
 \begin{nexercise}
-What proportion of the patients in the treatment group had no stroke within the first 30 days of the study? (Please note: answers to all Guided Practice exercises are provided using footnotes.)\footnotemark\end{nexercise}
+What proportion of the patients in the treatment group had no stroke within the first 30 days of the study? (Please note: answers to all Guided Practice exercises are provided using footnotes.)\footnotemark
+\end{nexercise}
 \end{exercisewrap}
 \footnotetext{There were 191 patients in the treatment group that had no stroke in the first 30 days. There were 33 + 191 = 224 total patients in the treatment group, so the proportion is $191 / 224 = 0.85$.}
 
@@ -160,11 +165,18 @@ While we don't yet have the statistical tools to fully address this question on 
 \section[Data basics]{Data basics }
 \label{dataBasics}
 \sectionintro{
-\noindent \Add{You collect data on dozens of questions from all of the students at your school. How would you organize this?  Effective presentation and description of data is a first step in most analyses. This section introduces one structure for organizing data as well as some terminology that will be used throughout this book. We use loan data from the Lending Club and county  data from the American Community Survey to motivate and illustrate this section's learning objectives.}
+\noindent%
+You collect data on dozens of questions from all of the students at your school.
+How would you organize all of this data?
+Effective presentation and description of data is a first step in most analyses.
+This section introduces one structure for organizing data as well as some terminology that will be used throughout this book.
+We use loan data from Lending Club and county data from the US Census Bureau to motivate and illustrate this section's learning objectives.
+
 
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Identify the individuals and the variables of a study.
  
 \item Identify variables as categorical or numerical.  Identify numerical variables as discrete or continuous.
@@ -329,9 +341,13 @@ a data matrix?\footnotemark
 \noindent The data described in Guided
 Practice~\ref{desc_county_as_data_matrix} represents the
 \data{county} data set, which is shown as a data matrix
-in Figure~\ref{countyDF}.  \Add{These data come from the American Community Survey, which is administered by the US Census Bureau.  Unlike the Decennial Census, which takes place every 10 years and attempts to collect basic demographic data from every residents of the US, the American Community Survey (ACS) is an ongoing survey that is sent to approximately 3.5 million households per year.  As stated by the ACS website, these data help communities ``plan for hospitals and schools, support school lunch programs, improve emergency services, build bridges, and inform businesses looking to add jobs and expand to new markets, and more."\footnote{\url{https://www.census.gov/programs-surveys/acs/about.html}}
-
-A small subset of the variables from the ACS are summarized in Figure~\ref{countyVariables}.}
+in Figure~\ref{countyDF}.
+These data come from the US Census, with much of
+the data coming from the US Census Bureau's American
+Community Survey (ACS).
+Unlike the Decennial Census, which takes place every 10 years and attempts to collect basic demographic data from every residents of the US, the ACS is an ongoing survey that is sent to approximately 3.5 million households per year.
+As stated by the ACS website, these data help communities ``plan for hospitals and schools, support school lunch programs, improve emergency services, build bridges, and inform businesses looking to add jobs and expand to new markets, and more."\footnote{\oiRedirect{textbook-acs}{\url{https://www.census.gov/programs-surveys/acs/about.html}}}
+A small subset of the variables from the ACS are summarized in Figure~\ref{countyVariables}.
 
 \begin{landscape}
 \begin{figure}
@@ -562,7 +578,7 @@ reasonable explanations.
 
 \begin{figure}[h]
   \centering 
-\href{\oiRedirectUrl{tableau-scatterplotschoose}}{
+\oiRedirect{tableau-scatterplotschoose}{
   \Figure{0.79}{multiunitsVsOwnership}}
   \caption{A scatterplot of homeownership versus the percent
       of units that are in multi-unit structures for US counties.
@@ -642,7 +658,7 @@ to~you.\footnotemark
 
 \begin{figure}
   \centering
-\href{\oiRedirectUrl{tableau-scatterplotschoose}}{
+\oiRedirect{tableau-scatterplotschoose}{
   \Figure{0.9}{pop_change_v_med_income}
 }
   \caption{A scatterplot showing
@@ -682,9 +698,7 @@ A pair of variables is either related in some way (associated) or not (independe
 \index{data!county|)}
 
 
-\Comment{check placement of figures}
 
-\textA{\newpage}
 %%
 \subsection*{Section summary}
 \begin{itemize}
@@ -697,20 +711,6 @@ A pair of variables is either related in some way (associated) or not (independe
 \end{itemize}
 
 
-\begin{itemize}
-\item The \term{population} is the entire group that the researchers are interested in.  Because it is usually too costly to gather the data for the entire population, researchers will collect data from a \term{sample}, representing a subset of the population.
-
-\item A \term{parameter} is a true quantity for the entire population, while a \term{statistic} is what is calculated from the sample.  A parameter is about a population and a statistic is about a sample.  Remember: \textit{p goes with p and s goes with s}.  
-
-\item Two common summary quantities are \term{mean} (for numerical variables) and \term{proportion} (for categorical variables).  
-
-\item Finding a good estimate for a population parameter requires a random sample; do not generalize from anecdotal evidence.  
-
-\item There are two primary types of data collection:  observational studies and experiments.  In an \term{experiment}, researchers impose a treatment to look for a causal relationship between the treatment and the response.  In an \term{observational study}, researchers simply collect data without imposing any treatment.
-
-\item Remember:  \textit{Correlation is not causation}!  In other words, an association between two variables does not imply that one causes the other.  Proving a causal relationship requires a well-designed experiment.
-  
-\end{itemize}
 
 %%%section exercises
 {\input{ch_data_collection/TeX/data_basics.tex}}
@@ -725,11 +725,15 @@ A pair of variables is either related in some way (associated) or not (independe
 \index{statistic|(}
 
 \sectionintro{
-\noindent \Add{How do researchers collect data?  Why are the results of some studies more reliable than others?  How a researcher collects data depends upon what the research goals are.  In this section we look at different methods of collecting data and consider the types of conclusions that can be drawn from those methods.}
+\noindent%
+How do researchers collect data?  Why are the results of some studies more reliable than others?
+The way a researcher collects data depends upon the research goals.
+In~this section, we look at different methods of collecting data and consider the types of conclusions that can be drawn from those methods.
 %%
 \subsection*{Learning objectives}
 
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Distinguish between the population and a sample and between the parameter and a statistic. 
  
 \item Know when to summarize a data set using a mean versus a proportion.
@@ -756,29 +760,37 @@ A pair of variables is either related in some way (associated) or not (independe
 \end{enumerate}
 Each research question refers to a target \term{population}. In the first question, the target population is all swordfish in the Atlantic ocean, and each fish represents a case. Often times, it is too expensive to collect data for every case in a population. Instead, a sample is taken. A \term{sample} represents a subset of the cases and is often a small fraction of the population. For instance, 60 swordfish (or some other number) in the population might be selected, and this sample data may be used to provide an estimate of the population average and answer the research question.
 
-\begin{exercisewrap}\begin{nexercise} \label{identifyingThePopulationForTwoQuestionsInPopAndSampSubsection}
+\begin{exercisewrap}
+\begin{nexercise} \label{identifyingThePopulationForTwoQuestionsInPopAndSampSubsection}
 For the second and third questions above, identify the target population and what represents an individual case.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(\ref{timeToGraduationQuestionForUCLAStudents}) Notice that this question is only relevant to students who complete their degree; the average cannot be computed using a student who never finished her degree. Thus, only Duke undergrads who have graduated in the last five years are part of the population of interest. Each such student would represent an individual case. (\ref{identifyPopulationOfStentStudy}) A person with severe heart disease represents a case. The population includes all people with severe heart disease.}
 
 We collect a sample of data to better understand the characteristics of a population. A \term{variable} is a characteristic we measure for each individual or case. The overall quantity of interest may be the mean, median, proportion, or some other summary of a population. These population values are called \termsub{parameters}{parameter}. We estimate the value of a parameter by taking a sample and computing a numerical summary called a \term{statistic} based on that sample. Note that the two p's (population, parameter) go together and the two s's (sample, statistic) go together.
 
-\begin{examplewrap}\begin{nexample}{Earlier we asked the question: what is the average mercury content in swordfish in the Atlantic Ocean? Identify the variable to be measured and the parameter and statistic of interest.}The variable is the level of mercury content in swordfish in the Atlantic Ocean. It will be measured for each individual swordfish. The parameter of interest is the average mercury content in \emph{all} swordfish in the Atlantic Ocean. If we take a sample of 50 swordfish from the Atlantic Ocean, the average mercury content among just those 50 swordfish will be the statistic.
-\end{nexample}\end{examplewrap}
+\begin{examplewrap}
+\begin{nexample}{Earlier we asked the question: what is the average mercury content in swordfish in the Atlantic Ocean? Identify the variable to be measured and the parameter and statistic of interest.}The variable is the level of mercury content in swordfish in the Atlantic Ocean. It will be measured for each individual swordfish. The parameter of interest is the average mercury content in \emph{all} swordfish in the Atlantic Ocean. If we take a sample of 50 swordfish from the Atlantic Ocean, the average mercury content among just those 50 swordfish will be the statistic.
+\end{nexample}
+\end{examplewrap}
 
 Two statistics we will study are the \term{mean} (also called the \term{average}) and \term{proportion}. When we are discussing a population, we label the mean as $\mu$ (the Greek letter, \emph{mu}), while we label the sample mean as $\bar{x}$ (read as \emph{x-bar}). When we are discussing a proportion in the context of a population, we use the label $p$, while the sample proportion has a label of $\hat{p}$ (read as \emph{p-hat}). Generally, we use $\bar{x}$ to estimate the population mean, $\mu$. Likewise, we use the sample proportion $\hat{p}$ to estimate the population proportion, $p$.
 
-%\Comment{possibly a table or figure here? }
+\begin{examplewrap}
+\begin{nexample}{Is $\mu$ a parameter or statistic? What about $\hat{p}$?}$\mu$ is a parameter because it refers to the average of the \emph{entire} population. $\hat{p}$ is a statistic because it is calculated from a sample.
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{Is $\mu$ a parameter or statistic? What about $\hat{p}$?}$\mu$ is a parameter because it refers to the average of the \emph{entire} population. $\hat{p}$ is a statistic because it is calculated from a sample.
-\end{nexample}\end{examplewrap}
-
-\begin{examplewrap}\begin{nexample}{For the second question regarding time to complete a degree for a Duke undergraduate, is the variable numerical or categorical? What is the parameter of interest?}
+\begin{examplewrap}
+\begin{nexample}{For the second question regarding time to complete a degree for a Duke undergraduate, is the variable numerical or categorical? What is the parameter of interest?}
 The characteristic that we record on each individual is the number of years until graduation, which is a numerical variable. The parameter of interest is the average time to degree for all Duke undergraduates, and we use $\mu$ to describe this quantity.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}The third question asked whether a new drug reduces deaths in patients with severe heart disease. Is the variable numerical or categorical? Describe the statistic that should be calculated in this study.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}The third question asked whether a new drug reduces deaths in patients with severe heart disease. Is the variable numerical or categorical? Describe the statistic that should be calculated in this study.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The variable is whether or not a patient with severe heart disease dies within the time frame of the study. This is categorical because it will be a yes or a no. The statistic that should be recorded is the proportion of patients that die within the time frame of the study, and we would use $\hat{p}$ to denote this quantity.}
 
 If these topics are still a bit unclear, don't worry. We'll cover them in greater detail in the next chapter.
@@ -815,8 +827,6 @@ Be careful of making inferences based on anecdotal evidence. Such evidence may b
 
 Anecdotal evidence typically is composed of unusual cases that we recall based on their striking characteristics. For instance, we may vividly remember the time when our friend bought a lottery ticket and won \$250 but forget most the times she bought one and lost. Instead of focusing on the most unusual cases, we should examine a representative sample of many cases.
 
-
-\textA{\pagebreak}
 
 %%
 \subsection{Explanatory and response variables}
@@ -879,13 +889,32 @@ Researchers perform an \term{observational study} when they collect data without
 
 When researchers want to investigate the possibility of a causal connection, they conduct an \term{experiment}. For all experiments, the researchers must impose a treatment. For most studies there will be both an explanatory and a response variable. For instance, we may suspect administering a drug will reduce mortality in heart attack patients over the following year. To check if there really is a causal connection between the explanatory variable and the response, researchers will collect a sample of individuals and split them into groups. The individuals in each group are \emph{assigned} a treatment. When individuals are randomly assigned to a group, the experiment is called a \term{randomized experiment}. For example, each heart attack patient in the drug trial could be randomly assigned into one of two groups: the first group receives a \term{placebo} (fake treatment) and the second group receives the drug. See the case study in Section~\ref{basicExampleOfStentsAndStrokes} for another example of an experiment, though that study did not employ a placebo.
 
-\begin{examplewrap}\begin{nexample}{Suppose that a researcher is interested in the average tip customers at a particular restaurant give. Should she carry out an observational study or an experiment?}
+\begin{examplewrap}
+\begin{nexample}{Suppose that a researcher is interested in the average tip customers at a particular restaurant give. Should she carry out an observational study or an experiment?}
 In addressing this question, we ask, ``Will the researcher be imposing any treatment?"  Because there is no treatment or interference that would be applicable here, it will be an observational study. Additionally, one consideration the researcher should be aware of is that, if customers know their tips are being recorded, it could change their behavior, making the results of the study inaccurate.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{onebox}{Association $\neq$ causation}
 In general, association does not imply causation, and causation can only be inferred from a randomized experiment.
 \end{onebox}
+
+%%
+\subsection*{Section summary}
+\begin{itemize}
+\item The \term{population} is the entire group that the researchers are interested in.  Because it is usually too costly to gather the data for the entire population, researchers will collect data from a \term{sample}, representing a subset of the population.
+
+\item A \term{parameter} is a true quantity for the entire population, while a \term{statistic} is what is calculated from the sample.  A parameter is about a population and a statistic is about a sample.  Remember: \textit{p goes with p and s goes with s}.  
+
+\item Two common summary quantities are \term{mean} (for numerical variables) and \term{proportion} (for categorical variables).  
+
+\item Finding a good estimate for a population parameter requires a random sample; do not generalize from anecdotal evidence.  
+
+\item There are two primary types of data collection:  observational studies and experiments.  In an \term{experiment}, researchers impose a treatment to look for a causal relationship between the treatment and the response.  In an \term{observational study}, researchers simply collect data without imposing any treatment.
+
+\item Remember:  \textit{Correlation is not causation}!  In other words, an association between two variables does not imply that one causes the other.  Proving a causal relationship requires a well-designed experiment.
+  
+\end{itemize}
 
 %%%section exercises
 {\input{ch_data_collection/TeX/overview_of_data_collection_principles.tex}}
@@ -897,21 +926,31 @@ In general, association does not imply causation, and causation can only be infe
 \section[Observational studies and sampling strategies]{Observational studies and sampling strategies}
 \label{section_obs_data_sampling}
 
-\Comment{ padding}
-
 \sectionintro{
-\noindent \Add{You have probably read or heard of many studies and polls that make claims.  A background in statistical reasoning will help you assess the validity of such claims.  Some of the big questions we address in this section include:
+\noindent%
+You have probably read or heard claims from many studies and polls.
+A~background in statistical reasoning will help you assess the validity of such claims.
+Some of the big questions we address in this section include:
 
 \begin{itemize}
-\item When a study finds a relationship between two variables, such as eating chocolate and positive health outcomes, can we draw a causal conclusion?  
+\setlength{\itemsep}{0mm}
+\item
+    If a study finds a relationship between two variables,
+    such as eating chocolate and positive health outcomes,
+    is it reasonable to conclude eating chocolate improves
+    health outcomes?
 
-\item How do opinion polls work?  How do research organizations collect the data and what types of bias should we look out for?  
-\end{itemize}}
+\item
+    How do opinion polls work?
+    How do research organizations collect the data,
+    and what types of bias should we look out for?  
+\end{itemize}
 
 %%
 \subsection*{Learning objectives}
 
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Identify possible confounding factors in a study and explain, in context, how they could confound.
  
 \item Distinguish among and describe a convenience sample, a volunteer sample, and a random sample.
@@ -935,9 +974,11 @@ Generally, data in observational studies are collected only by monitoring what o
 
 Making causal conclusions based on experiments is often reasonable. However, making the same causal conclusions based on observational data is treacherous and is not recommended. Observational studies are generally only sufficient to show associations.
 
-\begin{exercisewrap}\begin{nexercise} \label{sunscreenLurkingExample}
+\begin{exercisewrap}
+\begin{nexercise} \label{sunscreenLurkingExample}
 Suppose an observational study tracked sunscreen use and skin cancer, and it was found people who use sunscreen are more likely to get skin cancer than people who do not use sunscreen. Does this mean sunscreen \emph{causes} skin cancer?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{No. See the paragraph following the exercise for an explanation.}
 
 Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer. One important piece of information that is absent is sun exposure. Sun exposure is what is called a \term{confounding variable} (also called a \term{lurking variable}, \term{confounding factor}, or a \term{confounder}).
@@ -957,22 +998,28 @@ A confounding variable is a variable that is associated with both the explanator
 
 Sun exposure is a confounding factor because it is associated with both the use of sunscreen and the development of skin cancer. People who are out in the sun all day are more likely to use sunscreen, and people who are out in the sun all day are more likely to get skin cancer. Research shows us the development of skin cancer is due to the sun exposure. The variables of sunscreen usage and sun exposure are \term{confounded}, and without this research, we would have no way of knowing which one was the true cause of skin cancer.
 
-\begin{examplewrap}\begin{nexample}{In a study that followed 1,169 non-diabetic men and women who had been hospitalized for a first heart attack, the people that reported eating chocolate had increased survival rate over the next 8 years than those that reported not eating chocolate.\footnotemark\, Also, those who ate more chocolate also tended to live longer on average. The researched controlled for several confounding factors, such as age, physical activity, smoking, and many other factors. Can we conclude that the consumption of chocolate caused the people to live longer?} \label{confounding_2008_chocolate_health_study}
+\begin{examplewrap}
+\begin{nexample}{In a study that followed 1,169 non-diabetic men and women who had been hospitalized for a first heart attack, the people that reported eating chocolate had increased survival rate over the next 8 years than those that reported not eating chocolate.\footnotemark\, Also, those who ate more chocolate also tended to live longer on average. The researched controlled for several confounding factors, such as age, physical activity, smoking, and many other factors. Can we conclude that the consumption of chocolate caused the people to live longer?} \label{confounding_2008_chocolate_health_study}
 This is an observational study, not a controlled randomized experiment. Even though the researchers controlled for many possible variables, there may still be other confounding factors. (Can you think of any that weren't mentioned?) While it is possible that the chocolate had an effect, this study cannot prove that chocolate increased the survival rate of patients.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 \footnotetext{Janszky et al. 2009. \oiRedirect{textbook-2008_chocolate_health_study}{Chocolate consumption and mortality following a first acute myocardial infarction: the Stockholm Heart Epidemiology Program}. Journal of Internal Medicine 266:3, p248-257.} 
 
-\begin{examplewrap}\begin{nexample}{The authors who conducted the study did warn in the article that additional studies would be necessary to determine whether the correlation between chocolate consumption and survival translates to any causal relationship. That is, they acknowledged that there may be confounding factors. One possible confounding factor not considered was mental health. In context, explain what it would mean for mental health to be a confounding factor in this study.}
+\begin{examplewrap}
+\begin{nexample}{The authors who conducted the study did warn in the article that additional studies would be necessary to determine whether the correlation between chocolate consumption and survival translates to any causal relationship. That is, they acknowledged that there may be confounding factors. One possible confounding factor not considered was mental health. In context, explain what it would mean for mental health to be a confounding factor in this study.}
 Mental health would be a confounding factor if, for example, people with better mental health tended to eat more chocolate, and those with better mental health \emph{also} were less likely to die within the 8 year study period. Notice that if better mental health were not associated with eating more chocolate, it would not be considered a confounding factor since it wouldn't explain the observed associated between eating chocolate and having a better survival rate. If better mental health were associated only with eating chocolate and not with a better survival rate, then it would also not be confounding for the same reason. Only if a variable that is associated with both the explanatory variable of interest (chocolate) and the outcome variable in the study (survival during the 8 year study period) can it be considered a confounding factor.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 While one method to justify making causal conclusions from observational studies is to exhaust the search for confounding variables, there is no guarantee that all confounding variables can be examined or measured.
 
 In the same way, the \data{county} data set is an observational study with confounding variables, and its data cannot be used to make causal conclusions.
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Figure~\ref{multiunitsVsOwnership} shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county. However, it is unreasonable to conclude that there is a causal relationship between the two variables. Suggest one or more other variables that might explain the relationship visible in Figure~\ref{multiunitsVsOwnership}.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Answers will vary. Population density may be important. If a county is very dense, then this may require a larger fraction of residents to live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.}
 
 Observational studies come in two forms: prospective and retrospective studies. A \term{prospective study} identifies individuals and collects information as events unfold. For instance, medical researchers may identify and follow a group of similar individuals over many years to assess the possible influences of behavior on cancer risk. One example of such a study is The Nurses' Health Study, started in 1976 and expanded in 1989.\footnote{\oiRedirect{textbook-channing_nurse_study}{www.channing.harvard.edu/nhs}} This prospective study recruits registered nurses and then collects data from them using questionnaires. \termsub{Retrospective studies}{retrospective studies} collect data after events have taken place, e.g. researchers may review past events in medical records. Some data sets, such as \data{county}, may contain both prospectively- and retrospectively-collected variables. Local governments prospectively collect some variables as events unfolded (e.g. retails sales) while the federal government retrospectively collected others during the 2010 census (e.g. county population counts).
@@ -994,9 +1041,11 @@ We might try to estimate the time to graduation for Duke undergraduates in the l
 
 Why pick a sample randomly? Why not just pick a sample by hand? Consider the following scenario.
 
-\begin{examplewrap}\begin{nexample}{Suppose we ask a student who happens to be majoring in nutrition to select several graduates for the study. What kind of students do you think she might select? Do you think her sample would be representative of all graduates?}
+\begin{examplewrap}
+\begin{nexample}{Suppose we ask a student who happens to be majoring in nutrition to select several graduates for the study. What kind of students do you think she might select? Do you think her sample would be representative of all graduates?}
 Perhaps she would pick a disproportionate number of graduates from health-related fields. Or perhaps her selection would be well-representative of the population. When selecting samples by hand, we run the risk of picking a \emph{biased} sample, even if that bias is unintentional or difficult to discern.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{figure}
 \centering
@@ -1020,18 +1069,22 @@ A common downfall is a \term{convenience sample}\index{sample!convenience sample
 
 Similarly, a \term{volunteer sample} is one in which people's responses are solicited and those who choose to participate, respond. This is a problem because those who choose to participate may tend to have different opinions than the rest of the population, resulting in a biased sample.
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 We can easily access ratings for products, sellers, and companies through websites. These ratings are based only on those people who go out of their way to provide a rating. If 50\% of online reviews for a product are negative, do you think this means that 50\% of buyers are dissatisfied with the product?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Answers will vary. From our own anecdotal experiences, we believe people tend to rant more about products that fell below expectations than rave about those that perform as expected. For this reason, we suspect there is a negative bias in product ratings on sites like Amazon. However, since our experiences may not be representative, we also keep an open mind.}
 
 The act of taking a random sample helps minimize bias; however, bias can crop up in other ways. Even when people are picked at random, e.g. for surveys, caution must be exercised if the \term{non-response} \index{sample!non-response|textbf} is high. For instance, if only 30\% of the people randomly sampled for a survey actually respond, then it is unclear whether the results are \term{representative} of the entire population. This \term{non-response bias} \index{sample!non-response bias|textbf} can skew results.
 
 Even if a sample has no selection bias and no non-response bias, there is an additional type of bias that often crops up and undermines the validity of results, known as response bias. \termsub{Response bias}{response bias} refers to a broad range of factors that influence how a person responds, such as question wording, question order, and influence of the interviewer. This type of bias can be present even when we collect data from an entire population in what is called a \term{census}. Because response bias is often subtle, one must pay careful attention to how questions were asked when attempting to draw conclusions from the data.
 
-\begin{examplewrap}\begin{nexample}{Suppose a high school student wants to investigate the student body's opinions on the food in the cafeteria. Let's assume that she manages to survey every student in the school. How might response bias arise in this context?}
+\begin{examplewrap}
+\begin{nexample}{Suppose a high school student wants to investigate the student body's opinions on the food in the cafeteria. Let's assume that she manages to survey every student in the school. How might response bias arise in this context?}
 There are many possible correct answers to this question. For example, students might respond differently depending upon who asks the question, such as a school friend or someone who works in the cafeteria. The wording of the question could introduce response bias. Students would likely respond differently if asked ``Do you like the food in the cafeteria?" versus ``The food in the cafeteria is pretty bad, don't you think?"
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{onebox}{Watch out for bias}
 Selection bias, non-response bias, and response bias can still exist within a random sample. Always determine how a sample was chosen, ask what proportion of people failed to respond, and critically examine the wording of the questions.
@@ -1039,11 +1092,11 @@ Selection bias, non-response bias, and response bias can still exist within a ra
 
 When there is no bias in a sample, increasing the sample size tends to increase the precision and reliability of the estimate. When a sample is biased, it may be impossible to decipher helpful information from the data, even if the sample is very large.
 
-\textA{\pagebreak}
-
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 A researcher sends out questionnaires to 50 randomly selected households in a particular town asking whether or not they support the addition of a traffic light in their neighborhood. Because only 20\% of the questionnaires are returned, she decides to mail questionnaires to 50 more randomly selected households in the same neighborhood. Comment on the usefulness of this approach.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The researcher should be concerned about non-response bias, and sampling more people will not eliminate this issue. The same type of people that did not respond to the first survey are likely not going to respond to the second survey. Instead, she should make an effort to reach out to the households from the original sample that did not respond and solicit their feedback, possibly by going door-to-door.}
 
 
@@ -1080,9 +1133,11 @@ The statistical methods in this book focus on data collected using simple random
 
 Though less common than simple random sampling, \termsub{systematic sampling}{sample!systematic sampling} is sometimes used when there exists a convenient list of all of the individuals of the population. Suppose we have a roster with the names of all the MLB players from the 2019 season. To take a systematic random sample, number them from 1 to 750. Select one random number between 1 and 750 and let that player be the first individual in the sample. Then, depending on the desired sample size, select every 10th number or 20th number, for example, to arrive at the sample.\footnote{If we want a sample of size \textit{n} = 150, it would make sense to select every 5th player since \mbox{$750/150 = 5$.} Suppose we randomly select the number 741. Then player 741, 746, 1, 6, 11, $\cdots$ , 731, and 736 would make up the sample.} If there are no patterns in the salaries based on the numbering then this could be a reasonable method.
 
-\begin{examplewrap}\begin{nexample}{A systematic sample is not the same as a simple random sample. Provide an example of a sample that can come from a simple random sample but not from a systematic random sample.}
+\begin{examplewrap}
+\begin{nexample}{A systematic sample is not the same as a simple random sample. Provide an example of a sample that can come from a simple random sample but not from a systematic random sample.}
 Answers can vary. If we take a sample of size 3, then it is possible that we could sample players numbered 1, 2, and 3 in a simple random sample. Such a sample would be impossible from a systematic sample. Property~2 of simple random samples does not hold for other types of random samples.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{figure}
 \centering
@@ -1093,15 +1148,19 @@ Answers can vary. If we take a sample of size 3, then it is possible that we cou
 
 Sometimes there is a variable that is known to be associated with the quantity we want to estimate. In this case, a stratified random sample might be selected. \termsub{Stratified sampling}{sample!stratified sampling} is a divide-and-conquer sampling strategy. The population is divided into groups called \term{strata}\index{sample!strata|textbf}. The strata are chosen so that similar cases are grouped together and a sampling method, usually simple random sampling, is employed to select a certain number or a certain proportion of the whole within each stratum. In the baseball salary example, the 30 teams could represent the strata; some teams have a lot more money (we're looking at you, Yankees).
 
-\begin{examplewrap}\begin{nexample}{For this baseball example, briefly explain how to select a stratified random sample of size \textit{n} = 120. }
+\begin{examplewrap}
+\begin{nexample}{For this baseball example, briefly explain how to select a stratified random sample of size \textit{n} = 120. }
 Each team can serve as a stratum, and we could take a simple random sample of 4 players from each of the 30 teams, yielding a sample of 120 players.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 Stratified sampling is inherently different than simple random sampling. For example, the stratified sampling approach described would make it impossible for the entire Yankees team to be included in the sample.
 
-\begin{examplewrap}\begin{nexample}{Stratified sampling is especially useful when the cases in each stratum are very similar \emph{with respect to the outcome of interest}. Why is it good for cases within each stratum to be very similar?}
+\begin{examplewrap}
+\begin{nexample}{Stratified sampling is especially useful when the cases in each stratum are very similar \emph{with respect to the outcome of interest}. Why is it good for cases within each stratum to be very similar?}
 We should get a more stable estimate for the subpopulation in a stratum if the cases are very similar. These improved estimates for each subpopulation will help us build a reliable estimate for the full population. For example, in a simple random sample, it is possible that just by random chance we could end up with proportionally too many Yankees players in our sample, thus overestimating the true average salary of all MLB players. A stratified random sample can assure proportional representation from each team.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 Next, let's consider a sampling technique that randomly selects groups of people. \termsub{Cluster sampling}{sample!cluster sampling} is much like simple random sampling, but instead of randomly selecting \emph{individuals}, we randomly select groups or \term{clusters}. Unlike stratified sampling, cluster sampling is most helpful when there is a lot of case-to-case variability within a cluster but the clusters themselves don't look very different from one another. That~is, we expect strata to be self-similar (\hiddenterm{homogeneous}), while we expect clusters to be diverse (\hiddenterm{heterogeneous}).
 
@@ -1111,13 +1170,17 @@ Sometimes cluster sampling can be a more economical random sampling technique th
 
 It is also possible to have more than two steps in multistage sampling. Each cluster may be naturally divided into subclusters. For example, each neighborhood could be divided into streets. To take a three-stage sample, we could first select some number of clusters (neighborhoods), and then, within the selected clusters, select some number of subclusters (streets). Finally, we could select some number of individuals from each of the selected streets.
 
-\begin{examplewrap}\begin{nexample}{Suppose we are interested in estimating the proportion of students at a certain school that have part-time jobs. It is believed that older students are more likely to work than younger students. What sampling method should be employed? Describe how to collect such a sample to get a sample size of 60.}
+\begin{examplewrap}
+\begin{nexample}{Suppose we are interested in estimating the proportion of students at a certain school that have part-time jobs. It is believed that older students are more likely to work than younger students. What sampling method should be employed? Describe how to collect such a sample to get a sample size of 60.}
 Because grade level affects the likelihood of having a part-time job, we should take a stratified random sample. To do this, we can take a simple random sample of 15 students from each grade. This will give us equal representation from each grade. Note: in a simple random sample, just by random chance we might get too many students who are older or younger, which could make the estimate too high or too low. Also, there are no well-defined clusters in this example. We~wouldn't want to use the grades as clusters and sample everyone from a couple of the grades. This would create too large a sample and would not give us the nice representation from each grade afforded by the stratified random sample.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{Suppose we are interested in estimating the malaria rate in a densely tropical portion of rural Indonesia. We learn that there are 30 villages in that part of the Indonesian jungle, each more or less similar to the next. Our goal is to test 150 individuals for malaria. What sampling method should be employed?}
+\begin{examplewrap}
+\begin{nexample}{Suppose we are interested in estimating the malaria rate in a densely tropical portion of rural Indonesia. We learn that there are 30 villages in that part of the Indonesian jungle, each more or less similar to the next. Our goal is to test 150 individuals for malaria. What sampling method should be employed?}
 A simple random sample would likely draw individuals from all 30 villages, which could make data collection extremely expensive. Stratified sampling would be a challenge since it is unclear how we would build strata of similar individuals. However, multistage cluster sampling seems like a very good idea. First, we might randomly select half the villages, then randomly select 10 people from each. This would probably reduce our data collection costs substantially in comparison to a simple random sample and would still give us reliable information.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{onebox}{Advanced sampling techniques require advanced methods}
 {The methods of inference covered in this book generally only apply to simple random samples. More advanced analysis techniques are required for systematic, stratified, cluster, and multistage random sampling.}
@@ -1154,10 +1217,18 @@ A simple random sample would likely draw individuals from all 30 villages, which
 \section[Experiments]{Experiments }
 \label{experimentsSection}
 \sectionintro{
-\noindent \Add{You would like to determine if drinking a cup of tea each morning will cause students to perform better on tests.  What are different ways you could design an experiment to address this question?  What are possible sources of bias and how would you try to minimize them?   Ultimately, the goal of an experiment is to be able to draw a causal conclusion about the effect of a treatment - in this case, drinking tea.  If the design is poor, a causal conclusion cannot be drawn, even if you do observe an association between drinking tea and performing better on tests. This is why it is crucial to start with a well-designed experiment. }
+\noindent%
+You would like to determine if drinking a cup of tea each morning will cause students to perform better on tests.
+What are different ways you could design an experiment to answer this question?
+What are possible sources of bias, and how would you try to minimize them?
+The goal of an experiment is to be able to draw a causal conclusion about the effect of a treatment -- in this case, drinking tea.
+If the design is poor, a causal conclusion cannot be drawn, even if you observe an association between drinking tea and performing better on tests.
+This is why it is crucial to start with a well-designed experiment.
+
 
 \subsection*{Learning objectives}
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Identify the subjects/experimental units, treatments, and response variable in an experiment. 
  
 \item Identify the three main principles of experiment design and explain their purpose: direct control, randomization, and replication.
@@ -1194,9 +1265,11 @@ Researchers aren't usually interested in the emotional effect, which might bias 
 The patients are not the only ones who should be blinded: doctors and researchers can accidentally bias a study. When a doctor knows a patient has been given the real treatment, she might inadvertently give that patient more attention or care than a patient that she knows is on the placebo. To guard against this bias, which again has been found to have a measurable effect in some instances, most modern studies employ a \term{double-blind} setup where researchers who interact with subjects and are responsible for measuring the response variable are, just like the subjects, unaware of who is or is not receiving the treatment.\footnote{There are always some researchers involved in the study who do know which patients are receiving which treatment. However, they do not interact with the study's patients and do not tell the blinded health care professionals who is receiving which treatment.}
 
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Look back to the study in Section~\ref{basicExampleOfStentsAndStrokes} where researchers were testing whether stents were effective at reducing strokes in at-risk patients. Is this an experiment? Was the study blinded? Was it double-blinded?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The researchers assigned the patients into their treatment groups, so this study was an experiment. However, the patients could distinguish what treatment they received, so this study was not blind. The study could not be double-blind since it was not blind.}
 
 %%
@@ -1241,25 +1314,29 @@ While it might be ideal for the subjects to be a random sample of the population
 
 Researchers sometimes know or suspect that another variable, other than the treatment, influences the response. Under these circumstances, they may carry out a \term{blocked experiment}. In this design, they first group individuals into \term{blocks} based on the identified variable and then randomize subjects within each block to the treatment groups. This strategy is referred to as \term{blocking}. For instance, if we are looking at the effect of a drug on heart attacks, we might first split patients in the study into low-risk and high-risk blocks. Then we can randomly assign half the patients from each block to the control group and the other half to the treatment group, as shown in Figure~\ref{figureShowingBlocking}. At the end of the experiment, we would incorporate this blocking into the analysis. By blocking by risk of patient, we control for this possible confounding factor. Additionally, by randomizing subjects to treatments within each block, we attempt to even out the effect of variables that we cannot block or directly control.
 
-\begin{examplewrap}\begin{nexample}{An experiment will be conducted to compare the effectiveness of two methods for quitting smoking. Identify a variable that the researcher might wish to use for blocking and describe how she would carry out a blocked experiment.}
+\begin{examplewrap}
+\begin{nexample}{An experiment will be conducted to compare the effectiveness of two methods for quitting smoking. Identify a variable that the researcher might wish to use for blocking and describe how she would carry out a blocked experiment.}
 The researcher should choose the variable that is most likely to influence the response variable - whether or not a smoker will quit. A reasonable variable, therefore, would be the number of years that the smoker has been smoking. The subjects could be separated into three blocks based on number of years of smoking and each block randomly divided into the two treatment groups.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 Even in a blocked experiment with randomization, other variables that affect the response can be distributed unevenly among the treatment groups, thus biasing the experiment in one direction. A third type of design, known as \term{matched pairs} addresses this problem. In a matched pairs experiment, pairs of people are matched on as many variables as possible, so that the comparison happens between very similar cases. This is actually a special type of blocked experiment, where the blocks are of size two.
 
-%\Comment{TODO(David), maybe add a graphic here for matched pairs that shows two columns of numbers with a footnote that says the subjects are compared pairwise, rather than first aggregating the results of each group and then comparing.}
-
 An alternate form of matched pairs involves each subject receiving \emph{both} treatments. Randomization can be incorporated by randomly selecting half the subjects to receive treatment 1 first, followed by treatment 2, while the other half receives treatment 2 first, followed by treatment.
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 How and why should randomization be incorporated into a matched pairs design?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Assume that all subjects received treatment 1 first, followed by treatment 2. If the variable being measured happens to increase naturally over the course of time, it would appear as though treatment 2 had a greater effect than it really did.} 
 
 %\Add{This type of matched pairs design is optimal, because it allows us to compare each subject to herself, rather than comparing a group of subjects to a separate group of subjects. By doing this, we control for the inherent variability in response from person to person.} % This is not necessarily true: treatments can interact in unexpected ways, even if given over long periods of time. Even in the lotion example, handedness might be more important in some situations, e.g. if looking at how much lotion rubs off. Careful matched individuals might be a better design in that situation.
 
-\begin{exercisewrap}\begin{nexercise}
-Matched pairs sometimes involves each subject receiving both treatments at the same time. For example, if a hand lotion was being tested, half of the subjects could be randomly assigned to put Lotion A on the left hand and Lotion B on the right hand, while the other half of the subjects would put Lotion B on the left hand and Lotion A on the right hand. Why would this be a better design than a completely randomized experiment in which half of the subjects put Lotion A on both hands and the other half put Lotion B on both hands?\footnotemark\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}
+Matched pairs sometimes involves each subject receiving both treatments at the same time. For example, if a hand lotion was being tested, half of the subjects could be randomly assigned to put Lotion A on the left hand and Lotion B on the right hand, while the other half of the subjects would put Lotion B on the left hand and Lotion A on the right hand. Why would this be a better design than a completely randomized experiment in which half of the subjects put Lotion A on both hands and the other half put Lotion B on both hands?\footnotemark\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The dryness of people's skins varies from person to person, but probably less so from one person's right hand to left hand. With the matched pairs design, we are able control for this variability by comparing each person's right hand to her left hand, rather than comparing some people's hands to other people's hands (as you would in a completely randomized experiment).} % In a completely randomized experiment, it is possible that one group, just by chance, could have more people with especially dry skin, thus biasing the results against the lotion that they used.} % Cutting for brevity.
 
 Because it is essential to identify the type of data collection method used when choosing an appropriate inference procedure, we will revisit sampling techniques and experiment design in the subsequent chapters on inference.
@@ -1272,15 +1349,15 @@ Because it is essential to identify the type of data collection method used when
 %%
 \subsection{Testing more than one variable at a time}
 
-%\Comment{a don't think factorial experiment needs to be a term since they do not need no that term, just be able to identify how many factors a experiment has. can rewrite to say, "Instead, we want to do an experiment in which"}
-
 Some experiments study more than one factor (explanatory variable) at a time, and each of these factors may have two or more levels (possible values). For example, suppose a researcher plans to investigate how the type and volume of music affect a person's performance on a particular video game. Because these two factors, \var{type} and \var{volume}, could interact in interesting ways, we do not want to test one factor at a time. %
 %Instead, we want to do a \term{factorial experiment} in which 
 Instead, we want to do an experiment in which
 we test all the \emph{combinations} of the factors. Let's say that \var{volume} has two levels (soft and loud) and that \var{type} has three levels (dance, classical, and punk). Then, we would want to carry out the experiment at each of the six (2 x 3 = 6) combinations: soft dance, soft classical, soft punk, loud dance, loud classical, loud punk. Each of the these combinations is a \term{treatment}. Therefore, this experiment will have 2 factors and 6 treatments. In order to replicate each treatment 10 times, one would need to play the game 60 times.
 
-\begin{exercisewrap}\begin{nexercise}A researcher wants to compare the effectiveness of four different drugs. She also wants to test each of the drugs at two doses: low and high. Describe the factors, levels, and treatments of this experiment.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}A researcher wants to compare the effectiveness of four different drugs. She also wants to test each of the drugs at two doses: low and high. Describe the factors, levels, and treatments of this experiment.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{There are two factors: type of drug, which has four levels, and dose, which has 2 levels. There will be 4 x 2 = 8 treatments: drug 1 at low dose, drug 1 at high dose, drug 2 at low dose, and so on.}
 
 As the number of factors and levels increases, the number of treatments become large and the analysis of the resulting data becomes more complex, requiring the use of advanced statistical methods. We will investigate only one factor at a time in this book.
@@ -1324,9 +1401,13 @@ As the number of factors and levels increases, the number of treatments become l
 \item Researchers take a \term{random sample} in order to draw an \term{inference} to the larger population from which they sampled.  When examining observational data, even if the individuals were randomly sampled, a correlation does not imply a causal link.  
 \item In an \term{experiment}, researchers impose a treatment and use \term{random assignment} in order to draw \term{causal conclusions} about the effects of the treatment.  While often implied, inferences to a larger population may not be valid if the subjects were not also \textit{randomly sampled} from that population.
 
-\end{itemize}Related to this are some important distinctions regarding terminology.  The terms stratifying and blocking cannot be used interchangeably.  Likewise, taking a simple random sample is different than randomly assigning individuals to treatment groups.  
+\end{itemize}
+Related to this are some important distinctions regarding terminology.  The terms stratifying and blocking cannot be used interchangeably.  Likewise, taking a simple random sample is different than randomly assigning individuals to treatment groups.  
 \begin{itemize}
 \item \textbf{\term{Stratifying} vs \term{Blocking}}.  Stratifying is used when sampling, where the purpose is to \emph{sample} a subgroup from each stratum in order to arrive at a better \textit{estimate} for the parameter of interest.  Blocking is used in an experiment to \emph{separate} subjects into blocks and then \emph{compare} responses within those blocks.  All subjects in a block are used in the experiment, not just a sample of them.
-\item \textbf{\term{Random sampling} vs \term{Random assignment}}.  Random sampling refers to sampling a subset of a population for the purpose of inference to that population.  Random assignment is used in an experiment to separate subjects into groups for the purpose of comparison between those groups.  \end{itemize}  When randomization is not employed, as in an \term{observational study}, neither inferences nor causal conclusions can be drawn.  Always be mindful of possible \term{confounding factors} when interpreting the results of observation studies.
+\item \textbf{\term{Random sampling} vs \term{Random assignment}}.  Random sampling refers to sampling a subset of a population for the purpose of inference to that population.  Random assignment is used in an experiment to separate subjects into groups for the purpose of comparison between those groups.  
+\end{itemize}  
+When randomization is not employed, as in an \term{observational study}, neither inferences nor causal conclusions can be drawn.  Always be mindful of possible \term{confounding factors} when interpreting the results of observation studies.
+
 
 

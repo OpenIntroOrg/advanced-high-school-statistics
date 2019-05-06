@@ -29,19 +29,24 @@ Each section in Chapter~\ref{inferenceForNumericalData} explores a new situation
 
 
 \sectionintro{
-\Add{
-\noindent In this section we turn our attention to numerical variables and we answer questions such as the following:  
+\noindent%
+In this section, we turn our attention to numerical variables and answer questions such as the following:  
 \begin{itemize}
 \item How well  can we estimate the mean income of people in a certain city, county, or state?
 \item What is the average mercury content in various types of fish?
 \item Are people's run times getting faster or slower, on average?
 \item How does the sample size affect the expected error in our estimates?
-\item When does the point estimate follow a normal distribution, and when will we need to use a new distribution, known as the $t$-distribution?
+\item
+    When is it reasonable to model the sample mean $\bar{x}$
+    using a normal distribution, and when will we need to use
+    a new distribution, known as the $t$-distribution?
 \end{itemize}
-}
+
+
 %%
 \subsection*{Learning objectives}
-\begin {enumerate}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Understand the relationship between a $t$-distribution and a normal distribution, and explain why we use a $t$-distribution for inference on a mean.
 
 \item State and verify whether or not the conditions for inference for a mean based on the $t$-distribution are met.  Understand when it is necessary to look at the distribution of the sample data.
@@ -106,7 +111,7 @@ The $t$-distribution, always centered at zero, has a single parameter: degrees o
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.83\textwidth]{ch_inference_for_means/figures/tDistConvergeToNormalDist/tDistConvergeToNormalDist}
-\caption{The larger the degrees of freedom, the more closely the $t$-distribution resembles the standard normal distribution.\textA{\vspace{-3mm}}}
+\caption{The larger the degrees of freedom, the more closely the $t$-distribution resembles the standard normal distribution.}
 \label{tDistConvergeToNormalDist}
 \end{figure}
 
@@ -116,9 +121,9 @@ The degrees of freedom describes the shape of the $t$-distribution. The larger t
 When the degrees of freedom is large, about 30 or more, the $t$-distribution is nearly indistinguishable from the normal distribution. In Section~\ref{tDistSolutionToSEProblem}, we will see how degrees of freedom relates to sample size.
 
 We will find it useful to become familiar with the $t$-distribution, because it plays a very similar role to the normal distribution during inference.  We use a \termsub{$\pmb{t}$-table}
-    {t-table@$t$-table}, partially shown in Table~\ref{tTableSample_ch_inf_means}, in place of the normal probability table when the population standard deviation is unknown, especially when the sample size is small. A~larger table is presented in Appendix~\ref{tDistributionTable}.
+    {t-table@$t$-table}, partially shown in Figure~\ref{tTableSample_ch_inf_means}, in place of the normal probability table when the population standard deviation is unknown, especially when the sample size is small. A~larger table is presented in Appendix~\ref{tDistributionTable}.
 
-\begin{table}[hht]
+\begin{figure}[hht]
 \centering
 \begin{tabular}{r | rrr rr}
 one tail & \hspace{1.5mm}  0.100 & \hspace{1.5mm} 0.050 & \hspace{1.5mm} 0.025 & \hspace{1.5mm} 0.010 & \hspace{1.5mm} 0.005  \\
@@ -140,14 +145,16 @@ Confidence level C  &  {\normalsize  80\%} & {\normalsize 90\%} & {\normalsize 9
 \end{tabular}
 \caption{An abbreviated look at the $t$-table. Each row represents a different $t$-distribution. The columns describe the cutoffs for specific tail areas. The row with $df=18$ has been \highlightO{highlighted}.}
 \label{tTableSample_ch_inf_means}
-\end{table}
+\end{figure}
 
-Each row in the $t$-table represents a $t$-distribution with different degrees of freedom. The columns correspond to tail probabilities. For instance, if we know we are working with the $t$-distribution with $df=18$, we can examine row 18, which is \highlightO{highlighted} in Table~\ref{tTableSample_ch_inf_means}. If we want the value in this row that identifies the cutoff for an upper tail of 10\%, we can look in the column where \emph{one tail} is 0.100. This cutoff is 1.33. If we had wanted the cutoff for the lower 10\%, we would use -1.33. Just like the normal distribution, all $t$-distributions are symmetric.
+Each row in the $t$-table represents a $t$-distribution with different degrees of freedom. The columns correspond to tail probabilities. For instance, if we know we are working with the $t$-distribution with $df=18$, we can examine row 18, which is \highlightO{highlighted} in Figure~\ref{tTableSample_ch_inf_means}. If we want the value in this row that identifies the cutoff for an upper tail of 10\%, we can look in the column where \emph{one tail} is 0.100. This cutoff is 1.33. If we had wanted the cutoff for the lower 10\%, we would use -1.33. Just like the normal distribution, all $t$-distributions are symmetric.
 
 
-\begin{examplewrap}\begin{nexample}{What proportion of the $t$-distribution with 18 degrees of freedom falls below -2.10?}
+\begin{examplewrap}
+\begin{nexample}{What proportion of the $t$-distribution with 18 degrees of freedom falls below -2.10?}
 Just like a normal probability problem, we first draw a picture as shown in Figure~\ref{tDistDF18LeftTail2Point10} and shade the area below -2.10. To find this area, we identify the appropriate row: $df=18$. Then we identify the column containing the absolute value of -2.10; it is the third column. Because we are looking for just one tail, we examine the top line of the table, which shows that a one tail area for a value in the third row corresponds to 0.025. That is, 2.5\% of the distribution falls below -2.10.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{figure}
 \centering
@@ -157,17 +164,23 @@ Just like a normal probability problem, we first draw a picture as shown in Figu
 \end{figure}
 
 
-\begin{examplewrap}\begin{nexample}{For the $t$-distribution with 18 degrees of freedom, what percent of the curve is contained between -1.330 and +1.330?}
+\begin{examplewrap}
+\begin{nexample}{For the $t$-distribution with 18 degrees of freedom, what percent of the curve is contained between -1.330 and +1.330?}
 Using row $df = 18$, we find 1.330 in the table. The area in each tail is 0.100 for a total of 0.200, which leaves 0.800 in the middle between -1.33 and +1.33. This corresponds to the 80\%, which can be found at the very bottom of that  column.  
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{For the $t$-distribution with 3 degrees of freedom, as shown in the left panel of Figure~\ref{tDistDF3_and_20}, what should the value of $t^{\star}$ be so that 95\% of the area of the curve falls between -$t^{\star}$ and +$t^{\star}$?}
+\begin{examplewrap}
+\begin{nexample}{For the $t$-distribution with 3 degrees of freedom, as shown in the left panel of Figure~\ref{tDistDF3_and_20}, what should the value of $t^{\star}$ be so that 95\% of the area of the curve falls between -$t^{\star}$ and +$t^{\star}$?}
 We can look at the column in the $t$-table that says 95\% along the bottom row and trace it up to row $df = 3$ to find that $t^{\star} = 3.182$.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{A $t$-distribution with 20 degrees of freedom is shown in the right panel of Figure~\ref{tDistDF3_and_20}. Estimate the proportion of the distribution falling above 1.65.}
+\begin{examplewrap}
+\begin{nexample}{A $t$-distribution with 20 degrees of freedom is shown in the right panel of Figure~\ref{tDistDF3_and_20}. Estimate the proportion of the distribution falling above 1.65.}
 We identify the row in the $t$-table using the degrees of freedom: $df=20$. Then we look for 1.65; it is not listed. It falls between the first and second columns. Since these values bound 1.65, their tail areas will bound the tail area corresponding to 1.65. We identify the one tail area of the first and second columns, 0.050 and 0.10, and we conclude that between 5\% and 10\% of the distribution is more than 1.65 standard deviations above the mean. If we like, we can identify the precise area using statistical software: 0.0573.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{figure}
 \centering
@@ -219,15 +232,18 @@ TI-83: Do steps 1-2, then enter the lower bound, upper bound, degrees of freedom
 \end{enumerate}
 \end{onebox}
  
-\begin{exercisewrap}\begin{nexercise}Use a calculator to find the area to the right of $t=3$ under the $t$-distribution with 35 degrees of freedom.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}Use a calculator to find the area to the right of $t=3$ under the $t$-distribution with 35 degrees of freedom.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Because we want to shade to the right of $t=3$, we let \calctext{lower} = 3.  There is no upper bound, so use a large value such as 100 for \calctext{upper}.  Let \calctext{df} = 35.  The area is 0.0025 or 0.25\%.}
 
-\begin{exercisewrap}\begin{nexercise}Without doing any calculations, will the area to the right of $Z=3$ under the standard normal curve be greater than, less than, or equal to the area to the right of $t=3$ with 35 degrees of freedom?\footnotemark
-\end{nexercise}\end{exercisewrap} 
+\begin{exercisewrap}
+\begin{nexercise}Without doing any calculations, will the area to the right of $Z=3$ under the standard normal curve be greater than, less than, or equal to the area to the right of $t=3$ with 35 degrees of freedom?\footnotemark
+\end{nexercise}
+\end{exercisewrap} 
 \footnotetext{Because the $t$-distribution has greater spread and thicker tails than the normal distribution, we would expect the upper tail area to the right of $Z=3$ to be less than the upper tail area to the right of $t=3$.  One can confirm that the area to the right of $Z = 3$ is 0.0013, which is less than 0.0025.  With a smaller degrees of freedom, this difference would be even more pronounced.  Try it!}
 
-\textA{\newpage}
 %%
 \subsection[Checking conditions for inference on a mean using the $t$-distribution]{Checking conditions for inference on a mean using the \pmb{$t$}-distribution}
 \label{tDistSolutionToSEProblem}
@@ -276,9 +292,9 @@ Dolphins are at the top of the oceanic food chain, which causes dangerous substa
 \end{figure}
 \setlength{\captionwidth}{\mycaptionwidth}
 
-We would like to create a confidence interval to estimate the average mercury content in dolphin muscles.  We will use a sample of 19 Risso's dolphins from the Taiji area in Japan.  The data are summarized in Table~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}. 
+We would like to create a confidence interval to estimate the average mercury content in dolphin muscles.  We will use a sample of 19 Risso's dolphins from the Taiji area in Japan.  The data are summarized in Figure~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}. 
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{ccc cc}
 \hline
@@ -288,9 +304,9 @@ $n$ & $\bar{x}$ & $s$ & minimum & maximum \\
 \end{tabular}
 \caption{Summary of mercury content in the muscle of 19 Risso's dolphins from the Taiji area. Measurements are in $\mu$g/wet g (micrograms of mercury per wet gram of muscle).}
 \label{summaryStatsOfHgInMuscleOfRissosDolphins}
-\end{table}
+\end{figure}
 
-Because we are estimating a mean, we would like to construct a $t$-interval, but first we must check whether the conditions for using a $t$-interval are met.  We will start by assuming that the sample of 19 Risso's dolphins constitutes a random sample.  Next, we note that the sample size is small (less than 30), and we do not know whether the distribution of mercury content for all dolphins is nearly normal.  Therefore, we must look at the data.  Since we do not have all of the data to graph, we look at the summary statistics provided in Table~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}. These summary statistics do not suggest any strong skew or outliers; all observations are within 2.5 standard deviations of the mean. Based on this evidence, we believe it is reasonable that the population distribution of mercury content in dolphins could be nearly normal.  
+Because we are estimating a mean, we would like to construct a $t$-interval, but first we must check whether the conditions for using a $t$-interval are met.  We will start by assuming that the sample of 19 Risso's dolphins constitutes a random sample.  Next, we note that the sample size is small (less than 30), and we do not know whether the distribution of mercury content for all dolphins is nearly normal.  Therefore, we must look at the data.  Since we do not have all of the data to graph, we look at the summary statistics provided in Figure~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}. These summary statistics do not suggest any strong skew or outliers; all observations are within 2.5 standard deviations of the mean. Based on this evidence, we believe it is reasonable that the population distribution of mercury content in dolphins could be nearly normal.  
 
 With both conditions met, we will construct a 95\% confidence interval.  Recall that a confidence interval has the following form:
 \begin{eqnarray*}
@@ -368,7 +384,8 @@ To carry out a complete confidence interval procedure to estimate a single \mbox
 \item[] Here, we are C\%  confident that the true \emph{mean} of [...] is between \underline{\ \ \ \ \ } and  \underline{\ \ \ \ \ }.  A conclusion depends upon whether the interval is entirely above, is entirely below, or contains the value of interest. 
 \end{itemize}\end{onebox}
 
-\begin{examplewrap}\begin{nexample}
+\begin{examplewrap}
+\begin{nexample}
 {The FDA's webpage provides some data on mercury content of fish.\footnotemark\, Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. Construct an appropriate 95\% confidence interval for the true average mercury content of croaker white fish (Pacific). Is there evidence that the average mercury content is greater than 0.275 ppm?  Use the five step framework to organize your work.  
 }
 \label{croakerWhiteFishPacificExerConditions}
@@ -394,17 +411,19 @@ So the 95\% confidence interval is given by:
 \end{align*}
 \item[\inferencestep{Conclude}]  We are 95\% confident that the true \emph{average} mercury content of croaker white fish (Pacific) is between 0.249 and 0.325 ppm. Because the interval contains 0.275 as well as values less than 0.275, we do not have evidence that the true average mercury content is  greater than 0.275 ppm.
 \end{description}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 \footnotetext{\oiRedirect{textbook-fda_mercury_in_fish_2010}{www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm}} 
 
 
-\begin{examplewrap}\begin{nexample}
+\begin{examplewrap}
+\begin{nexample}
 {Based on the interval calculated in Example~\ref{croakerWhiteFishPacificExerConditions} above, can we say that 95\% of croaker white fish (Pacific) have mercury content between 0.249 and 0.325 ppm?}
 No.  The interval estimates the \emph{average} amount of mercury with 95\% confidence.  It is not trying to capture 95\% of the values.  
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
-\textA{\newpage}
 %%
 \subsection[Calculator: the 1-sample $t$-interval]{Calculator: the 1-sample \pmb{$t$}-interval}
 \label{1SampTint}
@@ -456,12 +475,13 @@ $\calctextmath{\bar{x}}$ & the sample mean \\
 \end{onebox}
 
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Use a calculator to find a 95\% confidence interval for the mean mercury content in croaker white fish (Pacific).  The sample size was 15, and the sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Choose \calctext{TInterval} or equivalent.  We do not have all the data, so choose \calctext{Stats} on a TI or \calctext{Var} on a Casio.  Enter $\calctextmath{\bar{x}}$ and $\calctextmath{Sx}$.  Note:  $\calctextmath{Sx}$ is the sample standard deviation (\calctext{0.069}), not the $SE$.  Let $\calctext{n}=15$ and \calctext{C-Level} = 0.95.  This should give the interval $(0.249,\ 0.325)$.}
 
-\textA{\newpage}
 %%
 \subsection{Choosing a sample size when estimating a mean}
 \label{findingASampleSizeForACertainME}
@@ -471,12 +491,13 @@ In Section~\ref{moeproportion}, we looked at sample size considerations when est
 
 For a one sample $t$-interval, the margin of error, $ME$, is given by $ME = t^{\star}\times\frac{s}{\sqrt{n}}$.  The challenge in this case is that we need to know $n$ to find $t^{\star}$.  But $n$ is precisely what we are attempting to solve for!  Fortunately, in most cases we will have a reasonable estimate for the population standard deviation and the desired $n$ will be large, so we can use $ME = z^{\star}\times\frac{\sigma}{\sqrt{n}}$, making it easier to solve for $n$.   
 
-\begin{examplewrap}\begin{nexample}{Blood pressure oscillates with the beating of the heart, and the systolic pressure is defined as the peak pressure when a person is at rest. The standard deviation of systolic blood pressure for people in the U.S. is about 25 mmHg (millimeters of mercury).  How large of a sample is necessary to estimate the average systolic blood pressure of people in a particular town with a margin of error no greater than 4 mmHg using a 95\% confidence level?}\label{sampleSizeComputationForSystolicBloodPressure}
+\begin{examplewrap}
+\begin{nexample}{Blood pressure oscillates with the beating of the heart, and the systolic pressure is defined as the peak pressure when a person is at rest. The standard deviation of systolic blood pressure for people in the U.S. is about 25 mmHg (millimeters of mercury).  How large of a sample is necessary to estimate the average systolic blood pressure of people in a particular town with a margin of error no greater than 4 mmHg using a 95\% confidence level?}\label{sampleSizeComputationForSystolicBloodPressure}
  For this problem, we want to find the sample size $n$ so that the margin of error, $ME$, is less than or equal to 4 mmHg.  We start by writing the following inequality:\vspace{-1mm}
 \begin{align*}
 z^{\star}\times \frac{\sigma}{\sqrt{n}} \leq 4
 \end{align*}
-For a 95\% confidence level, the critical value $z^{\star}=1.96$.  Our best estimate for the population standard deviation is $\sigma = 25$.  We substitute in these two values and we solve for $n$.\textA{\vspace{-1mm}}
+For a 95\% confidence level, the critical value $z^{\star}=1.96$.  Our best estimate for the population standard deviation is $\sigma = 25$.  We substitute in these two values and we solve for $n$.
 \begin{align*}
 1.96\times\frac{25}{\sqrt{n}}
 	&\leq 4 \\
@@ -486,7 +507,8 @@ For a 95\% confidence level, the critical value $z^{\star}=1.96$.  Our best esti
  n &= 151
 \end{align*}
 The minimum sample size that meets the condition is 151. We round up because the sample size must be an integer and it must be \emph{greater than or equal to} 150.06.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
 \begin{onebox}{Identify a sample size for a particular margin of error}
@@ -502,7 +524,6 @@ Sample size computations are helpful in planning data collection, and they requi
 \index{margin of error|)}
 
 
-\textA{\newpage}
 
 %%
 \subsection{Hypothesis testing for a mean}
@@ -626,7 +647,8 @@ To carry out a complete hypothesis test to test the claim that a single mean $\m
 \end{itemize}\end{onebox}
 
 
-\begin{examplewrap}\begin{nexample}
+\begin{examplewrap}
+\begin{nexample}
 {Recall the example involving the mercury content in croaker white fish (Pacific). Based on a sample of size 15, a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. Carry out an appropriate test to determine if 0.25 is a reasonable value for the average mercury content of croaker white fish (Pacific).  Use the five step method to organize your work.}
 
 \begin{description}
@@ -657,13 +679,15 @@ Because $H_A$ is a two-tailed test ( $\ne$ ), the p-value corresponds to the are
 \item[\inferencestep{Conclude}]  The p-value of $0.058 > 0.05$, so we do not reject the null hypothesis. We do not have sufficient evidence that the average mercury content in croaker white fish (Pacific) is not 0.25.
 \end{description}
 
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}Recall that the 95\% confidence interval for the average mercury content in croaker white fish was (0.249, 0.325). Discuss whether the conclusion of the hypothesis test in the previous example is consistent or inconsistent with the conclusion of the confidence interval.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}Recall that the 95\% confidence interval for the average mercury content in croaker white fish was (0.249, 0.325). Discuss whether the conclusion of the hypothesis test in the previous example is consistent or inconsistent with the conclusion of the confidence interval.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{It is consistent because 0.25 is located (just barely) inside the confidence interval, so it is considered a reasonable value. Our hypothesis test did not reject the hypothesis that $\mu=0.25$, also implying that it is a reasonable value. Note that the p-value was just over the cutoff of 0.05. This is consistent with the value of 0.25 being just inside the confidence interval.  Also note that the hypothesis test did not \emph{prove} that $\mu=0.25$.  The value 0.25 is just one of many reasonable values for the true mean.}
 
-\textA{\newpage}
 
 %%
 \subsection[Calculator: 1-sample $t$-test]{Calculator: 1-sample \pmb{$t$}-test}
@@ -723,13 +747,14 @@ $\calctextmath{\bar{x}}$ & the sample mean
 \end{enumerate}
 \end{onebox}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 The average time for all runners who finished the Cherry Blossom Run in 2006 was \cherryblossomnull{} minutes. In 2017, the average time for \cherryblossomn{} randomly selected participants was \cherryblossommean{}, with a standard deviation of \cherryblossomsd{} minutes. Use a calculator to find the $T$-statistic and p-value for the appropriate test to see if the average time for the participants in 2017 is different than it was in 2006.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Choose \calctext{T-Test} or equivalent.  Let $\calctextmath{\mu_0}$ be \cherryblossomnull{}. $\calctextmath{\bar{x}}$ is \cherryblossommean{}, $\calctextmath{S_x}$ is \cherryblossomsd{}, and $\calctext{n} = \cherryblossomn{}$.  Choose $\calctextmath{\neq}$ to correspond to $H_A$. We get $\calctextmath{t} =2.353$ and the p-value \calctext{p} = 0.021.}
 
 
-\textA{\newpage}
 
 
 
@@ -790,24 +815,24 @@ $z^{\star}$ depends on the desired confidence level and $\sigma$ is the standard
 
 \label{pairedData}
 
-
 \index{paired data|(}
 \index{data!textbooks|(}
 
 \sectionintro{
-\Add{
-\noindent When we have two observations on each person or each case, we can answer questions such as the following:
+\noindent%
+When we have two observations on each person or each case, we can answer questions such as the following:
 \begin{itemize}
 \item Do students do better on reading or writing sections of standardized tests?
-\item How much have temperatures increased between 1968 and 2008 across the U.S.?
+\item How do the number of days with temperature above 90\textdegree{}F compare between 1948 and 2018?
 \item Are Amazon textbook prices lower than the college bookstore prices?  If so, how much lower, on average?
 \end{itemize}
-}
+
 
 %%
 \subsection*{Learning objectives}
 
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Distinguish between paired and unpaired data.  
 
 \item Recognize that inference procedures for paired data use the same one-sample $t$-procedures as in the previous section, and that these procedures are applied to the \emph{differences} of the paired observations.
@@ -905,7 +930,7 @@ is a common and useful way to analyze paired data.
 
 \begin{figure}
 \centering
-\href{\oiRedirectUrl{tableau-hist-textbookdiff-summ}}{
+\oiRedirect{tableau-hist-textbookdiff-summ}{
 \includegraphics[width=0.7\textwidth]{ch_inference_for_means/figures/textbooksF18/diffInTextbookPricesF18}}
 \caption{Histogram of the difference in price for
     each book sampled.
@@ -1029,7 +1054,6 @@ on Amazon?}No. The fact that Amazon is, on average, less expensive, does not imp
 
 
 
-\textA{\newpage}
 
 \begin{onebox}{Hypothesis test for paired data}
 To carry out a complete hypothesis test to test the claim that a mean of differences $\mu_{\text{\emph{diff}}}$ is equal to 0,
@@ -1072,7 +1096,6 @@ To carry out a complete hypothesis test to test the claim that a mean of differe
 \end{itemize}\end{onebox}
 
 
-\textA{\newpage}
 
 \begin{figure}[h]
 \centering
@@ -1081,7 +1104,8 @@ To carry out a complete hypothesis test to test the claim that a mean of differe
 \label{satImprovementHTDataHistogramrepeat}
 \end{figure}
 
-\begin{examplewrap}\begin{nexample}
+\begin{examplewrap}
+\begin{nexample}
 {An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, so we have a difference in scores for each student. We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$ as a sample to evaluate the company's claim. The distribution of the differences, shown in Figure~\ref{satImprovementHTDataHistogramrepeat}, has a mean of 135.9 and a standard deviation of 82.2. Do these data provide convincing evidence to back up the company's claim?  Use the five step framework to organize your work.  
 }
 \label{SATCI}
@@ -1120,16 +1144,18 @@ The p-value is the area to the right of 2.4 under the $t$-distribution with 29 d
 
 
 \end{description}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\textA{\newpage}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Because we found evidence to support the company's claim, does this mean that a student will score more than 100 points higher on the SAT if they take the class than if they do not take the class?  
 
 \index{data!SAT prep company|)}
 
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{No.  First, this is an observational study, so we cannot make a causal conclusion.  Maybe SAT test takers tend to improve their score over time even if they don't take this SAT class.  Secondly, students' scores improved by more than 100 points \emph{on average}.  That does not imply that each student improved by more than 100 points.  With a sample standard deviation of 82.2 and a mean of 135.9, some students did worse after the SAT class.  This can be verified by Figure~\ref{satImprovementHTDataHistogramrepeat}.}
 
 %%
@@ -1172,7 +1198,6 @@ $\calctextmath{\bar{x}}$ & the sample mean of the differences \\
 \end{enumerate}
 \end{onebox}
 
-\textA{\newpage}
 %%
 \subsection{Confidence intervals for the mean of a difference}
 \label{ciMeanOfDifferences}
@@ -1206,12 +1231,14 @@ We are 95\% confident that the UCLA bookstore is, on average, between \$0.33 and
 \index{data!textbooks|)}
 \index{paired data|)}
 
-\begin{examplewrap}\begin{nexample}
+\begin{examplewrap}
+\begin{nexample}
 {Based on the interval, can we say that 95\% of the books cost between \$0.33 and \$6.83 more at the UCLA Bookstore than on Amazon? }No.  This interval is attempting to estimate the \emph{average} difference with 95\% confidence.  It is not attempting to capture 95\% of the values.  A quick look at Figure~\ref{diffInTextbookPricesF18} shows that much less than 95\% of the differences fall between \$0.32 and \$6.84.
 
 \index{data!SAT prep company|)}
 
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
 \begin{onebox}{Constructing a confidence interval for paired data}
@@ -1251,7 +1278,6 @@ To carry out a complete confidence interval procedure to estimate a mean of diff
 \item[] We are C\%  confident that the true \emph{mean of the differences in} [...] is between \underline{\ \ \ \ \ } and  \underline{\ \ \ \ \ }. If applicable, draw a conclusion based on whether the interval is entirely above, is entirely below, or contains the value 0. 
 \end{itemize}\end{onebox}
 
-\textA{\newpage}
 %\begin{figure}
 \begin{center}
 \includegraphics[width=0.44\textwidth]{ch_inference_for_means/figures/satImprovementHTDataHistogram/satImprovementHTDataHistogram}
@@ -1260,7 +1286,8 @@ To carry out a complete confidence interval procedure to estimate a mean of diff
 %\end{figure}
 \label{satImprovementHTDataHistogram3}
 
-\begin{examplewrap}\begin{nexample}
+\begin{examplewrap}
+\begin{nexample}
 {An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, so we have a difference in scores for each student. We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$ as a sample to evaluate the company's claim. The distribution of the differences, shown above, has a mean of 135.9 and a standard deviation of 82.2. Construct a confidence interval to estimate the true average increase in SAT after taking the company's course.  Is there evidence at the 95\% confidence level that students score an average of more than 100 points higher after the class?  Use the five step framework to organize your work.  
 }
 \label{SATCI}
@@ -1290,17 +1317,19 @@ The 95\% confidence interval is given by:
 \end{align*}
 \item[\inferencestep{Conclude}]  We are 95\% confident that the true \emph{average} increase in SAT score following the company's course is between 105.2 points to 166.6 points.  There is sufficient evidence that students score greater than 100 points higher, on average, after the company's course because the entire interval is above 100.  
 \end{description}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
-\textA{\newpage}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Based on the interval (105.2, 166.6), calculated previously, can we say that 95\% of student scores increased between 105.2 and 166.6 points after taking the company's course?  
 
 \index{data!SAT prep company|)}
 
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{No.  This interval is attempting to capture the \emph{average} increase.  It is not attempting to capture 95\% of the increases.  Looking at Figure~\ref{satImprovementHTDataHistogram3}, we see that only a small percent had increases between 105.2 and 166.6.}
 
 %%
@@ -1348,13 +1377,14 @@ $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\h
 \end{tabular}
 \end{center}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 In our UCLA textbook example, we had 68 paired differences.  Because $df=67$ was not on our $t$-table, we rounded the $df$ down to 60.  This gave us a 95\% confidence interval (0.325, 6.834).  Use a calculator to find the more exact 95\% confidence interval based on 67 degrees of freedom.  How different is it from the one we calculated based on 60 degrees of freedom?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Choose \calctext{TInterval} or equivalent.  We do not have all the data, so choose \calctext{Stats} on a TI or \calctext{Var} on a Casio.  Enter $\calctextmath{\bar{x}}$ = 3.58 and $\calctextmath{Sx}$ = 13.42.  Let $\calctext{n}=68$ and \calctext{C-Level} = 0.95.  This should give the interval $(0.332,\ 6.828$).  The intervals are equivalent when rounded to two decimal places.}
 
 
-\textA{\newpage}
 %%
 \subsection*{Section summary}
 
@@ -1403,22 +1433,21 @@ Here the point estimate is the mean of sample differences: $\bar{x}_{\text{\emph
 \label{theTDistributionForTheDifferenceOfTwoMeans}%
 
 \sectionintro{
-\Add{
-\noindent Often times we wish to compare two groups to each other.  We want to answer questions such as the following:
-
+\noindent%
+Often times we wish to compare two groups to each other to answer questions such as the following:
 \begin{itemize}
 \item Does treatment using embryonic stem cells (ESCs) help improve heart function following a heart attack?
 \item Is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke?
 \item Is there statistically significant evidence that one variation of an exam is harder than another variation?
 \item Are faculty willing to pay someone named ``John" more than someone named ``Jennifer"?  If so, how much more?
 \end{itemize}
-}
 
 
 
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 
 \item Determine when it is appropriate to use a paired $t$-procedure versus a two-sample $t$-procedure.
 
@@ -1581,10 +1610,10 @@ To carry out a complete confidence interval procedure to estimate the difference
 \item[] We are C\%  confident that the true \emph{difference in mean} [...] is between \underline{\ \ \ \ \ } and  \underline{\ \ \ \ \ }. If applicable, draw a conclusion based on whether the interval is entirely above, is entirely below, or contains the value 0. 
 \end{itemize}\end{onebox}
 
-\textA{\newpage}
-\begin{examplewrap}\begin{nexample}
+\begin{examplewrap}
+\begin{nexample}
 {
-An instructor decided to run two slight variations of the same exam. Prior to passing out the exams, she shuffled the exams together to ensure each student received a random version. Summary statistics for how students performed on these two exams are shown in Table~\ref{summaryStatsForTwoVersionsOfExams2nd}. Anticipating complaints from students who took Version~B, she would like to evaluate whether the difference observed in the groups is so large that it provides convincing evidence that Version~B was more difficult (on average) than Version~A.  Use a 95\% confidence interval to estimate the difference in average score: version A - version B.
+An instructor decided to run two slight variations of the same exam. Prior to passing out the exams, she shuffled the exams together to ensure each student received a random version. Summary statistics for how students performed on these two exams are shown in Figure~\ref{summaryStatsForTwoVersionsOfExams2nd}. Anticipating complaints from students who took Version~B, she would like to evaluate whether the difference observed in the groups is so large that it provides convincing evidence that Version~B was more difficult (on average) than Version~A.  Use a 95\% confidence interval to estimate the difference in average score: version A - version B.
 
 \begin{center}
 \begin{tabular}{l rrrrr}
@@ -1625,9 +1654,9 @@ The 95\% confidence interval is given by:
 \item[\inferencestep{Conclude}]  We are 95\% confident that the true difference in average score between Version A and Version B is between -2.5 and 13.1 points. Because the interval contains both positive and negative values, the data do not convincingly show that one exam version is more difficult than the other, and the teacher should not be convinced that she should add points to the Version B exam scores.
 
 \end{description}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\textA{\newpage}
 %%
 \subsection[Calculator: the 2-sample $t$-interval]{Calculator: the 2-sample \pmb{$t$}-interval}
 \label{2SampTint}
@@ -1687,8 +1716,8 @@ $\calctextmath{\bar{x}_2}$ & mean of sample 2 &&
 \end{enumerate}
 \end{onebox}
 
-\textA{\newpage}
-\begin{exercisewrap}\begin{nexercise}Use the data below and a calculator to find a 95\% confidence interval for the difference in average scores between Version A and Version B of the exam from the previous example.\footnotemark
+\begin{exercisewrap}
+\begin{nexercise}Use the data below and a calculator to find a 95\% confidence interval for the difference in average scores between Version A and Version B of the exam from the previous example.\footnotemark
 \begin{center}
 \begin{tabular}{l rrrrr}
 \hline
@@ -1699,7 +1728,8 @@ B		& 30		& 74.1		& 20		& 32		& 100 \\
 \hline
 \end{tabular}
 \end{center}
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Choose \calctext{2-SampTInt} or equivalent.  Because we have the summary statistics rather than all of the data, choose \calctext{Stats}.  Let $\calctextmath{\bar{x}1}$=79.41, $\calctextmath{Sx1}$=14, $\calctextmath{n1}$=30, $\calctextmath{\bar{x}2}$=74.1, $\calctextmath{Sx2}=20$, and $\calctextmath{n2}=30$.  The interval is $(-3.6, 14.2)$ with $df=51.9$.}
 
 
@@ -1879,7 +1909,6 @@ To carry out a complete hypothesis test to test the claim that two means $\mu_1$
 
 
 
-\textA{\newpage}
 
 \index{data!stem cells, heart function|(}
 
@@ -1903,7 +1932,8 @@ control		& 9		& -4.33		& 2.76  	 \\
 
 \end{figure}
 
-\begin{examplewrap}\begin{nexample} 
+\begin{examplewrap}
+\begin{nexample} 
 {\label{exerciseToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep}
 Do embryonic stem cells (ESCs) help improve heart function following a heart attack? The table above contains summary statistics for an experiment to test ESCs in sheep that had a heart attack. Each of these sheep was randomly assigned to the ESC or control group, and the change in their hearts' pumping capacity was measured. A positive value generally corresponds to increased pumping capacity, which suggests a stronger recovery. The sample data is also graphed.  Use the given information and an appropriate statistical test to answer the research question.
 }
@@ -1932,7 +1962,6 @@ Because $H_A$ is an upper tail test ( $>$ ), the p-value corresponds to the area
 \end{nexample}
 \end{examplewrap}
 
-\textA{\newpage}
 %%
 \subsection[Calculator: the 2-sample $t$-test]{Calculator: the 2-sample \pmb{$t$}-test}
 \label{2SampTtest}
@@ -1997,7 +2026,6 @@ $\calctextmath{\mu1}\ \_\_\ \calctextmath{\mu2}$ & alt. hypothesis &&
 \end{onebox}
 
 
-\textA{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}

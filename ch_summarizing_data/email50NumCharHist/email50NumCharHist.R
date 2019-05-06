@@ -48,7 +48,7 @@ for (i in 1:length(steps)) {
 
 myPDF("email50NumCharCumulativeFreqHist.pdf",
       1.1 * 5.5, 3.3,
-      mar = c(3.5, 3.5, 0.75, 1),
+      mar = c(3.5, 3.5, 0.15, 1),
       mgp = c(2.4, 0.7, 0))
 histPlot(rep(steps, ch), breaks = 12,
          xlab = 'Number of Characters (in thousands)',

@@ -2,6 +2,7 @@
   \chaptertitle{Foundations for inference}
   \label{foundationsForInference}
   \label{ch_foundations_for_inf}
+  \label{ch_inference_foundations}
 \label{ch_foundations_for_inf}
   \chaptersection{pointEstimates}
   \chaptersection{confidenceIntervals}
@@ -36,13 +37,14 @@ Statistical inference is primarily concerned with
 \label{pointEstimates}
 
 \sectionintro{
-\Add{\noindent Companies such as the Gallup and Pew Research frequently conduct
+\noindent%
+Companies such as the Gallup and Pew Research frequently conduct
 polls as a way to understand the state of public opinion
 or knowledge on many topics, including politics,
 scientific understanding, brand recognition, and more.  How well do these polls estimate the the opinion or knowledge of the
-broader population?  Why is a larger sample generally preferable to a smaller sample?  And what role does the concept of a sampling distribution, introduced in the previous chapter, play in answering these questions?}
-}
-%%
+broader population?  Why is a larger sample generally preferable to a smaller sample?  And what role does the concept of a sampling distribution, introduced in the previous chapter, play in answering these questions?
+
+
 \subsection*{Learning objectives}
 \begin{enumerate}
 \item Explain the difference between probability and inference and identify when to use which one.
@@ -55,6 +57,7 @@ broader population?  Why is a larger sample generally preferable to a smaller sa
 
 \item Understand how changing the sample size affects the variability/error in a point estimate.
 \end{enumerate}
+}
 
 
 %%
@@ -99,7 +102,8 @@ collection procedures, but bias can creep into our estimates without us even be 
   \termsub{Sampling error}{sampling error} is uncertainty in a point estimate that happens naturally from one sample to the next. Much of statistics, including much of this book, is focused on understanding and quantifying sampling error.  Remember though, that sampling error does not account for the possible effects of leading questions or other types of response bias.  When we measure sampling error, we are measuring the expected variability in a point estimate that arises from randomly sampling only a subset of the population.
 
 
-\begin{examplewrap}\begin{nexample}{
+\begin{examplewrap}
+\begin{nexample}{
 In Chapter~\ref{summarizingData}, we found the summary statistics for the number of characters in a set of 50 email data. These values are summarized below.
 
 \begin{tabular}{l r }
@@ -110,10 +114,13 @@ $s_x$ & 13,130
 
 Estimate the \term{population mean} based on the sample.}The best estimate for the population mean is the \term{sample mean}. That is,
 $\bar{x} = 11,160$ is our best estimate for $\mu$.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}Using the email data, what quantity should we use as a point estimate for the population standard deviation $\sigma$?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}Using the email data, what quantity should we use as a point estimate for the population standard deviation $\sigma$?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Again, intuitively we would use the sample standard deviation $s = 13,130$ as our best estimate for $\sigma$.}
 
 
@@ -292,7 +299,10 @@ than the error we would expect when $n = \pewsolarpollsize{}$.
 Example~\ref{smallerSampleWhatHappensToPropErrorExercise}
 highlights an important property we will see again and again:
 a bigger sample tends to provide a more precise point estimate
-than a smaller sample.  \Add{Remember though, that this is only true for \emph{random} samples.  Additionally, a bigger sample cannot correct for response bias or other types of bias that may be present.}
+than a smaller sample.
+Remember though, that this is only true for \emph{random} samples.
+Additionally, a~bigger sample cannot correct for response bias or other types of bias that may be present.
+
 
 %%
 \subsection{Introducing the standard error}
@@ -303,48 +313,50 @@ SD_{\hat{p}}&=\sqrt{\frac{p(1-p)}{n}} = \sqrt{\frac{(.088)(1-0.88)}{n}}= 0.01
 \end{align*}
 If we now look at the sampling distribution, we see that the the typical distance sample proportions are from the true value of 0.88 is about 0.01.
 
-\begin{examplewrap}\begin{nexample}{Consider a random sample of size 80 from a population.  We find that 15\% of the sample support a controversial new ballot measure.  How far is our estimate likely to be from the true percent that support the measure?}  We would like to calculate the standard deviation of $\hat{p}$, but we run into a serious problem: $p$ is \emph{unknown}. In fact, when doing inference, $p$ must be unknown, otherwise it is illogical to try to estimate it. We cannot calculate the $SD$, but we can estimate it using, you might have guessed, the sample proportion $\hat{p}$.
-\end{nexample}\end{examplewrap}
+\begin{examplewrap}
+\begin{nexample}{Consider a random sample of size 80 from a population.  We find that 15\% of the sample support a controversial new ballot measure.  How far is our estimate likely to be from the true percent that support the measure?}  We would like to calculate the standard deviation of $\hat{p}$, but we run into a serious problem: $p$ is \emph{unknown}. In fact, when doing inference, $p$ must be unknown, otherwise it is illogical to try to estimate it. We cannot calculate the $SD$, but we can estimate it using, you might have guessed, the sample proportion $\hat{p}$.
+\end{nexample}
+\end{examplewrap}
  
 This estimate of the standard deviation is known as the \termsub{standard error}{standard error ($SE$)}, or \term{$SE$} for short.
 \begin{align*}
 SE_{\hat{p}}&=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
 \end{align*}
 
-\begin{examplewrap}\begin{nexample}{Calculate and interpret the $SE$ of $\hat{p}$ for the previous example.}
+\begin{examplewrap}
+\begin{nexample}{Calculate and interpret the $SE$ of $\hat{p}$ for the previous example.}
 \begin{align*}
 SE_{\hat{p}}=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} =\sqrt{\frac{0.15(1-0.15)}{80}}=0.04
 \end{align*}
 The typical or expected error in our estimate is 4\%.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{If we quadruple the sample size from 80 to 320, what will happen to the $SE$?}
+\begin{examplewrap}
+\begin{nexample}{If we quadruple the sample size from 80 to 320, what will happen to the $SE$?}
 \begin{align*}
 SE_{\hat{p}}=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} =\sqrt{\frac{0.15(1-0.15)}{320}}=0.02
 \end{align*}
 The larger the sample size, the smaller our standard error. This is consistent with intuition: the more data we have, the more reliable an estimate will tend to be. However, quadrupling the sample size does not reduce the error by a factor of 4. Because of the square root, the effect is to reduce the error by a factor $\sqrt{4}$, or 2. 
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 %%
 \subsection{Basic properties of point estimates}
 
 We achieved three goals in this section. First, we determined that point estimates from a sample may be used to estimate population parameters. We also determined that these point estimates are not exact: they vary from one sample to another. Lastly, we quantified the uncertainty of the sample proportion using what we  call the standard error. 
 
-\Add{
 Remember that the standard error only measures sampling error.  It does not account for bias that results from leading questions or other types of response bias.
 
 When our sampling method produces estimates in an unbiased way, the sampling distribution will be \emph{centered} on the true value and we call the method \term{accurate}.  When the sampling method  produces estimates that have \emph{low variability}, the sampling distribution will have a low standard error, and we call the method \term{precise}.
 
-}
 \begin{figure}
    \centering
-\href{\oiRedirectUrl{desmos-foursamplingdistributions}}{
+\oiRedirect{desmos-foursamplingdistributions}{
    \includegraphics[width=\textwidth]{ch_foundations_for_inf/figures/fourSamplingDistributions/fourSamplingDistributions}}
    \caption{Four sampling distributions shown, with parameter identified. \qquad  \qquad Explore this and other Desmos activities at \oiRedirect{opeintro-desmos}{openintro.org/desmos}.}
    \label{fourSamplingDistributions}
 \end{figure}
-
-\Comment{Added these exercise}
 
 \begin{examplewrap}
 \begin{nexample}
@@ -388,11 +400,10 @@ even if the details change a little.
 
 %%
 %%
-\textA{\newpage}
 
 \subsection*{Section summary}
 \begin{itemize}
-\item In this section we laid some groundwork for our study of \term{inference}.  Inference involves using known sample values to estimate or better understand unknown population values.
+\item In this section we laid the groundwork for our study of \term{inference}.  Inference involves using known sample values to estimate or better understand unknown population values.
 
 \item  A sample statistic can serve as a \term{point estimate} for an unknown parameter.  For example, the sample mean is a point estimate for an unknown population mean, and the sample proportion is a point estimate for an unknown population proportion.
 
@@ -424,10 +435,13 @@ item In a random sample, increasing the sample size $n$ will make the standard e
 \index{confidence interval|(}
 
 \sectionintro{
-\Add{
-\noindent The site \url{fivethiryeight.com} regularly forecasts support for each candidate in House and Senate races.  In addition to point estimates, they report confidence intervals.\footnote{See: \url{https://projects.fivethirtyeight.com/2018-midterm-election-forecast/senate}} What are confidence intervals and how do we interpret them?  
+\noindent%
+The site \oiRedirect{textbook-fivethirtyeight}{fivethirtyeight.com} regularly forecasts support for each candidate in Congressional races, i.e. races in the
+US House of Representatives and the US Senate.
+In addition to point estimates, they report confidence intervals.\footnote{See: \oiRedirect{textbook-538-2018-midterm}{\url{https://projects.fivethirtyeight.com/2018-midterm-election-forecast/senate}}}
+What are confidence intervals, and how do we interpret them?  
 
-}
+
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
@@ -446,6 +460,7 @@ item In a random sample, increasing the sample size $n$ will make the standard e
 \item Calculate and interpret the margin of error for a C\% confidence interval.  Distinguish between margin of error and standard error.
 \end{enumerate}
 }
+
 
 %%
 \subsection{Capturing the population parameter}
@@ -480,18 +495,21 @@ We can be \textbf{95\% confident} that this interval captures the true value.\en
 
 In the next chapters we will determine when we can apply a normal model to a point estimate. For now, we will assume that a normal model is reasonable. 
 
-\begin{examplewrap}\begin{nexample}{The point estimate from the smoking example was 15\%. The standard error for this point estimate was calculated to be $SE = 0.04$. Assuming that conditions for a normal model are met, construct and interpret a 95\% confidence interval.  }
-\textA{\vspace{-6mm}}
+\begin{examplewrap}
+\begin{nexample}{The point estimate from the smoking example was 15\%. The standard error for this point estimate was calculated to be $SE = 0.04$. Assuming that conditions for a normal model are met, construct and interpret a 95\% confidence interval.  }
 \begin{align*}
 \text{point estimate}\ &\pm \ 1.96\times SE \text{ of estimate} \\
 0.15\  &\pm \ 1.96\times 0.04\\
 (0.071&6\text{, } 0.2284)
 \end{align*}
 We are 95\% confident that the true percent of smokers in this population is between 7.16\% and 22.84\%.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{Based on the confidence interval above, is there evidence that a smaller proportion smoke in this county than in the state as a whole? The proportion that smoke in the state is known to be 0.20.}While the point estimate of 0.15 is lower than 0.20, this deviation is likely due to random chance. Because the confidence interval \emph{includes} the value 0.20, 0.20 is a reasonable value for the proportion of smokers in the county. Therefore, based on this confidence interval, we do not have evidence that a smaller proportion smoke in the county than in the state.
-\end{nexample}\end{examplewrap}
+\begin{examplewrap}
+\begin{nexample}{Based on the confidence interval above, is there evidence that a smaller proportion smoke in this county than in the state as a whole? The proportion that smoke in the state is known to be 0.20.}While the point estimate of 0.15 is lower than 0.20, this deviation is likely due to random chance. Because the confidence interval \emph{includes} the value 0.20, 0.20 is a reasonable value for the proportion of smokers in the county. Therefore, based on this confidence interval, we do not have evidence that a smaller proportion smoke in the county than in the state.
+\end{nexample}
+\end{examplewrap}
 
 We can be 95\% confident that a 95\% confidence interval contains the true population parameter. However, confidence intervals are imperfect. About 1-in-20 (5\%) properly constructed 95\% confidence intervals will fail to capture the parameter of interest. Figure~\ref{95PercentConfidenceInterval} shows 25 confidence intervals for a proportion that were constructed from simulations where the true proportion was $p = 0.3$. However, 1 of these 25 confidence intervals happened not to include the true value.
 
@@ -502,12 +520,13 @@ We can be 95\% confident that a 95\% confidence interval contains the true popul
 \label{95PercentConfidenceInterval}
 \end{figure}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 In Figure~\ref{95PercentConfidenceInterval}, one interval does not contain the true proportion, $p = 0.3$. Does this imply that there was a problem with the simulations?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{No. Just as some observations occur more than 1.96 standard deviations from the mean, some point estimates will be more than 1.96 standard errors from the parameter. A confidence interval only provides a plausible range of values for a parameter. While we might say other values are implausible based on the data, this does not mean they are impossible.}
 
-\textA{\newpage}
 %%
 \subsection{Changing the confidence level}
 \label{changingTheConfidenceLevelSection}
@@ -516,8 +535,10 @@ In Figure~\ref{95PercentConfidenceInterval}, one interval does not contain the t
 
 Suppose we want to construct a confidence interval with a confidence level somewhat greater than 95\%: perhaps we would like a confidence level of 99\%. 
 
-\begin{examplewrap}\begin{nexample}{Other things being equal, would a 99\% confidence interval be wider or narrower than a 95\% confidence interval?}Using a previous analogy: if we want to be more confident that we will catch a fish, we should use a wider net, not a smaller one. To be 99\% confidence of capturing the true value, we must use a wider interval. On the other hand, if we want an interval with lower confidence, such as 90\%, we would use a narrower interval.
-\end{nexample}\end{examplewrap}
+\begin{examplewrap}
+\begin{nexample}{Other things being equal, would a 99\% confidence interval be wider or narrower than a 95\% confidence interval?}Using a previous analogy: if we want to be more confident that we will catch a fish, we should use a wider net, not a smaller one. To be 99\% confidence of capturing the true value, we must use a wider interval. On the other hand, if we want an interval with lower confidence, such as 90\%, we would use a narrower interval.
+\end{nexample}
+\end{examplewrap}
 
 The 95\% confidence interval structure provides guidance in how to make intervals with new confidence levels. Below is a general 95\% confidence interval for a point estimate that comes from a nearly normal distribution:
 \begin{eqnarray}
@@ -525,9 +546,11 @@ The 95\% confidence interval structure provides guidance in how to make interval
 \end{eqnarray}
 There are three components to this interval: the point estimate, ``1.96'', and the standard error. The choice of $1.96\times SE$ was based on capturing 95\% of the distribution since the estimate is within 1.96 standard deviations of the true value about 95\% of the time. The choice of 1.96 corresponds to a 95\% confidence level. 
 
-\begin{exercisewrap}\begin{nexercise} \label{leadInForMakingA99PercentCIExercise}
+\begin{exercisewrap}
+\begin{nexercise} \label{leadInForMakingA99PercentCIExercise}
 If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{This is equivalent to asking how often the Z-score will be larger than -2.58 but less than 2.58. (For a picture, see Figure~\ref{choosingZForCI}.) There is $\approx$ 0.99 probability that the unobserved random variable $X$ will be within 2.58 standard deviations of the mean.}
 
 
@@ -560,7 +583,7 @@ where $z^{\star}$ depends on the confidence level selected.\end{onebox}
 
 Finding the value of $z^{\star}$ that corresponds to a particular confidence level is most easily accomplished by using a new table, called the $t$-table. For now, what is noteworthy about this table is that the bottom row corresponds to confidence levels. The numbers inside the table are the critical values, but which row should we use? Later in this book, we will see that a $t$-curve with infinite degrees of freedom corresponds to the normal curve. For this reason, when finding $z^{\star}$, we use the $t$-table at row $\infty$.
 
-\begin{table}[hht]
+\begin{figure}[hht]
 \centering
 \begin{tabular}{r | rrr rr}
 one tail & \hspace{1.5mm}  0.100 & \hspace{1.5mm} 0.050 & \hspace{1.5mm} 0.025 & \hspace{1.5mm} 0.010 & \hspace{1.5mm} 0.005  \\
@@ -577,15 +600,17 @@ Confidence level C  &  {\normalsize  80\%} & {\normalsize 90\%} & {\normalsize 9
 \end{tabular}
 \caption{An abbreviated look at the $t$-table. The columns correspond to confidence levels. Row $\infty$ corresponds to the normal curve.}
 \label{tTableSample}
-\end{table}
+\end{figure}
 
 
 \begin{onebox}{Finding \pmb{$\MakeLowercase{z}^{\star}$ }for a particular confidence level}
 We select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. Use a calculator or use the $t$-table at row $\infty$ to find the critical value $z^{\star}$.\end{onebox}
 
-\begin{exercisewrap}\begin{nexercise} \label{find90CIForRun10AgeExercise}
+\begin{exercisewrap}
+\begin{nexercise} \label{find90CIForRun10AgeExercise}
 Find the appropriate $z^{\star}$ value for an 80\% confidence interval.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Using row $\infty$ on the $t$-table, we see that the value that corresponds to an 80\% confidence level is 1.282.  Therefore, we should use 1.282 as the $z^{\star}$ value.  }
 
 The normal approximation is crucial to the precision of these confidence intervals. The next two chapters provide detailed discussions about when a normal model can safely be applied to a variety of situations. When a normal model is not a good fit, we will use alternate distributions that better characterize the sampling distribution.
@@ -610,12 +635,16 @@ When the point estimate follows a normal distribution,
 $$ \text{margin of error} = z^{\star}\times SE \text{ of estimate}.$$
 \end{onebox}
 
-\begin{examplewrap}\begin{nexample}{All other things being equal, will the margin of error be bigger for a 68\% confidence interval or a 95\% confidence interval?}
+\begin{examplewrap}
+\begin{nexample}{All other things being equal, will the margin of error be bigger for a 68\% confidence interval or a 95\% confidence interval?}
 A 95\% confidence interval is wider than a 68\% confidence interval and has a larger $z^{\star}$ value, so the 95\% confidence interval will have a larger margin of error.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}What is the margin of error for the confidence interval: (0.035, 0.145)?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}What is the margin of error for the confidence interval: (0.035, 0.145)?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The margin of error is \emph{half} of the total width of the interval. The margin of error for this interval is $\frac{0.145 - 0.035}{2}=0.055$.}
 
 %%
@@ -660,7 +689,6 @@ Use a confidence interval to \emph{estimate} a parameter with a particular \emph
 
 
 %%
-\textA{\newpage}
 %%
 \subsection*{Section summary}
 \begin{itemize}
@@ -738,10 +766,13 @@ Interpreting \term{confidence intervals} and \term{confidence levels}
 \section[Introducing hypothesis testing]{Introducing hypothesis testing }
 \label{hypothesisTesting}
 \index{hypothesis testing|(}
+
 \sectionintro{
-\Add{
-\noindent In an experiment, one treatment reduces cholesterol by 10\% while another treatment reduces it by 17\%.  Is this strong enough evidence that the second treatment is more effective?  In this section we will set up a framework for answering questions such as this and will look at the different types of decision errors that researcher can make drawing conclusions based on data.
-}
+\noindent%
+In an experiment, one treatment reduces cholesterol by 10\% while another treatment reduces it by 17\%.  Is this strong enough evidence that the second treatment is more effective?
+In this section, we will set up a framework for answering questions such as this and will look at the different types of decision errors that researcher can make when drawing conclusions based on data.
+
+
 %%
 \subsection*{Learning objectives}
 
@@ -761,9 +792,6 @@ Interpreting \term{confidence intervals} and \term{confidence levels}
 }
 
 
-
-
-\Comment{I tried integrating the rosling scenario into this section, but had difficulty, because ahss talks about the hypotheses being about population parameters, and it is awkward here to talk about "population", when the parameter in this case is kind of a probability, not a population parameter per se.  I do like the example though and wish that ahss could use a less complicated example that the consultant example for introducing this topic.  }
 
 %%
 \subsection{Case study: medical consultant}
@@ -791,16 +819,13 @@ Her sample complication rate is $\hat{p} = 0.063$, which is 0.037 lower than the
 
 We can set up two competing hypotheses about the consultant's true complication rate. The first is call the \term{null hypothesis} and represents either a skeptical perspective or a perspective of no difference. The second is called the \term{alternative hypothesis} (or alternate hypothesis) and represents a new perspective such as the possibility that there has been a change or that there is a treatment effect in an experiment.
 
-\Comment{ please review the box below}
-
 \begin{onebox}{Null and alternative hypotheses}
-\vspace{-5mm}
-\begin{description}
-\item[] The \term{null hypothesis} is abbreviated $H_0$. It represents a skeptical perspective and is often a claim of no change or no difference.  
-\item[] The \term{alternative hypothesis} is abbreviated $H_A$. It is the claim researchers hope to prove or find evidence for and it often asserts that there has been a change or an effect.  
+The \term{null hypothesis} is abbreviated $H_0$. It represents a skeptical perspective and is often a claim of no change or no difference. \vspace{3mm}
 
-\item[] Our job, as data scientists is to play the skeptic: before we buy into the alternative hypothesis, we need to see strong supporting evidence.
-\end{description}\end{onebox}
+The \term{alternative hypothesis} is abbreviated $H_A$. It is the claim researchers hope to prove or find evidence for, and it often asserts that there has been a change or an effect. \vspace{3mm}
+
+Our job as data scientists is to play the skeptic: before we buy into the alternative hypothesis, we need to see strong supporting evidence.
+\end{onebox}
 
 \begin{examplewrap}\begin{nexample}{Identify the null and alternative claim regarding the consultant's complication rate.}
 \begin{itemize}
@@ -841,11 +866,11 @@ The null claim is always framed as an equality: it tells us what quantity we sho
 \begin{onebox}{Always write the null hypothesis as an equality}
 We will find it most useful if we always list the null hypothesis as an equality (e.g.~$p = 7$) while the alternative always uses an inequality (e.g. $p \neq 0.7$, $p>0.7$, or~$p<0.7$).\end{onebox}
 
-\Comment{This footnote/solution is split onto the next page}
-
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 According to the 2010 US Census, 7.6\% of residents in the state of Alaska were under 5 years old. A researcher plans to take a random sample of residents from Alaska to test whether or not this is still the case. Write out the hypotheses that the researcher should test in both plain and statistical language.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{$H_0$: $p=0.076$; The proportion of residents under 5 years old in Alaska is \emph{unchanged} from 2010.\\ $H_A$: $p \neq 0.076$; The proportion of residents under 5 years old in Alaska has changed from 2010. Note that it could have increased or decreased.\quad
 \oiRedirect{textbook-census-alaska}{\url{https://factfinder.census.gov/faces/nav/jsf/pages/community_facts.xhtml}}}
 
@@ -854,9 +879,11 @@ When the alternative claim uses a $\neq$, we call the test a \term{two-sided} te
 \begin{onebox}{One-sided and two-sided tests}
 If the researchers are only interested in showing an increase or a decrease, but not both, use a one-sided test. If the researchers would be interested in any difference from the null value -- an increase or decrease -- then the test should be two-sided.\vspace{0.5mm}\end{onebox}
 
-\begin{examplewrap}\begin{nexample}{For the example of the consultant's complication rate, we knew that her sample complication rate was 0.063, which was lower than the US complication rate of 0.10. Why did we conduct a two-sided hypothesis test for this setting?}
+\begin{examplewrap}
+\begin{nexample}{For the example of the consultant's complication rate, we knew that her sample complication rate was 0.063, which was lower than the US complication rate of 0.10. Why did we conduct a two-sided hypothesis test for this setting?}
 The setting was framed in the context of the consultant being helpful, but what if the consultant actually performed worse than the US complication rate? Would we care? More than ever! Since we care about a finding in either direction, we should run a two-sided~test.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{onebox}{One-sided hypotheses are allowed only \emph{before} seeing data}
 {After observing data, it is tempting to turn a two-sided test into a one-sided test. Avoid this temptation. Hypotheses must be set up \emph{before} observing the data. If~they are not, the test must be two-sided.}
@@ -869,9 +896,11 @@ The setting was framed in the context of the consultant being helpful, but what 
 %%
 \subsection{Evaluating the hypotheses with a p-value}
 
-\begin{examplewrap}\begin{nexample}
+\begin{examplewrap}
+\begin{nexample}
 {There were 142 patients in the consultant's sample. If the null claim is true, how many would we expect to have had a complication?}If the null claim is true, we would expect about 10\% of the patients, or about 14.2 to have a complication.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 The consultant's complication rate for her 142 clients was 0.063 ($0.063 \times 142 \approx 9$). What is the probability that a sample would produce a number of complications this far from the expected value of 14.2, \emph{if her true complication rate were} 0.10, that~is, if $H_0$ were true? The probability, which is estimated in Section~\ref{MedConsNullNormal} on page~\pageref{MedConsNullNormal}, is about 0.1754. We call this quantity the \term{p-value}.
 
@@ -889,7 +918,6 @@ The consultant's complication rate for her 142 clients was 0.063 ($0.063 \times 
 \label{sidedness_example_figures}
 \end{figure}
 
-\textA{\newpage}
 
 \begin{onebox}{Finding and interpreting the p-value}
 When examining a proportion, we find and interpret the \term{p-value}\index{hypothesis testing!p-value|textbf} according to the nature of the alternative hypothesis.\vspace{-1mm}
@@ -908,24 +936,30 @@ If the p-value is greater than the significance level $\alpha$, we say that the 
 
 Recall that the null claim is the claim of no difference. If we reject $H_0$, we are asserting that there is a real difference. If we do not reject $H_0$, we are saying that the null claim is reasonable, but we are not saying that the null claim has been proven.
 
-\begin{exercisewrap}\begin{nexercise} \label{plainLanguageExplanationOfHTConclusionForLiverDonorSurgicalConsultant}
+\begin{exercisewrap}
+\begin{nexercise} \label{plainLanguageExplanationOfHTConclusionForLiverDonorSurgicalConsultant}
 Because the p-value is 0.1754, which is larger than the significance level 0.05, we do not reject the null hypothesis. Explain what this means in the context of the problem using plain language.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The data do not provide evidence that the consultant's complication rate is significantly lower or higher than the US complication rate of 10\%.}
 
-\begin{examplewrap}\begin{nexample}{In the previous exercise, we did not reject $H_0$. This means that we did not disprove the null claim. Is this equivalent to proving the null claim is~true?}
+\begin{examplewrap}
+\begin{nexample}{In the previous exercise, we did not reject $H_0$. This means that we did not disprove the null claim. Is this equivalent to proving the null claim is~true?}
 No. We did not prove that the consultant's complication rate is \emph{exactly} equal to 10\%. Recall that the test of hypothesis starts by \emph{assuming the null claim is true}. That~is, the test proceeds as an argument by contradiction. \emph{If the null claim is true}, there is a 0.1754 chance of seeing sample data as divergent from 10\% as we saw in our sample. Because 0.1754 is large, it is within the realm of chance error, and we cannot say the null hypothesis is unreasonable.\footnotemark
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 \footnotetext{The p-value is a conditional probability. It is P(getting data at least as divergent from the null value as we observed $|$ $H_0$ is true). It is NOT P( $H_0$ is true $|$ we got data this divergent from the null value).}
 
 
 \begin{onebox}{Double negatives can sometimes be used in statistics}
 In many statistical explanations, we use double negatives. For instance, we might say that the null hypothesis is \emph{not implausible} or we \emph{failed to reject} the null hypothesis. Double negatives are used to communicate that while we are not rejecting a position, we are also not saying that we know it to be true.\end{onebox}
 
-\begin{examplewrap}\begin{nexample}{Does the conclusion in Guided Practice~\ref{plainLanguageExplanationOfHTConclusionForLiverDonorSurgicalConsultant} ensure that there is no real association between the surgical consultant's work and the risk of complications? Explain.}
+\begin{examplewrap}
+\begin{nexample}{Does the conclusion in Guided Practice~\ref{plainLanguageExplanationOfHTConclusionForLiverDonorSurgicalConsultant} ensure that there is no real association between the surgical consultant's work and the risk of complications? Explain.}
 No. It is possible that the consultant's work is associated with a lower or higher risk of complications. However, the data did not provide enough information to reject the null hypothesis (the sample was too small).
 \index{data!medical consultant|)}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 %The 2-in-100 chance is what we call a \term{p-value}, which is a probability quantifying the strength of the evidence against the null hypothesis and in favor of the alternative. %Formally the p-value is a conditional probability, which is basically\footnote{Want to learn more probability? Check out~Appendix~\ref{probability}.}
 
@@ -934,9 +968,11 @@ No. It is possible that the consultant's work is associated with a lower or high
 %If the null hypothesis is true, the significance level $\alpha$ defines the probability that we will make a Type~I Error.}
 %\end{termBox}
 
-\begin{examplewrap}\begin{nexample}{An experiment was conducted where study participants were randomly divided into two groups. Both were given the opportunity to purchase a DVD, but one half was reminded that the money, if not spent on the DVD, could be used for other purchases in the future, while the other half was not. The half that was reminded that the money could be used on other purchases was 20\% less likely to continue with a DVD purchase. We determined that such a large difference would only occur about 1-in-150 times if the reminder actually had no influence on student decision-making. What is the p-value in this study? Was the result statistically significant?}
+\begin{examplewrap}
+\begin{nexample}{An experiment was conducted where study participants were randomly divided into two groups. Both were given the opportunity to purchase a DVD, but one half was reminded that the money, if not spent on the DVD, could be used for other purchases in the future, while the other half was not. The half that was reminded that the money could be used on other purchases was 20\% less likely to continue with a DVD purchase. We determined that such a large difference would only occur about 1-in-150 times if the reminder actually had no influence on student decision-making. What is the p-value in this study? Was the result statistically significant?}
 The p-value was 0.006 (about 1/150). Since the p-value is less than 0.05, the data provide statistically significant evidence that US college students were actually influenced by the reminder.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{onebox}{What's so special about 0.05?}
 We often use a threshold of 0.05 to determine whether a result is statistically significant. But why 0.05? Maybe we should use a bigger number, or maybe a smaller number. If you're a little puzzled, that probably means you're reading with a critical eye -- good job! We've made a video to help clarify \emph{why 0.05}:
@@ -1002,9 +1038,11 @@ Use a hypothesis test to \emph{test} $H_0$ versus $H_A$ at a particular \emph{si
 \index{hypothesis testing!decision errors|(}
 The hypothesis testing framework is a very general tool, and we often use it without a second thought. If a person makes a somewhat unbelievable claim, we are initially skeptical. However, if there is sufficient evidence that supports the claim, we set aside our skepticism. The hallmarks of hypothesis testing are also found in the US court system. 
 
-\begin{examplewrap}\begin{nexample}{A US court considers two possible claims about a defendant: she is either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?}\label{hypTestCourtExample}
+\begin{examplewrap}
+\begin{nexample}{A US court considers two possible claims about a defendant: she is either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?}\label{hypTestCourtExample}
 The jury considers whether the evidence is so convincing (strong) that there is evidence beyond a reasonable doubt of the person's guilt. That is, the starting assumption (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis). In statistics, our evidence comes in the form of data, and we use the significance level to decide what is beyond a reasonable doubt.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 Jurors examine the evidence to see whether it convincingly shows a defendant is guilty. Notice that a jury finds a defendant either guilty or not guilty. They either reject the null claim or they do not reject the null claim. They never prove the null claim, that is, they never find the defendant innocent. If a jury finds a defendant \emph{not guilty}, this does not necessarily mean the jury is confident in the person's innocence. They are simply not convinced of the alternative that the person is guilty.
 
@@ -1013,9 +1051,9 @@ This is also the case with hypothesis testing: \emph{even if we fail to reject t
 
 Hypothesis tests are not flawless. Just think of the court system: innocent people are sometimes wrongly convicted and the guilty sometimes walk free. Similarly, data can point to the wrong conclusion. However, what distinguishes statistical hypothesis tests from a court system is that our framework allows us to quantify and control how often the data lead us to the incorrect conclusion.
 
-There are two competing hypotheses: the null and the alternative. In a hypothesis test, we make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios in a hypothesis test, which are summarized in Table~\ref{fourHTScenarios}.
+There are two competing hypotheses: the null and the alternative. In a hypothesis test, we make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios in a hypothesis test, which are summarized in Figure~\ref{fourHTScenarios}.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{l l c c c}
 & & \multicolumn{2}{c}{\textbf{Test conclusion}} \\
@@ -1031,7 +1069,7 @@ There are two competing hypotheses: the null and the alternative. In a hypothesi
 \end{tabular}
 \caption{Four different scenarios for hypothesis tests.}
 \label{fourHTScenarios}
-\end{table}
+\end{figure}
 
 \begin{onebox}{Type~I and Type~II Errors}
 A \term{Type~I Error} is rejecting $H_0$ when $H_0$ is actually true. When we reject the null hypothesis, it is possible that we make a Type~I Error. \\[2mm]
@@ -1039,22 +1077,30 @@ A \term{Type~II Error} is failing to reject $H_0$ when $H_A$ is actually true. W
 
 
 
-\begin{examplewrap}\begin{nexample}{In a US court, the defendant is either innocent ($H_0$) or guilty ($H_A$). What does a Type~I Error represent in this context? What does a Type~II Error represent? Table~\ref{fourHTScenarios} may be useful.}
+\begin{examplewrap}
+\begin{nexample}{In a US court, the defendant is either innocent ($H_0$) or guilty ($H_A$). What does a Type~I Error represent in this context? What does a Type~II Error represent? Figure~\ref{fourHTScenarios} may be useful.}
 If the court makes a Type~I Error, this means the defendant is innocent ($H_0$ true) but wrongly convicted. A~Type~II Error means the court failed to reject $H_0$ (i.e. failed to convict the person) when they were in fact guilty ($H_A$ true).
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{How could we reduce the Type~I Error rate in US courts? What influence would this have on the Type~II Error rate?}
+\begin{examplewrap}
+\begin{nexample}{How could we reduce the Type~I Error rate in US courts? What influence would this have on the Type~II Error rate?}
 To lower the Type~I Error rate, we might raise our standard for conviction from ``beyond a reasonable doubt'' to ``beyond a conceivable doubt'' so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type~II Errors.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise} \label{howToReduceType2ErrorsInUSCourts}
+\begin{exercisewrap}
+\begin{nexercise} \label{howToReduceType2ErrorsInUSCourts}
 How could we reduce the Type~II Error rate in US courts? What influence would this have on the Type~I Error rate?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{To lower the Type~II Error rate, we want to convict more guilty people. We could lower the standards for conviction from ``beyond a reasonable doubt'' to ``beyond a little doubt''. Lowering the bar for guilt will also result in more wrongful convictions, raising the Type~I Error rate.}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 A group of women bring a class action lawsuit that claims discrimination in promotion rates. What would a Type~I Error represent in this context?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{We must first identify which is the null hypothesis and which is the alternative. The alternative hypothesis is the one that bears the burden of proof, so the null hypothesis is that there was no discrimination and the alternative hypothesis is that there was discrimination. Making a Type~I Error in this context would mean that in fact there was no discrimination, even though we concluded that women were discriminated against. Notice that this does \emph{not} necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.}
 
 \index{hypothesis testing!decision errors|)}
@@ -1076,13 +1122,17 @@ If $H_0$ is true, what is the probability that we will incorrectly reject it? In
 \begin{onebox}{Relationship between Type~I and Type~II Errors}
 The probability of a Type~I Error is called $\alpha$ and corresponds to the significance level of a test. The probability of a Type~II Error is called $\beta$. As we make $\alpha$ smaller, $\beta$ typically gets larger, and vice versa.\end{onebox}
 
-\begin{examplewrap}\begin{nexample}{If making a Type~I Error is especially dangerous or especially costly, should we choose a smaller significance level or a higher significance level?}
+\begin{examplewrap}
+\begin{nexample}{If making a Type~I Error is especially dangerous or especially costly, should we choose a smaller significance level or a higher significance level?}
 Under this scenario, we want to be very cautious about rejecting the null hypothesis, so we demand very strong evidence before we are willing to reject the null hypothesis. Therefore, we want a smaller significance level, maybe $\alpha = 0.01$.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{If making a Type~II Error is especially dangerous or especially costly, should we choose a smaller significance level or a higher significance level?}
+\begin{examplewrap}
+\begin{nexample}{If making a Type~II Error is especially dangerous or especially costly, should we choose a smaller significance level or a higher significance level?}
 We should choose a higher significance level (e.g. 0.10). Here we want to be cautious about failing to reject $H_0$ when the null is actually false.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{onebox}{Significance levels should reflect consequences of errors}
 The significance level selected for a test should reflect the real-world consequences associated with making a Type~I or Type~II Error. If a Type~I Error is very dangerous, make $\alpha$ smaller.\end{onebox}
@@ -1172,8 +1222,11 @@ The Type~II Error rate $\beta$ and the magnitude of the error for a point estima
 %______________________________________
 \section{Does it make sense?}
 \sectionintro{
-\Add{
-\noindent It is the responsibility of the statistician or the data scientist to know when the use of these inference procedures is appropriate and to correctly interpret the results.  In this section we look at considerations around the misuse or misinterpretation of these procedures.}
+\noindent%
+It is the responsibility of the data scientist to know when the use of these inference procedures is appropriate and to correctly interpret the results.
+In~this section, we look at considerations around the misuse or misinterpretation of these procedures.
+
+
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
@@ -1197,7 +1250,7 @@ Statistical tools rely on conditions. When the conditions are not met, these too
 \item \textbf{The individual observations must be independent.} A random sample from less than 10\% of the population ensures the observations are independent. In experiments, we generally require that subjects are randomized into groups. If independence fails, then advanced techniques must be used, and in some such cases, inference may not be possible.
 \item \textbf{Other conditions focus on sample size and skew.} For example, if the sample size is too small, the skew too strong, or extreme outliers are present, then a normal model for the sample mean will fail.
 \end{itemize}
-Verification of conditions for statistical tools is always necessary. Whenever conditions are not satisfied for a statistical technique, there are three options. The first is to learn new methods that are appropriate for the data. The second route is to consult a statistician.\footnote{If you work at a university, then there may be campus consulting services to assist you. Alternatively, there are many private consulting firms that are also available for hire.} The third route is to ignore the failure of conditions. This last option effectively invalidates any analysis and may discredit novel and interesting findings.
+Verification of conditions for statistical tools is always necessary. Whenever conditions are not satisfied for a statistical technique, there are three options. The first is to learn new methods that are appropriate for the data. The second route is to consult a data scientist.\footnote{If you work at a university, then there may be campus consulting services to assist you. Alternatively, there are many private consulting firms that are also available for hire.} The third route is to ignore the failure of conditions. This last option effectively invalidates any analysis and may discredit novel and interesting findings.
 
 Finally, we caution that there may be no inference tools helpful when considering data that include unknown biases, such as convenience samples. For this reason, there are books, courses, and researchers devoted to the techniques of sampling and experimental design. See Sections~\ref{overviewOfDataCollectionPrinciples}-\ref{experimentsSection} for basic principles of data collection.
 
@@ -1209,20 +1262,26 @@ When the sample size becomes larger, point estimates become more precise and any
 
 Statistically significant differences are sometimes so minor that they are not practically relevant. This is especially important to research: if we conduct a study, we want to focus on finding a meaningful result. We don't want to spend lots of money finding results that hold no practical value.
 
-The role of a statistician in conducting a study often includes planning the size of the study. The statistician might first consult experts or scientific literature to learn what would be the smallest meaningful difference from the null value. She also would obtain some reasonable estimate for the standard deviation. With these important pieces of information, she would choose a sufficiently large sample size so that the power for the meaningful difference is perhaps 80\% or 90\%. While larger sample sizes may still be used, she might advise against using them in some cases, especially in sensitive areas of research.
+The role of a data scientist in conducting a study often includes planning the size of the study. The data scientist might first consult experts or scientific literature to learn what would be the smallest meaningful difference from the null value. She also would obtain some reasonable estimate for the standard deviation. With these important pieces of information, she would choose a sufficiently large sample size so that the power for the meaningful difference is perhaps 80\% or 90\%. While larger sample sizes may still be used, she might advise against using them in some cases, especially in sensitive areas of research.
 
 \subsection{Statistical significance versus a real difference}
-\Comment{please feel free to edit this and the footnote as you see fit}
 
-\Add{When a result is statistically significant at the $\alpha=0.05$ level, we have evidence that the result is real.  However, when there is no difference or effect, we can expect to commit a Type I~error and incorrectly reject the null hypothesis 5\% of the time.  Therefore we must beware of what is called p-hacking, in which researchers may test many, many hypotheses and then publish the ones that come out significant.  As we noted, we can expect 5\% of the results to be significant when the null hypothesis is true and there really is no difference or effect.\footnote{
-The problem is even greater than p-hacking.  In what has been called the "reproducibility crisis", researchers have failed to reproduce a large proportion of results that were found significant and were published in scientific journals.  The probability that a difference will be found significant given that it is not a real difference is not the same as the probability that a difference is not real, given that it was found significant.  Depending upon the veracity of the hypotheses tested, the latter can be upwards of 80\%, leading some to assert that "most published research is false".  \url{https://www.economist.com/briefing/2013/10/18/trouble-at-the-lab}
-}
-\Comment{can't read full article on economist}
+When a result is statistically significant at the $\alpha=0.05$ level, we have evidence that the result is real.
+However, when there is no difference or effect, we can expect that 5\% of the time the test conclusion will lead to a Type~I error and incorrectly reject the null hypothesis.
+Therefore we must beware of what is called p-hacking, in which researchers may test many, many hypotheses and then publish the ones that come out statistically significant.
+As we noted, we can expect 5\% of the results to be significant when the null hypothesis is true and there really is no difference or effect.\footnote{
+The problem is even greater than p-hacking.  In what has been called the ``reproducibility crisis", researchers have failed to reproduce a large proportion of results that were found significant and were published in scientific journals.
+This problem highlights the importance of research that
+reproduces earlier work rather than taking the word of
+a single study.
+
+Also keep in mind that the probability that a difference will be found to be significant given that there is no real difference is not the same as the probability that a difference is not real, given that it was found significant.
+Depending upon the veracity of the hypotheses tested, the latter can be upwards of 80\%, leading some to assert that ``most published research is false". \\
+\oiRedirect{textbook-trouble-at-the-lab}{\url{https://www.economist.com/briefing/2013/10/18/trouble-at-the-lab}}
 }
 
 %%
 %%
-\textA{\newpage}
 \subsection*{Section summary}
 \noindent The inference procedures in this book require \emph{two conditions} to be met.
 \begin{itemize}

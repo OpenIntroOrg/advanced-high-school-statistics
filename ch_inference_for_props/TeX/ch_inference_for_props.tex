@@ -29,21 +29,29 @@ ideas of hypothesis testing remain the same.}
 \label{singleProportion}
 
 \sectionintro{
-\Add{
-\noindent In this section, we will apply the inferential procedures introduced in Chapter~\ref{ch_inference_foundations} to the context of a single proportion and we will explore how to do sample~size calculations for data collection purposes.  We will answer questions such as the following:
+\noindent%
+In this section, we will apply the inferential procedures introduced in Chapter~\ref{ch_foundations_for_inf} to the context of a single proportion, and we will explore how to do sample~size calculations for data collection purposes.
+We will answer questions such as the following:
 \begin{itemize}
 \item Do greater than half of adults in the U.S. oppose nuclear energy?
-\item What percent of adults in the U.S. approve of the way the Supreme Court is handling its job?  \item How much error is associated with this estimate?  
-\item What interval of values are reasonable at the 95\% confidence level?
-\item How large a sample~size would we need to take to estimate this with 95\% confidence and a margin of error no greater than 3\%?
+\item What percent of adults in the U.S. approve of the way the Supreme Court is handling its job?
+\item
+    What is the standard error is associated with
+    this estimate?  
+\item
+    How do we construct a confidence interval for this value?
+\item
+    What sample~size is required to estimate this within a 3\%
+    margin of error using a 95\% confidence level?
 
 \end{itemize}
-}
+
 
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
-\item Verify whether or not the conditions for inference on a proportion using a normal distribution are met.
+\setlength{\itemsep}{0mm}
+\item State and verify whether or not the conditions for inference on a proportion using a normal distribution are met.
 
 \item Recognize that the success-failure condition and the standard error calculation are different for the test and for the confidence interval and explain why this is the case.
 
@@ -90,23 +98,27 @@ In our examples, we generally sample from large populations, such as the United 
 
 The Gallup organization began measuring the public's view of the Supreme Court's job performance in 2000, and has measured it every year since then with the question: ``Do you approve or disapprove of the way the Supreme Court is handling its job?".  In 2018, the Gallup poll randomly sampled 1,033 adults in the U.S. and found that 53\% of them approved.\footnote{\oiRedirect{textbook-gallup_supreme_court_approval_2018}{\scriptsize https://news.gallup.com/poll/237269/supreme-court-approval-highest-2009.aspx}}  We know that 53\% is just a point estimate.  What range of values are reasonable estimates for the percent of the population that approved of the job the Supreme Court is doing?  We can use the confidence interval procedure introduced in the previous chapter to answer this question, but first we must clearly identify the parameter we're trying to estimate and be sure that a Z-interval will be appropriate.  The following examples walk through the various steps for carrying out a confidence interval procedure using the Gallup poll data.
 
-\textA{\newpage}
-\begin{examplewrap}\begin{nexample}{Identify the population of interest and the parameter of interest for the Gallup poll about the U.S. Supreme Court. }
+\begin{examplewrap}
+\begin{nexample}{Identify the population of interest and the parameter of interest for the Gallup poll about the U.S. Supreme Court. }
 Gallup sampled from U.S. adults, therefore the population of interest, and the population to which we can make an inference, is U.S. adults.  We know the percent of the sample that said they approve of the job the Supreme Court is doing.  However, we do not know what percent of the population would approve.  The parameter of interest, which is unknown, is the percent of \emph{all} U.S. adults that approve of the job the Supreme Court is doing.  This is the quantity that we seek to estimate with the confidence interval.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
-\begin{examplewrap}\begin{nexample}{Can the sample proportion $\hat{p}$ be modeled using a normal distribution?}
+\begin{examplewrap}
+\begin{nexample}{Can the sample proportion $\hat{p}$ be modeled using a normal distribution?}
 In order to construct a Z-interval, the sample statistic must be able to be modeled using a normal distribution.  Gallup took a random sample, so the first condition (the independence condition) is satisfied.  We must also test the second condition (the success-failure condition) to ensure that the sample~size is large enough for the central limit theorem to apply.  The success-failure condition is met when $np$ and $n(1-p)$ are at least 10. Since $p$ is always unknown when constructing a confidence interval for $p$, we use the sample proportion $\hat{p}$ to check this condition.  Here we have:
 \begin{align*}
 n\hat{p} = 1033 \times 0.53 = 547\text{ (``successes'')} \\
  n(1-\hat{p}) = 1033 \times (1 - 0.53) = 486\text{ (``failures'')}
 \end{align*}
 The second condition is satisfied since 547 and 486 are both at least 10. With the two conditions satisfied, we can model the sample proportion $\hat{p}$ using a normal model and we can construct a Z-interval.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
-\begin{examplewrap}\begin{nexample}{Calculate the point estimate and the $SE$ of the estimate.}
+\begin{examplewrap}
+\begin{nexample}{Calculate the point estimate and the $SE$ of the estimate.}
 \label{supremeCourtCISEExample}
 The point estimate for the unknown parameter $p$ (the proportion of all U.S. adults) who approve of the job the Supreme Court is doing) is the sample proportion. The point estimate here is $\hat{p} = 0.53$.
 
@@ -124,10 +136,12 @@ Here $\hat{p}=0.53$ and $n=1,033$, so the $SE$ of the sample proportion is:
 \begin{align*}
 SE = \sqrt{\frac{\ 0.53(1-0.53)\ }{1033}}=0.016
 \end{align*}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
-\begin{examplewrap}\begin{nexample}{Construct a 90\% confidence interval for $p$, the proportion of all U.S. adults that approve of the job the Supreme Court is doing.}
+\begin{examplewrap}
+\begin{nexample}{Construct a 90\% confidence interval for $p$, the proportion of all U.S. adults that approve of the job the Supreme Court is doing.}
 \label{90CIForJobSupremeCourtDoingExample}
 Recall that the general form of a confidence interval is:
 \begin{align*}
@@ -140,15 +154,19 @@ We have already found the point estimate and the $SE$ of the estimate.  Because 
 = (0.5&04,\ 0.556)
 \end{align*}
 We are 90\% confident that the true proportion of U.S. adults who approve of the job the Supreme Court is doing is between 0.504 and .556. 
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
-\begin{examplewrap}\begin{nexample}{Based on the interval, is there evidence that more than half of U.S. adults approve of the job the Supreme Court is doing?}
+\begin{examplewrap}
+\begin{nexample}{Based on the interval, is there evidence that more than half of U.S. adults approve of the job the Supreme Court is doing?}
 \label{JobSupremeCourtDoingEvidenceExample}
 The 90\% confidence interval (0.504,\ 0.556) provides an interval of reasonable values for the parameter.  The value 0.50 is not in the interval, therefore can be considered unreasonable.  Because the \emph{entire} interval is above 0.50, we do have evidence, at the 90\% confidence level, that more than half of U.S. adults (at the time of this poll) approve of the job the Supreme Court is doing.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{Do we have evidence at the 95\% confidence level that more than half of U.S. adults approve of the job the Supreme Court is doing?}
+\begin{examplewrap}
+\begin{nexample}{Do we have evidence at the 95\% confidence level that more than half of U.S. adults approve of the job the Supreme Court is doing?}
 \label{JobSupremeCourtDoingWrapUpExample}
 First, we observe that a 95\% confidence interval will be \emph{wider} than a 90\% confidence interval.  For a 95\% Z-interval, $z^{\star}=1.96$.  The 95\% confidence interval is:
 \begin{align*}
@@ -158,7 +176,8 @@ First, we observe that a 95\% confidence interval will be \emph{wider} than a 90
 Now, we see that 0.50 is just barely inside the interval, making it within the range of reasonable values.  Therefore, we do not have evidence, at the 95\% confidence level, that more than half of U.S. adults (at the time of this poll) approve of the job the Supreme Court is doing.
 
 Notice that we come to a different conclusion based on different confidence levels, which may feel a little jarring.  However, this will happen with real data, and it highlights why it is important to be explicit in identifying the confidence level being used.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
 Having worked through this example, we now summarize the steps for constructing a confidence interval for a proportion using the five step framework introduce in Chapter 5.
@@ -200,7 +219,8 @@ To carry out a complete confidence interval procedure to estimate a single propo
 \end{itemize}\end{onebox}
 
 
-\begin{examplewrap}\begin{nexample}
+\begin{examplewrap}
+\begin{nexample}
 {A February 2018 Marist Poll reports:  ``Many Americans (68\%) think there is intelligent life on other planets."\footnotemark\,  The results were based on a random sample of 1,033 adults in the U.S.  Does this poll provide evidence at the 95\% confidence level that greater than half of all U.S. adults think there is intelligent life on other planets?  Carry out a confidence interval procedure to answer this question.  Use the five step framework to organize your work.  
 }
 \label{IntelligentLife}
@@ -227,10 +247,12 @@ The 95\% confidence interval is given by:
 \end{align*}
 \item[\inferencestep{Conclude}]  We are 95\%  confident that the true \emph{proportion} of U.S. adults that think there is intelligent life on other planets is between 0.651 and 0.709. Because the entire interval is above 0.5 we have evidence that greater than half of all U.S. adults think there is intelligent life on other planets.
 \end{description}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 \footnotetext{This estimate of 68\% in 2018 was up from an estimate of 52\% in 2005. \oiRedirect{textbook-intelligent_life_2018}{http://maristpoll.marist.edu/212-are-americans-poised-for-an-alien-invasion}}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 True or False:  There is a 95\% probability that between 65.1\% and 70.9\% of U.S. adults think that there is intelligent life on other planets.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
@@ -285,9 +307,11 @@ $\calctextmath{\hat{p}}$ & the sample proportion \\
 \end{enumerate}
 \end{onebox}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Using a calculator, evaluate the confidence interval from Example~\ref{IntelligentLife}.  Recall that we wanted to find a 95\% confidence interval for the proportion of U.S. adults who think there is intelligent life on other planets.  The sample percent was 68\% and the sample~size was 1,033.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Navigate to the 1-proportion Z-interval on the calculator.  To find \calctext{x}, the number of yes responses in the sample, we multiply the sample proportion by the sample~size.  Here $0.68\times 1033=702.44$.  We must round this to an integer, so we use \calctext{x} = 702.  Also, \calctext{n} =1033 and \calctext{C-Level} = 0.95.  The calculator output of (0.651, 0.708) matches our previously computed interval of (0.651, 0.709) with minor rounding difference.}
 
 
@@ -312,7 +336,8 @@ The margin of error tells us with a given confidence level how far off we expect
 \end{onebox}
 
 
-\begin{examplewrap}\begin{nexample}{Suppose we are conducting a university survey to determine whether students support a \$200 per year increase in fees to pay for a new football stadium.  Find the smallest sample~size $n$ so that the margin of error of the point estimate $\hat{p}$ will be no larger than 0.04 when using a 95\% confidence level.}
+\begin{examplewrap}
+\begin{nexample}{Suppose we are conducting a university survey to determine whether students support a \$200 per year increase in fees to pay for a new football stadium.  Find the smallest sample~size $n$ so that the margin of error of the point estimate $\hat{p}$ will be no larger than 0.04 when using a 95\% confidence level.}
 Because we are working with proportions, the critical value is a $z^{\star}$ value.  We want the margin of error to be less than or equal to 0.04, so we have:
 \begin{align*}
 z^{\star}\times \sqrt{\frac{p(1-p)}{n}} \leq 0.04
@@ -326,7 +351,8 @@ There are two unknowns in the inequality: $p$ and $n$. If we have an estimate of
 	n=601
 \end{align*}
 The sample~size must be an integer and we round up because $n$ must be greater than or equal to 600.25. We need at least 601 participants to ensure the sample proportion is within 0.04 of the true proportion with 95\% confidence.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 No estimate of the true proportion is required in sample~size computations for a proportion. However, if we have a reliable estimate of the proportion, we should use it in place of the worst case estimate of~0.5.
 
@@ -336,7 +362,8 @@ No estimate of the true proportion is required in sample~size computations for a
  
 
 
-\begin{examplewrap}\begin{nexample}
+\begin{examplewrap}
+\begin{nexample}
 {A recent estimate of Congress' approval rating was 17\%.\footnotemark\, If another poll were taken, what minimum sample~size does this estimate suggest should be used to have a margin of error no greater than 0.04 with 95\% confidence?}
 
 We complete the same computations as before, except now we use $0.17$ instead of $0.5$ for $p$:
@@ -349,7 +376,8 @@ If the true proportion is 0.17, then 339 is the minimum sample~size that will en
 
 \index{data!Congress approval rating|)}
 
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 \footnotetext{\oiRedirect{textbook-gallup_congress_2018}{news.gallup.com/poll/237176/snapshot-congressional-job-approval-july.aspx}}
 
 \begin{onebox}{Identify a sample~size for a particular margin of error}
@@ -360,11 +388,14 @@ z^{\star}\times \sqrt{\frac{p(1-p)}{n}} \leq m
 where $z^{\star}$ depends on the confidence level.   If no reliable estimate of $p$ exists, use $p = 0.5$.  	
 \end{onebox}
 
-\begin{exercisewrap}\begin{nexercise}To have a smaller margin or error, should one use a larger sample or a smaller sample?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}To have a smaller margin or error, should one use a larger sample or a smaller sample?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Intuitively, a larger sample should tend to yield less error. We can also note that $n$, the sample~size, is in the denominator of the $SE$ formula, so as $n$ goes up, the $SE$ and thus the margin of error go down.}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 A manager is about to oversee the mass production of a new tire model in her factory, and she would like to estimate the proportion of these tires that will be rejected through quality control. The quality control team has previously found that about 6.2\% of tires fail inspection.
 \begin{itemize}
 \setlength{\itemsep}{0mm}
@@ -373,7 +404,8 @@ A manager is about to oversee the mass production of a new tire model in her fac
  
 \index{margin of error|)}
 \end{itemize}
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The $z^{\star}$ corresponding to a 90\% confidence level is 1.645.  Since we have an estimate for $p$ of 6.2\%, we use it.  So we have:  $1.645\times \sqrt{\frac{0.062(1-0.062)}{n}} \leq 0.02 $.  Rearranging for $n$ gives: $n \geq 393.4$, so she should use $n =394$.}
 \footnotetext{Substituting 0.017 for $p$ gives an $n$ of 114.  We can note that in this case $n\times p = 114 \times 0.017 = 1.9 <10$.  Since the success-failure condition is not met, the use of $z^{\star} = 1.645$ based on a normal model is not appropriate.  We would need additional methods than what we've covered so far to get a good estimate for the minimum sample~size in this scenario.}
 
@@ -385,7 +417,8 @@ A manager is about to oversee the mass production of a new tire model in her fac
 
 While a confidence interval provides a range of reasonable values for an unknown parameter, a hypothesis test evaluates a specific claim. In a hypothesis test, we set up competing hypotheses and find degrees of evidence against the null hypothesis.
 
-\begin{examplewrap}\begin{nexample}{Deborah Toohey is running for Congress, and her campaign manager claims she has more than 50\% support from the district's electorate. A newspaper collects a random sample of 500 likely voters in the district and estimates Toohey's support to be 52\%.
+\begin{examplewrap}
+\begin{nexample}{Deborah Toohey is running for Congress, and her campaign manager claims she has more than 50\% support from the district's electorate. A newspaper collects a random sample of 500 likely voters in the district and estimates Toohey's support to be 52\%.
 \begin{itemize}
 %\item[(a)] What is the name of the test that is appropriate for this context?
 \item[(a)] Identify the null and the alternative hypothesis. What value should we use as the null value, $p_{0}$?
@@ -400,7 +433,8 @@ np_0 &\geq 10 \quad \rightarrow \quad 500\times 0.5 \geq 10 \\
 n(1-p_0) &\geq 10 \quad \rightarrow \quad 500 \times (1-0.5) \geq 10
 \end{align*}
 The conditions for a normal model are met.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
 In Chapter~\ref{foundationsForInference}, we saw that the general form of the test statistic for a hypothesis test takes the following form:
@@ -430,7 +464,8 @@ SE = \sqrt{\frac{p_0(1-p_0)}{n}}
 \end{onebox}
 
 
-\begin{examplewrap}\begin{nexample}{(Continues previous example). Deborah Toohey's campaign manager claimed she has more than 50\% support from the district's electorate. A newspaper poll finds that 52\% of 500 likely voters who were sampled support Toohey. Does this provide convincing evidence for the claim by Toohey's manager at the 5\% significance level?}\label{TooheyInferenceExample}
+\begin{examplewrap}
+\begin{nexample}{(Continues previous example). Deborah Toohey's campaign manager claimed she has more than 50\% support from the district's electorate. A newspaper poll finds that 52\% of 500 likely voters who were sampled support Toohey. Does this provide convincing evidence for the claim by Toohey's manager at the 5\% significance level?}\label{TooheyInferenceExample}
 We will use a one-sided test with the following hypotheses:
 \begin{itemize}
 \item[$H_0$:] $p = 0.5$. Toohey's support is 50\%.
@@ -445,7 +480,8 @@ The test statistic can be computed as:
 Z =  \frac{\text{point estimate} - \text{null value}}{SE \text{ of estimate}} = \frac{0.52 - 0.50}{0.022} = 0.89
 \end{align*}
 Because the alternative hypothesis uses a greater than sign ($>$), this is an upper-tail test.  We find the area under the standard normal curve to the \emph{right} of $Z=0.89$.  A figure featuring the p-value is shown in Figure~\ref{pValueForCampaignManagerClaimOfMoreThan50PercentSupport} as the shaded region. 
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
 \begin{figure}[h]
@@ -458,9 +494,11 @@ Using a table or a calculator, we find the p-value is 0.19.  This p-value of 0.1
 
 
 
-\begin{examplewrap}\begin{nexample}{Based on the result above, do we have evidence that Toohey's support equals 50\%?}
+\begin{examplewrap}
+\begin{nexample}{Based on the result above, do we have evidence that Toohey's support equals 50\%?}
 No.  In a hypothesis test we look for degrees of evidence \emph{against} the null hypothesis.  We cannot ever prove the null hypothesis directly.  The value 0.5 is reasonable, but many other values are reasonable as well.  There are many values that would not get rejected by this test.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 We now summarize the steps for carrying out a hypothesis test for a proportion using the five step framework introduced in the previous chapter.
 
@@ -501,7 +539,8 @@ To carry out a complete hypothesis test to test the claim that a single proporti
 \end{itemize}\end{onebox}
 
 
-\begin{examplewrap}\begin{nexample}
+\begin{examplewrap}
+\begin{nexample}
 {A Gallup poll conducted in March of 2016 found that 54\% of respondents oppose nuclear energy.  This was the first time since Gallup first asked the question in 1994 that a majority of respondents said they oppose nuclear energy.\footnotemark\, The survey was based on telephone interviews from a random sample of 1,019 adults in the United States. Does this poll provide evidence that greater than half of U.S. adults oppose nuclear energy?  Carry out an appropriate test at the 0.10 significance level.  Use the five step framework to organize your work.  }
 \label{NuclearEnergy}
 \begin{description}
@@ -528,14 +567,17 @@ Z = \frac{0.54 - 0.5}{\sqrt{\frac{0.5(1-0.5)}{1019}}} = 2.5
 Because $H_A$ uses a greater than sign (>), meaning that it is an upper-tail test, the \mbox{p-value} is the area to the \emph{right} of $Z=2.5$ under the standard normal curve.  This area can be found using a normal table or a calculator.  The area or p-value = $0.006$.  
 \item[\inferencestep{Conclude}]  The p-value of 0.006 is $< 0.10$, so we reject $H_0$; there is sufficient evidence that greater than half of U.S. adults oppose nuclear energy (as of March 2016).  
 \end{description}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 \footnotetext{\oiRedirect{textbook-nuclear_energy_support_2016}{www.gallup.com/poll/182180/support-nuclear-energy.aspx}} 
 
 
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 In context, interpret the p-value of 0.006 from the previous example.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{There is a 0.006 probability of getting a sample proportion as large as 0.54 \emph{if $H_0$ were true}, that is, if the true proportion of U.S. adults that oppose nuclear energy really is 0.5.  Note: We start by assuming $H_0$ is true, that $p$ really equals 0.5.  Then, assuming this, we estimate the probability of getting a sample proportion of 0.54 or larger by finding the area under the standard normal curve to the right of 2.5.  This probability is very small, which casts doubt on the null hypothesis and leads us to reject it.  }
 
 %%
@@ -597,9 +639,11 @@ The steps closely match those of the 1-proportion confidence interval.
 \end{enumerate}
 \end{onebox}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Using a calculator, find the test statistic and p-value for the earlier Example~\ref{NuclearEnergy}.  Recall that we were looking for evidence that more than half of U.S. adults oppose nuclear energy.  The sample percent was 54\%, and the sample~size was 1019.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Navigate to the 1-proportion Z-test on the calculator.  Let $\calctextmath{p_0}$ = 0.5.  To find \calctext{x}, do $0.54\times 1019 = 550.26$. This needs to be an integer, so round to the closest integer.  Here \calctext{x} = 550.  Also, $\calctextmath{n}=1019$.  We are looking for evidence that greater than half oppose, so choose $\calctextmath{>p_0}$.  When we do \calctext{Calculate}, we get the test statistic: \calctext{Z = 2.64} and the p-value: \calctext{p = 0.006}. }
 
 %%
@@ -660,21 +704,26 @@ $z^{\star}$ depends on the desired confidence level.  Unless a particular propor
 \label{differenceOfTwoProportions}
 
 \sectionintro{
-\Add{
-\noindent We often wish to compare to groups to each other.  In this section we will answer the following questions: 
+\noindent%
+We often wish two compare to groups to each other.
+In this section, we will answer the following questions: 
 \begin{itemize}
 \item How much more effective is a blood thinner than a placebo for those who undergo CPR for a heart attack?
-\item How different is th approval of the 2010 healthcare law under two different question phrasings?
+\item
+    How different is the approval of the 2010 healthcare
+    law under two different question phrasings?
 \item Does the use of fish oils reduce heart attacks better than a placebo?
 \end{itemize}
-}
+
 
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item State and verify whether or not the conditions for inference on the difference of two proportions using a normal distribution are met.
 
-\item Recognize that the standard error calculation is different for the test and for the interval and explain why that is the case.
+\item
+    Recognize that the standard error calculation is different for the test and for the interval, and explain why that is the case.
 
 \item Know how to calculate the pooled proportion and when to use it.
 
@@ -819,7 +868,8 @@ To carry out a complete confidence interval procedure to estimate the difference
 
 \end{itemize}\end{onebox}
 
-\begin{examplewrap}\begin{nexample}{A remote control car company is considering a new manufacturer for wheel gears. The new manufacturer would be more expensive but their higher quality gears are more reliable, resulting in happier customers and fewer warranty claims. However, management must be convinced that the more expensive gears are worth the conversion before they approve the switch. The quality control engineer collects a sample of gears, examining 1000 gears from each company and finds that 879 gears pass inspection from the current supplier and 958 pass inspection from the prospective supplier. Using these data, construct a 95\% confidence interval for the difference in the proportion from each supplier that would pass inspection.  Use the five step framework described above to organize your work.}
+\begin{examplewrap}
+\begin{nexample}{A remote control car company is considering a new manufacturer for wheel gears. The new manufacturer would be more expensive but their higher quality gears are more reliable, resulting in happier customers and fewer warranty claims. However, management must be convinced that the more expensive gears are worth the conversion before they approve the switch. The quality control engineer collects a sample of gears, examining 1000 gears from each company and finds that 879 gears pass inspection from the current supplier and 958 pass inspection from the prospective supplier. Using these data, construct a 95\% confidence interval for the difference in the proportion from each supplier that would pass inspection.  Use the five step framework described above to organize your work.}
 \label{RemoteControl}
 \begin{description}
 \item[\inferencestep{Identify}] First we identify the parameter of interest.  Here the parameter we wish to estimate is the true difference in the proportion of gears from each supplier that would pass inspection, $p_1-p_2$.  We will take the difference as:  current $-$ prospective, so $p_1$ is the true proportion that would pass from the current supplier and $p_2$ is the true proportion that would pass from the prospective supplier.  We will estimate the difference using a 95\% confidence level.  
@@ -850,7 +900,8 @@ So the 95\% confidence interval is given by:
 
 \item[\inferencestep{Conclude}]  We are 95\% confident that the true difference (current $-$ prospective) in the proportion that would pass inspection is between -0.103 and -0.055, meaning that we are 95\% confident that the prospective supplier would have between a 5.5\% and 10.3\% \emph{greater} rate of passing inspection.  Because the entire interval is below zero, the data provide sufficient evidence that the prospective gears pass inspection more often than the current gears. The remote control car company should go with the new manufacturer.
 \end{description}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
 
@@ -903,12 +954,13 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion &&
 \end{enumerate}
 \end{onebox}
 
-\begin{exercisewrap}\begin{nexercise}{From Example~\ref{RemoteControl}, we have that a quality control engineer collects a sample of gears, examining 1000 gears from each company and finds that 879 gears pass inspection from the current supplier and 958 pass inspection from the prospective supplier. Use a calculator to find a 95\% confidence interval for the difference (current $-$ prospective) in the proportion that would pass inspection.}\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}{From Example~\ref{RemoteControl}, we have that a quality control engineer collects a sample of gears, examining 1000 gears from each company and finds that 879 gears pass inspection from the current supplier and 958 pass inspection from the prospective supplier. Use a calculator to find a 95\% confidence interval for the difference (current $-$ prospective) in the proportion that would pass inspection.}\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Navigate to the 2-proportion Z-interval on the calculator.  Let \calctext{x1} = 879, \calctext{n1} = 1000, \calctext{x2} = 958, and \calctext{n2} = 1000.  \calctext{C-Level} is .95.  This should lead to an interval of (-0.1027, -0.0553), which matches what we found previously. }
 
 
-\textA{\newpage}
 %%
 \subsection[Hypothesis testing when $H_0$: $p_1 = p_2$]{Hypothesis testing when \pmb{$H_0$: $p_1 = p_2$}}
 \label{pooledHTForProportionsSection}
@@ -918,10 +970,10 @@ whether the way a question is phrased can influence a person's response. Pew Res
 \begin{quote}
 As you may know, by 2014 nearly all Americans will be required to have health insurance. [People who do not buy insurance will pay a penalty] while [People who cannot afford it will receive financial help from the government]. Do you approve or disapprove of this policy?
 \end{quote}
-\index{data!health care|(}For each randomly sampled respondent, the statements in brackets were randomized: either they were kept in the original order given above, or they were reversed. Results are presented in Table~\ref{pewPollResultsForRandomizedStatementOrdering}
+\index{data!health care|(}For each randomly sampled respondent, the statements in brackets were randomized: either they were kept in the original order given above, or they were reversed. Results are presented in Figure~\ref{pewPollResultsForRandomizedStatementOrdering}
 
 
-\begin{table}[t]
+\begin{figure}[t]
 \centering
 \begin{tabular}{p{50mm}c p{13mm}p{14mm}p{16.5mm}c}
 	&\ & sample~size & Approve law (\%)	& Disapprove law (\%)	& Other \\
@@ -934,13 +986,15 @@ As you may know, by 2014 nearly all Americans will be required to have health in
 \end{tabular}
 \caption{Results for a Pew Research Center poll where the ordering of two statements in a question regarding healthcare were randomized.}
 \label{pewPollResultsForRandomizedStatementOrdering}
-\end{table}
+\end{figure}
 
 
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Is this study an experiment or an observational study?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{There is a random sample involved, but there are also two treatments.  Half of the the respondents are given the original statement order and the other half, randomly, are given the reversed statement order.  This is an experiment because there are randomly assigned treatments.  }
 
 \noindent The approval percents of 47\% and 34\% seem far apart.  However, could this difference be due to random chance?  We will answer this question using a hypothesis test.  To simplify things, let 
@@ -949,11 +1003,13 @@ p_1& \text{: the proportion of respondents that would approve of policy with the
 p_2& \text{: the proportion of respondents that would approve of policy with the reversed statement ordering.}
 \end{align*}
 
-\begin{examplewrap}\begin{nexample}{Set up hypotheses to test whether the two statement orders produce the same response. }
+\begin{examplewrap}
+\begin{nexample}{Set up hypotheses to test whether the two statement orders produce the same response. }
 The null claim is that the question order does not matter, that is, that the two proportions should be equal.  The alternate claim, the one that bears the burden of proof, is that the question ordering does matter.  \\
 \\
 $H_0$: $p_1 =  p_2$ \\ $H_A$: $p_1 \ne  p_2$
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 Now, we can note that:
 \begin{align*}
@@ -962,7 +1018,8 @@ p_1\ne p_2 &\text{ is equivalent to } p_1-p_2\ne 0.
 \end{align*}
 We can now see that the hypotheses are really about a difference of proportions: $p_1-p_2$.  In the last section, we used a 2-proportion Z-interval to estimate the parameter $p_1-p_2$; here, we will use a 2-proportion Z-test to test the null hypothesis that $p_1-p_2=0$, i.e. that $p_1=p_2$.
 
-\begin{examplewrap}\begin{nexample}{Are the conditions for using the normal model for inference met?  }
+\begin{examplewrap}
+\begin{nexample}{Are the conditions for using the normal model for inference met?  }
 \label{}
 (1) We have two randomly assigned treatments.\\
 (2) The success-failure condition (minimums of 10) easily holds for each group.
@@ -973,7 +1030,8 @@ We can now see that the hypotheses are really about a difference of proportions:
 	&732 \times (1-0.34) &\ge 10
 \end{align*}
 Because both conditions are met, the normal model can be used.  
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 %\CommentA{Called term SD rather than SE to be consistent with notation and with language used in paragraph.}
 
@@ -1017,20 +1075,23 @@ SE =\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
 
 
 
-\begin{examplewrap}\begin{nexample}{Use Equation~\eqref{seOfDiffInPropUsingPooledEstimate} to find the $SE$ of estimate for this hypothesis test.  Recall that the pooled proportion $\hat{p}=0.407$, $n_1 = 771$, and $n_2=732$.}
+\begin{examplewrap}
+\begin{nexample}{Use Equation~\eqref{seOfDiffInPropUsingPooledEstimate} to find the $SE$ of estimate for this hypothesis test.  Recall that the pooled proportion $\hat{p}=0.407$, $n_1 = 771$, and $n_2=732$.}
 $$SE =\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}=\sqrt{0.407(1-0.407)}\sqrt{\frac{1}{771} + \frac{1}{732}}=0.025$$
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{Complete the hypothesis test using a significance level of 0.01.}
+\begin{examplewrap}
+\begin{nexample}{Complete the hypothesis test using a significance level of 0.01.}
 We have already set up the hypotheses and verified that the difference of proportions can be modeled using a normal distribution.  We can now calculate the test statistic and p-value.  
 \begin{eqnarray*}
 Z = \frac{\text{point estimate} - \text{null value}}{SE\ \text{of estimate}}= \frac{(0.47-0.34) - 0}{0.025} = 5.2
 \end{eqnarray*}
 This is a two-tailed test as $H_A$ is that $p_1\ne p_2$.  We can find the area in one tail and double it.  Here, the p-value $\approx$ 0.  Because the p-value is smaller than $\alpha = 0.01$, we reject the null hypothesis and conclude that the order of the statements affects how likely a respondent is to support the 2010 healthcare law.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
  
  
-\textA{\newpage}
 
 \begin{onebox}{Hypothesis testing for the difference of two proportions}
 To carry out a complete hypothesis test to test the claim that two proportions $p_1$ and $p_2$ are equal to each other,
@@ -1070,7 +1131,8 @@ To carry out a complete hypothesis test to test the claim that two proportions $
 \end{itemize}\end{onebox}
 
 
-\begin{examplewrap}\begin{nexample}
+\begin{examplewrap}
+\begin{nexample}
 { A 5-year experiment
 was conducted to evaluate the effectiveness
 of fish oils on reducing heart attacks,
@@ -1124,10 +1186,10 @@ Z = \frac{-0.0043 - 0}{0.00142} = -3.0
 Because $H_A$ uses a less than, meaning that it is a lower-tail test, the \mbox{p-value} is the area to the \emph{left} of $Z=-3.0$ under the standard normal curve.  This area can be found using a normal table or a calculator.  The area or p-value = $0.0013$.  
 \item[\inferencestep{Conclude}]  The p-value of 0.0013 is $< 0.10$, so we reject $H_0$; there is sufficient evidence that fish oil is effective in reducing heart attacks.  
 \end{description}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
-\textA{\newpage}
 %%
 \subsection{Calculator: 2-proportion Z-test}
 \label{2propZtest}
@@ -1174,7 +1236,8 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion
   \end{tabular}
 \end{enumerate}\end{onebox}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 {Use a calculator to find the test statistic, p-value, and pooled proportion for a test with:\\
  $H_A$: $p$ for fish oil $< p$ for placebo.\footnotemark
 \begin{center}
@@ -1189,12 +1252,12 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion
 \end{tabular}
 \end{center}
 }
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Correctly going through the calculator steps should lead to a solution with the test statistic \calctext{z} = -2.977 and the p-value \calctext{p} = 0.00145.  These two values match our calculated values from the previous example to within rounding error.  The pooled proportion is given as $\calctextmath{\hat{p}}$ = 0.0133.  Note: values for \calctext{x1} and \calctext{x2} were given in the table.  If, instead, proportions are given, find \calctext{x1} and \calctext{x2} by multiplying the proportions by the sample~sizes and rounding the result to an \emph{integer}.}
 
 %%
 
-\textA{\newpage} 
 
 %%
 \subsection*{Section summary}
@@ -1243,19 +1306,21 @@ Here the point estimate is the difference of sample proportions $\hat{p}_1 - \ha
 \label{oneWayChiSquare}
 
 \sectionintro{
-\Add{
-In this section, we develop a method for assessing a null model when the data take on more than two categories (such as yes/no).  This allows us to answer questions such as the following:
+\noindent%
+In this section, we develop a method for assessing a null model when the data take on more than two categories, such as yes/no/maybe instead of simply yes/no.
+This allows us to answer questions such as the following:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item Are juries representative of the population in terms of race/ethnicity, or is there a bias in jury selection?
 \item Is the color distribution of actual M\&M's consistent with what was reported on the Mars website?
 \item Do people choose rock, paper, scissors with the same likelihood, or is one choice favored over another?
 \end{itemize}
-}
+
 
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 
 \item Calculate the expected counts and degrees of freedom for a one-way table.
 
@@ -1273,9 +1338,9 @@ In this section, we develop a method for assessing a null model when the data ta
 %%
 \subsection{Creating a test statistic for one-way tables}
 
-Data is collected from a random sample of 275 jurors in a small county. Jurors identified their racial group, as shown in Table~\ref{juryRepresentationAndCityRepresentationForRace}, and we would like to determine if these jurors are racially representative of the population. If the jury is representative of the population, then the proportions in the sample should roughly reflect the population of eligible jurors, i.e. registered voters.
+Data is collected from a random sample of 275 jurors in a small county. Jurors identified their racial group, as shown in Figure~\ref{juryRepresentationAndCityRepresentationForRace}, and we would like to determine if these jurors are racially representative of the population. If the jury is representative of the population, then the proportions in the sample should roughly reflect the population of eligible jurors, i.e. registered voters.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{ll ccc c ll}
 \hline
@@ -1287,21 +1352,25 @@ Registered voters	 & 		& 0.72 & 0.07 & 0.12 & 0.09 & & 1.00 \\
 \end{tabular}
 \caption{Representation by race in a city's juries and population.}
 \label{juryRepresentationAndCityRepresentationForRace}
-\end{table}
+\end{figure}
 
 While the proportions in the juries do not precisely represent the population proportions, it is unclear whether these data provide convincing evidence that the sample is not representative. If the jurors really were randomly sampled from the registered voters, we might expect small differences due to chance. However, unusually large differences may provide convincing evidence that the juries were not representative.
 
-\begin{examplewrap}\begin{nexample}{Of the people in the city, 275 served on a jury. If the individuals are randomly selected to serve on a jury, about how many of the 275 people would we expect to be white? How many would we expect to be black?}
+\begin{examplewrap}
+\begin{nexample}{Of the people in the city, 275 served on a jury. If the individuals are randomly selected to serve on a jury, about how many of the 275 people would we expect to be white? How many would we expect to be black?}
 About 72\% of the population is white, so we would expect about 72\% of the jurors to be white: $0.72\times 275 = 198$.
 
 Similarly, we would expect about 7\% of the jurors to be black, which would correspond to about $0.07\times 275 = 19.25$ black jurors.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}
-Twelve percent of the population is Hispanic and 9\% represent other races. How many of the 275 jurors would we expect to be Hispanic or from another race? Answers can be found in Table~\ref{expectedJuryRepresentationIfNoBias}.
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}
+Twelve percent of the population is Hispanic and 9\% represent other races. How many of the 275 jurors would we expect to be Hispanic or from another race? Answers can be found in Figure~\ref{expectedJuryRepresentationIfNoBias}.
+\end{nexercise}
+\end{exercisewrap}
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{ll ccc c ll}
 \hline
@@ -1313,7 +1382,7 @@ Expected counts	 &	& 198 & 19.25 & 33 & 24.75 & & 275 \\
 \end{tabular}
 \caption{Actual and expected make-up of the jurors.}
 \label{expectedJuryRepresentationIfNoBias}
-\end{table}
+\end{figure}
 
 The sample proportion represented from each race among the 275 jurors was not a precise match for any ethnic group. While some sampling variation is expected, we would expect the sample proportions to be fairly similar to the population proportions if there is no bias on juries. We need to test whether the differences are strong enough to provide convincing evidence that the jurors are not a random sample. These ideas can be organized into hypotheses:
 \begin{itemize}
@@ -1383,9 +1452,11 @@ In Section~\ref{pValueForAChiSquareTest}, we will see that if the null hypothesi
 
 The \term{chi-square distribution} is sometimes used to characterize data sets and statistics that are always positive and typically right skewed. Recall a normal distribution had two parameters -- mean and standard deviation -- that could be used to describe its exact characteristics. The chi-square distribution has just one parameter called \termsub{degrees of freedom (df)}{degrees of freedom (df)!chi-square}, which influences the shape, center, and spread of the distribution.
 
-\begin{exercisewrap}\begin{nexercise}\label{exerChiSquareDistributionDescriptionWithMoreDOF}
+\begin{exercisewrap}
+\begin{nexercise}\label{exerChiSquareDistributionDescriptionWithMoreDOF}
 Figure~\ref{chiSquareDistributionWithInceasingDF} shows three chi-square distributions. (a) How does the center of the distribution change when the degrees of freedom is larger? (b) What about the variability (spread)? (c) How does the shape change?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a)~The center becomes larger. If we look carefully, we can see that the center of each distribution is equal to the distribution's degrees of freedom. (b)~The variability increases as the degrees of freedom increases. (c)~The distribution is very strongly right skewed for $df=2$, and then the distributions become more symmetric for the larger degrees of freedom $df=4$ and $df=9$. In fact, as the degrees of freedom increase, the $\chi^2$ distribution approaches a normal distribution. }
 
 
@@ -1398,9 +1469,9 @@ Figure~\ref{chiSquareDistributionWithInceasingDF} shows three chi-square distrib
 
 Figure~\ref{chiSquareDistributionWithInceasingDF} and Guided Practice~\ref{exerChiSquareDistributionDescriptionWithMoreDOF} demonstrate three general properties of chi-square distributions as the degrees of freedom increases: the distribution becomes more symmetric, the center moves to the right, and the variability inflates.
 
-Our principal interest in the chi-square distribution is the calculation of p-values, which (as we have seen before) is related to finding the relevant area in the tail of a distribution. To do so, a new table is needed: the \term{chi-square table}, partially shown in Table~\ref{chiSquareProbabilityTableShort}. A more complete table is presented in Appendix~\vref{chiSquareProbabilityTable}. This table is very similar to the $t$-table from Sections~\ref{oneSampleMeansWithTDistribution} and~\ref{theTDistributionForTheDifferenceOfTwoMeans}: we identify a range for the area, and we examine a particular row for distributions with different degrees of freedom. One important difference from the $t$-table is that the chi-square table only provides upper tail values.
+Our principal interest in the chi-square distribution is the calculation of p-values, which (as we have seen before) is related to finding the relevant area in the tail of a distribution. To do so, a new table is needed: the \term{chi-square table}, partially shown in Figure~\ref{chiSquareProbabilityTableShort}. A more complete table is presented in Appendix~\vref{chiSquareProbabilityTable}. This table is very similar to the $t$-table from Sections~\ref{oneSampleMeansWithTDistribution} and~\ref{theTDistributionForTheDifferenceOfTwoMeans}: we identify a range for the area, and we examine a particular row for distributions with different degrees of freedom. One important difference from the $t$-table is that the chi-square table only provides upper tail values.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{r | rrrr | rrrr |}
   \hline
@@ -1418,11 +1489,13 @@ df \hfill 1 & \footnotesize 1.07 & \footnotesize 1.64 & \footnotesize 2.71 & \fo
 \end{tabular}
 \caption{A section of the chi-square table. A complete table is in Appendix~\ref{chiSquareProbabilityTable}.}
 \label{chiSquareProbabilityTableShort}
-\end{table}
+\end{figure}
 
-\begin{examplewrap}\begin{nexample}{Figure~\ref{chiSquareAreaAbove6Point25WithDF3} shows a chi-square distribution with 3 degrees of freedom and an upper shaded tail starting at 6.25. Use Table~\ref{chiSquareProbabilityTableShort} to estimate the shaded area.}
+\begin{examplewrap}
+\begin{nexample}{Figure~\ref{chiSquareAreaAbove6Point25WithDF3} shows a chi-square distribution with 3 degrees of freedom and an upper shaded tail starting at 6.25. Use Figure~\ref{chiSquareProbabilityTableShort} to estimate the shaded area.}
 This distribution has three degrees of freedom, so only the row with 3 degrees of freedom (df) is relevant. This row has been italicized in the table. Next, we see that the value -- 6.25 -- falls in the column with upper tail area 0.1. That is, the shaded upper tail of Figure~\ref{chiSquareAreaAbove6Point25WithDF3} has area 0.1.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{figure}
 \centering
@@ -1461,9 +1534,11 @@ This distribution has three degrees of freedom, so only the row with 3 degrees o
 \label{arrayOfFigureAreasForChiSquareDistribution}
 \end{figure}
 
-\begin{examplewrap}\begin{nexample}{We rarely observe the \emph{exact} value in the table. For instance, Figure~\ref{chiSquareAreaAbove4Point3WithDF2} shows the upper tail of a chi-square distribution with 2 degrees of freedom. The lower bound for this upper tail is at 4.3, which does not fall in Table~\ref{chiSquareProbabilityTableShort}. Find the approximate tail area.}
+\begin{examplewrap}
+\begin{nexample}{We rarely observe the \emph{exact} value in the table. For instance, Figure~\ref{chiSquareAreaAbove4Point3WithDF2} shows the upper tail of a chi-square distribution with 2 degrees of freedom. The lower bound for this upper tail is at 4.3, which does not fall in Figure~\ref{chiSquareProbabilityTableShort}. Find the approximate tail area.}
 The cutoff 4.3 falls between the second and third columns in the 2 degrees of freedom row. Because these columns correspond to tail areas of 0.2 and 0.1, we can be certain that the area shaded in Figure~\ref{chiSquareAreaAbove4Point3WithDF2} is between 0.1 and 0.2.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
 
@@ -1498,24 +1573,32 @@ TI-83: Do steps~1-2, then type the lower bound, upper bound, and degrees of free
 \end{enumerate}
 \end{onebox}
 
-\begin{exercisewrap}\begin{nexercise}
-Figure~\ref{chiSquareAreaAbove5Point1WithDF5} shows an upper tail for a chi-square distribution with 5 degrees of freedom and a cutoff of 5.1. Find the tail area using a calculator.\footnotemark\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}
+Figure~\ref{chiSquareAreaAbove5Point1WithDF5} shows an upper tail for a chi-square distribution with 5 degrees of freedom and a cutoff of 5.1. Find the tail area using a calculator.\footnotemark\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Use a lower bound of $5.1$, an upper bound of 1000, and $df = 5$.  The upper tail area is 0.4038.}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Figure~\ref{chiSquareAreaAbove11Point7WithDF7} shows a cutoff of 11.7 on a chi-square distribution with 7 degrees of freedom. Find the area of the upper tail.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The area is 0.1109.}
 
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Figure~\ref{chiSquareAreaAbove10WithDF4} shows a cutoff of 10 on a chi-square distribution with 4 degrees of freedom. Find the area of the upper tail.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The area is 0.4043.}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Figure~\ref{chiSquareAreaAbove9Point21WithDF3} shows a cutoff of 9.21 with a chi-square distribution with 3 df. Find the area of the upper tail.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The area is 0.0266.}
 
 %%
@@ -1527,16 +1610,20 @@ In Section~\ref{chiSquareTestStatistic}, we identified a new test statistic ($\c
 
 We determined that a large $\chi^2$ value would suggest strong evidence favoring the alternative hypothesis: that there was racial bias. However, we could not quantify what the chance was of observing such a large test statistic ($\chi^2=5.89$) if the null hypothesis actually was true. This is where the chi-square distribution becomes useful. If the null hypothesis was true and there was no racial bias, then $\chi^2$ would follow a chi-square distribution, with three degrees of freedom in this case. Under certain conditions, the statistic $\chi^2$ follows a chi-square distribution with $k-1$ degrees of freedom, where $k$ is the number of bins or categories of the variable.
 
-\begin{examplewrap}\begin{nexample}{How many categories were there in the juror example? How many degrees of freedom should be associated with the chi-square distribution used for $\chi^2$?}
+\begin{examplewrap}
+\begin{nexample}{How many categories were there in the juror example? How many degrees of freedom should be associated with the chi-square distribution used for $\chi^2$?}
 In the jurors example, there were $k=4$ categories: white, black, Hispanic, and other. According to the rule above, the test statistic $\chi^2$ should then follow a chi-square distribution with $k-1 = 3$ degrees of freedom if $H_0$ is true.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 Just like we checked sample~size conditions to use the normal model in earlier sections, we must also check a sample~size condition to safely model $\chi^2$ with a chi-square distribution. Each expected count must be at least 5. In the juror example, the expected counts were 198, 19.25, 33, and 24.75, all easily above~5, so we can model the $\chi^2$ test statistic, using a chi-square distribution.
 
-\begin{examplewrap}\begin{nexample}{If the null hypothesis is true, the test statistic $\chi^2=5.89$ would be closely associated with a chi-square distribution with three degrees of freedom. Using this distribution and test statistic, identify the p-value and state whether or not there is evidence of racial bias in the juror selection.}
+\begin{examplewrap}
+\begin{nexample}{If the null hypothesis is true, the test statistic $\chi^2=5.89$ would be closely associated with a chi-square distribution with three degrees of freedom. Using this distribution and test statistic, identify the p-value and state whether or not there is evidence of racial bias in the juror selection.}
 The chi-square distribution and p-value are shown in Figure~\ref{jurorHTPValueShown}. Because larger chi-square values correspond to stronger evidence against the null hypothesis, we shade the upper tail to represent the p-value. Using a calculator, we look at the chi-square curve with 3 degrees of freedom and find the area to the right of $\chi^2=5.89$.  This area, which corresponds to the p-value, is equal to 0.117.  This p-value is larger than the default significance level of 0.05, so we reject the null hypothesis.  In other words, the data do not provide convincing evidence of racial bias in the juror selection.
 \index{data!racial make-up of jury|)}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{figure}[h]
 \centering
@@ -1607,7 +1694,6 @@ There are two conditions that must be checked before performing a chi-square goo
 Have you ever wondered about the color distribution of M\&M's$^{\text{\textregistered}}$?  If so, then you will be glad to know that Rick Wicklin, a statistician working at the statistical software company SAS, wondered about this too.  But he did more than wonder; he decided to collect data to test whether the distribution of M\&M colors was consistent with the stated distribution published on the Mars website in 2008.  Starting at end of 2016, over the course of several weeks, he collected a sample of 712 candies, or about 1.5 pounds.  We will investigate his results in the next example.  You can read about his adventure in the Quartz article cited in the footnote below.\footnotemark 
 \footnotetext{\oiRedirect{textbook-mandms}{https://qz.com/918008/the-color-distribution-of-mms-as-determined-by-a-phd-in-statistics}. }
 
-\textA{\newpage}
 \begin{examplewrap}
 \begin{nexample}
 {The stated color distribution of M\&M's on the Mars website in 2008 is shown in the table below, along with the observed percentages from Rick Wicklin's sample of size 712. (See the paragraph before this example for more background.) \\
@@ -1710,7 +1796,6 @@ $\calctextmath{\chi^2}$ & chi-square test statistic \\
 \end{enumerate}
 TI-83: Unfortunately the TI-83 does not have this test built in. To carry out the test manually, make list \calctext{L3 = (L1 - L2)}$\calctextmath{^2}$\calctext{ / L2} and do \calctext{1-Var-Stats} on \calctext{L3}. The sum of \calctext{L3} will correspond to the value of $\chi^2$ for this test.\end{onebox}
 
-\textA{\newpage}
 \begin{onebox}{\videohref{casio_chisq_GOF_test} Casio fx-9750GII: Chi-square goodness of fit test\vspace{0.5mm}}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1733,7 +1818,8 @@ TI-83: Unfortunately the TI-83 does not have this test built in. To carry out th
 \end{onebox}
 
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Use the table below and a calculator to find the $\chi^2$-statistic and p-value for chi-square goodness of fit test.\footnotemark
 \begin{center}
 \begin{tabular}{ll ccc ccc}
@@ -1746,7 +1832,8 @@ expected counts:&		& 170.9 &  142.4 & 113.9 & 99.6 & 92.6 & 92.6\\
 \end{tabular}
 \end{center}
 
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Enter the observed counts into \calctext{L1} and the expected counts into  \calctext{L2}.    the \calctext{GOF} test.  Make sure that \calctext{Observed:} is \calctext{L1} and \calctext{Expected:} is \calctext{L2}.  Let \calctext{df:} be 5.  You should find that $\chi^2=17.36$ and $\text{p-value}=0.004$.}
 
 
@@ -1811,19 +1898,21 @@ expected counts:&		& 170.9 &  142.4 & 113.9 & 99.6 & 92.6 & 92.6\\
 \label{twoWayTablesAndChiSquare}
 
 \sectionintro{
-\Add{
-\noindent In this section we encounter two-way tables, and we learn about two new and closely related chi-square tests. We will answer questions such as the following:
+\noindent%
+We encounter two-way tables in this section, and we learn about two new and closely related chi-square tests.
+We will answer questions such as the following:
 \begin{itemize}
-\item Does the phrasing of the question affect how likely individuals are to disclose the problems with a product?
+\item Does the phrasing of the question affect how likely sellers are to disclose problems with a product?
 \item Is gender associated with whether Facebook users know how to adjust their privacy settings?
 \item Is political affiliation associated with support for the use of full body scans at airports?
 \end{itemize}
-}
+
 
 %%
 \subsection*{Learning objectives}
 
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Calculate the expected counts and degrees of freedom for a chi-square test involving a two-way table.
 
 \item State and verify whether or not the conditions for a chi-square test for a two-way table are met.
@@ -1837,9 +1926,9 @@ expected counts:&		& 170.9 &  142.4 & 113.9 & 99.6 & 92.6 & 92.6\\
 
 %%
 \subsection{Introduction}
-Google is constantly running experiments to test new search algorithms. For example, Google might test three algorithms using a sample of 10,000 google.com search queries. Table~\ref{googleSearchAlgorithmByAlgorithmOnly} shows an example of 10,000 queries split into three algorithm groups.\footnote{Google regularly runs experiments in this manner to help improve their search engine. It is entirely possible that if you perform a search and so does your friend, that you will have different search results. While the data presented in this section resemble what might be encountered in a real experiment, these data are simulated.} The group sizes were specified before the start of the experiment to be 5000 for the current algorithm and 2500 for each test algorithm.
+Google is constantly running experiments to test new search algorithms. For example, Google might test three algorithms using a sample of 10,000 google.com search queries. Figure~\ref{googleSearchAlgorithmByAlgorithmOnly} shows an example of 10,000 queries split into three algorithm groups.\footnote{Google regularly runs experiments in this manner to help improve their search engine. It is entirely possible that if you perform a search and so does your friend, that you will have different search results. While the data presented in this section resemble what might be encountered in a real experiment, these data are simulated.} The group sizes were specified before the start of the experiment to be 5000 for the current algorithm and 2500 for each test algorithm.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{ll ccc ll}
 \hline
@@ -1849,22 +1938,24 @@ Counts &		& 5000 & 2500 & 2500 & & 10000 \\
 \end{tabular}
 \caption{Google experiment breakdown of test subjects into three search groups.}
 \label{googleSearchAlgorithmByAlgorithmOnly}
-\end{table}
+\end{figure}
 
 
-\begin{examplewrap}\begin{nexample}{What is the ultimate goal of the Google experiment? What are the null and alternative hypotheses, in regular words?}
+\begin{examplewrap}
+\begin{nexample}{What is the ultimate goal of the Google experiment? What are the null and alternative hypotheses, in regular words?}
 The ultimate goal is to see whether there is a difference in the performance of the algorithms. The hypotheses can be described as the following:
 \begin{itemize}
 \item[$H_0$:] The algorithms each perform equally well.
 \item[$H_A$:] The algorithms do not perform equally well.
 \end{itemize}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 In this experiment, the explanatory variable is the search algorithm. However, an outcome variable is also needed. This outcome variable should somehow reflect whether the search results align with the user's interests. One possible way to quantify this is to determine whether (1)~there was no new, related search, and the user clicked one of the links provided, or (2)~there was a new, related search performed by the user. Under scenario~(1), we might think that the user was satisfied with the search results. Under scenario~(2), the search results probably were not relevant, so the user tried a second search.
 
-Table~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals} provides the results from the experiment. These data are very similar to the count data in Section~\ref{oneWayChiSquare}. However, now the different combinations of two variables are binned in a \emph{two-way} table. In examining these data, we want to evaluate whether there is strong evidence that at least one algorithm is performing better than the others. To do so, we apply a chi-square test to this two-way table. The ideas of this test are similar to those ideas in the one-way table case. However, degrees of freedom and expected counts are computed a little differently than before.
+Figure~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals} provides the results from the experiment. These data are very similar to the count data in Section~\ref{oneWayChiSquare}. However, now the different combinations of two variables are binned in a \emph{two-way} table. In examining these data, we want to evaluate whether there is strong evidence that at least one algorithm is performing better than the others. To do so, we apply a chi-square test to this two-way table. The ideas of this test are similar to those ideas in the one-way table case. However, degrees of freedom and expected counts are computed a little differently than before.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \quad \quad \quad \quad Search algorithm \\
 \begin{tabular}{ll ccc ll}
@@ -1879,7 +1970,7 @@ Total						   & & 5000    & 2500 & 2500 & 				& 10000 \\
 \end{tabular}
 \caption{Results of the Google search algorithm experiment.}
 \label{googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals}
-\end{table}
+\end{figure}
 
 \begin{onebox}{What is so different about one-way tables and two-way tables?}
 A one-way table describes counts for each outcome in a single variable. A two-way table describes counts for \emph{combinations} of outcomes for two variables. When we consider a two-way table, we often would like to know, are these variables related in any way?\end{onebox}
@@ -1890,20 +1981,24 @@ The hypothesis test for this Google experiment is really about assessing whether
 %%
 \subsection{Expected counts in two-way tables}
 
-\begin{examplewrap}\begin{nexample}{From the experiment, we estimate the proportion of users who were satisfied with their initial search (no new search) as $7078/10000 = 0.7078$. If there really is no difference among the algorithms and 70.78\% of people are satisfied with the search results, how many of the 5000 people in the ``current algorithm'' group would be expected to not perform a new search?} \label{googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch}
+\begin{examplewrap}
+\begin{nexample}{From the experiment, we estimate the proportion of users who were satisfied with their initial search (no new search) as $7078/10000 = 0.7078$. If there really is no difference among the algorithms and 70.78\% of people are satisfied with the search results, how many of the 5000 people in the ``current algorithm'' group would be expected to not perform a new search?} \label{googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch}
 About 70.78\% of the 5000 would be satisfied with the initial search:
 $$ 0.7078\times 5000 = 3539\text{ users} $$
 That is, if there was no difference between the three groups, then we would expect 3539 of the current algorithm users not to perform a new search.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}\label{googleExampleComputingTheExpectedNumberOfNewAlgGroupWithNoNewSearch}
+\begin{exercisewrap}
+\begin{nexercise}\label{googleExampleComputingTheExpectedNumberOfNewAlgGroupWithNoNewSearch}
 Using the same rationale described in Example~\ref{googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch}, about how many users in each test group would not perform a new search if the algorithms were equally helpful?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{We would expect $0.7078*2500 = 1769.5$. It is okay that this is a fraction.}
 
-We can compute the expected number of users who would perform a new search for each group using the same strategy employed in Example~\ref{googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch} and Guided Practice~\ref{googleExampleComputingTheExpectedNumberOfNewAlgGroupWithNoNewSearch}. These expected counts were used to construct Table~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithExpectedCounts}, which is the same as Table~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals}, except now the expected counts have been added in parentheses.
+We can compute the expected number of users who would perform a new search for each group using the same strategy employed in Example~\ref{googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch} and Guided Practice~\ref{googleExampleComputingTheExpectedNumberOfNewAlgGroupWithNoNewSearch}. These expected counts were used to construct Figure~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithExpectedCounts}, which is the same as Figure~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals}, except now the expected counts have been added in parentheses.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{l lll lll lll l}
 \hline
@@ -1923,7 +2018,7 @@ Total				   & 5000 &&& 	2500 &&& 	2500 &&& 	10000 \\
 \end{tabular}
 \caption{The observed counts and the \highlightO{(expected counts)}.}
 \label{googleSearchAlgorithmByAlgorithmAndPerformanceWithExpectedCounts}
-\end{table}
+\end{figure}
 
 The examples and exercises above provided some help in computing expected counts. In general, expected counts for a two-way table may be computed using the row totals, column totals, and the table total. For instance, if there was no difference between the groups, then about 70.78\% of each column should be in the first row:
 \begin{align*}
@@ -1991,10 +2086,12 @@ There are two conditions that must be checked before performing a chi-square tes
 \vspace{-1mm}
 \end{description}\end{onebox}
 
-\begin{examplewrap}\begin{nexample}{Compute the p-value and draw a conclusion about whether the search algorithms have different performances.}
+\begin{examplewrap}
+\begin{nexample}{Compute the p-value and draw a conclusion about whether the search algorithms have different performances.}
 Here, found that the degrees of freedom for this $3\times 2$ table is 2.  The p-value corresponds to the area under the chi-square curve with 2 degrees of freedom to the \emph{right} of $\chi^2=6.120$.  Using a calculator, we find that the p-value = 0.047.  Using an $\alpha=0.05$ significance level, we reject $H_0$.  That is, the data provide convincing evidence that there is some difference in performance among the algorithms.
 \index{data!search algorithm|)}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 Notice that the conclusion of the test is that there is some difference in performance among the algorithms.  This chi-square test does not tell us \emph{which} algorithm performed better than the others.  To answer this question, we could compare the relevant proportions or construct bar graphs.   The proportion that resulted in the new search can be calculated as 
 \begin{align*}
@@ -2016,7 +2113,9 @@ A careful reader may have noticed that when there are exactly 2 random samples o
 %1503 adults
 
 \begin{onebox}{$\mathbf{\chi^2}$ test of homogeneity}
- When there are multiple samples or treatments and we are comparing the distributionof a categorical variable across several groups, e.g. comparing the distribution ofrural/urban/suburban dwellers among 4 states, 
+ When there are multiple samples or treatments and we are comparing the distribution
+of a categorical variable across several groups, e.g. comparing the distribution of
+rural/urban/suburban dwellers among 4 states, 
 \\
 \\
 \inferencestep{Identify} Identify the hypotheses and the significance level, $\alpha$. \vspace{-1mm}
@@ -2051,7 +2150,8 @@ A careful reader may have noticed that when there are exactly 2 random samples o
 \end{itemize}\end{onebox}
 
 
-\begin{examplewrap}\begin{nexample}{
+\begin{examplewrap}
+\begin{nexample}{
  In an experiment,\footnotemark\, each individual was asked to be a seller of an iPod
   (a product commonly used to store music on before smart phones).
   The participant received \$10 + 5\% of the sale price for participating.
@@ -2110,7 +2210,8 @@ Table of expected counts:\vspace{-4mm}
 \newline  The p-value is the area under the chi-square curve with 2 degrees of freedom to the right of $\chi^2=40.1$.  Thus, the p-value is almost 0.
 \item[\inferencestep{Conclude}]  Because the p-value $\approx$ 0 $ < \alpha$, we reject $H_0$. We have strong evidence that the likelihood of disclosing the problem is not the same for each question type.
 \end{description}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 \footnotetext{{\scriptsize\oiRedirect{minson_ruedy_data_source}{opim.wharton.upenn.edu/DPlab/papers/workingPapers/}}}
 
 \begin{exercisewrap}
@@ -2120,7 +2221,6 @@ If an error was made in the test in the previous example, would it have been a T
 \end{exercisewrap}
 \footnotetext{In this test, the p-value was less than $\alpha$, so we rejected $H_0$.  If $H_0$ is in fact true, and we reject it, that would be committing a Type~I error.  We could not have made a Type~II error, because a Type~II error involves not rejecting $H_0$.}
 
-\textA{\newpage}
 %%
 \subsection{The chi-square test of independence for two-way tables}
 
@@ -2130,13 +2230,15 @@ In Chapter~\ref{ch_probability} we looked at independence in the context of prob
 
 \index{data!approval ratings|(}
 
-\begin{examplewrap}\begin{nexample}
-{Table~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises} summarizes the results of a Pew Research poll.\footnotemark\, A random sample of adults in the U.S. was taken, and each was asked whether they approved or disapproved of the job being done by President Obama, Democrats in Congress, and Republicans in Congress.  The results are shown in Table~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}.  We would like to determine if the three groups and the approval ratings are associated. What are appropriate hypotheses for such a test?\label{hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection}}
+\begin{examplewrap}
+\begin{nexample}
+{Figure~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises} summarizes the results of a Pew Research poll.\footnotemark\, A random sample of adults in the U.S. was taken, and each was asked whether they approved or disapproved of the job being done by President Obama, Democrats in Congress, and Republicans in Congress.  The results are shown in Figure~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}.  We would like to determine if the three groups and the approval ratings are associated. What are appropriate hypotheses for such a test?\label{hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection}}
 \begin{itemize}
 \item[$H_0$:] The group and their ratings are independent. (There is no difference in approval ratings between the three groups.)
 \item[$H_A$:] The group and their ratings are dependent. (There is some difference in approval ratings between the three groups, e.g. perhaps Obama's approval differs from Democrats in Congress.)
 \end{itemize}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 \footnotetext{{\scriptsize\oiRedirect{textbook-obama_and_congress_approval_2012}{www.people-press.org/2012/03/14/romney-leads-gop-contest-trails-in-matchup-with-obama}}.}
 
 \begin{onebox}{Conditions for the chi-square test of independence}
@@ -2149,7 +2251,7 @@ There are two conditions that must be checked before performing a chi-square tes
 \end{description}
 \end{onebox}
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{ll ccc ll}
 & & & \multicolumn{2}{c}{Congress} & \\
@@ -2164,11 +2266,11 @@ Total					   & & 1458    & 1382 & 1383 & 				& 4223 \\
 \end{tabular}
 \caption{Pew Research poll results of a March 2012 poll.}
 \label{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}
-\end{table}
+\end{figure}
 
-\textA{\newpage}
 
-\begin{examplewrap}\begin{nexample}{First, we observe that the data came from a random sample of adults in the U.S.  Next, let's compute the expected values that correspond to Table~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}, if the null hypothesis is true, that is, if group and rating are independent.  }
+\begin{examplewrap}
+\begin{nexample}{First, we observe that the data came from a random sample of adults in the U.S.  Next, let's compute the expected values that correspond to Figure~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}, if the null hypothesis is true, that is, if group and rating are independent.  }
 The expected count for row one, column one is found by multiplying the row one total (2119) and column one total (1458), then dividing by the table total (4223): $\frac{2119\times 1458}{4223} = 731.6$. Similarly for the first column and the second row: $\frac{2104\times 1458}{4223} = 726.4$. Repeating this process, we get the expected counts:  
 \begin{center}
 \begin{tabular}{l ccc}
@@ -2181,7 +2283,8 @@ Disapprove			    & 726.4    & 688.5 & 689.0  \\
 \end{center}
 
 % R <- c(2119, 2104); C <- c(1458, 1382, 1383); R*C[1]/sum(C); R*C[2]/sum(C); R*C[3]/sum(C)
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
 The table above gives us the number we would expect for each of the six combinations if group and rating were really independent.  Because all of the expected counts are at least 5 and there is one random sample, we can carry out the chi-square test for independence.  
@@ -2190,18 +2293,22 @@ The table above gives us the number we would expect for each of the six combinat
 
 The chi-square test of independence and the chi-square test of homogeneity both involve counts in a two-way table.  The chi-square statistic and the degrees of freedom are calculated in the same way.  
 
-\begin{examplewrap}\begin{nexample}{Calculate the chi-square statistic.}
+\begin{examplewrap}
+\begin{nexample}{Calculate the chi-square statistic.}
 We calculate $\frac{(\text{obs} - \text{exp})^2}{\text{exp}}$ for each of the six cells in the table. Adding the results of each cell gives the chi-square test statistic.
 \begin{align*}
 \chi^2 =& \sum{\frac{(\text{obs} - \text{exp})^2}{\text{exp}}}\\
 =& \frac{(842-731.6)^2}{731.6} +\cdots \\
 =& 16.7 + \cdots  = 106.4
 \end{align*}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{Find the p-value for the test and state the appropriate conclusion.}
+\begin{examplewrap}
+\begin{nexample}{Find the p-value for the test and state the appropriate conclusion.}
 We must first find the degrees of freedom for this chi-square test.  Because there are 2 rows and 3 columns, the degrees of freedom is $df=(2-1)\times (3-1) = 2$. We find the area to the right of $\chi^2=106.4$ under the chi-square curve with $df=2$.  The p-value is extremely small, much less than 0.01, so we reject $H_0$.  We have evidence that the three groups and their approval ratings are dependent.  
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
 
@@ -2243,7 +2350,8 @@ When there is one sample and we are looking for association or dependence betwee
 
 %\Comment{stole chapter exercise number 45 - not sure about footnote cite}
 
-\begin{examplewrap}\begin{nexample}{A 2011 survey asked 806 randomly sampled adult Facebook users about their Facebook privacy settings. One of the questions on the survey was, ``Do you know how to adjust your Facebook privacy settings to control what people can and cannot see?" The responses are cross-tabulated based on gender. 
+\begin{examplewrap}
+\begin{nexample}{A 2011 survey asked 806 randomly sampled adult Facebook users about their Facebook privacy settings. One of the questions on the survey was, ``Do you know how to adjust your Facebook privacy settings to control what people can and cannot see?" The responses are cross-tabulated based on gender. 
 \label{facebookprivacy}
 \begin{center}
 \begin{tabular}{l l c c ll}
@@ -2265,7 +2373,7 @@ Carry out an appropriate test at the 0.10 significance level to see if there is 
 \newline $H_A$: Gender and knowing how to adjust Facebook privacy settings are \mbox{dependent.}
 \item[\inferencestep{Choose}] Two variables were recorded on the respondents: gender and response to the question regarding privacy settings.  We want to know if these variables are associated / dependent, so we will carry out a chi-square test of independence.  
 \item[\inferencestep{Check}] According to the problem, there was one random sample taken.  All values in the table of expected counts are $\ge$ 5.
-Table of expected counts:\textA{\vspace{-4mm}}
+Table of expected counts:
 \begin{center}
 \begin{tabular}{l l c c l}
 								&			& \multicolumn{2}{c}{\textit{Gender}}	&\hspace{17mm}\ 		\\
@@ -2283,7 +2391,8 @@ Table of expected counts:\textA{\vspace{-4mm}}
 \newline  The p-value is the area under the chi-square curve with 2 degrees of freedom to the right of $\chi^2=3.13$.  Thus, the p-value = 0.209.
 \item[\inferencestep{Conclude}]  Because the p-value = 0.209 $ > \alpha$, we do not reject $H_0$. We do not have sufficient evidence that gender and knowing how to adjust Facebook privacy settings are dependent.
 \end{description}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -2291,7 +2400,6 @@ In context, interpret the p-value of the test in the previous example.\footnotem
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The p-value in this test corresponds to the area to the right of $\chi^2 = 3.13$ under the chi-square curve with 2 degrees of freedom.  It is the probability of getting a $\chi^2$-statistic this large if $H_0$ were true.  In other words, it is the probability of our observed values being this different from the expected values if gender and response really are independent.}
-\textA{\newpage}
 
 %%
 \subsection{Calculator: chi-square test for two-way tables}
@@ -2372,8 +2480,9 @@ $\calctextmath{\chi^2}$ & chi-square test statistic \\
 
 
 
-\begin{exercisewrap}\begin{nexercise}
-Use Table~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}, reproduced below, and a calculator to find the expected values and the $\chi^2$-statistic, $df$, and p-value for the chi-square test for independence.\footnotemark
+\begin{exercisewrap}
+\begin{nexercise}
+Use Figure~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}, reproduced below, and a calculator to find the expected values and the $\chi^2$-statistic, $df$, and p-value for the chi-square test for independence.\footnotemark
 
 \begin{center}
 \begin{tabular}{ll ccc ll}
@@ -2388,7 +2497,8 @@ Total					   & & 1458    & 1382 & 1383 & 				& 4223 \\
 \hline
 \end{tabular}
 \end{center}
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 
 \footnotetext{First create a $2\times 3$ matrix with the data. The final summaries should be $\calctextmath{\chi^2}=106.4$, p-value is \\ $\calctext{p} = 8.06 \times 10^{-24}\approx 0$, and \calctext{df} = 2. Below is the matrix of expected values:
 \begin{center}
@@ -2406,7 +2516,6 @@ Disapprove			    & 726.41    & 688.55 & 689.04  \\
  
 
 %%
-\textA{\newpage}
 %%
 \subsection*{Section summary}
 \begin{itemize}
