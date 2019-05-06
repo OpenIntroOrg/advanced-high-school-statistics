@@ -4,7 +4,7 @@
 % 4 Counters and Parameters
 % 5 Section Coloring
 % 6 Utilities
-% 7 Inference Steps
+% 7 
 % 8 Figures and Captions
 % 9 Examples and Exercises
 % 10 Special Boxes
@@ -25,6 +25,8 @@
 \newcommand{\stdspace}[0]{3mm}
 \newcommand{\stdvspace}[0]{\vspace{\stdspace{}}}
 \newcommand{\stdaddvspace}[0]{\addvspace{\stdspace{}}}
+
+
 
 
 %-------------------------------------------------------------
@@ -86,12 +88,12 @@
 
 %-------------------------------------------------------------
 % 2 Special Commands for Editions
-\newcommand{\referrer}{ahss2_pdf}
-\newcommand{\vspaceB}[1]{\vspace{#1}}
-\newcommand{\hspaceB}[1]{\hspace{#1}}
+\newcommand{\referrer}{os4_pdf}
+\newcommand{\vspaceB}[1]{}
+\newcommand{\hspaceB}[1]{}
 \newcommand{\textB}[1]{}
-\newcommand{\textC}[1]{#1}
-\newcommand{\textA}[1]{#1}
+\newcommand{\textC}[1]{}
+\newcommand{\D}[1]{#1}
 
 
 
@@ -121,11 +123,22 @@
 \newcounter{withinChNum}[chapter]
 \setcounter{withinChNum}{0}
 \newcounter{eoce}[chapter]
-\renewcommand{\theeoce}{\arabic{chapter}.\arabic{eoce}}
+\renewcommand{\theeoce}
+    {\arabic{chapter}.\arabic{eoce}}
 \newcounter{eocesolch}
 \setcounter{eocesolch}{0}
 \newcounter{eocesol}[eocesolch]
-\renewcommand{\theeocesol}{\arabic{eocesolch}.\arabic{eocesol}}
+\renewcommand{\theeocesol}
+     {\arabic{eocesolch}.\arabic{eocesol}}
+\newcounter{eoceNeedSolution}[chapter]
+\renewcommand{\theeoceNeedSolution}
+    {\arabic{chapter}.\arabic{eoceNeedSolution}}
+\newcounter{eoceReplace}[chapter]
+\renewcommand{\theeoceReplace}
+    {\arabic{chapter}.\arabic{eoceReplace}}
+\newcounter{eoceFF}[chapter]
+\renewcommand{\theeoceFF}
+    {\arabic{chapter}.\arabic{eoceFF}}
 % 4.2 Parameters
 \newlength{\exampleAboveBar}
 \newlength{\exampleBelowBar}
@@ -145,23 +158,16 @@
   }
 
 
+
 %-------------------------------------------------------------
 % 5 Section Headers
 %
 % See headers.tex file for main chapters.
-
-%% 5.1 Chapter
-%\titleformat{\chapter}[display]
-%{\color{oiB}\normalfont\huge\bfseries\raggedright}{\chaptertitlename\
-%\thechapter}{20pt}{\Huge}
-%% 5.2 Section
-%\titleformat{\section}
-%{\color{oiB}\normalfont\Large\bfseries}
-%{\color{oiB}\thesection}{1em}{}
-%% 5.3 Subsection
-%\titleformat{\subsection}
-%{\color{oiB}\normalfont\large\bfseries}
-%{\color{oiB}\thesubsection}{1em}{}
+\newcommand{\chapterpagepaddingtopinner}[0]{30mm} % 45mm
+\newcommand{\chapterpagepaddingrightinner}[0]{30mm}
+\newcommand{\chapterpagepaddinginner}[0]{30mm}
+\newcommand{\chapterXfontsize}[0]{92}
+\newcommand{\chaptertitlefontsize}[0]{30}
 
 
 %-------------------------------------------------------------
@@ -185,10 +191,10 @@
 \newcommand{\datalink}[1]{\index{#1|textbf}\texttt{\href{http://www.openintro.org/redirect.php?go=data_#1&referrer=\referrer}{#1}}}
 \newenvironment{var}[1]{\texttt{#1}}{}
 \newenvironment{resp}[1]{\texttt{#1}}{}
+\newcommand{\lmlevel}[1]{:~\emph{#1}}{}
 \newenvironment{calctext}[1]{{\color{oiB}\texttt{#1}}}{}
 \newenvironment{calctextmath}[1]{{\color{oiB}\mathtt{#1}}}{}
 \newenvironment{calcbutton}[1]{{\color{oiB}\texttt{#1}}}{}
-\newenvironment{learningobj}[1]{{\color{oiB}\normalfont\large \bfseries\fontfamily{phv} \selectfont{#1}}}{}
 \newcommand{\codeindent}{\hspace{5mm}}
 % 6.4 Highlighting
 \newenvironment{highlight}{\textbf}{}
@@ -198,25 +204,31 @@
 \setlength{\parindent}{0.3in}
 % 6.6 Hyperreferences
 \newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
-\newcommand{\oiRedirectUrl}[1]{http://www.openintro.org/redirect.php?go=#1&referrer=ahss_pdf}
-%\newcommand{\oiRedirect}[2]{\href{\oiRedirectUrl{#1}}{#2}}
-\newcommand{\oiRedirect}[2]{\lowercase{\href{\oiRedirectUrl{#1}}}{#2}}
-\newcommand{\videohref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
+%\newcommand{\oiRedirect}[2]{\href{http://www.openintro.org/redirect.php?go=#1&referrer=\referrer}{#2}}
+\newcommand{\oiRedirectUrl}[1]{http://www.openintro.org/redirect.php?go=#1&referrer=ahss2_pdf}
+\newcommand{\oiRedirect}[2]{\href{\oiRedirectUrl{#1}}{#2}}
+\newcommand{\videoicon}[1][4.5mm]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}~}
+\newcommand{\CalculatorVideos}[1]{}%{\begin{tipBox}{\tipBoxTitle[\videoicon]{Calculator videos}
+%Videos covering #1 using TI and Casio graphing calculators are available at \mbox{\oiRedirect{textbook-openintro_videos}{openintro.org/videos}}.}
+%\end{tipBox}}
+\newcommand{\videohref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}}
 \newcommand{\tableauhref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/tableau}}}}
-\newcommand{\slideshref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides}}}}
-\newcommand{\videomarginhref}[2][4mm]{\oiRedirect{#2}{\raisebox{-3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
-\newcommand{\sectionvideohref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
-\newcommand{\sectionslideshref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides}}}}
+\newcommand{\slideshref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides.png}}}}
+\newcommand{\videomarginhref}[2][4mm]{\oiRedirect{#2}{\raisebox{-3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}}
+\newcommand{\sectionvideohref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}}
+\newcommand{\sectionslideshref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides.png}}}}
 \newcommand{\MarginVideo}[1]{\marginpar[{\videomarginhref{#1}}]{{\videomarginhref{#1}}}}
-
 % 6.7 Helper commands
-\newcommand{\us}{\_\hspace{0.3mm}}
+\newcommand{\us}[0]{\_\hspace{0.3mm}}
+%\newcommand{\quadplus}[0]{\quad + \quad}
 \newcommand{\indfunc}[2]{\var{#1}_{\resp{#2}}}
+
 
 %-------------------------------------------------------------
 % 7 Inference steps
 
 \newcommand{\inferencestep}[1]{\textbf{#1}:}
+
 
 %-------------------------------------------------------------
 % 8 Figures and Captions
@@ -322,9 +334,9 @@
 % 9.3 EOCEs: End of Chapter Exercises
 % 9.3.1 Environment
 \newenvironment{eoce}[2][]
-{\refstepcounter{eoce}\noindent\small\textbf{\textcolor{oiB}{{\hypersetup{linkcolor=oiB}\ref{eoce_sol_\arabic{chapter}_\arabic{eoce}}}\label{eoce_\arabic{chapter}_\arabic{eoce}}}}\hspace{2mm} #1#2
+{\refstepcounter{eoce}\noindent\small\textbf{\textcolor{oiB}{{\hypersetup{linkcolor=oiB}{\fontfamily{phv}\selectfont\ref{eoce_sol_\arabic{chapter}_\arabic{eoce}}}}\label{eoce_\arabic{chapter}_\arabic{eoce}}}}\hspace{2mm} #1#2
 
-\addvspace{\stdspace{}}
+\addvspace{4mm}
 
 }
 %{\em #2 } $\:$ \\ }
@@ -337,14 +349,14 @@
 
 }
 {
-\newcommand{\eocesol}[1]{\refstepcounter{eocesol}\noindent\textbf{\color{oiB}{\hypersetup{linkcolor=oiB}\ref{eoce_\arabic{eocesolch}_\arabic{eocesol}}}\label{eoce_sol_\arabic{eocesolch}_\arabic{eocesol}}}\hspace{2mm}{\small#1}\makebox[0pt]{\color{white}\tiny \refstepcounter{eocesol}\label{eoce_sol_\arabic{eocesolch}_\arabic{eocesol}}}
+\newcommand{\eocesol}[1]{\refstepcounter{eocesol}\noindent\textbf{\color{oiB}{\hypersetup{linkcolor=oiB}{\fontfamily{phv}\selectfont\ref{eoce_\arabic{eocesolch}_\arabic{eocesol}}}}\label{eoce_sol_\arabic{eocesolch}_\arabic{eocesol}}}\hspace{2mm}{\small#1}\makebox[0pt]{\color{white}\tiny \refstepcounter{eocesol}\label{eoce_sol_\arabic{eocesolch}_\arabic{eocesol}}}
 
 \addvspace{1mm}
 
 }
 % 9.3.3 EOCE Utilities
-\newcommand{\qt}[2][.]{\textcolor{oiB}{\textbf{#2#1}}}
-\newcommand{\qtq}[1]{\textcolor{oiB}{\textbf{#1?}}}
+\newcommand{\qt}[2][.]{{\fontfamily{phv}\selectfont\textcolor{oiB}{\textbf{#2#1}}}}
+\newcommand{\qtq}[1]{{\fontfamily{phv}\selectfont\textcolor{oiB}{\textbf{#1?}}}}
 \newcommand{\ec}[1]{\textcolor{oiB}{\footnotesize{~(#1)}}}% 9.3.4 EOCE Roman Parts
 \newenvironment{romanparts}{
 \begin{enumerate}[I.]
@@ -385,9 +397,11 @@
 
 
 
+
+
 %-------------------------------------------------------------
 % 10 Special Boxes
-% 10.1 Term Box
+% 10.1.1 Term Box
 \newcommand\tBoxTitleBuffer{\\[1.5mm]}
 \newenvironment{tBoxTitle}[2][\tBoxTitleBuffer]{\textbf{\color{oiB}#2} #1
 }{}
@@ -400,19 +414,17 @@
 			\hspace{2mm}
 		\end{minipage}
 		\begin{minipage}[b]{\textwidth-10mm}
-			\color{black}\ 
-			
+			\color{black}\ \\[-0.7mm]
 			#1
 			
-			\vspace{1.5mm}
+			\vspace{1mm}
 		\end{minipage}
 	\end{minipage}}}}
 }{
 
 \addvspace{1mm}}
 % 10.2 Tip Box
-\newenvironment{tipBoxTitle}[2][TIP:\ ]{\textbf{\color{oiB}#1#2} \\
-}{}
+\newenvironment{tipBoxTitle}[2][TIP:\ ]{\textbf{\color{oiB}#1#2}\\[0.3mm]}{}
 \newenvironment{tipBox}[1]{
 \addvspace{4mm}
 \noindent{\color{oiB}\framebox[\textwidth][l]{ \\
@@ -422,11 +434,10 @@
 			\hspace{2mm}
 		\end{minipage}
 		\begin{minipage}[b]{\textwidth-8mm}
-			\color{black}\ 
-			
+			\color{black}\ \\[-0.7mm]
 			#1
 			
-			\vspace{1.5mm}
+			\vspace{1mm}
 		\end{minipage}
 	\end{minipage}}}
 }{
@@ -442,14 +453,13 @@
 			\hspace{2mm}
 		\end{minipage}
 		\begin{minipage}[b]{\textwidth-8mm}
-			\textbf{\color{oiB}Caution: #1} \\
+			\textbf{\color{oiB}Caution: #1} \\[1mm]
 			\color{black}#2
 		\end{minipage}
 	\end{minipage}}}
 }{
 
 \addvspace{1mm}}
-
 % 10.4 One Box
 \newenvironment{onebox}[1]{
 \addvspace{4mm}
@@ -461,15 +471,13 @@
     leftline=false,
     bottomline=false,
     backgroundcolor=grayBackground]
-\textbf{\color{oiR}\small\fontfamily{phv}%
+\textbf{\color{oiB}\small\fontfamily{phv}%
 \selectfont{\MakeUppercase{#1}}} \\[1mm]}{
 \end{mdframed}\vspace{-4.2mm}
 \rule{\textwidth}{0.3pt}
 \end{minipage}
 
 \addvspace{4mm}}
-
-
 
 
 

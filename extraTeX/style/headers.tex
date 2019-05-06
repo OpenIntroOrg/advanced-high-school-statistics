@@ -3,21 +3,20 @@
 
 % 5.0 Spacings
 \newcommand{\chapterpagepadding}[0]{7mm}
-\newcommand{\chapterpagepaddingtopinner}[0]{45mm}
-\newcommand{\chapterpagepaddingrightinner}[0]{30mm}
-\newcommand{\chapterpagepaddinginner}[0]{20mm}
 \newcommand{\sectionheaderspaceA}{1mm}
 \newcommand{\sectionheaderspaceB}{4mm}
 \newcommand{\sectionheaderspaceC}{2mm}
 \newcommand{\sectionheaderspaceD}{6mm}
 \newcommand{\setupfont}
     {\normalfont\LARGE\bfseries\fontfamily{phv}\selectfont}
+\newcommand{\setupfontsectionexercises}
+    {\normalfont\bfseries\fontfamily{phv}\selectfont}
 \newcommand{\setfontsize}[1]{\fontsize{#1}{#1}\selectfont}
 
 % 5.1 Chapter
 \newcommand{\titlebreak}[1][5mm]{\\[#1]}
-\newcommand{\chaptertitle}[2][30]{{\color{white}\titlerule[1.5mm]}\addvspace{\sectionheaderspaceB}
-    {\setupfont{}\color{gray}\setfontsize{#1}#2} \\[2mm]
+\newcommand{\chaptertitle}[2][\chaptertitlefontsize]{{\color{white}\titlerule[1.5mm]}\addvspace{\sectionheaderspaceB}
+    {\setupfont{}\color{chaptertitlegray}\setfontsize{#1}#2} \\[2mm]
         {\color{white}\titlerule[1.5mm]}
 
 ~\vspace{15mm}
@@ -49,7 +48,7 @@
 \end{fullminipage}}
 \titleformat{\chapter}
     {}
-    {\setupfont{}\setfontsize{92}\color{oiB}Chapter~\thechapter}% \quad #1}
+    {\setupfont{}\setfontsize{\chapterXfontsize}\color{oiB}Chapter~\thechapter}% \quad #1}
     {1em}
     {}
     []
@@ -66,11 +65,11 @@
   \fancyhead[RE]{}
   \fancyhead[LO]{}
 
-  ~\vspace{15mm}
+  ~\vspace{25mm}
 
   {\color{oiB}\titlerule[1.5mm]}\addvspace{7mm}
 
-  {\Large
+  {\large
   \begingroup\onehalfspacing
   \noindent%
   #1\vspace{7mm}\par
@@ -81,7 +80,7 @@
   \vfill
 
   \noindent%
-  \oiRedirect{ahss}{\includegraphics[height=10mm]{extraTeX/icons/video_and_slides.png}}
+  \includegraphics[height=10mm]{extraTeX/icons/video_and_slides.png}
   \vspace{5mm}
 
   {\color{oiB}\titlerule[0.5mm]}
@@ -90,7 +89,8 @@
   
   {\Large\noindent%
   For videos, slides, and other resources, please visit \\[2mm]
-  \oiRedirect{ahss}{\textbf{\color{oiB}www.openintro.org/ahss}}}%
+  \oiRedirect{ahss}
+      {\textbf{\color{oiB}www.openintro.org/ahss}}}%
       \vspace{5mm}
 
   ~\newpage
@@ -108,7 +108,7 @@
     {\color{oiB}\thesection \quad #1}
     {1em}
     {}
-    [{\color{oiR}\titlerule[1mm]}]
+    [{\color{oiR}\titlerule[1mm]}\addvspace{4mm}]
 \titlespacing{\section}
    {0pt}% left
    {0pt}% before sep
@@ -140,14 +140,14 @@
     {{\color{oiR}\titlerule[1mm]}%
         \vspace*{\sectionheaderspaceC}
     \noindent\setupfont{}\color{oiB}#1 \\[-1mm]
-    {\color{oiR}\titlerule[1mm]}
-    } \vspace*{\sectionheaderspaceD{}}
-  }
-\newcommand{\exercisesheader}[1][Section exercises]
+    {\color{oiR}\titlerule[1mm]} \\[2mm]
+    }
+}
+\newcommand{\exercisesheader}[1][Exercises]
   {
     \clearpageforsection
-    {{\color{oiR}\titlerule[0.5mm]}%
+    {{\color{oiR}\titlerule[1.0mm]}%
         \vspace*{\sectionheaderspaceC}
-    \noindent\large\color{oiB}\textbf{#1}
-    } \vspace*{\sectionheaderspaceB{}}
+    \noindent\setupfont{}\large\color{oiB}\textbf{#1}
+    } \vspace*{\sectionheaderspaceD{}}
   }
