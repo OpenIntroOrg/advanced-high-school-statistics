@@ -593,7 +593,7 @@ SAT scores closely follow the normal model with mean $\mu = 1100$ and standard d
 
 It is important to remember normality is always an approximation. Testing the appropriateness of the normal assumption is a key step in many data analyses.
 
-\index{normal probability plot|(}
+%\index{normal probability plot|(}
 
 The distribution of heights of US males is well approximated by the normal model. We are interested in proceeding under the assumption that the data are normally distributed, but first we must check to see if this is reasonable.
 
@@ -626,10 +626,11 @@ Notice the histograms look more normal as the sample size increases, and the nor
 
 
 \begin{examplewrap}
-\begin{nexample}{Are NBA player heights normally distributed? Consider all 435 NBA players from the 2008-9 season presented in Figure~\ref{nbaNormal}.\footnotemark\, We first create a histogram and normal probability plot of the NBA player heights. The histogram in the left panel is slightly left skewed, which contrasts with the symmetric normal distribution. The points in the normal probability plot do not appear to closely follow a straight line but show what appears to be a ``wave''. We can compare these characteristics to the sample of 400 normally distributed observations in Example~\ref{normalExamplesExample} and see that they represent much stronger deviations from the normal model. NBA player heights do not appear to come from a normal distribution.
+\begin{nexample}{Consider all 435 NBA players from the 2008-9 season presented in Figure~\ref{nbaNormal}.\footnotemark\,  Based on the graphs, are NBA player heights normally distributed? }
+We first create a histogram and normal probability plot of the NBA player heights. The histogram in the left panel is slightly left skewed, which contrasts with the symmetric normal distribution. The points in the normal probability plot do not appear to closely follow a straight line but show what appears to be a ``wave''. We can compare these characteristics to the sample of 400 normally distributed observations in Example~\ref{normalExamplesExample} and see that they represent much stronger deviations from the normal model. NBA player heights do not appear to come from a normal distribution.
 \end{nexample}
 \end{examplewrap}
-\footnotetext{These data were collected from \oiRedirect{textbook-nba_com}{www.nba.com}.}}
+\footnotetext{These data were collected from \oiRedirect{textbook-nba_com}{www.nba.com}.}
 
 \begin{figure}
 \centering
@@ -639,7 +640,7 @@ Notice the histograms look more normal as the sample size increases, and the nor
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{Can we approximate poker winnings by a normal distribution? We consider the poker winnings of an individual over 50 days. A histogram and normal probability plot of these data are shown in Figure~\ref{pokerNormal}.}
+\begin{nexample}{Consider the poker winnings of an individual over 50 days.  A histogram and normal probability plot of these data are shown in Figure~\ref{pokerNormal}. Based on the graphs, can we approximate poker winnings by a normal distribution?} 
 The data are very strongly right skewed\index{skew!example: very strong} in the histogram, which corresponds to the very strong deviations on the upper right component of the normal probability plot. If we compare these results to the sample of 40 normal observations in Example~\ref{normalExamplesExample}, it is apparent that these data show very strong deviations from the normal model.
 \end{nexample}
 \end{examplewrap}
@@ -1508,36 +1509,46 @@ What is the probabilty that more than half of a random sample of 40 people would
 %%
 \subsection{An example of a binomial distribution}
 
-In Guided Practice~\ref{bloodTypeOPos}, we asked various probability questions regarding the number of people out of 4 with blood type O+.  We verified that the scenario was binomial and that each problem could be solved using the binomial formula. Instead of looking at it piecewise, we could describe the entire \emph{distribution} of possible values and their corresponding probabilities. Since there are 4 people, there are several possible outcomes for the number who might have blood type O+: 0, 1, 2, 3, 4. We can make a distribution table as we did previously.
-Recall that the probability of a randomly sampled person being blood type O+ is about~0.35.
+\newcommand{\oposprob}[0]{0.35}
+\newcommand{\oposprobcomp}[0]{0.65}
 
-\Comment{David, please make the table and figure side-by-side, rather than stacked so that they fit on the previous page}
+In Guided Practice~\ref{bloodTypeOPos}, we asked various probability questions regarding the number of people out of 4 with blood type O+.  We verified that the scenario was binomial and that each problem could be solved using the binomial formula. Instead of looking at it piecewise, we could describe the entire \emph{distribution} of possible values and their corresponding probabilities. Since there are 4 people, there are several possible outcomes for the number who might have blood type O+: 0, 1, 2, 3, 4.
+We can make a distribution table with these outcomes.
+Recall that the probability of a randomly sampled person being blood type O+ is about~\oposprob{}.
 
 \begin{figure}[h]
-\centering
+\begin{minipage}[c]{0.37\textwidth}\centering%
 \begin{tabular}{l l}
 $x_i$ & $p_i$ \\
 \hline
-0 &  ${4\choose 0}(0.35)^0(065)^{4} = 0.179$ \vspace{1mm}\\
-1 &  ${4\choose 1}(0.35)^1(0.65)^{3} = 0.384$  \vspace{1mm}\\
-2 & ${4\choose 2}(0.35)^2(0.65)^{2} = 0.311$  \vspace{1mm}\\
-3 & ${4\choose 3}(0.35)^3(0.65)^{1} = 0.111$  \vspace{1mm}\\
-4 & ${4\choose 4}(0.35)^4(0.65)^{0} = 0.015$  \vspace{1mm}\\
+0 &  ${4\choose 0}(\oposprob{})^0(\oposprobcomp{})^{4} = 0.179$ \vspace{1mm}\\
+1 &  ${4\choose 1}(\oposprob{})^1(\oposprobcomp{})^{3} = 0.384$  \vspace{1mm}\\
+2 & ${4\choose 2}(\oposprob{})^2(\oposprobcomp{})^{2} = 0.311$  \vspace{1mm}\\
+3 & ${4\choose 3}(\oposprob{})^3(\oposprobcomp{})^{1} = 0.111$  \vspace{1mm}\\
+4 & ${4\choose 4}(\oposprob{})^4(\oposprobcomp{})^{0} = 0.015$  \vspace{1mm}\\
 \hline
 \end{tabular}
-\includegraphics[width=0.7\textwidth]{ch_distributions/figures/oPositive4/oPositive4}
-\label{oPositive4}
+\end{minipage}
+\begin{minipage}[c]{0.6\textwidth}\centering%
+\Figure{0.95}{oPositive4}
+\end{minipage}
 \caption{Probability distribution for the number with blood type O+ in a random sample of 4 people. This is a binomial distribution. Correcting for rounding error, the probabilities add up to~1, as they must for any probability distribution.}
+\label{oPositive4}
 \label{binomDistrOPositive}
 \end{figure}
 
 
 
+\D{\newpage}
 
 %%
 \subsection{The mean and standard deviation of a binomial distribution}
 
-Since this is a probability distribution we could find the mean and standard deviation of it using the formulas from Chapter~\ref{probability}. Those formulas require a lot of calculations, so it is fortunate that there are shortcuts for the mean and the standard deviation of a binomial random variable.
+Since this is a probability distribution we could find its mean and
+standard deviation using the formulas from Chapter~\ref{probability}.
+Those formulas require a lot of calculations, so it is fortunate there's
+an easier way to compute the mean and standard deviation for a binomial
+random variable.
 
 \begin{onebox}{Mean and standard deviation of the binomial distribution}
 For a binomial distribution with parameters $n$ and $p$, where $n$ is the number of trials and $p$ is the probability of a success, the mean and standard deviation of the number of observed successes are\vspace{-2mm}
@@ -1548,11 +1559,11 @@ For a binomial distribution with parameters $n$ and $p$, where $n$ is the number
 \end{onebox}
 
 \begin{examplewrap}
-\begin{nexample}{If the probability that a person has blood type O+ is $0.35$ and you have 40 randomly selected people, about how many would you expect to have blood type O+? What is the standard deviation of the number of people who would have blood type O+ among the 40 people?}
+\begin{nexample}{If the probability that a person has blood type O+ is \oposprob{} and you have 40 randomly selected people, about how many would you expect to have blood type O+? What is the standard deviation of the number of people who would have blood type O+ among the 40 people?}
 We are asked to determine the expected number (the mean) and the standard deviation, both of which can be directly computed from the formulas above. 
  \begin{align*}
-\mu&=np = 40\times 0.35 = 14 \\
- \sigma &= \sqrt{np(1-p)} = \sqrt{40\times 0.35\times 0.65} = 3.0
+\mu&=np = 40(\oposprob{}) = 14 \\
+ \sigma &= \sqrt{np(1-p)} = \sqrt{40(\oposprob{})(\oposprobcomp{})} = 3.0
 \end{align*}%
 \end{nexample}
 \end{examplewrap}
@@ -1561,11 +1572,14 @@ The exact distribution is shown in Figure~\ref{oPositive40}.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.7\textwidth]{ch_distributions/figures/oPositive40/oPositive40}
-\caption{Distribution for the number of people with blood type O+ in a random sample of size 40, where $p=0.35$.  The distribution is binomial and is centered on~14 with a standard deviation of 3.  }
+\Figure{0.7}{oPositive40}
+\caption{Distribution for the number of people with blood type O+ in a random sample of size 40, where $p=\oposprob{}$.  The distribution is binomial and is centered on~14 with a standard deviation of 3.  }
 \label{oPositive40}
 \end{figure}
 
+
+
+\D{\newpage}
 
 %%
 \subsection{Normal approximation to the binomial distribution}
@@ -1576,33 +1590,31 @@ The binomial formula is cumbersome when the sample size ($n$) is large, particul
 
 \begin{examplewrap}
 \begin{nexample}
-{Find the probability that fewer than 12 out of 40 randomly selected people would have blood type O+, where probability of blood type O+ is 0.35.}
+{Find the probability that fewer than 12 out of 40 randomly selected people would have blood type O+, where probability of blood type O+ is \oposprob{}.}
 This is equivalent to asking, what is the probability of observing $k=0, 1, 2, ..., \text{ or } 11$ with blood type O+ in a sample of size 40 when $p=0.35$?  We previously verified that this scenario is binomial.  We can compute each of the 12 probabilities using the binomial formula and add them together to find the answer:
  \begin{align*}
   &P(k=0\text{ or }k=1\text{ or }\cdots\text{ or } k=11) \\
 	&\qquad = P(k=0) + P(k=1) + \cdots + P(k=11) \\
-	&\qquad = {40\choose 0}(0.35)^0(0.65)^{40} + {40\choose 1}(0.35)^1(0.65)^{39} + \cdots + {40\choose 11}(0.35)^{11}(0.65)^{29}\\
+	&\qquad = {40\choose 0}(\oposprob{})^0(\oposprobcomp{})^{40} + {40\choose 1}(\oposprob{})^1(\oposprobcomp{})^{39} + \cdots + {40\choose 11}(\oposprob{})^{11}(\oposprobcomp{})^{29}\\
 	&\qquad = 0.21
   \end{align*}
-If the true proportion with blood type O+ in the population is p = 0.35, then the probability of observing fewer than 12 in a sample of n = 40 is 0.21.
+If the true proportion with blood type O+ in the population is $p = \oposprob{}$, then the probability of observing fewer than 12 in a sample of $n = 40$ is 0.21.
 \end{nexample}
 \end{examplewrap}
 \label{exactbin}
 
-The computations in Example~\ref{exactbin} are tedious and long.  In general, we should avoid such work if an alternative method exists that is faster, easier, and still accurate. Recall that calculating probabilities of a range of values is much easier in the normal model. In some cases we may use the normal distribution to estimate binomial probabilities. While a normal approximation for the distribution in Figure~\ref{oPositive4} would not be appropriate, it might not be too bad for the distribution in Figure~\ref{oPositive40}.  We might wonder, when is it reasonable to use the normal model to approximate a binomial distribution?
+The computations in Example~\ref{exactbin} are tedious and long.  In general, we should avoid such work if an alternative method exists that is faster, easier, and still accurate. Recall that calculating probabilities of a range of values is much easier in the normal model. In some cases we may use the normal distribution to estimate binomial probabilities. While a normal approximation for the distribution in Figure~\ref{oPositive4} when the sample size was $n = 4$ would not be appropriate, it might not be too bad for the distribution in Figure~\ref{oPositive40} where $n = 40$.  We might wonder, when is it reasonable to use the normal model to approximate a binomial distribution?
 
 \begin{exercisewrap}
 \begin{nexercise}
 Here we consider the binomial model when the probability of a success is $p=0.10$. Figure~\ref{fourBinomialModelsShowingApproxToNormal} shows four hollow histograms for simulated samples from the binomial distribution using four different sample sizes: $n=10$, 30, 100, 300. What happens to the shape of the distributions as the sample size increases?  How does the binomial distribution change as $n$ gets larger?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The distribution is transformed from a blocky and skewed distribution into one that rather resembles the normal distribution in last hollow histogram}
-
-\Comment{guide practice 4.51 needs to be on same page as figure}
+\footnotetext{The distribution is transformed from a blocky and skewed distribution into one that rather resembles the normal distribution in the last hollow histogram.}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.95\textwidth]{ch_distributions/figures/fourBinomialModelsShowingApproxToNormal/fourBinomialModelsShowingApproxToNormal}
+\Figure{0.75}{fourBinomialModelsShowingApproxToNormal}
 \caption{Hollow histograms of samples from the binomial model when $p=0.10$. The sample sizes for the four plots are $n=10$, 30, 100, and 300, respectively.}
 \label{fourBinomialModelsShowingApproxToNormal}
 \end{figure}
@@ -1616,25 +1628,28 @@ The binomial distribution with probability of success $p$ is nearly normal when 
 &&\sigma= \sqrt{np(1-p)}
 \end{align*}\end{onebox}
 
+\D{\newpage}
+
 The normal approximation may be used when computing the range of many possible successes. For instance, we may apply the normal distribution to the setting described in Figure~\ref{oPositive40}.
 
 
 \begin{examplewrap}
-\begin{nexample}{Use the normal approximation to estimate the probability of observing fewer than 12 with blood type O+ in a random sample of 40, if the true proportion with blood type O+ in the population is $p=0.35$.}\label{approxBinomialForN40P35OPosExample}
+\begin{nexample}{Use the normal approximation to estimate the probability of observing fewer than 12 with blood type O+ in a random sample of 40, if the true proportion with blood type O+ in the population is $p=\oposprob{}$.}
+\label{approxBinomialForN40P35OPosExample}%
 First we verify that $np$ and $n(1-p)$ are at least 10 so that we can apply the normal approximation to the binomial model:
 \begin{align*}
-np&=40(0.35)=14\ge 10
+np& = 40(\oposprob{})=14\ge 10
 &
-n(1-p)&=40(0.65)=26\ge 10
+n(1-p)& = 40(\oposprobcomp{}) = 26\ge 10
 \end{align*}
 With these conditions checked, we may use the normal distribution to approximate the binomial distribution with the following mean and standard deviation:
 \begin{align*}
-\mu &= np = 40(0.35)=14\\
-\sigma &= \sqrt{np(1-p)} = \sqrt{40(0.35)(0.65)}= 3.0
+\mu &= np = 40(\oposprob{})=14\\
+\sigma &= \sqrt{np(1-p)} = \sqrt{40(\oposprob{})(\oposprobcomp{})} = 3.0
 \end{align*}
 We want to find the probability of observing fewer than 12 with blood type O+ using this model. We note that 12 is less than 1~standard deviation below the mean:
 \begin{center}
-\includegraphics[width=0.5\textwidth]{ch_distributions/figures/bloodtypeOpos/bloodtypeOpos40}
+\Figures{0.4}{bloodtypeOpos}{bloodtypeOpos40}
 \end{center}
 Next, we compute the Z-score as $Z=\frac{12 - 14}{3} = -0.67$ to find the shaded area in the picture: $P(Z < -0.67) = 0.25$. This probability of 0.25 using the normal approximation is reasonably close to the true probability of 0.21 computed using the binomial distribution.
 \end{nexample}
@@ -1643,21 +1658,23 @@ Next, we compute the Z-score as $Z=\frac{12 - 14}{3} = -0.67$ to find the shaded
 
 
 \begin{examplewrap}
-\begin{nexample}{Use the normal approximation to estimate the probability of observing fewer than 120 people with blood type O+ in a random sample of 400, if the true proportion with blood type O+ in the population is $p=0.35$.}\label{approxBinomialForN400P20SmokerExample}
-We have previously verified that the binomial model is reasonable for this context. Now will verify that both $np$ and $n(1-p)$ are at least 10 so we can apply the normal approximation to the binomial model:
+\begin{nexample}{Use the normal approximation to estimate the probability of observing fewer than 120 people with blood type O+ in a random sample of 400, if the true proportion with blood type O+ in the population is $p=\oposprob{}$.}
+\label{approxBinomialForN400P20SmokerExample}%
+We have previously verified that the binomial model is reasonable for this context.
+Now we will verify that both $np$ and $n(1-p)$ are at least 10 so we can apply the normal approximation to the binomial model:
 \begin{align*}
-np&=400(0.35)=140\ge 10
+np&=400(\oposprob{})=140\ge 10
 &
-n(1-p)&=400(0.65)=260\ge 10
+n(1-p)&=400(\oposprob{})=260\ge 10
 \end{align*}
 With these conditions checked, we may use the normal approximation in place of the binomial distribution with the following mean and standard deviation:
 \begin{align*}
-\mu &= np = 400(0.35)=140\\
-\sigma &= \sqrt{np(1-p)} = \sqrt{400(0.35)(0.65)}= 9.5
+\mu &= np = 400(\oposprob{})=140\\
+\sigma &= \sqrt{np(1-p)} = \sqrt{400(\oposprob{})(\oposprobcomp{})}= 9.5
 \end{align*}
 We want to find the probability of observing fewer than 120 with blood type O+ using this model. We note that 120 is just over 2~standard deviations below the mean:
 \begin{center}
-\includegraphics[width=0.5\textwidth]{ch_distributions/figures/bloodtypeOpos/bloodtypeOpos400}
+\Figures{0.48}{bloodtypeOpos}{bloodtypeOpos400}
 \end{center}
 Next, we compute the Z-score as $Z=\frac{120 - 140}{9.5} = -2.1$ to find the shaded area in the picture: $P(Z < -2.1) = 0.0179$. This probability of 0.0179 using the normal approximation is very close to the true probability of 0.0196 from the binomial distribution.
 \end{nexample}
@@ -1668,10 +1685,10 @@ Next, we compute the Z-score as $Z=\frac{120 - 140}{9.5} = -2.1$ to find the sha
 Use normal approximation, if applicable, to estimate the probability of getting greater than 15 sixes in 100 rolls of a fair die.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{$np=100\times 1/6=16.7\ge 10$ and 
-$n(1-p)=100\times 5/6=83.3\ge 10$  
+\footnotetext{$np=100(1/6)=16.7\ge 10$ and 
+$n(1-p)=100(5/6)=83.3\ge 10$  
 
-$\mu=np=100(1/6)=16.7; \sigma=\sqrt{np(1-p)}=\sqrt{100\times (1/6)(5/6)}=3.7$ 
+$\mu=np=100(1/6)=16.7; \sigma=\sqrt{np(1-p)}=\sqrt{100(1/6)(5/6)}=3.7$ 
 
 $Z=\frac{15 - 16.7}{3.7} = -0.46$. 
 
@@ -1686,37 +1703,33 @@ $P(Z > -0.46) = 0.677$
 {The normal approximation to the binomial distribution tends to perform poorly when estimating the probability of a small range of counts, even when the conditions are met.}
 \end{onebox}
 
-\Comment{Is there any chance you could redo this graph n=40, p=.35 and again with n=400, p=.35?  It seems unnecessary it introduce another example scenario here.  Also, I think the important thing is using the continuous to estimate the discrete, not the small interval.  If the interval is small, but n is very large, the approximation will be fine.  If n is on the small side, the continuity correction will be a help, whether the interval is narrow or wide.
-}
-
-Suppose 20\% of a population identify as Independent.  We wanted to compute the probability of observing 69, 70, or 71 people who identify as Independent in a random sample of 400 people when $p=0.20$. With such a large sample, we might be tempted to apply the normal approximation and use the range 69 to 71. However, we would find that the binomial solution and the normal approximation notably differ:
+We consider again our example where 35\% of people are blood type O+.  Suppose we want to find the probability that between 129 and 131 people, inclusive, have blood type O+ in a random sample of 400 people.  We want to compute the probability of observing 129, 130, or 131 people with blood type O+ when $p=0.20$ and $n=400$.  With such a large sample, we might be tempted to apply the normal approximation and use the range 129 to 131. However, we would find that the binomial solution and the normal approximation notably differ:
 \begin{align*}
-\text{Binomial:}&\ 0.0703
-&\text{Normal:}&\ 0.0476
+\text{Binomial:}&\ 0.0732
+&\text{Normal:}&\ 0.0483
 \end{align*}
-We can identify the cause of this discrepancy using Figure~\ref{normApproxToBinomFail}, which shows the areas representing the binomial probability (outlined) and normal approximation (shaded). Notice that the width of the area under the normal distribution is 0.5 units too slim on both sides of the interval. The binomial distribution is a discrete distribution, and the each bar is centered over an integer value. Looking closely at Figure~\ref{normApproxToBinomFail}, we can see that the bar corresponding to 69 begins at 68.5 and ends at 69.5, the bar corresponding to 70 begins at 69.5 and ends at 70.5, etc.
+We can identify the cause of this discrepancy using Figure~\ref{normApproxToBinomFail}, which shows the areas representing the binomial probability (outlined) and normal approximation (shaded). Notice that the width of the area under the normal distribution is 0.5 units too slim on both sides of the interval. The binomial distribution is a discrete distribution, and the each bar is centered over an integer value. Looking closely at Figure~\ref{normApproxToBinomFail}, we can see that the bar corresponding to 129 begins at 128.5 and ends at 129.5, the bar corresponding to 131 begins at 130.5 and ends at 131.5, etc.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{ch_distributions/figures/normApproxToBinomFail/normApproxToBinomFail}
-\caption{A normal curve with the area between 69 and 71 shaded. The outlined area from 68.5 to 71.5 represents the exact binomial probability.}
+\includegraphics[width=\textwidth]{ch_distributions/figures/normApproxToBinomFail/normApproxToBinomFail-n400-p35}
+\caption{A normal curve with the area between 129 and 131 shaded. The outlined area from 128.5 to 131.5 represents the exact binomial probability.}
 \label{normApproxToBinomFail}
 \end{figure}
 
-=
 
 \begin{onebox}{Improving accuracy of the normal approximation to the binomial distribution}
 The normal approximation to the binomial distribution for intervals of values is usually improved if cutoff values for the lower end of a shaded region are reduced by 0.5 and the cutoff value for the upper end are increased by 0.5. This correction is called the continuity correction and accounts for the fact that the binomial distribution is discrete.\end{onebox}
 
 \begin{examplewrap}
-\begin{nexample}{Use the method described to find a more accurate estimate for the probability of observing 69, 70, or 71 people who identify as Independent in 400 randomly selected people when $p=0.20$.}
-Instead of standardizing 69 and 71, we will standardize 68.5 and 71.5:
+\begin{nexample}{Use the method described to find a more accurate estimate for the probability of observing 129, 130, or 131 people with blood type O+ in 400 randomly selected people when $p=0.35$.}
+Instead of standardizing 129 and 131, we will standardize 128.5 and 131.5:
 \begin{align*}
-Z_{left} &= \frac{68.5-80}{8} = -1.4375 \\
-Z_{right} &= \frac{71.5-80}{8} = -1.0625 \\
-P(-1.4375 &< Z < -1.0625) = 0.0687
+Z_{left} &= \frac{128.5-140}{9.5} = -1.263 \\
+Z_{right} &= \frac{131.5-140}{9.5} = -0.895 \\
+P(-1.263 &< Z < -0.895) = 0.0772
 \end{align*}
-The probability 0.0687 is much closer to the true value of 0.0703 than the previous estimate of 0.0476 we calculated using normal approximation without the continuity correction.
+The probability 0.0772 is much closer to the true value of 0.0732 than the previous estimate of 0.0483 we calculated using normal approximation without the continuity correction.
 \end{nexample}
 \end{examplewrap}
 
@@ -1826,16 +1839,19 @@ The mean and standard deviation of the sample proportion describe the center and
 
 In analyses, we think of the formula for the standard deviation of a sample proportion, $\sigma_{\hat{p}}$, as describing the uncertainty associated with the estimate $\hat{p}$. That is, $\sigma_{\hat{p}}$ can be thought of as a way to quantify the typical \hiddenterm{error} in our sample estimate $\hat{p}$ of the true proportion $p$. Understanding the variability of statistics such as $\hat{p}$ is a central component in the study of statistics.
 
-Here, $n=40$ and $p=0.35$, $\sigma_{\hat{p}} = \sqrt{\frac{0.35(1-0.35)}{40}}=0.075$. In Figure~\ref{oPositive40prop} we see that the distribution of number of people in sample with blood type O+ out of 40 is equivalent to the distribution of proportion of people in a sample of size 40 with blood type 0+, but with a change of scale.  Instead of number along the horizontal axis, we have proportion.  
+Here, $n=40$ and $p=0.35$, $\sigma_{\hat{p}} = \sqrt{\frac{0.35(1-0.35)}{40}}=0.075$.
+We see in Figure~\ref{oPositive40prop} that the distribution of number of people in sample with blood type O+ out of 40 is equivalent to the distribution of proportion of people in a sample of size 40 with blood type 0+, but with a change of scale.
+Instead of counts along the horizontal axis, we have proportions.  
 
 \begin{figure}[ht]
 \centering
 \subfigure[]{
-\includegraphics[width=0.45\textwidth]{ch_distributions/figures/oPositive40/oPositive40}
+\includegraphics[width=0.475\textwidth]{ch_distributions/figures/oPositive40/oPositive40}
 }
 \subfigure[]{
-\includegraphics[width=0.45\textwidth]{ch_distributions/figures/oPositive40/oPositive40prop}
+\includegraphics[width=0.475\textwidth]{ch_distributions/figures/oPositive40/oPositive40prop}
 }
+\caption{Two distributions where $p=0.35$ and $n=40$:  the binomial distribution for the \emph{number} with blood type O+ and the sampling distribution for the \emph{proportion} with blood type O+. }
 \label{oPositive40prop}
 \end{figure}
 
@@ -1854,8 +1870,8 @@ The standard deviation of $\hat{p}$ is described by the standard deviation for t
 \begin{align*}
 \sigma_{\hat{p}}
 	= \sqrt{\frac{p(1-p)}{n}}
-	= \sqrt{\frac{0.35 \times 0.65}{400}}
-	= .024
+	= \sqrt{\frac{0.35(0.65)}{400}}
+	= 0.024
 \end{align*}
 The sample proportion will typically be about 0.024 or 2.4\% away from the true proportion of $p = 0.35$. We'll become more rigorous about quantifying how close $\hat{p}$ will tend to be to $p$ in Chapter~\ref{foundationsForInference}.
 \end{nexample}
@@ -1916,11 +1932,11 @@ Notice that $120/400=0.30$. Using the binomial distribution to find the probabil
 \begin{nexercise}Given a population that is 50\% male, what is the probability that a sample of size 200 would have greater than 55\% males?  Remember to verify that conditions for normal approximation are met.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{First, verify the conditions: $np = 200 \times 0.5 = 100 \ge 10$ and $n(1-p) = 200 \times 0.5 = 100 \ge 10$, so the normal approximation is reasonable. Next we find the mean and standard deviation of $\hat{p}$:
+\footnotetext{First, verify the conditions: $np = 200(0.5) = 100 \ge 10$ and $n(1-p) = 200 (0.5) = 100 \ge 10$, so the normal approximation is reasonable. Next we find the mean and standard deviation of $\hat{p}$:
 \begin{align*}
 \mu_{\hat{p}} &= p = 0.50
 	& \sigma_{\hat{p}} &= \sqrt{\frac{p(1-p)}{n}}
-		= \sqrt{\frac{0.5 \times 0.5}{200}}
+		= \sqrt{\frac{0.5(0.5)}{200}}
 		= 0.0354
 \end{align*}
 Then we find a Z-score and find the upper tail of the normal distribution:
@@ -1963,7 +1979,10 @@ The probability of getting a sample proportion of 55\% or greater is about 0.07.
 
 
 %______________________________________________
-\section{Chapter highlights}
+\section*{Chapter highlights}
+\setcounter{secnumdepth}{0}
+\addcontentsline{toc}{section}{Chapter highlights}
+\setcounter{secnumdepth}{2}
 
 \noindent This chapter began by introducing the normal distribution.  A common thread that ran through this chapter is the use of the \term{normal approximation} in various contexts.  
 The key steps are included for each of the normal approximation scenarios below.

@@ -109,8 +109,8 @@ Gallup sampled from U.S. adults, therefore the population of interest, and the p
 \begin{nexample}{Can the sample proportion $\hat{p}$ be modeled using a normal distribution?}
 In order to construct a Z-interval, the sample statistic must be able to be modeled using a normal distribution.  Gallup took a random sample, so the first condition (the independence condition) is satisfied.  We must also test the second condition (the success-failure condition) to ensure that the sample~size is large enough for the central limit theorem to apply.  The success-failure condition is met when $np$ and $n(1-p)$ are at least 10. Since $p$ is always unknown when constructing a confidence interval for $p$, we use the sample proportion $\hat{p}$ to check this condition.  Here we have:
 \begin{align*}
-n\hat{p} = 1033 \times 0.53 = 547\text{ (``successes'')} \\
- n(1-\hat{p}) = 1033 \times (1 - 0.53) = 486\text{ (``failures'')}
+n\hat{p} = 1033(0.53) = 547\text{ (``successes'')} \\
+ n(1-\hat{p}) = 1033(1 - 0.53) = 486\text{ (``failures'')}
 \end{align*}
 The second condition is satisfied since 547 and 486 are both at least 10. With the two conditions satisfied, we can model the sample proportion $\hat{p}$ using a normal model and we can construct a Z-interval.
 \end{nexample}
@@ -429,8 +429,8 @@ While a confidence interval provides a range of reasonable values for an unknown
 (a) The alternative hypothesis, the one that bears the burden of proof, argues that Toohey has more than 50\% support. Therefore, $H_A$ will be one-sided and the null value will be $p_0 = 0.5$. So we have $H_0$: $p = 0.5$ and $H_A$: $p > 0.5$. Note that the hypotheses are about a population parameter.  The hypotheses are never about the sample.\\[2mm]
 (b) First, we observe that the problem states that a random sample was chosen.  Next, we check the success-failure condition.    Because we assume that $p = p_0$ for the calculations of the hypothesis test, we use the hypothesized value $p_0$ rather than the sample value $\hat{p}$ when verifying the success-failure condition.  
 \begin{align*}
-np_0 &\geq 10 \quad \rightarrow \quad 500\times 0.5 \geq 10 \\
-n(1-p_0) &\geq 10 \quad \rightarrow \quad 500 \times (1-0.5) \geq 10
+np_0 &\geq 10 \quad \rightarrow \quad 500(0.5) \geq 10 \\
+n(1-p_0) &\geq 10 \quad \rightarrow \quad 500(1-0.5) \geq 10
 \end{align*}
 The conditions for a normal model are met.
 \end{nexample}
@@ -795,7 +795,7 @@ p_2:& \text{ proportion that would survive in control group}
 \end{align*}
 Then the parameter of interest is $p_1 - p_2$.  In order to use a Z-interval to estimate this difference, we must see if the point estimate, $\hat{p}_{1} - \hat{p}_{2}$, follows a normal distribution.  Because the patients were randomly assigned to one of the two groups and one heart attack patient is unlikely to influence the next that was in the study, the observations are considered independent, both within the samples and between the samples.  Next, the success-failure condition should be verified for each group.  We use the sample proportions along with the sample~sizes to check the condition.
 \begin{align*}
-n_1\times \hat{p}_1&\ge 10 & n_1\times (1-\hat{p}_1)&\ge 10 & n_2\times \hat{p}_2&\ge 10 & n_2\times (1-\hat{p}_2)&\ge 10 \\
+n_1\hat{p}_1&\ge 10 & n_1(1-\hat{p}_1)&\ge 10 & n_2\hat{p}_2&\ge 10 & n_2(1-\hat{p}_2)&\ge 10 \\
 40 \times \frac{14}{40} &\ge 10
 	&40 \times (1-\frac{14}{40}) &\ge 10
 	&50 \times \frac{11}{50} &\ge 10
@@ -1054,13 +1054,13 @@ SD &= \sqrt{\frac{p(1-p)}{n_1} + \frac{p(1-p)}{n_2}} \\
 \end{align*}
 We don't know the true proportion $p$, but we can obtain a good estimate of it, $\hat{p}$, by \emph{pooling} the results of both samples.  We find the total number of ``yeses" or ``successes" and divide that by the total number of cases.  This is equivalent to taking a weighted average of $\hat{p}_1$ and $\hat{p}_2$.  We call $\hat{p}$ the \term{pooled sample proportion}, and we use it to compute the standard error when the null hypothesis is that $p_1 = p_2$.\footnote{The pooled sample proportion is also sometimes used to verify the success-failure condition.} Here:
 
-$$\hat{p} =  \frac{0.47\times 771 + 0.34\times 732}{771+732}= 0.407$$
+$$\hat{p} =  \frac{0.47(771) + 0.34(732)}{771+732}= 0.407$$
 
 
 \begin{onebox}{Pooled sample proportion}
 When the null hypothesis is $p_1 = p_2$, it is useful to find the pooled sample proportion:
 \begin{eqnarray*}
-\hat{p} = \frac{\text{number of ``successes''}}{\text{number of cases}} = \frac{\text{x}_1+\text{x}_2}{n_1+n_2}=\frac{\hat{p}_1\times n_1 + \hat{p}_2\times n_2}{n_1 + n_2}
+\hat{p} = \frac{\text{number of ``successes''}}{\text{number of cases}} = \frac{\text{x}_1+\text{x}_2}{n_1+n_2}=\frac{\hat{p}_1(n_1) + \hat{p}_2(n_2)}{n_1 + n_2}
 \end{eqnarray*}
 Here $\text{x}_1$ represents the number of successes in sample 1. If $\text{x}_1$ is not given, it can be computed as $\hat{p}_1\times n_1$. Similarly, $\text{x}_2$ represents the number of successes in sample~2 and can be computed as $\hat{p}_2\times n_2$.
 \end{onebox}
@@ -1166,7 +1166,7 @@ $H_A$: $p_1 < p_2$ \quad Fish oil is effective in reducing heart attacks.
  
 
 \item[\inferencestep{Choose}] Because we are testing whether two proportions equal each other, we choose the \mbox{2-proportion Z-test.}
-\item[\inferencestep{Check}]  We must verify that the difference of sample proportions can be modeled using a normal distribution.  There are two randomly assigned treatments.  Also, $12933\times \frac{145}{12933}\geq10$, $12933\times \frac{12788}{12933}\geq10$, $12938\times \frac{200}{12938}\geq10$, and $12938\times \frac{12738}{12938}\geq10$  so both conditions are met. 
+\item[\inferencestep{Check}]  We must verify that the difference of sample proportions can be modeled using a normal distribution.  There are two randomly assigned treatments.  Also, $12933(\frac{145}{12933})\geq10$, $12933(\frac{12788}{12933})\geq10$, $12938(\frac{200}{12938})\geq10$, and $12938(\frac{12738}{12938})\geq10$  so both conditions are met. 
 \item[ \inferencestep{Calculate} ]  We will calculate the Z-statistic and the p-value.
 \begin{align*}
 Z = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}
@@ -2555,7 +2555,10 @@ Disapprove			    & 726.41    & 688.55 & 689.04  \\
 
 
 %______________________________________________
-\section{Chapter highlights}
+\section*{Chapter highlights}
+\setcounter{secnumdepth}{0}
+\addcontentsline{toc}{section}{Chapter highlights}
+\setcounter{secnumdepth}{2}
 
 \noindent \textit{Calculating} a confidence interval or a test statistic and p-value are generally done with statistical software.  It is important, then, to focus not on the calculations, but rather on 
 \begin{enumerate}\vspace{-1mm}

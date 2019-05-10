@@ -16,7 +16,7 @@ Y <- dnorm(X, m, s)
 plot(X, Y,
      type = 'l',
      axes = FALSE,
-     xlim = m + s * 2.7 * c(-1, 1),yaxs="i")
+     xlim = m + s * 2.7 * c(-1, 1),yaxs="i",ylim = c(0, 0.0021))
 axis(1, at = m + s * (-3:3))
 abline(h = 0)
 lines(c(m, m),
@@ -42,7 +42,7 @@ Y <- dnorm(X, m, s)
 plot(X, Y,
      type = 'l',
      axes = FALSE,
-     xlim = m + s * 2.7 * c(-1, 1),yaxs="i")
+     xlim = m + s * 2.7 * c(-1, 1),yaxs="i",ylim = c(0, 0.07))
 axis(1, at = m + s * (-3:3))
 abline(h = 0)
 lines(c(m, m),

@@ -4,7 +4,7 @@ data(COL)
 myPDF("oPositive40.pdf", 7, 3,
       mar = c(3.2, 3, .5, 0))
 # Intentially not exact
-normTail(14, 3.0, -10, col = COL[1], axes = FALSE, yaxs="i")
+normTail(14, 3.0, -10, col = COL[1], axes = FALSE,yaxs="i")
 rect(-1000, -1000, 1000, 1000, col = "white")
 x <- 0:40
 y <- dbinom(x, 40, 0.35)

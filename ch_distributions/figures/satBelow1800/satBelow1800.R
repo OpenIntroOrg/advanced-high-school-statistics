@@ -8,5 +8,5 @@ myPDF("satBelow1800.pdf", 2.5, 1.3,
 normTail(1500, 300,
          L = 1800,
          col = COL[1],
-         cex.axis = 0.6,yaxs="i")
+         cex.axis = 0.6,yaxs="i",ylim=c(0,0.0014))
 dev.off()

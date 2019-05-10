@@ -9,7 +9,7 @@ Y <- dnorm(X)
 plot(X, Y,
      type = 'l',
      axes = FALSE,
-     xlim = c(-3.1, 3.1))
+     xlim = c(-3.1, 3.1),yaxs="i",ylim = c(0, 0.41))
 axis(1,
      at = c(-2, 0, 2),
      labels = round(70 + 3.3 * c(-2, 0, 2), 2),

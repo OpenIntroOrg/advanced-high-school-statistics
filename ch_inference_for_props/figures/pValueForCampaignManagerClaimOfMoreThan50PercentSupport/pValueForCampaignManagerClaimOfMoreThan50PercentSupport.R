@@ -6,7 +6,7 @@ fn <- paste0('pValueForCampaignManagerClaimOf',
 myPDF(fn, 3.5, 1.3,
       mar=c(1.7, 0, 0.1, 0),
       mgp=c(3, 0.5, 0))
-normTail(U = 0.89, col = COL[1], axes = FALSE,yaxs="i")
+normTail(U = 0.89, col = COL[1], axes = FALSE,yaxs="i", ylim=c(0,0.41))
 at <- c(-5, 0, 0.89, 5)
 labels <- expression(0, 0, 0.89, 0)
 axis(1, at, labels, cex.axis=0.9)
