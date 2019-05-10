@@ -19,7 +19,7 @@ normTail(L = -abs(m),
          col = COL[1],
          # border = COL[4],
          yaxs="i",
-         axes = FALSE)
+         axes = FALSE, ylim=c(0,0.26))
 at <- c(-100, 0, m, 100)
 labels <- expression(0, mu[0]*' = 0', bar(x)[diff]*" = 2.98", 0)
 axis(1, at, labels, cex.axis = 0.9)

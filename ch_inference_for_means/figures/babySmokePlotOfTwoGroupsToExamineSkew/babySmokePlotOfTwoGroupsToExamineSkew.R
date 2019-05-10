@@ -6,7 +6,7 @@ d <- births
 
 myPDF('babySmokePlotOfTwoGroupsToExamineSkew.pdf', 4.5, 3.5,
       mfrow = 2:1,
-      mar = c(3.5, 1, 0, 1),
+      mar = c(3.5, 1, .1, 1),
       mgp = c(1.7, 0.55, 0))
 xlab.start <- 'Newborn Weights (lbs) From Mothers Who'
 histPlot(d$weight[d$smoke == 'smoker'],
