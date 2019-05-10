@@ -672,15 +672,22 @@ We evaluated the strength of the linear relationship between two variables earli
 \label{elmhurstScatterWLSROnly}
 \end{figure}
 
-We are interested in how well a model accounts for or explains the location of the $y$ values.  Roughly speaking, the $R^2$ of a linear model describes how much smaller the variance (in the $y$ direction) about the regression line is than the variance about the horizontal line $\bar{y}$.
+We are interested in how well a model accounts for or explains the location of the $y$ values.
+\Cut{Roughly speaking, the}
+\Add{The} $R^2$ of a linear model describes how much smaller the variance (in the $y$ direction) about the regression line is than the variance about the horizontal line $\bar{y}$.
 For example, consider the Elmhurst College data, shown in Figure~\ref{elmhurstScatterWLSROnly}. The variance of the response variable, aid received, is $s_{aid}^2=29.8$. However, if we apply our least squares line, then this model reduces our uncertainty in predicting aid using a student's family income. The variability in the residuals describes how much variation remains after using the model: $s_{_{RES}}^2 = 22.4$.
 We could say that the reduction in the variance was:
 $$\frac{s_{aid}^2 - s_{_{RES}}^2}{s_{aid}^2}
 	= \frac{29.8 - 22.4}{29.8} = \frac{7.5}{29.8}
 	= 0.25$$
-If we use $s_{_{RES}}^2$ as computed by the linear regression
+\Add{If we used the simple standard deviation of the
+residuals, this would be exactly $R^2$.
+However, the standard way of computing the standard deviation of the residuals is slightly more sophisticated.\footnote{In computing the standard deviation of the residuals, we divide by $n-2$ rather than by $n-1$ to account for the $n-2$ degrees of freedom.}
+To avoid any trouble, we can instead use a sum of squares method.}
+\Cut{If we use $s_{_{RES}}^2$ as computed by the linear regression
 model, this is close to the $R^2$ value.
-More technically, we calculate $R^2$ as the reduction in the sum of the squared error about the line.  If we call the sum of the squared errors about the regression line $SSRes$ and the sum of the squared errors about the mean $SSM$, we can define $R^2$ as follows:
+More technically, we calculate $R^2$ as the reduction in the sum of the squared error about the line.}
+If we call the sum of the squared errors about the regression line $SSRes$ and the sum of the squared errors about the mean $SSM$, we can define $R^2$ as follows:
 \begin{align*}
 R^2=\frac{SSM - SSRes}{SSM} = 1-\frac{SSRes}{SSM}
 \end{align*}
@@ -1882,7 +1889,10 @@ The linear regression equation can be written as:  $\widehat{\text{log}(y)} = 1.
 
 
 %_______________________
-\section{Chapter highlights}
+\section*{Chapter highlights}
+\setcounter{secnumdepth}{0}
+\addcontentsline{toc}{section}{Chapter highlights}
+\setcounter{secnumdepth}{2}
 
 \noindent This chapter focused on describing the linear association between two numerical variables and fitting a linear model.  
 \begin{itemize}

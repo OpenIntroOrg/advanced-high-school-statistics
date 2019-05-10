@@ -28,8 +28,8 @@ par(mar = c(3.75, 3.75, 0.5, 0.5), las = 1, mgp = c(2.5, 0.7, 0),
     cex.lab = 1.5, cex.axis = 1.5)
 
 plot(hw$age_wife ~ hw$age_husband, 
-     xlab = "Husband's age (in years)", 
-     ylab = "Wife's age (in years)", 
+     xlab = "Man's age (in years)", 
+     ylab = "Spouse's age (in years)", 
      pch = 19, col = COL[1,2], 
      xlim = c(18, 66), ylim = c(16, 66), axes = FALSE)
 axis(1, at = seq(20,60,20))

@@ -28,8 +28,8 @@ par(mar = c(3.75, 3.75, 0.5, 0.5), las = 1, mgp = c(2.5, 0.7, 0),
     cex.lab = 1.5, cex.axis = 1.5)
 
 plot(hw$ht_wife_in ~ hw$ht_husband_in, 
-     xlab = "Husband's height (in inches)", 
-     ylab = "Wife's height (in inches)", 
+     xlab = "Man's height (in inches)", 
+     ylab = "Spouse's height (in inches)", 
      pch = 19, col = COL[1,2], 
      xlim = c(60, 77), ylim = c(55, 70), axes = FALSE)
 axis(1, at = seq(60, 75, 5))

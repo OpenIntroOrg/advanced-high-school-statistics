@@ -7,5 +7,5 @@ normTail(0, 0.8717,
          L = -1.07,
          df = 25,
          col = COL[1],
-         yaxs="i")
+         yaxs="i", ylim=c(0,0.46))
 dev.off()
