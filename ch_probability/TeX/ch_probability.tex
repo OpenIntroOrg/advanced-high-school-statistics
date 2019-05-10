@@ -23,50 +23,64 @@
 
 
 \sectionintro{
-\Add{
-\noindent What is the probability of rolling an even number on a die?  Of getting 5 heads in row when tossing a coin?  Of drawing a Heart or an Ace from a deck of cards?  The study of probability is fun and interesting in its own right, but it also forms the foundation for statistical models and inferential procedures, many of which we will investigate in subsequent chapters.  
-}
-%%
+\noindent%
+What is the probability of rolling an even number on a die?  Of getting 5 heads in row when tossing a coin?  Of drawing a Heart or an Ace from a deck of cards?  The study of probability is fun and interesting in its own right, but it also forms the foundation for statistical models and inferential procedures, many of which we will investigate in subsequent chapters.
+
+
 \subsection*{Learning objectives}
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Describe the long-run relative frequency interpretation of probability and understand its relationship to the ``Law of Large Numbers".
 
-\item \Add{Use Venn diagrams to represent events and their probabilities and to visualize complement, union, and intersection of events.}
+\item
+    Use Venn diagrams to represent events and their
+    probabilities and to visualize the complement, union,
+    and intersection of events.
 
 \item Use the General Addition Rule to find the probability that at least one of several events occurs.  
 
 \item Understand when events are disjoint (mutually exclusive) and how that simplifies the General Addition Rule.  
 
-\item \Add{Apply the Multiplication Rule for finding the joint probability of independent events.}
+\item
+    Apply the Multiplication Rule for finding the joint
+    probability of independent events.
 
 \end{enumerate}
 }
 
-\Comment{added subsection header}
-
 \subsection{Introductory examples}
 
-\begin{examplewrap}\begin{nexample}{A ``die'', the singular of dice, is a cube with six faces numbered \resp{1}, \resp{2}, \resp{3}, \resp{4}, \resp{5}, and \resp{6}. What is the chance of getting \resp{1} when rolling a die?}\label{probOf1}
+\begin{examplewrap}
+\begin{nexample}{A ``die'', the singular of dice, is a cube with six faces numbered \resp{1}, \resp{2}, \resp{3}, \resp{4}, \resp{5}, and \resp{6}. What is the chance of getting \resp{1} when rolling a die?}\label{probOf1}
 If the die is fair, then the chance of a \resp{1} is as good as the chance of any other number. Since there are six outcomes, the chance must be 1-in-6 or, equivalently, $1/6$.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{What is the chance of getting a \resp{1} or \resp{2} in the next roll?}\label{probOf1Or2}
+\begin{examplewrap}
+\begin{nexample}{What is the chance of getting a \resp{1} or \resp{2} in the next roll?}\label{probOf1Or2}
 \resp{1} and \resp{2} constitute two of the six equally likely possible outcomes, so the chance of getting one of these two outcomes must be $2/6 = 1/3$.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{What is the chance of getting either \resp{1}, \resp{2}, \resp{3}, \resp{4}, \resp{5}, or \resp{6} on the next roll?}\label{probOf123456}
+\begin{examplewrap}
+\begin{nexample}{What is the chance of getting either \resp{1}, \resp{2}, \resp{3}, \resp{4}, \resp{5}, or \resp{6} on the next roll?}\label{probOf123456}
 100\%. The outcome must be one of these numbers.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{What is the chance of not rolling a \resp{2}?}\label{probNot2}
+\begin{examplewrap}
+\begin{nexample}{What is the chance of not rolling a \resp{2}?}\label{probNot2}
 Since the chance of rolling a \resp{2} is $1/6$ or $16.\bar{6}\%$, the chance of not rolling a \resp{2} must be $100\% - 16.\bar{6}\%=83.\bar{3}\%$ or $5/6$.
 
 Alternatively, we could have noticed that not rolling a \resp{2} is the same as getting a \resp{1}, \resp{3}, \resp{4}, \resp{5}, or \resp{6}, which makes up five of the six equally likely outcomes and has probability $5/6$.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{Consider rolling two dice. If $1/6^{th}$ of the time the first die is a \resp{1} and $1/6^{th}$ of those times the second die is a \resp{1}, what is the chance of getting two \resp{1}s?}\label{probOf2Ones}
+\begin{examplewrap}
+\begin{nexample}{Consider rolling two dice. If $1/6^{th}$ of the time the first die is a \resp{1} and $1/6^{th}$ of those times the second die is a \resp{1}, what is the chance of getting two \resp{1}s?}\label{probOf2Ones}
 If $16.\bar{6}$\% of the time the first die is a \resp{1} and $1/6^{th}$ of \emph{those} times the second die is also a \resp{1}, then the chance that both dice are \resp{1} is $(1/6)\times (1/6)$ or $1/36$.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 %%
 \subsection{Probability}
@@ -108,10 +122,12 @@ P(\text{rolling a \resp{1}})
 
 As we become more comfortable with this notation, we will abbreviate it further. For instance, if it is clear that the process is ``rolling a die'', we could abbreviate $P($rolling a \resp{1}$)$ as~$P($\resp{1}$)$.
 
-\begin{exercisewrap}\begin{nexercise} \label{randomProcessExercise}
+\begin{exercisewrap}
+\begin{nexercise} \label{randomProcessExercise}
 Random processes include rolling a die and flipping a coin. (a) Think of another random process. (b) Describe all the possible outcomes of that process. For instance, rolling a die is a random process with potential outcomes \resp{1}, \resp{2}, ...,~\resp{6}.~\footnotemark
-\end{nexercise}\end{exercisewrap}
-\footnotetext{Here are four examples. (i) Whether someone gets sick in the next month or not is an apparently random process with outcomes \resp{sick} and \resp{not}. (ii) We can \emph{generate} a random process by randomly picking a person and measuring that person's height. The outcome of this process will be O+ number. (iii) Whether the stock market goes up or down next week is a seemingly random process with possible outcomes \resp{up}, \resp{down}, and \resp{no\us{}change}. Alternatively, we could have used the percent change in the stock market as a numerical outcome. (iv) Whether your roommate cleans her dishes tonight probably seems like a random process with possible outcomes \resp{cleans\us{}dishes} and \resp{leaves\us{}dishes}.}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Here are four examples. (i) Whether someone gets sick in the next month or not is an apparently random process with outcomes \resp{sick} and \resp{not}. (ii) We can \emph{generate} a random process by randomly picking a person and measuring that person's height. The outcome of this process will be a positive number. (iii) Whether the stock market goes up or down next week is a seemingly random process with possible outcomes \resp{up}, \resp{down}, and \resp{no\us{}change}. Alternatively, we could have used the percent change in the stock market as a numerical outcome. (iv) Whether your roommate cleans her dishes tonight probably seems like a random process with possible outcomes \resp{cleans\us{}dishes} and \resp{leaves\us{}dishes}.}
 
 What we think of as random processes are not necessarily random, but they may just be too difficult to understand exactly. The fourth example in the footnote solution to Guided Practice~\ref{randomProcessExercise} suggests a roommate's behavior is a random process. However, even if a roommate's behavior is not truly random, modeling her behavior as a random process can still be useful.
 
@@ -150,15 +166,19 @@ P(A_1) + P(A_2) + \cdots + P(A_k)
 \end{eqnarray}
 \end{onebox}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 We are interested in the probability of rolling a \resp{1}, \resp{4}, or \resp{5}. (a) Explain why the outcomes \resp{1}, \resp{4}, and \resp{5} are disjoint. (b) Apply the Addition Rule for disjoint outcomes to determine $P($\resp{1} or \resp{4} or \resp{5}$)$.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a) The random process is a die roll, and at most one of these outcomes can come up. This means they are disjoint outcomes. (b)~$P($\resp{1} or \resp{4} or \resp{5}$) = P($\resp{1}$)+P($\resp{4}$)+P($\resp{5}$) = \frac{1}{6} + \frac{1}{6} + \frac{1}{6} = \frac{3}{6} = \frac{1}{2}$}
 
 \index{data!email|(}
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 In the \data{email} data set in Chapter~\ref{summarizingData}, the \var{number} variable described whether no number (labeled \resp{none}), only one or more small numbers (\resp{small}), or whether at least one big number appeared in an email (\resp{big}). Of the 3,921 emails, 549 had no numbers, 2,827 had only one or more small numbers, and 545 had at least one big number. (a) Are the outcomes \resp{none}, \resp{small}, and \resp{big} disjoint? (b) Determine the proportion of emails with value \resp{small} and \resp{big} separately. (c) Use the Addition Rule for disjoint outcomes to compute the probability a randomly selected email from the data set has a number in it, small or big.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a) Yes. Each email is categorized in only one level of \var{number}. (b) Small: $\frac{2827}{3921} = 0.721$. Big: $\frac{545}{3921} = 0.139$. (c) $P($\resp{small} or \resp{big}$) = P($\resp{small}$) + P($\resp{big}$) = 0.721 + 0.139 = 0.860$.}
 \index{data!email|)}
 
@@ -178,19 +198,25 @@ The Addition Rule applies to both disjoint outcomes and disjoint events. The pro
 P(A\text{ or }B) = P(A) + P(B) = 1/3 + 1/3 = 2/3
 \end{eqnarray*}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 (a) Verify the probability of event $A$, $P(A)$, is $1/3$ using the Addition Rule. (b) Do the same for event $B$.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a) $P(A) = P($\resp{1} or \resp{2}$) = P($\resp{1}$) + P($\resp{2}$) = \frac{1}{6} + \frac{1}{6} = \frac{2}{6} = \frac{1}{3}$. (b) Similarly, $P(B) = 1/3$.}
 
-\begin{exercisewrap}\begin{nexercise} \label{exerExaminingDisjointSetsABD}
+\begin{exercisewrap}
+\begin{nexercise} \label{exerExaminingDisjointSetsABD}
 (a) Using Figure~\ref{disjointSets} as a reference, what outcomes are represented by event $D$? (b) Are events $B$ and $D$ disjoint? (c) Are events $A$ and $D$ disjoint?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a)~Outcomes \resp{2} and \resp{3}. (b)~Yes, events $B$ and $D$ are disjoint because they share no outcomes. (c)~The events $A$ and $D$ share an outcome in common, \resp{2}, and so are not disjoint.}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 In Guided Practice~\ref{exerExaminingDisjointSetsABD}, you confirmed $B$ and $D$ from Figure~\ref{disjointSets} are disjoint. Compute the probability that either event $B$ or event $D$ occurs.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Since $B$ and $D$ are disjoint events, use the Addition Rule: $P(B$ or $D) = P(B) + P(D) = \frac{1}{3} + \frac{1}{3} = \frac{2}{3}$.}
 
 \index{event|)}
@@ -200,9 +226,9 @@ In Guided Practice~\ref{exerExaminingDisjointSetsABD}, you confirmed $B$ and $D$
 %%
 \subsection{Probabilities when events are not disjoint}
 
-Let's consider calculations for two events that are not disjoint in the context of a \indexthis{regular deck of 52 cards}{deck of cards}, represented in Table~\ref{deckOfCards}. If you are unfamiliar with the cards in a regular deck, please see the footnote.\footnote{The 52 cards are split into four \term{suits}: $\clubsuit$ (club), {\color{redcards}$\diamondsuit$} (diamond), {\color{redcards}$\heartsuit$} (heart), $\spadesuit$ (spade). Each suit has its 13 cards labeled: \resp{2}, \resp{3}, ..., \resp{10}, \resp{J} (jack), \resp{Q} (queen), \resp{K} (king), and \resp{A} (ace). Thus, each card is a unique combination of a suit and a label, e.g. {\color{redcards}\resp{4$\heartsuit$}} and \resp{J$\clubsuit$}. The 12 cards represented by the jacks, queens, and kings are called \termsub{\resp{face cards}}{face card}. The cards that are {\color{redcards}$\diamondsuit$} or {\color{redcards}$\heartsuit$} are typically colored {\color{redcards}red} while the other two suits are typically colored black.}
+Let's consider calculations for two events that are not disjoint in the context of a \indexthis{regular deck of 52 cards}{deck of cards}, represented in Figure~\ref{deckOfCards}. If you are unfamiliar with the cards in a regular deck, please see the footnote.\footnote{The 52 cards are split into four \term{suits}: $\clubsuit$ (club), {\color{redcards}$\diamondsuit$} (diamond), {\color{redcards}$\heartsuit$} (heart), $\spadesuit$ (spade). Each suit has its 13 cards labeled: \resp{2}, \resp{3}, ..., \resp{10}, \resp{J} (jack), \resp{Q} (queen), \resp{K} (king), and \resp{A} (ace). Thus, each card is a unique combination of a suit and a label, e.g. {\color{redcards}\resp{4$\heartsuit$}} and \resp{J$\clubsuit$}. The 12 cards represented by the jacks, queens, and kings are called \termsub{\resp{face cards}}{face card}. The cards that are {\color{redcards}$\diamondsuit$} or {\color{redcards}$\heartsuit$} are typically colored {\color{redcards}red} while the other two suits are typically colored black.}
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{lll lll lll lll l}
 \resp{2$\clubsuit$} & \resp{3$\clubsuit$} & \resp{4$\clubsuit$} & \resp{5$\clubsuit$} & \resp{6$\clubsuit$} & \resp{7$\clubsuit$} & \resp{8$\clubsuit$} & \resp{9$\clubsuit$} & \resp{10$\clubsuit$} & \resp{J$\clubsuit$} & \resp{Q$\clubsuit$} & \resp{K$\clubsuit$} & \resp{A$\clubsuit$}  \\
@@ -212,11 +238,13 @@ Let's consider calculations for two events that are not disjoint in the context 
 \end{tabular}
 \caption{Representations of the 52 unique cards in a deck.}
 \label{deckOfCards}
-\end{table}
+\end{figure}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 (a) What is the probability that a randomly selected card is a diamond? (b)~What is the probability that a randomly selected card is a face~card?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a) There are 52 cards and 13 diamonds. If the cards are thoroughly shuffled, each card has an equal chance of being drawn, so the probability that a randomly selected card is a diamond is $P({\color{redcards}\diamondsuit}) = \frac{13}{52} = 0.250$. (b)~Likewise, there are 12 face cards, so $P($face card$) = \frac{12}{52} = \frac{3}{13} = 0.231$.}
 
 \term{Venn diagrams} are useful when outcomes can be categorized as ``in'' or ``out'' for two or three variables, attributes, or random processes. The Venn diagram in Figure~\ref{venn} uses a circle to represent diamonds and another to represent face cards. If a card is both a diamond and a face card, it falls into the intersection of the circles. If it is a diamond but not a face card, it will be in part of the left circle that is not in the right circle (and so on). The total number of cards that are diamonds is given by the total number of cards in the diamonds circle: $10+3=13$. The probabilities are also shown (e.g. $10/52 = 0.1923$).
@@ -228,8 +256,10 @@ Let's consider calculations for two events that are not disjoint in the context 
 \label{venn}
 \end{figure}
 
-\begin{exercisewrap}\begin{nexercise}
-Using the Venn diagram, verify $P($face card$) = 12/52=3/13$.\footnotemark\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}
+Using the Venn diagram, verify $P($face card$) = 12/52=3/13$.\footnotemark\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The Venn diagram shows face cards split up into ``face card but not {\color{redcards}$\diamondsuit$}'' and ``face card and {\color{redcards}$\diamondsuit$}''. Since these correspond to disjoint events, $P($face card$)$ is found by adding the two corresponding probabilities: $\frac{3}{52} + \frac{9}{52} = \frac{12}{52} = \frac{3}{13}$.}
 
 
@@ -270,17 +300,21 @@ P(A \cup B) = P(A) + P(B) - P(A \cap B)
 \begin{onebox}{``or'' is inclusive}
 When we write, ``or"  in statistics, we mean ``and/or'' unless we explicitly state otherwise. Thus, $A$ or $B$ occurs means $A$, $B$, or both $A$ and $B$ occur. This is equivalent to at least one of $A$ or $B$ occurring.\end{onebox}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 (a) If $A$ and $B$ are disjoint, describe why this implies $P(A$ and $B) = 0$. (b) Using part (a), verify that the General Addition Rule simplifies to the simpler Addition Rule for disjoint events if $A$ and $B$ are disjoint.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a) If $A$ and $B$ are disjoint, $A$ and $B$ can never occur simultaneously. (b) If $A$ and $B$ are disjoint, then the last term of Equation~(\ref{generalAdditionRule}) is 0 (see part (a)) and we are left with the Addition Rule for disjoint events.}
 
 \index{data!email|(}
 
-\begin{exercisewrap}\begin{nexercise}\label{emailSpamNumberVennExer}
+\begin{exercisewrap}
+\begin{nexercise}\label{emailSpamNumberVennExer}
 % library(openintro); data(email); table(email[,c("spam", "number")]); table(email[,c("number")]); table(email[,c("spam")])
 In the \data{email} data set with 3,921 emails, 367 were spam, 2,827 contained some small numbers but no big numbers, and 168 had both characteristics. Create a Venn diagram for this setup.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{%
 \begin{minipage}[t]{0.65\textwidth}
 Both the counts and corresponding {\color{oiB}probabilities} (e.g. $2659/3921 = 0.678$) are shown. Notice that the number of emails represented in the left circle corresponds to $2659 + 168 = 2827$, and the number represented in the right circle is $168 + 199 = 367$.
@@ -290,10 +324,12 @@ Both the counts and corresponding {\color{oiB}probabilities} (e.g. $2659/3921 = 
 \end{minipage}
 }
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 (a) Use your Venn diagram from Guided Practice~\ref{emailSpamNumberVennExer} to determine the probability a randomly drawn email from the \data{email} data set is spam and had small numbers (but not big numbers). (b)~What is the probability that the email had either of these attributes?\footnotemark
 \index{data!email|)}
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a)~The solution is represented by the intersection of the two circles: 0.043. (b)~This is the sum of the three disjoint probabilities shown in the circles: $0.678 + 0.043 + 0.051 = 0.772$.}
 
 
@@ -312,13 +348,17 @@ Let $D=\{$\resp{2}, \resp{3}$\}$ represent the event that the outcome of a die r
 
 \end{figure}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 (a) Compute $P(D^c) = P($rolling a \resp{1}, \resp{4}, \resp{5}, or \resp{6}$)$. (b) What is $P(D) + P(D^c)$?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a)~The outcomes are disjoint and each has probability $1/6$, so the total probability is $4/6=2/3$. (b)~We can also see that $P(D)=\frac{1}{6} + \frac{1}{6} = 1/3$. Since $D$ and $D^c$ are disjoint, $P(D) + P(D^c) = 1$.}
 
-\begin{exercisewrap}\begin{nexercise}
-Events $A=\{$\resp{1}, \resp{2}$\}$ and $B=\{$\resp{4}, \resp{6}$\}$ are shown in Figure~\ref{disjointSets} on page~\pageref{disjointSets}. (a) Write out what $A^c$ and $B^c$ represent. (b)~Compute $P(A^c)$ and $P(B^c)$. (c)~Compute $P(A)+P(A^c)$ and $P(B)+P(B^c)$.\footnotemark\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}
+Events $A=\{$\resp{1}, \resp{2}$\}$ and $B=\{$\resp{4}, \resp{6}$\}$ are shown in Figure~\ref{disjointSets} on page~\pageref{disjointSets}. (a) Write out what $A^c$ and $B^c$ represent. (b)~Compute $P(A^c)$ and $P(B^c)$. (c)~Compute $P(A)+P(A^c)$ and $P(B)+P(B^c)$.\footnotemark\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Brief solutions: (a)~$A^c=\{$\resp{3}, \resp{4}, \resp{5}, \resp{6}$\}$ and $B^c=\{$\resp{1}, \resp{2}, \resp{3}, \resp{5}$\}$. (b)~Noting that each outcome is disjoint, add the individual outcome probabilities to get $P(A^c)=2/3$ and $P(B^c)=2/3$. (c)~$A$~and~$A^c$ are disjoint, and the same is true of $B$~and~$B^c$. Therefore, $P(A) + P(A^c) = 1$ and $P(B) + P(B^c) = 1$.}
 
 
@@ -332,9 +372,11 @@ P(A) + P(A^c) = 1, \quad\text{i.e.}\quad P(A) = 1-P(A^c)
 
 In simple examples, computing $A$ or $A^c$ is feasible in a few steps. However, using the complement can save a lot of time as problems grow in complexity.
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 A die is rolled 10 times. (a)~What is the complement of getting at least one 6 in 10 rolls of the die? (b)~What is the complement of getting at most three 6's in 10 rolls of the die?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a)~The complement of getting at least one 6 in ten rolls of a die is getting zero 6's in the 10 rolls. (b)~The complement of getting at most three 6's in 10 rolls is getting four, five, ..., nine, or ten 6's in 10~rolls.}
 
 
@@ -353,7 +395,8 @@ Example~\ref{probOf2Ones} provides a basic example of two independent processes:
 \label{indepForRollingTwo1s}
 \end{figure}
 
-\begin{examplewrap}\begin{nexample}{What if there was also a blue die independent of the other two? What is the probability of rolling the three dice and getting all \resp{1}s?}\label{threeDice}
+\begin{examplewrap}
+\begin{nexample}{What if there was also a blue die independent of the other two? What is the probability of rolling the three dice and getting all \resp{1}s?}\label{threeDice}
 The same logic applies from Example~\ref{probOf2Ones}. If $1/36^{th}$ of the time the white and red dice are both \resp{1}, then $1/6^{th}$ of \emph{those} times the blue die will also be \resp{1}, so multiply:
 {\begin{align*}
 P(white=\text{\small\resp{1} and } red=\text{\small\resp{1} and } blue=\text{\small\resp{1}})
@@ -361,7 +404,8 @@ P(white=\text{\small\resp{1} and } red=\text{\small\resp{1} and } blue=\text{\sm
 	&= (1/6)\times (1/6)\times (1/6)
 	= 1/216
 \end{align*}} \vspace{-7mm}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 Examples~\ref{probOf2Ones} and~\ref{threeDice} illustrate what is called the Multiplication Rule for independent processes.
 
@@ -375,14 +419,17 @@ Similarly, if there are $k$ events $A_1$, ..., $A_k$ from $k$ independent proces
 P(A_1) \times  P(A_2)\times  \cdots \times  P(A_k)
 \end{eqnarray*}\vspace{-6mm}\end{onebox}
 
-\begin{exercisewrap}\begin{nexercise} \label{ex2Handedness}
+\begin{exercisewrap}
+\begin{nexercise} \label{ex2Handedness}
 About 9\% of people are left-handed. Suppose 2 people are selected at random from the U.S. population. Because the sample size of 2 is very small relative to the population, it is reasonable to assume these two people are independent. (a)~What is the probability that both are left-handed? (b)~What is the probability that both are right-handed?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a) The probability the first person is left-handed is $0.09$, which is the same for the second person. We apply the Multiplication Rule for independent processes to determine the probability that both will be left-handed: $0.09\times 0.09 = 0.0081$.
 
-(b) It is reasonable to assume the proportion of people who are ambidextrous (both right and left handed) is nearly 0, which results in $P($right-handed$)=1-0.09=0.91$. Using the same reasoning as in part~(a), the probability that both will be right-handed is $0.91\times 0.91 = 0.8281$.}
+(b) It is reasonable to assume the proportion of people who are ambidextrous (both right- and left-handed) is nearly 0, which results in $P($right-handed$)=1-0.09=0.91$. Using the same reasoning as in part~(a), the probability that both will be right-handed is $0.91\times 0.91 = 0.8281$.}
 
-\begin{exercisewrap}\begin{nexercise} \label{ex5Handedness}
+\begin{exercisewrap}
+\begin{nexercise} \label{ex5Handedness}
 Suppose 5 people are selected at random.\vspace{-1.5mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -390,7 +437,8 @@ Suppose 5 people are selected at random.\vspace{-1.5mm}
 \item[(b)] What is the probability that all are left-handed?
 \item[(c)] What is the probability that not all of the people are right-handed?
 \end{enumerate}
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a)~The abbreviations \resp{RH} and \resp{LH} are used for right-handed and left-handed, respectively. Since each are independent, we apply the Multiplication Rule for independent processes:
 \begin{align*}
 P(\text{all five are \resp{RH}})
@@ -415,7 +463,8 @@ P(\text{right-handed and female}) &=& P(\text{right-handed}) \times  P(\text{fem
 \end{eqnarray*}
 
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Three people are selected at random.\footnotemark \vspace{-1.5mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -424,22 +473,24 @@ Three people are selected at random.\footnotemark \vspace{-1.5mm}
 \item[(c)] What is the probability that the third person is female and left-handed?
 \item[(d)] What is the probability that the first two people are male and right-handed and the third person is female and left-handed?
 \end{enumerate}
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Brief answers are provided. (a)~This can be written in probability notation as $P($a randomly selected person is male and right-handed$)=0.455$. (b) 0.207. (c) 0.045. (d) 0.0093.}
 
 Sometimes we wonder if one outcome provides useful information about another outcome. The question we are asking is, are the occurrences of the two events independent? We say that two events $A$ and $B$ are independent if they satisfy Equation~\eqref{eqForIndependentEvents}.
 
-\begin{examplewrap}\begin{nexample}{If we shuffle up a deck of cards and draw one, is the event that the card is a heart independent of the event that the card is an ace?}
+\begin{examplewrap}
+\begin{nexample}{If we shuffle up a deck of cards and draw one, is the event that the card is a heart independent of the event that the card is an ace?}
 The probability the card is a heart is $1/4$ and the probability that it is an ace is $1/13$. The probability the card is the ace of hearts is $1/52$. We check whether Equation~\ref{eqForIndependentEvents} is satisfied:
 \begin{align*}
 P({\color{redcards}\heartsuit})\times P(\text{ace}) = \frac{1}{4}\times \frac{1}{13} = \frac{1}{52}
 					= P({\color{redcards}\heartsuit}\text{ and ace})
 \end{align*}
 Because the equation holds, the event that the card is a heart and the event that the card is an ace are independent events.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 %%
-\textA{\newpage}
 \subsection*{Section summary}
 
 \begin{itemize}
@@ -479,23 +530,29 @@ $P(A \text{ and } B) = P(A)\times P(B)$.
 \label{conditionalProbabilitySection}
 
 \sectionintro{
-\Add{
-\noindent In this section we will use conditional probabilities to answer the following questions:
+\noindent%
+In this section we will use conditional probabilities to answer the following questions:
 \begin{itemize}
-\item What is the likelihood that a machine learning algorithm will classify a photo as about fashion given that it is not about fashion?
+\item
+    What is the likelihood that a machine learning
+    algorithm will misclassify a photo as being about fashion
+    if it is not actually about fashion?
 
-\item How much more likely to attend college are children whose parents attended college than children whose parents did not attend college?
+\item
+    How much more likely are children to attend college whose
+    parents attended college than children whose parents did
+    not attend college?
 
-\item Given O+ result on a test such as an HIV test or a pregnancy test, what is the probability that one is actually positive?
+\item
+    Given that a person receives a positive test result for a disease, what is the probability that the person actually has the disease? 
 \end{itemize}
 
 
-}
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 
-\Add{
 \item Understand conditional probability and how to calculate it.
 
 \item Calculate joint and conditional probabilities based on a two-way table.
@@ -503,7 +560,6 @@ $P(A \text{ and } B) = P(A)\times P(B)$.
 \item Use the General Multiplication Rule to find the probability of joint events.  
 
 \item Determine whether two events are independent and whether they are mutually exclusive, based on the definitions of those terms.
- }
 
 \item Draw a tree diagram with at least two branches to organize possible outcomes and their probabilities.  Understand that the second branch represents conditional probabilities.  
 
@@ -726,7 +782,6 @@ Total & 1.0000 \\
 \label{photoClassifyDistribution}
 \end{figure}
 
-\textA{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -807,7 +862,6 @@ vertical bar:
 \end{align*}
 The vertical bar ``$|$'' is read as \emph{given}.
 
-\textA{\newpage}
 
 In the last equation, we computed the probability a photo
 was about fashion based on the condition that the ML algorithm
@@ -877,7 +931,6 @@ general formula for conditional probability.
   \end{align*}
 \end{onebox}
 
-\textA{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -889,7 +942,7 @@ if the photo was about fashion}''.
 Here the condition is now based on the photo's
 \var{truth} status, not the ML algorithm. \\[1mm]
 (b)~Determine the probability from part (a).
-Table~\vref{photoClassifyProbTable} may be helpful.\footnotemark
+Figure~\vref{photoClassifyProbTable} may be helpful.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{(a) If the photo is about fashion and the
@@ -951,7 +1004,7 @@ The \data{smallpox} data set provides a sample of 6,224 individuals from the yea
 
 Each case represents one person with two variables: \var{inoculated} and \var{result}. The variable \var{inoculated} takes two levels: \resp{yes} or \resp{no}, indicating whether the person was inoculated or not. The variable \var{result} has outcomes \resp{lived} or \resp{died}. These data are summarized in Tables~\ref{smallpoxContingencyTable} and~\ref{smallpoxProbabilityTable}.
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{ll rr r}
 & & \multicolumn{2}{c}{inoculated} & \\
@@ -965,9 +1018,9 @@ Each case represents one person with two variables: \var{inoculated} and \var{re
 \end{tabular}
 \caption{Contingency table for the \data{smallpox} data set.}
 \label{smallpoxContingencyTable}
-\end{table}
+\end{figure}
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{ll rr r}
 & & \multicolumn{2}{c}{inoculated} & \\
@@ -981,20 +1034,26 @@ Each case represents one person with two variables: \var{inoculated} and \var{re
 \end{tabular}
 \caption{Table proportions for the \data{smallpox} data, computed by dividing each count by the table total, 6224.}
 \label{smallpoxProbabilityTable}
-\end{table}
+\end{figure}
 
-\begin{exercisewrap}\begin{nexercise} \label{probDiedIfNotInoculated}
-Write out, in formal notation, the probability a randomly selected person who was not inoculated died from smallpox, and find this \mbox{probability.}\footnotemark\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise} \label{probDiedIfNotInoculated}
+Write out, in formal notation, the probability a randomly selected person who was not inoculated died from smallpox, and find this \mbox{probability.}\footnotemark\end{nexercise}
+\end{exercisewrap}
 \footnotetext{$P($\var{result} = \resp{died} $|$ \resp{not inoculated}$) = \frac{P(\text{\var{result} = \resp{died} and \resp{not inoculated}})}{P(\text{\resp{not inoculated}})} = \frac{0.1356}{0.9608} = 0.1411$.}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Determine the probability that an inoculated person died from smallpox. How does this result compare with the result of Guided Practice~\ref{probDiedIfNotInoculated}?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{$P($\resp{died} $|$ \resp{inoculated}$) = \frac{P(\text{\resp{died} and \resp{inoculated}})}{P(\text{\resp{inoculated}})} = \frac{0.0010}{0.0392} = 0.0255$. The death rate for individuals who were inoculated is only about 1~in~40 while the death rate is about 1~in~7 for those who were not inoculated.}
 
-\begin{exercisewrap}\begin{nexercise}\label{SmallpoxInoculationObsExpExercise}
+\begin{exercisewrap}
+\begin{nexercise}\label{SmallpoxInoculationObsExpExercise}
 The people of Boston self-selected whether or not to be inoculated. (a) Is this study observational or was this an experiment? (b) Can we infer any causal connection using these data? (c) What are some potential confounding variables that might influence whether someone lived or died and also affect whether that person was inoculated?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Brief answers: (a)~Observational. (b)~No, we cannot infer causation from this observational study. (c)~Accessibility to the latest and best medical care, so income may play a role. There are other valid answers for part~(c).}
 
 %%
@@ -1010,8 +1069,9 @@ P(A\text{ and }B) = P(A | B)\times P(B)
 For the term $P(A | B)$, it is useful to think of $A$ as the outcome of interest and $B$ as the condition.\end{onebox}
 This General Multiplication Rule is simply a rearrangement of the definition for conditional probability.
 
-\begin{examplewrap}\begin{nexample}{Consider the \data{smallpox} data set. Suppose we are given only two pieces of information: 96.08\% of residents were not inoculated, and 85.88\% of the residents who were not inoculated ended up surviving. How could we compute the probability that a resident was not inoculated and lived?}
-We will compute our answer using the General Multiplication Rule and then verify it using Table~\ref{smallpoxProbabilityTable}. We want to determine
+\begin{examplewrap}
+\begin{nexample}{Consider the \data{smallpox} data set. Suppose we are given only two pieces of information: 96.08\% of residents were not inoculated, and 85.88\% of the residents who were not inoculated ended up surviving. How could we compute the probability that a resident was not inoculated and lived?}
+We will compute our answer using the General Multiplication Rule and then verify it using Figure~\ref{smallpoxProbabilityTable}. We want to determine
 \begin{eqnarray*}
 P(\text{\resp{lived} and \resp{not inoculated}})
 \end{eqnarray*}
@@ -1024,47 +1084,58 @@ Among the 96.08\% of people who were not inoculated, 85.88\% survived:
 \begin{eqnarray*}
 P(\text{\resp{lived} and \resp{not inoculated}}) = 0.8588\times 0.9608 = 0.8251
 \end{eqnarray*}
-This is equivalent to the General Multiplication Rule. We can confirm this probability in Table~\ref{smallpoxProbabilityTable} at the intersection of \resp{no} and \resp{lived} (with a small rounding error).
-\end{nexample}\end{examplewrap}
+This is equivalent to the General Multiplication Rule. We can confirm this probability in Figure~\ref{smallpoxProbabilityTable} at the intersection of \resp{no} and \resp{lived} (with a small rounding error).
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Use $P($\resp{inoculated}$) = 0.0392$ and $P($\resp{lived} $|$ \resp{inoculated}$) = 0.9754$ to determine the probability that a person was both inoculated and lived.\footnotemark
-\end{nexercise}\end{exercisewrap}
-\footnotetext{The answer is 0.0382, which can be verified using Table~\ref{smallpoxProbabilityTable}.}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The answer is 0.0382, which can be verified using Figure~\ref{smallpoxProbabilityTable}.}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 If 97.54\% of the people who were inoculated lived, what proportion of inoculated people must have died?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{There were only two possible outcomes: \resp{lived} or \resp{died}. This means that 100\% - 97.54\% = 2.46\% of the people who were inoculated died.}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Based on the probabilities computed above, does it appear that inoculation is effective at reducing the risk of death from smallpox?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The samples are large relative to the difference in death rates for the ``inoculated'' and ``not inoculated'' groups, so it seems there is an association between \var{inoculated} and \var{outcome}. However, as noted in the solution to Guided Practice~\ref{SmallpoxInoculationObsExpExercise}, this is an observational study and we cannot be sure if there is a causal connection. (Further research has shown that inoculation is effective at reducing death rates.)}
 
 
 %%
-\Comment{changed subsection name to better align with using this concept again later for inference}
-
 \subsection{Sampling without replacement}
 \label{smallPop}
 
-\begin{examplewrap}\begin{nexample}{Professors sometimes select a student at random to answer a question. If each student has an equal chance of being selected and there are 15 people in your class, what is the chance that she will pick you for the next question?}
+\begin{examplewrap}
+\begin{nexample}{Professors sometimes select a student at random to answer a question. If each student has an equal chance of being selected and there are 15 people in your class, what is the chance that she will pick you for the next question?}
 If there are 15 people to ask and none are skipping class, then the probability is $1/15$, or about $0.067$.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{If the professor asks 3 questions, what is the probability that you will not be selected? Assume that she will not pick the same person twice in a given lecture.}\label{3woRep}
+\begin{examplewrap}
+\begin{nexample}{If the professor asks 3 questions, what is the probability that you will not be selected? Assume that she will not pick the same person twice in a given lecture.}\label{3woRep}
 For the first question, she will pick someone else with probability $14/15$. When she asks the second question, she only has 14 people who have not yet been asked. Thus, if you were not picked on the first question, the probability you are again not picked is $13/14$. Similarly, the probability you are again not picked on the third question is $12/13$, and the probability of not being picked for any of the three questions is
 \begin{eqnarray*}
 &&P(\text{not picked in 3 questions}) \\
 &&\quad = P(\text{\var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}, }\text{\var{Q3}} = \text{\resp{not\us{}picked}.}) \\
 &&\quad = \frac{14}{15}\times\frac{13}{14}\times\frac{12}{13} = \frac{12}{15} = 0.80
 \end{eqnarray*}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 What rule permitted us to multiply the probabilities in Example~\ref{3woRep}?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The three probabilities we computed were actually one marginal probability, $P($\var{Q1}$ = $\resp{not\us{}picked}$)$, and two conditional probabilities:
 \begin{align*}
 &P(\text{\var{Q2}} =  \text{\resp{not\us{}picked}}\ |\ \text{\var{Q1}} = \text{\resp{not\us{}picked}})
@@ -1073,7 +1144,8 @@ What rule permitted us to multiply the probabilities in Example~\ref{3woRep}?\fo
 Using the General Multiplication Rule, the product of these three probabilities is the probability of not being picked in 3 questions.}
 
 
-\begin{examplewrap}\begin{nexample}{Suppose the professor randomly picks without regard to who she already selected, i.e. students can be picked more than once. What is the probability that you will not be picked for any of the three questions?}\label{3wRep}
+\begin{examplewrap}
+\begin{nexample}{Suppose the professor randomly picks without regard to who she already selected, i.e. students can be picked more than once. What is the probability that you will not be picked for any of the three questions?}\label{3wRep}
 Each pick is independent, and the probability of not being picked for any individual question is $14/15$. Thus, we can use the Multiplication Rule for independent processes.
 \begin{eqnarray*}
 &&P(\text{not picked in 3 questions}) \\
@@ -1081,28 +1153,33 @@ Each pick is independent, and the probability of not being picked for any indivi
 &&\quad = \frac{14}{15}\times\frac{14}{15}\times\frac{14}{15} = 0.813
 \end{eqnarray*}
 You have a slightly higher chance of not being picked compared to when she picked a new person for each question. However, you now may be picked more than once.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Under the setup of Example~\ref{3wRep}, what is the probability of being picked to answer all three questions?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{$P($being picked to answer all three questions$) = \left(\frac{1}{15}\right)^3 = 0.00030$.}
 
 If we sample from a small population \term{without replacement}, we no longer have independence between our observations. In Example~\ref{3woRep}, the probability of not being picked for the second question was conditioned on the event that you were not picked for the first question. In Example~\ref{3wRep}, the professor sampled her students \term{with replacement}: she repeatedly sampled the entire class without regard to who she already picked.
 
-\begin{exercisewrap}\begin{nexercise} \label{raffleOf30TicketsWWOReplacement}
+\begin{exercisewrap}
+\begin{nexercise} \label{raffleOf30TicketsWWOReplacement}
 Your department is holding a raffle. They sell 30 tickets and offer seven prizes. (a) They place the tickets in a hat and draw one for each prize. The tickets are sampled without replacement, i.e. the selected tickets are not placed back in the hat. What is the probability of winning a prize if you buy one ticket? (b)~What if the tickets are sampled with replacement?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a) First determine the probability of not winning. The tickets are sampled without replacement, which means the probability you do not win on the first draw is $29/30$, $28/29$ for the second, ..., and $23/24$ for the seventh. The probability you win no prize is the product of these separate probabilities: $23/30$. That is, the probability of winning a prize is $1 - 23/30 = 7/30 = 0.233$. (b)~When the tickets are sampled with replacement, there are seven independent draws. Again we first find the probability of not winning a prize: $(29/30)^7 = 0.789$. Thus, the probability of winning (at least) one prize when drawing with replacement is 0.211.}
 
-\begin{exercisewrap}\begin{nexercise} \label{followUpToRaffleOf30TicketsWWOReplacement}
+\begin{exercisewrap}
+\begin{nexercise} \label{followUpToRaffleOf30TicketsWWOReplacement}
 Compare your answers in Guided Practice~\ref{raffleOf30TicketsWWOReplacement}. How much influence does the sampling method have on your chances of winning a prize?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{There is about a 10\% larger chance of winning a prize when using sampling without replacement. However, at most one prize may be won under this sampling procedure.}
 
 Had we repeated Guided Practice~\ref{raffleOf30TicketsWWOReplacement} with 300 tickets instead of 30, we would have found something interesting: the results would be nearly identical. The probability would be 0.0233 without replacement and 0.0231 with replacement. 
-
-\Comment{turned this into a onebox and slightly reworded}
 
 \begin{onebox}{Sampling without replacement}
 When the sample size is only a small fraction of the population (under 10\%), observations can be considered independent even when sampling without replacement.
@@ -1114,9 +1191,11 @@ When the sample size is only a small fraction of the population (under 10\%), ob
 
 If two processes are independent, then knowing the outcome of one should provide no information about the other. We can show this is mathematically true using conditional probabilities.
 
-\begin{exercisewrap}\begin{nexercise} \label{condProbOfRollingA1AfterOne1}
+\begin{exercisewrap}
+\begin{nexercise} \label{condProbOfRollingA1AfterOne1}
 Let $X$ and $Y$ represent the outcomes of rolling two dice. (a)~What is the probability that the first die, $X$, is \resp{1}? (b)~What is the probability that both $X$ and $Y$ are \resp{1}? (c)~Use the formula for conditional probability to compute $P(Y =$ \resp{1} $| X = $ \resp{1}$)$. (d)~What is $P(Y=1)$? Is this different from the answer from part (c)? Explain.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Brief solutions: (a) $1/6$. (b) $1/36$. (c)~$\frac{P(Y = \text{ \resp{1} and }X=\text{ \resp{1}})}{P(X=\text{ \resp{1}})} = \frac{1/36}{1/6} = 1/6$. (d)~The probability is the same as in part~(c): $P(Y=1)=1/6$. The probability that $Y=1$ was unchanged by knowledge about $X$, which makes sense as $X$ and $Y$ are independent.}
 
 We can show in Guided Practice~\ref{condProbOfRollingA1AfterOne1}(c) that the conditioning information has no influence by using the Multiplication Rule for independence processes:
@@ -1127,9 +1206,11 @@ P(Y=\text{\resp{1}}|X=\text{\resp{1}})
 	&=& P(Y=\text{\resp{1}}) \\
 \end{eqnarray*}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Ron is watching a roulette table in a casino and notices that the last five outcomes were \resp{black}. He figures that the chances of getting \resp{black} six times in a row is very small (about $1/64$) and puts his paycheck on red. What is wrong with his reasoning?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{He has forgotten that the next roulette spin is independent of the previous spins. Casinos do employ this practice; they post the last several outcomes of many betting games to trick unsuspecting gamblers into believing the odds are in their favor. This is called the \term{gambler's fallacy}.}
 
 
@@ -1153,24 +1234,25 @@ P(A\text{ and }B) &= P(A)\times P(B)
 \end{align*}
 If the equation that is checked holds true (the left and right sides are equal), $A$ and $B$ are independent. If the equation does not hold, then $A$ and $B$ are dependent.\end{onebox}
 
-\textA{\newpage}
 
-\begin{examplewrap}\begin{nexample}{Are teenager college attendance and parent college degrees independent or dependent? Table~\ref{contTableOfParStCollegeCopy} may be helpful.}\label{teenParentCollegeIndependentExample}
+\begin{examplewrap}
+\begin{nexample}{Are teenager college attendance and parent college degrees independent or dependent? Figure~\ref{contTableOfParStCollegeCopy} may be helpful.}\label{teenParentCollegeIndependentExample}
 We'll use the first equation above to check for independence. If the \var{teen} and \var{parents} variables are independent, it must be true that
 \begin{align*}
 P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parent} \resp{degree}})
 	&= P(\text{\var{teen} \resp{college}})
 \end{align*}
-Using Table~\ref{contTableOfParStCollegeCopy}, we check whether equality holds in this equation.
+Using Figure~\ref{contTableOfParStCollegeCopy}, we check whether equality holds in this equation.
 \begin{align*}
 P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parent} \resp{degree}})
 	&\overset{?}{=} P(\text{\var{teen} \resp{college}}) \\
 0.83 &\neq 0.56
 \end{align*}
-The value 0.83 came from a probability calculation using Table~\ref{contTableOfParStCollegeCopy}: $\frac{231}{280} \approx 0.83$. Because the sides are not equal, teenager college attendance and parent degree are dependent. That is, we estimate the probability a teenager attended college to be higher if we know that one of the teen's parents has a college degree.
-\end{nexample}\end{examplewrap}
+The value 0.83 came from a probability calculation using Figure~\ref{contTableOfParStCollegeCopy}: $\frac{231}{280} \approx 0.83$. Because the sides are not equal, teenager college attendance and parent degree are dependent. That is, we estimate the probability a teenager attended college to be higher if we know that one of the teen's parents has a college degree.
+\end{nexample}
+\end{examplewrap}
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{ll rr r rr}
   && \multicolumn{2}{c}{\var{parents}} & \hspace{1cm} &  \\
@@ -1184,10 +1266,12 @@ The value 0.83 came from a probability calculation using Table~\ref{contTableOfP
 \end{tabular}
 \caption{Contingency table summarizing the \data{family\us{}college} data set.}
 \label{contTableOfParStCollegeCopy}
-\end{table}
+\end{figure}
 
-\begin{exercisewrap}\begin{nexercise}
-Use the second equation in the box above to show that teenager college attendance and parent college degrees are dependent.\footnotemark\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}
+Use the second equation in the box above to show that teenager college attendance and parent college degrees are dependent.\footnotemark\end{nexercise}
+\end{exercisewrap}
 \footnotetext{We check for equality in the following equation:
 \begin{align*}
 P(\text{\var{teen} \resp{college}, \var{parent} \resp{degree}})&\overset{?}{=} P(\text{\var{teen} \resp{college}})\times P(\text{\var{parent} \resp{degree}})\\
@@ -1225,13 +1309,15 @@ If the equation that is checked holds true (the left and right sides are equal),
 %If asked to determine if events $A$ and $B$ are mutually exclusive, check one of the two equations above. If the equation holds, the events $A$ and $B$ are mutually exclusive. If the equation does not hold (the left and right sides are not equal), then $A$ and $B$ are not mutually exclusive.}
 %\end{tipBox}
 
-\begin{examplewrap}\begin{nexample}{Are teen college attendance and parent college degrees mutually exclusive?}
+\begin{examplewrap}
+\begin{nexample}{Are teen college attendance and parent college degrees mutually exclusive?}
 Looking in the table, we see that there are 231 instances where both the teenager attended college and parents have a degree, indicating the probability of both events occurring is greater than 0. Since we have found an example where both of these events happen together, these two events are not mutually exclusive. We could more formally show this by computing the probability both events occur at the same time:
 \begin{align*}
 P(\text{\var{teen} \resp{college}, \var{parent} \resp{degree}}) = \frac{231}{792}\neq 0
 \end{align*}
 Since this probability is not zero, teenager college attendance and parent college degrees are not mutually exclusive.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{onebox}{Mutually exclusive and independent are different}
 If two events are mutually exclusive, then if one is true, the other cannot be true. This implies the two events are in some way connected, meaning they must be dependent.\\
@@ -1241,7 +1327,6 @@ If two events are independent, then if one occurs, it is still possible for the 
 {If two events are dependent, we can\underline{not} simply conclude they are mutually exclusive. For example, the college attendance of teenagers and a college degree by one of their parents are dependent, but those events are not mutually exclusive.}
 \end{onebox}
 
-\textA{\newpage}
 
 %%
 \subsection{Tree diagrams}
@@ -1267,21 +1352,26 @@ P(\text{\var{inoculated} and \resp{lived}}) &= P(\text{\var{inoculated}})\times 
 	&=0.0382
 \end{align*}
 
-\begin{examplewrap}\begin{nexample}{What is the probability that a randomly selected person who was inoculated died?}This is equivalent to $P(\text{\resp{died}}\ |\ \text{\var{inoculated}})$. This conditional probability can be found in the second branch as 0.0246.
-\end{nexample}\end{examplewrap}
+\begin{examplewrap}
+\begin{nexample}{What is the probability that a randomly selected person who was inoculated died?}This is equivalent to $P(\text{\resp{died}}\ |\ \text{\var{inoculated}})$. This conditional probability can be found in the second branch as 0.0246.
+\end{nexample}
+\end{examplewrap}
 
-\textA{\pagebreak}
 
-\begin{examplewrap}\begin{nexample}{What is the probability that a randomly selected person lived?}There are two ways that a person could have lived:  be inoculated \emph{and} live OR not be inoculated \emph{and} live. To find this probability, we sum the two disjoint probabilities:
+\begin{examplewrap}
+\begin{nexample}{What is the probability that a randomly selected person lived?}There are two ways that a person could have lived:  be inoculated \emph{and} live OR not be inoculated \emph{and} live. To find this probability, we sum the two disjoint probabilities:
 \begin{align*}
 P(\text{\resp{lived}}) = 0.0392 \times 0.9745 + 0.9608 \times 0.8589 = 0.03824 + 0.82523 = 0.86347
 \end{align*}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 After an introductory statistics course, 78\% of students can successfully construct tree diagrams. Of those who can construct tree diagrams, 97\% passed, while only 57\% of those students who could not construct tree diagrams passed. (a)~Organize this information into a tree diagram. {(b)~What is the probability that a student who was able to construct tree diagrams did not pass? (c)~What is the probability that a randomly selected student was able to successfully construct tree diagrams and passed? (d)~What is the probability that a randomly selected student passed?}\
 \footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{\begin{minipage}[t]{0.47\linewidth}
 (a) The tree diagram is shown to the right.
 (b)~$P($not pass $|$ able to construct tree diagram$) = 0.03$.
@@ -1309,10 +1399,10 @@ P(\text{statement about variable 2}\ |\ \text{statement about variable 1})
 \end{align*}
 For example, instead of wanting to know $P($lived $|$ inoculated$)$, we might want to know $P($inoculated $|$ lived$)$. This is more challenging because it cannot be read directly from the tree diagram. In these instances we use \term{Bayes' Theorem}. Let's begin by looking at a new example.
 
-\textA{\newpage}
 
-\begin{examplewrap}\begin{nexample}{In Canada, about 0.35\% of women over 40 will develop breast cancer in any given year. A common screening test for cancer is the mammogram, but this test is not perfect. In about 11\% of patients with breast cancer, the test gives a \term{false negative}: it indicates a woman does not have breast cancer when she does have breast cancer. Similarly, the test gives a \term{false positive} in 7\% of patients who do not have breast cancer: it indicates these patients have breast cancer when they actually do not.\footnotemark If we tested a random woman over 40 for breast cancer using a mammogram and the test came back positive -- that is, the test suggested the patient has cancer -- what is the probability that the patient actually has breast cancer?}\label{probabilityOfBreastCancerGivenPositiveTestExample}
-We are given sufficient information to quickly compute the probability of testing positive if a woman has breast cancer ($1.00 - 0.11 = 0.89$). However, we seek the inverted probability of cancer given O+ test result:
+\begin{examplewrap}
+\begin{nexample}{In Canada, about 0.35\% of women over 40 will develop breast cancer in any given year. A common screening test for cancer is the mammogram, but this test is not perfect. In about 11\% of patients with breast cancer, the test gives a \term{false negative}: it indicates a woman does not have breast cancer when she does have breast cancer. Similarly, the test gives a \term{false positive} in 7\% of patients who do not have breast cancer: it indicates these patients have breast cancer when they actually do not.\footnotemark If we tested a random woman over 40 for breast cancer using a mammogram and the test came back positive -- that is, the test suggested the patient has cancer -- what is the probability that the patient actually has breast cancer?}\label{probabilityOfBreastCancerGivenPositiveTestExample}
+We are given sufficient information to quickly compute the probability of testing positive if a woman has breast cancer ($1.00 - 0.11 = 0.89$). However, we seek the inverted probability of cancer given a positive test result:
 \begin{align*}
 P(\text{has BC}\ |\ \text{mammogram$^+$})
 \end{align*}
@@ -1331,11 +1421,10 @@ P(&\text{has BC $|$ mammogram$^+$}) \\
 &= \frac{0.0035(0.89)}{0.0035(0.89)+0.9965(0.07)}\\
 &= \frac{0.00312}{0.07288}\approx 0.0428
 \end{align*}
-That is, even if a patient has O+ mammogram screening, there is still only a~4\%~chance that she has breast cancer.
-\end{nexample}\end{examplewrap}
+That is, even if a patient has a positive mammogram screening, there is still only a~4\%~chance that she has breast cancer.
+\end{nexample}
+\end{examplewrap}
 \footnotetext{The probabilities reported here were obtained using studies reported at \oiRedirect{textbook-breastCancerDotOrg_20090831b}{www.breastcancer.org} and \oiRedirect{textbook-ncbi_nih_breast_cancer}{www.ncbi.nlm.nih.gov/pmc/articles/PMC1173421}.}
-
-\Comment{check placement of truth/mammogram figure}
 
 \begin{figure}[ht]
 \centering
@@ -1393,7 +1482,8 @@ Bayes' Theorem is just a generalization of what we have done using tree diagrams
 \item The denominator is the overall probability of getting $B$. Traverse each branch of the tree diagram that ends with event $B$. Add up the required products.
 \end{itemize}
 
-\begin{exercisewrap}\begin{nexercise} \label{exerciseForParkingLotOnCampusBeingFullAndWhetherOrNotThereIsASportingEvent}
+\begin{exercisewrap}
+\begin{nexercise} \label{exerciseForParkingLotOnCampusBeingFullAndWhetherOrNotThereIsASportingEvent}
 Jose visits campus every Thursday evening. However, some days the parking garage is full, often due to college events. There are academic events on 35\% of evenings, sporting events on 20\% of evenings, and no events on 45\% of evenings. When there is an academic event, the garage fills up about 25\% of the time, and it fills up 70\% of evenings with sporting events. On evenings when there are no events, it only fills up about 5\% of the time. If Jose comes to campus and finds the garage full, what is the probability that there is a sporting event? Use a tree diagram to solve this problem.\footnotetext{\begin{minipage}[t]{0.47\textwidth}
 The tree diagram, with three primary branches, is shown to the right. We want
 \begin{align*}
@@ -1406,7 +1496,8 @@ If the garage is full, there is a 56\% probability that there is a sporting even
 \begin{minipage}[c]{0.5\textwidth}
 \includegraphics[width=\textwidth]{ch_probability/figures/treeDiagramGarage/treeDiagramGarage}\vspace{-30mm}
 \end{minipage}}
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 
 The last several exercises offered a way to update our belief about whether there is a sporting event, academic event, or no event going on at the school based on the information that the parking lot was full. This strategy of \emph{updating beliefs} using Bayes' Theorem is actually the foundation of an entire section of statistics called \term{Bayesian statistics}. While Bayesian statistics is very important and useful, we will not have time to cover it in this book.
 
@@ -1453,13 +1544,20 @@ $P(A \text{ and } B) = P(A | B)\times P(B)$.
 \label{binomialForm}
 
 \sectionintro{
-\Add{
-\noindent What is the probability of exactly 50 heads in 100 tosses of a coin?  Of exactly 1~left handed person in a random sample of 8 people?  Of at most 3~people exceeding their insurance deductible in a random sample of 20 people?  The binomial formula can help us answer these questions.
-}
+\noindent%
+What is the probability of exactly 50 heads in
+100 coin tosses?
+Or the probability of randomly sampling 8 people and having
+exactly 1 of them be left-handed?
+Or of at most 3~people exceeding their insurance deductible
+in a random sample of 20 people?
+The binomial formula can help us answer these questions.
+
 
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Calculate the number of possible scenarios for obtaining $k$ successes in $n$ trials.
 
 \item Determine whether a scenario is binomial or not.
@@ -1566,8 +1664,7 @@ $p = \insureSprob{}$.
 
 \begin{exercisewrap}
 \begin{nexercise}
-Verify that the scenario where Brittany is the only one
-exceed the deductible has probability
+Verify that the scenario where Brittany is the only one to exceed the deductible has probability
 $(\insureSprob{})^3 (\insureFprob{})^1$.~\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
@@ -1621,7 +1718,7 @@ i.e. arrange $k$ successes and $n - k$ failures:
 {n\choose k} = \frac{n!}{k! (n - k)!}
 \end{align*}
 The quantity ${n\choose k}$ is read
-\term{n choose k}.\footnote{Other notation for
+\term{n choose k}.\footnote{Other notations for
   $n$ choose $k$ includes $_nC_k$, $C_n^k$, and $C(n,k)$.}
 The exclamation point notation (e.g. $k!$) denotes
 a \term{factorial} expression.
@@ -1650,7 +1747,6 @@ Substituting $n$ choose $k$ for the number of scenarios
 and $p^k(1-p)^{n-k}$ for the single scenario probability
 yields the \term{binomial formula}.
 
-\textA{\newpage}
 \begin{onebox}{Binomial formula}
 Suppose the probability of a single trial being a success is $p$. Then the probability of observing exactly $k$ successes in $n$ independent trials is given by\vspace{-1mm}
 \begin{eqnarray*}
@@ -1713,7 +1809,7 @@ Suppose the probability of a single trial being a success is $p$. Then the proba
   Using $(\insureSprob{})^5(\insureFprob{})^3
     \approx \insureBinomEinHSingleScenario{}$,
   the final probability is about
-  $56 * \insureBinomEinHSingleScenario{}
+  $56\times \insureBinomEinHSingleScenario{}
     \approx \insureBinomEinH{}$.
 \end{nexample}
 \end{examplewrap}
@@ -1731,8 +1827,6 @@ Suppose the probability of a single trial being a success is $p$. Then the proba
   \vspace{3mm}
 
 \end{onebox}
-
-\Comment{changed exercises - doesn't make sense to say the 4 friends are a random sample}
 
 
 
@@ -1794,7 +1888,7 @@ Note that we could have answered this question without the binomial formula, usi
   \item This can be computed as the sum of parts~(a) and~(b):
   $P(0) + P(1) = 0.179 + 0.384 = 0.563$.
   That is, there is about a 56.3\% chance that no more than
-  one of will have blood type O+.
+  one of them will have blood type O+.
 \end{enumerate}
 \label{bloodTypeOPos}
 \end{nexample}
@@ -1808,19 +1902,20 @@ What is the probability that at least 3 of 4 people in a random sample will have
 \footnotetext{$P(\text{at least 3 of 4 have blood type O+})
       = P(k=3) + P(k=4) = {4 \choose 3} (0.35)^3 (0.65)^1+(0.35)^4= 0.111 + 0.015 = 0.126$}
 
-\textA{\newpage}
 
 
 
 
-\begin{examplewrap}\begin{nexample}{There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{without replacement}. Find the probability you get exactly 3 blue marbles.}Because the probability of success $p$ is not the same for each trial, we cannot use the binomial formula. However, we can use the same logic to arrive at the following answer. 
+\begin{examplewrap}
+\begin{nexample}{There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{without replacement}. Find the probability you get exactly 3 blue marbles.}Because the probability of success $p$ is not the same for each trial, we cannot use the binomial formula. However, we can use the same logic to arrive at the following answer. 
 \begin{align*}
 P(x = 3) &= (\text{\# of combinations with 3 blue})\times P(\text{3 blue and 2 red in a \emph{specific} order}) \\
 &={5\choose 3}\times P(\text{BBBRR}) \\
 &= {5\choose 3}\left(\frac{4}{13}\times \frac{3}{12}\times \frac{2}{11} \times \frac{9}{10} \times \frac{8}{9}\right) \\
 &= 0.1119
 \end{align*}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -1867,7 +1962,6 @@ in $n$ trials?\footnotemark{}
     \qquad {n \choose n-1} = n
   \end{align*}}
 
-\textA{\newpage}
 %%
 \subsection{Calculator: binomial probabilities}
 \label{calculatorBinomial}
@@ -1945,20 +2039,25 @@ TI-83: Do steps 1-2, then enter the values for $n$, $p$, and $k$ separated by co
 \end{enumerate}
 \end{onebox}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Here \calctext{$n$} = 5 and \calctext{$k$} = 3.  Doing 5 \calctext{nCr} 3 gives the number of combinations as 10.}
 
-\begin{exercisewrap}\begin{nexercise}There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{with replacement}. Find the probability you get exactly 3 blue marbles.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{with replacement}. Find the probability you get exactly 3 blue marbles.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Here, $n$ = 5, $p$ = 4/13, and $k$ = 3, so set \calctext{trials} = 5, \calctext{p} = 4/13 and \calctext{x value} = 3.  The probability is 0.1396.}
 
-\begin{exercisewrap}\begin{nexercise}There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{with replacement}. Find the probability you get \emph{at most} 3 blue marbles (i.e. less than or equal to 3 blue marbles).\footnotemark\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{with replacement}. Find the probability you get \emph{at most} 3 blue marbles (i.e. less than or equal to 3 blue marbles).\footnotemark\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Similarly, set \calctext{trials} = 5, \calctext{p} = 4/13 and \calctext{x value} = 3.  The cumulative probability is 0.9662.}
 
 %%
-\textA{\newpage}
 \subsection*{Section summary}
 
 \begin{itemize}
@@ -1992,10 +2091,15 @@ Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnotem
 \index{simulations|(}
 
 \sectionintro{
-\Add{\noindent What is the probability of getting a sum greater than 16 in three rolls of a die?  Finding all possible combinations that satisfy this would be tedious, but we could conduct a physical simulation or a computer simulation to estimate this probability.  With modern computing power, simulations have become an important and powerful tool for statisticians.  In this section we will look at the concepts that underlie simulations.}
+\noindent%
+What is the probability of getting a sum greater than 16 in three rolls of a die?  Finding all possible combinations that satisfy this would be tedious, but we could conduct a physical simulation or a computer simulation to estimate this probability.  With modern computing power, simulations have become an important and powerful tool for data scientists.
+In this section, we will look at the concepts that underlie simulations.
+
+
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Understand the purpose of a simulation and recognize the application of the long-run relative frequency interpretation of probability.
 
 \item Understand how random digit tables work and how to assign digits to outcomes.
@@ -2013,7 +2117,7 @@ You may already be familiar with simulations. Want to know the probability of ro
 
 In this section, we consider simulations using \term{random numbers}. Random numbers (or technically, \emph{psuedo-random numbers}\index{random numbers!psuedo-random numbers}) can be produced using a calculator or computer. Random digits are produced such that each digit, \emph{0-9}, is equally likely to come up in each spot. You'll find that occasionally we may have the same number in a row -- sometimes multiple times -- but in the long run, each digit should appear 1/10th of the time.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{cc cc cc cc cc}
 & \multicolumn{7}{c}{Column} \\
@@ -2035,10 +2139,11 @@ In this section, we consider simulations using \term{random numbers}. Random num
 \end{tabular}
 \caption{Random number table. A full page of random numbers may be found in Appendix~\ref{randomNumberTable} on page~\pageref{randomNumberTable}.}
 \label{sampleRandomNumberTable}
-\end{table}
+\end{figure}
 
 
-\begin{examplewrap}\begin{nexample}{Mika's favorite brand of cereal is running a special where 20\% of the cereal boxes contain a prize. Mika really wants that prize. If her mother buys 6 boxes of the cereal over the next few months, what is the probability Mika will get a prize?}
+\begin{examplewrap}
+\begin{nexample}{Mika's favorite brand of cereal is running a special where 20\% of the cereal boxes contain a prize. Mika really wants that prize. If her mother buys 6 boxes of the cereal over the next few months, what is the probability Mika will get a prize?}
 To solve this problem using simulation, we need to be able to assign digits to outcomes. Each box should have a 20\% chance of having a prize and an 80\% chance of not having a prize. Therefore, a valid assignment would be:
 \begin{align*}
 \emph{0, 1} &\rightarrow \text{prize}\\
@@ -2046,48 +2151,63 @@ To solve this problem using simulation, we need to be able to assign digits to o
 \end{align*}
 Of the ten possible digits (\emph{0, 1, 2, ..., 8, 9}), two of them, i.e. 20\% of them, correspond to winning a prize, which exactly matches the odds that a cereal box contains a prize.
 
-In Mika's simulation, one trial will consist of 6 boxes of cereal, and therefore a trial will require six digits (each digit will correspond to one box of cereal). We will repeat the simulation for 20 trials. Therefore we will need 20 sets of 6 digits. Let's begin on row 1 of the random digit table, shown in Table~\ref{sampleRandomNumberTable}. If a trial consisted of 5 digits, we could use the first 5 digits going across: \emph{43087}. Because here a trial consists of 6 digits, it may be easier to read down the table, rather than read across. We will let trial 1 consist of the first 6 digits in column 1 (\emph{461819}), trial 2 consist of the first 6 digits in column 2 (\emph{339564}), etc. For this simulation, we will end up using the first 6 rows of each of the 20 columns. 
+In Mika's simulation, one trial will consist of 6 boxes of cereal, and therefore a trial will require six digits (each digit will correspond to one box of cereal). We will repeat the simulation for 20 trials. Therefore we will need 20 sets of 6 digits. Let's begin on row 1 of the random digit table, shown in Figure~\ref{sampleRandomNumberTable}. If a trial consisted of 5 digits, we could use the first 5 digits going across: \emph{43087}. Because here a trial consists of 6 digits, it may be easier to read down the table, rather than read across. We will let trial 1 consist of the first 6 digits in column 1 (\emph{461819}), trial 2 consist of the first 6 digits in column 2 (\emph{339564}), etc. For this simulation, we will end up using the first 6 rows of each of the 20 columns. 
 
 In trial 1, there are two \emph{1}'s, so we record that as a success; in this trial there were actually two prizes. In trial 2 there were no \emph{0}'s or \emph{1}'s, therefore we do not record this as a success. In trial 3 there were three prizes, so we record this as a success. The rest of this exercise is left as a Guided Practice problem for you to complete.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}Finish the simulation above and report the estimate for the probability that Mika will get a prize if her mother buys 6 boxes of cereal where each one has a 20\% chance of containing a prize.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}Finish the simulation above and report the estimate for the probability that Mika will get a prize if her mother buys 6 boxes of cereal where each one has a 20\% chance of containing a prize.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The trials that contain at least one 0 or 1 and therefore are successes are trials: 1, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, and 20. There were 17 successes among the 20 trials, so our estimate of the probability based on this simulation is 17/20 = 0.85.}
 
-\begin{exercisewrap}\begin{nexercise}In the previous example, the probability that a box of cereal contains a prize is 20\%. The question presented is equivalent to asking, what is the probability of getting at least one prize in six randomly selected boxes of cereal. This probability question can be solved explicitly using the method of complements. Find this probability. How does the estimate arrived at by simulation compare to this probability?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}In the previous example, the probability that a box of cereal contains a prize is 20\%. The question presented is equivalent to asking, what is the probability of getting at least one prize in six randomly selected boxes of cereal. This probability question can be solved explicitly using the method of complements. Find this probability. How does the estimate arrived at by simulation compare to this probability?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The true probability is given by $1 - P(\text{no prizes in six boxes}) = 1- 0.8^6 = 0.74$. The estimate arrived at by simulation was 11\% too high. Note: We only repeated the simulation 20 times. If we had repeated it 1000 times, we would (very likely) have gotten an estimate closer to the true probability.}
 
 We can also use simulations to estimate quantities other than probabilities. Consider the following example.
 
-\begin{examplewrap}\begin{nexample}{Let's say that instead of buying exactly 6 boxes of cereal, Mika's mother agrees to buy boxes of this cereal \emph{until} she finds one with a prize. On average, how many boxes of cereal would one have to buy until one gets a prize?}
+\begin{examplewrap}
+\begin{nexample}{Let's say that instead of buying exactly 6 boxes of cereal, Mika's mother agrees to buy boxes of this cereal \emph{until} she finds one with a prize. On average, how many boxes of cereal would one have to buy until one gets a prize?}
 For this question, we can use the same digit assignment. However, our stopping rule is different. Each trial may require a different number of digits. For each trial, the stopping rule is:  look at digits until we encounter a \emph{0} or a \emph{1}. Then, record how many digits/boxes of cereal it took. Repeat the simulation for 20 trials, and then average the numbers from each trial.
 
 Let's begin again at row 1. We can read across or down, depending upon what is most convenient. Since there are 20 columns and we want 20 trials, we will read down the columns. Starting at column 1, we count how many digits (boxes of cereal) we encounter until we reach a \emph{0} or \emph{1} (which represent a prize). For trial 1 we see \emph{461}, so we record 3. For trial 2 we see \emph{3395641}, so we record 7. For trial 3, we see \emph{0}, so we record 1. The rest of this exercise is left as a Guided Practice problem for you to complete.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}Finish the simulation above and report your estimate for the average number of boxes of cereal one would have to buy until encountering a prize, where the probability of a prize in each box is 20\%.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}Finish the simulation above and report your estimate for the average number of boxes of cereal one would have to buy until encountering a prize, where the probability of a prize in each box is 20\%.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{For the 20 trials, the number of digits we see until we encounter a \emph{0} or \emph{1} is: 3,7,1,4,9,  4,1,2,4,5,  5,1,1,1,3,   8,5,2,2,6. Now we take the average of these 20 numbers to get 74/20 = 3.7.}
 
-\begin{examplewrap}\begin{nexample}{Now, consider a case where the probability of interest is not 20\%, but rather 28\%. Which digits should correspond to success and which to failure?}
+\begin{examplewrap}
+\begin{nexample}{Now, consider a case where the probability of interest is not 20\%, but rather 28\%. Which digits should correspond to success and which to failure?}
 This example is more complicated because with only 10 digits, there is no way to select exactly 28\% of them. Therefore, each observation will have to consist of \emph{two} digits. We can use two digits at a time and assign pairs of digits as follows:
 \begin{align*}
 \text{\emph{00-27}} &\rightarrow \text{success}\\
 \text{\emph{28-99}} &\rightarrow \text{failure}
 \end{align*}
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}Assume the probability of winning a particular casino game is 45\%. We want to carry out a simulation to estimate the probability that we will win at least 5 times in 10 plays. We will use 30 trials of the simulation. Assign digits to outcomes. Also, how many total digits will we require to run this simulation?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}Assume the probability of winning a particular casino game is 45\%. We want to carry out a simulation to estimate the probability that we will win at least 5 times in 10 plays. We will use 30 trials of the simulation. Assign digits to outcomes. Also, how many total digits will we require to run this simulation?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{One possible assignment is: \emph{00-44} $\rightarrow$ win and \emph{45-99} $\rightarrow$ lose. Each trial requires 10 pairs of digits, so we will need 30 sets of 10 pairs of digits for a total of $30 \times 10 \times 2 = 600$ digits.}
 
-\begin{exercisewrap}\begin{nexercise}Assume carnival spinner has 7 slots. We want to carry out a simulation to estimate the probability that we will win at least 10 times in 60 plays. Repeat 100 trials of the simulation. Assign digits to outcomes. Also, how many total digits will we require to run this simulation?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}Assume carnival spinner has 7 slots. We want to carry out a simulation to estimate the probability that we will win at least 10 times in 60 plays. Repeat 100 trials of the simulation. Assign digits to outcomes. Also, how many total digits will we require to run this simulation?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Note that $1/7 = 0.142857...$ This makes it tricky to assign digits to outcomes. The best approach here would be to exclude some of the digits from the simulation. We can assign \emph{0} to success and \emph{1-6} to failure. This corresponds to a $1/7$ chance of getting a success. If we encounter a \emph{7}, \emph{8}, or \emph{9}, we will just skip over it. Because we don't know how many \emph{7}, \emph{8}, or \emph{9}'s we will encounter, we do not know how many total digits we will end up using for the simulation. (If you want a challenge, try to estimate the total number of digits you would need.)}
 
-Does anyone perform simulations like this? Sort of. Simulations are used a lot in statistics, and these often require the same principles covered in this section to properly set up those simulations. The difference is in implementation after the setup. Rather than use a random number table, a statistician will write a program that uses a pseudo-random number generator in a computer to run the simulations very quickly -- often times millions of trials each second, which provides much more accurate estimates than running a couple dozen trials by hand.
+Does anyone perform simulations like this? Sort of. Simulations are used a lot in statistics, and these often require the same principles covered in this section to properly set up those simulations. The difference is in implementation after the setup. Rather than use a random number table, a data scientist will write a program that uses a pseudo-random number generator in a computer to run the simulations very quickly -- often times millions of trials each second, which provides much more accurate estimates than running a couple dozen trials by hand.
 
 \index{simulations|)}
 
@@ -2115,13 +2235,20 @@ Does anyone perform simulations like this? Sort of. Simulations are used a lot i
 \index{random variable|(}
 
 \sectionintro{
-\Add{\noindent The chance of landing on single number in roulette is 1/38 and the pay is 35:1.  The chance of landing on Red is 18/38 and the pay is 1:1.  Which game has the higher expected value?  The higher standard deviation?  How do we interpret these quantities in this context?  If you were to play each game 20 times, what would the \emph{distribution} of possible outcomes look like?  In this section, we define and summarize random variables such as this and look at some of their properties.
-}
+\noindent%
+The chance of landing on single number in the game of
+roulette is 1/38 and the pay is 35:1.
+The chance of landing on Red is 18/38 and the pay is 1:1.  Which game has the higher expected value?
+The higher standard deviation of expected winnings?
+How do we interpret these quantities in this context?  If you were to play each game 20 times, what would the \emph{distribution} of possible outcomes look like?
+In this section, we define and summarize random variables such as this, and we look at some of their properties.
+
 
 %%
 \subsection*{Learning objectives}
 
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Define a probability distribution and what makes a distribution a valid probability distribution.
 
 \item Summarize a discrete probability distribution graphically using a histogram and verbally with respect to center, spread, and shape.
@@ -2137,20 +2264,24 @@ Does anyone perform simulations like this? Sort of. Simulations are used a lot i
 }
 
 
-\Comment{subsection name?}
 %%
 \subsection{Introduction to expected value}
 
-\begin{examplewrap}\begin{nexample}{Two books are assigned for a statistics class: a textbook and its corresponding study guide. The university bookstore determined 20\% of enrolled students do not buy either book, 55\% buy the textbook only, and 25\% buy both books, and these percentages are relatively constant from one term to another. If~there are 100 students enrolled, how many books should the bookstore expect to sell to this class?}\label{bookStoreSales}
+\begin{examplewrap}
+\begin{nexample}{Two books are assigned for a statistics class: a textbook and its corresponding study guide. The university bookstore determined 20\% of enrolled students do not buy either book, 55\% buy the textbook only, and 25\% buy both books, and these percentages are relatively constant from one term to another. If~there are 100 students enrolled, how many books should the bookstore expect to sell to this class?}\label{bookStoreSales}
 Around 20 students will not buy either book (0 books total), about 55 will buy one book (55 books total), and approximately 25 will buy two books (totaling 50 books for these 25 students). The bookstore should expect to sell about 105 books for this class.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Would you be surprised if the bookstore sold slightly more or less than 105 books?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{If they sell a little more or a little less, this should not be a surprise. Hopefully Chapter~\ref{summarizingData} helped make clear that there is natural variability in observed data. For example, if we would flip a coin 100 times, it will not usually come up heads exactly half the time, but it will probably be close.}
 
-\begin{examplewrap}\begin{nexample}{The textbook costs \$137 and the study guide \$33. How much revenue should the bookstore expect from this class of 100 students?}\label{bookStoreRev}
+\begin{examplewrap}
+\begin{nexample}{The textbook costs \$137 and the study guide \$33. How much revenue should the bookstore expect from this class of 100 students?}\label{bookStoreRev}
 About 55 students will just buy a textbook, providing revenue of
 \begin{eqnarray*}
 \$137 \times  55 = \$7,535
@@ -2160,7 +2291,8 @@ The roughly 25 students who buy both the textbook and the study guide would pay 
 (\$137 + \$33) \times  25 = \$170 \times  25 = \$4,250
 \end{eqnarray*}
 Thus, the bookstore should expect to generate about $\$7,535 + \$4,250 = \$11,785$ from these 100 students for this one class. However, there might be some \emph{sampling variability} so the actual amount may differ by a little bit.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{figure}[hhh]
 \centering
@@ -2169,15 +2301,17 @@ Thus, the bookstore should expect to generate about $\$7,535 + \$4,250 = \$11,78
 \label{bookCostDist}
 \end{figure}
 
-\begin{examplewrap}\begin{nexample}{What is the average revenue per student for this course?}\label{revFromStudent}
+\begin{examplewrap}
+\begin{nexample}{What is the average revenue per student for this course?}\label{revFromStudent}
 The expected total revenue is \$11,785, and there are 100 students. Therefore the expected revenue per student is $\$11,785/100 =  \$117.85$.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 
 %%
 \subsection{Probability distributions}
 
-A \term{probability distribution} is a table of all disjoint outcomes and their associated probabilities. Table~\ref{diceProb} shows the probability distribution for the sum of two dice.
+A \term{probability distribution} is a table of all disjoint outcomes and their associated probabilities. Figure~\ref{diceProb} shows the probability distribution for the sum of two dice.
 
 \begin{onebox}{Rules for probability distributions}
 A probability distribution is a list of the possible outcomes with corresponding probabilities that satisfies three rules: \vspace{-2mm}
@@ -2188,12 +2322,14 @@ A probability distribution is a list of the possible outcomes with corresponding
 \item The probabilities must total 1. \vspace{1mm}
 \end{enumerate}\end{onebox}
 
-\begin{exercisewrap}\begin{nexercise}\label{usHouseholdIncomeDistsExercise}
-Table~\ref{usHouseholdIncomeDists} suggests three distributions for household income in the United States. Only one is correct. Which one must it be? What is wrong with the other two?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}\label{usHouseholdIncomeDistsExercise}
+Figure~\ref{usHouseholdIncomeDists} suggests three distributions for household income in the United States. Only one is correct. Which one must it be? What is wrong with the other two?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The probabilities of (a) do not sum to 1. The second probability in (b) is negative. This leaves (c), which sure enough satisfies the requirements of a distribution. One of the three was said to be the actual distribution of US household incomes, so it must be (c).}
 
-\begin{table}[hhh]
+\begin{figure}[hhh]
 \centering
 \begin{tabular}{l ccc ccc ccc cc}
   \hline
@@ -2216,11 +2352,10 @@ Income range (\$1000s) & 0-25    & 25-50    & 50-100     & 100+    \\
 \end{tabular}
 \caption{Proposed distributions of US household incomes (Guided Practice~\ref{usHouseholdIncomeDistsExercise}).}
 \label{usHouseholdIncomeDists}
-\end{table}
+\end{figure}
 
-\textA{\pagebreak}
 
-Chapter~\ref{summarizingData} emphasized the importance of plotting data to provide quick summaries. Probability distributions can also be summarized in a histogram or bar plot. The probability distribution for the sum of two dice is shown in Table~\ref{diceProb} and its histogram is plotted in Figure~\ref{diceSumDist}. The distribution of US household incomes is shown in Figure~\ref{usHouseholdIncomeDistBar} as a bar plot. The presence of the 100+ category makes it difficult to represent it with a regular histogram.\footnote{It is also possible to construct a distribution plot when income is not artificially binned into four groups. Density histograms for \emph{continuous} distributions are considered in Section~\ref{contDist}.}
+Chapter~\ref{summarizingData} emphasized the importance of plotting data to provide quick summaries. Probability distributions can also be summarized in a histogram or bar plot. The probability distribution for the sum of two dice is shown in Figure~\ref{diceProb} and its histogram is plotted in Figure~\ref{diceSumDist}. The distribution of US household incomes is shown in Figure~\ref{usHouseholdIncomeDistBar} as a bar plot. The presence of the 100+ category makes it difficult to represent it with a regular histogram.\footnote{It is also possible to construct a distribution plot when income is not artificially binned into four groups. Density histograms for \emph{continuous} distributions are considered in Section~\ref{contDist}.}
 
 \begin{figure}
 \centering
@@ -2239,7 +2374,6 @@ Chapter~\ref{summarizingData} emphasized the importance of plotting data to prov
 In these bar plots, the bar heights represent the probabilities of outcomes. If the outcomes are numerical and discrete, it is usually (visually) convenient to make a histogram, as in the case of the sum of two dice. Another example of plotting the bars at their respective locations is shown in Figure~\ref{bookCostDist}.
 
 
-\textA{\pagebreak}
 
 %%
 \subsection{Expectation}
@@ -2251,9 +2385,9 @@ We call a variable or process with a numerical outcome a \term{random variable},
 \begin{onebox}{Random variable}
 A random process or variable with a numerical outcome.\end{onebox}
 
-The possible outcomes of $X$ are labeled with a corresponding lower case letter $x$ and subscripts. For example, we write $x_1=\$0$, $x_2=\$137$, and $x_3=\$170$, which occur with probabilities $0.20$, $0.55$, and $0.25$. The distribution of $X$ is summarized in Figure~\ref{bookCostDist} and Table~\ref{statSpendDist}.
+The possible outcomes of $X$ are labeled with a corresponding lower case letter $x$ and subscripts. For example, we write $x_1=\$0$, $x_2=\$137$, and $x_3=\$170$, which occur with probabilities $0.20$, $0.55$, and $0.25$. The distribution of $X$ is summarized in Figure~\ref{bookCostDist} and Figure~\ref{statSpendDist}.
 
-\begin{table}[hhh]
+\begin{figure}[hhh]
 \centering
 \begin{tabular}{l ccc r}
 \hline
@@ -2265,7 +2399,7 @@ $p_i$ & 0.20 & 0.55 & 0.25 & 1.00 \\
 \end{tabular}
 \caption{The probability distribution for the random variable $X$, representing the bookstore's revenue from a single student. We use $p_i$ to represent the probability of $x_i$.}
 \label{statSpendDist}
-\end{table}
+\end{figure}
 
 We computed the average outcome of $X$ as \$117.85 in Example~\ref{revFromStudent}. We call this average the \term{expected value} of $X$, denoted by $E(X)$\index{EX@$E(X)$}. The expected value of a random variable is computed by adding each outcome weighted by its probability:
 \begin{align*}
@@ -2304,7 +2438,6 @@ In physics, the expectation holds the same meaning as the center of gravity. The
 \index{expectation|)}
 
 
-\textA{\pagebreak}
 
 %%
 \subsection{Variability in random variables}
@@ -2325,7 +2458,8 @@ SD(X) = \sigma_x &= \sqrt{ \sum_{i=1}^{n} (x_i - \mu_x)^2 \times p_i}
 
 Just as it is possible to compute the mean of a continuous random variable using calculus, we can also use calculus to compute the variance.\footnote{$\sigma^2_x = \int (x - \mu_x)^2f(x)dx$ where $f(x)$ represents a function for the density curve.} However, this topic is beyond the scope of the AP exam.
 
-\begin{examplewrap}\begin{nexample}{Compute the expected value, variance, and standard deviation of $X$, the revenue of a single statistics student for the bookstore.}
+\begin{examplewrap}
+\begin{nexample}{Compute the expected value, variance, and standard deviation of $X$, the revenue of a single statistics student for the bookstore.}
 It is useful to construct a table that holds computations for each outcome separately, then add up the results.
 \begin{center}
 \begin{tabular}{l rrr r}
@@ -2357,9 +2491,11 @@ $(x_i-\mu_{\mbox{\tiny\itshape X}})^2\times p_i$ & 2777.7 & 201.7 & 679.9 & 3659
 \end{tabular}
 \end{center}
 The variance of $X$ is $\sigma_x^2 = 3659.3$, which means the standard deviation is $\sigma_x = \sqrt{3659.3} = \$60.49$.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 The bookstore also offers a chemistry textbook for \$159 and a book supplement for \$41. From past experience, they know about 25\% of chemistry students just buy the textbook while 60\% buy both the textbook and supplement.\footnotemark
 \begin{enumerate}
 \item[(a)] What proportion of students don't buy either book? Assume no students buy the supplement without the textbook.
@@ -2367,7 +2503,8 @@ The bookstore also offers a chemistry textbook for \$159 and a book supplement f
 \item[(c)] Compute the expected revenue from a single chemistry student.
 \item[(d)] Find the standard deviation to describe the variability associated with the revenue from a single student.
 \end{enumerate}
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{(a) 100\% - 25\% - 60\% = 15\% of students do not buy any books for the class. Part~(b) is represented by the first two lines in the table below. The expectation for part~(c) is given as the total on the line $y_i\times p_i$. The result of part~(d) is the square-root of the variance listed on in the total on the last line: $\sigma_{\mbox{\tiny\itshape Y}} = \sqrt{Var(Y)} = \$69.28$.
 \begin{center}
 \begin{tabular}{rrrrr}
@@ -2387,7 +2524,9 @@ $(y_i-\mu_{\mbox{\tiny\itshape Y}})^2\times p_i$ & 3828.0 & 0.1 & 972.0 & $Var(Y
 %%
 \subsection{Linear transformations of a random variable}
 
-Let X be a random variable that represents how many books per student a textbook company sells. The probability distribution of X is given in the following table.
+\Comment{updated this example}
+
+An online store is selling a limited edition t-shirt.  The maximum a person is allowed to buy is 3.  Let X be a random variable that represents how many of the t-shirts a t-shirt buyer orders.  The probability distribution of X is given in the following table.
 
 \begin{center}
 \begin{tabular}{l rrr}
@@ -2400,39 +2539,41 @@ $p_i$  & 0.6 & 0.3 & 0.1 \\
 \end{center}
 
 Using the methods of the previous section we can find that the mean $\mu_x = 1.5$ and the standard deviation $\sigma_x = 0.67$.
-Suppose that the revenue the textbook company makes per student is \$150 and that each book has a fixed cost of \$30. The profit function, then, is $150X - 30$, where X is the number of books sold. To calculate the mean and standard deviation for the profit of the textbook company, we could define a new variable $Y$ as follows:
+Suppose that the cost of each t-shirt is $30$ and that there is flat rate $5$ shipping fee.  The amount of money a t-shirt buyer pays, then, is $30X + 5$, where X is the number of t-shirts ordered. To calculate the mean and standard deviation for the amount of money a t-shirt buyers pays, we could define a new variable $Y$ as follows:
 
 \begin{align*}
-Y = 150X - 30
+Y = 30X + 5
 \end{align*}
 
-\begin{exercisewrap}\begin{nexercise}Verify that the distribution of $Y$ is given by the table below.\footnotemark
+\begin{exercisewrap}
+\begin{nexercise}Verify that the distribution of $Y$ is given by the table below.\footnotemark
 
 \begin{center}
 \begin{tabular}{l rrr}
 \hline
-$y_i$ & \$120 & \$270 & \$420  \\
+$y_i$ & \$35 & \$65 & \$95  \\
 \hline
 $p_i$ & 0.6 & 0.3 & 0.1 \\
 \hline
 \end{tabular}
 \end{center}
 
-\end{nexercise}\end{exercisewrap}
-\footnotetext{$150 \times 1 - 30 = 120$;  $150 \times 2 - 30 = 270$; $150 \times 3 - 30 = 420$}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$30 \times 1 + 5 = 35$;  $30 \times 2 + 5 = 65$; $30 \times 3 + 5 = 95$}
 
-Using this new table, we can compute the mean and standard deviation of the textbook company's profit. However, because Y is a linear transformation of X, we can use the properties from Section~\ref{linearTransformationOfData}. Recall that multiplying every X by 150 multiplies both the mean and standard deviation by 150. Subtracting 30 only subtracts 30 from the mean, not the standard deviation. Therefore,
+Using this new table, we can compute the mean and standard deviation of the cost for t-shirt orderers. However, because Y is a linear transformation of X, we can use the properties from Section~\ref{linearTransformationOfData}. Recall that multiplying every X by 15 multiplies both the mean and standard deviation by 15. Adding 5 only adds 5 to the mean, not the standard deviation. Therefore,
 \begin{align*}
-\mu_{150X-30}&=E(150X-30) 
-	& \sigma_{150X-30}&=SD(150X-30)\\
-&= 150\times E(X) - 30
-	& &= 150\times SD(X) \\
-&= 150\times 1.5 - 30
-	& &= 150\times 0.67 \\
-&= 195
-	& &= 100.5
+\mu_{30X+5}&=E(30X+5) 
+	& \sigma_{30X+5}&=SD(30X+5)\\
+&= 30\times E(X) + 5
+	& &= 30\times SD(X) \\
+&= 30\times 1.5+5
+	& &= 30 \times 0.67 \\
+&= 45.00
+	& &= 20.10
 \end{align*}
-For a randomly selected student, the textbook company can expect to make \$195 dollars, with a standard deviation of \$100.50.
+Among t-shirt buyers, the average amount they spend is \$45.00 dollars, with a standard deviation of \$20.10.
 
 \begin{onebox}{Linear transformations of a random variable}
 If $X$ is a random variable, then a linear transformation is given by $aX + b$, where $a$ and $b$ are some fixed numbers.
@@ -2448,13 +2589,16 @@ SD(aX+b) &= \lvert a\rvert \times SD(X)
 
 So far, we have thought of each variable as being a complete story in and of itself. Sometimes it is more appropriate to use a combination of variables. For instance, the amount of time a person spends commuting to work each week can be broken down into several daily commutes. Similarly, the total gain or loss in a stock portfolio is the sum of the gains and losses in its components.
 
-\begin{examplewrap}\begin{nexample}{John travels to work five days a week. We will use $X_1$ to represent his travel time on Monday, $X_2$ to represent his travel time on Tuesday, and so on. Write an equation using $X_1$, ..., $X_5$ that represents his travel time for the week, denoted by $W$.}
+\begin{examplewrap}
+\begin{nexample}{John travels to work five days a week. We will use $X_1$ to represent his travel time on Monday, $X_2$ to represent his travel time on Tuesday, and so on. Write an equation using $X_1$, ..., $X_5$ that represents his travel time for the week, denoted by $W$.}
 His total weekly travel time is the sum of the five daily values:
 $$ W = X_1 + X_2 + X_3 + X_4 + X_5 $$
 Breaking the weekly travel time $W$ into pieces provides a framework for understanding each source of randomness and is useful for modeling $W$.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{examplewrap}\begin{nexample}{It takes John an average of 18 minutes each day to commute to work. What would you expect his average commute time to be for the week?}
+\begin{examplewrap}
+\begin{nexample}{It takes John an average of 18 minutes each day to commute to work. What would you expect his average commute time to be for the week?}
 We were told that the average (i.e. expected value) of the commute time is 18 minutes per day: $E(X_i) = 18$. To get the expected time for the sum of the five days, we can add up the expected time for each individual day:
 \begin{align*}
 E(W) &= E(X_1 + X_2 + X_3 + X_4 + X_5) \\
@@ -2462,21 +2606,28 @@ E(W) &= E(X_1 + X_2 + X_3 + X_4 + X_5) \\
 	&= 18 + 18 + 18 + 18 + 18 = 90\text{ minutes}
 \end{align*}
 The expectation of the total time is equal to the sum of the expected individual times. More generally, the expectation of a sum of random variables is always the sum of the expectation for each random variable.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise} \label{elenaIsSellingATVAndBuyingAToasterOvenAtAnAuction}
+\begin{exercisewrap}
+\begin{nexercise} \label{elenaIsSellingATVAndBuyingAToasterOvenAtAnAuction}
 Elena is selling a TV at a cash auction and also intends to buy a toaster oven in the auction. If $X$ represents the profit for selling the TV and $Y$ represents the cost of the toaster oven, write an equation that represents the net change in Elena's cash.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{She will make $X$ dollars on the TV but spend $Y$ dollars on the toaster oven: $X-Y$.}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Based on past auctions, Elena figures she should expect to make about \$175 on the TV and pay about \$23 for the toaster oven. In total, how much should she expect to make or spend?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{$E(X-Y) = E(X) - E(Y) = 175 - 23 = \$152$. She should expect to make about \$152.}
 
-\begin{exercisewrap}\begin{nexercise} \label{explainWhyThereIsUncertaintyInTheSum}
+\begin{exercisewrap}
+\begin{nexercise} \label{explainWhyThereIsUncertaintyInTheSum}
 Would you be surprised if John's weekly commute wasn't exactly 90 minutes or if Elena didn't make exactly \$152? Explain.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{No, since there is probably some variability. For example, the traffic will vary from one day to next, and auction prices will vary depending on the quality of the merchandise and the interest of the attendees.}
 
 Two important concepts concerning combinations of random variables have so far been introduced. First, a final value can sometimes be described as the sum of its parts in an equation. Second, intuition suggests that putting the individual average values into this equation gives the average value we would expect in total. This second point needs clarification -- it is guaranteed to be true in what are called \emph{linear combinations of random variables}.
@@ -2496,23 +2647,29 @@ E(aX+bY) = a\times E(X) + b\times E(Y)
 \end{align*}
 Recall that the expected value is the same as the mean, i.e. $E(X) = \mu_{\mbox{\tiny\itshape X}}$.\end{onebox}
 
-\begin{examplewrap}\begin{nexample}{Leonard has invested \$6000 in Google Inc. (stock ticker: GOOG) and \$2000 in Exxon Mobil Corp. (XOM). If $X$ represents the change in Google's stock next month and $Y$ represents the change in Exxon Mobil stock next month, write an equation that describes how much money will be made or lost in Leonard's stocks for the month.}
+\begin{examplewrap}
+\begin{nexample}{Leonard has invested \$6000 in Google Inc. (stock ticker: GOOG) and \$2000 in Exxon Mobil Corp. (XOM). If $X$ represents the change in Google's stock next month and $Y$ represents the change in Exxon Mobil stock next month, write an equation that describes how much money will be made or lost in Leonard's stocks for the month.}
 For simplicity, we will suppose $X$ and $Y$ are not in percents but are in decimal form (e.g. if Google's stock increases 1\%, then $X=0.01$; or if it loses 1\%, then $X=-0.01$). Then we can write an equation for Leonard's gain as
 \begin{align*}
 \$6000\times X + \$2000\times Y
 \end{align*}
-If we plug in the change in the stock value for $X$ and $Y$, this equation gives the change in value of Leonard's stock portfolio for the month. O+ value represents a gain, and a negative value represents a loss.
-\end{nexample}\end{examplewrap}
+If we plug in the change in the stock value for $X$ and $Y$, this equation gives the change in value of Leonard's stock portfolio for the month. A positive value represents a gain, and a negative value represents a loss.
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}\label{expectedChangeInLeonardsStockPortfolio}
+\begin{exercisewrap}
+\begin{nexercise}\label{expectedChangeInLeonardsStockPortfolio}
 Suppose Google and Exxon Mobil stocks have recently been rising 2.1\% and 0.4\% per month, respectively. Compute the expected change in Leonard's stock portfolio for next month.\footnotemark
 % library(stockPortfolio); gr <- getReturns(c("GOOG", "XOM"), start="2006-01-01"); gr
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{$E(\$6000\times X + \$2000\times Y) = \$6000\times 0.021 + \$2000\times 0.004 = \$134$.}
 
-\begin{exercisewrap}\begin{nexercise}
-You should have found that Leonard expects O+ gain in Guided Practice~\ref{expectedChangeInLeonardsStockPortfolio}. However, would you be surprised if he actually had a loss this month?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\begin{exercisewrap}
+\begin{nexercise}
+You should have found that Leonard expects a positive gain in Guided Practice~\ref{expectedChangeInLeonardsStockPortfolio}. However, would you be surprised if he actually had a loss this month?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{No. While stocks tend to rise over time, they are often volatile in the short term.}
 
 %%
@@ -2527,9 +2684,9 @@ Quantifying the average outcome from a linear combination of random variables is
 \label{changeInLeonardsStockPortfolioFor36Months}
 \end{figure}
 
-Just as we have done in many previous cases, we use the variance and standard deviation to describe the uncertainty associated with Leonard's monthly returns. To do so, the standard deviations and variances of each stock's monthly return will be useful, and these are shown in Table~\ref{sumStatOfGOOGXOM}. The stocks' returns are nearly independent.
+Just as we have done in many previous cases, we use the variance and standard deviation to describe the uncertainty associated with Leonard's monthly returns. To do so, the standard deviations and variances of each stock's monthly return will be useful, and these are shown in Figure~\ref{sumStatOfGOOGXOM}. The stocks' returns are nearly independent.
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{lrrr}
 \hline
@@ -2541,7 +2698,7 @@ XOM & 0.0038		& 0.0520					&	0.0027	\\
 \end{tabular}
 \caption{The mean, standard deviation, and variance of the GOOG and XOM stocks. These statistics were estimated from historical stock data, so notation used for sample statistics has been used.}
 \label{sumStatOfGOOGXOM}
-\end{table}
+\end{figure}
 
 We want to describe the uncertainty of Leonard's monthly returns by finding the standard deviation of the return on his combined portfolio. First, we note that the variance of a sum has a nice property: the variance of a sum is the sum of the variances. That~is, if X and Y are independent random variables:
 \begin{align*}
@@ -2565,11 +2722,11 @@ Because $SD_Y$ = $SD_{-Y}$, the standard deviation of the difference of two vari
 SD_{X + Y + Z} = SD_{X - Y - Z}  = \sqrt{(SD_X)^2 + (SD_Y)^2 + (SD_Z)^2}
 \end{align}
 
-If we need the standard deviation of a linear combination of independent variables, such as $aX + bY$, we can consider $aX$ and $bY$ as two new variables. Recall that multiplying all of the values of variable by O+ constant multiplies the standard deviation by that constant. Thus, $SD_{aX}$ =  $a \times SD_X$ and $SD_{bY}$ =  $b \times SD_Y$. It follows that:
+If we need the standard deviation of a linear combination of independent variables, such as $aX + bY$, we can consider $aX$ and $bY$ as two new variables. Recall that multiplying all of the values of variable by a positive constant multiplies the standard deviation by that constant. Thus, $SD_{aX}$ =  $a \times SD_X$ and $SD_{bY}$ =  $b \times SD_Y$. It follows that:
 \begin{align*}
 SD_{aX + bY} = \sqrt{(a \times SD_X)^2 + (b \times SD_Y)^2}
 \end{align*}
-This equation can be used to compute the standard deviation of Leonard's monthly return. Recall that Leonard has \$6,000 in Google stock and \$2,000 in Exxon Mobil's stock. From Table~\ref{sumStatOfGOOGXOM}, the standard deviation of Google stock is 0.0849 and the standard deviation of Exxon Mobile stock is 0.0520.
+This equation can be used to compute the standard deviation of Leonard's monthly return. Recall that Leonard has \$6,000 in Google stock and \$2,000 in Exxon Mobil's stock. From Figure~\ref{sumStatOfGOOGXOM}, the standard deviation of Google stock is 0.0849 and the standard deviation of Exxon Mobile stock is 0.0520.
 \begin{align*}
 SD_{6000X + 2000Y}
 	&= \sqrt{(6000\times SD_X)^2 + (2000\times SD_Y)^2} \\
@@ -2586,7 +2743,8 @@ SD_{aX + bY} = \sqrt{(a\times SD_X)^2 + (b\times SD_Y)^2}
 \end{align*}
 This equation is valid as long as the random variables $X$ and $Y$ are \emph{independent} of each other.\end{onebox}
 
-\begin{examplewrap}\begin{nexample}{Suppose John's daily commute has a standard deviation of 4 minutes. What is the uncertainty in his total commute time for the week?} \label{sdOfJohnsCommuteWeeklyTime}
+\begin{examplewrap}
+\begin{nexample}{Suppose John's daily commute has a standard deviation of 4 minutes. What is the uncertainty in his total commute time for the week?} \label{sdOfJohnsCommuteWeeklyTime}
 The expression for John's commute time is
 \begin{align*}
 X_1 + X_2 + X_3 + X_4 + X_5
@@ -2598,16 +2756,21 @@ Each coefficient is 1, so the standard deviation of the total weekly commute tim
 &= 8.94
 \end{align*}
 The standard deviation for John's weekly work commute time is about 9 minutes.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 The computation in Example~\ref{sdOfJohnsCommuteWeeklyTime} relied on an important assumption: the commute time for each day is independent of the time on other days of that week. Do you think this is valid? Explain.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{One concern is whether traffic patterns tend to have a weekly cycle (e.g. Fridays may be worse than other days). If that is the case, and John drives, then the assumption is probably not reasonable. However, if John walks to work, then his commute is probably not affected by any weekly traffic cycle.}
 
-\begin{exercisewrap}\begin{nexercise}\label{elenaIsSellingATVAndBuyingAToasterOvenAtAnAuctionVariability}
+\begin{exercisewrap}
+\begin{nexercise}\label{elenaIsSellingATVAndBuyingAToasterOvenAtAnAuctionVariability}
 Consider Elena's two auctions from Guided Practice~\ref{elenaIsSellingATVAndBuyingAToasterOvenAtAnAuction} on page~\pageref{elenaIsSellingATVAndBuyingAToasterOvenAtAnAuction}. Suppose these auctions are approximately independent and the variability in auction prices associated with the TV and toaster oven can be described using standard deviations of \$25 and \$8. Compute the standard deviation of Elena's net gain.\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{The equation for Elena can be written as:  $(1)\times X + (-1)\times Y$.
 
 To find the SD of this new variable we do:
@@ -2679,11 +2842,17 @@ The SD properties require that $X$ and $Y$ be independent.  The expected value p
 \label{contDist}
 
 \sectionintro{
-\Add{\noindent So far we have looked only at cases where the random variable takes on integer values.  What happens when the we consider a smooth curve and look at intervals of values, such as wait time for a bus?  In this section we introduce the concept of a continuous distribution.  In the next chapter, you will encounter the most famous continuous distribution of all.\footnote{It's the normal distribution!}
-}
+\noindent%
+So far we have looked only at cases where the random variable takes on integer values.
+What happens when we consider random variables that produce a a continuous numerical variable, such as wait time for a bus?
+In this section, we introduce the concept of a continuous distribution.
+In the next chapter, you will encounter the most famous continuous distribution of all.\footnote{It's the normal distribution!}
+
+
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Understand the difference between a discrete random variable and a continuous random variable.
 
 \item Recognize that when working with continuous probability distributions area represents probability and the total area under the curve must equal 1. 
@@ -2696,9 +2865,11 @@ The SD properties require that $X$ and $Y$ be independent.  The expected value p
 
 \index{data!FCID|(}
 \index{hollow histogram|(}
-\begin{examplewrap}\begin{nexample}{Figure~\ref{fdicHistograms} shows a few different hollow histograms of the variable \var{height} for 3 million US adults from the mid-90's.\footnotemark\, How does changing the number of bins allow you to make different interpretations of the data?}\label{usHeights}
+\begin{examplewrap}
+\begin{nexample}{Figure~\ref{fdicHistograms} shows a few different hollow histograms of the variable \var{height} for 3 million US adults from the mid-90's.\footnotemark\, How does changing the number of bins allow you to make different interpretations of the data?}\label{usHeights}
 Adding more bins provides greater detail. This sample is extremely large, which is why much smaller bins still work well. Usually we do not use so many bins with smaller sample sizes since small counts per bin mean the bin heights are very volatile.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 \footnotetext{This sample can be considered a simple random sample from the US population. It relies on the USDA Food Commodity Intake Database.} 
 
 \begin{figure}[ht]
@@ -2708,13 +2879,15 @@ Adding more bins provides greater detail. This sample is extremely large, which 
 \label{fdicHistograms}
 \end{figure}
 
-\begin{examplewrap}\begin{nexample}{What proportion of the sample is between \resp{180} cm and \resp{185} cm tall (about 5'11" to 6'1")?}\label{contDistProb}
+\begin{examplewrap}
+\begin{nexample}{What proportion of the sample is between \resp{180} cm and \resp{185} cm tall (about 5'11" to 6'1")?}\label{contDistProb}
 We can add up the heights of the bins in the range \resp{180} cm and \resp{185} and divide by the sample size. For instance, this can be done with the two shaded bins shown in Figure~\ref{usHeightsHist180185}. The two bins in this region have counts of 195,307 and 156,239 people, resulting in the following estimate of the probability:
 \begin{eqnarray*}
 \frac{195307+156239}{\text{3,000,000}} = 0.1172
 \end{eqnarray*}
 This fraction is the same as the proportion of the histogram's area that falls in the range \resp{180} to \resp{185} cm.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
 \begin{figure}
 \centering
@@ -2761,24 +2934,30 @@ The probability that a randomly selected person is between \resp{180} and \resp{
 \label{fdicHeightContDistFilled}
 \end{figure}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Three US adults are randomly selected. The probability a single adult is between \resp{180} and \resp{185} cm is 0.1157.\footnotemark \vspace{-1.5mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item[(a)] What is the probability that all three are between \resp{180} and \resp{185} cm tall?
 \item[(b)] What is the probability that none are between \resp{180} and \resp{185} cm?
 \end{enumerate}
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{Brief answers: (a) $0.1157 \times 0.1157 \times 0.1157 = 0.0015$. (b) $(1-0.1157)^3 = 0.692$}
 
-\begin{examplewrap}\begin{nexample}{What is the probability that a randomly selected person is \textbf{exactly} \resp{180}~cm? Assume you can measure perfectly.}
+\begin{examplewrap}
+\begin{nexample}{What is the probability that a randomly selected person is \textbf{exactly} \resp{180}~cm? Assume you can measure perfectly.}
 \label{probabilityOfExactly180cm}
 This probability is zero. A person might be close to \resp{180} cm, but not exactly \resp{180} cm tall. This also makes sense with the definition of probability as area; there is no area captured between \resp{180}~cm and \resp{180}~cm.
-\end{nexample}\end{examplewrap}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercisewrap}\begin{nexercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Suppose a person's height is rounded to the nearest centimeter. Is there a chance that a random person's \textbf{measured} height will be \resp{180}~cm?\footnotemark
-\end{nexercise}\end{exercisewrap}
+\end{nexercise}
+\end{exercisewrap}
 \footnotetext{This has positive probability. Anyone between \resp{179.5} cm and \resp{180.5} cm will have a \emph{measured} height of \resp{180} cm. This is probably a more realistic scenario to encounter in practice versus Example~\ref{probabilityOfExactly180cm}.}
 
 \index{data!FCID|)}
@@ -2803,7 +2982,10 @@ Suppose a person's height is rounded to the nearest centimeter. Is there a chanc
 
 
 %______________________________________________
-\section{Chapter highlights}
+\section*{Chapter highlights}
+\setcounter{secnumdepth}{0}
+\addcontentsline{toc}{section}{Chapter highlights}
+\setcounter{secnumdepth}{2}
 
 \noindent This chapter focused on understanding likelihood and chance variation, first by solving individual probability questions and then by investigating probability distributions. 
 \\
