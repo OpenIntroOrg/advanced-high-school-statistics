@@ -16,7 +16,7 @@ hw <- hw[!is.na(hw$age_wife),]
 
 # model summary -----------------------------------------------------
 
-m_h_w_height <- lm(hw$ht_wife_in ~ hw$ht_husband_in)
+m_h_w_height <- lm(hw$ht_husband_in ~ hw$ht_wife_in)
 
 xtable(summary(m_h_w_height))
 
@@ -27,13 +27,13 @@ pdf("husbands_wives_height_inf_2s.pdf", 5.5, 4.3)
 par(mar = c(3.75, 3.75, 0.5, 0.5), las = 1, mgp = c(2.5, 0.7, 0), 
     cex.lab = 1.5, cex.axis = 1.5)
 
-plot(hw$ht_wife_in ~ hw$ht_husband_in, 
-     xlab = "Man's height (in inches)", 
+plot(hw$ht_husband_in ~ hw$ht_wife_in, 
+     xlab = "Woman's height (in inches)", 
      ylab = "Spouse's height (in inches)", 
      pch = 19, col = COL[1,2], 
-     xlim = c(60, 77), ylim = c(55, 70), axes = FALSE)
-axis(1, at = seq(60, 75, 5))
-axis(2, at = seq(55, 70, 5))
+     ylim = c(60, 77), xlim = c(55, 70), axes = FALSE)
+axis(2, at = seq(60, 75, 5))
+axis(1, at = seq(55, 70, 5))
 box()
 
 dev.off()
