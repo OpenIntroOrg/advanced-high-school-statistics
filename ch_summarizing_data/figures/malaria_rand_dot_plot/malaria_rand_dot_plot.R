@@ -49,7 +49,7 @@ plot(X, Y,
      xlim = range(diffs) + c(-1, 1) * sd(diffs) / 4,
      xlab = "Difference in Infection Rates",
      axes = FALSE,
-     ylim = c(0, max(Y)),
+     ylim = c(0, max(Y)+1),yaxs="i",
      col = COL[1],
      pch = 20)
 # at <- seq(-0.4, 0.4, 0.1)

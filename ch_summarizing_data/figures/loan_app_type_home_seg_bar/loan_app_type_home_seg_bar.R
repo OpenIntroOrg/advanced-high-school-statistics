@@ -1,7 +1,11 @@
 library(openintro)
 
 tab <- table(loans_full_schema[, c("application_type", "homeownership")])
+tab <- tab[
+    c("individual", "joint"),
+    c("RENT", "MORTGAGE", "OWN")]
 tab <- t(tab)
+rownames(tab) <- tolower(rownames(tab))
 
 rp <- prop.table(tab, 1)
 cp <- prop.table(tab, 2)
@@ -21,7 +25,9 @@ barplot(tabTemp,
     add = TRUE,
     axes = FALSE)
 abline(h = 0)
-)
+legend("topright",
+    fill = COL[c(3,1)],
+    legend = c("joint", "individual"))
 par(las = 0)
 mtext("Frequency", 2, 2.9)
 dev.off()
@@ -52,9 +58,29 @@ barplot(tabTemp,
     col = COL[1],
     add = TRUE,
     axes = FALSE)
-
+legend(2.65, 0.3,
+    fill = COL[c(3,1)],
+    legend = c("joint", "individual"),
+    bg = "white")
 abline(h = 0)
 par(las = 0)
 mtext("Proportion", 2, 2.9)
+dev.off()
+
+myPDF("loan_app_type_home_sbs_bar_standardized.pdf",
+    5, 3.5,
+    mar = c(2, 4, 0.5, 0.5),
+    mgp = c(2.2, 0.6, 0))
+tabTemp <- t(tab) / rep(apply(tab, 1, sum), rep(2, 3))
+barplot(tabTemp,
+    ylim = c(0, 1),
+    col = COL[c(1, 3)], beside = TRUE)
+abline(h = 0)
+par(las = 0)
+mtext("Proportion", 2, 2.9)
+legend(6.65, 0.5,
+    fill = COL[c(3,1)],
+    legend = c("joint", "individual"),
+    bg = "white")
 dev.off()
 

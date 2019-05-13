@@ -10,13 +10,13 @@ require(xtable)
 xtable(counts)
 
 myPDF("email50NumCharHist.pdf",
-      1.1 * 5.5, 3.3,
+      5.5, 2.7,
       mar = c(3.5, 3.5, 0.15, 1),
-      mgp = c(2.4, 0.7, 0))
+      mgp = c(2.4, 0.6, 0))
 histPlot(email50$num_char, breaks = 12,
          xlab = 'Number of Characters (in thousands)',
          ylab = "Frequency", ylim = c(0, 23),col = COL[1],
-         border = COL[5], axes = TRUE, yaxs="i")
+         border = COL[5], axes = TRUE,yaxs="i")
 axis(1,seq(0,70,5))
 dev.off()
 

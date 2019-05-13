@@ -4,7 +4,7 @@ data(COL)
 source("normalQuantileExer-data.R")
 source("QQNorm.R")
 
-myPDF("normalQuantileExer.pdf", 6, 5.3,
+myPDF("normalQuantileExer.pdf", 5.7, 4.3,
       mfrow = c(2,2),
       mgp = c(2.4,.55,0),
       mar = c(3.5,3.45,1,1),
