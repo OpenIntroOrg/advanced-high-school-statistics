@@ -1154,7 +1154,7 @@ We label a person a \term{success} if her healthcare costs
 do not exceed the deductible.
 We label a person a \term{failure} if she does exceed her
 deductible in the year.
-Because 80\% of the individuals will not hit their deductible,
+Because \insureSperc{} of the individuals will not exceed their deductible,
 we denote the \term{probability of a success} as
 $p = \insureSprob{}$.
 The probability of a failure is sometimes denoted with
@@ -1250,11 +1250,11 @@ Let's first look at an example.
     (If the first success is the fifth person, then we say $n=5$.)}
   \label{waitForDeductible}%
   The probability of stopping after the first person is just
-  the chance the first person will not hit her (or his)
+  the chance the first person will not exceed her (or his)
   deductible:~\insureSprob{}.
-The probability the second person is the first to hit
+The probability the second person is the first to exceed
   her deductible is  \begin{align*}
-  &P(\text{second person is the first to hit deductible})  \\
+  &P(\text{second person is the first to exceed deductible})  \\
   &\quad
     = P(\text{the first won't, the second will})
     = (\insureFprob{})(\insureSprob{})
