@@ -7,11 +7,11 @@ t.test(x-100)
 mean(x)
 sd(x)
 
-myPDF('satImprovementHTDataHistogram.pdf', 3.6, 1.5,
-      mar = c(1.6, 2, 0.4, 1),
-      mgp = c(0, 0.45, 0))
+myPDF('satImprovementHTDataHistogram.pdf', 3.6, 1.8,
+      mar = c(3.1, 2, 0.4, 1),
+      mgp = c(2, 0.55, 0))
 histPlot(x,
-         xlab = '',
+         xlab = 'Differences',
          ylab = '',
          main = '',
          yaxs="i",

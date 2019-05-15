@@ -17,9 +17,11 @@ dev.off()
 
 set.seed(2452)
 samp = sample(b, size = 500)
+ylim = c(0, 115)
+
 
 myPDF("cltSimLS_samp.pdf", 3.2, 2, mar=c(3.3,2,0.5,1), mgp=c(2.1,0.5,0))
-hist(samp, col = COL[1], xlab = "Plot B", ylab = "", main = "", axes=FALSE,yaxs="i")
+hist(samp, col = COL[1], xlab = "Plot B", ylab = "", main = "", axes=FALSE,yaxs="i", ylim = ylim)
 axis(1)
 axis(2, at=c(0, 50, 100))
 dev.off()
@@ -37,7 +39,7 @@ for(i in 1:500){
    	}
 
 myPDF("cltSimLS_n18.pdf", 3.2, 2, mar=c(3.3,2,0.5,1), mgp=c(2.1,0.5,0))
-hist(sampling_18, col = COL[1], xlab = "Plot C", ylab = "", main = "", axes=FALSE,yaxs="i")
+hist(sampling_18, col = COL[1], xlab = "Plot C", ylab = "", main = "", axes=FALSE,yaxs="i", ylim = ylim)
 axis(1)
 axis(2, at=c(0, 50, 100))
 dev.off()
@@ -55,7 +57,7 @@ for(i in 1:500){
    	}
 
 myPDF("cltSimLS_n81.pdf", 3.2, 2, mar=c(3.3,2,0.5,1), mgp=c(2.1,0.5,0))
-hist(sampling_81, col = COL[1], xlab = "Plot A", ylab = "", main = "", axes=FALSE,yaxs="i")
+hist(sampling_81, col = COL[1], xlab = "Plot A", ylab = "", main = "", axes=FALSE,yaxs="i", ylim = ylim)
 axis(1)
 axis(2, at=c(0, 50, 100))
 dev.off()

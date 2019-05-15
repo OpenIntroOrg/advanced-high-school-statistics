@@ -1,7 +1,7 @@
 library(openintro)
 
 
-myPDF('treeDiagramAndPass.pdf', 6, 2.7)
+myPDF('treeDiagramAndPass.pdf', 6, 2.4)
 treeDiag(c('\nAble to construct\ntree diagrams', 'Pass class'),
          c(0.78, 0.22),
          list(c(0.97, 0.03),

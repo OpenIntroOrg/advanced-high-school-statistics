@@ -12,6 +12,7 @@ par(mar=c(3.7, 2.2, 0.5, 0.5), las=1, mgp=c(2.5, 0.7, 0),
 hist(cats$Bwt, breaks = seq(2, 4, 0.25), ylim = c(0, 35), 
      xlab = "Body weight", col = COL[1], main = "", 
      axes = FALSE,yaxs="i")
+abline(h=0)
 axis(1)
-axis(2, at = seq(5,35,10))
+axis(2, at = seq(0,30,10))
 dev.off()

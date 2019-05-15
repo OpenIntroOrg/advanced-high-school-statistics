@@ -3,7 +3,6 @@
   \label{foundationsForInference}
   \label{ch_foundations_for_inf}
   \label{ch_inference_foundations}
-\label{ch_foundations_for_inf}
   \chaptersection{pointEstimates}
   \chaptersection{confidenceIntervals}
   \chaptersection{hypothesisTesting}
@@ -41,7 +40,7 @@ Statistical inference is primarily concerned with
 Companies such as the Gallup and Pew Research frequently conduct
 polls as a way to understand the state of public opinion
 or knowledge on many topics, including politics,
-scientific understanding, brand recognition, and more.  How well do these polls estimate the the opinion or knowledge of the
+scientific understanding, brand recognition, and more.  How well do these polls estimate the opinion or knowledge of the
 broader population?  Why is a larger sample generally preferable to a smaller sample?  And what role does the concept of a sampling distribution, introduced in the previous chapter, play in answering these questions?
 
 
@@ -60,8 +59,9 @@ broader population?  Why is a larger sample generally preferable to a smaller sa
 }
 
 
-%%
+\D{\newpage}
 
+%%
 \subsection{Point estimates}
 \index{point estimate|(}
 
@@ -90,7 +90,7 @@ to over- or under-estimate the true population value.
  For instance, if we took a political poll but our sample
   didn't include a roughly representative distribution of
   the political parties, the sample would likely skew
-  in a particular direction and be biased.  Taking a truly random sample helps avoid bias.  However, as we saw in Chapter~\ref{ch_intro_to_data}, even with a random sample, various types of response bias can still be present.  For~example, if we were taking a student poll asking
+  in a particular direction and be biased.  Taking a truly random sample helps avoid bias.  However, as we saw in Chapter~\ref{ch_data_collection}, even with a random sample, various types of response bias can still be present.  For~example, if we were taking a student poll asking
 about support for a new college stadium, we'd probably
 get a biased estimate of the stadium's level of student
 support by wording the question as,
@@ -132,8 +132,10 @@ $\bar{x} = 11,160$ is our best estimate for $\mu$.
 %Why do we want a point estimate to be both accurate and precise?
 %}
 
-%%
 
+\D{\newpage}
+
+%%
 \subsection{Understanding the variability of a point estimate}
 \label{simulationForUnderstandingVariabilitySection}
 
@@ -191,7 +193,7 @@ In this simulation, the sample gave a point estimate of
 $\hat{p}_1 = 0.894$. We~know the population proportion
 for the simulation was $p = \pewsolarparprop{}$, so we know
 the estimate had an error of
-$0.894 - \pewsolarparprop{} = \text{+0.014}$.
+$0.894 - \pewsolarparprop{} = \text{+0.014}$.\D{\vspace{10mm}\\\ }
 
 
 %\setlength\textwidth{\officialtextwidth-10mm}
@@ -218,6 +220,8 @@ sum(sampled\_entries == "support") / \pewsolarpollsize{}}
 \label{solarPollSimulationCodeR}
 \end{figure}
 % \setlength\textwidth{\officialtextwidth}
+
+\D{\newpage}
 
 One simulation isn't enough to get a great sense of the
 distribution of estimates we might expect in the simulation,
@@ -263,9 +267,9 @@ of the population proportion.
 We also have the interesting observation
 that the histogram resembles a normal distribution.
 
-\begin{figure}
+\begin{figure}[h]
    \centering
-   \includegraphics[]{ch_foundations_for_inf/figures/sampling_10k_prop_88p/sampling_10k_prop_88p}
+   \Figure{0.85}{sampling_10k_prop_88p}
    \caption{A histogram of 10,000 sample proportions sampled from a population where the population
        proportion is \pewsolarparprop{} and the sample size is
        $n = \pewsolarpollsize{}$.}
@@ -304,6 +308,8 @@ Remember though, that this is only true for \emph{random} samples.
 Additionally, a~bigger sample cannot correct for response bias or other types of bias that may be present.
 
 
+\D{\newpage}
+
 %%
 \subsection{Introducing the standard error}
 
@@ -311,14 +317,14 @@ Point estimates only approximate the population parameter.  How can we quantify 
 \begin{align*}
 SD_{\hat{p}}&=\sqrt{\frac{p(1-p)}{n}} = \sqrt{\frac{(.088)(1-0.88)}{n}}= 0.01
 \end{align*}
-If we now look at the sampling distribution, we see that the the typical distance sample proportions are from the true value of 0.88 is about 0.01.
+If we now look at the sampling distribution, we see that the typical distance sample proportions are from the true value of 0.88 is about 0.01.
 
 \begin{examplewrap}
 \begin{nexample}{Consider a random sample of size 80 from a population.  We find that 15\% of the sample support a controversial new ballot measure.  How far is our estimate likely to be from the true percent that support the measure?}  We would like to calculate the standard deviation of $\hat{p}$, but we run into a serious problem: $p$ is \emph{unknown}. In fact, when doing inference, $p$ must be unknown, otherwise it is illogical to try to estimate it. We cannot calculate the $SD$, but we can estimate it using, you might have guessed, the sample proportion $\hat{p}$.
 \end{nexample}
 \end{examplewrap}
  
-This estimate of the standard deviation is known as the \termsub{standard error}{standard error ($SE$)}, or \term{$SE$} for short.
+This estimate of the standard deviation is known as the \termsub{standard error}{standard error}, or $\pmb{SE}$ for short.
 \begin{align*}
 SE_{\hat{p}}&=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
 \end{align*}
@@ -341,6 +347,9 @@ The larger the sample size, the smaller our standard error. This is consistent w
 \end{nexample}
 \end{examplewrap}
 
+
+\D{\newpage}
+
 %%
 \subsection{Basic properties of point estimates}
 
@@ -350,11 +359,11 @@ Remember that the standard error only measures sampling error.  It does not acco
 
 When our sampling method produces estimates in an unbiased way, the sampling distribution will be \emph{centered} on the true value and we call the method \term{accurate}.  When the sampling method  produces estimates that have \emph{low variability}, the sampling distribution will have a low standard error, and we call the method \term{precise}.
 
-\begin{figure}
+\begin{figure}[h]
    \centering
 \oiRedirect{desmos-foursamplingdistributions}{
-   \includegraphics[width=\textwidth]{ch_foundations_for_inf/figures/fourSamplingDistributions/fourSamplingDistributions}}
-   \caption{Four sampling distributions shown, with parameter identified. \qquad  \qquad Explore this and other Desmos activities at \oiRedirect{opeintro-desmos}{openintro.org/desmos}.}
+   \includegraphics[width=0.45\textwidth]{ch_foundations_for_inf/figures/fourSamplingDistributions/fourSamplingDistributions}}
+   \caption{Four sampling distributions shown, with parameter identified. \qquad  \qquad Explore this and other Desmos activities at \oiRedirect{openintro-ahss-desmos}{\small{openintro.org/ahss/desmos}}.}
    \label{fourSamplingDistributions}
 \end{figure}
 
@@ -398,9 +407,9 @@ even if the details change a little.
 
 
 
-%%
-%%
+\D{\newpage}
 
+%%
 \subsection*{Section summary}
 \begin{itemize}
 \item In this section we laid the groundwork for our study of \term{inference}.  Inference involves using known sample values to estimate or better understand unknown population values.
@@ -474,6 +483,9 @@ A plausible range of values for the population parameter is called a \term{confi
 
 If we report a point estimate, we probably will not hit the exact population parameter. On the other hand, if we report a range of plausible values -- a confidence interval -- we have a good shot at capturing the parameter.
 
+
+\D{\newpage}
+
 %%
 \subsection{Constructing a 95\% confidence interval}
 
@@ -513,9 +525,9 @@ We are 95\% confident that the true percent of smokers in this population is bet
 
 We can be 95\% confident that a 95\% confidence interval contains the true population parameter. However, confidence intervals are imperfect. About 1-in-20 (5\%) properly constructed 95\% confidence intervals will fail to capture the parameter of interest. Figure~\ref{95PercentConfidenceInterval} shows 25 confidence intervals for a proportion that were constructed from simulations where the true proportion was $p = 0.3$. However, 1 of these 25 confidence intervals happened not to include the true value.
 
-\begin{figure}[hht]
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.95\textwidth]{ch_foundations_for_inf/figures/95PercentConfidenceInterval/95PercentConfidenceInterval}
+\includegraphics[width=0.9\textwidth]{ch_foundations_for_inf/figures/95PercentConfidenceInterval/95PercentConfidenceInterval}
 \caption{Twenty-five samples of size $n=300$ were simulated when $p = 0.30$. For each sample, a confidence interval was created to try to capture the true proportion $p$. However,~1~of these~25 intervals did not capture $p = 0.30$.}
 \label{95PercentConfidenceInterval}
 \end{figure}
@@ -531,7 +543,7 @@ In Figure~\ref{95PercentConfidenceInterval}, one interval does not contain the t
 \subsection{Changing the confidence level}
 \label{changingTheConfidenceLevelSection}
 
-\index{confidence interval!confidence level|(}
+\index{confidence level|(}
 
 Suppose we want to construct a confidence interval with a confidence level somewhat greater than 95\%: perhaps we would like a confidence level of 99\%. 
 
@@ -546,6 +558,8 @@ The 95\% confidence interval structure provides guidance in how to make interval
 \end{eqnarray}
 There are three components to this interval: the point estimate, ``1.96'', and the standard error. The choice of $1.96\times SE$ was based on capturing 95\% of the distribution since the estimate is within 1.96 standard deviations of the true value about 95\% of the time. The choice of 1.96 corresponds to a 95\% confidence level. 
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise} \label{leadInForMakingA99PercentCIExercise}
 If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?\footnotemark
@@ -559,7 +573,7 @@ If $X$ is a normally distributed random variable, how often will $X$ be within 2
 \includegraphics[width=\textwidth]{ch_foundations_for_inf/figures/choosingZForCI/choosingZForCI}
 \caption{The area between -$z^{\star}$ and $z^{\star}$ increases as $|z^{\star}|$ becomes larger. If the confidence level is 99\%, we choose $z^{\star}$ such that 99\% of the normal curve is between -$z^{\star}$ and $z^{\star}$, which corresponds to 0.5\% in the lower tail and 0.5\% in the upper tail: $z^{\star}=2.58$.}
 \label{choosingZForCI}
-\index{confidence interval!confidence level|)}
+\index{confidence level|)}
 \end{figure}
 
 
@@ -582,6 +596,8 @@ If the point estimate follows a normal model with standard error $SE$, then a co
 where $z^{\star}$ depends on the confidence level selected.\end{onebox}
 
 Finding the value of $z^{\star}$ that corresponds to a particular confidence level is most easily accomplished by using a new table, called the $t$-table. For now, what is noteworthy about this table is that the bottom row corresponds to confidence levels. The numbers inside the table are the critical values, but which row should we use? Later in this book, we will see that a $t$-curve with infinite degrees of freedom corresponds to the normal curve. For this reason, when finding $z^{\star}$, we use the $t$-table at row $\infty$.
+
+\D{\newpage}
 
 \begin{figure}[hht]
 \centering
@@ -634,6 +650,8 @@ The \term{margin of error} is the distance between the point estimate and the lo
 When the point estimate follows a normal distribution, 
 $$ \text{margin of error} = z^{\star}\times SE \text{ of estimate}.$$
 \end{onebox}
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{All other things being equal, will the margin of error be bigger for a 68\% confidence interval or a 95\% confidence interval?}
@@ -688,7 +706,8 @@ Use a confidence interval to \emph{estimate} a parameter with a particular \emph
 \index{confidence interval|)}
 
 
-%%
+\D{\newpage}
+
 %%
 \subsection*{Section summary}
 \begin{itemize}
@@ -737,16 +756,16 @@ Use a confidence interval to \emph{estimate} a parameter with a particular \emph
 \item[]
 \end{enumerate}
 \end{itemize}
-Interpreting \term{confidence intervals} and \term{confidence levels}
+Interpreting \termsub{confidence intervals}{confidence interval} and \termsub{confidence levels}{confidence level}
 \begin{itemize}
-\item 68\% and 95\% are examples of \term{confidence levels}.  A~correct interpretation of a 95\% confidence level is that if many samples of the same size were taken from the population, about 95\% of the resulting confidence intervals would contain the true population parameter.  Note that this is a \emph{relative frequency interpretation}.  
+\item 68\% and 95\% are examples of \termsub{confidence levels}{confidence level}.  A~correct interpretation of a 95\% confidence level is that if many samples of the same size were taken from the population, about 95\% of the resulting confidence intervals would contain the true population parameter.  Note that this is a \emph{relative frequency interpretation}.  
 
 \item We cannot use the language of probability to interpret an \emph{individual} confidence interval, once it has been calculated.  The confidence level tells us what percent of the intervals will contain the population parameter, not the probability that a calculated interval contains the population parameter.  Each calculated interval either does or does not contain the population parameter.  
-
-
 \end{itemize}
-\newpage
-\term{Margin of error}
+
+
+\D{\newpage\noindent%
+}\termsub{Margin of error}{margin of error}
 \noindent\begin{itemize}
 \item Confidence intervals are often reported as: point estimate $\pm$ margin of error.  The \term{margin of error} ($ME$) $=\text{critical value} \times SE\ \text{of estimate}$, and it tells us, with a particular confidence, how much we expect our point estimate to deviate from the true population value due to chance.  
 
@@ -786,7 +805,7 @@ In this section, we will set up a framework for answering questions such as this
 
 \item Define and interpret the concept statistically significant.
 
-\item Interpret Type~I, Type~II error, and power in the context of hypothesis testing.
+\item Interpret Type~I, Type~II Error, and power in the context of hypothesis testing.
 
 \end{enumerate}
 }
@@ -879,6 +898,8 @@ When the alternative claim uses a $\neq$, we call the test a \term{two-sided} te
 \begin{onebox}{One-sided and two-sided tests}
 If the researchers are only interested in showing an increase or a decrease, but not both, use a one-sided test. If the researchers would be interested in any difference from the null value -- an increase or decrease -- then the test should be two-sided.\vspace{0.5mm}\end{onebox}
 
+\D{\newpage}
+
 \begin{examplewrap}
 \begin{nexample}{For the example of the consultant's complication rate, we knew that her sample complication rate was 0.063, which was lower than the US complication rate of 0.10. Why did we conduct a two-sided hypothesis test for this setting?}
 The setting was framed in the context of the consultant being helpful, but what if the consultant actually performed worse than the US complication rate? Would we care? More than ever! Since we care about a finding in either direction, we should run a two-sided~test.
@@ -943,6 +964,8 @@ Because the p-value is 0.1754, which is larger than the significance level 0.05,
 \end{exercisewrap}
 \footnotetext{The data do not provide evidence that the consultant's complication rate is significantly lower or higher than the US complication rate of 10\%.}
 
+\D{\newpage}
+
 \begin{examplewrap}
 \begin{nexample}{In the previous exercise, we did not reject $H_0$. This means that we did not disprove the null claim. Is this equivalent to proving the null claim is~true?}
 No. We did not prove that the consultant's complication rate is \emph{exactly} equal to 10\%. Recall that the test of hypothesis starts by \emph{assuming the null claim is true}. That~is, the test proceeds as an argument by contradiction. \emph{If the null claim is true}, there is a 0.1754 chance of seeing sample data as divergent from 10\% as we saw in our sample. Because 0.1754 is large, it is within the realm of chance error, and we cannot say the null hypothesis is unreasonable.\footnotemark
@@ -956,7 +979,9 @@ In many statistical explanations, we use double negatives. For instance, we migh
 
 \begin{examplewrap}
 \begin{nexample}{Does the conclusion in Guided Practice~\ref{plainLanguageExplanationOfHTConclusionForLiverDonorSurgicalConsultant} ensure that there is no real association between the surgical consultant's work and the risk of complications? Explain.}
-No. It is possible that the consultant's work is associated with a lower or higher risk of complications. However, the data did not provide enough information to reject the null hypothesis (the sample was too small).
+No. It is possible that the consultant's work is associated with a lower or higher risk of complications.
+If this was the case, the sample may have been too small
+to reliable detect this effect.
 \index{data!medical consultant|)}
 \end{nexample}
 \end{examplewrap}
@@ -983,6 +1008,8 @@ Sometimes it's a good idea to deviate from the standard. We'll discuss when to c
 
 Statistical inference is the practice of making decisions and conclusions from data in the context of uncertainty. Just as a confidence interval may occasionally fail to capture the true value of the parameter, a test of hypothesis may occasionally lead us to an incorrect conclusion. While a given data set may not always lead us to a correct conclusion, statistical inference gives us tools to control and evaluate how often these errors occur.
 
+
+\D{\newpage}
 
 %%
 \subsection{Calculating the p-value by simulation (special topic)}
@@ -1014,7 +1041,8 @@ However, this is not our p-value! Remember that we are conducting a two-sided te
 \label{MedConsNullSim}
 \end{figure}
 
-\newpage
+
+\D{\newpage}
 
 %%
 \subsection{Hypothesis testing: a five step process}
@@ -1073,7 +1101,7 @@ There are two competing hypotheses: the null and the alternative. In a hypothesi
 
 \begin{onebox}{Type~I and Type~II Errors}
 A \term{Type~I Error} is rejecting $H_0$ when $H_0$ is actually true. When we reject the null hypothesis, it is possible that we make a Type~I Error. \\[2mm]
-A \term{Type~II Error} is failing to reject $H_0$ when $H_A$ is actually true. When we dod not reject the null hypothesis, it is possible that we make a Type~II error.\end{onebox}
+A \term{Type~II Error} is failing to reject $H_0$ when $H_A$ is actually true. When we dod not reject the null hypothesis, it is possible that we make a Type~II Error.\end{onebox}
 
 
 
@@ -1109,6 +1137,8 @@ These examples provide an important lesson: if we reduce how often we make one t
 
 %Hypothesis testing is built around rejecting or failing to reject the null hypothesis. That is, we do not reject $H_0$ unless the data provide strong evidence against it. But what precisely does \emph{strong evidence} mean? As a general rule of thumb, for those cases where the null hypothesis is actually true, we do not want to incorrectly reject $H_0$ more than 5\% of the time. This corresponds to our default significance level of $\alpha = 0.05$, which we use as a comparison with the p-value. In the next section, we discuss the appropriateness of different significance levels.
 
+
+\D{\newpage}
 
 %%
 \subsection{Choosing a significance level}
@@ -1150,8 +1180,9 @@ The Type~II Error rate $\beta$ and the magnitude of the error for a point estima
 
 \index{hypothesis testing|)}
 
-%%
-\newpage
+
+\D{\newpage}
+
 %%
 \subsection*{Section summary}
 
@@ -1184,6 +1215,8 @@ The Type~II Error rate $\beta$ and the magnitude of the error for a point estima
 \item When the  p-value $> \alpha$, we say the results are not statistically significant at the $\alpha$ level and we do not have evidence of a real difference or change.  The observed difference was within the realm of expected chance variation.  This leads us to not reject $H_0$ and does not give us evidence for $H_A$.
 \end{itemize}
 
+\D{\newpage}
+
 \item AP exam tip:  A full hypothesis test includes the following steps.\vspace{-1mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1196,20 +1229,20 @@ The Type~II Error rate $\beta$ and the magnitude of the error for a point estima
 \end{align*}
 \item \inferencestep{Conclude} Compare the p-value to the significance level to determine whether to reject $H_0$ or not reject $H_0$.  Draw a conclusion in the context of $H_A$.\end{enumerate}
 
-\item \term{Decision errors}.  In a hypothesis test, there are two types of decision errors that could be made.  These are called Type~I and Type~II errors. \vspace{-1mm}
+\item \termsub{Decision errors}{decision errors}.  In a hypothesis test, there are two types of decision errors that could be made.  These are called Type~I and Type~II Errors. \vspace{-1mm}
 \begin{itemize}
-\item A \term{Type~I error} is rejecting $H_0$, when $H_0$ is actually true.  We commit a Type~I error if we call a result significant when there is \emph{no} real difference or effect.  P(Type I~error) = $\alpha$.
-\item A \term{Type~II error} is not rejecting $H_0$, when $H_A$ is actually true.  We commit a Type~II error if we call a result not significant when there \emph{is} a real difference or effect.  P(Type II~error) = $\beta$.
-\item The probability of a Type~I error ($\alpha$) and a Type~II error ($\beta$) are \emph{inversely related}. Decreasing $\alpha$ makes $\beta$ larger; increasing $\alpha$ makes $\beta$ smaller.  
-\item Once a decision is made, only one of the two types of errors is possible.  If the test rejects $H_0$, for example, only a Type~I error is possible.
+\item A \term{Type~I Error} is rejecting $H_0$, when $H_0$ is actually true.  We commit a Type~I Error if we call a result significant when there is \emph{no} real difference or effect.  P(Type I~error) = $\alpha$.
+\item A \term{Type~II Error} is not rejecting $H_0$, when $H_A$ is actually true.  We commit a Type~II Error if we call a result not significant when there \emph{is} a real difference or effect.  P(Type II~error) = $\beta$.
+\item The probability of a Type~I Error ($\alpha$) and a Type~II Error ($\beta$) are \emph{inversely related}. Decreasing $\alpha$ makes $\beta$ larger; increasing $\alpha$ makes $\beta$ smaller.  
+\item Once a decision is made, only one of the two types of errors is possible.  If the test rejects $H_0$, for example, only a Type~I Error is possible.
 \end{itemize}
 \item The power of a test.
 \begin{itemize}\vspace{-1mm}
 \setlength{\itemsep}{0mm}
-\item When a particular $H_A$ is true, the probability of not making a Type~II error is called \term{power}.  Power $= 1 - \beta$.  
+\item When a particular $H_A$ is true, the probability of not making a Type~II Error is called \term{power}.  Power $= 1 - \beta$.  
 \item The power of a test is the probability of detecting an effect of a particular size when it is present.
-\item Increasing the significance level decreases the probability of a Type~II error and increases power.  $\alpha \uparrow, \beta \downarrow, \text{power} \uparrow$.  
-\item For a fixed $\alpha$, increasing the sample size $n$ makes it easier to detect an effect and therefore decreases the probability of a Type~II error and increases power.   $n \uparrow, \beta \downarrow, \text{power} \uparrow$.
+\item Increasing the significance level decreases the probability of a Type~II Error and increases power.  $\alpha \uparrow, \beta \downarrow, \text{power} \uparrow$.  
+\item For a fixed $\alpha$, increasing the sample size $n$ makes it easier to detect an effect and therefore decreases the probability of a Type~II Error and increases power.   $n \uparrow, \beta \downarrow, \text{power} \uparrow$.
 
 
 \end{itemize}
@@ -1234,7 +1267,7 @@ In~this section, we look at considerations around the misuse or misinterpretatio
 
 \item Distinguish between statistically significant and practically significant.  What role does sample size play here?
 
-\item Recognize that not all statistically significant results correspond to real differences, due to Type~I errors.  What role does the significance level $\alpha$ play here?
+\item Recognize that not all statistically significant results correspond to real differences, due to Type~I Errors.  What role does the significance level $\alpha$ play here?
 \end{enumerate}
 }
 
@@ -1255,6 +1288,8 @@ Verification of conditions for statistical tools is always necessary. Whenever c
 Finally, we caution that there may be no inference tools helpful when considering data that include unknown biases, such as convenience samples. For this reason, there are books, courses, and researchers devoted to the techniques of sampling and experimental design. See Sections~\ref{overviewOfDataCollectionPrinciples}-\ref{experimentsSection} for basic principles of data collection.
 
 
+\D{\newpage}
+
 %%
 \subsection{Statistical significance versus practical significance}
 
@@ -1267,7 +1302,7 @@ The role of a data scientist in conducting a study often includes planning the s
 \subsection{Statistical significance versus a real difference}
 
 When a result is statistically significant at the $\alpha=0.05$ level, we have evidence that the result is real.
-However, when there is no difference or effect, we can expect that 5\% of the time the test conclusion will lead to a Type~I error and incorrectly reject the null hypothesis.
+However, when there is no difference or effect, we can expect that 5\% of the time the test conclusion will lead to a Type~I Error and incorrectly reject the null hypothesis.
 Therefore we must beware of what is called p-hacking, in which researchers may test many, many hypotheses and then publish the ones that come out statistically significant.
 As we noted, we can expect 5\% of the results to be significant when the null hypothesis is true and there really is no difference or effect.\footnote{
 The problem is even greater than p-hacking.  In what has been called the ``reproducibility crisis", researchers have failed to reproduce a large proportion of results that were found significant and were published in scientific journals.
@@ -1280,7 +1315,9 @@ Depending upon the veracity of the hypotheses tested, the latter can be upwards 
 \oiRedirect{textbook-trouble-at-the-lab}{\url{https://www.economist.com/briefing/2013/10/18/trouble-at-the-lab}}
 }
 
-%%
+
+\D{\newpage}
+
 %%
 \subsection*{Section summary}
 \noindent The inference procedures in this book require \emph{two conditions} to be met.
@@ -1298,9 +1335,9 @@ Understanding what the term \term{statistically significant} does and does not m
 
 \newpage
 %______________________________________________
-\section{Chapter highlights}
+\reviewchapterheader{}
 
-\noindent Statistical inference is the practice of making decisions from data in the context of uncertainty.  In this chapter, we introduced two frameworks for inference:  \term{confidence intervals} and \term{hypothesis tests}.   
+\noindent Statistical inference is the practice of making decisions from data in the context of uncertainty.  In this chapter, we introduced two frameworks for inference:  \termsub{confidence intervals}{confidence interval} and \termsub{hypothesis tests}{hypothesis test}.   
 \begin{itemize}
 \item Confidence intervals are used for \textit{estimating} unknown population parameters by providing an \textit{interval of reasonable values} for the unknown parameter with a certain level of confidence.
 \item Hypothesis tests are used to assess how reasonable a \textit{particular} value is for an unknown population parameter by providing \textit{degrees of evidence} against that value.

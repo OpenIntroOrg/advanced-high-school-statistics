@@ -748,7 +748,7 @@ In this chapter we use standard deviation as a descriptive statistic to describe
 
 
 
-\Add{Knowing how many standard deviations a value is from the mean is often more useful than simply knowing how far a value is from the mean.  }
+Knowing how many standard deviations a value is from the mean is often more useful than simply knowing how far a value is from the mean.
 
 \begin{examplewrap}
 \begin{nexample}
@@ -760,7 +760,7 @@ The value \$200,000 is \$100,000 above the mean.  \$100,000 is 2 standard deviat
 \end{nexample}
 \end{examplewrap}
 
-\Add{The number of standard deviations a value is above or below the mean is known as the \term{Z-score}\index{Z@$Z$}.  A Z-score has no units, and therefore is sometimes also called standard units.}
+The number of standard deviations a value is above or below the mean is known as the \term{Z-score}\index{Z@$Z$}.  A Z-score has no units, and therefore is sometimes also called \emph{standard units}\index{standard units}.
 
 \begin{onebox}{The Z-score}
   The Z-score of an observation is the number of standard
@@ -842,12 +842,12 @@ and suppose we observe $x=5.19$. \\
     We know it must be above the mean since $Z$ is positive.}
 
 
-\Add{Because Z-scores have no units, they are useful for comparing distance to the mean for distributions that have different standard deviations or different units.}
+Because Z-scores have no units, they are useful for comparing distance to the mean for distributions that have different standard deviations or different units.
 
 \begin{examplewrap}
 \begin{nexample}
-{The average daily high temperature in June in LA is 77\degree F with a standard deviation of 5\degree F.  The average daily high temperature in June in Iceland is 13 \degree C with a standard deviation of 3\degree C.  Which would be considered more unusual:  an 83\degree F day in June in LA or a 19\degree C day in June in Iceland? }
-Both values are 6\degree above the mean.  However, they are not the same number of standard deviations above the mean.  83 is $(83-77)/5 = 1.2$ standard deviations above the mean, while 19 is $(19-13)/3 = 2$ standard deviations above the mean.  Therefore, a 19\degree C day in June in Iceland would be more unusual than an 83\degree F day in June in LA.
+{The average daily high temperature in June in LA is 77\degree F with a standard deviation of 5\degree{}F.  The average daily high temperature in June in Iceland is 13\degree{}C with a standard deviation of 3\degree{}C.  Which would be considered more unusual:  an 83\degree{}F day in June in LA or a 19\degree{}C day in June in Iceland? }
+Both values are 6\degree{} above the mean.  However, they are not the same number of standard deviations above the mean.  83 is $(83-77)/5 = 1.2$ standard deviations above the mean, while 19 is $(19-13)/3 = 2$ standard deviations above the mean.  Therefore, a 19\degree{}C day in June in Iceland would be more unusual than an 83\degree{}F day in June in LA.
 \end{nexample}
 \end{examplewrap}
 
@@ -875,6 +875,8 @@ $Q_1$\index{quantile 1@Q$_1$} represents the \term{first quartile}, which is the
 
 We calculate the variability in the data using the range of the middle 50\% of the data: $Q_3 - Q_1 = \text{13,375}$. This quantity is called the \termsub{interquartile range}{interquartile range (IQR)} (IQR, for short). It, like the standard deviation, is a measure of \indexthis{variability}{variability} or \term{spread} in data. The more variable the data, the larger the standard deviation and~IQR tend to be.
 
+\D{\newpage}
+
 \begin{onebox}{Interquartile range (IQR)}
 The IQR\index{interquartile range (IQR)} is the length of the box in a box plot. It is computed as
 \begin{eqnarray*}
@@ -888,6 +890,8 @@ When in the context of a box plot, define an \term{outlier} as an \mbox{observat
 To build a box plot, draw an axis (vertical or horizontal) and draw a scale. Draw a dark line denoting $Q_2$, the median. Next, draw a line at $Q_1$ and at $Q_3$. Connect the $Q_1$ and $Q_3$ lines to form a rectangle. The width of the rectangle corresponds to the IQR and the middle 50\% of the data is in this interval.
 
 Extending out from the rectangle, the \term{whiskers} attempt to capture all of the data remaining outside of the box, except outliers. In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$ and are outliers, so it extends only to the last point below this limit.\footnote{You might wonder, isn't the choice of $1.5 \times IQR$ for defining an outlier arbitrary? It is! In practical data analyses, we tend to avoid a strict definition since what is an unusual observation is highly dependent on the context of the data.} The lower whisker stops at the lowest value, 33, since there are no additional data to reach. Outliers are each marked with a dot or asterisk. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{Compare the box plot to the graphs previously discussed: stem-and-leaf plot, dot plot, frequency and relative frequency histogram. What can we learn more easily from a box plot? What can we learn more easily from the other graphs?}
@@ -907,8 +911,6 @@ True or false: there is more data between the median and $Q_3$ than between $Q_1
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{False. Since $Q_1$ is the 25th percentile and the median is the 50th percentile, 25\% of the data fall between $Q_1$ and the median. Similarly, 25\% of the data fall between $Q_2$ and the median. The distance between the median and $Q_3$ is larger because that 25\% of the data is more spread out.}
-
-\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}
@@ -951,6 +953,9 @@ There are no numbers less than -41, so there are no outliers on the low end. The
 
 %%
 
+
+\D{\newpage}
+
 \subsection{Calculator/Desmos: summarizing 1-variable statistics}
 \label{summarizedata}
 
@@ -958,8 +963,8 @@ One can use a handheld calculator or online software such as Desmos to calculate
 
 \begin{figure}[h]
    \centering
-     \oiRedirect{textbook-desmos-1varstats}{ \includegraphics[width=0.7\textwidth]{ch_summarizing_data/figures/email50Desmos/email50Desmos}}
-\caption{Use \oiRedirect{textbook-desmos-1varstats}{this activity} to graph and find summary statistics for a single variable in Desmos, as shown in the figure.}
+     \oiRedirect{textbook-desmos-1varstats}{ \includegraphics[width=0.85\textwidth]{ch_summarizing_data/figures/email50Desmos/email50Desmos}}
+\caption{Use \oiRedirect{textbook-desmos-1varstats}{this calculator} (\small{openintro.org/ahss/desmos}) to graph and find summary statistics for a single variable in Desmos, as shown in the figure.}
    \label{desmos1VarStats}
 \end{figure}
 
@@ -1046,7 +1051,11 @@ $\calctextmath{\sigma x}$ & Population standard deviation &&
 \end{onebox}
 
 \begin{examplewrap}
-\begin{nexample}{Enter the following 10 data points into a calculator or into this \oiRedirect{textbook-desmos-1varstatsdiscrete}{Desmos calculator}: {5, 8, 1, 19, 3, 1, 11, 18, 20, 5}. Find the summary statistics and make a box plot of the data.}
+\begin{nexample}{Enter the following 10 data points into a calculator or into this \oiRedirect{textbook-desmos-1varstatsdiscrete}{Desmos calculator} \mbox{(\small{openintro.org/ahss/desmos}):}
+\begin{center}
+{5, 8, 1, 19, 3, 1, 11, 18, 20, 5}
+\end{center}
+Find the summary statistics and make a box plot of the data.}
 The summary statistics should be $\calctextmath{\bar{x}} = 9.1$, $\calctextmath{Sx} = 7.475$, $\calctextmath{Q1} = 3$, etc. The box plot should be as follows.
 \begin{center}
 \includegraphics[width=0.48\textwidth]{ch_summarizing_data/figures/TI83_box_plot_A/TI83_box_plot_A} 
@@ -1054,6 +1063,7 @@ The summary statistics should be $\calctextmath{\bar{x}} = 9.1$, $\calctextmath{
 \end{center}
 \end{nexample}
 \end{examplewrap}
+
 
 \begin{onebox}{TI-83/84: What to do if you cannot find {L1} or another list}
 Restore lists \calctext{L1}-\calctext{L6} using the following steps:
@@ -1064,6 +1074,7 @@ Restore lists \calctext{L1}-\calctext{L6} using the following steps:
 \item Hit \calcbutton{ENTER}.
 \end{enumerate}\end{onebox}
 
+\newpage
 \begin{onebox}{\videohref{casio_1_var_stats_and_box_plot} Casio fx-9750GII: Deleting a data list}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1150,7 +1161,6 @@ Since there are no large gaps between observations around the three quartiles, a
 The distribution of vehicle prices tends to be right skewed, with a few luxury and sports cars lingering out into the right tail. If you were searching for a new car and cared about price, should you be more interested in the mean or median price of vehicles sold, assuming you are in the market for a regular car?\footnotemark\end{nexercise}
 \end{exercisewrap}
 \footnotetext{Buyers of a ``regular car'' should be concerned about the median price. High-end car sales can drastically inflate the mean price while the median will be more robust to the influence of those sales.}
-
 
 %%
 \subsection{Linear transformations of data}

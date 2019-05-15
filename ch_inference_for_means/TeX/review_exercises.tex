@@ -1,7 +1,4 @@
 \reviewexercisesheader{}
-\setcounter{secnumdepth}{0}
-\addcontentsline{toc}{section}{Chapter exercises}
-\setcounter{secnumdepth}{2}
 
 %33
 
@@ -104,6 +101,8 @@ from the original sample.
 \end{parts}
 }{}
 
+\D{\newpage}
+
 % 37
 
 \eoce{\qt{Hen eggs\label{hen_eggs}} The distribution of the number of eggs laid 
@@ -154,145 +153,6 @@ in the park over 2009-2019.
 
 % 39
 
-\eoce{\qt{Experiment resizing\label{tech_exp_resizing}}
-At a startup company running a new weather app, an engineering
-team generally runs experiments where a random sample of 1\%
-of the app's visitors in the control group and another
-1\% were in the treatment group to test each new feature.
-The team's core goal is to increase a metric
-called \emph{daily visitors},
-which is essentially the number of visitors to the app
-each day.
-They track this metric in each experiment arm and
-as their core experiment metric.
-In their most recent experiment, the team tested
-including a new animation when the app started,
-and the number of daily visitors in this experiment
-stabilized at +1.2\% with a 95\% confidence interval
-of (-0.2\%, +2.6\%).
-This means if this new app start animation was launched,
-the team thinks they might lose as many as 0.2\% of daily
-visitors or gain as many as 2.6\% more daily visitors.
-Suppose you are consulting as the team's data scientist,
-and after discussing with the team,
-you and they agree that they should run
-another experiment that is bigger.
-You also agree that this new experiment
-should be able to detect a gain in the daily visitors
-metric of 1.0\% or more with 80\% power.
-Now they turn to you and ask,
-``How big of an experiment do we need to run
-to ensure we can detect this effect?''
-\begin{parts}
-\item\label{tech_exp_resizing_target_se}
-    How small must the standard error be if
-    the team is to be able to detect an effect
-    of 1.0\% with 80\% power and a significance
-    level of $\alpha = 0.05$?
-    You may safely assume the percent change in
-    daily visitors metric follows a normal distribution.
-\item\label{tech_exp_resizing_original_se}
-    Consider the first experiment, where
-    the point estimate was +1.2\% and the
-    95\% confidence interval was (-0.2\%, +2.6\%).
-    If that point estimate followed a normal
-    distribution, what was the standard error
-    of the estimate?
-\item\label{tech_exp_resizing_ratio}
-    The ratio of the standard error from
-    part~(\ref{tech_exp_resizing_target_se})
-    vs the standard error from
-    part~(\ref{tech_exp_resizing_original_se})
-    should be~2.03.
-    How much bigger of an experiment is needed
-    to shrink a standard error by a factor of~2.03?
-\item
-    Using your answer from
-    part~(\ref{tech_exp_resizing_ratio})
-    and that the original experiment was
-    a 1\% vs 1\% experiment to recommend
-    an experiment size to the team.
-\end{parts}
-}{}
-
-% 40
-
-\eoce{\qt{Torque on a rusty bolt\label{torque_on_rusty_bolt}}
-Project Farm is a YouTube channel that routinely
-compares different products.
-In one episode, the channel evaluated different
-options for loosening rusty
-bolts.\footfullcite{youtube:torque_on_rusty_bolt}
-Eight options were evaluated,
-including a control group where no treatment was given
-(``none'' in the graph),
-to determine which was most effective.
-For all treatments, there were four bolts tested,
-except for a treatment of heat with a blow torch,
-where only two data points were collected.
-The results are shown in the figure below:
-\begin{center}
-\includegraphics[width = 0.8\textwidth]{ch_inference_for_means/figures/eoce/torque_on_rusty_bolt/torque_on_rusty_bolt_dot_plot}
-\end{center}
-\begin{parts}
-\item\label{torque_on_rusty_bolt_appropriate}
-    Do you think it is reasonable to apply ANOVA in this case?
-\item
-    Regardless of your answer in
-    part~(\ref{torque_on_rusty_bolt_appropriate}),
-    describe hypotheses for ANOVA in this context,
-    and use the table below to carry out the test.
-    Give your conclusion in the context of the data.
-    \begin{center}
-    \begin{tabular}{lrrrrr}
-    \hline
-    & Df & Sum Sq & Mean Sq & F value & Pr($>$F) \\ 
-    \hline
-    treatment & 7 & 3603.43 & 514.78 & 4.03 & 0.0056 \\ 
-    Residuals & 22 & 2812.80 & 127.85 &  &  \\ 
-    \hline
-    \end{tabular}
-    \end{center}
-\item\label{torque_on_rusty_bolt_pvalues}
-    The table below are p-values for pairwise $t$-tests
-    comparing each of the different groups.
-    These p-values have not been corrected for multiple
-    comparisons.
-    Which pair of groups appears most likely to represent
-    a difference?
-    \begin{center}\footnotesize
-    \begin{tabular}{l ccc ccc c}
-    \hline
-    & AeroKroil & Heat & Liquid Wrench & none &
-        PB Blaster & Royal Purple & WD-40 \\ 
-    \hline
-    Acetone/ATF & 0.2026 & 0.0308 & 0.0476 & 0.1542 &
-        0.3294 & 0.5222 & 0.3744 \\ 
-    AeroKroil &  & 0.0027 & 0.0025 & 0.8723 & 0.7551 &
-        0.5143 & 0.6883 \\ 
-    Heat &  &  & 0.5580 & 0.0020 & 0.0050 & 0.0096 &
-        0.0059 \\ 
-    Liquid Wrench &  &  &  & 0.0017 & 0.0053 &
-        0.0117 & 0.0065 \\ 
-    none &  &  &  &  & 0.6371 & 0.4180 & 0.5751 \\ 
-    PB Blaster &  &  &  &  &  & 0.7318 & 0.9286 \\ 
-    Royal Purple &  &  &  &  &  &  & 0.8000 \\
-    \hline
-    \end{tabular}
-    \end{center}
-\item
-    There are 28 p-values shown in the table in
-    part~(\ref{torque_on_rusty_bolt_pvalues}).
-    Determine if any of them are statistically
-    significant after correcting for multiple
-    comparisons.
-    If so, which one(s)?
-    Explain your answer.
-\end{parts}
-}{}
-
-% 41
-
 \eoce{\qt{Exclusive relationships\label{exclusive_relationships}} A survey conducted 
 on a reasonably random sample of 203 undergraduates asked, among many other 
 questions, about the number of exclusive relationships these students have been 
@@ -307,7 +167,9 @@ Check any conditions required for inference, and note any assumptions you must
 make as you proceed with your calculations and conclusions.
 }{}
 
-% 42
+\D{\newpage}
+
+% 40
 
 \eoce{\qt{Age at first marriage, Part I\label{age_at_first_marriage_intro}} 
 The National Survey of Family Growth conducted by the Centers for Disease 
@@ -325,7 +187,7 @@ interval, and interpret this interval in context. Discuss any relevant
 assumptions.
 }{}
 
-% 43
+% 41
 
 \eoce{\qt{Online communication\label{online_communication}} A study suggests that the 
 average college student spends 10 hours per week communicating with others 
@@ -340,7 +202,7 @@ H_A&: \bar{x} > 13.5~hours
 \end{align*}
 }{}
 
-% 44
+% 42
 
 \eoce{\qt{Age at first marriage, Part II\label{age_at_first_marriage_hyp_errors}} Exercise~\ref{age_at_first_marriage_intro} presents the results 
 of a 2006 - 2010 survey showing that the average age of women at first marriage 

@@ -19,7 +19,7 @@ samp = sample(a, size = 100)
 myPDF("cltSimSYM_samp.pdf", 3.2, 2, mar=c(3.3,2,0.5,1), mgp=c(2.1,0.5,0))
 hist(samp, col = COL[1], xlab = "Plot B", ylab = "", main = "", axes=FALSE,yaxs="i")
 axis(1)
-axis(2, at=c(0, 10, 20))
+axis(2, at=c(0,10,20,30))
 
 dev.off()
 
@@ -38,7 +38,7 @@ for(i in 1:100){
 myPDF("cltSimSYM_n5.pdf", 3.2, 2, mar=c(3.3,2,0.5,1), mgp=c(2.1,0.5,0))
 hist(sampling_5, col = COL[1], xlab = "Plot A", ylab = "", main = "",yaxs="i", axes=FALSE)
 axis(1)
-axis(2, at=c(0, 10, 20))
+axis(2, at=c(0, 10, 20,30))
 dev.off()
 
 ###
@@ -55,6 +55,6 @@ for(i in 1:100){
 
 myPDF("cltSimSYM_n25.pdf", 3.2, 2, mar=c(3.3,2,0.5,1), mgp=c(2.1,0.5,0))
 hist(sampling_25, col = COL[1], xlab = "Plot C", ylab = "", yaxs="i",main = "", axes = FALSE)
-axis(2, at=seq(0, 20, 10))
+axis(2, at=c(0, 10, 20,30))
 axis(1, at = 9:11, labels = 9:11)
 dev.off()

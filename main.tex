@@ -1,6 +1,7 @@
 \documentclass[10pt,openany]%,oneside]
 {book}
- 
+\newcommand{\versiondate}[0]{May 14th, 2019}
+
 \usepackage{
   amsmath, calc,
   caption, changepage,
@@ -17,31 +18,29 @@
   marginnote,
   mdframed,
   multicol, multirow,
-  setspace, soul, subfigure, 
+  setspace, soul,
   tabto,
   textcomp,
-url,
+  %tocloft,
   varioref, verbatim,
   wasysym, wrapfig
 }
+\usepackage{subfigure}
 \usepackage[explicit]{titlesec}
-\usepackage{remreset}
-\usepackage{layouts}
-
 %\usepackage[usenames,dvipsnames]{color}  
 %\newcommand{\href}[2]{#2} \newcommand{\url}[1]{#1} \newcommand{\urlstyle}[1]{}
-\include{extraTeX/style/colors}
+\include{extraTeX/style/colorsV1}
 
 % _____ Online Version _____ %
 \usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
-\newcommand{\versiondate}[0]{March 27th, 2019}
 \newcommand{\printlocation}[0]{}
 
 % _____ Print Version _____ %
-%\definecolor{oiB}{rgb}{0,0,0}\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
+%\definecolor{oiB}{rgb}{0,0,0}\definecolor{chaptertitlegray}{rgb}{0,0,0}\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
+
 
 % _____ COLOR PRINT Version _____ %
-%\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref} \renewcommand{\printlocation}[0]{\noindent Printed in China. \\}
+%\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref} %\renewcommand{\printlocation}[0]{\noindent Printed in China. \\}
 
 \usepackage[style=authortitle-ibid, maxnames=2,natbib=true,sortcites=true
 ,block=space,backend=bibtex]{biblatex}
@@ -49,7 +48,7 @@ url,
 
 \makeindex
 \include{extraTeX/style/style}
-%\include{extraTeX/style/tablet} % This is currently busted.
+%\include{extraTeX/style/tablet}
 \include{extraTeX/preamble/title}%_derivative}
 \date{}
 \renewcommand\contentsname{Table of Contents}
@@ -60,9 +59,8 @@ url,
 \begin{document}
 %\include{extraTeX/preamble/review_copy}
 \renewcommand{\thepage}{}
-%\maketitle\addtocounter{page}{4}
 \maketitle
-%\include{extraTeX/preamble/copyright_draft}%_derivative}
+\include{extraTeX/preamble/copyright}%_derivative}
 \renewcommand{\thepage}{\arabic{page}}
 \tableofcontents
 \include{extraTeX/preamble/preface}
@@ -81,9 +79,9 @@ url,
 \endgroup
 
 
+\begingroup
 \include{extraTeX/style/style_appendices}
 \appendix{}
-
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 \include{extraTeX/eoceSolutions/eoceSolutions}
 \include{extraTeX/data/data}
@@ -91,11 +89,19 @@ url,
 \include{extraTeX/appendix/TeX/zTable}
 \include{extraTeX/appendix/TeX/tTable}
 \include{extraTeX/appendix/TeX/chiSquareTable}
+\endgroup
+
 \include{extraTeX/index/index}
 \printindex
+
+\begingroup
+\appendix{}
+\setcounter{chapter}{3}
+\include{extraTeX/style/style_appendices}
 \include{extraTeX/calculatorIndex/calculatorIndex}
 \include{extraTex/formulas/formulas}
 \include{extraTeX/inferenceGuide/TeX/inferenceGuide}
+\endgroup
 
 
 \end{document}

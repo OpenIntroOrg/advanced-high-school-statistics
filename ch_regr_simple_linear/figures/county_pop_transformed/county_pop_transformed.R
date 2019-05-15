@@ -1,7 +1,7 @@
 library(openintro)
 data(COL)
 
-d <- county$pop2017
+d <- county$pop2010
 mean(d, na.rm = TRUE)
 median(d, na.rm = TRUE)
 
@@ -13,7 +13,7 @@ myPDF("county_pop_transformed_i.pdf",
 hist(d,
      breaks = 25,
      main = "",
-     xlab = "Population (m = millions)",
+     xlab = "Population in 2010 (m = millions)",
      ylab = "",
      axes = FALSE,
      col = COL[1],
@@ -29,7 +29,7 @@ myPDF("county_pop_transformed_log.pdf",
       3,
       mar = c(3.4, 3.7, 0.5, 0.5),
       mgp = c(2.2, 0.5, 0))
-expr <- expression(log[10]*"(Population)")
+expr <- expression(log[10]*"(Population in 2010)")
 hist(log(d, 10),
      main = "",
      breaks = 15,

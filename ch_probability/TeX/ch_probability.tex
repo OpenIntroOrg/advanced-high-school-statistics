@@ -105,7 +105,7 @@ Probability can be illustrated by rolling a die many times. Consider the event `
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.85\textwidth]{ch_probability/figures/dieProp/dieProp}
+\includegraphics[width=0.8\textwidth]{ch_probability/figures/dieProp/dieProp}
 \caption{The fraction of die rolls that are 1 at each stage in a simulation. The relative frequency tends to get closer to the probability $1/6 \approx 0.167$ as the number of rolls increases.}
 \label{dieProp}
 \end{figure}
@@ -193,6 +193,8 @@ Statisticians rarely work with individual outcomes and instead consider \indexth
 \label{disjointSets}
 \end{figure}
 
+\D{\newpage}
+
 The Addition Rule applies to both disjoint outcomes and disjoint events. The probability that one of the disjoint events $A$ or $B$ occurs is the sum of the separate probabilities:
 \begin{eqnarray*}
 P(A\text{ or }B) = P(A) + P(B) = 1/3 + 1/3 = 2/3
@@ -228,7 +230,7 @@ In Guided Practice~\ref{exerExaminingDisjointSetsABD}, you confirmed $B$ and $D$
 
 Let's consider calculations for two events that are not disjoint in the context of a \indexthis{regular deck of 52 cards}{deck of cards}, represented in Figure~\ref{deckOfCards}. If you are unfamiliar with the cards in a regular deck, please see the footnote.\footnote{The 52 cards are split into four \term{suits}: $\clubsuit$ (club), {\color{redcards}$\diamondsuit$} (diamond), {\color{redcards}$\heartsuit$} (heart), $\spadesuit$ (spade). Each suit has its 13 cards labeled: \resp{2}, \resp{3}, ..., \resp{10}, \resp{J} (jack), \resp{Q} (queen), \resp{K} (king), and \resp{A} (ace). Thus, each card is a unique combination of a suit and a label, e.g. {\color{redcards}\resp{4$\heartsuit$}} and \resp{J$\clubsuit$}. The 12 cards represented by the jacks, queens, and kings are called \termsub{\resp{face cards}}{face card}. The cards that are {\color{redcards}$\diamondsuit$} or {\color{redcards}$\heartsuit$} are typically colored {\color{redcards}red} while the other two suits are typically colored black.}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \begin{tabular}{lll lll lll lll l}
 \resp{2$\clubsuit$} & \resp{3$\clubsuit$} & \resp{4$\clubsuit$} & \resp{5$\clubsuit$} & \resp{6$\clubsuit$} & \resp{7$\clubsuit$} & \resp{8$\clubsuit$} & \resp{9$\clubsuit$} & \resp{10$\clubsuit$} & \resp{J$\clubsuit$} & \resp{Q$\clubsuit$} & \resp{K$\clubsuit$} & \resp{A$\clubsuit$}  \\
@@ -355,6 +357,8 @@ Let $D=\{$\resp{2}, \resp{3}$\}$ represent the event that the outcome of a die r
 \end{exercisewrap}
 \footnotetext{(a)~The outcomes are disjoint and each has probability $1/6$, so the total probability is $4/6=2/3$. (b)~We can also see that $P(D)=\frac{1}{6} + \frac{1}{6} = 1/3$. Since $D$ and $D^c$ are disjoint, $P(D) + P(D^c) = 1$.}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 Events $A=\{$\resp{1}, \resp{2}$\}$ and $B=\{$\resp{4}, \resp{6}$\}$ are shown in Figure~\ref{disjointSets} on page~\pageref{disjointSets}. (a) Write out what $A^c$ and $B^c$ represent. (b)~Compute $P(A^c)$ and $P(B^c)$. (c)~Compute $P(A)+P(A^c)$ and $P(B)+P(B^c)$.\footnotemark\end{nexercise}
@@ -390,7 +394,7 @@ Example~\ref{probOf2Ones} provides a basic example of two independent processes:
 
 \begin{figure}[hht]
 \centering
-\includegraphics[width=0.7\textwidth]{ch_probability/figures/indepForRollingTwo1s/indepForRollingTwo1s}
+\Figure{0.55}{indepForRollingTwo1s}
 \caption{$1/6^{th}$ of the time, the first roll is a \resp{1}. Then $1/6^{th}$ of \emph{those} times, the second roll will also be a \resp{1}.}
 \label{indepForRollingTwo1s}
 \end{figure}
@@ -430,7 +434,7 @@ About 9\% of people are left-handed. Suppose 2 people are selected at random fro
 
 \begin{exercisewrap}
 \begin{nexercise} \label{ex5Handedness}
-Suppose 5 people are selected at random.\vspace{-1.5mm}
+Suppose 5 people are selected at random.\footnotemark{}\vspace{-1.5mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item[(a)] What is the probability that all are right-handed?
@@ -455,6 +459,8 @@ P(\text{not all \resp{RH}})
 	= 1 - P(\text{all \resp{RH}})
 	= 1 - 0.624 = 0.376
 \end{align*}} 
+
+\D{\newpage}
 
 Suppose the variables \var{handedness} and \var{gender} are independent, i.e. knowing someone's \var{gender} provides no useful information about their \var{handedness} and vice-versa. Then we can compute whether a randomly selected person is right-handed and female\footnote{The actual proportion of the U.S. population that is \resp{female} is about 50\%, and so we use 0.5 for the probability of sampling a woman. However, this probability does differ in other countries.} using the Multiplication Rule:
 \begin{eqnarray*}
@@ -490,6 +496,9 @@ Because the equation holds, the event that the card is a heart and the event tha
 \end{nexample}
 \end{examplewrap}
 
+
+\D{\newpage}
+
 %%
 \subsection*{Section summary}
 
@@ -507,9 +516,9 @@ Because the equation holds, the event that the card is a heart and the event tha
 
 \item In the \emph{special case} where $A$ and $B$ are \term{disjoint} events:  $P(A \text{ or } B) = P(A) + P(B)$.  
 
-\item When $A$ and $B$ are not disjoint, adding $P(A)$ and $P(B)$ will overestimate $P(A \text{ or } B)$ because the overlap of $A$ and $B$ will be added twice.  Therefore, when $A$ and $B$ are not disjoint, use the \term{General Additional Rule}:  \\$P(A \text{ or  B}) = P(A) + P(B) - P(A \text{ and } B)$.\footnote{Often written: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.} 
+\item When $A$ and $B$ are not disjoint, adding $P(A)$ and $P(B)$ will overestimate $P(A \text{ or } B)$ because the overlap of $A$ and $B$ will be added twice.  Therefore, when $A$ and $B$ are not disjoint, use the \term{General Addition Rule}:  \\$P(A \text{ or  B}) = P(A) + P(B) - P(A \text{ and } B)$.\footnote{Often written: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.} 
 
-\item To find the probability that \emph{at least one} of several events occurs, use a special case of the rule of \term{complements}:  $P(\text{at least one}) = 1- P(\text{none})$.  
+\item To find the probability that \emph{at least one} of several events occurs, use a special case of the rule of \termsub{complements}{rule of complements}\index{complement}:  $P(\text{at least one}) = 1- P(\text{none})$.  
 
 \item When only considering two events, the probability that one \emph{or} the other happens is equal to the probability that \emph{at least one} of the two events happens.  When dealing with more than two events, the General Addition Rule becomes very complicated.  Instead, to find the probability that $A$ or $B$ or $C$ occurs, find the probability that none of them occur and subtract that value from 1.  
 
@@ -569,8 +578,9 @@ In this section we will use conditional probabilities to answer the following qu
 }
 
 
-%%
+\D{\newpage}
 
+%%
 \subsection{Exploring probabilities with a contingency table}
 
 \index{data!photo\_classify|(}
@@ -642,7 +652,7 @@ Figure~\ref{contTableOfFashionPhotos} summarizes the results.
 
 \begin{figure}[ht]
   \centering
-  \Figure{0.65}{photoClassifyVenn}
+  \Figure{0.6}{photoClassifyVenn}
   \caption{A Venn diagram using boxes for the
       \data{photo\us{}classify} data set.}
   \label{photoClassifyVenn}
@@ -683,6 +693,10 @@ P(\text{\var{truth} is \resp{fashion}
 \end{nexample}
 \end{examplewrap}
 
+
+\D{\newpage}
+
+%
 \subsection{Marginal and joint probabilities}
 \label{marginalAndJointProbabilities}
 
@@ -794,6 +808,8 @@ sum to~1.\footnotemark
 \footnotetext{Each of the four outcome combination are disjoint,
    all probabilities are indeed non-negative, and the sum of
    the probabilities is $0.1081 + 0.0121 + 0.0615 + 0.8183 = 1.00$.}
+
+\D{\newpage}
 
 We can compute marginal probabilities using joint probabilities
 in simple cases.
@@ -995,6 +1011,8 @@ in~(b) is~1.\footnotemark
 \index{data!photo\_classify|)}
 
 
+\D{\newpage}
+
 %%
 \subsection{Smallpox in Boston, 1721}
 
@@ -1004,7 +1022,7 @@ The \data{smallpox} data set provides a sample of 6,224 individuals from the yea
 
 Each case represents one person with two variables: \var{inoculated} and \var{result}. The variable \var{inoculated} takes two levels: \resp{yes} or \resp{no}, indicating whether the person was inoculated or not. The variable \var{result} has outcomes \resp{lived} or \resp{died}. These data are summarized in Tables~\ref{smallpoxContingencyTable} and~\ref{smallpoxProbabilityTable}.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \begin{tabular}{ll rr r}
 & & \multicolumn{2}{c}{inoculated} & \\
@@ -1020,7 +1038,7 @@ Each case represents one person with two variables: \var{inoculated} and \var{re
 \label{smallpoxContingencyTable}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \begin{tabular}{ll rr r}
 & & \multicolumn{2}{c}{inoculated} & \\
@@ -1055,6 +1073,9 @@ The people of Boston self-selected whether or not to be inoculated. (a) Is this 
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Brief answers: (a)~Observational. (b)~No, we cannot infer causation from this observational study. (c)~Accessibility to the latest and best medical care, so income may play a role. There are other valid answers for part~(c).}
+
+
+\D{\newpage}
 
 %%
 \subsection{General multiplication rule}
@@ -1093,14 +1114,14 @@ This is equivalent to the General Multiplication Rule. We can confirm this proba
 Use $P($\resp{inoculated}$) = 0.0392$ and $P($\resp{lived} $|$ \resp{inoculated}$) = 0.9754$ to determine the probability that a person was both inoculated and lived.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The answer is 0.0382, which can be verified using Figure~\ref{smallpoxProbabilityTable}.}
+\footnotetext{The answer is 0.0382, which can be verified using Figure~\ref{smallpoxProbabilityTable}.}\D{\vspace{-2mm}}
 
 \begin{exercisewrap}
 \begin{nexercise}
-If 97.54\% of the people who were inoculated lived, what proportion of inoculated people must have died?\footnotemark
+If 97.54\% of the inoculated people lived, what proportion of inoculated people must have~died?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{There were only two possible outcomes: \resp{lived} or \resp{died}. This means that 100\% - 97.54\% = 2.46\% of the people who were inoculated died.}
+\footnotetext{There were only two possible outcomes: \resp{lived} or \resp{died}. This means that 100\% - 97.54\% = 2.46\% of the people who were inoculated died.}\D{\vspace{-2mm}}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -1109,6 +1130,8 @@ Based on the probabilities computed above, does it appear that inoculation is ef
 \end{exercisewrap}
 \footnotetext{The samples are large relative to the difference in death rates for the ``inoculated'' and ``not inoculated'' groups, so it seems there is an association between \var{inoculated} and \var{outcome}. However, as noted in the solution to Guided Practice~\ref{SmallpoxInoculationObsExpExercise}, this is an observational study and we cannot be sure if there is a causal connection. (Further research has shown that inoculation is effective at reducing death rates.)}
 
+
+\D{\newpage}
 
 %%
 \subsection{Sampling without replacement}
@@ -1156,6 +1179,8 @@ You have a slightly higher chance of not being picked compared to when she picke
 \end{nexample}
 \end{examplewrap}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 Under the setup of Example~\ref{3wRep}, what is the probability of being picked to answer all three questions?\footnotemark
@@ -1185,6 +1210,9 @@ Had we repeated Guided Practice~\ref{raffleOf30TicketsWWOReplacement} with 300 t
 When the sample size is only a small fraction of the population (under 10\%), observations can be considered independent even when sampling without replacement.
 \end{onebox}
 \label{samplingworeplacement}
+
+
+\D{\newpage}
 
 %%
 \subsection{Independence considerations in conditional probability}
@@ -1234,6 +1262,7 @@ P(A\text{ and }B) &= P(A)\times P(B)
 \end{align*}
 If the equation that is checked holds true (the left and right sides are equal), $A$ and $B$ are independent. If the equation does not hold, then $A$ and $B$ are dependent.\end{onebox}
 
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{Are teenager college attendance and parent college degrees independent or dependent? Figure~\ref{contTableOfParStCollegeCopy} may be helpful.}\label{teenParentCollegeIndependentExample}
@@ -1289,6 +1318,8 @@ The General Addition Rule states that $P(A\text{ or }B) \text{ equals }P(A) + P(
 P(A\text{ or }B) &= P(A) + P(B)
 \end{align*}
 
+\D{\newpage}
+
 \begin{onebox}{Checking whether two events are mutually exclusive (disjoint)}
 If $A$ and $B$ are mutually exclusive events, then they cannot occur at the same time. If asked to determine if events $A$ and $B$ are mutually exclusive, verify one of the following equations holds (there is no need to check both equations):
 \begin{align*}
@@ -1328,6 +1359,8 @@ If two events are independent, then if one occurs, it is still possible for the 
 \end{onebox}
 
 
+\D{\newpage}
+
 %%
 \subsection{Tree diagrams}
 
@@ -1340,12 +1373,15 @@ The \data{smallpox} data fit this description. We see the population as split by
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.93\textwidth]{ch_probability/figures/smallpoxTreeDiagram/smallpoxTreeDiagram}
+\Figure{0.85}{smallpoxTreeDiagram}
 \caption{A tree diagram of the \data{smallpox} data set.}
 \label{smallpoxTreeDiagram}
 \end{figure}
 
-Tree diagrams are annotated with marginal and conditional probabilities, as shown in Figure~\ref{smallpoxTreeDiagram}. This tree diagram splits the smallpox data by \var{inoculation} into the \resp{yes} and \resp{no} groups with respective marginal probabilities 0.0392 and 0.9608. The secondary branches are conditioned on the first, so we assign conditional probabilities to these branches. For example, the top branch in Figure~\ref{smallpoxTreeDiagram} is the probability that \resp{lived} conditioned on the information that \resp{inoculated}. We may (and usually do) construct joint probabilities at the end of each branch in our tree by multiplying the numbers we come across as we move from left to right. These joint probabilities are computed using the General Multiplication Rule:
+Tree diagrams are annotated with marginal and conditional probabilities, as shown in Figure~\ref{smallpoxTreeDiagram}. This tree diagram splits the smallpox data by \var{inoculation} into the \resp{yes} and \resp{no} groups with respective marginal probabilities 0.0392 and 0.9608. The secondary branches are conditioned on the first, so we assign conditional probabilities to these branches.
+For example, the top branch in Figure~\ref{smallpoxTreeDiagram} is the probability that \resp{lived} conditioned on the information that \resp{inoculated}.
+
+We may (and usually do) construct joint probabilities at the end of each branch in our tree by multiplying the numbers we come across as we move from left to right. These joint probabilities are computed using the General Multiplication Rule:
 \begin{align*}
 P(\text{\var{inoculated} and \resp{lived}}) &= P(\text{\var{inoculated}})\times P(\text{\resp{lived}}\ |\ \text{\var{inoculated}}) \\
 	&= 0.0392\times 0.9754 \\
@@ -1357,6 +1393,8 @@ P(\text{\var{inoculated} and \resp{lived}}) &= P(\text{\var{inoculated}})\times 
 \end{nexample}
 \end{examplewrap}
 
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{What is the probability that a randomly selected person lived?}There are two ways that a person could have lived:  be inoculated \emph{and} live OR not be inoculated \emph{and} live. To find this probability, we sum the two disjoint probabilities:
@@ -1372,13 +1410,13 @@ After an introductory statistics course, 78\% of students can successfully const
 \footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{\begin{minipage}[t]{0.47\linewidth}
+\footnotetext{\begin{minipage}[t]{0.4\linewidth}
 (a) The tree diagram is shown to the right.
 (b)~$P($not pass $|$ able to construct tree diagram$) = 0.03$.
 (c)~$P($able to construct tree diagrams and passed$) = P($able to construct tree diagrams$) \times P($passed $|$ able to construct tree diagrams$) = 0.78 \times 0.97 = 0.7566$.
-(d)~ $P($passed$) = 0.7566 + 0.1254 = 0.8820$. \vspace{15mm} \\\
+(d)~ $P($passed$) = 0.7566 + 0.1254 = 0.8820$. \vspace{10mm}\\\ 
 \end{minipage}
-\begin{minipage}[c]{0.5\linewidth}
+\begin{minipage}[c]{0.55\linewidth}
 \includegraphics[width=\textwidth]{ch_probability/figures/treeDiagramAndPass/treeDiagramAndPass} \vspace{-25mm}
 \end{minipage}}
 
@@ -1399,6 +1437,7 @@ P(\text{statement about variable 2}\ |\ \text{statement about variable 1})
 \end{align*}
 For example, instead of wanting to know $P($lived $|$ inoculated$)$, we might want to know $P($inoculated $|$ lived$)$. This is more challenging because it cannot be read directly from the tree diagram. In these instances we use \term{Bayes' Theorem}. Let's begin by looking at a new example.
 
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{In Canada, about 0.35\% of women over 40 will develop breast cancer in any given year. A common screening test for cancer is the mammogram, but this test is not perfect. In about 11\% of patients with breast cancer, the test gives a \term{false negative}: it indicates a woman does not have breast cancer when she does have breast cancer. Similarly, the test gives a \term{false positive} in 7\% of patients who do not have breast cancer: it indicates these patients have breast cancer when they actually do not.\footnotemark If we tested a random woman over 40 for breast cancer using a mammogram and the test came back positive -- that is, the test suggested the patient has cancer -- what is the probability that the patient actually has breast cancer?}\label{probabilityOfBreastCancerGivenPositiveTestExample}
@@ -1434,6 +1473,8 @@ That is, even if a patient has a positive mammogram screening, there is still on
 \end{figure}
 
 Example~\ref{probabilityOfBreastCancerGivenPositiveTestExample} highlights why doctors often run more tests regardless of a first positive test result. When a medical condition is rare, a single positive test isn't generally definitive.
+
+\D{\newpage}
 
 Consider again the last equation of Example~\ref{probabilityOfBreastCancerGivenPositiveTestExample}.
 Using the tree diagram, we can see that the numerator (the top of the fraction) is equal to the following product:
@@ -1475,6 +1516,8 @@ where $A_2$, $A_3$, ..., and $A_k$ represent all other possible outcomes of the 
 \index{Bayes' Theorem|textbf}
 \end{onebox}
 
+\D{\newpage}
+
 Bayes' Theorem is just a generalization of what we have done using tree diagrams. The formula need not be memorized, since it can always be derived using a tree diagram:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
@@ -1506,6 +1549,9 @@ The last several exercises offered a way to update our belief about whether ther
 \index{conditional probability|)}
 \index{probability|)}
 
+
+\D{\newpage}
+
 %%
 \subsection*{Section summary}
 
@@ -1524,7 +1570,7 @@ $P(A \text{ and } B) = P(A | B)\times P(B)$.
 
 \item If $A$ and $B$ are \term{mutually exclusive}, they must be \term{dependent}, since the occurrence of one of them changes the probability that the other occurs to 0.
 
-\item When sampling \term{without replacement}, such as drawing cards from a deck, make sure to use \term{conditional probabilities} when solving \emph{and} problems.  
+\item When sampling \term{without replacement}, such as drawing cards from a deck, make sure to use \termsub{conditional probabilities}{conditional probability} when solving \emph{and} problems.  
 
 
 \item Sometimes, the conditional probability $P(B|A)$ may be known, but we are interested in the ``inverted" probability $P(A|B)$.  \term{Bayes' Theorem} helps us solve such conditional probabilities that cannot be easily answered.  However, rather than memorize Bayes' Theorem, one can generally draw a tree diagram and apply the conditional probability rule $P(A | B)=\frac{P(A\text{ and }B)}{P(B)}$.  The resulting answer often has the form $\frac{w\times x\text{ }  +\text{ } y\times z}{w\times x}$, where $w, x, y, z$ are numbers from a tree diagram.
@@ -1747,6 +1793,8 @@ Substituting $n$ choose $k$ for the number of scenarios
 and $p^k(1-p)^{n-k}$ for the single scenario probability
 yields the \term{binomial formula}.
 
+\D{\newpage}
+
 \begin{onebox}{Binomial formula}
 Suppose the probability of a single trial being a success is $p$. Then the probability of observing exactly $k$ successes in $n$ independent trials is given by\vspace{-1mm}
 \begin{eqnarray*}
@@ -1894,9 +1942,11 @@ Note that we could have answered this question without the binomial formula, usi
 \end{nexample}
 \end{examplewrap}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
-What is the probability that at least 3 of 4 people in a random sample will have blood type O+ if 30\% of the population has blood type O+?\footnotemark
+What is the probability that at least 3 of 4 people in a random sample will have blood type O+ if 35\% of the population has blood type O+?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{$P(\text{at least 3 of 4 have blood type O+})
@@ -1961,6 +2011,9 @@ in $n$ trials?\footnotemark{}
   {n \choose 1} = n,
     \qquad {n \choose n-1} = n
   \end{align*}}
+
+
+\D{\newpage}
 
 %%
 \subsection{Calculator: binomial probabilities}
@@ -2056,6 +2109,9 @@ Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnotem
 \begin{nexercise}There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{with replacement}. Find the probability you get \emph{at most} 3 blue marbles (i.e. less than or equal to 3 blue marbles).\footnotemark\end{nexercise}
 \end{exercisewrap}
 \footnotetext{Similarly, set \calctext{trials} = 5, \calctext{p} = 4/13 and \calctext{x value} = 3.  The cumulative probability is 0.9662.}
+
+
+\D{\newpage}
 
 %%
 \subsection*{Section summary}
@@ -2157,6 +2213,8 @@ In trial 1, there are two \emph{1}'s, so we record that as a success; in this tr
 \end{nexample}
 \end{examplewrap}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}Finish the simulation above and report the estimate for the probability that Mika will get a prize if her mother buys 6 boxes of cereal where each one has a 20\% chance of containing a prize.\footnotemark
 \end{nexercise}
@@ -2185,6 +2243,8 @@ Let's begin again at row 1. We can read across or down, depending upon what is m
 \end{exercisewrap}
 \footnotetext{For the 20 trials, the number of digits we see until we encounter a \emph{0} or \emph{1} is: 3,7,1,4,9,  4,1,2,4,5,  5,1,1,1,3,   8,5,2,2,6. Now we take the average of these 20 numbers to get 74/20 = 3.7.}
 
+\D{\newpage}
+
 \begin{examplewrap}
 \begin{nexample}{Now, consider a case where the probability of interest is not 20\%, but rather 28\%. Which digits should correspond to success and which to failure?}
 This example is more complicated because with only 10 digits, there is no way to select exactly 28\% of them. Therefore, each observation will have to consist of \emph{two} digits. We can use two digits at a time and assign pairs of digits as follows:
@@ -2210,6 +2270,9 @@ This example is more complicated because with only 10 digits, there is no way to
 Does anyone perform simulations like this? Sort of. Simulations are used a lot in statistics, and these often require the same principles covered in this section to properly set up those simulations. The difference is in implementation after the setup. Rather than use a random number table, a data scientist will write a program that uses a pseudo-random number generator in a computer to run the simulations very quickly -- often times millions of trials each second, which provides much more accurate estimates than running a couple dozen trials by hand.
 
 \index{simulations|)}
+
+
+\D{\newpage}
 
 %%
 \subsection*{Section summary}
@@ -2357,16 +2420,16 @@ Income range (\$1000s) & 0-25    & 25-50    & 50-100     & 100+    \\
 
 Chapter~\ref{summarizingData} emphasized the importance of plotting data to provide quick summaries. Probability distributions can also be summarized in a histogram or bar plot. The probability distribution for the sum of two dice is shown in Figure~\ref{diceProb} and its histogram is plotted in Figure~\ref{diceSumDist}. The distribution of US household incomes is shown in Figure~\ref{usHouseholdIncomeDistBar} as a bar plot. The presence of the 100+ category makes it difficult to represent it with a regular histogram.\footnote{It is also possible to construct a distribution plot when income is not artificially binned into four groups. Density histograms for \emph{continuous} distributions are considered in Section~\ref{contDist}.}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.73\textwidth]{ch_probability/figures/diceSumDist/diceSumDist}
+\includegraphics[width=0.65\textwidth]{ch_probability/figures/diceSumDist/diceSumDist}
 \caption{A histogram for the probability distribution of the sum of two~dice.}
 \label{diceSumDist}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.65\textwidth]{ch_probability/figures/usHouseholdIncomeDistBar/usHouseholdIncomeDistBar}
+\includegraphics[width=0.63\textwidth]{ch_probability/figures/usHouseholdIncomeDistBar/usHouseholdIncomeDistBar}
 \caption{A bar graph for the probability distribution of US household income. Because it is artificially separated into four unequal bins, this graph fails to show the shape or skew of the distribution.}
 \label{usHouseholdIncomeDistBar}
 \end{figure}
@@ -2374,6 +2437,8 @@ Chapter~\ref{summarizingData} emphasized the importance of plotting data to prov
 In these bar plots, the bar heights represent the probabilities of outcomes. If the outcomes are numerical and discrete, it is usually (visually) convenient to make a histogram, as in the case of the sum of two dice. Another example of plotting the bars at their respective locations is shown in Figure~\ref{bookCostDist}.
 
 
+
+\D{\newpage}
 
 %%
 \subsection{Expectation}
@@ -2421,14 +2486,14 @@ It is also possible to compute the expected value of a continuous random variabl
 
 In physics, the expectation holds the same meaning as the center of gravity. The distribution can be represented by a series of weights at each outcome, and the mean represents the balancing point. This is represented in Figures~\ref{bookCostDist} and~\ref{bookWts}. The idea of a center of gravity also expands to continuous probability distributions. Figure~\ref{contBalance} shows a continuous probability distribution balanced atop a wedge placed at the mean.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.72\textwidth]{ch_probability/figures/bookWts/bookWts}
 \caption{A weight system representing the probability distribution for $X$. The string holds the distribution at the mean to keep the system balanced.}
 \label{bookWts}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.7\textwidth]{ch_probability/figures/contBalance/contBalance}
 \caption{A continuous distribution can also be balanced at its mean.}
@@ -2438,6 +2503,8 @@ In physics, the expectation holds the same meaning as the center of gravity. The
 \index{expectation|)}
 
 
+
+\D{\newpage}
 
 %%
 \subsection{Variability in random variables}
@@ -2524,9 +2591,7 @@ $(y_i-\mu_{\mbox{\tiny\itshape Y}})^2\times p_i$ & 3828.0 & 0.1 & 972.0 & $Var(Y
 %%
 \subsection{Linear transformations of a random variable}
 
-\Comment{updated this example}
-
-An online store is selling a limited edition t-shirt.  The maximum a person is allowed to buy is 3.  Let X be a random variable that represents how many of the t-shirts a t-shirt buyer orders.  The probability distribution of X is given in the following table.
+An online store is selling a limited edition t-shirt.  The maximum a person is allowed to buy is~3.  Let X be a random variable that represents how many of the t-shirts a t-shirt buyer orders.  The probability distribution of X is given in the following table.
 
 \begin{center}
 \begin{tabular}{l rrr}
@@ -2539,7 +2604,7 @@ $p_i$  & 0.6 & 0.3 & 0.1 \\
 \end{center}
 
 Using the methods of the previous section we can find that the mean $\mu_x = 1.5$ and the standard deviation $\sigma_x = 0.67$.
-Suppose that the cost of each t-shirt is $30$ and that there is flat rate $5$ shipping fee.  The amount of money a t-shirt buyer pays, then, is $30X + 5$, where X is the number of t-shirts ordered. To calculate the mean and standard deviation for the amount of money a t-shirt buyers pays, we could define a new variable $Y$ as follows:
+Suppose that the cost of each t-shirt is \$30 and that there is flat rate \$5 shipping fee.  The amount of money a t-shirt buyer pays, then, is $30X + 5$, where X is the number of t-shirts ordered. To calculate the mean and standard deviation for the amount of money a t-shirt buyers pays, we could define a new variable $Y$ as follows:
 
 \begin{align*}
 Y = 30X + 5
@@ -2562,7 +2627,9 @@ $p_i$ & 0.6 & 0.3 & 0.1 \\
 \end{exercisewrap}
 \footnotetext{$30 \times 1 + 5 = 35$;  $30 \times 2 + 5 = 65$; $30 \times 3 + 5 = 95$}
 
-Using this new table, we can compute the mean and standard deviation of the cost for t-shirt orderers. However, because Y is a linear transformation of X, we can use the properties from Section~\ref{linearTransformationOfData}. Recall that multiplying every X by 15 multiplies both the mean and standard deviation by 15. Adding 5 only adds 5 to the mean, not the standard deviation. Therefore,
+\D{\newpage}
+
+Using this new table, we can compute the mean and standard deviation of the cost for t-shirt orders. However, because Y is a linear transformation of X, we can use the properties from Section~\ref{linearTransformationOfData}. Recall that multiplying every X by 30 multiplies both the mean and standard deviation by 30. Adding 5 only adds 5 to the mean, not the standard deviation. Therefore,
 \begin{align*}
 \mu_{30X+5}&=E(30X+5) 
 	& \sigma_{30X+5}&=SD(30X+5)\\
@@ -2573,7 +2640,7 @@ Using this new table, we can compute the mean and standard deviation of the cost
 &= 45.00
 	& &= 20.10
 \end{align*}
-Among t-shirt buyers, the average amount they spend is \$45.00 dollars, with a standard deviation of \$20.10.
+Among t-shirt buyers, they spend an average of \$45.00, with a standard deviation of \$20.10.
 
 \begin{onebox}{Linear transformations of a random variable}
 If $X$ is a random variable, then a linear transformation is given by $aX + b$, where $a$ and $b$ are some fixed numbers.
@@ -2645,7 +2712,10 @@ If $X$ and $Y$ are random variables, then a linear combination of the random var
 \begin{align*}
 E(aX+bY) = a\times E(X) + b\times E(Y)
 \end{align*}
-Recall that the expected value is the same as the mean, i.e. $E(X) = \mu_{\mbox{\tiny\itshape X}}$.\end{onebox}
+Recall that the expected value is the same as the mean, i.e. $E(X) = \mu_{\mbox{\tiny\itshape X}}$.
+\end{onebox}
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{Leonard has invested \$6000 in Google Inc. (stock ticker: GOOG) and \$2000 in Exxon Mobil Corp. (XOM). If $X$ represents the change in Google's stock next month and $Y$ represents the change in Exxon Mobil stock next month, write an equation that describes how much money will be made or lost in Leonard's stocks for the month.}
@@ -2679,7 +2749,7 @@ Quantifying the average outcome from a linear combination of random variables is
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.65\textwidth]{ch_probability/figures/changeInLeonardsStockPortfolioFor36Months/changeInLeonardsStockPortfolioFor36Months}
+\includegraphics[width=0.55\textwidth]{ch_probability/figures/changeInLeonardsStockPortfolioFor36Months/changeInLeonardsStockPortfolioFor36Months}
 \caption{The change in a portfolio like Leonard's for the 36 months from 2009 to 2011, where \$6000 is in Google's stock and \$2000 is in Exxon Mobil's.}
 \label{changeInLeonardsStockPortfolioFor36Months}
 \end{figure}
@@ -2731,8 +2801,7 @@ This equation can be used to compute the standard deviation of Leonard's monthly
 SD_{6000X + 2000Y}
 	&= \sqrt{(6000\times SD_X)^2 + (2000\times SD_Y)^2} \\
 	&= \sqrt{(6000\times 0.0849)^2 + (2000\times .0520)^2} \\
-	&= \sqrt{270,304} \\
-	&= 520
+	&= \sqrt{\text{270,304}} = 520
 \end{align*}
 The standard deviation of the total is \$520. While an average monthly return of \$134 on an \$8000 investment is nothing to scoff at, the monthly returns are so volatile that Leonard should not expect this income to be very stable.
 
@@ -2772,7 +2841,6 @@ Consider Elena's two auctions from Guided Practice~\ref{elenaIsSellingATVAndBuyi
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The equation for Elena can be written as:  $(1)\times X + (-1)\times Y$.
-
 To find the SD of this new variable we do:
 \begin{align*}
 SD_{(1)\times X + (-1)\times Y} = \sqrt{(1\times SD_X)^2 + (-1\times SD_Y)^2 = (1\times 25)^2 + (-1\times 8)^2} = 26.25
@@ -2782,6 +2850,8 @@ The SD is about \$26.25.}
 Consider again Guided Practice~\ref{elenaIsSellingATVAndBuyingAToasterOvenAtAnAuctionVariability}. The negative coefficient for $Y$ in the linear combination was eliminated when we squared the coefficients. This generally holds true: negatives in a linear combination will have no impact on the variability computed for a linear combination, but they do impact the expected value computations.
 
 \index{random variable|)}
+
+\D{\newpage}
 
 %%
 \subsection*{Section summary}
@@ -2805,7 +2875,7 @@ We can think of $p_i$ as the \emph{weight}, and each term is weighted its approp
 \item The \term{mean} of a probability distribution does not need to be a value in the distribution.  It represents the average of many, many repetitions of a random process.  The \term{standard deviation} represents the typical variation of the outcomes from the mean, when the random process is repeated over and over.
 
 \item \textbf{Linear transformations}.  Adding a constant to every value in a probability distribution adds that value to the mean, but it does not affect the standard deviation.  When multiplying every value by a constant, this multiplies the mean by the constant and it multiplies the standard deviation by the absolute value of the constant.
-\item \term{Combining random variables}.  Let $X$ and $Y$ be random variables and let $a$ and $b$ be constants.\vspace{-1mm}
+\item \termsub{Combining random variables}{combining random variables}\index{random variable!combine|textbf}.  Let $X$ and $Y$ be random variables and let $a$ and $b$ be constants.\vspace{-1mm}
 \begin{itemize}
  \item The expected value of the sum is the sum of the expected values.
 
@@ -2844,7 +2914,7 @@ The SD properties require that $X$ and $Y$ be independent.  The expected value p
 \sectionintro{
 \noindent%
 So far we have looked only at cases where the random variable takes on integer values.
-What happens when we consider random variables that produce a a continuous numerical variable, such as wait time for a bus?
+What happens when we consider random variables that produce a continuous numerical variable, such as wait time for a bus?
 In this section, we introduce the concept of a continuous distribution.
 In the next chapter, you will encounter the most famous continuous distribution of all.\footnote{It's the normal distribution!}
 
@@ -2880,23 +2950,23 @@ Adding more bins provides greater detail. This sample is extremely large, which 
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{What proportion of the sample is between \resp{180} cm and \resp{185} cm tall (about 5'11" to 6'1")?}\label{contDistProb}
-We can add up the heights of the bins in the range \resp{180} cm and \resp{185} and divide by the sample size. For instance, this can be done with the two shaded bins shown in Figure~\ref{usHeightsHist180185}. The two bins in this region have counts of 195,307 and 156,239 people, resulting in the following estimate of the probability:
+\begin{nexample}{What proportion of the sample is between 180 cm and 185 cm tall (about 5'11" to 6'1")?}\label{contDistProb}
+We can add up the heights of the bins in the range 180 cm and 185 and divide by the sample size. For instance, this can be done with the two shaded bins shown in Figure~\ref{usHeightsHist180185}. The two bins in this region have counts of 195,307 and 156,239 people, resulting in the following estimate of the probability:
 \begin{eqnarray*}
 \frac{195307+156239}{\text{3,000,000}} = 0.1172
 \end{eqnarray*}
-This fraction is the same as the proportion of the histogram's area that falls in the range \resp{180} to \resp{185} cm.
+This fraction is the same as the proportion of the histogram's area that falls in the range 180 to 185~cm.
 \end{nexample}
 \end{examplewrap}
 
 \begin{figure}
 \centering
 \includegraphics[width=0.95\textwidth]{ch_probability/figures/usHeightsHist180185/usHeightsHist180185}
-\caption{A histogram with bin sizes of 2.5 cm. The shaded region represents individuals with heights between \resp{180} and \resp{185} cm.}
+\caption{A histogram with bin sizes of 2.5 cm. The shaded region represents individuals with heights between 180 and 185 cm.}
 \label{usHeightsHist180185}
 \end{figure}
 
-
+\D{\newpage}
 
 Examine the transition from a boxy hollow histogram in the top-left of Figure~\ref{fdicHistograms} to the much smoother plot in the lower-right. In this last plot, the bins are so slim that the hollow histogram is starting to resemble a smooth curve. This suggests the population height as a \emph{continuous} numerical variable might best be explained by a curve that represents the outline of extremely slim bins.
 
@@ -2915,52 +2985,51 @@ This smooth curve represents a \term{probability density function} (also called 
 %%
 \subsection{Probabilities from continuous distributions}
 
-We computed the proportion of individuals with heights \resp{180} to \resp{185} cm in Example~\ref{contDistProb} as a fraction:
+We computed the proportion of individuals with heights 180 to 185 cm in Example~\ref{contDistProb} as a fraction:
 \begin{eqnarray*}
-\frac{\text{number of people between \resp{180} and \resp{185}}}{\text{total sample size}}
+\frac{\text{number of people between 180 and 185}}{\text{total sample size}}
 \end{eqnarray*}
-We found the number of people with heights between \resp{180} and \resp{185} cm by determining the fraction of the histogram's area in this region. Similarly, we can use the area in the shaded region under the curve to find a probability (with the help of a computer):
+We found the number of people with heights between 180 and 185 cm by determining the fraction of the histogram's area in this region. Similarly, we can use the area in the shaded region under the curve to find a probability (with the help of a computer):
 \begin{eqnarray*}
-P(\text{\var{height} between \resp{180} and \resp{185}})
-	= \text{area between \resp{180} and \resp{185}}
+P(\text{\var{height} between 180 and 185})
+	= \text{area between 180 and 185}
 	= 0.1157
 \end{eqnarray*}
-The probability that a randomly selected person is between \resp{180} and \resp{185} cm is 0.1157. This is very close to the estimate from Example~\ref{contDistProb}: 0.1172.
+The probability that a randomly selected person is between 180 and 185 cm is 0.1157. This is very close to the estimate from Example~\ref{contDistProb}: 0.1172.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{ch_probability/figures/fdicHeightContDistFilled/fdicHeightContDistFilled}
-\caption{Density for heights in the US adult population with the area between 180 and 185 cm shaded. Compare this plot with Figure~\ref{usHeightsHist180185}.}
-\label{fdicHeightContDistFilled}
-\end{figure}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Three US adults are randomly selected. The probability a single adult is between \resp{180} and \resp{185} cm is 0.1157.\footnotemark \vspace{-1.5mm}
+Three US adults are randomly selected. The probability a single adult is between 180 and 185 cm is 0.1157.\footnotemark \vspace{-1.5mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item[(a)] What is the probability that all three are between \resp{180} and \resp{185} cm tall?
-\item[(b)] What is the probability that none are between \resp{180} and \resp{185} cm?
+\item[(a)] What is the probability that all three are between 180 and 185 cm tall?
+\item[(b)] What is the probability that none are between 180 and 185 cm?
 \end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Brief answers: (a) $0.1157 \times 0.1157 \times 0.1157 = 0.0015$. (b) $(1-0.1157)^3 = 0.692$}
 
+\D{\newpage}
+
 \begin{examplewrap}
-\begin{nexample}{What is the probability that a randomly selected person is \textbf{exactly} \resp{180}~cm? Assume you can measure perfectly.}
+\begin{nexample}{What is the probability that a randomly selected person is \textbf{exactly} 180~cm? Assume you can measure perfectly.}
 \label{probabilityOfExactly180cm}
-This probability is zero. A person might be close to \resp{180} cm, but not exactly \resp{180} cm tall. This also makes sense with the definition of probability as area; there is no area captured between \resp{180}~cm and \resp{180}~cm.
+This probability is zero. A person might be close to 180 cm, but not exactly 180 cm tall. This also makes sense with the definition of probability as area; there is no area captured between 180~cm and 180~cm.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Suppose a person's height is rounded to the nearest centimeter. Is there a chance that a random person's \textbf{measured} height will be \resp{180}~cm?\footnotemark
+Suppose a person's height is rounded to the nearest centimeter. Is there a chance that a random person's \textbf{measured} height will be 180~cm?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{This has positive probability. Anyone between \resp{179.5} cm and \resp{180.5} cm will have a \emph{measured} height of \resp{180} cm. This is probably a more realistic scenario to encounter in practice versus Example~\ref{probabilityOfExactly180cm}.}
+\footnotetext{This has positive probability. Anyone between 179.5 cm and 180.5 cm will have a \emph{measured} height of 180 cm. This is probably a more realistic scenario to encounter in practice versus Example~\ref{probabilityOfExactly180cm}.}
 
 \index{data!FCID|)}
+
+
+\D{\newpage}
 
 %%
 \subsection*{Section summary}
@@ -2982,10 +3051,7 @@ Suppose a person's height is rounded to the nearest centimeter. Is there a chanc
 
 
 %______________________________________________
-\section*{Chapter highlights}
-\setcounter{secnumdepth}{0}
-\addcontentsline{toc}{section}{Chapter highlights}
-\setcounter{secnumdepth}{2}
+\reviewchapterheader{}
 
 \noindent This chapter focused on understanding likelihood and chance variation, first by solving individual probability questions and then by investigating probability distributions. 
 \\
@@ -2995,8 +3061,8 @@ Suppose a person's height is rounded to the nearest centimeter. Is there a chanc
 \item The \term{General Addition Rule} for \textbf{or} probabilities (union), along with the special case when events are \term{mutually exclusive}.  
 \item The \term{Conditional Probability Rule}.
 \item Tree diagrams and \term{Bayes' Theorem} to solve more complex conditional problems.
-\item The \term{Binomial Formula} for finding the probability of exactly $k$ successes in $n$ independent trials.
-\item \term{Simulations} and the use of random digits to estimate probabilities.
+\item The \termsub{Binomial Formula}{binomial formula} for finding the probability of exactly $k$ successes in $n$ independent trials.
+\item \termsub{Simulations}{simulation} and the use of random digits to estimate probabilities.
 \end{itemize}
 Fundamental to all of these problems is understanding when events are independent and when they are mutually exclusive.  Two events are \term{independent} when the outcome of one does not affect the outcome of the other, i.e. $P(A | B) = P(A)$.  Two events are \term{mutually exclusive} when they cannot both happen together, i.e. $P(A \text{ and } B) = 0$.
 \\ 

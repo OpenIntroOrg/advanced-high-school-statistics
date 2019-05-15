@@ -1,14 +1,14 @@
 library(openintro)
 data(COL)
-data(marioKart)
-mk      <- marioKart[marioKart$totalPr < 100, ]
+data(mariokart)
+mk      <- mariokart[mariokart$total_pr < 100, ]
 mk$cond <- relevel(mk$cond, "used")
 cond <- as.numeric(ifelse(mk$cond == "new", 1, 0))
 
-myPDF('marioKartNewUsed.pdf', 4.2, 2.8,
-      mar = c(3, 3.5, 0, 0.5),
+myPDF('mariokartNewUsed.pdf', 4, 2.4,
+      mar = c(2.6, 3.5, 0, 0.5),
       mgp = c(1.9, 1.5 ,0))
-dotPlot(mk$totalPr, cond,
+dotPlot(mk$total_pr, cond,
         vertical = TRUE,
         at = 0:1,
         key = 0:1,
@@ -25,7 +25,7 @@ par(mgp = c(1.9, 0.6, 0))
 axis(2)
 par(las = 0)
 mtext("Total Price", 2, line = 2.5)
-g <- lm(mk$totalPr ~ cond)
+g <- lm(mk$total_pr ~ cond)
 abline(g, lwd = 1.5, col = COL[5])
 rect(-10, -1000, -0.125, 1000,
      border  =  rgb(1, 1, 1),
