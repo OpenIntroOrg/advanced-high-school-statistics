@@ -1,3 +1,4 @@
+library(openintro)
 oiB = "#3E9BC0"
 
 ###
@@ -10,7 +11,7 @@ m = 9000
 s = 1000
 u = 10500
 
-normTail(m = m, s = s, U = u, col = oiB, axes = FALSE)
+normTail(m = m, s = s, U = u, col = oiB, axes = FALSE,yaxs="i")
 axis(1, at = c(m - 3*s,m,u,m + 3*s), label = c(NA,m,u,NA), cex.axis = 1.25)
 
 dev.off()
@@ -25,7 +26,7 @@ m = 9000
 s = 1000/sqrt(15)
 u = 10500
 
-normTail(m = m, s = s, U = u, col = oiB, axes = FALSE, xlim = c(8250,10750))
+normTail(m = m, s = s, U = u, col = oiB, axes = FALSE, xlim = c(8250,10750),yaxs="i")
 axis(1, at = c(m - 3*s,m,u,m + 3*s), label = c(NA,m,u,NA), cex.axis = 1.25)
 
 dev.off()

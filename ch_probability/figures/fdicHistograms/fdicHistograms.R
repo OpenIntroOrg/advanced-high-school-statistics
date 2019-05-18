@@ -81,6 +81,7 @@ for (i in 1:4) {
            COUNTS[[i]],
            xlim = c(125, 210),
            axes = FALSE,
+           yaxs="i",
            xlab = 'height (cm)')
   lines(BR[[i]],
         c(COUNTS[[i]], 0),

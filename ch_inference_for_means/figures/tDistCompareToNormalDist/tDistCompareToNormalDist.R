@@ -2,13 +2,15 @@ library(openintro)
 data(COL)
 
 myPDF('tDistCompareToNormalDist.pdf', 4.3, 2,
-      mar = c(1.8, 1, 0, 1),
+      mar = c(1.8, 1, .3, 1),
       mgp = c(5, 0.6, 0))
 plot(c(-4.2, 4.2),
      c(0, dnorm(0)),
      type = 'n',
-     axes = FALSE)
-axis(1)
+     yaxs="i",
+     axes = FALSE, ylim=c(0,0.41))
+at <- seq(-6, 6, 2)
+axis(1, at)
 abline(h = 0)
 
 X <- seq(-5, 5, 0.01)

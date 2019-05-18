@@ -18,8 +18,8 @@ NormalHist <- function(obs, hold, M, SD, col) {
        ylab = '',
        axes = FALSE,
        main = '',
-       xlim = c(-3, 3),
-       ylim = c(0, max(hold$density)))
+       xlim = c(-3, 3),yaxs="i",
+       ylim = c(0, max(hold$density)),yaxs="i")
   for (i in 1:length(hold$counts)) {
     rect(hold$breaks[i], 0,
          hold$breaks[i + 1], hold$density[i],

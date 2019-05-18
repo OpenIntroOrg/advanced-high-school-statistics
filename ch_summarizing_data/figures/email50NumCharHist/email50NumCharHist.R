@@ -10,15 +10,14 @@ require(xtable)
 xtable(counts)
 
 myPDF("email50NumCharHist.pdf",
-      1.1 * 5.5, 3.3,
+      5.5, 2.7,
       mar = c(3.5, 3.5, 0.15, 1),
-      mgp = c(2.4, 0.7, 0))
+      mgp = c(2.4, 0.6, 0))
 histPlot(email50$num_char, breaks = 12,
          xlab = 'Number of Characters (in thousands)',
-         ylab = "Frequency", ylim = c(0, 23), col = COL[1],
-         border = COL[5], xlim = c(0, 70))
-axis(1, at = seq(5, 65, 10), labels = rep("", 7),
-     tcl = -0.15)
+         ylab = "Frequency", ylim = c(0, 23),col = COL[1],
+         border = COL[5], axes = TRUE,yaxs="i")
+axis(1,seq(0,70,5))
 dev.off()
 
 myPDF("email50NumCharHistWMeanMedian.pdf",
@@ -28,8 +27,8 @@ myPDF("email50NumCharHistWMeanMedian.pdf",
 histPlot(email50$num_char, breaks = 12,
          xlab = 'Number of Characters (in thousands)',
          ylab = "Frequency", ylim = c(0, 23), col = COL[1],
-         border = COL[5], xlim = c(0, 70))
-axis(1, at = seq(5, 65, 10), labels = rep("", 7),
+         border = COL[5], xlim = c(0, 70),yaxs="i")
+axis(1, at = seq(0, 70, 5),
      tcl = -0.15)
 t.mean <- mean(email50$num_char)
 t.median <- median(email50$num_char)
@@ -49,16 +48,16 @@ for (i in 1:length(steps)) {
 
 myPDF("email50NumCharCumulativeFreqHist.pdf",
       1.1 * 5.5, 3.3,
-      mar = c(3.5, 3.5, 0.15, 1),
+      mar = c(3.5, 3.5, 0.75, 1),
       mgp = c(2.4, 0.7, 0))
 histPlot(rep(steps, ch), breaks = 12,
          xlab = 'Number of Characters (in thousands)',
          ylab = "Cumulative Frequency",  col = COL[1],
-         border = COL[5], xlim = c(0, 62.5),
+         border = COL[5], xlim = c(0, 62.5),yaxs="i",
          axes = FALSE)
 axis(1)
-axis(2, at = seq(0, 50, 10), labels = seq(0, 50, 10))
-axis(1, at = seq(5, 65, 10), labels = rep("", 7),
+axis(2, at = seq(0, 55, 10), labels = seq(0, 50, 10))
+axis(1, at = seq(0, 70, 5), 
      tcl = -0.15)
 dev.off()
 xtable(rbind(paste0(seq(0, 60, length.out = 13), "-",
@@ -80,11 +79,11 @@ myPDF("email50NumCharCumulativeRFHist.pdf",
 histPlot(rep(steps, ch), breaks = 12,
          xlab = 'Number of Characters (in thousands)',
          ylab = "Cumulative Relative Frequency", col = COL[1],
-         border = COL[5], xlim = c(0, 70),
+         border = COL[5], xlim = c(0, 70),yaxs="i",
          axes = FALSE)
-axis(1)
+
 axis(2, at = seq(0, 50, 10), labels = seq(0, 1, 0.2))
-axis(1, at = seq(5, 65, 10), labels = rep("", 7),
+axis(1, at = seq(0, 65, 5), 
      tcl = -0.15)
 dev.off()
 xtable(rbind(paste0(seq(0, 65, length.out = 14), "-",

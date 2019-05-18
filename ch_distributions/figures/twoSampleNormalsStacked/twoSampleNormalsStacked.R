@@ -10,6 +10,7 @@ Y <- dnorm(X)
 plot(X, Y,
      type = 'l',
      axes = FALSE,
+     yaxs="i",
      xlim = c(-5, 35))
 axis(1, at = seq(-10, 40, 10))
 lines(X, Y)

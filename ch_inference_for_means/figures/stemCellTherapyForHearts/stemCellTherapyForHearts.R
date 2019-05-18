@@ -16,6 +16,7 @@ histPlot(change[d[, 1] == 'esc'],
          axes = FALSE,
          xlab = '',
          main = '',
+         yaxs="i",
          col = COL[1])
 axis(1, cex.axis = 0.85)
 mtext('Embryonic stem cell transplant',
@@ -34,6 +35,7 @@ histPlot(change[d[, 1] == 'ctrl'],
          axes = FALSE,
          xlab = '',
          main = '',
+         yaxs="i",
          col = COL[1])
 axis(1, cex.axis = 0.85)
 par(mgp = c(2, 0.6, 0))

@@ -1,7 +1,7 @@
 library(openintro)
 data(COL)
 
-pdf('indepForRollingTwo1s.pdf', 4.5, 2.7)
+pdf('indepForRollingTwo1s.pdf', 4.5, 2.2)
 par(mar = rep(0, 4))
 plot(0:1, c(0, 1.1), type = 'n', axes = FALSE)
 x <- cos(seq(0, 2 * pi, length.out = 99))

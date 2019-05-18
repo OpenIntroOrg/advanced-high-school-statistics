@@ -9,7 +9,8 @@ normTail(0, 1,
          L = -1.15,
          U = 1.15,
          df = 26,
-         col = COL[1])
+         yaxs="i",
+         col = COL[1], ylim=c(0,0.41))
 lines(c(1.16, 1.16),
       c(dt(1.16, 26), 0.25),
       lty = 3,

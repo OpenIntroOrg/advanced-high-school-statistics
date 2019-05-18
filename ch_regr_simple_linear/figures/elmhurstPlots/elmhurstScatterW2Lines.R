@@ -34,15 +34,17 @@ myPDF('elmhurstScatterW2Lines.pdf', 5.5, 3.3,
 plot(d$family_income, d$gift_aid,
      col = COL[1, 2],
      pch = 19,
-     xlab = 'Family income ($1000s)',
+     xlab = 'Family Income ($1000s)',
      ylab = '', axes=FALSE,
      xlim = c(0, 280), 
-     ylim = c(0, 35))
-axis(1, at = (0:8) * 50)
-axis(2, at = (0:3) * 10)
-box()
+     ylim = c(0, 35),
+     yaxs="i")
+rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = COL[5,9], border=NA)
+
+axis(1, at = (-1:8) * 50)
+axis(2, at = (0:4) * 10)
 par(las = 0)
-mtext("Gift aid from university ($1000s)", 2, line = 2.5)
+mtext("Gift Aid From University ($1000s)", 2, line = 2.5)
 abline(mins[1], mins[2], lty=2, lwd=2)
 abline(g, lwd = 2)
 dev.off()
@@ -55,15 +57,43 @@ myPDF('elmhurstScatterWLSROnly.pdf', 5.5, 3.3,
 plot(d$family_income, d$gift_aid,
      col = COL[1, 2],
      pch = 19,
-     xlab = 'Family income ($1000s)',
+     xlab = 'Family Income ($1000s)',
      ylab = '',
      axes = FALSE,
      xlim = c(0, 280), 
-     ylim = c(0, 35))
-axis(1, at = (0:8) * 50)
-axis(2, at = (0:3) * 10)
-box()
+     ylim = c(0, 35),
+     yaxs="i")
+rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = COL[5,9], border=NA)
+
+axis(1, at = (-1:8) * 50)
+axis(2, at = (0:4) * 10)
 par(las = 0)
 mtext("Gift aid from university ($1000s)", 2, line = 2.5)
 abline(g, lwd = 2)
+
+
+
+myPDF('elmhurstScatterWAveLine.pdf', 5.5, 3.3,
+      mar = c(3.1, 3.6, 1, 1),
+      mgp = c(2, 0.6, 0))
+plot(d$family_income, d$gift_aid,
+     col = COL[1, 2],
+     pch = 19,
+     xlab = 'Family Income ($1000s)',
+     ylab = '', axes=FALSE,
+     xlim = c(0, 280), 
+     ylim = c(0, 35),
+     yaxs="i")
+rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = COL[5,9], border=NA)
+
+axis(1, at = (-1:8) * 50)
+axis(2, at = (0:4) * 10)
+
+par(las = 0)
+mtext("Gift Aid From University ($1000s)", 2, line = 2.5)
+abline(g, lwd = 2)
+abline(h=mean(elmhurst$gift_aid), lty = 2)
+
+dev.off()
+
 dev.off()

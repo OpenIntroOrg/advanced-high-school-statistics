@@ -31,7 +31,7 @@ plot(x, y,
      ylim = c(0, max(upshifts)),
      col = COL[1], cex = cex, pch = 19)
 lines(c(-10, xlim[2]), rep(upshifts[3], 2), col = COL[5,3])
-axis(1, at = seq(0,150,50))
+axis(1, at = seq(0,150,50),pos=0)
 text(-2, upshifts[3] + 4, 'Original', pos = 2, cex = text.cex)
 
 tmp  <- table(round(p2) + 0.2)

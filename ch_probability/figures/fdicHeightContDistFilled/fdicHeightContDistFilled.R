@@ -105,6 +105,7 @@ histTemp(BR[[2]],
          axes = FALSE,
          xlab = 'height (cm)',
          ylab = '',
+         yaxs="i",
          probability = TRUE)
 axis(1)
 lines(dens$x, dens$y, col = COL[1], lwd = 2)

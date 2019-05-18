@@ -1,9 +1,8 @@
 library(openintro)
-data(countyComplete)
-cc <- countyComplete
 data(COL)
 
-w3  <- FALSE
+w3  <- 1 == 0
+ind <- 413
 
 if(w3){
   myPNG("MHP.png", 1200, 800,
@@ -11,48 +10,68 @@ if(w3){
         mgp = c(2.4, 0.5, 0),
         cex = 2)
 } else {
-  myPDF("multiunitsVsOwnership.pdf", 5.4, 3.15,
-        mar = c(3, 3.5, 0.5, 0.7),
-        mgp = c(2.4, 0.4, 0))
+  myPDF("multiunitsVsOwnership.pdf", 6, 3.5,
+        mar = c(3, 3.8, 0.5, 0.5),
+        mgp = c(2.7, 0.4, 0))
 }
 pch    <- 1
-cex    <- sqrt(cc$pop2010 / 1e6)
+cex    <- sqrt(county$pop2017 / 1e6)
+cex[is.na(cex)] <- 0.1
 colPop <- fadeColor(ifelse(cex > 0.35, COL[4], COL[1]),
                     substr(gray(0.6 + cex * 0.1), 2, 3))
 colSm  <- colPop
 cexF   <- 2
+gp1 <- cex < 0.32
 if(!w3){
   cex <- 0.7
+  gp1 <- rep(TRUE, nrow(county))
   pch <- 20
-  gp1 <- cex < 0.32
   colSm  <- COL[1, 3]
   colPop <- COL[1, 3]
   cexF   <- 1
 }
-plot(cc$housing_multi_unit[gp1],
-     cc$home_ownership[gp1],
+x <- county$multi_unit
+y <- county$homeownership
+plot(x[gp1], y[gp1],
      pch = pch,
      col = colSm,
      xlab = "",
-     ylab = "Percent of Homeownership",
+     ylab = "Homeownership Rate",
      axes = FALSE,
-     cex = ifelse(cex < 0.32, 0.32, cex)[gp1],
-     xlim = range(cc$housing_multi_unit),
-     ylim = range(cc$home_ownership))
+     frame.plot = FALSE,
+     cex = ifelse(gp1 & cex < 0.32, 0.32, cex)[gp1],
+     xlim = c(0, 97), # range(x, na.rm = TRUE),
+     ylim = c(0,97)
+     )
 at  =  seq(0, 100, 20)
-axis(1, at, paste0(at, "%"))
-axis(2, at, paste0(at, "%"))
-box()
-points(cc$housing_multi_unit[!gp1],
-       cc$home_ownership[!gp1],
+buildAxis(1, x, 6, nMin  = 5)
+buildAxis(2, y, 6, nMin = 5)
+rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = COL[5,9], border=NA) 
+
+#axis(1, at, paste0(at, "%"))
+#axis(2, at, paste0(at, "%"))
+abline(h = at, v = at, col = COL[7, 2])
+
+points(x[gp1],
+       y[gp1],
+       pch = '.')
+points(x[!gp1], y[!gp1],
        pch = pch,
        col = colPop,
-       xlab = "",
-       ylab = "Percent of Homeownership",
        cex = ifelse(cex < 0.32, 0.32, cex)[!gp1])
-points(cc$housing_multi_unit[!gp1],
-       cc$home_ownership[!gp1],
+points(x[!gp1],
+       y[!gp1],
        pch = '.')
+t1 <- x[ind]
+t2 <- y[ind]
+lines(c(t1, t1), c(-1e5, t2),
+      lty = 2,
+      col = COL[4])
+lines(c(-1e5, t1), c(t2, t2),
+      lty = 2,
+      col = COL[4])
+points(t1, t2,
+       col = COL[4])
 mtext("Percent of Units in Multi-Unit Structures",
       1,
       1.9,
@@ -82,3 +101,4 @@ if(w3){
 
 dev.off()
 
+county[ind, ]

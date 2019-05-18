@@ -9,7 +9,7 @@ obs1 <- 0.3 * rchisq(25, 1.4)
 set.seed(5)
 obs2 <- 16 - 2 * rlnorm(50, sdlog = 0.8)
 
-myPDF("normalQuantileExerAdditional.pdf", 7.2, 3.18,
+myPDF("normalQuantileExerAdditional.pdf", 5.7, 2.2,
       mfrow = c(1, 2),
       mgp = c(2.4, 0.55, 0),
       mar = c(3.5, 3.45, 1, 1),

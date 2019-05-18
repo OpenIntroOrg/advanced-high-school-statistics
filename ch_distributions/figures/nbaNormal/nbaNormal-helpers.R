@@ -11,7 +11,7 @@ QQNorm <- function(x, M, SD, col) {
   abline(M, SD)
 }
 
-NormalHist <- function(obs, hold, M, SD, col) {
+NormalHist <- function(obs, hold, M, SD, col, ylim = c(0, max(hold$density)), ...) {
   plot(0, 0,
        type = 'n',
        xlab = 'Height (inches)',
@@ -19,7 +19,8 @@ NormalHist <- function(obs, hold, M, SD, col) {
        axes = FALSE,
        main = '',
        xlim = M + c(-3, 3) * SD,
-       ylim = c(0, max(hold$density)))
+       ylim = ylim,
+       ...)
   for (i in 1:length(hold$counts)) {
     rect(hold$breaks[i], 0,
          hold$breaks[i + 1], hold$density[i],

@@ -23,10 +23,10 @@ for (i in 1:2) {
 }
 
 histTemp <- function(
-    BR, COUNTS, col = fadeColor(COL[1], "10"),
-    border = COL[1, 4], probability = TRUE,
-    xlab = '', ylab = NULL, xlim = NULL, ylim = NULL,
-    ...) {
+  BR, COUNTS, col = fadeColor(COL[1], "10"),
+  border = COL[1, 4], probability = TRUE,
+  xlab = '', ylab = NULL, xlim = NULL, ylim = NULL,
+  ...) {
   br <- BR
   h  <- COUNTS
   if (probability) {
@@ -75,6 +75,7 @@ histTemp(BR[[2]],
          COUNTS[[2]],
          xlab = 'height (cm)',
          axes = FALSE,
+         yaxs="i",
          xlim = c(125, 210),
          col = fadeColor(COL[1], "10"),
          border = COL[1,4])

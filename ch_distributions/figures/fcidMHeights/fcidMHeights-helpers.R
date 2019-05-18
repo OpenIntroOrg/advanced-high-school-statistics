@@ -4,20 +4,21 @@ QQNorm <- function(x, M, SD, col) {
          cex = 0.7,
          main = '',
          axes = FALSE,
-         ylab = 'male heights (in.)',
+         ylab = 'Male Heights (inches)',
          col = col)
-  axis(1)
-  axis(2)
+  axis(1,seq(-3,3,1),pos=60)
+  axis(2,seq(60,80,5))
   abline(M, SD)
 }
 
 NormalHist <- function(obs, hold, M, SD, col) {
   plot(0, 0,
        type = 'n',
-       xlab = 'Male heights (inches)',
+       xlab = 'Male Heights (inches)',
        ylab = '',
        axes = FALSE,
        main = '',
+       yaxs="i",
        xlim = M + c(-3, 3) * SD,
        ylim = c(0, max(hold$density)))
   for (i in 1:length(hold$counts)) {

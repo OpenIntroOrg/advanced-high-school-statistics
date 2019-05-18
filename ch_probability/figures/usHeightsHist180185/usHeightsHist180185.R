@@ -78,6 +78,7 @@ histTemp(BR[[2]],
          xlim = c(125, 210),
          axes = FALSE,
          xlab = 'height (cm)',
+         yaxs="i",
          probability = FALSE)
 lines(BR[[i]],
       c(COUNTS[[i]], 0),

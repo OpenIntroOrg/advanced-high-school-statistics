@@ -1,6 +1,6 @@
 library(openintro)
 data(COL)
-pdf("severalDiffDistWithSdOf1.pdf", 5.5, 4.3)
+pdf("severalDiffDistWithSdOf1.pdf", 5.5, 3.7)
 
 
 x1 <- rep(0:1, c(10,10))
@@ -23,19 +23,19 @@ drawSDs <- function(m=0,s=1){
 
 xR <- c(-1,1)*max(c(x1,x2,x3))
 par(mfrow=c(3,1), mar=c(3,1,0,1), mgp=c(2.7,1,0))
-histPlot(x1, breaks=c(-1.05, -0.95, 0.95, 1.05), xlim=xR, axes=FALSE, xlab='',border=TRUE, lty=1, probability=TRUE, ylim=c(0, 5.6))
+histPlot(x1, yaxs="i",breaks=c(-1.05, -0.95, 0.95, 1.05), xlim=xR, axes=FALSE, xlab='',border=TRUE, lty=1, probability=TRUE, ylim=c(0, 5.6))
 drawSDs()
-histPlot(x1, breaks=c(-1.05, -0.95, 0.95, 1.05), add=TRUE, probability=TRUE, col=COL[1], ylim=c(0, 0.75))
+histPlot(x1, yaxs="i",breaks=c(-1.05, -0.95, 0.95, 1.05), add=TRUE, probability=TRUE, col=COL[1], ylim=c(0, 0.75))
 axis(1, at=-4:4, cex.axis=1.5)
 par(mar=c(3,1,0,1), mgp=c(2.7,1,0))
-histPlot(x2, breaks=25, xlim=xR, axes=FALSE, xlab='',border=TRUE, lty=1, probability=TRUE, ylim=c(0, 0.43))
+histPlot(x2, yaxs="i",breaks=25, xlim=xR, axes=FALSE, xlab='',border=TRUE, lty=1, probability=TRUE, ylim=c(0, 0.43))
 drawSDs()
-histPlot(x2, breaks=25, add=TRUE, probability=TRUE, col=COL[1])
+histPlot(x2, yaxs="i",breaks=25, add=TRUE, probability=TRUE, col=COL[1])
 axis(1, at=-4:4, cex.axis=1.5)
 par(mar=c(2.1,1,0,1), mgp=c(2.7,1,0))
-histPlot(x3, breaks=25, xlim=xR, axes=FALSE, xlab='',border=TRUE, lty=1, probability=TRUE, ylim=c(0, 0.5))
+histPlot(x3, yaxs="i",breaks=25, xlim=xR, axes=FALSE, xlab='',border=TRUE, lty=1, probability=TRUE, ylim=c(0, 0.5))
 drawSDs()
-histPlot(x3, breaks=25, add=TRUE, probability=TRUE, col=COL[1])
+histPlot(x3, yaxs="i",breaks=25, add=TRUE, probability=TRUE, col=COL[1])
 axis(1, at=-4:4, cex.axis=1.5)
 
 

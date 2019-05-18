@@ -13,6 +13,7 @@ for (i in 1:length(DF)) {
 plot(0, 0,
      type = 'n',
      xlim = c(0, 25),
+     yaxs="i",
      ylim = range(c(y, recursive = TRUE)),
      axes = FALSE)
 for (i in 1:length(DF)) {

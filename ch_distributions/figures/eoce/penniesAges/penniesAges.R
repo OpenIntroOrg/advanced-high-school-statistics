@@ -9,7 +9,7 @@ pdf("penniesAges_pop.pdf", height = 3, width = 5.8)
 
 par(mar=c(3.7,2,1,0.5), las=1, mgp=c(2.5,0.7,0), mfrow = c(1,1), cex.lab = 1.25, cex.axis = 1.25)
 
-histPlot(penniesAges$age, col = oiB, xlab = "Penny ages", ylab = "", axes = FALSE)
+histPlot(penniesAges$age, col = oiB, xlab = "Penny ages", ylab = "", axes = FALSE,yaxs="i")
 axis(1)
 
 dev.off()
@@ -28,7 +28,7 @@ xbar5 = xbar
 
 myPDF("penniesAges_n5.pdf", 3, 2.4, mar=c(3.5,1,1,1), las=1, mgp=c(2.1,0.4,0))
 
-histPlot(xbar5, col = oiB, xlab = expression(bar(x)[" n = 5"]), ylab = "", axes = FALSE)
+histPlot(xbar5, col = oiB, xlab = expression(bar(x)[" n = 5"]), ylab = "", axes = FALSE,yaxs="i")
 
 axis(1)
 
@@ -47,7 +47,7 @@ xbar30 = xbar
 
 myPDF("penniesAges_n30.pdf", 3, 2.4, mar=c(3.5,1,1,1), las=1, mgp=c(2.1,0.4,0))
 
-histPlot(xbar30, col = oiB, xlab = expression(bar(x)[" n = 30"]), ylab = "", axes = FALSE)
+histPlot(xbar30, col = oiB, xlab = expression(bar(x)[" n = 30"]), ylab = "", axes = FALSE,yaxs="i")
 
 axis(1)
 
@@ -66,7 +66,7 @@ xbar100 = xbar
 
 myPDF("penniesAges_n100.pdf", 3, 2.4, mar=c(3.5,1,1,1), las=1, mgp=c(2.1,0.4,0))
 
-histPlot(xbar100, col = oiB, xlab = expression(bar(x)[" n = 100"]), ylab = "", axes = FALSE)
+histPlot(xbar100, col = oiB, xlab = expression(bar(x)[" n = 100"]), ylab = "", axes = FALSE,yaxs="i")
 
 axis(1)
 

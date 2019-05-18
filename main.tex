@@ -1,56 +1,107 @@
-\documentclass[10pt,openany]{book}
- 
-\usepackage{geometry, graphicx, varioref, soul, verbatim, amsmath, calc, caption, wasysym, footmisc, makeidx, ifthen, subfigure, multicol, epstopdf, enumerate, wrapfig, textcomp, multirow, changepage, setspace, lscape, titlesec}
-\usepackage[usenames,dvipsnames]{color}  
+\documentclass[10pt,openany]%,oneside]
+{book}
+\newcommand{\versiondate}[0]{May 16th, 2019}
+
+\usepackage{
+  amsmath, calc,
+  caption, changepage,
+  endnotes, enumerate,
+  epstopdf,
+  fancyhdr,
+  fix-cm,
+  fncychap,
+  footmisc,
+  fullminipage,
+  geometry, graphicx,
+  ifthen, lscape,
+  makeidx, manfnt,
+  marginnote,
+  mdframed,
+  multicol, multirow,
+  setspace, soul,
+  tabto,
+  textcomp,
+  %tocloft,
+  varioref, verbatim,
+  wasysym, wrapfig
+}
+\usepackage{subfigure}
+\usepackage[explicit]{titlesec}
+%\usepackage[usenames,dvipsnames]{color}  
 %\newcommand{\href}[2]{#2} \newcommand{\url}[1]{#1} \newcommand{\urlstyle}[1]{}
-\include{extraTeX/style/colors}
+\include{extraTeX/style/colorsV1}
 
 % _____ Online Version _____ %
 \usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
-\newcommand{\versiondate}[0]{August 12th, 2017}
+\newcommand{\printlocation}[0]{}
 
-% _____ B&W Print Version _____ %
-%\definecolor{oiB}{rgb}{0,0,0}\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
+% _____ Print Version _____ %
+%\definecolor{oiB}{rgb}{0,0,0}\definecolor{chaptertitlegray}{rgb}{0,0,0}\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
+
 
 % _____ COLOR PRINT Version _____ %
-%\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
+%\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref} %\renewcommand{\printlocation}[0]{\noindent Printed in China. \\}
 
-\usepackage[style=authortitle-ibid, maxnames=2,natbib=true,sortcites=true,block=space,backend=bibtex]{biblatex}
+\usepackage[style=authortitle-ibid, maxnames=2,natbib=true,sortcites=true
+,block=space,backend=bibtex]{biblatex}
 \bibliography{eoce.bib}
 
 \makeindex
 \include{extraTeX/style/style}
-\include{extraTeX/style/tablet}
+%\include{extraTeX/style/tablet}
 \include{extraTeX/preamble/title}%_derivative}
 \date{}
-\setcounter{tocdepth}{1}
+\renewcommand\contentsname{Table of Contents}
+\setcounter{tocdepth}{2}
+%\renewcommand{\cftchapfont}{\scshape}
+%\renewcommand{\cftsecfont}{\bfseries}
 
 \begin{document}
-\setcounter{page}{1}
+%\include{extraTeX/preamble/review_copy}
 \renewcommand{\thepage}{}
 \maketitle
 \include{extraTeX/preamble/copyright}%_derivative}
 \renewcommand{\thepage}{\arabic{page}}
 \tableofcontents
 \include{extraTeX/preamble/preface}
+\normalsize
 
+\begingroup
+\include{extraTeX/style/headers}
 \includechapter{1}{ch_data_collection}
 \includechapter{2}{ch_summarizing_data}
 \includechapter{3}{ch_probability}
 \includechapter{4}{ch_distributions}
-\includechapter{5}{ch_inference_foundations}
+\includechapter{5}{ch_foundations_for_inf}
 \includechapter{6}{ch_inference_for_props}
 \includechapter{7}{ch_inference_for_means}
 \includechapter{8}{ch_regr_simple_linear}
+\endgroup
 
-\appendix
+
+\begingroup
+\include{extraTeX/style/style_appendices}
+\appendix{}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 \include{extraTeX/eoceSolutions/eoceSolutions}
+\include{extraTeX/data/data}
 \include{extraTeX/appendix/TeX/randomNumberTable}
 \include{extraTeX/appendix/TeX/zTable}
 \include{extraTeX/appendix/TeX/tTable}
 \include{extraTeX/appendix/TeX/chiSquareTable}
+\endgroup
 
 \include{extraTeX/index/index}
 \printindex
+
+\begingroup
+\appendix{}
+\setcounter{chapter}{3}
+\include{extraTeX/style/style_appendices}
+\include{extraTeX/calculatorIndex/calculatorIndex}
+\include{extraTex/formulas/formulas}
+\include{extraTeX/inferenceGuide/TeX/inferenceGuide}
+\endgroup
+
 
 \end{document}

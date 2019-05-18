@@ -1,3 +1,4 @@
+library(openintro)
 oiB = "#3E9BC0"
 
 ###
@@ -10,7 +11,7 @@ m = 70
 s = 10/sqrt(40)
 u = 75
 
-normTail(m = m, s = s, U = u, col = oiB, axes = FALSE, xlim = c(65,75))
+normTail(m = m, s = s, U = u, col = oiB, axes = FALSE, xlim = c(65,75),yaxs="i")
 axis(1, at = c(m - 3*s,m,u,m + 3*s), label = c(NA,m,u,NA), cex.axis = 1.25)
 
 dev.off()

@@ -8,6 +8,7 @@ normTail(L = -2.10,
          df = 10,
          xlim = c(-4, 4),
          col = COL[1],
-         axes = FALSE)
+         axes = FALSE,
+         yaxs='i', ylim=c(0,0.4))
 axis(1)
 dev.off()

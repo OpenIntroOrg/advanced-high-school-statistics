@@ -7,5 +7,7 @@ myPDF('jurorHTPValueShown.pdf', 4.4, 1.87,
 ChiSquareTail(5.89,
               3,
               c(0, 16),
+              axes=FALSE,
               col = COL[1])
+axis(1,pos=0)
 dev.off()

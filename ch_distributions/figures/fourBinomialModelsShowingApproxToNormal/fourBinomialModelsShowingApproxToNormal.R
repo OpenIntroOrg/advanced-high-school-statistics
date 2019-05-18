@@ -24,6 +24,7 @@ for (i in 1:4) {
        axes = FALSE,
        xlab = paste("n  = ", n[i]),
        ylab = "",
+       yaxs="i",
        col = COL[5],
        lwd = 1.5)
   axis(1, axis1[[i]])

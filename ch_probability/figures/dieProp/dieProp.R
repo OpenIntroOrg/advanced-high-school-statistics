@@ -24,6 +24,7 @@ plot(X, Y,
      lwd = 1.5)
 mtext('n (number of rolls)', side = 1, line = 2.5)
 abline(h = 1 / 6, lty = 2)
+abline(h = -.0144, lty = 1, lwd=3)
 at <- 10^(0:5)
 labels <- c('1', '10', '100', '1,000', '10,000', '100,000')
 axis(1, at, labels, cex.axis = 0.9)

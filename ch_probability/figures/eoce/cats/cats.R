@@ -1,6 +1,6 @@
-setwd("/Users/mine/Desktop/Open Intro/EOCE - Second Edition/02/figures/eoce/cats")
 
 library(MASS)
+library(openintro)
 data(cats)
 
 oiB =  "#3E9BC0"
@@ -10,10 +10,10 @@ oiB =  "#3E9BC0"
 pdf("cats_bodyWeight.pdf", 5.5, 4.3)
 par(mar=c(4.2,2,0.5,0.5), las=1, mgp=c(3,0.7,0))
 
-hist(cats$Bwt, breaks = seq(2,4,0.25), ylim = c(0,35), xlab = "Body Weight", col = oiB, main = "", cex.lab = 1.25, cex.axis = 1.25, axes = FALSE)
+hist(cats$Bwt, breaks = seq(2,4,0.25), ylim = c(0,35), xlab = "Body Weight", col = oiB, main = "", cex.lab = 1.25, cex.axis = 1.25, axes = FALSE,yaxs="i")
 axis(1)
-axis(2, at = seq(5,35,10))
-
+axis(2, at = seq(0,40,10))
+abline(h=0)
 dev.off()
 
 
@@ -22,10 +22,10 @@ dev.off()
 pdf("cats_bodyWeightSoln.pdf", 5.5, 4.3)
 par(mar=c(4.2,2,0.5,0.5), las=1, mgp=c(3,0.7,0))
 
-hist(cats$Bwt, breaks = seq(2,4,0.25), ylim = c(0,35), xlab = "Body Weight", col = oiB, main = "", cex.lab = 1.25, cex.axis = 1.25, axes = FALSE)
+hist(cats$Bwt, breaks = seq(2,4,0.25), ylim = c(0,35), xlab = "Body Weight", col = oiB, main = "", cex.lab = 1.25, cex.axis = 1.25, axes = FALSE, yaxs="i")
 axis(1)
-axis(2, at = seq(5,35,10))
-
+axis(2, at = seq(0,40,10))
+abline(h=0)
 counts = sum(cats$Bwt <= 2.25)
 for(i in 1:7){
 	counts = c(counts, sum(cats$Bwt > (2 + i*0.25) & cats$Bwt <= (2 + 0.25 + i*0.25)))
@@ -46,9 +46,10 @@ dev.off()
 pdf("cats_bodyWeightGender.pdf", 11, 3)
 par(mar=c(4.2,2,0.5,0.5), las=1, mgp=c(3,0.7,0), mfrow = c(1,2), cex.lab = 1.25)
 
-hist(cats$Bwt[cats$Sex == "F"], breaks = seq(2,4,0.25), ylim = c(0,22), xlab = "Body Weight (Female)", border = '#225588', col = fadeColor('#225588', '55'), main = "")
-
-hist(cats$Bwt[cats$Sex == "M"], breaks = seq(2,4,0.25), ylim = c(0,22), xlab = "Body Weight (Male)", border = '#225588', col = fadeColor('#225588', '55'), main = "")
+hist(cats$Bwt[cats$Sex == "F"], breaks = seq(2,4,0.25), ylim = c(0,22), xlab = "Body Weight (Female)", border = '#225588', col = fadeColor('#225588', '55'),yaxs="i", main = "")
+abline(h=0)
+hist(cats$Bwt[cats$Sex == "M"], breaks = seq(2,4,0.25), ylim = c(0,22), xlab = "Body Weight (Male)", border = '#225588', col = fadeColor('#225588', '55'), yaxs="i",main = "")
+abline(h=0)
 
 dev.off()
 

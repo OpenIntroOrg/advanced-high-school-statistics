@@ -7,7 +7,7 @@ plot(c(0.2, 2.5),
      c(-0.13, 1.15),
      type = 'n',
      axes = FALSE)
-
+box(which="plot")
 z <- seq(0,2 * pi, len = 99)
 x2 <- cos(z) / 2 + 1.3
 y2 <- sin(z) / 3 + 0.5
@@ -35,4 +35,5 @@ Braces(0.7, 0.92, 3 * pi / 2, 0.98, 0.12)
 text(0.7, 1.09, 'Diamonds, 0.2500')
 Braces(1.3, 0.08, pi / 2, 0.98, 0.12)
 text(1.3, -0.08, 'Face cards, 0.2308')
+
 dev.off()

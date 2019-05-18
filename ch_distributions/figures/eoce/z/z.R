@@ -1,4 +1,4 @@
-setwd("/Users/mine/Desktop/Open Intro/Chp 3 - EOCE/figures")
+library(openintro)
 
 oiB = "#3E9BC0"
 

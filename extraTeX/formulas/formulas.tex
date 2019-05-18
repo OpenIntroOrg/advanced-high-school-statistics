@@ -1,0 +1,66 @@
+\newgeometry{left=1cm,right=1cm,bottom=1cm}
+
+\section{Formulas}
+\label{formulas}
+
+\begin{multicols}{2}
+\textbf{Descriptive~Statistics}
+\begin{flalign*}
+&\bar{x}=\frac{\sum{x_i}}{n}\\
+\\
+&s_x=\sqrt{\frac{1}{n-1}\sum{(x_i-\bar{x})^2}}\\
+\\
+&r=\frac{1}{n-1}\sum{\Big(\frac{x_i-\bar{x}}{s_x}\Big)\Big(\frac{y_i-\bar{y}}{s_y}\Big)}\\
+\\
+&\hat{y}=b_0+b_1x\\
+\\
+&b_0=\bar{y}-b_1\bar{x}\\
+\\
+&b_1=r\frac{s_y}{s_x}\\
+\\
+&s_{b_1}=\frac{\sqrt{\frac{\sum{(y_i-\hat{y}_i)^2}}{n-2}}}{\sqrt{\sum{(x_i-\bar{x})^2}}}
+\end{flalign*}
+\textbf{Probability}
+\begin{flalign*}
+&P(A \cup B) = P(A) + P(B) - P(A\cap B)\\
+\\
+&P(A | B) = \frac{P(A \cap B)}{P(B)}\\
+\\
+&E(X)=\mu_x=\sum{(x_i\times p_i)}\\
+\\
+&Var(X) = \sigma_x^2=\sum{((x_i-\mu_x)^2\times p_i)}\\
+\\
+&\mu_{\bar{x}}=\mu \qquad \quad \ \sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}\\
+\\
+&\text{If X has a binomial distribution with}\\
+&\text{parameters $n$ and $p$, then:}\\
+&P(X=k)={n\choose k} p^k(1-p)^{n-k}\\
+\\
+&\mu_x=np \qquad \quad  \ \sigma_x=\sqrt{np(1-p)}\\
+\\
+& \mu_{\hat{p}}=p\qquad \qquad \small{\sigma_{\hat{p}}=\sqrt{\frac{p(1-p)}{n}}}
+\end{flalign*}
+\end{multicols}
+\vspace{.2cm}
+\textbf{Inferential~Statistics}
+\\
+$$\text{standardized test statistic: }  \frac{\text{point estimate} - \text{null value}}{SE \text{ of estimate}}$$
+$$\text{confidence interval: } \text{point estimate} \ \pm \ \text{critical value}\times SE \text{ of estimate}$$
+\\
+\begin{center}
+\begin{tabular}{lcccl}
+&parameter & point estimate &$SE$  of estimate& \\
+single proportion &$p$ &$\hat{p}$ &$\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$ & use $\sqrt{\frac{p_0(1-p_0)}{n}}$ when $H_0$: $p=p_0$\\
+\\
+difference of proportions & $p_1-p_2$ & $\hat{p}_1-\hat{p}_2$ & $\sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1}+\frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$ & use $\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}$ when $H_0$: $p_1=p_2$ \\
+\\
+single mean & $\mu$ & $\bar{x}$ & $\frac{s}{\sqrt{n}}$&\quad  \\
+\\
+mean of differences& $\mu_{\text{\emph{diff}}}$ & $\bar{x}_{\text{\emph{diff}}}$ & $\frac{s_{\text{\emph{diff}}}}{\sqrt{n_{\text{\emph{diff}}}}}$&\quad  \\
+\\
+difference of means & $\mu_1-\mu_2$ & $\bar{x}_1-\bar{x}_2$ & $\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}$&
+\end{tabular}
+\end{center}
+\vspace{1cm}
+\qquad $\text{Chi-square test statistic} = \sum{\frac{(\text{observed} - \text{expected})^2}{\text{expected}}}$
+\restoregeometry

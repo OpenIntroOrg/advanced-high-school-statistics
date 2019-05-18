@@ -18,7 +18,7 @@ sum((d) >= 0.04) / N
 
 myPDF("yawn.pdf", 6.7, 3.5, mar=c(4,2,0,0), mgp=c(2.8,0.55,0))
 
-histPlot(d, breaks=seq(-0.6, 0.7, 0.02), col="#EEEEEE", main="", xlab=expression(hat(p)[trtmt] - hat(p)[ctrl]*"    "), ylab="", axes=FALSE)
+histPlot(d, breaks=seq(-0.6, 0.7, 0.02), col="#EEEEEE", main="", xlab=expression(hat(p)[trtmt] - hat(p)[ctrl]*"    "), ylab="", axes=FALSE,yaxs="i")
 axis(1)
 axis(2, at=(0:5)*N/20, labels=c(0, NA, 2, NA, 4, NA)/20)
 abline(h = 0)
@@ -33,10 +33,10 @@ pdf("yawnSoln.pdf", height = 3, width = 6)
 
 par(mar=c(4,4,0,0), las=1, mgp=c(2.8,1,0), mfrow = c(1,1), cex.lab = 1.25, cex.axis = 1.25)
 
-histPlot(d, breaks=seq(-0.6, 0.7, 0.02), col="#EEEEEE", main="", xlab=expression(hat(p)[pr] - hat(p)[con]*"    "), ylab="", axes=FALSE, ylim = c(0,2800))
+histPlot(d, breaks=seq(-0.6, 0.7, 0.02), col="#EEEEEE", main="", xlab=expression(hat(p)[pr] - hat(p)[con]*"    "), ylab="", axes=FALSE,yaxs="i", ylim = c(0,2800))
 axis(1)
 axis(2, at=(0:5)*N/20, labels=c(0, NA, 2, NA, 4, NA)/20)
-histPlot(d[d >= 0.04], breaks=seq(-0.6, 0.7, 0.02), col=COL[1], add=TRUE)
+histPlot(d[d >= 0.04], breaks=seq(-0.6, 0.7, 0.02), col=COL[1], add=TRUE,yaxs="i")
 abline(h=0)
 lines(rep(0.04, 2), c(0, 6.1)*N/25, lty=3, lwd=1.7)
 text(0.04, 6*N/25, "0.04", pos=3, cex=1.25)

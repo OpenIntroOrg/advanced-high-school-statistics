@@ -18,6 +18,7 @@ plot(0, 0,
      ylim = c(0, 145),
      xlab = 'Sample mean',
      ylab = 'Frequency',
+     yaxs="i",
      axes = FALSE)
 m <- mean(run10$time, na.rm = TRUE)
 s <- sd(run10$time, na.rm = TRUE)/10
