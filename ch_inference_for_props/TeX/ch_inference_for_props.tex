@@ -1037,69 +1037,60 @@ p_1\ne p_2 &\text{ is equivalent to } p_1-p_2\ne 0.
 \end{align*}
 We can now see that the hypotheses are really about a difference of proportions: $p_1-p_2$.  In the last section, we used a 2-proportion Z-interval to estimate the parameter $p_1-p_2$; here, we will use a 2-proportion Z-test to test the null hypothesis that $p_1-p_2=0$, i.e. that $p_1=p_2$.
 
-\begin{examplewrap}
-\begin{nexample}{Are the conditions for using the normal model for inference met?  }
-\label{}
-(1) We have two randomly assigned treatments.\\
-(2) The success-failure condition (minimums of 10) easily holds for each group.
-\begin{align*}
-771 \times 0.47 &\ge 10
-	&771 \times (1-0.47) &\ge 10
-	&732 \times 0.34 &\ge 10
-	&732 \times (1-0.34) &\ge 10
-\end{align*}
-Because both conditions are met, the normal model can be used.  
-\end{nexample}
-\end{examplewrap}
-
-%\CommentA{Called term SD rather than SE to be consistent with notation and with language used in paragraph.}
-
 Recall that the test statistic Z has the form:
 \begin{align*}
 Z = \frac{\text{point estimate} - \text{null value}}{SE\ \text{of estimate}}
 \end{align*}
 The parameter of interest is $p_1-p_2$, so the point estimate will be the observed difference of sample proportions:  $\hat{p}_{1} - \hat{p}_{2} = 0.47 - 0.34 = 0.13$.  
 
-The null value depends on the null hypothesis.  The null hypothesis is that the approval rate would be the same for both statement orderings, i.e. that the difference is 0, therefore, the null value is 0.  In this section we consider only the case where $H_0$: $p1=p_2$, so the null value for the difference will always be 0.
+The null value depends on the null hypothesis.  The null hypothesis is that the approval rate would be the same for both statement orderings, i.e. that the difference is 0, therefore, the null value is 0.  In this section we consider only the case where $H_0$: $p_1=p_2$, so the null value for the difference will always be 0.
 
 The $SD$ of a difference of sample proportions has the form:
 \begin{align*}
 SD = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
 \end{align*}
-However, in a hypothesis test, the distribution of the point estimate is always examined assuming the null hypothesis is true, i.e. in this case, $p_1 = p_2$. The standard error formula should reflect this equality in the null hypothesis. We will use $p$ to represent the common proportion that support healthcare law regardless of statement order:
+However, in a hypothesis test, the distribution of the point estimate is always examined assuming the null hypothesis is true, i.e. in this case, $p_1 = p_2$. Both the success-failure check and the standard error formula should reflect this equality in the null hypothesis. We will use $p_c$ to represent the common proportion that support healthcare law regardless of statement order:
 \begin{align*}
-SD &= \sqrt{\frac{p(1-p)}{n_1} + \frac{p(1-p)}{n_2}} \\
-	&= \sqrt{p(1-p)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
+SD &= \sqrt{\frac{p_c(1-p_c)}{n_1} + \frac{p_c(1-p_c)}{n_2}} \\
+	&= \sqrt{p_c(1-p_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
 \end{align*}
-We don't know the true proportion $p$, but we can obtain a good estimate of it, $\hat{p}$, by \emph{pooling} the results of both samples.  We find the total number of ``yeses" or ``successes" and divide that by the total number of cases.  This is equivalent to taking a weighted average of $\hat{p}_1$ and $\hat{p}_2$.  We call $\hat{p}$ the \term{pooled sample proportion}, and we use it to compute the standard error when the null hypothesis is that $p_1 = p_2$.\footnote{The pooled sample proportion is also sometimes used to verify the success-failure condition.} Here:
+We don't know the true proportion $p_c$, but we can obtain a good estimate of it, $\hat{p}_c$, by \emph{pooling} the results of both samples.  We find the total number of ``yeses" or ``successes" and divide that by the total number of cases.  This is equivalent to taking a weighted average of $\hat{p}_1$ and $\hat{p}_2$.  We call $\hat{p}_c$ the \term{pooled sample proportion}, and we use it to check the success-failure condition and to compute the standard error when the null hypothesis is that $p_1 = p_2$.  Here:
 
-$$\hat{p} =  \frac{0.47(771) + 0.34(732)}{771+732}= 0.407$$
-
-\D{\newpage}
+$$\hat{p}_c =  \frac{771(0.47) + 732(0.34)}{771+732}= 0.407$$
 
 \begin{onebox}{Pooled sample proportion}
 When the null hypothesis is $p_1 = p_2$, it is useful to find the pooled sample proportion:
 \begin{eqnarray*}
-\hat{p} = \frac{\text{number of ``successes''}}{\text{number of cases}} = \frac{\text{x}_1+\text{x}_2}{n_1+n_2}=\frac{\hat{p}_1(n_1) + \hat{p}_2(n_2)}{n_1 + n_2}
+\hat{p}_c = \frac{\text{number of ``successes''}}{\text{number of cases}} = \frac{\text{x}_1+\text{x}_2}{n_1+n_2}=\frac{n_1\hat{p}_1 + n_2\hat{p}_2}{n_1 + n_2}
 \end{eqnarray*}
-Here $\text{x}_1$ represents the number of successes in sample 1. If $\text{x}_1$ is not given, it can be computed as $\hat{p}_1\times n_1$. Similarly, $\text{x}_2$ represents the number of successes in sample~2 and can be computed as $\hat{p}_2\times n_2$.
+Here $\text{x}_1$ represents the number of successes in sample 1. If $\text{x}_1$ is not given, it can be computed as $n_1\times \hat{p}_1$. Similarly, $\text{x}_2$ represents the number of successes in sample~2 and can be computed as $n_2\times \hat{p}_2$.
 \end{onebox}
 
-\begin{onebox}{Use the pooled sample proportion when $\mathbf{H_0}$\textbf{:} $\mathbf{p_1 = p_2}$}
-When the null hypothesis states that the proportions are equal, we use the pooled sample proportion ($\hat{p}$) to estimate the standard error:
-\begin{eqnarray}
-SE =\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
+\begin{onebox}{Use the pooled sample proportion when \pmb{$H_0$: $\MakeLowercase{p}_1 = \MakeLowercase{p}_2$}}
+When the null hypothesis states that the proportions are equal, we use the pooled sample proportion ($\hat{p}_c$) to check the success-failure condition and to estimate the standard error:
+\begin{eqnarray*}
+SE =\sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
 \label{seOfDiffInPropUsingPooledEstimate}
-\end{eqnarray}
+\end{eqnarray*}
 \end{onebox}
 
 
 
 \begin{examplewrap}
-\begin{nexample}{Use Equation~\eqref{seOfDiffInPropUsingPooledEstimate} to find the $SE$ of estimate for this hypothesis test.  Recall that the pooled proportion $\hat{p}=0.407$, $n_1 = 771$, and $n_2=732$.}
-$$SE =\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}=\sqrt{0.407(1-0.407)}\sqrt{\frac{1}{771} + \frac{1}{732}}=0.025$$
+\begin{nexample}{Verify that conditions for using the normal are met and find the $SE$ of estimate for this hypothesis test.  Recall that the pooled proportion $\hat{p}_c=0.407$, $n_1 = 771$, and $n_2=732$.}
+The data do come from two randomly assigned treatments, where the treatments are the two different orderings of the question regarding healthcare.  Also, the success-failure condition (minimums of 10) easily holds for each group.
+\begin{align*}
+771 \times 0.407 &\ge 10
+	&771 \times (1-0.407) &\ge 10
+	&732 \times 0.407 &\ge 10
+	&732 \times (1-0.407) &\ge 10
+\end{align*}
+Here, we compute the $SE$ for the difference of sample proportions as:
+$$SE =\sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}=\sqrt{0.407(1-0.407)}\sqrt{\frac{1}{771} + \frac{1}{732}}=0.025$$
 \end{nexample}
 \end{examplewrap}
+
+
 
 \begin{examplewrap}
 \begin{nexample}{Complete the hypothesis test using a significance level of 0.01.}
@@ -1132,14 +1123,14 @@ To carry out a complete hypothesis test to test the claim that two proportions $
 \setlength{\itemsep}{0mm}
 \item[] 1.  Data come from 2 independent random samples or from 2 randomly
 \item[] \quad \  assigned treatments.
-\item[] 2.  $n_1\hat{p}_1\geq 10$, $n_1(1-\hat{p}_1)\geq 10$, $n_2\hat{p}_2\geq 10$, and $n_2(1-\hat{p}_2)\geq 10$
+\item[] 2.  $n_1\hat{p}_c\geq 10$, $n_1(1-\hat{p}_c)\geq 10$, $n_2\hat{p}_c\geq 10$, and $n_2(1-\hat{p}_c)\geq 10$
 \end{itemize}
  \inferencestep{Calculate}  Calculate the Z-statistic and p-value.
 \begin{itemize}
 \item[] $Z = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}$
 \begin{itemize}
 \item[] point estimate: the difference of sample proportions $\hat{p}_1 - \hat{p}_2$
-\item[] $SE$ of estimate:  $\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$, where $\hat{p}$ is the pooled proportion
+\item[] $SE$ of estimate:  $\sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$, where $\hat{p}$ is the pooled proportion
 \item[] null value: 0
 \end{itemize}
 \item[] p-value = (based on the Z-statistic and the direction of $H_A$)
@@ -1186,7 +1177,10 @@ $H_A$: $p_1 < p_2$ \quad Fish oil is effective in reducing heart attacks.
  
 
 \item[\inferencestep{Choose}] Because we are testing whether two proportions equal each other, we choose the \mbox{2-proportion Z-test.}
-\item[\inferencestep{Check}]  We must verify that the difference of sample proportions can be modeled using a normal distribution.  There are two randomly assigned treatments.  Also, $12933(\frac{145}{12933})\geq10$, $12933(\frac{12788}{12933})\geq10$, $12938(\frac{200}{12938})\geq10$, and $12938(\frac{12738}{12938})\geq10$  so both conditions are met. 
+\item[\inferencestep{Check}]  We must verify that the difference of sample proportions can be modeled using a normal distribution.  First we note that there are two randomly assigned treatments.  Second, we calculate the pooled proportion as follows:
+$$\hat{p}_c = \frac{\text{x}_1+\text{x}_2}{n_1+n_2}=\frac{145 + 200}{12933 + 12938}=0.0133$$
+
+We can now verify: $12933(0.0133)\geq10$, $12933(1-0.0133)\geq10$, $12938(0.0133)\geq10$, and $12938(1-0.0133)\geq10$,  so both conditions are met. 
 \item[ \inferencestep{Calculate} ]  We will calculate the Z-statistic and the p-value.
 \begin{align*}
 Z = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}
@@ -1196,10 +1190,10 @@ The point estimate is the difference of sample proportions: $\hat{p}_1-\hat{p}_2
 \\
 The value hypothesized for the parameter in $H_0$ is the null value:  null value = 0.\\
 \\
-The pooled proportion is: $\hat{p} = \frac{\text{x}_1+\text{x}_2}{n_1+n_2}=\frac{145 + 200}{12933 + 12938}=0.0133$
+The pooled proportion, calculated above, is: $\hat{p}_c = 0.0133$.
 \\
 \\
-The $SE$ of the difference of sample proportions, assuming $H_0$ is true, is:  $\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}} = \sqrt{0.0133(1-0.0133)}\sqrt{\frac{1}{12933} + \frac{1}{12938}}=0.00142$. \\
+The $SE$ of the difference of sample proportions, assuming $H_0$ is true, is: \\ $\sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}} = \sqrt{0.0133(1-0.0133)}\sqrt{\frac{1}{12933} + \frac{1}{12938}}=0.00142$. \\
 \begin{align*}
 Z = \frac{-0.0043 - 0}{0.00142} = -3.0
 \end{align*}
@@ -1293,20 +1287,21 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion
 
 \item The sampling distribution of $\hat{p}_1-\hat{p}_2$ is nearly normal when the success-failure condition is met for \textit{both} groups and when the data is collected using 2 independent random samples or 2 randomly assigned treatments.  When the sampling distribution of $\hat{p}_1-\hat{p}_2$ is nearly normal, the standardized test statistic also follows a \term{normal} distribution.
 
-\item When the null hypothesis is that the two populations proportions are \textit{equal} to each other, use the \term{pooled sample proportion} $\hat{p}=\frac{\text{x}_1+\text{x}_2}{n_1+n_2}$, i.e. the combined number of yeses over the combined sample~sizes, when finding the $SE$.  For the confidence interval, do not use the pooled sample proportion; use the separate values of  $\hat{p}_1$ and $\hat{p}_2$.  
+\item When the null hypothesis is that the two populations proportions are \textit{equal} to each other, use the \term{pooled sample proportion} $\hat{p}_c=\frac{\text{x}_1+\text{x}_2}{n_1+n_2}$, i.e. the combined number of yeses over the combined sample~sizes, when verifying the success-failure condition and when finding the $SE$.  For the confidence interval, do not use the pooled sample proportion; use the separate values of  $\hat{p}_1$ and $\hat{p}_2$.  
 \item When there are two samples or treatments and the parameter of interest is a difference of proportions, e.g. the true difference in proportion of 17 and 18 year olds with a summer job (proportion of 18 year olds $-$ proportion of 17 year olds): 
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item Estimate $p_1-p_2$ at the C\% confidence level using a \term{2-proportion Z-interval}.
 \item Test $H_0$: $p_1-p_2=0$ (i.e. $p_1=p_2$) at the $\alpha$ significance level using a \term{2-proportion Z-test}.
 \end{itemize}
-\item The conditions for the two proportion Z-interval and Z-test are the same.  \vspace{-1mm}
+\item Verify the conditions for using a normal model:  \vspace{-1mm}
 \begin{itemize}
 \item[1.] Data come from 2 independent random samples or 2 randomly assigned treatments.
-\item[2.] $n_1\hat{p}_1\ge 10$, $n_1(1-\hat{p}_1)\ge 10$, $n_2\hat{p}_2\ge 10$, and $n_2(1-\hat{p}_2)\ge 10$ 
+\item[2.] CI:  $n_1\hat{p}_1\ge 10$, $n_1(1-\hat{p}_1)\ge 10$, $n_2\hat{p}_2\ge 10$, and $n_2(1-\hat{p}_2)\ge 10$ 
+\item[] Test: $n_1\hat{p}_c\ge 10$, $n_1(1-\hat{p}_c)\ge 10$, $n_2\hat{p}_c\ge 10$, and $n_2(1-\hat{p}_c)\ge 10$
 \end{itemize}
 
-\item When the conditions are met, we calculate the confidence interval and the test statistic as we did in the previous section.  Here, our data is a list of differences.
+\item When the conditions are met, we calculate the confidence interval and the test statistic using the same structure as in the previous section.  
 
 \begin{itemize}
 \setlength{\itemsep}{2mm}
@@ -1315,7 +1310,8 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion
 \end{itemize}
 Here the point estimate is the difference of sample proportions $\hat{p}_1 - \hat{p}_2$.
 \item[] The $SE$ of estimate is the $SE$ of a difference of sample proportions.
-\item[] \quad \quad For an Interval, use:  $SE = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$; \quad For a Test, use:  $SE = \sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$   
+\item[] \quad \quad For a CI, use:  $SE = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$.
+\item[] \quad \quad For a Test, use:  $SE = \sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$.   
 \end{itemize}
 
 
