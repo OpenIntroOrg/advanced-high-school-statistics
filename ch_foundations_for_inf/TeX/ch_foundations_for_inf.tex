@@ -943,13 +943,21 @@ The consultant's complication rate for her 142 clients was 0.063 ($0.063 \times 
 
 
 \begin{onebox}{Finding and interpreting the p-value}
-When examining a proportion, we find and interpret the \term{p-value}\index{hypothesis testing!p-value|textbf} according to the nature of the alternative hypothesis.\vspace{-1mm}
+We find and interpret the \term{p-value}\index{hypothesis testing!p-value|textbf} according to the nature of the alternative hypothesis.\vspace{-1mm}
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[$H_A$: $p > p_0.$ ] The p-value is the probability of observing a sample proportion as large as we saw in our sample, if the null hypothesis were true. The p-value corresponds to the area in the \emph{upper} tail.
-\item[$H_A$: $p < p_0.$ ]The p-value is the probability of observing a sample proportion as small as we saw in our sample, if the null hypothesis were true. The p-value corresponds to the area in the \emph{lower} tail.
-\item[$H_A$: $p \ne p_0.$] The p-value is the probability of observing a sample proportion as far from the null value as what was observed in the current data set, if the null hypothesis were true. The p-value corresponds to the area in \emph{both} tails.
+
+\item[$H_A$: parameter $>$ null value.] The p-value corresponds to the area in the \emph{upper} tail and is probability of getting a test statistic larger than the observed test statistic if the null hypothesis is true and the probability model is accurate.  
+
+\item[$H_A$: parameter $<$ null value.] The p-value corresponds to the area in the \emph{lower} tail and is the probability of observing a test statistic smaller than the observed test statistic if the null hypothesis is true and the probability model is accurate. 
+
+\item[$H_A$: parameter $\ne$ null value.] The p-value corresponds to the area in \emph{both} tails and is the probability of observing a test statistic larger in magnitude than the observed test statistic if the null hypothesis is true and the probability model is accurate. 
+
+\item[] More generally, we can say that the p-value is the probability of getting a test statistic as extreme or more extreme than the observed test statistic in the direction of $H_A$ if the null hypothesis is true and the probability model is accurate.
+
 \end{description}\end{onebox}
+
+When working with proportions, we can also say that the p-value is the probability of getting a sample proportion as far from or farther from the null proportion in the direction of $H_A$ if the null hypothesis is true and the normal model holds.
 
 When the p-value is small, i.e. less than a previously set threshold, we say the results are \term{statistically significant}. This means the data provide such strong evidence against $H_0$ that we reject the null hypothesis in favor of the alternative hypothesis. The threshold is called the \term{significance level}\index{hypothesis testing!significance level}\index{significance level} and is represented by $\alpha$ (the Greek letter \emph{alpha}\label{alphadiscussion}).  The significance level is typically set to $\alpha = 0.05$, but can vary depending on the field or the application. %Using a significance level of $\alpha = 0.05$ in the discrimination study, we can say that the data did not provide statistically significant evidence against the null hypothesis, because the p-value of 0.1754 was larger than the $\alpha$ of 0.05.
 
@@ -1204,13 +1212,13 @@ The Type~II Error rate $\beta$ and the magnitude of the error for a point estima
 
 \item After verifying that the relevant \term{conditions are met}, we can calculate the test statistic.  The \term{test statistic} tells us \textit{how many} standard errors the point estimate (sample value) is from the null value (i.e. the value hypothesized for the parameter in the null hypothesis).  When investigating a single mean or proportion or a difference of means or proportions, the test statistic is calculated as: $\frac{\text{point estimate } -\text{ null value}}{SE \text{ of estimate}}$.
 
-\item After the test statistic, we calculate the p-value.  We find and interpret the \term{p-value} according to the nature of the alternative hypothesis.  The three possibilities are:\vspace{-1mm}
+\item After the test statistic, we calculate the p-value.  We find and interpret the p-value according to the nature of the alternative hypothesis.  The three possibilities are:\vspace{-1mm}
 \begin{itemize}
-\item[] $H_A$: $p>p_0$. \quad\parbox[t]{3.84in}{The p-value corresponds to the area in the \emph{upper tail} and is the probability of observing a sample value \textit{as large as} our sample value, if $H_0$ were true. }
-\item[] $H_A$: $p < p_0$. \quad\parbox[t]{3.84in}{The p-value corresponds to the area in the \emph{lower tail} and is the probability of observing a sample value \textit{as small as} our sample value, if $H_0$ were true. }
-\item[] $H_A$: $p \ne p_0$. \quad\parbox[t]{3.84in}{The p-value corresponds to the area in \emph{both tails} and is the probability of observing a sample value \textit{as far from} the null value as our sample value, if $H_0$ were true. }
+\item[] $H_A$: parameter $>$ null value. \quad\parbox[t]{3.84in}{The p-value corresponds to the area in the \emph{upper tail}.  }
+\item[] $H_A$: parameter $<$ null value. \quad\parbox[t]{3.84in}{The p-value corresponds to the area in the \emph{lower tail}.  }
+\item[] $H_A$: parameter $\ne$ null value. \quad\parbox[t]{3.84in}{The p-value corresponds to the area in \emph{both tails}.  }
 \end{itemize}
-These interpretations assume that the conditions for the test are met and that the probability model on which they are based is true.
+The \term{p-value} is the probability of getting a test statistic as extreme or more extreme than the observed test statistic in the direction of $H_A$ if the null hypothesis is true and the probability model is accurate.
 
 \item The conclusion or decision of a hypothesis test is based on whether the p-value is smaller or larger than the preset significance level $\alpha$. \vspace{-1mm}
 \begin{itemize}
