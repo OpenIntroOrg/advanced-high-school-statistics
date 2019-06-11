@@ -1194,13 +1194,13 @@ Because \resp{0} and \resp{1} are numerical outcomes,
 we can define the {mean} and {standard deviation}
 of a Bernoulli random variable.\footnote{If ${p}$ is the true probability of a success, then the mean of a Bernoulli random variable $X$ is given by
 \begin{align*}
-\mu = E[X] &= P(X = 0) \times 0 + P(X = 1) \times 1 \\
-	&= (1 - p) \times 0 + p\times 1 = 0 + p = p
+\mu = E(X) &=  0\cdot P(X = 0) +  1\cdot P(X=1) \\
+	&=   0\cdot (1 - p) +  1\cdot p = 0 + p = p
 \end{align*}
 Similarly, the variance of $X$ can be computed:
 \begin{align*}
-\sigma^2 &= {P(X=0)(0-p)^2 + P(X=1)(1-p)^2} \\
-	&= {(1-p)p^2 + p(1-p)^2} = {p(1-p)}
+\sigma^2 &= {(0-p)^2\cdot P(X=0) + (1-p)^2\cdot P(X=1)} \\
+	&= {p^2\cdot (1-p) + (1-p)^2\cdot p} = {p(1-p)}
 \end{align*}
 The standard deviation is $\sigma=\sqrt{p(1-p)}$.}
 
@@ -1244,10 +1244,10 @@ Let's first look at an example.
     will not have exceeded her deductible, i.e. be a success?
     The second person?
     The third?
-    What about we pull $n - 1$ cases before we find
+    What about the probability that we pull $x - 1$ cases before we find
     the first success, i.e. the first success is the
-    $n^{th}$ person?
-    (If the first success is the fifth person, then we say $n=5$.)}
+    $x^{th}$ person?
+    (If the first success is the fifth person, then we say $x=5$.)}
   \label{waitForDeductible}%
   The probability of stopping after the first person is just
   the chance the first person will not exceed her (or his)
@@ -1264,12 +1264,12 @@ The probability the second person is the first to exceed
   $(\insureFprob{})(\insureFprob{})(\insureSprob{})
     = \insureDistC$.
 
-  If the first success is on the $n^{th}$ person,
-  then there are $n-1$ failures and finally 1 success,
+  If the first success is on the $x^{th}$ person,
+  then there are $x-1$ failures and finally 1 success,
   which corresponds to the probability
-  $(\insureFprob{})^{n-1}(\insureSprob{})$.
+  $(\insureFprob{})^{x-1}(\insureSprob{})$.
   This is the same as
-  $(1-\insureSprob{})^{n-1}(\insureSprob{})$.
+  $(1-\insureSprob{})^{x-1}(\insureSprob{})$.
 \end{nexample}
 \end{examplewrap}
 
@@ -1300,17 +1300,18 @@ While this text will not derive the formulas for the mean (expected) number of t
 
 \begin{onebox}{Geometric Distribution}
   \index{distribution!geometric|textbf}%
-  If the probability of a success in one trial is $p$
-  and the probability of a failure is $1-p$, then the
+  Let X have a geometric distribution with one parameter $p$, where $p$ is the probability of a success in one trial.   Then the
   probability of finding the first success in the
-  $n^{th}$ trial is given by\vspace{-1.5mm}
+  $x^{th}$ trial is given by\vspace{-1.5mm}
   \begin{align*}
-  (1-p)^{n-1}p
+  P(X = x) = (1-p)^{x-1}p
   \end{align*}
+where $x=1,2,3,\dots$\\
+\\
   The mean (i.e. expected value) and standard deviation of this wait time are given by
   \begin{align*}
-  \mu = \frac{1}{p}
-      \qquad \sigma = \sqrt{\frac{1-p}{p^2}}
+  \mu_{\scriptscriptstyle{X}} = \frac{1}{p}
+      \qquad \sigma_{\scriptscriptstyle{X}} = \frac{\sqrt{1-p\ }}{p}
   \end{align*}
 \end{onebox}
 
@@ -1337,16 +1338,16 @@ we expect to check?\footnotemark{}
 \begin{nexample}{What is the chance that we would find
     the first success within the first 3 cases?}
   \label{insureFirstSuccessInLT4}%
-  This is the chance it is the first ($n=1$), second ($n=2$),
-  or third ($n=3$) case is the first success, which are three
+  This is the chance the first ($X=1$), second ($X=2$),
+  or third ($X=3$) case is the first success, which are three
   disjoint outcomes.
   Because the individuals in the sample are randomly sampled
   from a large population, they are independent.
   We compute the probability of each case and add the separate
   results:
   \begin{align*}
-  &P(n=1, 2, \text{ or }3) \\
-    & \quad = P(n=1)+P(n=2)+P(n=3) \\
+  &P(X=1, 2, \text{ or }3) \\
+    & \quad = P(X=1)+P(X=2)+P(X=3) \\
     & \quad = (\insureFprob{})^{1-1}(\insureSprob{})
         + (\insureFprob{})^{2-1}(\insureSprob{})
         + (\insureFprob{})^{3-1}(\insureSprob{}) \\
@@ -1387,14 +1388,14 @@ Show that you get the same result.\footnotemark{}
   $p = 0.88$.
   The expected number of people to be checked is
   $1 / p = 1 / 0.88 = 1.14$ and the standard deviation is
-  $\sqrt{(1-p)/p^2} = 0.39$.
+  $\frac{\sqrt{1-p\ }}{p}=\frac{\sqrt{1-0.88\ }}{0.88} = 0.39$.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
 Using the results from Example~\ref{carInsure08DrawOne},
-$\mu = 1.14$ and $\sigma = 0.39$, would it be appropriate
+$\mu_{\scriptscriptstyle{X}} = 1.14$ and $\sigma_{\scriptscriptstyle{X}} = 0.39$, would it be appropriate
 to use the normal model to find what proportion
 of experiments would end in 3 or fewer trials?\footnotemark{}
 \end{nexercise}
@@ -1406,8 +1407,8 @@ of experiments would end in 3 or fewer trials?\footnotemark{}
 The independence assumption is crucial to the geometric
 distribution's accurate description of a scenario.
 Mathematically, we can see that to construct the probability
-of the success on the $n^{th}$ trial, we had to use the
-Multiplication Rule for Independent Processes.
+of the success on the $x^{th}$ trial, we had to use the
+General Multiplication Rule for independent processes.
 It is no simple task to generalize the geometric model
 for dependent trials.
 
@@ -1422,15 +1423,15 @@ for dependent trials.
 \begin{itemize}
 \item It is useful to model yes/no, success/failure with the values 1 and 0, respectively. We call the \term{probability of success $p$ }and the \term{probability of failure $1-p$}.
 
-\item When the trials are \term{independent} and the value of $p$ is constant, the probability of finding \term{the first success on the $n^{th}$ trial} is given by $(1-p)^{n-1}p$.  We can see the reasoning behind this formula as follows:  for the first success to happen on the $n^{th}$ trial, it has to \emph{not} happen the first $n-1$ trials (with probability $1-p$), and then happen on the $n^{th}$ trial (with probability $p$).  
+\item When the trials are \term{independent} and the value of $p$ is constant, the probability of finding \term{the first success on the $x^{th}$ trial} is given by $(1-p)^{x-1}p$.  We can see the reasoning behind this formula as follows:  for the first success to happen on the $x^{th}$ trial, it has to \emph{not} happen the first $x-1$ trials (with probability $1-p$), and then happen on the $x^{th}$ trial (with probability $p$).  
 
-\item When we consider the \emph{entire distribution} of possible values for the how long \emph{until} the first success, we get a discrete probability distribution known as the geometric distribution. The \term{geometric distribution} describes the waiting time \emph{until} the first success, when the trials are independent and the probability of success, $p$, is constant.
+\item When we consider the \emph{entire distribution} of possible values for the how long \emph{until} the first success, we get a discrete probability distribution known as the geometric distribution. The \term{geometric distribution} describes the waiting time \emph{until} the first success, when the trials are independent and the probability of success, $p$, is constant.  If X has a geometric distribution with parameter $p$, then $P(X=x)=(1-p)^{x-1}p$, where $x=1,2,3\dots$.
 
 \item The geometric distribution is always \emph{right skewed} and, in fact, has no maximum value.  The probabilities, though, decrease exponentially fast.
 
-\item Even though the geometric distribution has an infinite number of values, it has a well-defined \term{mean}, $\mu=\frac{1}{p}$.  If the probability of success is $\frac{1}{10}$, then \emph{on average}, it takes 10 trials until we see the first success.
+\item Even though the geometric distribution has an infinite number of values, it has a well-defined \textbf{mean}: $\mu_{\scriptscriptstyle{X}}=\frac{1}{p}$ and \textbf{standard deviation}: $\sigma_{\scriptscriptstyle{X}} = \frac{\sqrt{1-p \ }}{p}$.  If the probability of success is $\frac{1}{10}$, then \emph{on average} it takes 10 trials until we see the first success.
 
-\item Note that when the trials are not independent, we can simply modify the geometric formula to find the probability that the first success happens on the $n^{th}$ trial. Instead of simply raising ($1-p$) to the $n-1$, multiply the appropriate \emph{conditional} probabilities.
+\item Note that when the trials are not independent, we can modify the geometric formula to find the probability that the first success happens on the $x^{th}$ trial. Instead of simply raising ($1-p$) to the $x-1$, multiply the appropriate \emph{conditional} probabilities.
 
 \end{itemize}
 
@@ -1477,7 +1478,7 @@ Recall that the probability of a randomly sampled person being blood type O+ is 
 \begin{figure}[h]
 \begin{minipage}[c]{0.37\textwidth}\centering%
 \begin{tabular}{l l}
-$x_i$ & $p_i$ \\
+$x_i$ & $P(x_i)$ \\
 \hline
 0 &  ${4\choose 0}(\oposprob{})^0(\oposprobcomp{})^{4} = 0.179$ \vspace{1mm}\\
 1 &  ${4\choose 1}(\oposprob{})^1(\oposprobcomp{})^{3} = 0.384$  \vspace{1mm}\\
@@ -1511,8 +1512,8 @@ random variable.
 \begin{onebox}{Mean and standard deviation of the binomial distribution}
 For a binomial distribution with parameters $n$ and $p$, where $n$ is the number of trials and $p$ is the probability of a success, the mean and standard deviation of the number of observed successes are\vspace{-2mm}
 \begin{align*}
-\mu_x &= np
-	&\sigma_x &= \sqrt{np(1-p)}
+\mu_{\scriptscriptstyle{X}} &= np
+	&\sigma_{\scriptscriptstyle{X}} &= \sqrt{np(1-p)}
 \end{align*}
 \end{onebox}
 
@@ -1520,8 +1521,8 @@ For a binomial distribution with parameters $n$ and $p$, where $n$ is the number
 \begin{nexample}{If the probability that a person has blood type O+ is \oposprob{} and you have 40 randomly selected people, about how many would you expect to have blood type O+? What is the standard deviation of the number of people who would have blood type O+ among the 40 people?}
 We are asked to determine the expected number (the mean) and the standard deviation, both of which can be directly computed from the formulas above. 
  \begin{align*}
-\mu&=np = 40(\oposprob{}) = 14 \\
- \sigma &= \sqrt{np(1-p)} = \sqrt{40(\oposprob{})(\oposprobcomp{})} = 3.0
+\mu_{\scriptscriptstyle{X}}&=np = 40(\oposprob{}) = 14 \\
+ \sigma_{\scriptscriptstyle{X}} &= \sqrt{np(1-p)} = \sqrt{40(\oposprob{})(\oposprobcomp{})} = 3.0
 \end{align*}%
 \end{nexample}
 \end{examplewrap}
@@ -1549,10 +1550,10 @@ The binomial formula is cumbersome when the sample size ($n$) is large, particul
 \begin{examplewrap}
 \begin{nexample}
 {Find the probability that fewer than 12 out of 40 randomly selected people would have blood type O+, where probability of blood type O+ is \oposprob{}.}
-This is equivalent to asking, what is the probability of observing $k=0, 1, 2, ..., \text{ or } 11$ with blood type O+ in a sample of size 40 when $p=0.35$?  We previously verified that this scenario is binomial.  We can compute each of the 12 probabilities using the binomial formula and add them together to find the answer:
+This is equivalent to asking, what is the probability of observing $X=0, 1, 2, ..., \text{ or } 11$ with blood type O+ in a sample of size 40 when $p=0.35$?  We previously verified that this scenario is binomial.  We can compute each of the 12 probabilities using the binomial formula and add them together to find the answer:
  \begin{align*}
-  &P(k=0\text{ or }k=1\text{ or }\cdots\text{ or } k=11) \\
-	&\qquad = P(k=0) + P(k=1) + \cdots + P(k=11) \\
+  &P(X=0\text{ or }X=1\text{ or }\cdots\text{ or } X=11) \\
+	&\qquad = P(X=0) + P(X=1) + \cdots + P(X=11) \\
 	&\qquad = {40\choose 0}(\oposprob{})^0(\oposprobcomp{})^{40} + {40\choose 1}(\oposprob{})^1(\oposprobcomp{})^{39} + \cdots + {40\choose 11}(\oposprob{})^{11}(\oposprobcomp{})^{29}\\
 	&\qquad = 0.21
   \end{align*}
@@ -1702,11 +1703,12 @@ It is always possible to apply the continuity correction when finding a normal a
 %%
 \subsection*{Section summary}
 
-\noindent In the previous chapter, we introduced the binomial formula to find the probability of exactly $k$ successes in $n$ trials for an event that has probability $p$ of success.  Instead of looking at this scenario piecewise, we can describe the entire \textit{distribution} of the number of successes and their corresponding probabilities.  
+\noindent In the previous chapter, we introduced the binomial formula to find the probability of exactly $x$ successes in $n$ trials for an event that has probability $p$ of success.  Instead of looking at this scenario piecewise, we can describe the entire \textit{distribution} of the number of successes and their corresponding probabilities.  
 \begin{itemize}
-\item The distribution of the \textit{number of successes} in $n$ independent trials or in a random sample of size $n$ gives rise to a \term{binomial distribution}.  
+\item The distribution of the \textit{number of successes} in $n$ independent trials gives rise to a \term{binomial distribution}.  If X has a binomial distribution with parameters $n$ and $p$, then \\
+$P(X=x) = {n\choose x}p^x(1-p)^n-x$, where $x=0,1,2,3\dots,n$.
 
-\item To write out a binomial probability \textbf{distribution table}, list all possible values for $k$, the number of successes, then use the binomial formula to find the probability of each of those values.  
+\item To write out a binomial probability \textbf{distribution table}, list all possible values for $x$, the number of successes, then use the binomial formula to find the probability of each of those values.  
 
 \item Because a binomial distribution can be thought of as the \emph{sum} of a bunch of 0s and 1s, the \term{Central Limit Theorem} applies.  As $n$ gets larger, the shape of the binomial distribution becomes more normal.  
 
@@ -1715,8 +1717,8 @@ It is always possible to apply the continuity correction when finding a normal a
 \item If \textit{X} follows a binomial distribution with parameters $n$ and $p$, then:
 \begin{itemize}\vspace{-1mm}
 \setlength{\itemsep}{0mm}
-\item The mean is given by $\mu_x = np$. \quad (\emph{center})
-\item The standard deviation is given by $\sigma_x = \sqrt{np(1-p)}$. \quad (\emph{spread})
+\item The mean is given by $\mu_{\scriptscriptstyle{X}} = np$. \quad (\emph{center})
+\item The standard deviation is given by $\sigma_{\scriptscriptstyle{X}} = \sqrt{np(1-p)}$. \quad (\emph{spread})
 \item When $np\ge 10$ and $n(1-p)\ge 10$, the binomial distribution is approximately normal.  \quad (\emph{shape})
 \end{itemize}
 
@@ -1726,7 +1728,7 @@ It is always possible to apply the continuity correction when finding a normal a
 \begin{enumerate}\vspace{-1mm}
 \setlength{\itemsep}{0mm}
 \item Identify $n$ and $p$. Verify than $np\ge 10$ and $n(1-p)\ge 10$, which implies that normal approximation is reasonable. 
-\item Calculate the Z-score.  Use $\mu_x = np$ and $\sigma_x = \sqrt{np(1-p)}$ to standardize the $x$ value.  
+\item Calculate the Z-score.  Use $\mu_{\scriptscriptstyle{X}} = np$ and $\sigma_{\scriptscriptstyle{X}} = \sqrt{np(1-p)}$ to standardize the $x$ value.  
 \item Find the appropriate area under the normal curve.   
 \end{enumerate}
 
@@ -1954,7 +1956,7 @@ The key steps are included for each of the normal approximation scenarios below.
 \\Use $\mu_{\bar{x}}=\mu$ and $\sigma_{\bar{x}}=\frac{\sigma}{\sqrt{n}}$ to find the Z-score for the given/calculated sample mean.
 \item Normal approximation for the \term{number of successes} (binomial):  
 \\- Verify that $np\ge 10$ and $n(1-p)\ge 10$.
-\\- Use $\mu_x = np$ and $\sigma_x = \sqrt{np(1-p)}$ to find the Z-score for the given number of successes.  
+\\- Use $\mu_{\scriptscriptstyle{X}} = np$ and $\sigma_{\scriptscriptstyle{X}} = \sqrt{np(1-p)}$ to find the Z-score for the given number of successes.  
 \item Normal approximation for a \term{sample proportion}:  
 \\- Verify that $np\ge 10$ and $n(1-p)\ge 10$.
 \\- Use $\mu_{\hat{p}} = p$ and $\sigma_{\hat{p}} = \sqrt{\frac{p(1-p)}{n}}$ to find the Z-score for the given sample proportion.
