@@ -525,7 +525,7 @@ We are 95\% confident that the true percent of smokers in this population is bet
 \end{nexample}
 \end{examplewrap}
 
-We can be 95\% confident that a 95\% confidence interval contains the true population parameter. However, confidence intervals are imperfect. About 1-in-20 (5\%) properly constructed 95\% confidence intervals will fail to capture the parameter of interest. Figure~\ref{95PercentConfidenceInterval} shows 25 confidence intervals for a proportion that were constructed from simulations where the true proportion was $p = 0.3$. However, 1 of these 25 confidence intervals happened not to include the true value.
+We can be 95\% confident that a 95\% confidence interval captures the true population parameter. However, confidence intervals are imperfect. About 1-in-20 (5\%) properly constructed 95\% confidence intervals will fail to capture the parameter of interest. Figure~\ref{95PercentConfidenceInterval} shows 25 confidence intervals for a proportion that were constructed from simulations where the true proportion was $p = 0.3$. However, 1 of these 25 confidence intervals happened not to include the true value.
 
 \begin{figure}[h]
 \centering
@@ -536,7 +536,7 @@ We can be 95\% confident that a 95\% confidence interval contains the true popul
 
 \begin{exercisewrap}
 \begin{nexercise}
-In Figure~\ref{95PercentConfidenceInterval}, one interval does not contain the true proportion, $p = 0.3$. Does this imply that there was a problem with the simulations?\footnotemark
+In Figure~\ref{95PercentConfidenceInterval}, one interval does not capture the true proportion, $p = 0.3$. Does this imply that there was a problem with the simulations?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{No. Just as some observations occur more than 1.96 standard deviations from the mean, some point estimates will be more than 1.96 standard errors from the parameter. A confidence interval only provides a plausible range of values for a parameter. While we might say other values are implausible based on the data, this does not mean they are impossible.}
@@ -679,7 +679,7 @@ We are C\% confident that the population parameter is between \underline{\ \ \ \
 \end{quote}
 \emph{Incorrect} language might try to describe the confidence interval as capturing the population parameter with a certain probability.\footnote{To see that this interpretation is incorrect, imagine taking two random samples and constructing two 95\% confidence intervals for an unknown proportion. If these intervals are disjoint, can we say that there is a 95\%+95\%=190\% chance that the first or the second interval captures the true value?} Applying the language of probability to a fixed interval or to a fixed parameter is one of the most common errors.  
 
-As we saw in Figure~\ref{95PercentConfidenceInterval}, the 95\% confidence interval \emph{method} has a 95\% probability of producing an interval that will contain the population parameter. A correct interpretation of the confidence \emph{level} is that such intervals will contain the population parameter that percent of the time. However, each individual interval either does or does not contain the population parameter. A correct interpretation of an individual confidence interval cannot involve the vocabulary of probability.
+As we saw in Figure~\ref{95PercentConfidenceInterval}, the 95\% confidence interval \emph{method} has a 95\% probability of producing an interval that will capture the population parameter. A correct interpretation of the confidence \emph{level} is that such intervals will capture the population parameter that percent of the time (assuming conditions are met and the probability model is true). However, each individual interval either does or does not capture the population parameter. A correct interpretation of an individual confidence interval cannot involve the vocabulary of probability.
 
 Another especially important consideration of confidence intervals is that they \emph{only try to capture the population parameter}. Our intervals say nothing about the confidence of capturing individual observations, a proportion of the observations, or point estimates. Confidence intervals only attempt to capture population parameters.
 
@@ -760,9 +760,9 @@ Use a confidence interval to \emph{estimate} a parameter with a particular \emph
 \end{itemize}
 Interpreting \termsub{confidence intervals}{confidence interval} and \termsub{confidence levels}{confidence level}
 \begin{itemize}
-\item 68\% and 95\% are examples of \termsub{confidence levels}{confidence level}.  A~correct interpretation of a 95\% confidence level is that if many samples of the same size were taken from the population, about 95\% of the resulting confidence intervals would contain the true population parameter.  Note that this is a \emph{relative frequency interpretation}.  
+\item 68\% and 95\% are examples of \termsub{confidence levels}{confidence level}.  The confidence level tells us the \emph{capture rate} with repeated sampling.  For example, a correct interpretation of a 95\% confidence level is that if many samples of the same size were taken from the population, about 95\% of the resulting confidence intervals would capture the true population parameter (assuming the conditions are met and the probability model is true).  Note that this is a \emph{relative frequency interpretation}.  
 
-\item We cannot use the language of probability to interpret an \emph{individual} confidence interval, once it has been calculated.  The confidence level tells us what percent of the intervals will contain the population parameter, not the probability that a calculated interval contains the population parameter.  Each calculated interval either does or does not contain the population parameter.  
+\item We cannot use the language of probability to interpret an \emph{individual} confidence interval, once it has been calculated.  The confidence level tells us what percent of the intervals will capture the population parameter, not the probability that a calculated interval captures the population parameter.  Each calculated interval either does or does not capture the population parameter.  
 \end{itemize}
 
 
@@ -1210,6 +1210,7 @@ The Type~II Error rate $\beta$ and the magnitude of the error for a point estima
 \item[] $H_A$: $p < p_0$. \quad\parbox[t]{3.84in}{The p-value corresponds to the area in the \emph{lower tail} and is the probability of observing a sample value \textit{as small as} our sample value, if $H_0$ were true. }
 \item[] $H_A$: $p \ne p_0$. \quad\parbox[t]{3.84in}{The p-value corresponds to the area in \emph{both tails} and is the probability of observing a sample value \textit{as far from} the null value as our sample value, if $H_0$ were true. }
 \end{itemize}
+These interpretations assume that the conditions for the test are met and that the probability model on which they are based is true.
 
 \item The conclusion or decision of a hypothesis test is based on whether the p-value is smaller or larger than the preset significance level $\alpha$. \vspace{-1mm}
 \begin{itemize}
