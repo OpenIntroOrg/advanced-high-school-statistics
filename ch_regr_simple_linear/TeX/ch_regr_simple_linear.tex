@@ -414,7 +414,7 @@ In this section, we answer the following questions:
 \subsection{An objective measure for finding the best line}
 Fitting linear models by eye is open to criticism since it is based on an individual preference. In this section, we use \emph{least squares regression} as a more rigorous approach.
 
-This section considers family income and gift aid data from a random sample of fifty students in the freshman class of Elmhurst College in Illinois.\footnote{These data were sampled from a table of data for all freshman from the 2011 class at Elmhurst College that accompanied an article titled \emph{What Students Really Pay to Go to College} published online by \emph{The~Chronicle of Higher Education}: \oiRedirect{textbook-chronicle_elmhurst_article}{chronicle.com/article/What-Students-Really-Pay-to-Go/131435}} Gift aid is financial aid that does not need to be paid back, as opposed to a loan. A scatterplot of the data is shown in Figure~\ref{elmhurstScatterW2Lines} along with two linear fits. The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.
+This section considers family income and gift aid data from a random sample of fifty students in the freshman class of Elmhurst College in Illinois.\footnote{These data were sampled from a table of data for all freshmen from the 2011 class at Elmhurst College that accompanied an article titled \emph{What Students Really Pay to Go to College} published online by \emph{The~Chronicle of Higher Education}: \oiRedirect{textbook-chronicle_elmhurst_article}{chronicle.com/article/What-Students-Really-Pay-to-Go/131435}} Gift aid is financial aid that does not need to be paid back, as opposed to a loan. A scatterplot of the data is shown in Figure~\ref{elmhurstScatterW2Lines} along with two linear fits. The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.
 
 \begin{figure}[h]
 \centering
@@ -1134,7 +1134,7 @@ The scatterplot seems to show a linear trend, which matches the fact that there 
    \includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/elmhurstInference/elmhurstScatter}
    \includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/elmhurstInference/elmhurstResidual}
 \end{tabular}
-   \caption{Left: Scatterplot of gift aid versus family income for 50 freshman at Elmhurst college.  Right: Residual plot for the model shown in left panel.  }
+   \caption{Left: Scatterplot of gift aid versus family income for 50 freshmen at Elmhurst college.  Right: Residual plot for the model shown in left panel.  }
 \label{elmhurstInferencePlots}
 \end{figure}
 
@@ -1200,8 +1200,8 @@ To carry out a complete confidence interval procedure to estimate the slope of t
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[] 1.  Data come from a random sample or randomized experiment.
-\item[] 2.  The residual plot shows no pattern implying that a linear model is reasonable. \item[] \quad \ (More specifically, the residuals should be independent, nearly normal, and have
-\item [] \quad \  constant standard deviation).
+\item[] 2.  The residual plot shows no pattern implying that a linear model is reasonable. \item[] \quad \ More specifically, the residuals should be independent, nearly normal (or $n\ge 30$),
+\item [] \quad \  and have constant standard deviation.
 \end{itemize}
 \inferencestep{Calculate} Calculate the confidence interval and record it in interval form.
 \begin{itemize}
@@ -1248,7 +1248,7 @@ Construct a 95\% confidence interval for the slope of the regression line.  Is t
 \begin{description}
 \item[\inferencestep{Identify}] The parameter of interest is the slope of the population regression line for predicting head length from body length.  We want to estimate this at the 95\% confidence level.  
 \item[\inferencestep{Choose}] Because the parameter to be estimated is the slope of a regression line, we will use the $t$-interval for the slope.
-\item[\inferencestep{Check}] These data come from a random sample.  The residual plot shows no pattern.  In general, the residuals have constant standard deviation and there are no outliers or influential points.  Therefore, a linear model is reasonable.
+\item[\inferencestep{Check}] These data come from a random sample.  The residual plot shows no pattern.  In general, the residuals have constant standard deviation and there are no outliers or influential points.  Also $n=104\ge 30$ so some skew in the residuals would be acceptable. A linear model is reasonable here.
 \item[\inferencestep{Calculate}]  We will calculate the interval:
 $\text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}$
 
@@ -1464,8 +1464,8 @@ To carry out a complete hypothesis test for the claim that there is no linear re
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[] 1.  Data come from a random sample or randomized experiment.
-\item[] 2.  The residual plot shows no pattern implying that a linear model is reasonable. \item[] \quad \ (More specifically, the residuals should be independent, nearly normal, and have  
-\item [] \quad \  constant standard deviation.)
+\item[] 2.  The residual plot shows no pattern implying that a linear model is reasonable. \item[] \quad \ More specifically, the residuals should be independent, nearly normal (or $n\ge 30$),
+\item [] \quad \  and have constant standard deviation.
 \end{itemize}
  \inferencestep{Calculate}  Calculate the $t$-statistic, $df$, and p-value.
 \begin{itemize}
@@ -1486,7 +1486,7 @@ To carry out a complete hypothesis test for the claim that there is no linear re
 
 \begin{examplewrap}
 \begin{nexample}{
-The regression summary below shows statistical software output from fitting the least squares regression line for predicting gift aid based on family income at Elmhurst College.  The scatterplot and residual plot were shown in Figure~\ref{elmhurstInferencePlots}. 
+The regression summary below shows statistical software output from fitting the least squares regression line for predicting gift aid based on family income for 50 freshman students at Elmhurst College.  The scatterplot and residual plot were shown in Figure~\ref{elmhurstInferencePlots}. 
 \\
 \\
 \texttt{Predictor \ \ \ \ \ \ \ Coef \ \ \ \ \ \ \ SE Coef \ \ T \ \ \ \ \ \ \ P} \\
@@ -1507,7 +1507,7 @@ $H_A$: $\beta < 0$. There is a negative linear relationship.
 \\
 Here, $\beta$ is the slope of the population regression line for predicting gift aid from family income at Elmhurst College.
 \item[\inferencestep{Choose}] Because the hypotheses are about the slope of a regression line, we choose the $t$-test for a slope.  
-\item[\inferencestep{Check}]  The data come from a random sample.  Also, the residual plot shows that the residuals have constant variance and no outliers or influential points.  The lack of any pattern in the residual plot indicates that a linear model is appropriate.
+\item[\inferencestep{Check}]  The data come from a random sample.  Also, the residual plot shows that the residuals have constant variance and no outliers or influential points (and $n=50\ge 30$).  The lack of any pattern in the residual plot indicates that a linear model is appropriate.
 \item[\inferencestep{Calculate}]  We will calculate the $t$-statistic, degrees of freedom, and the p-value.
 \begin{align*}
 T = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}
@@ -1674,7 +1674,7 @@ A teacher gives her class a pretest and a posttest.  Does this result in paired 
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[1.] Data come from a random sample or randomized experiment.
-\item[2.] The residual plot shows no pattern implying that a linear model is reasonable. \item[] (Technically, the residuals should be independent, nearly normal, and have constant standard deviation.)
+\item[2.] The residual plot shows no pattern implying that a linear model is reasonable. \item[] More specifically, the residuals should be independent, nearly normal (or $n\ge 30$), and have constant standard deviation.
 \end{itemize}
 \item The confidence interval and test statistic are calculated as follows:   
 \begin{itemize}
