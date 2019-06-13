@@ -984,13 +984,13 @@ Some of the big questions we address in this section include:
  
 \item Distinguish among and describe a convenience sample, a volunteer sample, and a random sample.
 
-\item Identify and describe the effects of different types of bias in sample surveys, including selection bias, non-response, and response bias. 
+\item Identify and describe the effects of different types of bias in sample surveys, including undercoverage, non-response, and response bias. 
  
-\item Identify and describe how to implement different random sampling methods, including simple, stratified, and cluster.  
+\item Identify and describe how to implement different random sampling methods, including simple, systematic, stratified, and cluster.  
  
 \item Recognize the benefits and drawbacks of choosing one sampling method over another.
  
-\item Understand when it valid to draw an inference and to what population that inference can be drawn.  
+\item Understand when it valid to generalize and to what population that generalization can be made.  
 \end{enumerate}
 
 }
@@ -1059,7 +1059,7 @@ Observational studies come in two forms: prospective and retrospective studies. 
 
 \index{sample!random sample|(}
 
-We might try to estimate the time to graduation for Duke undergraduates in the last 5 years by collecting a sample of students. All graduates in the last 5 years represent the \emph{population}\index{population}, and graduates who are selected for review are collectively called the \emph{sample}\index{sample}. In general, we always seek to \emph{randomly} select a sample from a population. The most basic type of random selection is equivalent to how raffles are conducted. For example, in selecting graduates, we could write each graduate's name on a raffle ticket and draw 100 tickets. The selected names would represent a random sample of 100 graduates.
+We might try to estimate the time to graduation for Duke undergraduates in the last 5 years by collecting a sample of students. All graduates in the last 5 years represent the \emph{population}\index{population}, and graduates who are selected for review are collectively called the \emph{sample}\index{sample}. The goal is to use information from the sample to generalize or make an inference to the population.  In order to be able to generalize, we must \emph{randomly} select a sample from the population of interest. The most basic type of random selection is equivalent to how raffles are conducted. For example, in selecting graduates, we could write each graduate's name on a raffle ticket and draw 100 tickets. The selected names would represent a random sample of 100 graduates.
 
 \begin{figure}[ht]
 \centering
@@ -1085,9 +1085,11 @@ Perhaps she would pick a disproportionate number of graduates from health-relate
 \label{popToSubSampleGraduates}
 \end{figure}
 
-If the student majoring in nutrition picked a disproportionate number of graduates from health-related fields, this would introduce selection bias into the sample. \termsub{Selection bias}{selection bias} occurs when some individuals of the population are inherently more likely to be included in the sample than others. In the example, this bias creates a problem because a degree in health-related fields might take more or less time to complete than a degree in other fields. Suppose that it takes longer. Since graduates from health-related fields would be more likely to be in the sample, the selection bias would cause her to \emph{overestimate} the parameter.
+If the student majoring in nutrition picked a disproportionate number of graduates from health-related fields, this would introduce undercoverage bias into the sample. \termsub{Undercoverage bias}{undercoverage bias} occurs when some individuals of the population are inherently less likely to be included in the sample than others, making the sample not representative of the population.  In the example, this bias creates a problem because a degree in health-related fields might take more or less time to complete than a degree in other fields. Suppose that it takes longer. Since graduates from other fields would be less likely to be in the sample, the undercoverage bias would cause her to \emph{overestimate} the parameter.
 
-Sampling randomly resolves the problem of selection bias. The most basic random sample is called a \term{simple random sample}, which is equivalent to using a raffle to select cases. This means that each case in the population has an equal chance of being included and there is no implied connection between the cases in the sample.
+Sampling randomly resolves the problem of undercoverage bias, \emph{if the sample is randomly selected from the entire population of interest}. If the sample is randomly selected from only a subset of the population, say, only graduates from health-related fields, then the sample will not be representative of the population of interest.  Generalizations can only be made to the population from which the sample is randomly selected.
+
+The most basic random sample is called a \term{simple random sample}, which is equivalent to using a raffle to select cases. This means that each case in the population has an equal chance of being included and there is no implied connection between the cases in the sample.
 
 A common downfall is a \term{convenience sample}\index{sample!convenience sample}, where individuals who are easily accessible are more likely to be included in the sample. For instance, if a political survey is done by stopping people walking in the Bronx, this will not represent all of New York City. It is often difficult to discern what sub-population a convenience sample represents.
 
@@ -1109,7 +1111,7 @@ We can easily access ratings for products, sellers, and companies through websit
 
 The act of taking a random sample helps minimize bias; however, bias can crop up in other ways. Even when people are picked at random, e.g. for surveys, caution must be exercised if the \term{non-response} \index{sample!non-response|textbf} is high. For instance, if only 30\% of the people randomly sampled for a survey actually respond, then it is unclear whether the results are \term{representative} of the entire population. This \term{non-response bias} \index{sample!non-response bias|textbf} can skew results.
 
-Even if a sample has no selection bias and no non-response bias, there is an additional type of bias that often crops up and undermines the validity of results, known as response bias. \termsub{Response bias}{response bias} refers to a broad range of factors that influence how a person responds, such as question wording, question order, and influence of the interviewer. This type of bias can be present even when we collect data from an entire population in what is called a \term{census}. Because response bias is often subtle, one must pay careful attention to how questions were asked when attempting to draw conclusions from the data.
+Even if a sample has no undercoverage bias and no non-response bias, there is an additional type of bias that often crops up and undermines the validity of results, known as response bias. \termsub{Response bias}{response bias} refers to a broad range of factors that influence how a person responds, such as question wording, question order, and influence of the interviewer. This type of bias can be present even when we collect data from an entire population in what is called a \term{census}. Because response bias is often subtle, one must pay careful attention to how questions were asked when attempting to draw conclusions from the data.
 
 \begin{examplewrap}
 \begin{nexample}{Suppose a high school student wants to investigate the student body's opinions on the food in the cafeteria. Let's assume that she manages to survey every student in the school. How might response bias arise in this context?}
@@ -1118,11 +1120,12 @@ There are many possible correct answers to this question. For example, students 
 \end{examplewrap}
 
 \begin{onebox}{Watch out for bias}
-Selection bias, non-response bias, and response bias can still exist within a random sample. Always determine how a sample was chosen, ask what proportion of people failed to respond, and critically examine the wording of the questions.
+Undercoverage bias, non-response bias, and response bias can still exist within a random sample. Always determine how a sample was chosen, ask what proportion of people failed to respond, and critically examine the wording of the questions.
 \end{onebox}
 
 When there is no bias in a sample, increasing the sample size tends to increase the precision and reliability of the estimate. When a sample is biased, it may be impossible to decipher helpful information from the data, even if the sample is very large.
 
+\newpage 
 \begin{exercisewrap}
 \begin{nexercise}
 A researcher sends out questionnaires to 50 randomly selected households in a particular town asking whether or not they support the addition of a traffic light in their neighborhood. Because only 20\% of the questionnaires are returned, she decides to mail questionnaires to 50 more randomly selected households in the same neighborhood. Comment on the usefulness of this approach.\footnotemark
@@ -1135,7 +1138,7 @@ A researcher sends out questionnaires to 50 randomly selected households in a pa
 \index{sample|)}
 
 
-\D{\newpage}
+
 
 %%
 \subsection[Simple, systematic, stratified, cluster, and multistage sampling]{Simple, systematic, stratified, cluster, and multistage sampling}
@@ -1143,7 +1146,7 @@ A researcher sends out questionnaires to 50 randomly selected households in a pa
 
 Almost all statistical methods for observational data rely on a sample being random and unbiased. When a sample is collected in a biased way, these statistical methods will not generally produce reliable information about the population.
 
-The idea of a simple random sample was introduced in the last section. Here we provide a more technical treatment of this method and introduce four new random sampling methods: systematic, stratified, cluster, and multistage.\footnote{Systematic and Multistage sampling are not part of the AP syllabus.} Figure~\ref{simple_systematic} provides a graphical representation of simple versus systematic sampling while Figure~\ref{stratified_cluster_multistage} provides a graphical representation of stratified, cluster, and multistage sampling.
+The idea of a simple random sample was introduced in the last section. Here we provide a more technical treatment of this method and introduce four new random sampling methods: systematic, stratified, cluster, and multistage.\footnote{Multistage sampling is not part of the AP syllabus.} Figure~\ref{simple_systematic} provides a graphical representation of simple versus systematic sampling while Figure~\ref{stratified_cluster_multistage} provides a graphical representation of stratified, cluster, and multistage sampling.
 
 
 \begin{figure}[p]
@@ -1196,7 +1199,7 @@ We should get a more stable estimate for the subpopulation in a stratum if the c
 \end{nexample}
 \end{examplewrap}
 
-Next, let's consider a sampling technique that randomly selects groups of people. \termsub{Cluster sampling}{sample!cluster sampling} is much like simple random sampling, but instead of randomly selecting \emph{individuals}, we randomly select groups or \term{clusters}. Unlike stratified sampling, cluster sampling is most helpful when there is a lot of case-to-case variability within a cluster but the clusters themselves don't look very different from one another. That~is, we expect strata to be self-similar (\hiddenterm{homogeneous}), while we expect clusters to be diverse (\hiddenterm{heterogeneous}).
+Next, let's consider a sampling technique that randomly selects groups of people. \termsub{Cluster sampling}{sample!cluster sampling} is much like simple random sampling, but instead of randomly selecting \emph{individuals}, we randomly select groups or \term{clusters}. Unlike stratified sampling, cluster sampling is most helpful when there is a lot of case-to-case variability within a cluster but the clusters themselves don't look very different from one another. That~is, we expect individual strata to be \term{homogeneous} (self-similar), while we expect individual clusters to be \term{heterogeneous} (diverse) with respect to the variable of interest.  
 
 Sometimes cluster sampling can be a more economical random sampling technique than the alternatives. For example, if neighborhoods represented clusters, this sampling method works best when each neighborhood is very diverse. Because each neighborhood itself encompasses diversity, a cluster sample can reduce the time and cost associated with data collection, because the interviewer would need only go to some of the neighborhoods rather than to all parts of a city, in order to collect a useful sample.
 
@@ -1229,19 +1232,22 @@ A simple random sample would likely draw individuals from all 30 villages, which
 \begin{itemize}
 \item In an \term{observational study}, one must always consider the existence of \termsub{confounding factors}{confounding factor}.  A confounding factor is a ``spoiler variable" that could explain an observed relationship between the explanatory variable and the response.  Remember:  For a variable to be confounding it must be associated with both the explanatory variable \textit{and} the response variable.
 
-\item When taking a sample from a population, avoid \termsub{convenience samples}{convenience sample} and \termsub{volunteer samples}{volunteer sample}.  Instead, use a \term{random} sampling method.
+\item When taking a sample from a population, avoid \termsub{convenience samples}{convenience sample} and \termsub{volunteer samples}{volunteer sample}, which likely introduce bias.  Instead, use a \term{random} sampling method.
 
-\item Random sampling avoids the problem of \term{selection bias}.  However, \term{response bias} and \term{non-response} bias can be present in any type of sample, random or not.
+\item Generalizations from a sample can be made to a population only if the sample is random.  Furthermore, the generalization can be made only to the population from which the sample was randomly selected, not to a larger or different population.  
 
-\item In a \term{simple random sample}, each individual of the population is numbered from 1 to N.  Using a random digit table or a random number generator, numbers are randomly selected and the corresponding individuals become part of the sample.
+\item Random sampling from the entire population of interest avoids the problem of \term{undercoverage bias}.  However, \term{response bias} and \term{non-response} bias can be present in any type of sample, random or not.
 
-\item In a simple random sample, every \textit{individual} as well as every \textit{group of individuals} has the same probability of being in the sample.
+\item In a \term{simple random sample}, every \textit{individual} as well as every \textit{group of individuals} has the same probability of being in the sample.  A common way to select a simple random sample is to number each individual of the population from 1 to N.  Using a random digit table or a random number generator, numbers are randomly selected without replacement and the corresponding individuals become part of the sample.
 
-\item A \term{stratified random sample} involves randomly sampling from \textit{every}  \term{strata}, where the strata should correspond to a variable thought to be associated with the variable of interest.  This ensures that the sample will have appropriate representation from each of the different strata and reduces variability in the sample estimates.
+\item A \term{systematic random sample} involves choosing from of a population using a random starting point, and then selecting members according to a fixed, periodic interval (such as every 10th member). 
 
-\item A \term{cluster random sample} involves selecting a set of \term{clusters}, or groups, and then collecting data on all individuals in the selected clusters. This can be useful when sampling clusters is more convenient and less expensive than sampling individuals, and it is an effective strategy when each cluster is approximately representative of the population.  
+\item A \term{stratified random sample} involves randomly sampling from \textit{every} \term{strata}, where the strata should correspond to a variable thought to be associated with the variable of interest.  This ensures that the sample will have appropriate representation from each of the different strata and reduces variability in the sample estimates.
 
-\item Remember:  \textit{Strata should be self-similar, while clusters should be diverse}.  For example, if smoking is correlated with what is being estimated, let one stratum be all smokers and the other be all non-smokers, then randomly select an appropriate number of \textit{individuals} from \textit{each} strata.  Alternately, if age is correlated with the variable being estimated, one could randomly select a \textit{subset} of clusters, where each cluster has mixed age groups.
+\item A \term{cluster random sample} involves randomly selecting a set of \term{clusters}, or groups, and then collecting data on all individuals in the selected clusters. This can be useful when sampling clusters is more convenient and less expensive than sampling individuals, and it is an effective strategy when each cluster is approximately representative of the population.  
+
+\item Remember:  \textit{Individual strata should be homogeneous (self-similar), while individual clusters should be heterogeneous (diverse)}.  For example, if smoking is correlated with what is being estimated, let one stratum be all smokers and the other be all non-smokers, then randomly select an appropriate number of \textit{individuals} from \textit{each} strata.  Alternately, if age is correlated with the variable being estimated, one could randomly select a \textit{subset} of clusters, where each cluster has mixed age groups.
+
 
 \end{itemize}
 

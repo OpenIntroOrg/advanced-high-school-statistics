@@ -1604,11 +1604,11 @@ The binomial formula can help us answer these questions.
 \subsection*{Learning objectives}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Calculate the number of possible scenarios for obtaining $k$ successes in $n$ trials.
+\item Calculate the number of possible scenarios for obtaining $x$ successes in $n$ trials.
 
 \item Determine whether a scenario is binomial or not.
 
-\item Calculate the probability of obtaining exactly $k$ successes in $n$ independent trials.  
+\item Calculate the probability of obtaining exactly $x$ successes in $n$ independent trials.  
 
 \item Recognize that the binomial formula uses the special Addition Rule for mutually exclusive events.
 
@@ -1724,14 +1724,14 @@ $(\insureSprob{})^3 (\insureFprob{})^1$.~\footnotemark{}
     = (\insureSprob{})^3 (\insureFprob{})^1$.}
 
 
-The binomial distribution describes the probability of having exactly $k$ successes
+The binomial distribution describes the probability of having exactly $x$ successes
 in $n$ independent trials with probability
 of a success $p$
 (in Example~\ref{insureOneOfFourExceedsDeductible},
-$n=4$, $k=3$, $p=\insureSprob{}$).
+$n=4$, $x=3$, $p=\insureSprob{}$).
 We would like to determine the probabilities associated
 with the binomial distribution more generally,
-i.e. we want a formula where we can use $n$, $k$, and $p$
+i.e. we want a formula where we can use $n$, $x$, and $p$
 to obtain the probability.
 To do this, we reexamine each part of
 Example~\ref{insureOneOfFourExceedsDeductible}.
@@ -1744,29 +1744,29 @@ Thus, we could identify the final probability as
 [\text{\# of scenarios}] \times P(\text{single scenario})
 \end{align*}
 The first component of this equation is the number of ways
-to arrange the $k=3$ successes among the $n=4$ trials.
+to arrange the $x=3$ successes among the $n=4$ trials.
 The second component is the probability of any of the four
 (equally probable) scenarios.
 
 Consider $P($single scenario$)$ under the general case of
-$k$ successes and $n-k$ failures in the $n$ trials.
+$x$ successes and $n-x$ failures in the $n$ trials.
 In any such scenario, we apply the Multiplication Rule
 for independent events:
 \begin{align*}
-p^k (1 - p)^{n - k}
+p^x (1 - p)^{n - x}
 \end{align*}
 This is our general formula for $P($single scenario$)$.
 
 Secondly, we introduce the \term{binomial coefficient}, which gives the number
-of ways to choose $k$ successes in $n$ trials,
-i.e. arrange $k$ successes and $n - k$ failures:
+of ways to choose $x$ successes in $n$ trials,
+i.e. arrange $x$ successes and $n - x$ failures:
 \begin{align*}
-{n\choose k} = \frac{n!}{k! (n - k)!}
+{n\choose x} = \frac{n!}{x! (n - x)!}
 \end{align*}
-The quantity ${n\choose k}$ is read
-\term{n choose k}.\footnote{Other notations for
-  $n$ choose $k$ includes $_nC_k$, $C_n^k$, and $C(n,k)$.}
-The exclamation point notation (e.g. $k!$) denotes
+The quantity ${n\choose x}$ is read
+\term{n choose x}.\footnote{Other notations for
+  $n$ choose $x$ includes $_nC_x$, $C_n^x$, and $C(n,x)$.}
+The exclamation point notation (e.g. $n!$) denotes
 a \term{factorial} expression.
 \begin{align*}
 & 0! = 1 \\
@@ -1778,7 +1778,7 @@ a \term{factorial} expression.
 & n! = n\times(n-1)\times...\times3\times2\times1
 \end{align*}
 Using the formula, we can compute the number of ways
-to choose $k = 3$ successes in $n = 4$ trials:
+to choose $x = 3$ successes in $n = 4$ trials:
 \begin{align*}
 {4 \choose 3} = \frac{4!}{3!(4-3)!}
   = \frac{4!}{3!1!} 
@@ -1789,16 +1789,16 @@ This result is exactly what we found by carefully thinking
 of each possible scenario in
 Example~\ref{insureOneOfFourExceedsDeductible}.
 
-Substituting $n$ choose $k$ for the number of scenarios
-and $p^k(1-p)^{n-k}$ for the single scenario probability
+Substituting $n$ choose $x$ for the number of scenarios
+and $p^x(1-p)^{n-x}$ for the single scenario probability
 yields the \term{binomial formula}.
 
 \D{\newpage}
 
 \begin{onebox}{Binomial formula}
-Suppose the probability of a single trial being a success is $p$. Then the probability of observing exactly $k$ successes in $n$ independent trials is given by\vspace{-1mm}
+Suppose the probability of a single trial being a success is $p$. Then the probability of observing exactly $x$ successes in $n$ independent trials is given by\vspace{-1mm}
 \begin{eqnarray*}
-{n\choose k}p^k(1-p)^{n-k} = \frac{n!}{k!(n-k)!}p^k(1-p)^{n-k}
+P(X=x)={n\choose x}p^x(1-p)^{n-x} = \frac{n!}{x!(n-x)!}p^x(1-p)^{n-x}
 \label{binomialFormula}
 \end{eqnarray*}
 \end{onebox}
@@ -1832,7 +1832,7 @@ Suppose the probability of a single trial being a success is $p$. Then the proba
   (condition~1) and the probability of a success is the same
   for each trial (condition~4).
 
-  In the outcome of interest, there are $k = 5$ successes
+  In the outcome of interest, there are $x = 5$ successes
   in $n = 8$ trials (recall that a success is an individual
   who does \emph{not} exceed the deductible, and the
   probability of a success is $p = \insureSprob{}$.
@@ -1870,7 +1870,7 @@ Suppose the probability of a single trial being a success is $p$. Then the proba
 \begin{onebox}{Computing binomial probabilities}
   The first step in using the binomial model is to check
   that the model is appropriate.
-  The second step is to identify $n$, $p$, and $k$.
+  The second step is to identify $n$, $p$, and $x$.
   Finally, apply the binomial formula to determine the probability and interpret the results.%
   \vspace{3mm}
 
@@ -1924,17 +1924,17 @@ If you have 4 friends who smoke and you want to find the probability that 1 of t
   Compute parts~(a) and~(b) using the binomial formula:
 \begin{enumerate}[(a)]
 \item
-  $P(0)
+  $P(X=0)
     = {4 \choose 0} (0.35)^0 (0.65)^4
     = 1\times1\times 0.65^4 = 0.65^4
     = 0.179$\\
 Note that we could have answered this question without the binomial formula, using methods from the previous section.
 \item 
-  $P(1)
+  $P(X=1)
     = {4 \choose 1} (0.35)^1(0.65)^{3}
     = 0.384$.
   \item This can be computed as the sum of parts~(a) and~(b):
-  $P(0) + P(1) = 0.179 + 0.384 = 0.563$.
+  $P(X=0) + P(X=1) = 0.179 + 0.384 = 0.563$.
   That is, there is about a 56.3\% chance that no more than
   one of them will have blood type O+.
 \end{enumerate}
@@ -1950,7 +1950,7 @@ What is the probability that at least 3 of 4 people in a random sample will have
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{$P(\text{at least 3 of 4 have blood type O+})
-      = P(k=3) + P(k=4) = {4 \choose 3} (0.35)^3 (0.65)^1+(0.35)^4= 0.111 + 0.015 = 0.126$}
+      = P(X=3) + P(X=4) = {4 \choose 3} (0.35)^3 (0.65)^1+(0.35)^4= 0.111 + 0.015 = 0.126$}
 
 
 
@@ -1959,7 +1959,7 @@ What is the probability that at least 3 of 4 people in a random sample will have
 \begin{examplewrap}
 \begin{nexample}{There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{without replacement}. Find the probability you get exactly 3 blue marbles.}Because the probability of success $p$ is not the same for each trial, we cannot use the binomial formula. However, we can use the same logic to arrive at the following answer. 
 \begin{align*}
-P(x = 3) &= (\text{\# of combinations with 3 blue})\times P(\text{3 blue and 2 red in a \emph{specific} order}) \\
+P(X = 3) &= (\text{\# of combinations with 3 blue})\times P(\text{3 blue and 2 red in a \emph{specific} order}) \\
 &={5\choose 3}\times P(\text{BBBRR}) \\
 &= {5\choose 3}\left(\frac{4}{13}\times \frac{3}{12}\times \frac{2}{11} \times \frac{9}{10} \times \frac{8}{9}\right) \\
 &= 0.1119
@@ -1972,11 +1972,11 @@ P(x = 3) &= (\text{\# of combinations with 3 blue})\times P(\text{3 blue and 2 r
 {Draw 4 cards without replacement from a deck of 52 cards.  What is the probability that you get at least two hearts?}\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{$P\text{(at least 2 hearts in 4 draws from a deck)} = 1 - [P(0) + P(1)] = 1 - [(\frac{39}{52})(\frac{38}{51})(\frac{37}{50})(\frac{36}{49}) + {4 \choose 1}(\frac{13}{52})(\frac{39}{51})(\frac{38}{50})(\frac{37}{49})] = 1 - [.0.3038 + 0.4388] = 0.2574$.
+\footnotetext{$P\text{(at least 2 hearts in 4 draws from a deck)} = 1 - [P(X=0) + P(X=1)] = 1 - [(\frac{39}{52})(\frac{38}{51})(\frac{37}{50})(\frac{36}{49}) + {4 \choose 1}(\frac{13}{52})(\frac{39}{51})(\frac{38}{50})(\frac{37}{49})] = 1 - [.0.3038 + 0.4388] = 0.2574$.
 }
 
 Lastly, we consider the binomial coefficient,,
-$n$ choose $k$, under some special scenarios.
+$n$ choose $x$, under some special scenarios.
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -2019,60 +2019,60 @@ in $n$ trials?\footnotemark{}
 \subsection{Calculator: binomial probabilities}
 \label{calculatorBinomial}
 
-\begin{onebox}{\videohref{ti84_binomial_coefficient} TI-83/84: Computing the binomial coefficient \MakeLowercase{\pmb{${n\choose k}$}}}
-Use \calctext{MATH}, \calctext{PRB}, \calctext{nCr} to evaluate $n$ choose $r$. Here $r$ and $k$ are different letters for the same quantity.
+\begin{onebox}{\videohref{ti84_binomial_coefficient} TI-83/84: Computing the binomial coefficient \MakeLowercase{\pmb{${n\choose x}$}}}
+Use \calctext{MATH}, \calctext{PRB}, \calctext{nCr} to evaluate $n$ choose $r$. Here $r$ and $x$ are different letters for the same quantity.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Type the value of n.
+\item Type the value of $n$.
 \item Select \calctext{MATH}.
 \item Right arrow to \calctext{PRB}.
 \item Choose \calctext{3:nCr}.
-\item Type the value of k.
+\item Type the value of $x$.
 \item Hit \calcbutton{ENTER}.
 \end{enumerate}
-Example: \calctext{5 nCr 3} means \emph{5 choose 3}.\end{onebox}
+Example: \calctext{5 nCr 3} means {5 choose 3}.\end{onebox}
 
-\begin{onebox}{\videohref{casio_binomial_coefficient} Casio fx-9750GII: Computing the binomial coefficient \MakeLowercase{\pmb{${n\choose k}$}}}
+\begin{onebox}{\videohref{casio_binomial_coefficient} Casio fx-9750GII: Computing the binomial coefficient \MakeLowercase{\pmb{${n\choose x}$}}}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to the \calctext{RUN-MAT} section (hit \calcbutton{MENU}, then hit \calcbutton{1}).
 \item Enter a value for $n$.
 \item Go to \calctext{CATALOG} (hit buttons \calcbutton{SHIFT} and then \calcbutton{7}).
 \item Type \calctext{C} (hit the \calcbutton{ln} button), then navigate down to the bolded \calctext{\textbf{C}} and hit \calcbutton{EXE}.
-\item Enter the value of $k$. Example of what it should look like: \calctext{7\textbf{C}3}.
+\item Enter the value of $x$. Example of what it should look like: \calctext{7\textbf{C}3}.
 \item Hit \calcbutton{EXE}.
 \end{enumerate}
 \end{onebox}
 
-\begin{onebox}{\videohref{ti84_binomial_formula} TI-84: Computing the binomial formula, \pmb{$P(X = \MakeLowercase{k)={n\choose k}p^k(1-p)^{n-k}}$}}
+\begin{onebox}{\videohref{ti84_binomial_formula} TI-84: Computing the binomial formula, \pmb{$P(X = \MakeLowercase{x)={n\choose x}p^x(1-p)^{n-x}}$}}
 \label{binomialformula}
-Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{binompdf} to evaluate the probability of \emph{exactly} $k$ occurrences out of $n$ independent trials of an event with probability $p$. 
+Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{binompdf} to evaluate the probability of \emph{exactly} $x$ occurrences out of $n$ independent trials of an event with probability $p$. 
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Select \calcbutton{2ND} \calcbutton{VARS} (i.e. \calctext{DISTR})
 \item Choose \calctext{A:binompdf} (use the down arrow to scroll down).
 \item Let \calctext{trials} be $n$.
 \item Let \calctext{p} be $p$
-\item Let \calctext{x} value be $k$.
+\item Let \calctext{x value} be $x$.
 \item Select \calctext{Paste} and hit \calcbutton{ENTER}.\vspace{-1.5mm}
 \end{enumerate}
-TI-83: Do step 1, choose \calctext{0:binompdf}, then enter $n$, $p$, and $k$ separated by commas:\\
-	\calctext{binompdf(n,~p,~k)}. Then hit \calcbutton{ENTER}. 
+TI-83: Do step 1, choose \calctext{0:binompdf}, then enter $n$, $p$, and $x$ separated by commas:\\
+	\calctext{binompdf(n,~p,~x)}. Then hit \calcbutton{ENTER}. 
 \end{onebox}
 
-\begin{onebox}{\videohref{ti84_binomial_cdf} TI-84: Computing \pmb{$P(X \le \MakeLowercase{k)= {n\choose 0}p^0(1-p)^{n-0} + ... + {n\choose k}p^k(1-p)^{n-k}}$} }
+\begin{onebox}{\videohref{ti84_binomial_cdf} TI-84: Computing \pmb{$P(X \le \MakeLowercase{x)= {n\choose 0}p^0(1-p)^{n-0} + ... + {n\choose x}p^x(1-p)^{n-x}}$} }
 \label{binomialcumulative}
-Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{binomcdf} to evaluate the cumulative probability of \emph{at most} $k$ occurrences out of $n$ independent trials of an event with probability $p$. 
+Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{binomcdf} to evaluate the cumulative probability of \emph{at most} $x$ occurrences out of $n$ independent trials of an event with probability $p$. 
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Select \calcbutton{2ND} \calcbutton{VARS} (i.e. \calctext{DISTR})
 \item Choose \calctext{B:binomcdf} (use the down arrow).
 \item Let \calctext{trials} be $n$.
 \item Let \calctext{p} be $p$
-\item Let \calctext{x} value be $k$.
+\item Let \calctext{x value} be $x$.
 \item Select \calctext{Paste} and hit \calcbutton{ENTER}.\vspace{-1.5mm}
 \end{enumerate}
-TI-83: Do steps 1-2, then enter the values for $n$, $p$, and $k$ separated by commas as follows: \calctext{binomcdf(n,~p,~k)}. Then hit \calctext{ENTER}.\end{onebox}
+TI-83: Do steps 1-2, then enter the values for $n$, $p$, and $x$ separated by commas as follows: \calctext{binomcdf(n,~p,~x)}. Then hit \calctext{ENTER}.\end{onebox}
 
 
 \begin{onebox}{\videohref{casio_binomial_calculations} Casio fx-9750GII: Binomial calculations}
@@ -2080,14 +2080,14 @@ TI-83: Do steps 1-2, then enter the values for $n$, $p$, and $k$ separated by co
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU}, then hit \calcbutton{2}).
 \item Select \calctext{DIST} (\calcbutton{F5}), and then \calctext{BINM} (\calcbutton{F5}).
-\item Choose whether to calculate the binomial distribution for a specific number of successes, $P(X = k)$, or for a range $P(X \leq k)$ of values (0~successes, 1~success, ..., $k$~successes).\vspace{-1.5mm}
+\item Choose whether to calculate the binomial distribution for a specific number of successes, $P(X = k)$, or for a range $P(X \leq k)$ of values (0~successes, 1~success, ..., $x$~successes).\vspace{-1.5mm}
   \begin{itemize}
   \setlength{\itemsep}{0mm}
   \item For a specific number of successes, choose \calctext{Bpd} (\calcbutton{F1}). %, which stands for \emph{binomial probability distribution}.
-  \item To consider the range 0, 1, ..., $k$ successes, choose \calctext{Bcd}(\calcbutton{F1}). %, which stands for \emph{binomial cumulative distribution}.
+  \item To consider the range 0, 1, ..., $x$ successes, choose \calctext{Bcd}(\calcbutton{F1}). %, which stands for \emph{binomial cumulative distribution}.
   \end{itemize}
 \item If needed, set \calctext{Data} to \calctext{Variable} (\calctext{Var} option, which is \calcbutton{F2}).
-\item Enter the value for \calctext{x} ($k$), \calctext{Numtrial} ($n$), and \calctext{p} (probability of a success).
+\item Enter the value for \calctext{x} ($x$), \calctext{Numtrial} ($n$), and \calctext{p} (probability of a success).
 \item Hit \calctext{EXE}.
 \end{enumerate}
 \end{onebox}
@@ -2097,13 +2097,13 @@ TI-83: Do steps 1-2, then enter the values for $n$, $p$, and $k$ separated by co
 Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Here \calctext{$n$} = 5 and \calctext{$k$} = 3.  Doing 5 \calctext{nCr} 3 gives the number of combinations as 10.}
+\footnotetext{Here \calctext{$n$} = 5 and \calctext{$x$} = 3.  Doing 5 \calctext{nCr} 3 gives the number of combinations as 10.}
 
 \begin{exercisewrap}
 \begin{nexercise}There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{with replacement}. Find the probability you get exactly 3 blue marbles.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Here, $n$ = 5, $p$ = 4/13, and $k$ = 3, so set \calctext{trials} = 5, \calctext{p} = 4/13 and \calctext{x value} = 3.  The probability is 0.1396.}
+\footnotetext{Here, $n$ = 5, $p$ = 4/13, and $x$ = 3, so set \calctext{trials} = 5, \calctext{p} = 4/13 and \calctext{x value} = 3.  The probability is 0.1396.}
 
 \begin{exercisewrap}
 \begin{nexercise}There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{with replacement}. Find the probability you get \emph{at most} 3 blue marbles (i.e. less than or equal to 3 blue marbles).\footnotemark\end{nexercise}
@@ -2117,20 +2117,18 @@ Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnotem
 \subsection*{Section summary}
 
 \begin{itemize}
-\item $n\choose k$, the \term{binomial coefficient}, describes the number of combinations for arranging $k$ successes among $n$ trials.  $n\choose k$ $=\frac{n!}{k!(n-k)!}$, where $n!=1\times 2\times 3\times...n$, and $0!$=0.
+\item $n\choose x$, the \term{binomial coefficient}, describes the number of combinations for arranging $x$ successes among $n$ trials.  $n\choose x$ $=\frac{n!}{x!(n-x)!}$, where $n!=1\times 2\times 3\times...n$, and $0!$=0.
 
-\item The \term{binomial formula} can be used to find the probability that something happens \textit{exactly k times in n trials}.  
-
-\item Suppose the probability of a single trial being a success is $p$. Then the probability of observing exactly $k$ successes in $n$ independent trials is given by\vspace{-1mm}
+\item The \term{binomial formula} can be used to find the probability that something happens \textit{exactly x times in n trials}.  Suppose the probability of a single trial being a success is $p$. Then the probability of observing exactly $x$ successes in $n$ independent trials is given by\vspace{-1mm}
 \begin{eqnarray*}
-{n\choose k}p^k(1-p)^{n-k}   \quad= \quad  \frac{n!}{k!(n-k)!}p^k(1-p)^{n-k}
+{n\choose x}p^x(1-p)^{n-x}   \quad= \quad  \frac{n!}{x!(n-x)!}p^x(1-p)^{n-x}
 \end{eqnarray*}
 
 \item To apply the binomial formula, the events must be \term{independent} from trial to trial.  Additionally, $n$, the number of trials must be fixed in advance, and $p$, the probability of the event occurring in a given trial, must be the same for each trial.
 
-\item To use the binomial formula, first confirm that the binomial conditions are met.  Next, identify the number of trials $n$, the number of times the event is to be a ``success'' $k$, and the probability that a single trial is a success $p$. Finally, plug these three numbers into the formula to get the probability of exactly $k$ successes in $n$ trials.
+\item To use the binomial formula, first confirm that the binomial conditions are met.  Next, identify the number of trials $n$, the number of times the event is to be a ``success'' $x$, and the probability that a single trial is a success $p$. Finally, plug these three numbers into the formula to get the probability of exactly $x$ successes in $n$ trials.
 
-\item The $p^k(1-p)^{n-k}$ part of the binomial formula is the probability of just one combination.  Since there are $n\choose k$ combinations, we add $p^k(1-p)^{n-k}$ up $n\choose k$ times.  We can think of the binomial formula as: $[\# \text{ of combinations}] \times P(\text{a single combination})$.
+\item The $p^x(1-p)^{n-x}$ part of the binomial formula is the probability of just one combination.  Since there are $n\choose x$ combinations, we add $p^x(1-p)^{n-x}$ up $n\choose x$ times.  We can think of the binomial formula as: $[\# \text{ of combinations}] \times P(\text{a single combination})$.
 
 \item To find a probability involving \emph{at least} or \emph{at most}, first determine if the scenario is binomial.  If so, apply the binomial formula as many times as needed and add up the results.  e.g. $P(\text{at least 3 Heads in 5 tosses of a fair coin})=P(\text{exactly 3 Heads})+P(\text{exactly 4 Heads})+P(\text{exactly 5 Heads})$, where each probability can be found using the binomial formula.
 
@@ -2167,7 +2165,7 @@ In this section, we will look at the concepts that underlie simulations.
 
 
 \subsection{Setting up and carrying out simulations}
-In the previous section we saw how to apply the binomial formula to find the probability of exactly $k$ successes in $n$ independent trials when a success has probability $p$. Sometimes we have a problem we want to solve but we don't know the appropriate formula, or even worse, a formula may not exist. In this case, one common approach is to estimate the probability using \termsub{simulations}{simulation}.
+In the previous section we saw how to apply the binomial formula to find the probability of exactly $x$ successes in $n$ independent trials when a success has probability $p$. Sometimes we have a problem we want to solve but we don't know the appropriate formula, or even worse, a formula may not exist. In this case, one common approach is to estimate the probability using \termsub{simulations}{simulation}.
 
 You may already be familiar with simulations. Want to know the probability of rolling a sum of 7 with a pair of dice?  Roll a pair of dice many, many, many times and see what proportion of times the sum is 7. The more times you roll the pair of dice, the better the estimate will tend to be. Of course, such experiments can be time consuming or even infeasible.
 
@@ -2459,30 +2457,30 @@ The possible outcomes of $X$ are labeled with a corresponding lower case letter 
 $i$	  & 1 & 2 & 3  & Total\\
 \hline
 $x_i$ & \$0 & \$137 & \$170 & --\\
-$p_i$ & 0.20 & 0.55 & 0.25 & 1.00 \\
+$P(x_i)$ & 0.20 & 0.55 & 0.25 & 1.00 \\
 \hline
 \end{tabular}
-\caption{The probability distribution for the random variable $X$, representing the bookstore's revenue from a single student. We use $p_i$ to represent the probability of $x_i$.}
+\caption{The probability distribution for the random variable $X$, representing the bookstore's revenue from a single student. We use $P(x_i)$ to represent the probability of $x_i$.}
 \label{statSpendDist}
 \end{figure}
 
 We computed the average outcome of $X$ as \$117.85 in Example~\ref{revFromStudent}. We call this average the \term{expected value} of $X$, denoted by $E(X)$\index{EX@$E(X)$}. The expected value of a random variable is computed by adding each outcome weighted by its probability:
 \begin{align*}
-E(X) &= 0 \times  P(X=0) + 137 \times  P(X=137) + 170 \times  P(X=170) \\
-	&= 0 \times  0.20 + 137 \times  0.55 + 170 \times  0.25 = 117.85
+E(X) &= 0 \cdot  P(0) + 137 \cdot  P(137) + 170 \cdot  P(170) \\
+	&= 0 \cdot  0.20 + 137 \cdot  0.55 + 170 \cdot  0.25 = 117.85
 \end{align*}
 
 \begin{onebox}{Expected value of a discrete random variable}
-If $X$ takes outcomes $x_1$, $x_2$, ..., $x_n$ with probabilities $p_1$, $p_2$, ..., $p_n$, the expected value of $X$ is the sum of each outcome multiplied by its corresponding probability:
+If $X$ takes outcomes $x_1$, $x_2$, ..., $x_n$ with probabilities $P(x_1)$, $P(x_2)$, ..., $P(x_n)$, the mean, or expected value, of $X$ is the sum of each outcome multiplied by its corresponding probability:
 \begin{align*}
-E(X) = \mu_x &= x_1\times p_1 + x_2\times p_2 + \cdots + x_n\times p_n \notag \\
-	&= \sum_{i=1}^{n}(x_i\times p_i)
+\mu_{\scriptscriptstyle{X}} = E(X) &= x_1\cdot P(x_1) + x_2\cdot P(x_2) + \cdots + x_n\cdot P(x_n) \notag \\
+	&= \sum_{i=1}^{n}x_i\cdot P(x_i)
 \end{align*}
 \end{onebox}
 
 The expected value for a random variable represents the average outcome. For example, $E(X)=117.85$ represents the average amount the bookstore expects to make from a single student, which we could also write as $\mu=117.85$. While the bookstore will make more than this on some students and less than this on other students, the average of many randomly selected students will be near \$117.85.
 
-It is also possible to compute the expected value of a continuous random variable (see Section~\ref{contDist}). However, it requires a little calculus and we save it for a later class.\footnote{$\mu_x = \int xf(x)dx$ where $f(x)$ represents a function for the density curve.}
+It is also possible to compute the expected value of a continuous random variable (see Section~\ref{contDist}). However, it requires a little calculus and we save it for a later class.\footnote{$\mu_{\scriptscriptstyle{X}} = \int xf(x)dx$ where $f(x)$ represents a function for the density curve.}
 
 In physics, the expectation holds the same meaning as the center of gravity. The distribution can be represented by a series of weights at each outcome, and the mean represents the balancing point. This is represented in Figures~\ref{bookCostDist} and~\ref{bookWts}. The idea of a center of gravity also expands to continuous probability distributions. Figure~\ref{contBalance} shows a continuous probability distribution balanced atop a wedge placed at the mean.
 
@@ -2515,15 +2513,15 @@ The \indexthis{variance}{variance} and \indexthis{standard deviation}{standard d
 introduced a method for finding the variance and standard deviation for a data set. We first computed deviations from the mean ($x_i - \mu$), squared those deviations, and took an average to get the variance. In the case of a random variable, we again compute squared deviations. However, we take their sum weighted by their corresponding probabilities, just like we did for the expectation. This weighted sum of squared deviations equals the variance, and we calculate the standard deviation by taking the square root of the variance, just as we did in Section~\ref{variability}.
 
 \begin{onebox}{Variance and standard deviation of a discrete random variable}
-If $X$ takes outcomes $x_1$, $x_2$, ..., $x_n$ with probabilities $p_1$,  $p_2$, ..., $p_n$ and expected value $\mu_x=E(X)$, then to find the standard deviation of $X$, we first find the variance and then take its square root.
+If $X$ takes outcomes $x_1$, $x_2$, ..., $x_n$ with probabilities $P(x_1)$,  $P(x_2)$, ..., $P(x_n)$ and expected value $\mu_{\scriptscriptstyle{X}}=E(X)$, then to find the standard deviation of $X$, we first find the variance and then take its square root.
 \begin{align*}
-Var(X) = \sigma^2_x &= (x_1-\mu_x)^2\times p_1 + (x_2-\mu_x)^2\times p_2 + \cdots +  (x_n-\mu_x)^2\times p_n \notag \\
-	&= \sum_{i=1}^{n} (x_i - \mu_x)^2 \times p_i \notag \\
-SD(X) = \sigma_x &= \sqrt{ \sum_{i=1}^{n} (x_i - \mu_x)^2 \times p_i}
+Var(X) = \sigma^2_x &= (x_1-\mu_{\scriptscriptstyle{X}})^2\cdot P(x_1) + (x_2-\mu_{\scriptscriptstyle{X}})^2\cdot P(x_2) + \cdots +  (x_n-\mu_{\scriptscriptstyle{X}})^2\cdot P(x_n) \notag \\
+	&= \sum_{i=1}^{n} (x_i - \mu_{\scriptscriptstyle{X}})^2 \cdot P(x_i) \notag \\
+SD(X) = \sigma_{\scriptscriptstyle{X}} &= \sqrt{ \sum_{i=1}^{n} (x_i - \mu_{\scriptscriptstyle{X}})^2 \cdot P(x_i)}
 \end{align*}
 \end{onebox}
 
-Just as it is possible to compute the mean of a continuous random variable using calculus, we can also use calculus to compute the variance.\footnote{$\sigma^2_x = \int (x - \mu_x)^2f(x)dx$ where $f(x)$ represents a function for the density curve.} However, this topic is beyond the scope of the AP exam.
+Just as it is possible to compute the mean of a continuous random variable using calculus, we can also use calculus to compute the variance.\footnote{$\sigma^2_x = \int (x - \mu_{\scriptscriptstyle{X}})^2f(x)dx$ where $f(x)$ represents a function for the density curve.} However, this topic is beyond the scope of the AP exam.
 
 \begin{examplewrap}
 \begin{nexample}{Compute the expected value, variance, and standard deviation of $X$, the revenue of a single statistics student for the bookstore.}
@@ -2534,30 +2532,29 @@ It is useful to construct a table that holds computations for each outcome separ
 $i$ & 1 & 2&  3& Total \\
 \hline
 $x_i$ & \$0 & \$137 & \$170 &  \\
-$p_i$ & 0.20 & 0.55 & 0.25 &  \\
+$P(x_i)$ & 0.20 & 0.55 & 0.25 &  \\
 \hline
-$x_i \times  p_i$ & 0 & 75.35 & 42.50 & 117.85 \\
+$x_i \cdot  P(x_i)$ & 0 & 75.35 & 42.50 & 117.85 \\
 \hline
 \end{tabular}
 \end{center}
 
-Thus, the expected value is $\mu=117.85$, which we computed earlier. The variance can be constructed by extending this table:
+Thus, the expected value is $\mu_{\scriptscriptstyle{X}}=117.85$, which we computed earlier. The variance can be constructed using a similar table:
 \begin{center}
 \begin{tabular}{l rrr r}
 \hline
 $i$ & 1 & 2 & 3 & Total \\
 \hline
 $x_i$ & \$0 & \$137 & \$170 &  \\
-$p_i$ & 0.20 & 0.55 & 0.25 &  \\
+$P(x_i)$ & 0.20 & 0.55 & 0.25 &  \\
 \hline
-$x_i \times  p_i$ & 0 & 75.35 & 42.50 & 117.85 \\
 $x_i - \mu_{\mbox{\tiny\itshape X}}$ & -117.85 & 19.15 & 52.15 &  \\
 $(x_i-\mu_{\mbox{\tiny\itshape X}})^2$ & 13888.62 &  366.72 & 2719.62 &  \\
-$(x_i-\mu_{\mbox{\tiny\itshape X}})^2\times p_i$ & 2777.7 & 201.7 & 679.9 & 3659.3 \\
+$(x_i-\mu_{\mbox{\tiny\itshape X}})^2\cdot P(x_i)$ & 2777.7 & 201.7 & 679.9 & 3659.3 \\
 \hline
 \end{tabular}
 \end{center}
-The variance of $X$ is $\sigma_x^2 = 3659.3$, which means the standard deviation is $\sigma_x = \sqrt{3659.3} = \$60.49$.
+The variance of $X$ is $\sigma_{\scriptscriptstyle{X}}^2 = 3659.3$, which means the standard deviation is $\sigma_{\scriptscriptstyle{X}} = \sqrt{3659.3} = \$60.49$.
 \end{nexample}
 \end{examplewrap}
 
@@ -2572,18 +2569,18 @@ The bookstore also offers a chemistry textbook for \$159 and a book supplement f
 \end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{(a) 100\% - 25\% - 60\% = 15\% of students do not buy any books for the class. Part~(b) is represented by the first two lines in the table below. The expectation for part~(c) is given as the total on the line $y_i\times p_i$. The result of part~(d) is the square-root of the variance listed on in the total on the last line: $\sigma_{\mbox{\tiny\itshape Y}} = \sqrt{Var(Y)} = \$69.28$.
+\footnotetext{(a) 100\% - 25\% - 60\% = 15\% of students do not buy any books for the class. Part~(b) is represented by the first two lines in the table below. The expectation for part~(c) is given as the total on the line $y_i\cdot P(y_i)$. The result of part~(d) is the square-root of the variance listed on in the total on the last line: $\sigma_{\mbox{\tiny\itshape Y}} = \sqrt{Var(Y)} =\sqrt{4800} =69.28$.
 \begin{center}
 \begin{tabular}{rrrrr}
 $i$ (scenario) & 1 (\resp{noBook}) & 2 (\resp{textbook}) & 3 (\resp{both}) & Total \\
   \hline
 $y_i$ & 0.00 & 159.00 & 200.00 &  \\
-$p_i$ & 0.15 & 0.25 & 0.60 & \\
+$P(y_i)$ & 0.15 & 0.25 & 0.60 & \\
 \hline
-$y_i\times p_i$ & 0.00 & 39.75 & 120.00 & $E(Y) = 159.75$\\
+$y_i\cdot P(y_i)$ & 0.00 & 39.75 & 120.00 & $E(Y) = 159.75$\\
 $y_i-\mu_{\mbox{\tiny\itshape Y}}$ & -159.75 & -0.75 & 40.25 & \\
 $(y_i-\mu_{\mbox{\tiny\itshape Y}})^2$ & 25520.06 & 0.56 & 1620.06 & \\
-$(y_i-\mu_{\mbox{\tiny\itshape Y}})^2\times p_i$ & 3828.0 & 0.1 & 972.0 & $Var(Y) \approx 4800$ \\
+$(y_i-\mu_{\mbox{\tiny\itshape Y}})^2\cdot P(y_i)$ & 3828.0 & 0.1 & 972.0 & $Var(Y) \approx 4800$ \\
 \hline
 \end{tabular}
 \end{center}}
@@ -2598,12 +2595,12 @@ An online store is selling a limited edition t-shirt.  The maximum a person is a
 \hline
 $x_i$ & 1 & 2 & 3  \\
 \hline
-$p_i$  & 0.6 & 0.3 & 0.1 \\
+$P(x_i)$  & 0.6 & 0.3 & 0.1 \\
 \hline
 \end{tabular}
 \end{center}
 
-Using the methods of the previous section we can find that the mean $\mu_x = 1.5$ and the standard deviation $\sigma_x = 0.67$.
+Using the methods of the previous section we can find that the mean $\mu_{\scriptscriptstyle{X}} = 1.5$ and the standard deviation $\sigma_{\scriptscriptstyle{X}} = 0.67$.
 Suppose that the cost of each t-shirt is \$30 and that there is flat rate \$5 shipping fee.  The amount of money a t-shirt buyer pays, then, is $30X + 5$, where X is the number of t-shirts ordered. To calculate the mean and standard deviation for the amount of money a t-shirt buyers pays, we could define a new variable $Y$ as follows:
 
 \begin{align*}
@@ -2618,7 +2615,7 @@ Y = 30X + 5
 \hline
 $y_i$ & \$35 & \$65 & \$95  \\
 \hline
-$p_i$ & 0.6 & 0.3 & 0.1 \\
+$P(y_i)$ & 0.6 & 0.3 & 0.1 \\
 \hline
 \end{tabular}
 \end{center}
@@ -2864,13 +2861,14 @@ Consider again Guided Practice~\ref{elenaIsSellingATVAndBuyingAToasterOvenAtAnAu
 
 \item When given a probability distribution table, we can calculate the \term{mean} (expected value) and \term{standard deviation} of a random variable using the following formulas.  \vspace{-1mm}
 \begin{flalign*}
-E(X) = \mu_x &= \sum(x_i\times p_i) &\\
-&= x_1\times p_1 + x_2\times p_2 + \cdots + x_n\times p_n \notag \\
-Var(X) = \sigma^2_x &= \sum(x_i - \mu_x)^2 \times p_i \notag \\
-&= (x_1-\mu_x)^2\times p_1 + (x_2-\mu_x)^2\times p_2 + \cdots +  (x_n-\mu_x)^2\times p_n \notag \\
-	SD(X) = \sigma_x &= \sqrt{ Var(X)}
+E(X) = \mu_{\scriptscriptstyle{X}} &= \sum{x_i\cdot P(x_i)} &\\
+&= x_1\cdot P(x_1) + x_2\cdot P(x_2) + \cdots + x_n\cdot P(x_n) \notag \\
+Var(X) = \sigma^2_x &= \sum(x_i - \mu_{\scriptscriptstyle{X}})^2 \cdot P(x_i) \\
+	SD(X) = \sigma_{\scriptscriptstyle{X}} 
+	&=\sqrt{\sum(x_i - \mu_{\scriptscriptstyle{X}})^2 \cdot P(x_i)} \notag \\
+	 &=\sqrt{(x_1-\mu_{\scriptscriptstyle{X}})^2\cdot P(x_1) + (x_2-\mu_{\scriptscriptstyle{X}})^2\cdot P(x_2) + \cdots +  (x_n-\mu_{\scriptscriptstyle{X}})^2\cdot P(x_n) }
 \end{flalign*}
-We can think of $p_i$ as the \emph{weight}, and each term is weighted its appropriate amount.
+We can think of $P(x_i)$ as the \emph{weight}, and each term is weighted its appropriate amount.
 
 \item The \term{mean} of a probability distribution does not need to be a value in the distribution.  It represents the average of many, many repetitions of a random process.  The \term{standard deviation} represents the typical variation of the outcomes from the mean, when the random process is repeated over and over.
 
@@ -3061,7 +3059,7 @@ Suppose a person's height is rounded to the nearest centimeter. Is there a chanc
 \item The \term{General Addition Rule} for \textbf{or} probabilities (union), along with the special case when events are \term{mutually exclusive}.  
 \item The \term{Conditional Probability Rule}.
 \item Tree diagrams and \term{Bayes' Theorem} to solve more complex conditional problems.
-\item The \termsub{Binomial Formula}{binomial formula} for finding the probability of exactly $k$ successes in $n$ independent trials.
+\item The \termsub{Binomial Formula}{binomial formula} for finding the probability of exactly $x$ successes in $n$ independent trials.
 \item \termsub{Simulations}{simulation} and the use of random digits to estimate probabilities.
 \end{itemize}
 Fundamental to all of these problems is understanding when events are independent and when they are mutually exclusive.  Two events are \term{independent} when the outcome of one does not affect the outcome of the other, i.e. $P(A | B) = P(A)$.  Two events are \term{mutually exclusive} when they cannot both happen together, i.e. $P(A \text{ and } B) = 0$.

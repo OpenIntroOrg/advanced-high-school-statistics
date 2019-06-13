@@ -26,7 +26,7 @@
 
 \sectionintro{
 \noindent%
-In this section, we examine criteria for identifying a linear model and introduce a new statistic called \emph{correlation}.  We answer questions such as the following:
+In this section, we investigate bivariate data.  We examine criteria for identifying a linear model and introduce a new bivariate summary called \emph{correlation}.  We answer questions such as the following:
 \begin{itemize}
 \item How do we quantify the strength of the linear association between two numerical variables?
 \item What does it mean for two variables to have no association or to have a nonlinear association?  
@@ -342,9 +342,9 @@ All four data sets have the exact same correlation of $r = 0.816$ as well as the
 \subsection*{Section summary}
 \begin{itemize}
 
-\item In Chapter 2 we introduced \termsub{scatterplots}{scatterplot}, which show the relationship between two numerical variables.  When we use $x$ to predict $y$, we call $x$ the \term{explanatory variable} or predictor variable, and we call $y$ the \term{response variable}.
+\item In Chapter 2 we introduced a bivariate display called a \termsub{scatterplot}{scatterplot}, which shows the relationship between two numerical variables.  When we use $x$ to predict $y$, we call $x$ the \term{explanatory variable} or predictor variable, and we call $y$ the \term{response variable}.
 
-\item A linear model can be useful for prediction when the variables have a constant, linear trend.  Linear models should not be used if the trend between the variables is curved.  
+\item A linear model for bivariate numerical data can be useful for prediction when the association between the variables follows a constant, linear trend.  Linear models should not be used if the trend between the variables is curved.  
 
 \item When we write a linear model, we use $\hat{y}$ to indicate that it is the model or the prediction.   The value $\hat{y}$ can be understood as a \term{prediction} for $y$ based on a given $x$, or as an \term{average} of the $y$ values for a given $x$.
 
@@ -414,7 +414,7 @@ In this section, we answer the following questions:
 \subsection{An objective measure for finding the best line}
 Fitting linear models by eye is open to criticism since it is based on an individual preference. In this section, we use \emph{least squares regression} as a more rigorous approach.
 
-This section considers family income and gift aid data from a random sample of fifty students in the freshman class of Elmhurst College in Illinois.\footnote{These data were sampled from a table of data for all freshman from the 2011 class at Elmhurst College that accompanied an article titled \emph{What Students Really Pay to Go to College} published online by \emph{The~Chronicle of Higher Education}: \oiRedirect{textbook-chronicle_elmhurst_article}{chronicle.com/article/What-Students-Really-Pay-to-Go/131435}} Gift aid is financial aid that does not need to be paid back, as opposed to a loan. A scatterplot of the data is shown in Figure~\ref{elmhurstScatterW2Lines} along with two linear fits. The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.
+This section considers family income and gift aid data from a random sample of fifty students in the freshman class of Elmhurst College in Illinois.\footnote{These data were sampled from a table of data for all freshmen from the 2011 class at Elmhurst College that accompanied an article titled \emph{What Students Really Pay to Go to College} published online by \emph{The~Chronicle of Higher Education}: \oiRedirect{textbook-chronicle_elmhurst_article}{chronicle.com/article/What-Students-Really-Pay-to-Go/131435}} Gift aid is financial aid that does not need to be paid back, as opposed to a loan. A scatterplot of the data is shown in Figure~\ref{elmhurstScatterW2Lines} along with two linear fits. The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.
 
 \begin{figure}[h]
 \centering
@@ -457,33 +457,33 @@ In Figure~\ref{leastSquares}, we imagine the squared error about a line as actua
 
 For the Elmhurst College data, we could fit a least squares regression line for predicting gift aid based on a student's family income and write the equation as:
 \begin{eqnarray*}
-\widehat{\textit{aid}} = b_0 + b_1\times \textit{family\us{}income}
+\widehat{\textit{aid}} = a  + b\times \textit{family\us{}income}
 \end{eqnarray*}
-Here $b_0$ is the $y$-intercept of the least squares regression line and $b_1$ is the slope of the least squares regression line.  $b_0$ and $b_1$ are both statistics that can be calculated from the data.  In the next section we will consider the corresponding parameters that they statistics attempt to estimate.  
+Here $a$ is the $y$-intercept of the least squares regression line and $b$ is the slope of the least squares regression line.  $a$ and $b$ are both statistics that can be calculated from the data.  In the next section we will consider the corresponding parameters that they statistics attempt to estimate.  
 
-We can enter all of the data into a statistical software package and easily find the values of $b_0$ and $b_1$.  However, we can also calculate these values by hand, using only the summary statistics.
+We can enter all of the data into a statistical software package and easily find the values of $a$ and $b$.  However, we can also calculate these values by hand, using only the summary statistics.
 \begin{itemize}
 \item The slope of the least squares line is given by
 \begin{eqnarray*}
-b_1 = r\frac{s_y}{s_x}
+b = r\frac{s_y}{s_x}
 \label{slopeOfLSRLine}
 \end{eqnarray*}
 where $r$ is the correlation between the variables $x$ and $y$, and $s_x$ and $s_y$ are the sample standard deviations of $x$, the explanatory variable, and $y$, the response variable.
-\item The point of averages $(\bar{x}, \bar{y})$ is always on the least squares line. Plugging this point in for $x$ and $y$ in the least squares equation and solving for $b_0$ gives
+\item The point of averages $(\bar{x}, \bar{y})$ is always on the least squares line. Plugging this point in for $x$ and $y$ in the least squares equation and solving for $a$ gives
 \begin{align*}
-\bar{y} &= b_0 + b_1\bar{x}
-&&b_0=\bar{y}-b_1\bar{x}
+\bar{y} &= a  + b\bar{x}
+&&a=\bar{y}-b\bar{x}
 \label{interceptOfLSRLine}
 \end{align*}
 \end{itemize}
 
 
 \begin{onebox}{Finding the slope and intercept of the least squares regression line}
-The least squares regression line for predicting $y$ based on $x$ can be written as:  $\hat{y}=b_0+b_1x$.  
+The least squares regression line for predicting $y$ based on $x$ can be written as:  $\hat{y}=a+bx$.  
 \begin{align*}
-b_1=r\frac{s_y}{s_x} \qquad b_0=\bar{y}-b_1\bar{x}
+b=r\frac{s_y}{s_x} \qquad \bar{y} = a + b\bar{x}
 \end{align*}
-We first find $b_1$, the slope, and then we solve for $b_0$, the $y$-intercept.  
+We first find $b$, the slope, and then we solve for $a$, the $y$-intercept.  
 \end{onebox}
 
 \begin{exercisewrap}
@@ -518,8 +518,8 @@ sd		& $s_x = 63.2$		& $s_y = 5.46$\vspace{0.4mm} \\
 \begin{nexample} 
 {Using the summary statistics in Figure~\ref{summaryStatsOfSATGPAData}, find the equation of the least squares regression line for predicting gift aid based on family income.}
 \begin{align*}
-b_1 &= r\frac{s_y}{s_x} = (-0.499)\frac{5.46}{63.2} = -0.0431 \\
-b_0 & = \bar{y} - b_1\bar{x} = 19.94 - (-0.0431)(101.8) = 24.3\\
+b &= r\frac{s_y}{s_x} = (-0.499)\frac{5.46}{63.2} = -0.0431 \\
+a & = \bar{y} - b\bar{x} = 19.94 - (-0.0431)(101.8) = 24.3\\
 \\
 \hat{y}&=24.3 - 0.0431x
 	\qquad\text{or}\qquad
@@ -536,8 +536,8 @@ b_0 & = \bar{y} - b_1\bar{x} = 19.94 - (-0.0431)(101.8) = 24.3\\
 \end{align*}}
 No.  The equation we found was for predicting aid, not for predicting family income.  We would have to calculate a new regression line, letting $y$ be $\textit{family\us{}income}$ and $x$ be $\textit{aid}$.  This would give us:
 \begin{align*}
-b_1 &= r\frac{s_y}{s_x} = (-0.499)\frac{63.2}{5.46} = -5.776 \\
-b_0 & = \bar{y} - b_1\bar{x} = 19.94 - (-5.776)(101.8) = 607.9\\
+b &= r\frac{s_y}{s_x} = (-0.499)\frac{63.2}{5.46} = -5.776 \\
+a & = \bar{y} - b\bar{x} = 19.94 - (-5.776)(101.8) = 607.9\\
 \\
 \hat{y}&=607.3 - 5.776x
 	\qquad\text{or}\qquad
@@ -568,7 +568,7 @@ family\us{}income & -0.0431 & 0.0108 & -3.98 & 0.0002 \\
 
 \begin{examplewrap}
 \begin{nexample}{Examine the second, third, and fourth columns in Figure~\ref{rOutputForIncomeAidLSRLine}. Can you guess what they represent?}
-We'll look at the second row, which corresponds to the slope.  The first column, Estimate = -0.0431, tells us our best estimate for the slope of the population regression line.  We call this point estimate $b_1$.  The second column, Std. Error = 0.0108, is the standard error of this point estimate. The third column, t value = -3.98, is the $T$ test statistic for the null hypothesis that the slope of the population regression line = 0. The last column, Pr($>$$|$t$|$) = 0.0002, is the p-value for this two-sided $T$-test. We will get into more of these details in Section~\ref{inferenceForLinearRegression}.
+We'll look at the second row, which corresponds to the slope.  The first column, Estimate = -0.0431, tells us our best estimate for the slope of the population regression line.  We call this point estimate $b$.  The second column, Std. Error = 0.0108, is the standard error of this point estimate. The third column, t value = -3.98, is the $T$ test statistic for the null hypothesis that the slope of the population regression line = 0. The last column, Pr($>$$|$t$|$) = 0.0002, is the p-value for this two-sided $T$-test. We will get into more of these details in Section~\ref{inferenceForLinearRegression}.
 \end{nexample}
 \end{examplewrap}
 
@@ -594,7 +594,7 @@ You might recall from an algebra course that slope is change in $y$ over change 
 
 \begin{examplewrap}
 \begin{nexample}{The $y$-intercept for the Elmhurst College data for predicting gift aid based on family income was calculated as 24.3.  Intepret this quantity in the context of the problem. }
-The intercept $b_0$ describes the predicted value of $y$ when $x=0$.  The \emph{predicted} gift aid is 24.3 thousand dollars if a student's family has no income.  The meaning of the intercept is relevant to this application since the family income for some students at Elmhurst is \$0. In other applications, the intercept may have little or no practical value if there are no observations where $x$ is near zero.  Here, it would be acceptable to say that the \emph{average} gift aid is 24.3 thousand dollars among students whose family have 0 dollars in income.
+The intercept $a$ describes the predicted value of $y$ when $x=0$.  The \emph{predicted} gift aid is 24.3 thousand dollars if a student's family has no income.  The meaning of the intercept is relevant to this application since the family income for some students at Elmhurst is \$0. In other applications, the intercept may have little or no practical value if there are no observations where $x$ is near zero.  Here, it would be acceptable to say that the \emph{average} gift aid is 24.3 thousand dollars among students whose family have 0 dollars in income.
 \end{nexample}
 \end{examplewrap}
 
@@ -602,8 +602,8 @@ The intercept $b_0$ describes the predicted value of $y$ when $x=0$.  The \emph{
 \vspace{-4mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item The slope, $b_1$, describes the \emph{average} increase or decrease in the $y$ variable if the explanatory variable $x$ is one unit larger. 
-\item The y-intercept, $b_0$, describes the predicted outcome of $y$ if $x=0$.  The linear model must be valid all the way to $x=0$ for this to make sense, which in many applications is not the case.
+\item The slope, $b$, describes the \emph{average} increase or decrease in the $y$ variable if the explanatory variable $x$ is one unit larger. 
+\item The y-intercept, $a$, describes the predicted outcome of $y$ if $x=0$.  The linear model must be valid all the way to $x=0$ for this to make sense, which in many applications is not the case.
 \end{itemize}
 \end{onebox}
 
@@ -755,7 +755,7 @@ If a linear model has an $R^2$ or explained variance of 0.94, what is the correl
 \subsection{Calculator/Desmos: linear correlation and regression}
 \label{calclinreg}
 
-\begin{onebox}{\videohref{ti84_calculating_regression_summary_statistics} TI-84: finding $\MakeLowercase{\pmb{b_0}}$, \MakeLowercase{\pmb{$b_1$}}, $\pmb{R^2}$, and \MakeLowercase{\pmb{$r$}} for a linear model}
+\begin{onebox}{\videohref{ti84_calculating_regression_summary_statistics} TI-84: finding $\MakeLowercase{\pmb{a}}$, \MakeLowercase{\pmb{$b$}}, $\pmb{R^2}$, and \MakeLowercase{\pmb{$r$}} for a linear model}
 Use \calctext{STAT}, \calctext{CALC}, \calctext{LinReg(a + bx)}.
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -770,8 +770,8 @@ Use \calctext{STAT}, \calctext{CALC}, \calctext{LinReg(a + bx)}.
 \item Leave \calctext{Store RegEQ} blank.
 \item Choose Calculate and hit \calctext{ENTER}, which returns: \\[1mm]
 \begin{tabular}{l l}
-\calctext{a} & $b_0$, the y-intercept of the best fit line \\
-\calctext{b} & $b_1$, the slope of the best fit line \\
+\calctext{a} & $a$, the y-intercept of the best fit line \\
+\calctext{b} & $b$, the slope of the best fit line \\
 $\calctextmath{r^2}$ & $R^2$, the explained variance \\
 \calctext{r} & $r$, the correlation coefficient
 \end{tabular}
@@ -802,7 +802,7 @@ This error means that the lists, generally L1 and L2, do not have the same lengt
 \end{enumerate}
 \end{onebox} 
 
-\begin{onebox}{\videohref{casio_calculating_regression_summary_statistics} Casio fx-9750GII: finding $\MakeLowercase{\pmb{b_0}}$, \MakeLowercase{\pmb{$b_1$}}, $\pmb{R^2}$, and \MakeLowercase{\pmb{$r$}} for a linear model}
+\begin{onebox}{\videohref{casio_calculating_regression_summary_statistics} Casio fx-9750GII: finding $\MakeLowercase{\pmb{a}}$, \MakeLowercase{\pmb{$b$}}, $\pmb{R^2}$, and \MakeLowercase{\pmb{$r$}} for a linear model}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
@@ -814,8 +814,8 @@ This error means that the lists, generally L1 and L2, do not have the same lengt
 \item Hit \calcbutton{EXIT}.
 \item Select \calctext{REG} (\calcbutton{F3}), \calctext{X} (\calcbutton{F1}), and \calctext{a+bx} (\calcbutton{F2}), which returns: \\[1mm]
 \begin{tabular}{l l}
-\calctext{a} & $b_0$, the y-intercept of the best fit line \\
-\calctext{b} & $b_1$, the slope of the best fit line \\
+\calctext{a} & $a$, the y-intercept of the best fit line \\
+\calctext{b} & $b$, the slope of the best fit line \\
 \calctext{r} & $r$, the correlation coefficient \\
 $\calctextmath{r^2}$ & $R^2$, the explained variance \\
 \calctext{MSe} & Mean squared error, which you can ignore
@@ -926,7 +926,7 @@ Categorical variables are also useful in predicting outcomes. Here we consider a
 
 To incorporate the game condition variable into a regression equation, we must convert the categories into a numerical form. We will do so using an \term{indicator variable} called \var{cond\us{}new}, which takes value 1 when the game is new and 0 when the game is used. Using this indicator variable, the linear model may be written as
 \begin{align*}
-\widehat{price} = \beta_0 + \beta_1 \times \text{\var{cond\us{}new}}
+\widehat{price} = \alpha + \beta \times \text{\var{cond\us{}new}}
 \end{align*}
 The fitted model is summarized in Figure~\ref{marioKartNewUsedRegrSummary}, and the model with its parameter estimates is given~as
 \begin{align*}
@@ -972,15 +972,15 @@ The estimated intercept is the value of the response variable for the first cate
 \begin{itemize}
 \item We define the \emph{best fit line} as the line that minimizes the sum of the squared residuals (errors) about the line.  That~is, we find the line that minimizes $(y_1 - \hat{y}_1)^2 + (y_2-\hat{y}_2)^2+ \dots + (y_n-\hat{y}_n)^2=\sum{(y_i - \hat{y}_i)^2}$. We call this line the \term{least squares regression line}.
 
-\item We write the least squares regression line in the form: $\hat{y} = b_0 + b_1x$,  and we can calculate $b_0$ and $b_1$ based on the summary statistics as follows:
+\item We write the least squares regression line in the form: $\hat{y} = a  + bx$,  and we can calculate $a$ and $b$ based on the summary statistics as follows:
 \begin{eqnarray*}
-b_1=r\frac{s_y}{s_x} \qquad \text{and} \qquad b_0=\bar{y} - b_1\bar{x}.
+b=r\frac{s_y}{s_x} \qquad \text{and} \qquad a=\bar{y} - b\bar{x}.
 \end{eqnarray*}
 
 \item \emph{Interpreting} the \term{slope} and \term{y-intercept} of a linear model
 \begin{itemize}
-\item The slope, $b_1$, describes the \emph{average} increase or decrease in the $y$ variable if the explanatory variable $x$ is one unit larger. 
-\item The y-intercept, $b_0$, describes the average or predicted outcome of $y$ if $x=0$.  The linear model must be valid all the way to $x=0$ for this to make sense, which in many applications is not the case.
+\item The slope, $b$, describes the \emph{average} increase or decrease in the $y$ variable if the explanatory variable $x$ is one unit larger. 
+\item The y-intercept, $a$, describes the average or predicted outcome of $y$ if $x=0$.  The linear model must be valid all the way to $x=0$ for this to make sense, which in many applications is not the case.
 \end{itemize}
 
 \item Two important considerations about the regression line
@@ -1044,33 +1044,31 @@ Here we encounter our last confidence interval and hypothesis test procedures, t
 
 \item Carry out a complete hypothesis test for the slope of the regression line.
 
-\item Distinguish between when to use the linear regression $t$-test and when to use the matched pairs $t$-test.
+\item Distinguish between when to use the $t$-test for the slope of a regression line and when to use the matched pairs $t$-test for a mean of differences.
 \end{enumerate}
 }
 
 \subsection{The role of inference for regression parameters}
 
 
-Previously, we found the equation of the regression line for predicting gift aid from family income at Elmhurst College.  The slope, $b_1$, was equal to $-0.0431$.  This is the slope for our sample data.  However, the sample was taken from a larger population.   We would like to use the slope computed from our sample data to estimate the slope of the population regression line.
+Previously, we found the equation of the regression line for predicting gift aid from family income at Elmhurst College.  The slope, $b$, was equal to $-0.0431$.  This is the slope for our sample data.  However, the sample was taken from a larger population.   We would like to use the slope computed from our sample data to estimate the slope of the population regression line.
 
-The equation for the slope of the population regression line can be written as
-\begin{eqnarray*}
-y = \beta_0 + \beta_1x +\epsilon
-\end{eqnarray*}
-Here, $\beta_0$ and $\beta_1$ represent two model parameters\index{parameter}, namely the $y$-intercept and the slope of the true or population regression line. ($\beta$ is the Greek letter \emph{beta}\index{Greek!beta@beta ($\beta$)}. This use of $\beta$ has nothing to do with the $\beta$ we used to describe the probability of a Type~II Error.) The error is represented by $\varepsilon$
-(the Greek letter \emph{epsilon}\index{Greek!epsilon@epsilon ($\varepsilon$)}).
-The parameters are estimated using data.  Now when we look at the equation of the regression line calculated from a particular data set:
+The equation for the population regression line can be written as
 \begin{align*}
-\hat{y} =& b_0 + b_1x 
+\mu_y = \alpha + \beta x
 \end{align*}
-where $b_0$ and $b_1$ are point estimates for $\beta_0$ and $\beta_1$, respectively.  
-If we plug in the values of $b_0$ and $b_1$, the regression equation for predicting gift aid based on family income is:
+Here, $\alpha$ and $\beta$ represent two model parameters\index{parameter}, namely the $y$-intercept and the slope of the true or population regression line. (This use of $\alpha$ and $\beta$\index{Greek!beta@beta ($\beta$)} have nothing to do with the $\alpha$ and $\beta$ we used previously to represent the probability of a Type~I Error and Type~II Error!) The parameters $\alpha$ and $\beta$ are estimated using data.  We can look at the equation of the regression line calculated from a particular data set:
+\begin{align*}
+\hat{y} =& a  + bx 
+\end{align*}
+and see that $a$ and $b$ are point estimates for $\alpha$ and $\beta$, respectively.  
+If we plug in the values of $a$ and $b$, the regression equation for predicting gift aid based on family income is:
 \begin{align*}
 \hat{y}=24.3193-0.0431x
 \end{align*}
 The slope of the sample regression line, $-0.0431$, is our best estimate for the slope of the population regression line, but there is variability in this estimate since it is based on a sample.  A different sample would produce a somewhat different estimate of the slope.  The standard error of the slope tells us the typical variation in the slope of the sample regression line and the typical error in using this slope to estimate the slope of the population regression line.  
 
-We would like to construct a 95\% confidence interval for $\beta_1$, the slope of the population regression line. As with means, inference for the slope of a regression line is based on the $t$-distribution.
+We would like to construct a 95\% confidence interval for $\beta$, the slope of the population regression line. As with means, inference for the slope of a regression line is based on the $t$-distribution.
 
 
 
@@ -1091,8 +1089,8 @@ Inference for parameters of a regression line involves the following assumptions
 \begin{description}
 \setlength{\itemsep}{0mm}
 \item[Linearity.] The true relationship between the two variables follows a linear trend.  We check whether this is reasonable by examining whether the data follows a linear trend.  If there is a nonlinear trend (e.g. left panel of Figure~\ref{whatCanGoWrongWithLinearModel}), an advanced regression method from another book or later course should be applied.
-\item[Nearly normal residuals.] The residuals should be nearly normal.
-When this assumption is found to be unreasonable, it is usually because of outliers or concerns about influential points.  An example which suggestions non-normal residuals is shown in the second panel of Figure~\ref{whatCanGoWrongWithLinearModel}.
+\item[Nearly normal residuals.] For each $x$-value, the residuals should be nearly normal.
+When this assumption is found to be unreasonable, it is usually because of outliers or concerns about influential points.  An example which suggestions non-normal residuals is shown in the second panel of Figure~\ref{whatCanGoWrongWithLinearModel}.  If the sample size $n\ge 30$, then this assumption is not necessary.
 \item[Constant variability.] The variability of points around the true least squares line is constant for all values of $x$. An example of non-constant variability is shown in the third panel of Figure~\ref{whatCanGoWrongWithLinearModel}.
 \item[Independent.] The observations are independent of one other.  The observations can be considered independent when they are collected from a random sample or randomized experiment.  Be careful of data collected sequentially in what is called a \term{time series}.  An example of data collected in such a fashion is shown in the fourth panel of Figure~\ref{whatCanGoWrongWithLinearModel}.
 \end{description}
@@ -1136,7 +1134,7 @@ The scatterplot seems to show a linear trend, which matches the fact that there 
    \includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/elmhurstInference/elmhurstScatter}
    \includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/elmhurstInference/elmhurstResidual}
 \end{tabular}
-   \caption{Left: Scatterplot of gift aid versus family income for 50 freshman at Elmhurst college.  Right: Residual plot for the model shown in left panel.  }
+   \caption{Left: Scatterplot of gift aid versus family income for 50 freshmen at Elmhurst college.  Right: Residual plot for the model shown in left panel.  }
 \label{elmhurstInferencePlots}
 \end{figure}
 
@@ -1187,7 +1185,7 @@ Because the entire interval is negative, we have evidence that the slope of the 
 \end{examplewrap}
 
 \begin{onebox}{Constructing a confidence interval for the slope of regression line}
-To carry out a complete confidence interval procedure to estimate the slope of the population regression line $\beta_1$ of a regression line,
+To carry out a complete confidence interval procedure to estimate the slope of the population regression line $\beta$ of a regression line,
 \\
 \\
 \inferencestep{Identify} Identify the parameter and the confidence level, C\%.\vspace{-1mm}
@@ -1196,20 +1194,20 @@ To carry out a complete confidence interval procedure to estimate the slope of t
 \end{itemize}
 \inferencestep{Choose} Choose the correct interval procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we use choose the \termsub{Linear regression $\pmb{t}$-interval for the slope}{linear regression t-interval for the slope@linear regression $t$-interval for the slope}.
+\item[] Here we use choose the \termsub{$\pmb{t}$-interval for the slope}{t-interval for the slope@$t$-interval for the slope}.
 \end{itemize}
 \inferencestep{Check} Check conditions for using a $t$-interval for the slope.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[] 1.  Data come from a random sample or randomized experiment.
-\item[] 2.  The residual plot shows no pattern implying that a linear model is reasonable. \item[] \quad \ (More specifically, the residuals should be independent, nearly normal, and have
-\item [] \quad \  constant standard deviation).
+\item[] 2.  The residual plot shows no pattern implying that a linear model is reasonable. \item[] \quad \ More specifically, the residuals should be independent, nearly normal (or $n\ge 30$),
+\item [] \quad \  and have constant standard deviation.
 \end{itemize}
 \inferencestep{Calculate} Calculate the confidence interval and record it in interval form.
 \begin{itemize}
 \item[] $\text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}$, \quad $df = n - 2$
 \begin{itemize}											
-\item[] point estimate: the slope $b_1$ of the sample regression line
+\item[] point estimate: the slope $b$ of the sample regression line
 \item[] $SE$ of estimate: $SE$ of slope (find using computer output)
 \item[] $t^{\star}$: use a $t$-distribution with $df = n-2$ and confidence level C\%
 \end{itemize}
@@ -1249,12 +1247,12 @@ The regression summary below shows statistical software output from fitting the 
 Construct a 95\% confidence interval for the slope of the regression line.  Is there convincing evidence that there is a positive, linear relationship between head length and total length? Use the five step framework to organize your work.}
 \begin{description}
 \item[\inferencestep{Identify}] The parameter of interest is the slope of the population regression line for predicting head length from body length.  We want to estimate this at the 95\% confidence level.  
-\item[\inferencestep{Choose}] Because the parameter to be estimated is the slope of a regression line, we will use the linear regression $t$-interval for the slope.
-\item[\inferencestep{Check}] These data come from a random sample.  The residual plot shows no pattern.  In general, the residuals have constant standard deviation and there are no outliers or influential points.  Therefore, a linear model is reasonable.
+\item[\inferencestep{Choose}] Because the parameter to be estimated is the slope of a regression line, we will use the $t$-interval for the slope.
+\item[\inferencestep{Check}] These data come from a random sample.  The residual plot shows no pattern.  In general, the residuals have constant standard deviation and there are no outliers or influential points.  Also $n=104\ge 30$ so some skew in the residuals would be acceptable. A linear model is reasonable here.
 \item[\inferencestep{Calculate}]  We will calculate the interval:
 $\text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}$
 
-We read the slope of the sample regression line and the corresponding $SE$ from the table.  The point estimate is $b_1 = 0.57290$.  The $SE$ of the slope is 0.05933, which can be found next to the slope of 0.57290.  The degrees of freedom is $df=n-2=104-2=102$.  As before, we find the critical value $t^{\star}$ using a $t$-table (the $t^{\star}$ value is not the same as the $T$-statistic for the hypothesis test).   Using the $t$-table at row $df = 100$ (round down since 102 is not on the table) and confidence level 95\%, we get $t^{\star}=1.984$.  
+We read the slope of the sample regression line and the corresponding $SE$ from the table.  The point estimate is $b = 0.57290$.  The $SE$ of the slope is 0.05933, which can be found next to the slope of 0.57290.  The degrees of freedom is $df=n-2=104-2=102$.  As before, we find the critical value $t^{\star}$ using a $t$-table (the $t^{\star}$ value is not the same as the $T$-statistic for the hypothesis test).   Using the $t$-table at row $df = 100$ (round down since 102 is not on the table) and confidence level 95\%, we get $t^{\star}=1.984$.  
 \\
 \\
 So the 95\% confidence interval is given by:
@@ -1274,10 +1272,10 @@ So the 95\% confidence interval is given by:
 \D{\newpage}
 
 %%
-\subsection[Calculator: the linear regression $t$-interval for the slope]{Calculator: the linear regression \pmb{$t$}-interval for the slope}
+\subsection[Calculator: the $t$-interval for the slope]{Calculator: the linear regression \pmb{$t$}-interval for the slope}
 We will rely on regression output from statistical software when constructing confidence intervals for the slope of a regression line.  We include calculator instructions here simply for completion.
 
-\begin{onebox}{\videohref{ti84_regression_t_confint} TI-84: T-interval for \pmb{$\beta_1$}}
+\begin{onebox}{\videohref{ti84_regression_t_confint} TI-84: T-interval for \pmb{$\beta$}}
 \label{LinRegint}
 Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTInt}.
 \begin{enumerate}
@@ -1295,10 +1293,10 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTInt}.
 \item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\[1mm]
 \begin{tabular}{l l}
 \calctext{(\underline{\ \ },\underline{\ \ })} & the confidence interval \\
-\calctext{b} & $b_1$, the slope of best fit line of the sample data \\
+\calctext{b} & $b$, the slope of best fit line of the sample data \\
 \calctext{df} &degrees of freedom associated with this confidence interval \\
 \calctext{s} & standard deviation of the residuals (not the same as $SE$ of the slope) \\
-\calctext{a} & $b_0$, the y-intercept of the best fit line of the sample data \\
+\calctext{a} & $a$, the y-intercept of the best fit line of the sample data \\
 $\calctextmath{r^2}$ & $R^2$, the explained variance \\
 \calctext{r} & $r$, the correlation coefficient \\
 \end{tabular}
@@ -1342,8 +1340,8 @@ The data for the Great Depression (1934 and 1938) were removed because the unemp
 
 There is a negative slope in the line shown in Figure~\ref{unemploymentAndChangeInHouse}. However, this slope (and the y-intercept) are only estimates of the parameter values. We might wonder, is this convincing evidence that the ``true'' linear model has a negative slope? That is, do the data provide strong evidence that the political theory is accurate?  We can frame this investigation as a statistical hypothesis test:
 \begin{itemize}
-\item[$H_0$:] $\beta_1 = 0$. The true linear model has slope zero.
-\item[$H_A$:] $\beta_1 < 0$. The true linear model has a slope less than zero. The higher the unemployment, the greater the loss for the President's party in the House of Representatives.
+\item[$H_0$:] $\beta = 0$. The true linear model has slope zero.
+\item[$H_A$:] $\beta < 0$. The true linear model has a slope less than zero. The higher the unemployment, the greater the loss for the President's party in the House of Representatives.
 \end{itemize}
 We would reject $H_0$ in favor of $H_A$ if the data provide strong evidence that the slope of the population regression line is less than zero. To assess the hypotheses, we identify a standard error for the estimate, compute an appropriate test statistic, and identify the p-value.
 Before we calculate these quantities, how good are we at visually determining from a scatterplot when a slope is significantly less than or greater than 0?  And why do we tend to use a 0.05 significance level as our cutoff?  Try out the following activity which will help answer these questions.
@@ -1363,7 +1361,7 @@ Before we calculate these quantities, how good are we at visually determining fr
 \subsection{Understanding regression output from software}
 \label{testStatisticForTheSlope}
 
-The residual plot shown in Figure~\ref{unemploymentAndChangeInHouseResiduals} shows no pattern that would indicate that a linear model is inappropriate.  Therefore we can carry out a test on the population slope using the sample slope as our point estimate.  Just as for other point estimates we have seen before, we can compute a standard error and test statistic for $b_1$. The test statistic $T$ follows a $t$-distribution with $n-2$ degrees of freedom.
+The residual plot shown in Figure~\ref{unemploymentAndChangeInHouseResiduals} shows no pattern that would indicate that a linear model is inappropriate.  Therefore we can carry out a test on the population slope using the sample slope as our point estimate.  Just as for other point estimates we have seen before, we can compute a standard error and test statistic for $b$. The test statistic $T$ follows a $t$-distribution with $n-2$ degrees of freedom.
 
 \begin{figure}[h]
 \centering
@@ -1401,7 +1399,7 @@ unemp & -0.8897 & 0.8350 & -1.07 & 0.2961 \\
 
 \begin{examplewrap}
 \begin{nexample}{What do the first column of numbers in the regression summary represent?}
-The entries in the first column represent the least squares estimates for the $y$-intercept and slope, $b_0$ and $b_1$ respectively.  Using this information, we could write the equation
+The entries in the first column represent the least squares estimates for the $y$-intercept and slope, $a$ and $b$ respectively.  Using this information, we could write the equation
   for the least squares regression line as
   \begin{align*}
   \hat{y} = -7.3644 - 0.8897 x
@@ -1412,7 +1410,7 @@ The entries in the first column represent the least squares estimates for the $y
 \end{nexample}
 \end{examplewrap}
 
-We previously used a test statistic $T$ for hypothesis testing in the context of means. Regression is very similar. Here, the point estimate is $b_1=-0.8897$.  The $SE$ of the estimate is 0.8350, which is given in the second column, next to the estimate of $b_1$.  This $SE$ represents the typical error when using the slope of the sample regression line to estimate the slope of the population regression line.
+We previously used a test statistic $T$ for hypothesis testing in the context of means. Regression is very similar. Here, the point estimate is $b=-0.8897$.  The $SE$ of the estimate is 0.8350, which is given in the second column, next to the estimate of $b$.  This $SE$ represents the typical error when using the slope of the sample regression line to estimate the slope of the population regression line.
 
 The null value for the slope is 0, so we now have everything we need to compute the test statistic.  We have: 
 \begin{align*}
@@ -1423,7 +1421,7 @@ This value corresponds to the $T$-score reported in the regression output in the
 \begin{figure}
 \centering
 \includegraphics[width=0.82\textwidth]{ch_regr_simple_linear/figures/oneSidedTailForMidtermUnemploymentHT/oneSidedTailForMidtermUnemploymentHT}
-\caption{The distribution shown here is the sampling distribution for $b_1$, if the null hypothesis was true. The shaded tail represents the p-value for the hypothesis test evaluating whether there is convincing evidence that higher unemployment corresponds to a greater loss of House seats for the President's party during a midterm election.}
+\caption{The distribution shown here is the sampling distribution for $b$, if the null hypothesis was true. The shaded tail represents the p-value for the hypothesis test evaluating whether there is convincing evidence that higher unemployment corresponds to a greater loss of House seats for the President's party during a midterm election.}
 \label{oneSidedTailForMidtermUnemploymentHT}
 \end{figure}
 
@@ -1449,31 +1447,31 @@ Because the p-value is so large, we do not reject the null hypothesis. That is, 
 %%
 
 \begin{onebox}{Hypothesis test for the slope of regression line}
-To carry out a complete hypothesis test for the claim that there is no linear relationship between two numerical variables, i.e. that $\beta_1=0$, 
+To carry out a complete hypothesis test for the claim that there is no linear relationship between two numerical variables, i.e. that $\beta=0$, 
 \\
 \\
 \inferencestep{Identify} Identify the hypotheses and the significance level, $\alpha$.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] $H_0$: $\beta_1 = 0$  
-\item[]  $H_A$: $\beta_1 \ne 0$;  \quad $H_A$: $\beta_1 > 0$; \quad or \quad $H_A$: $\beta_1 < 0$ 
+\item[] $H_0$: $\beta = 0$  
+\item[]  $H_A$: $\beta \ne 0$;  \quad $H_A$: $\beta > 0$; \quad or \quad $H_A$: $\beta < 0$ 
 \end{itemize} 
 \inferencestep{Choose} Choose the correct test procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \termsub{linear regression $\pmb{t}$-test for the slope}{linear regression t-test for the slope@linear regression $t$-test for the slope}. 
+\item[] Here we choose the \termsub{$\pmb{t}$-test for the slope}{t-test for the slope@$t$-test for the slope}. 
 \end{itemize}
  \inferencestep{Check} Check conditions for using a $t$-test for the slope.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[] 1.  Data come from a random sample or randomized experiment.
-\item[] 2.  The residual plot shows no pattern implying that a linear model is reasonable. \item[] \quad \ (More specifically, the residuals should be independent, nearly normal, and have  
-\item [] \quad \  constant standard deviation.)
+\item[] 2.  The residual plot shows no pattern implying that a linear model is reasonable. \item[] \quad \ More specifically, the residuals should be independent, nearly normal (or $n\ge 30$),
+\item [] \quad \  and have constant standard deviation.
 \end{itemize}
  \inferencestep{Calculate}  Calculate the $t$-statistic, $df$, and p-value.
 \begin{itemize}
 \item[] $T= \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}$, \quad $df=n-2$
 \begin{itemize}
-\item[] point estimate: the slope $b_1$ of the sample regression line
+\item[] point estimate: the slope $b$ of the sample regression line
 \item[] $SE$ of estimate:  $SE$ of slope (find using computer output)
 \item[] null value: 0
 \end{itemize}
@@ -1488,7 +1486,7 @@ To carry out a complete hypothesis test for the claim that there is no linear re
 
 \begin{examplewrap}
 \begin{nexample}{
-The regression summary below shows statistical software output from fitting the least squares regression line for predicting gift aid based on family income at Elmhurst College.  The scatterplot and residual plot were shown in Figure~\ref{elmhurstInferencePlots}. 
+The regression summary below shows statistical software output from fitting the least squares regression line for predicting gift aid based on family income for 50 freshman students at Elmhurst College.  The scatterplot and residual plot were shown in Figure~\ref{elmhurstInferencePlots}. 
 \\
 \\
 \texttt{Predictor \ \ \ \ \ \ \ Coef \ \ \ \ \ \ \ SE Coef \ \ T \ \ \ \ \ \ \ P} \\
@@ -1503,20 +1501,20 @@ Do these data provide convincing evidence that there is a negative, linear relat
 
 \begin{description}
 \item[\inferencestep{Identify}]  We will test the following hypotheses at the $\alpha=0.05$ significance level.\\
-$H_0$: $\beta_1 = 0$. There is no linear relationship.\\
-$H_A$: $\beta_1 < 0$. There is a negative linear relationship.  
+$H_0$: $\beta = 0$. There is no linear relationship.\\
+$H_A$: $\beta < 0$. There is a negative linear relationship.  
 \\
 \\
-Here, $\beta_1$ is the slope of the population regression line for predicting gift aid from family income at Elmhurst College.
-\item[\inferencestep{Choose}] Because the hypotheses are about the slope of a regression line, we choose the linear regression $t$-test for a slope.  
-\item[\inferencestep{Check}]  The data come from a random sample.  Also, the residual plot shows that the residuals have constant variance and no outliers or influential points.  The lack of any pattern in the residual plot indicates that a linear model is appropriate.
+Here, $\beta$ is the slope of the population regression line for predicting gift aid from family income at Elmhurst College.
+\item[\inferencestep{Choose}] Because the hypotheses are about the slope of a regression line, we choose the $t$-test for a slope.  
+\item[\inferencestep{Check}]  The data come from a random sample.  Also, the residual plot shows that the residuals have constant variance and no outliers or influential points (and $n=50\ge 30$).  The lack of any pattern in the residual plot indicates that a linear model is appropriate.
 \item[\inferencestep{Calculate}]  We will calculate the $t$-statistic, degrees of freedom, and the p-value.
 \begin{align*}
 T = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}
 \end{align*}
 We read the slope of the sample regression line and the corresponding $SE$ from the table.
 \\
-The point estimate is: $b_1 = -0.04307$.
+The point estimate is: $b = -0.04307$.
 \\
 The $SE$ of the slope is: $SE = 0.01081$.  
 \begin{align*}
@@ -1538,11 +1536,11 @@ Because $H_A$ uses a less than sign ($<$), meaning that it is a lower-tail test,
 \D{\newpage}
 
 %%
-\subsection[Calculator: the linear regression $t$-test for the slope]{Calculator: the linear regression \pmb{$t$}-test for the slope}
+\subsection[Calculator: the $t$-test for the slope]{Calculator: the \pmb{$t$}-test for the slope}
 
-When performing this type of inference, we generally make use of regression output that provides us with the necessary quantities: $b_1$ and $SE \text{ of } {b_1}$.  The calculator functions below require knowing all of the data and are, therefore, rarely used.  We describe them here for the sake of completion. 
+When performing this type of inference, we generally make use of regression output that provides us with the necessary quantities: $b$ and $SE \text{ of } {b}$.  The calculator functions below require knowing all of the data and are, therefore, rarely used.  We describe them here for the sake of completion. 
 
-\begin{onebox}{\videohref{ti84_regression_t_test} TI-83/84: Linear regression T-test on \pmb{$\beta_1$}}
+\begin{onebox}{\videohref{ti84_regression_t_test} TI-83/84: Linear regression T-test on \pmb{$\beta$}}
 \label{LinRegtest}
 Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
 \begin{enumerate}
@@ -1557,18 +1555,18 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
 \item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\[1mm]
 \begin{tabular}{ll l ll}
 \calctext{t} & t statistic &\quad&
-	\calctext{b} & $b_1$, slope of the line \\
+	\calctext{b} & $b$, slope of the line \\
 \calctext{p} & p-value &&
 	\calctext{s} & st.~dev.~of the residuals \\
 \calctext{df} & degrees of freedom for the test &&
 	$\calctextmath{r^2}$ & $R^2$, explained variance \\
-\calctext{a} & $b_0$, y-intercept of the line &&
+\calctext{a} & $a$, y-intercept of the line &&
 	\calctext{r} & $r$, correlation coefficient
 \end{tabular}
 \end{enumerate}
 \end{onebox} 
 
-\begin{onebox}{\videohref{casio_regression_t_test} Casio fx-9750GII: Linear regression T-test on \pmb{$\beta_1$}}
+\begin{onebox}{\videohref{casio_regression_t_test} Casio fx-9750GII: Linear regression T-test on \pmb{$\beta$}}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
@@ -1578,12 +1576,12 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
 \item Hit \calcbutton{EXE}, which returns: \\[1mm]
 \begin{tabular}{ll l ll}
 \calctext{t} & t statistic &\quad&
-	\calctext{b} & $b_1$, slope of the line \\
+	\calctext{b} & $b$, slope of the line \\
 \calctext{p} & p-value &&
 	\calctext{s} & st.~dev.~of the residuals \\
 \calctext{df} & degrees of freedom for the test &&
 	\calctext{r} & $r$, correlation coefficient \\
-\calctext{a} & $b_0$, y-intercept of the line &&
+\calctext{a} & $a$, y-intercept of the line &&
 	$\calctextmath{r^2}$ & $R^2$, explained variance
 \end{tabular}
 \end{enumerate}
@@ -1592,7 +1590,7 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
 \begin{examplewrap}
 \begin{nexample}
 {Why does the calculator test include the symbol $\rho$ when choosing the direction of the alternate hypothesis?}
-Recall the we used the letter $r$ to represent correlation.  The Greek letter $\rho=0$ represents the correlation for the entire population.  The slope $b_1=r\frac{s_y}{s_x}$.  If the slope of the population regression line is zero, the correlation for the population must also be zero.  For this reason, the linear regression test for $\beta_1=0$ is equivalent to a test for $\rho=0$.
+Recall the we used the letter $r$ to represent correlation.  The Greek letter $\rho=0$ represents the correlation for the entire population.  The slope $b=r\frac{s_y}{s_x}$.  If the slope of the population regression line is zero, the correlation for the population must also be zero.  For this reason, the $t$-test for $\beta=0$ is equivalent to a test for $\rho=0$.
 \end{nexample}
 \end{examplewrap}
 
@@ -1630,22 +1628,22 @@ In Section~\ref{ciMeanOfDifferences}, we looked at a set of paired data involvin
 \item prices for textbooks for UCLA courses are \emph{higher} at the UCLA Bookstore than on Amazon
 \item there is a significant, positive linear relationship between UCLA Bookstore price and Amazon price?
 \end{enumerate}}
-In the first case, we are interested in whether the differences (UCLA Bookstore $-$ Amazon) are, on average, greater than 0, so we would do a matched pairs $t$-test for paired differences.  In the second case, we are interested in whether the slope is significantly greater than 0, so we would do a linear regression $t$-test for the slope.  
+In the first case, we are interested in whether the differences (UCLA Bookstore $-$ Amazon) are, on average, greater than 0, so we would do a matched pairs $t$-test for a mean of differences.  In the second case, we are interested in whether the slope is significantly greater than 0, so we would do a $t$-test for the slope of a regression line.  
 \end{nexample}
 \end{examplewrap}
 
-Likewise, a matched pairs $t$-interval for paired differences would provide an interval of reasonable values for mean of the differences for all UCLA textbooks, whereas a linear regression $t$-interval for the slope would provide an interval of reasonable values for the slope of the regression line for all UCLA textbooks.     
+Likewise, a matched pairs $t$-interval for a mean of differences would provide an interval of reasonable values for mean of the differences for all UCLA textbooks, whereas a $t$-interval for the slope would provide an interval of reasonable values for the slope of the regression line for all UCLA textbooks.     
 
 
 \begin{onebox}{Inference for paired data}
-A matched pairs $t$-interval or test only makes sense when we are asking whether, on average, one variable is \emph{greater} than another (think histogram of the differences).  A linear regression $t$-interval or $t$-test makes sense when we are interested in the linear relationship between them (think scatterplot).  
+A matched pairs $t$-interval or $t$-test for a mean of differences only makes sense when we are asking whether, on average, one variable is \emph{greater} than another (think histogram of the differences).  A $t$-interval or $t$-test for the slope of a regression line makes sense when we are interested in the linear relationship between them (think scatterplot).  
 \end{onebox}
 
 
 \begin{examplewrap}
 \begin{nexample}
 {Previously, we looked at the relationship betweeen body length and head length for bushtail possums.  We also looked at the relationship between gift aid and family income for freshmen at Elmhurst College.  Could we do a matched pairs $t$-test in either of these scenarios?}
-We have to ask ourselves, does it make sense to ask whether, on average, body length is greater than head length?  Similarly, does it make sense to ask whether, on average, gift aid is greater than family income?  These don't seem to be meaningful research questions; a matched pairs $t$-test for paired differences would not be useful here. 
+We have to ask ourselves, does it make sense to ask whether, on average, body length is greater than head length?  Similarly, does it make sense to ask whether, on average, gift aid is greater than family income?  These don't seem to be meaningful research questions; a matched pairs $t$-test for a mean of differences would not be useful here. 
 \end{nexample}
 \end{examplewrap}
 
@@ -1654,7 +1652,7 @@ We have to ask ourselves, does it make sense to ask whether, on average, body le
 A teacher gives her class a pretest and a posttest.  Does this result in paired data?  If so, which hypothesis test should she use?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Yes, there are two observations for each individual, so there is paired data.  The appropriate test depends upon the question she wants to ask.  If she is interested in whether, on average, students do better on the posttest than the pretest, should use a matched pairs $t$-test for paired data.  If she is interested in whether pretest score is a significant linear predictor of posttest score, she should do a linear regression $t$-test for the slope.  In this situation, both tests could be useful, but which one should be used is dependent on the teacher's research question.}
+\footnotetext{Yes, there are two observations for each individual, so there is paired data.  The appropriate test depends upon the question she wants to ask.  If she is interested in whether, on average, students do better on the posttest than the pretest, should use a matched pairs $t$-test for a mean of differences.  If she is interested in whether pretest score is a significant linear predictor of posttest score, she should do a $t$-test for the slope.  In this situation, both tests could be useful, but which one should be used is dependent on the teacher's research question.}
 
 
 \D{\newpage}
@@ -1664,26 +1662,26 @@ A teacher gives her class a pretest and a posttest.  Does this result in paired 
 
 \noindent In Chapter 6, we used a $\chi^2$ test of independence to test for association between two categorical variables.  In this section, we test for association/correlation between two numerical variables.
 \begin{itemize}
-\item We use the slope $b_1$ as a \emph{point estimate} for the slope $\beta_1$ of the population regression line.  The slope of the population regression line is the true increase/decrease in $y$ for each unit increase in $x$.  If the slope of the population regression line is 0, there is no linear relationship between the two variables.  
-\item Under certain assumptions, the sampling distribution of $b_1$ is \emph{normal} and the distribution of the standardized test statistic using the standard error of the slope follows a \term{t-distribution@$t$-distribution} with $n-2$ degrees of freedom.
+\item We use the slope $b$ as a \emph{point estimate} for the slope $\beta$ of the population regression line.  The slope of the population regression line is the true increase/decrease in $y$ for each unit increase in $x$.  If the slope of the population regression line is 0, there is no linear relationship between the two variables.  
+\item Under certain assumptions, the sampling distribution of $b$ is \emph{normal} and the distribution of the standardized test statistic using the standard error of the slope follows a $\pmb{t}$\textbf{-distribution} with $n-2$ degrees of freedom.
 
 \item When there is $(x, y)$ data and the parameter of interest is the slope of the population regression line, e.g. the slope of the population regression line relating air quality index to average rainfall per year for each city in the United States:
 \begin{itemize}
-\item Estimate $\beta_1$ at the C\% confidence level using a \termsub{Linear regression $\pmb{t}$-interval}{linear regression t-interval@linear regression $t$-interval}.
-\item Test $H_0$: $\beta_1=0$ at the $\alpha$ significance level using a \termsub{Linear regression $\pmb{t}$-test}{linear regression t-test@linear regression $t$-test}.
+\item Estimate $\beta$ at the C\% confidence level using a \termsub{$\pmb{t}$-interval for the slope}{t-interval for the slope@$t$-interval for the slope}.
+\item Test $H_0$: $\beta=0$ at the $\alpha$ significance level using a \termsub{$\pmb{t}$-test for the slope}{t-test for the slope@$t$-test for the slope}.
 \end{itemize}
-\item The conditions for the linear regression $t$-interval and $t$-test for the slope are the same.
+\item The conditions for the $t$-interval and $t$-test for the slope of a regression line are the same.
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[1.] Data come from a random sample or randomized experiment.
-\item[2.] The residual plot shows no pattern implying that a linear model is reasonable. \item[] (Technically, the residuals should be independent, nearly normal, and have constant standard deviation.)
+\item[2.] The residual plot shows no pattern implying that a linear model is reasonable. \item[] More specifically, the residuals should be independent, nearly normal (or $n\ge 30$), and have constant standard deviation.
 \end{itemize}
 \item The confidence interval and test statistic are calculated as follows:   
 \begin{itemize}
 \item[] Confidence interval:\ \  $\text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}$, or
 \item[] Test statistic:  $T = \frac{\text{point estimate } - \text{ null value}}{SE\ \text{of estimate}}$ \ and p-value
 \begin{itemize}
-\item[] point estimate:  the slope $b_1$ of the sample regression line
+\item[] point estimate:  the slope $b$ of the sample regression line
 \item[] $SE$ of estimate:  $SE$ of slope (find using computer output)
 \item[] $df = n-2$
 \end{itemize}
@@ -1692,7 +1690,7 @@ A teacher gives her class a pretest and a posttest.  Does this result in paired 
 
 \item If the confidence interval for the slope of the population regression line estimates the true average increase in the $y$-variable for each unit increase in the $x$-variable.
 
-\item The linear regression $t$-test and the matched pairs $t$-test both involve \emph{paired}, numerical data.  However, the linear regression $t$-test for the slope asks if the two variables have a linear \emph{relationship}, specifically if the \emph{slope} of the population regression line is different from 0.  The matched pairs $t$-test, on the other hand, asks if the two variables are in some way the \emph{same}, specifically if the \emph{mean} of the population differences is 0.  
+\item The $t$-test for the slope and the matched pairs $t$-test for a mean of differences both involve \emph{paired}, numerical data.  However, the $t$-test for the slope asks if the two variables have a linear \emph{relationship}, specifically if the \emph{slope} of the population regression line is different from 0.  The matched pairs $t$-test for a mean of differences, on the other hand, asks if the two variables are in some way the \emph{same}, specifically if the \emph{mean} of the population differences is 0.  
 \end{itemize}
 
 %%%%%%%%%%%Section Exercises
@@ -1779,7 +1777,6 @@ By reigning in the outliers and extreme skew,
 transformations like this often make it easier to build
 statistical models against the data.
 
-
 Transformations can also be applied to one or both
 variables in a scatterplot.
 A scatterplot of the population change from 2010 to 2017
@@ -1792,8 +1789,6 @@ the population variable, as shown in
 Figure~\ref{county_pop_change_v_pop_transform_log},
 a positive association between the variables is revealed.
 While fitting a line to predict population change (2010 to 2017) from population (in 2010) does not seem reasonable, fitting a line to predict population from log$_{10}$(population) does seem reasonable.  
-
-
 
 \begin{figure}
   \centering
@@ -1829,8 +1824,12 @@ or straighten a nonlinear relationship in a scatterplot.
 
 \index{data!county|)}
 
+\D{\newpage}
+
+~
 
 \D{\newpage}
+
 %%
 \subsection{Transformations to achieve linearity}
 
@@ -1859,7 +1858,7 @@ or straighten a nonlinear relationship in a scatterplot.
 \texttt{S = 13.76\ \ \ \ R-Sq = 88.26\% \ \ \ R-Sq(adj) = 87.91\%}
 }
 
-We can note the $R^2$ value is fairly large.  However, this alone does not mean that the model is good.  Another model might be much better.  When assessing the appropriateness of a linear model, we should look at the residual plot.  The $\cup$-pattern in the residual plot tells us the original data is curved. If we inspect the two plots, we can see that for small and large values of $x$ we systematically underestimate $y$, whereas for middle values of $x$, we systematically overestimate $y$.  The curved trend can also be seen in the original scatterplot.  Because of this, the linear model is not appropriate, and it would not be appropriate to perform a linear regression $t$-test for the slope because the conditions for inference are not met.  However, we might be able to use a transformation to linearize the data.
+We can note the $R^2$ value is fairly large.  However, this alone does not mean that the model is good.  Another model might be much better.  When assessing the appropriateness of a linear model, we should look at the residual plot.  The $\cup$-pattern in the residual plot tells us the original data is curved. If we inspect the two plots, we can see that for small and large values of $x$ we systematically underestimate $y$, whereas for middle values of $x$, we systematically overestimate $y$.  The curved trend can also be seen in the original scatterplot.  Because of this, the linear model is not appropriate, and it would not be appropriate to perform a $t$-test for the slope because the conditions for inference are not met.  However, we might be able to use a transformation to linearize the data.
 \end{nexample}
 \end{examplewrap}
 
@@ -1933,11 +1932,11 @@ The linear regression equation can be written as:  $\widehat{\text{log}(y)} = 1.
 
 \item Every analysis should begin with \emph{graphing} the data using a \term{scatterplot} in order to see the association and any deviations from the trend (outliers or influential values).  A \textbf{residual plot} helps us better see patterns in the data.  
 
-\item When the data show a linear trend, we fit a \textbf{least squares regression line} of the form: $\hat{y} = b_0+b_1x$, where $b_0$ is the $y$-intercept and $b_1$ is the slope.  It is important to be able to \emph{calculate} $b_0$ and $b_1$ using the summary statistics and to \emph{interpret} them in the context of the data.
+\item When the data show a linear trend, we fit a \textbf{least squares regression line} of the form: $\hat{y} = a+bx$, where $a$ is the $y$-intercept and $b$ is the slope.  It is important to be able to \emph{calculate} $a$ and $b$ using the summary statistics and to \emph{interpret} them in the context of the data.
 
 \item A \textbf{residual}, $y-\hat{y}$, measures the error for an \emph{individual point}.  The \textbf{standard deviation of the residuals}, $s$, measures the typical size of the residuals.  
 
-\item $\hat{y} = b_0+b_1x$ provides the best fit line for the \emph{observed data}.  To estimate or hypothesize about the slope of the population regression line, first confirm that the residual plot has no pattern and that a linear model is reasonable, then use a \termsub{linear regression $\pmb{t}$-interval for the slope}{linear regression t-interval for the slope@linear regression $t$-interval for the slope} or a \termsub{linear regression $\pmb{t}$-test for the slope}{linear regression t-test for the slope@linear regression $t$-test for the slope} with $n-2$ degrees of freedom.
+\item $\hat{y} = a+bx$ provides the best fit line for the \emph{observed data}.  To estimate or hypothesize about the slope of the population regression line, first confirm that the residual plot has no pattern and that a linear model is reasonable, then use a \termsub{$\pmb{t}$-interval for the slope}{t-interval for the slope@$t$-interval for the slope} or a \termsub{$\pmb{t}$-test for the slope}{t-test for the slope@$t$-test for the slope} with $n-2$ degrees of freedom.
 \end{itemize}
 In this chapter we focused on simple linear models with one explanatory variable.  More complex methods of prediction, such as multiple regression (more than one explanatory variable) and nonlinear regression can be studied in a future course.
 

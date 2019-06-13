@@ -1,4 +1,4 @@
-\newgeometry{left=.3cm,right=1.5cm,bottom=.5cm}
+\newgeometry{left=1cm,right=1.5cm,bottom=.5cm}
 
 \section{Formulas}
 \label{formulas}
@@ -10,19 +10,17 @@
 \noindent%
 \textbf{Descriptive~Statistics}
 \begin{align*}
-&\bar{x} =\frac{\sum{x_i}}{n} \\[3.5mm]
-&s_x = \sqrt{\frac{1}{n-1}\sum{(x_i-\bar{x})^2}} \\[3.5mm]
+&\bar{x} =\frac{1}{n}\sum{x_i}=\frac{\sum{x_i}}{n} \\[3.5mm]
+&s_x = \sqrt{\frac{1}{n-1}\sum{(x_i-\bar{x})^2}} \\ \\[3.5mm]
 &r = \frac{1}{n-1}
     \sum{\Big(\frac{x_i-\bar{x}}{s_x}\Big)
-    \Big(\frac{y_i-\bar{y}}{s_y}\Big)} \\[3.5mm]
-&\hat{y} = b_0+b_1x \\[3.5mm]
-&b_0 = \bar{y}-b_1\bar{x} \\[3.5mm]
-&b_1 = r\frac{s_y}{s_x} \\[3.5mm]
-&s_{b_1}
-    = \frac{\sqrt{\frac{\sum{(y_i-\hat{y}_i)^2}}{n-2}}}
-        {\sqrt{\sum{(x_i-\bar{x})^2}}}
+    \Big(\frac{y_i-\bar{y}}{s_y}\Big)} \\ \\[3.5mm]
+&\hat{y} = a+bx \\[3.5mm]
+&\bar{y} = a + b\bar{x} \\[3.5mm]
+&b = r\frac{s_y}{s_x} \\[3.5mm]
+& s=\sqrt{\frac{\sum{(y_i-\hat{y}_i)^2}}{n-2}}
 \end{align*}
-\ \vspace{11mm}
+\ \vspace{3mm}
 
 \ 
 \end{minipage}
@@ -35,15 +33,15 @@
 \begin{align*}
 &P(A \cup B) = P(A) + P(B) - P(A\cap B) \\[2.5mm]
 &P(A | B) = \frac{P(A \cap B)}{P(B)} \\[2.5mm]
-&E(X)=\mu_x=\sum{(x_i\times p_i)} \\[2.5mm]
-&Var(X) = \sigma_x^2=\sum{((x_i-\mu_x)^2\times p_i)} \\[2.5mm]
+&\mu_{\scriptscriptstyle{X}}=E(X)=\sum{x_i\cdot  P(x_i)} \\[2.5mm]
+&\sigma_{\scriptscriptstyle{X}}=\sqrt{\sum{(x_i-\mu_x)^2\cdot P(x_i)}} \\[2.5mm]
 &\mu_{\bar{x}}
     = \mu \qquad \quad
         \ \sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}} \\[8mm]
 &\text{If $X$ has a binomial distribution with} \\
 &\text{parameters $n$ and $p$, then:} \\[2.5mm]
-&P(X=k)={n\choose k} p^k(1-p)^{n-k} \\[2.5mm]
-&\mu_x=np \qquad \quad  \ \sigma_x=\sqrt{np(1-p)} \\[2.5mm]
+&P(X=x)={n\choose x} p^x(1-p)^{n-x} \\[2.5mm]
+&\mu_{\scriptscriptstyle{X}}=np \qquad \quad  \ \sigma_{\scriptscriptstyle{X}}=\sqrt{np(1-p)} \\[2.5mm]
 &\mu_{\hat{p}}
     = p\qquad \qquad
         \small{\sigma_{\hat{p}}=\sqrt{\frac{p(1-p)}{n}}}
@@ -51,7 +49,7 @@
 \end{minipage} \\[10mm]
 
 \noindent%
-\textbf{Inferential~Statistics} \vspace{4mm}
+\textbf{Inferential~Statistics} \vspace{2mm}
 
 $$\text{standardized test statistic: }  \frac{\text{point estimate} - \text{null value}}{SE \text{ of estimate}}\qquad\ $$
 $$\text{confidence interval: } \text{point estimate} \ \pm \ \text{critical value}\times SE \text{ of estimate}\qquad\ $$
@@ -67,13 +65,15 @@ diff.~of proportions &
     $p_1-p_2$ & $\hat{p}_1-\hat{p}_2$ &
     $\sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1}+
         \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$ &
-    {\footnotesize when $H_0$: $p_1=p_2$, use $\scriptscriptstyle{\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}$}
+    {\footnotesize when $H_0$: $p_1=p_2$, use $\scriptscriptstyle{\sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}$}
     \\
 single mean & $\mu$ & $\bar{x}$ & $\frac{s}{\sqrt{n}}$&\quad  \\
 \\
 mean of differences& $\mu_{\text{\emph{diff}}}$ & $\bar{x}_{\text{\emph{diff}}}$ & $\frac{s_{\text{\emph{diff}}}}{\sqrt{n_{\text{\emph{diff}}}}}$&\quad  \\
 \\
-difference of means & $\mu_1-\mu_2$ & $\bar{x}_1-\bar{x}_2$ & $\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}$&
+difference of means & $\mu_1-\mu_2$ & $\bar{x}_1-\bar{x}_2$ & $\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}$&\\
+\\
+slope of reg. line & $\beta$ & $b$ &  $\frac{s}{s_x\sqrt{n-1}}$
 \end{tabular}
 \vspace{1cm}
 
