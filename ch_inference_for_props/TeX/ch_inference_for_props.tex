@@ -70,7 +70,7 @@ We will answer questions such as the following:
 
 The distribution of a sample proportion, such as the distribution of all possible values for the proportion of people who share a particular opinion in a poll, was introduced in Section~\ref{distributionphat}.  When the sampling distribution of a sample proportion, $\hat{p}$, is approximately normal, we can use confidence intervals and hypothesis tests based on a normal distribution.  We call these Z-intervals and Z-tests for short.  Here, we review the conditions necessary for a sample proportion to be modeled using a normal distribution.
 
-\begin{onebox}{Conditions for the sampling distribution of $\hat{p}$ being nearly normal}
+\begin{onebox}{Conditions for the sampling distribution of \pmb{$\hat{{p}}$} being nearly normal}
 The sampling distribution of a sample proportion, $\hat{p}$, based on a random sample of size $n$ from a population with a true proportion $p$, is nearly normal when
 \begin{enumerate}
 \item the sample observations are independent and
@@ -79,14 +79,13 @@ The sampling distribution of a sample proportion, $\hat{p}$, based on a random s
 If these conditions are met, then the sampling distribution of $\hat{p}$ is nearly normal with mean $\mu_{\hat{p}}=p$ and standard deviation $\sigma_{\hat{p}} = \sqrt{\frac{\ p(1-p)\ }{n}}$.\index{standard error!single proportion}\end{onebox}
 
 \subsection{Checking conditions for inference using a normal distribution}
-We can use a normal model for inference for a proportion when the observations are independent and the sampling distribution of the sample proportion is nearly normal.  We check that these assumptions are reasonable by verifying the following conditions.
+We can use a normal model for inference for a proportion when the sampling distribution of the sample proportion is nearly normal.  We check that this assumption is reasonable by assessing the independence assumption and verifying that the success-failure condition is met. 
 
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Independent.] Observations can be considered independent when the data are collected from a \emph{random process}, such as tossing a coin, or from a \emph{random sample}.  Without a random sample or process, the standard error formula would not apply, and it is unclear to what population the inference would apply.  When sampling without replacement from a finite population, the observations can be considered independent when sampling less than 10\% of the population.\footnote{When sampling without replacement and sampling greater than 10\% of the population, a modified standard error formula should be used.}
-\item[Nearly normal sampling distribution.] We saw in Section~\ref{distributionphat} that the sampling distribution of a sample proportion will be nearly normal when the success-failure condition is met, i.e. when the expected number of success and failures are both at least 10.  
+\item[Independence.] Observations can be considered independent when the data are collected from a \emph{random process}, such as tossing a coin, or from a \emph{random sample}.  Without a random sample or process, the standard error formula would not apply, and it is unclear to what population the inference would apply.  When sampling without replacement from a finite population, the observations can be considered independent when sampling less than 10\% of the population.\footnote{When sampling without replacement and sampling greater than 10\% of the population, a modified standard error formula should be used.}
+\item[Success-failure condition.] We saw in Section~\ref{distributionphat} that, when that the observations are independent, the sampling distribution of a sample proportion will be nearly normal if the success-failure condition is met, i.e. when the expected number of successes and failures are both at least 10.  
 \end{description}
-In our examples, we generally sample from large populations, such as the United States.  In these cases, we do not explicitly verify that the sample~size is less than 10\% of the population size.  However, in borderline cases, one should remember to check this condition as well to ensure that the standard error estimate is reasonable.
 
 
 \D{\newpage}
@@ -109,7 +108,7 @@ Gallup sampled from U.S. adults, therefore the population of interest, and the p
 
 \begin{examplewrap}
 \begin{nexample}{Can the sample proportion $\hat{p}$ be modeled using a normal distribution?}
-In order to construct a Z-interval, the sample statistic must be able to be modeled using a normal distribution.  Gallup took a random sample, so the first condition (the independence condition) is satisfied.  We must also test the second condition (the success-failure condition) to ensure that the sample~size is large enough for the central limit theorem to apply.  The success-failure condition is met when $np$ and $n(1-p)$ are at least 10. Since $p$ is always unknown when constructing a confidence interval for $p$, we use the sample proportion $\hat{p}$ to check this condition.  Here we have:
+In order to construct a Z-interval, the sample statistic must be able to be modeled using a normal distribution.  Gallup took a random sample of adults in the U.S.  The sample is random and the sample size is much less than 10\% of the population size, so the first condition (the independence condition) is satisfied.  We must also test the second condition (the success-failure condition) to ensure that the sample~size is large enough for the central limit theorem to apply.  The success-failure condition is met when $np$ and $n(1-p)$ are at least 10. Since $p$ is always unknown when constructing a confidence interval for $p$, we use the sample proportion $\hat{p}$ to check this condition.  Here we have:
 \begin{align*}
 n\hat{p} = 1033(0.53) = 547\text{ (``successes'')} \\
  n(1-\hat{p}) = 1033(1 - 0.53) = 486\text{ (``failures'')}
@@ -197,14 +196,14 @@ To carry out a complete confidence interval procedure to estimate a single propo
 \end{itemize}
 \inferencestep{Choose} Choose the correct interval procedure and identify it by name. \vspace{-1mm}
 \begin{itemize} 
-\item[] Here we choose the \term{1-proportion Z-interval}.
+\item[] To estimate a single proportion we use a \term{1-proportion Z-interval}.
 \end{itemize}
-\inferencestep{Check} Check conditions for the sampling distribution of $\hat{p}$ to be nearly normal.\vspace{-1mm}
+\inferencestep{Check} Check conditions for the sampling distribution of $\hat{p}$ to be nearly normal.  \vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from a random sample or random process.
-\item[] 2. $n\hat{p}\ge 10$ and $n(1-\hat{p})\ge 10$  \quad  (Make sure to plug in numbers.) 
-
+\item[] 1. Independence:  Data come from a random sample or random process.  When sampling 
+\item[] \quad \ without replacement, check that sample size is less than 10\% of the population size.
+\item[] 2. Success-failure:  $n\hat{p}\ge 10$ and $n(1-\hat{p})\ge 10$.
 \end{itemize}
 \inferencestep{Calculate} Calculate the confidence interval and record it in interval form.
 \begin{itemize}
@@ -230,7 +229,7 @@ To carry out a complete confidence interval procedure to estimate a single propo
 \begin{description}
 \item[\inferencestep{Identify}] First we identify the parameter of interest.  Here the parameter is the true proportion of U.S. adults that think there is intelligent life on other planets.  We will estimate this at the 95\% confidence level.  
 \item[\inferencestep{Choose}] Because the parameter to be estimated is a single proportion, we will use a 1-proportion Z-interval.
-\item[\inferencestep{Check}] We must check that a Z-interval is appropriate, meaning that the sample proportion can be modeled using a normal distribution.  The problem states that the data come from a random sample.  Also, we must check the success-failure condition.  Here, we have that $1033(.68)\ge 10$ and $1033(1-0.68)\ge 10$.  Both conditions are met so we can proceed with a 1-proportion Z-interval.
+\item[\inferencestep{Check}] We must check that a Z-interval is appropriate.    The problem states that the data come from a random sample, and since the population is adults in the U.S., the population size is much more than 10 times larger than the sample size.  Next we must check the success-failure condition.  Here, we have that $1033(.68)\ge 10$ and $1033(1-0.68)\ge 10$.  The nearly normal sampling distribution conditions are met, so we can proceed with a 1-proportion Z-interval.
 \item[\inferencestep{Calculate}]  We will calculate the interval:
 \begin{align*}
  \text{point estimate}\ \pm\ z^{\star} \times SE\ \text{of estimate}
@@ -433,7 +432,7 @@ While a confidence interval provides a range of reasonable values for an unknown
 \label{TooheyTestNameAndConditionExample}
 %(a) The name of the test we will use is the \emph{1-proportion Z-test}. \\[2mm]
 (a) The alternative hypothesis, the one that bears the burden of proof, argues that Toohey has more than 50\% support. Therefore, $H_A$ will be one-sided and the null value will be $p_0 = 0.5$. So we have $H_0$: $p = 0.5$ and $H_A$: $p > 0.5$. Note that the hypotheses are about a population parameter.  The hypotheses are never about the sample.\\[2mm]
-(b) First, we observe that the problem states that a random sample was chosen.  Next, we check the success-failure condition.    Because we assume that $p = p_0$ for the calculations of the hypothesis test, we use the hypothesized value $p_0$ rather than the sample value $\hat{p}$ when verifying the success-failure condition.  
+(b) First, we observe that the problem states that a random sample was chosen.  We assume that the size of the electorate in Toohey's district is more than 10 times the size of the sample.  Next, we check the success-failure condition.    Because we assume that $p = p_0$ for the calculations of the hypothesis test, we use the hypothesized value $p_0$ rather than the sample value $\hat{p}$ when verifying the success-failure condition.  
 \begin{align*}
 np_0 &\geq 10 \quad \rightarrow \quad 500(0.5) \geq 10 \\
 n(1-p_0) &\geq 10 \quad \rightarrow \quad 500(1-0.5) \geq 10
@@ -520,13 +519,14 @@ To carry out a complete hypothesis test to test the claim that a single proporti
 \end{itemize} 
 \inferencestep{Choose} Choose the correct test procedure and identify it by name.  \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{1-proportion Z-test}.
+\item[] To carry out a test on a single proportion we use a \term{1-proportion Z-test}.
 \end{itemize}
- \inferencestep{Check} Check conditions for the sampling distribution of $\hat{p}$ to be nearly normal.\vspace{-1mm}
+ \inferencestep{Check} Check conditions for the sampling distribution of $\hat{p}$ to be nearly normal, assuming $H_0$: $p=p_0$ is true.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from a random sample.
-\item[] 2. $np_0\geq10$ and $n(1-p_0)\geq10$ \quad  (Make sure to plug in numbers.) 
+\item[] 1. Independence:  Data come from a random sample or random process.  When sampling 
+\item[] \quad \ without replacement, check that sample size is less than 10\% of the population size.
+\item[] 2. Success-failure:  $np_0\ge 10$ and $n(1-p_0)\ge 10$
 \end{itemize}
  \inferencestep{Calculate} Calculate the Z-statistic and p-value.
 \begin{itemize}
@@ -556,7 +556,7 @@ $H_A$: $p > 0.5$ \quad Greater than half of all U.S. adults oppose nuclear energ
  
 Note: $p>0.5$ is what we want to find evidence for; this bears the burden of proof, so this corresponds to $H_A$.
 \item[\inferencestep{Choose}] Because the hypotheses are about a single proportion, we choose the 1-proportion Z-test.
-\item[\inferencestep{Check}]  We must verify that the sample proportion can be modeled using a normal distribution.  The problem states that the data come from a random sample.  Also, $1019(0.5)\geq10$ and $1019(1-0.5)\geq10$ so both conditions are met.  (Remember to use the hypothesized proportion, not the sample proportion, when checking the conditions for this test.)
+\item[\inferencestep{Check}]  We must check the independence and success-failure conditions to show that the sample proportion can be modeled using a normal distribution.  The problem states that the data come from a random sample.  Again, the population is adults in the U.S., so the sample size is much smaller than 10\% of the population size.  Also, $1019(0.5)\geq10$ and $1019(1-0.5)\geq10$.  (Remember to use the hypothesized proportion, not the sample proportion, when checking the conditions for this test.)
 \item[ \inferencestep{Calculate} ]  We will calculate the Z-statistic and the p-value.
 \begin{align*}
 Z = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}
@@ -584,7 +584,7 @@ Because $H_A$ uses a greater than sign ($>$), meaning that it is an upper-tail t
 In context, interpret the p-value of 0.006 from the previous example.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Assuming the normal model is accurate, there is a 0.006 probability of getting a test statistic greater than 2.5 \emph{if $H_0$ were true}, that is, if the true proportion of U.S. adults that oppose nuclear energy really is 0.5.  Note: We start by assuming $H_0$ is true, that $p$ really equals 0.5.  Then, assuming this, we estimate the probability of getting a sample proportion of 0.54 or larger by finding the area under the standard normal curve to the right of 2.5.  This probability is very small, which casts doubt on the null hypothesis and leads us to reject it.  }
+\footnotetext{Assuming the normal model is accurate and assuming the null hypothesis is true, i.e. that the true proportion of U.S. adults that oppose nuclear energy really is 0.5, there is a 0.006 probability of getting a test statistic as large or larger than 2.5 ($H_0$ uses a $>$ sign, so the p-value is the area in the right tail).  Note: We start by assuming $H_0$ is true, that $p$ really equals 0.5.  Then, assuming this, we estimate the probability of getting a sample proportion of 0.54 or larger by finding the area under the standard normal curve to the right of 2.5.  This probability is very small, which casts doubt on the null hypothesis and leads us to reject it.  }
 
 
 \D{\newpage}
@@ -664,7 +664,7 @@ Using a calculator, find the test statistic and p-value for the earlier Example~
 
 \begin{itemize} 
 
-\item We use the sample proportion $\hat{p}$ as the \emph{point estimate} for the unknown population proportion $p$. The sampling distribution of $\hat{p}$ is approximately normal when the success-failure condition is met and the observations are independent.  The observations can generally be considered independent when the data is collected from a random sample or come from a stable, random process analogous to flipping a coin.  When the sampling distribution of $\hat{p}$ is normal, the standardized test statistic also follows a \term{normal} distribution.
+\item We use the sample proportion $\hat{p}$ as the \emph{point estimate} for the unknown population proportion $p$. The sampling distribution of $\hat{p}$ is approximately normal when the success-failure condition is met and the observations are independent.  When the sampling distribution of $\hat{p}$ is normal, the standardized test statistic also follows a \term{normal} distribution.
 
 \item When verifying the success-failure condition and calculating the $SE$, \vspace{-1mm}
 \begin{itemize}
@@ -678,11 +678,11 @@ Using a calculator, find the test statistic and p-value for the earlier Example~
 \item Test $H_0$: $p=p_0$ at the $\alpha$ significance level using a \term{1-proportion Z-test}.
 \end{itemize}
 
-\item The first condition for the one proportion Z-interval and Z-test is the same.  The second one is different because of the use of the null proportion for the test.
+\item The one proportion Z-test and Z-interval require the sampling distribution of $\hat{p}$ to be nearly normal.  For this reason we must check that the following conditions are met.
 \begin{itemize}
-\item[1.] The data come from a random sample or random process.
-\item[2.] Interval:  $n\hat{p}\ge 10$ and $n(1-\hat{p})\ge 10$  \qquad \qquad  (Make sure to plug in numbers 
-\\ Test: $np_0\ge 10$ and $n(1-p_0)\ge 10$  \qquad \qquad  \quad for  $n$ and $\hat{p}$, or for $n$ and $p_0$!)
+\item[1.] Independence:  The data should come from a random sample or random process.  When sampling without replacement, check that the sample size is less than 10\% of the population size.
+\item[2.] Success-failure for Interval:  $n\hat{p}\ge 10$ and $n(1-\hat{p})\ge 10$.   \\\
+Success-failure for Test, assuming $H_0$: $p=p_0$ is true: $np_0\ge 10$ and $n(1-p_0)\ge 10$.
 \end{itemize}
 
 
@@ -693,7 +693,12 @@ Using a calculator, find the test statistic and p-value for the earlier Example~
 \end{itemize}
 \item[] Here the point estimate is the sample proportion $\hat{p}$.
 \item[] The $SE$ of estimate is the $SE$ of the sample proportion.  
-\item[] \quad \quad  For an Interval, use:  $SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$;  \quad for a Test, use:   $SE = \sqrt{\frac{p_0(1-p_0)}{n}}$
+\vspace{-1mm}
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item For an Interval, use $SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$.
+\item For a Test with $H_0$: $p=p_0$, use $SE = \sqrt{\frac{p_0(1-p_0)}{n}}$.
+\end{itemize}
 
 \item The \term{margin of error} ($ME$) for a one-sample confidence interval for a proportion is $z^{\star}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$, which is proportional to $\frac{1}{\sqrt{n}}$.  
 
@@ -762,11 +767,11 @@ Like with $\hat{p}$, the difference of two sample proportions $\hat{p}_1-\hat{p}
 
 
 \subsection{Checking conditions for inference using a normal distribution}
-When comparing two proportions, we carry out inference on $p_1-p_2$.  The assumptions are that the observations are independent, both between groups and within groups and that the sampling distribution of $\hat{p}_1-\hat{p}_2$ is nearly normal.  We check whether these assumptions are reasonable by verifying the following conditions.
+When comparing two proportions, we carry out inference on $p_1-p_2$.  To model the test statistic with a normal distribution, we need \textbf{the sampling distribution of $\hat{p}_1-\hat{p}_2$ to be nearly normal}.  This assumption is considered reasonable if the independence assumption is reasonable and if the success-failure condition is met.
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Independent.] Observations between groups can be considered independent when the data are collected from two independent random samples or, in the context of experiments, from two randomly assigned treatments.  Randomly assigning subjects to treatments is equivalent to randomly assigning treatments to subjects.  When sampling without replacement from a finite population, observations can be considered independent when sampling less than 10\% of the population.
-\item[Nearly normal sampling distribution.] The sampling distribution of $\hat{p}_1-\hat{p}_2$ will be nearly normal when the success-failure condition is met for both groups.  In the two sample case, Instead of checking two inequalities, there are four to check.
+\item[Independence.] Observations can be considered independent when the data are collected from two independent random samples or from a randomized experiment with two treatments.  Randomly assigning subjects to treatments is equivalent to randomly assigning treatments to subjects.  When sampling without replacement from a finite population, the observations can be considered independent when the sample size is less than 10\% of the population size for both samples.
+\item[Success-failure condition.] In the two sample case, the number of success and failures should be at least 10 for both groups; instead of checking two inequalities, there are four to check.
 \end{description}
 
 
@@ -804,7 +809,7 @@ Here, the parameter of interest is a difference of population proportions, speci
 p_1:& \text{ proportion that would survive in treatment group, and} \\
 p_2:& \text{ proportion that would survive in control group}
 \end{align*}
-Then the parameter of interest is $p_1 - p_2$.  In order to use a Z-interval to estimate this difference, we must see if the point estimate, $\hat{p}_{1} - \hat{p}_{2}$, follows a normal distribution.  Because the patients were randomly assigned to one of the two groups and one heart attack patient is unlikely to influence the next that was in the study, the observations are considered independent, both within the samples and between the samples.  Next, the success-failure condition should be verified for each group.  We use the sample proportions along with the sample~sizes to check the condition.
+Then the parameter of interest is $p_1 - p_2$.  In order to use a Z-interval to estimate this difference, we must see if the point estimate, $\hat{p}_{1} - \hat{p}_{2}$, follows a normal distribution.  Because the patients were randomly assigned to one of the two groups and one heart attack patient is unlikely to influence the next that was in the study, the observations are considered independent, both within the samples and between the samples (since there is no sampling, there is no need to check the 10\% condition).  Next, the success-failure condition should be verified for each group.  We use the sample proportions along with the sample~sizes to check the condition.
 \begin{align*}
 n_1\hat{p}_1&\ge 10 & n_1(1-\hat{p}_1)&\ge 10 & n_2\hat{p}_2&\ge 10 & n_2(1-\hat{p}_2)&\ge 10 \\
 40 \times \frac{14}{40} &\ge 10
@@ -858,13 +863,15 @@ To carry out a complete confidence interval procedure to estimate the difference
 \end{itemize} \vspace{-1mm}
 \inferencestep{Choose} Identify the correct interval procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{2-proportion Z-interval}.
+\item[] To carry out a test on a single proportion we choose the \term{2-proportion Z-interval}.
 \end{itemize}
  \inferencestep{Check} Check conditions for the sampling distribution of $\hat{p}_1-\hat{p}_2$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from 2 independent random samples or 2 randomly assigned \mbox{treatments.}
-\item[] 2.  $n_1\hat{p}_1\geq10$, $n_1(1-\hat{p}_1)\geq10$,  $n_2\hat{p}_2\geq10$, and $n_2(1-\hat{p}_2)\geq10$
+\item[] 1. Independence:  Data come from 2 independent random samples or from a randomized 
+\item[] \quad \ experiment with two treatments.  When sampling without replacement, check that the 
+\item[] \quad \ sample size is less than 10\% of the population size for both samples.
+\item[] 2.  Success-failure:  $n_1\hat{p}_1\geq10$, $n_1(1-\hat{p}_1)\geq10$,  $n_2\hat{p}_2\geq10$, and $n_2(1-\hat{p}_2)\geq10$
 \end{itemize}
  \inferencestep{Calculate}  Calculate the confidence interval and record it in interval form.
 \begin{itemize}
@@ -882,12 +889,12 @@ To carry out a complete confidence interval procedure to estimate the difference
 \end{itemize}\end{onebox}
 
 \begin{examplewrap}
-\begin{nexample}{A remote control car company is considering a new manufacturer for wheel gears. The new manufacturer would be more expensive but their higher quality gears are more reliable, resulting in happier customers and fewer warranty claims. However, management must be convinced that the more expensive gears are worth the conversion before they approve the switch. The quality control engineer collects a sample of gears, examining 1000 gears from each company and finds that 879 gears pass inspection from the current supplier and 958 pass inspection from the prospective supplier. Using these data, construct a 95\% confidence interval for the difference in the proportion from each supplier that would pass inspection.  Use the five step framework described above to organize your work.}
+\begin{nexample}{A remote control car company is considering a new manufacturer for wheel gears. The new manufacturer would be more expensive but their higher quality gears are more reliable, resulting in happier customers and fewer warranty claims. However, management must be convinced that the more expensive gears are worth the conversion before they approve the switch. The quality control engineer collects a sample of gears from each supplier, examining 1000 gears from each company, and finds that 879 gears pass inspection from the current supplier and 958 pass inspection from the prospective supplier. Using these data, construct a 95\% confidence interval for the difference in the proportion from each supplier that would pass inspection.  Use the five step framework described above to organize your work.}
 \label{RemoteControl}
 \begin{description}
 \item[\inferencestep{Identify}] First we identify the parameter of interest.  Here the parameter we wish to estimate is the true difference in the proportion of gears from each supplier that would pass inspection, $p_1-p_2$.  We will take the difference as:  current $-$ prospective, so $p_1$ is the true proportion that would pass from the current supplier and $p_2$ is the true proportion that would pass from the prospective supplier.  We will estimate the difference using a 95\% confidence level.  
 \item[\inferencestep{Choose}] Because the parameter to be estimated is a difference of proportions, we will use a 2-proportion Z-interval.
-\item[\inferencestep{Check}] The samples are independent, but not necessarily random, so to proceed we must assume the gears are all independent. For this sample we will suppose this assumption is reasonable, but the engineer would be more knowledgeable as to whether this assumption is appropriate. We also must verify the minimum sample~size conditions:
+\item[\inferencestep{Check}] The samples are independent, but not necessarily random, so to proceed we must assume the gears are all independent. For this sample we will suppose this assumption is reasonable, but the engineer would be more knowledgeable as to whether this assumption is appropriate. We will also assume that the 1000 gears represents less than 10\% of the total gears from each supplier. Next, we verify the minimum sample~size conditions:
 \begin{align*}
 1000 \times \frac{879}{1000} &\ge 10
 	&1000 \times \frac{121}{1000} &\ge 10
@@ -1067,6 +1074,7 @@ When the null hypothesis is $p_1 = p_2$, it is useful to find the pooled sample 
 Here $\text{x}_1$ represents the number of successes in sample 1. If $\text{x}_1$ is not given, it can be computed as $n_1\times \hat{p}_1$. Similarly, $\text{x}_2$ represents the number of successes in sample~2 and can be computed as $n_2\times \hat{p}_2$.
 \end{onebox}
 
+
 \begin{onebox}{Use the pooled sample proportion when \pmb{$H_0$: $\MakeLowercase{p}_1 = \MakeLowercase{p}_2$}}
 When the null hypothesis states that the proportions are equal, we use the pooled sample proportion ($\hat{p}_c$) to check the success-failure condition and to estimate the standard error:
 \begin{eqnarray*}
@@ -1079,12 +1087,12 @@ SE =\sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
 
 \begin{examplewrap}
 \begin{nexample}{Verify that conditions for using the normal are met and find the $SE$ of estimate for this hypothesis test.  Recall that the pooled proportion $\hat{p}_c=0.407$, $n_1 = 771$, and $n_2=732$.}
-The data do come from two randomly assigned treatments, where the treatments are the two different orderings of the question regarding healthcare.  Also, the success-failure condition (minimums of 10) easily holds for each group.
+The data do come from a randomized experiment, where the treatments are the two different orderings of the question regarding healthcare (because this is an experiment, the 10\% condition does not need to be checked).  Also, the success-failure condition (minimums of 10) easily holds for each group.
 \begin{align*}
 771 \times 0.407 &\ge 10
 	&771 \times (1-0.407) &\ge 10
 	&732 \times 0.407 &\ge 10
-	&732 \times (1-0.407) &\ge 10
+	&732 \times (1-0.407) &\ge 10xf
 \end{align*}
 Here, we compute the $SE$ for the difference of sample proportions as:
 $$SE =\sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}=\sqrt{0.407(1-0.407)}\sqrt{\frac{1}{771} + \frac{1}{732}}=0.025$$
@@ -1115,23 +1123,24 @@ To carry out a complete hypothesis test to test the claim that two proportions $
 \item[] $H_0$: $p_1=p_2$ 
 \item[] $H_A$: $p_1\ne p_2$; \quad $H_A$: $p_1>p_2$; \quad or \quad $H_A$: $p_1<p_2$ 
 \end{itemize}
- \inferencestep{Choose} Identify the correct test procedure and identify it by name.\vspace{-1mm}
+ \inferencestep{Choose} Choose the correct test procedure and identify it by name.\vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{2-proportion Z-test}.
+\item[] To carry out a test for the difference of proportions we use a \term{2-proportion Z-test}.  
 \end{itemize}
- \inferencestep{Check} Check conditions for the sampling distribution of $\hat{p}_1-\hat{p}_2$ to be nearly normal.\vspace{-1mm}
+ \inferencestep{Check} Check conditions for the sampling distribution of $\hat{p}_1-\hat{p}_2$ to be nearly normal, assuming $H_0$: $p_1=p_2$ is true.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1.  Data come from 2 independent random samples or from 2 randomly
-\item[] \quad \  assigned treatments.
-\item[] 2.  $n_1\hat{p}_c\geq 10$, $n_1(1-\hat{p}_c)\geq 10$, $n_2\hat{p}_c\geq 10$, and $n_2(1-\hat{p}_c)\geq 10$
+\item[] 1.  Independence:  Data come from 2 independent random samples or from a randomized 
+\item[] \quad \ experiment with two treatments.  When sampling without replacement, check that the 
+\item[] \quad \  sample size is less than 10\% of the population size for both samples.
+\item[] 2.  Success-failure: $n_1\hat{p}_c\geq 10$, $n_1(1-\hat{p}_c)\geq 10$, $n_2\hat{p}_c\geq 10$, and $n_2(1-\hat{p}_c)\geq 10$
 \end{itemize}
  \inferencestep{Calculate}  Calculate the Z-statistic and p-value.
 \begin{itemize}
 \item[] $Z = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}$
 \begin{itemize}
 \item[] point estimate: the difference of sample proportions $\hat{p}_1 - \hat{p}_2$
-\item[] $SE$ of estimate:  $\sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$, where $\hat{p}$ is the pooled proportion
+\item[] $SE$ of estimate:  $\sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$, where $\hat{p}_c$ is the pooled proportion
 \item[] null value: 0
 \end{itemize}
 \item[] p-value = (based on the Z-statistic and the direction of $H_A$)
@@ -1177,8 +1186,8 @@ $H_0$: $p_1=p_2$   \quad Fish oil and placebo are equally effective. \\
 $H_A$: $p_1 < p_2$ \quad Fish oil is effective in reducing heart attacks.
  
 
-\item[\inferencestep{Choose}] Because we are testing whether two proportions equal each other, we choose the \mbox{2-proportion Z-test.}
-\item[\inferencestep{Check}]  We must verify that the difference of sample proportions can be modeled using a normal distribution.  First we note that there are two randomly assigned treatments.  Second, we calculate the pooled proportion as follows:
+\item[\inferencestep{Choose}] Because we are testing whether two proportions equal each other, we choose the 2-proportion Z-test for a difference of proportions.
+\item[\inferencestep{Check}]  We must verify that the difference of sample proportions can be modeled using a normal distribution.  First we note that there is a randomized experiment with two treatments: fish oil and placebo.  Second, we calculate the pooled proportion as follows:
 $$\hat{p}_c = \frac{\text{x}_1+\text{x}_2}{n_1+n_2}=\frac{145 + 200}{12933 + 12938}=0.0133$$
 
 We can now verify: $12933(0.0133)\geq10$, $12933(1-0.0133)\geq10$, $12938(0.0133)\geq10$, and $12938(1-0.0133)\geq10$,  so both conditions are met. 
@@ -1286,20 +1295,20 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion
 
 \item When \emph{comparing} two proportions to each other, the parameter of interest is the \emph{difference of proportions}, $p_1-p_2$, and we use the difference of sample proportions, $\hat{p}_1-\hat{p}_2$, as the \emph{point estimate}.  
 
-\item The sampling distribution of $\hat{p}_1-\hat{p}_2$ is nearly normal when the success-failure condition is met for \textit{both} groups and when the data is collected using 2 independent random samples or 2 randomly assigned treatments.  When the sampling distribution of $\hat{p}_1-\hat{p}_2$ is nearly normal, the standardized test statistic also follows a \term{normal} distribution.
+\item The sampling distribution of $\hat{p}_1-\hat{p}_2$ is nearly normal when the success-failure condition is met for \textit{both} groups and when the observations are independent between and within groups.  When the sampling distribution of $\hat{p}_1-\hat{p}_2$ is nearly normal, the standardized test statistic also follows a normal distribution.
 
 \item When the null hypothesis is that the two populations proportions are \textit{equal} to each other, use the \term{pooled sample proportion} $\hat{p}_c=\frac{\text{x}_1+\text{x}_2}{n_1+n_2}$, i.e. the combined number of yeses over the combined sample~sizes, when verifying the success-failure condition and when finding the $SE$.  For the confidence interval, do not use the pooled sample proportion; use the separate values of  $\hat{p}_1$ and $\hat{p}_2$.  
 \item When there are two samples or treatments and the parameter of interest is a difference of proportions, e.g. the true difference in proportion of 17 and 18 year olds with a summer job (proportion of 18 year olds $-$ proportion of 17 year olds): 
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item Estimate $p_1-p_2$ at the C\% confidence level using a \term{2-proportion Z-interval}.
-\item Test $H_0$: $p_1-p_2=0$ (i.e. $p_1=p_2$) at the $\alpha$ significance level using a \term{2-proportion Z-test}.
+\item Test $H_0$: $p_1-p_2=0$ at the $\alpha$ significance level using a \term{2-proportion Z-test}.
 \end{itemize}
-\item Verify the conditions for using a normal model:  \vspace{-1mm}
+\item The two proportion Z-interval and Z-test require the sampling distribution of $\hat{p}_1-\hat{p}_2$ to be nearly normal.  For this reason we must check that the following conditions are met.   \vspace{-1mm}
 \begin{itemize}
-\item[1.] Data come from 2 independent random samples or 2 randomly assigned treatments.
-\item[2.] CI:  $n_1\hat{p}_1\ge 10$, $n_1(1-\hat{p}_1)\ge 10$, $n_2\hat{p}_2\ge 10$, and $n_2(1-\hat{p}_2)\ge 10$ 
-\item[] Test: $n_1\hat{p}_c\ge 10$, $n_1(1-\hat{p}_c)\ge 10$, $n_2\hat{p}_c\ge 10$, and $n_2(1-\hat{p}_c)\ge 10$
+\item[1.] Independence:  Data come from 2 independent random samples or from a randomized experiment with 2 treatments.  When sampling without replacement, check that the sample size is less than 10\% of the population size for both samples.
+\item[2.] Success-failure for CI:  $n_1\hat{p}_1\ge 10$, $n_1(1-\hat{p}_1)\ge 10$, $n_2\hat{p}_2\ge 10$, and $n_2(1-\hat{p}_2)\ge 10$. 
+\item[] Success-failure for Test: $n_1\hat{p}_c\ge 10$, $n_1(1-\hat{p}_c)\ge 10$, $n_2\hat{p}_c\ge 10$, and $n_2(1-\hat{p}_c)\ge 10$.
 \end{itemize}
 
 \item When the conditions are met, we calculate the confidence interval and the test statistic using the same structure as in the previous section.  
@@ -1311,8 +1320,12 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion
 \end{itemize}
 Here the point estimate is the difference of sample proportions $\hat{p}_1 - \hat{p}_2$.
 \item[] The $SE$ of estimate is the $SE$ of a difference of sample proportions.
-\item[] \quad \quad For a CI, use:  $SE = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$.
-\item[] \quad \quad For a Test, use:  $SE = \sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$.   
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item For a CI, use:  $SE = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$.
+\item For a Test, use:  $SE = \sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$.   
+\end{itemize}
+
 \end{itemize}
 
 
@@ -1667,11 +1680,11 @@ Suppose we are to evaluate whether there is convincing evidence that a set of ob
 The p-value for this test statistic is found by looking at the upper tail of this chi-square distribution. We consider the upper tail because larger values of $\chi^2$ would provide greater evidence against the null hypothesis.\end{onebox}
 
 \begin{onebox}{Conditions for the chi-square goodness of fit test}
-The chi-square goodness of fit test requires two assumptions. The assumptions and the conditions that we check are listed below.  If the conditions are not met, this test should not be used.\vspace{-1mm}
+The chi-square goodness of fit test requires the test statistic to be well modeled by a chi-square distribution.  This will be valid when the observations are independent and the expected counts are large.  If the conditions are not met, this test should not be used.\vspace{-1mm}
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Independent.] The observations can be considered independent if the data come from a random process.  If randomly sampling from a finite population, the observations can be considered independent if sampling less than 10\% of the population.  
-\item[Sampling distribution is chi-square.	] In order for the $\chi^2$-statistic to follow the chi-square distribution, each particular bin or category must have at least \mbox{5~expected} cases under the assumption that the null hypothesis is true.
+\item[Independence.] The observations can be considered independent if the data come from a random process.  If randomly sampling without replacement from a finite population, the observations can be considered independent when sampling less than 10\% of the population.  
+\item[Large expected counts.] In order for the $\chi^2$-statistic to follow the chi-square distribution, each particular bin or category must have at least \mbox{5~expected} cases under the assumption that the null hypothesis is true.
 \vspace{-2mm}
 \end{description}
 \end{onebox}
@@ -1694,13 +1707,15 @@ The chi-square goodness of fit test requires two assumptions. The assumptions an
 \end{itemize}
 \inferencestep{Choose} Choose the correct test procedure and identify it by name.\vspace{-1mm}
 \begin{itemize}
-\item[]  Here we choose the \termsub{$\pmb{\chi^2}$ goodness of fit test}{chi-square goodness of fit test@$\chi^2$ goodness of fit test}.
+\item[]  Here we use a \termsub{$\pmb{\chi^2}$ goodness of fit test}{chi-square goodness of fit test@$\chi^2$ goodness of fit test}.
 \end{itemize}
 \inferencestep{Check} Check that the test statistic follows a chi-square distribution.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1.  Data come from a random sample or random process.
-\item[] 2.  All expected counts are $\ge$ 5.  (Make sure to calculate expected counts!)
+\item[] 1.  Independence:  Data come from a random sample or random process.  If sampling 
+\item[] \quad \  without replacement, check that the sample size is less than 10\% of the population
+\item[] \quad \ size.
+\item[] 2.   Expected counts:  All expected counts are $\ge$ 5. 
 \end{itemize}
 \inferencestep{Calculate} Calculate the $\chi^2$-statistic, $df$, and p-value.\vspace{-1mm}  
 \begin{itemize}
@@ -1751,7 +1766,7 @@ $H_A$: The distribution of M\&M colors is different than the stated distribution
  
 
 \item[\inferencestep{Choose}] Because we have one variable (color), broken up into multiple categories, we choose the \mbox{chi-square goodness of fit test.}
-\item[\inferencestep{Check}]  We must verify that the test statistic follows a chi-square distribution.  Note that there is only one sample here.  The website percentages are considered fixed -- they are not the result of a sample and do not have sampling variability associated with them.  To carry out the chi-square goodness of fit test, we will have to assume that Wicklin's sample can be considered a random sample of M\&M's.  Next, we need to find the expected counts.  Here, $n=712$.  If $H_0$ is true, then we would expect 24\% of the M\&M's to be Blue, 20\% to be Orange, etc.  So the expected counts can be found as:
+\item[\inferencestep{Check}]  We must verify that the test statistic follows a chi-square distribution.  Note that there is only one sample here.  The website percentages are considered fixed -- they are not the result of a sample and do not have sampling variability associated with them.  To carry out the chi-square goodness of fit test, we will have to assume that Wicklin's sample can be considered a random sample of M\&M's.  We note that the total population size of M\&M's is much larger than 10 times the sample size of 712.  Next, we need to find the expected counts.  Here, $n=712$.  If $H_0$ is true, then we would expect 24\% of the M\&M's to be Blue, 20\% to be Orange, etc.  So the expected counts can be found as:
 
 \begin{small}
 \begin{tabular}{ll ccc ccc}
@@ -1881,7 +1896,7 @@ expected counts:&		& 170.9 &  142.4 & 113.9 & 99.6 & 92.6 & 92.6\\
 
 %%
 \subsection*{Section summary} 
-\noindent The inferential procedures we saw in the first two sections of this chapter are based on the test statistic following a \textit{normal distribution}.  In this section, we introduce a new distribution called the chi-square distribution.  
+\noindent The inferential procedures we saw in the first two sections of this chapter are based on the test statistic following a \textit{normal distribution}.  In this section, we introduced a new distribution called the chi-square distribution.  
 
 \begin{itemize}
 
@@ -1895,17 +1910,17 @@ expected counts:&		& 170.9 &  142.4 & 113.9 & 99.6 & 92.6 & 92.6\\
 
 \item When we want to see if a model is a good fit for observed data or if data is representative of a particular population, we can use a \termsub{$\pmb{\chi^2}$ goodness of fit test}{chi-square goodness of fit test@$\chi^2$ goodness of fit test}.  This test is used when there is one variable with multiple categories (bins) that can be arranged in a \term{one-way table}.
 
-\item In a chi-square goodness of fit test, we calculate a \termsub{$\pmb{\chi^2}$-statistic}{chi-square statistic@$\chi^2$-statistic}, which is a measure of how far the observed values in the sample are from the expected values under the null hypothesis. $\chi^2 =\sum{ \frac{\text{(observed } - \text{ expected})^2}{\text{expected}}}$ 
+\item In a chi-square goodness of fit test, we calculate a \termsub{$\pmb{\chi^2}$-statistic}{chi-square statistic@$\chi^2$-statistic}, which is a measure of how far the observed counts in the sample are from the expected counts, relative to the expected counts, under the null hypothesis. $\chi^2 =\sum{ \frac{\text{(observed } - \text{ expected})^2}{\text{expected}}}$.
 \begin{itemize}\vspace{-1mm}
 \item Always use whole numbers (counts) for the observed values, not proportions or percents.
 \item For each category, the expected counts can be found by multiplying the sample~size by the expected proportion under the null hypothesis.  Expected counts do \emph{not} need to be integers.  
-\item For each category, find $\frac{\text{(observed } - \text{ expected})^2}{\text{expected}}$, then add them all together to get the $\chi^2$-statistic.
+\item For each category, find $\frac{\text{(observed } - \text{ expected})^2}{\text{expected}}$, then add them together to get the $\chi^2$-statistic.
 \end{itemize}
 
-\item When there is a random sample and all of the expected counts are at least 5, the $\chi^2$-statistic follows a \term{chi-square distribution} with degrees of freedom equal to number of categories $-$ 1.
+\item When there is a random sample and all of the expected counts are at least 5, the $\chi^2$-statistic follows a \term{chi-square distribution} with degrees of freedom equal to number of \mbox{categories $-$ 1.}
 
-\item For a $\chi^2$ test, the p-value corresponds to the probability that observed sample values would differ from the expected values by \textit{more than} what we observed in this sample.  The p-value, therefore, corresponds to the area \textit{to the right} of the calculated $\chi^2$-statistic (the area in the upper tail). 
-\item A larger $\chi^2$ represents greater deviation between the observed values and the expected values under the null hypothesis.  For a fixed degrees of freedom, a larger $\chi^2$ value leads to a smaller p-value, providing greater evidence against $H_0$. 
+\item A larger $\chi^2$ represents greater deviation between the observed values and the expected values, relative to the expected values.  For a fixed degrees of freedom, a larger $\chi^2$ value leads to a smaller p-value, providing greater evidence against $H_0$. 
+
 
 \item \termsub{$\pmb{\chi^2}$ tests for a one-way table}{chi-square tests for a one-way table@$\chi^2$ tests for a one-way table}.  When there is one sample and we are comparing the distribution of a categorical variable to a specified or population distribution, e.g. using sample values to determine if a machine is producing M\&M's with the specified distribution of color, the hypotheses can often be written as:
 \begin{itemize}
@@ -1914,10 +1929,11 @@ expected counts:&		& 170.9 &  142.4 & 113.9 & 99.6 & 92.6 & 92.6\\
 \end{itemize}
 
 \item[] We test these hypotheses at the $\alpha$ significance level using a \termsub{$\pmb{\chi^2}$ goodness of fit test}{chi-square goodness of fit test@$\chi^2$ goodness of fit test}.\\
-\item The conditions for the $\chi^2$ goodness of fit test are as follows:
+\item For the $\chi^2$ goodness of fit test, we check the following conditions to verify that the test statistic follows a chi-square distribution.  
 \begin{itemize}
-\item[] 1.  Data come from a random sample or random process.
-\item[] 2.  All expected counts are $\ge$ 5.
+\item[] 1.  Independence:  Data come from a random sample or random process.  When sampling 
+\item[] \quad \ without replacement, check that sample size is less than 10\% of the population size.
+\item[] 2.  Expected counts:  All expected counts are $\ge$ 5.
 \end{itemize}
 
 \D{\newpage}
@@ -1928,6 +1944,7 @@ expected counts:&		& 170.9 &  142.4 & 113.9 & 99.6 & 92.6 & 92.6\\
 \end{itemize}
 \item The p-value is the area to the \emph{right} of the $\chi^2$-statistic under the chi-square curve with the appropriate $df$.
 
+\item For a $\chi^2$ test, the p-value corresponds to the probability of getting a test statistic as large as we got or larger, assuming the null hypothesis is true and assuming the chi-square model holds.
 \end{itemize}
 
 
@@ -2133,8 +2150,8 @@ When analyzing 2-by-2 contingency tables, use the two-proportion methods introdu
 There are two conditions that must be checked before performing a chi-square test of homogeneity. If these conditions are not met, this test should not be used.\vspace{-1mm}
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Multiple random samples or randomly assigned treatments. ]Data collected by multiple independent random samples or multiple randomly assigned treatments. Data can then be organized into a two-way table.
-\item[All expected counts at least 5. ] All of the cells in the two-way table must  have at least 5~expected cases under the assumption that the null hypothesis is true.
+\item[Independence.] Data should be come from multiple independent random samples or from a randomized experiment with multiple treatments. Data can then be organized into a two-way table.  When sampling without replacement, the sample size should be less than 10\% of the population size for each sample.
+\item[Large expected counts. ] All of the cells in the two-way table must  have at least 5~expected cases under the assumption that the null hypothesis is true.
 \end{description}\end{onebox}
 
 \begin{examplewrap}
@@ -2179,14 +2196,15 @@ rural/urban/suburban dwellers among 4 states,
 \end{itemize}
 \inferencestep{Choose} Choose the correct test procedure and identify it by name.\vspace{-1mm}
 \begin{itemize}
-\item[]  Here we choose the \termsub{$\pmb{\chi^2}$ test of homogeneity}{chi-square test of homogeneity@$\chi^2$ test of homogeneity}.
+\item[]  Here we use a \termsub{$\pmb{\chi^2}$ test of homogeneity}{chi-square test of homogeneity@$\chi^2$ test of homogeneity}.
 \end{itemize}
-\inferencestep{Check}  Check that the test statistic follows a chi-square distribution.\vspace{-1mm}
+\inferencestep{Check} Check that the test statistic follows a chi-square distribution.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1.  Data come from multiple random samples or from multiple randomly 
-\item[] \quad \ assigned treatments.
-\item[] 2.  All expected counts are $\ge 5$ (calculate and record expected counts).
+\item[] 1.  Independence:  Data come from multiple random samples or from a randomized 
+\item[] \quad \ experiment with multiple treatments.  When sampling without replacement, the sample 
+\item[] \ \quad size should be less than 10\% of the population size for each sample.
+\item[] 2.   Expected counts:  All expected counts are $\ge 5$ (calculate and record expected counts).
 \end{itemize}
 \inferencestep{Calculate} Calculate the $\chi^2$-statistic, $df$, and p-value.\vspace{-1mm}  
 \begin{itemize}
@@ -2318,15 +2336,16 @@ Total					   & & 1458    & 1382 & 1383 & 				& 4223 \\
 There are two conditions that must be checked before performing a chi-square test of independence. If these conditions are not met, this test should not be used.\vspace{-1mm}
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[One random sample with two variables/questions.] The data must be arrived at by taking a random sample. After the data is collected, it is separated and categorized according to two variables and can be organized into a two-way table.
-\item[All expected counts at least 5.] All of the cells in the two-way table must have at least 5~expected cases assuming the null hypothesis is true.
+\item[Independence.] The data must be arrived at by taking one random sample. When sampling sampling without replacement from a finite population, the sample size should be less than 10\% of the population size.  After the data is collected, it is separated and categorized according to two variables and can be organized into a two-way table.
+\item[Large expected counts.] All of the cells in the two-way table must have at least 5~expected cases assuming the null hypothesis is true.
 \end{description}
 \end{onebox}
 
 \D{\newpage}
+\Comment{check placement of conditions box}
 
 \begin{examplewrap}
-\begin{nexample}{First, we observe that the data came from a random sample of adults in the U.S.  Next, let's compute the expected values that correspond to Figure~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}, if the null hypothesis is true, that is, if group and rating are independent.  }
+\begin{nexample}{First, we observe that the data came from a random sample of adults in the U.S. and that the population size for adults in the U.S. is much larger than 10 times the sample size.  Next, let's compute the expected values that correspond to Figure~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}, if the null hypothesis is true, that is, if group and rating are independent.  }
 The expected count for row one, column one is found by multiplying the row one total (2119) and column one total (1458), then dividing by the table total (4223): $\frac{2119\times 1458}{4223} = 731.6$. Similarly for the first column and the second row: $\frac{2104\times 1458}{4223} = 726.4$. Repeating this process, we get the expected counts:  
 \begin{center}
 \begin{tabular}{l ccc}
@@ -2381,13 +2400,13 @@ When there is one sample and we are looking for association or dependence betwee
 \end{itemize}
 \inferencestep{Choose} Choose the correct test procedure and identify it by name.\vspace{-1mm}
 \begin{itemize}
-\item[]  Here we choose the \termsub{$\pmb{\chi^2}$ test of independence}{chi-square test of independence@$\chi^2$ test of independence}.
+\item[]  Here we use a \termsub{$\pmb{\chi^2}$ test of independence}{chi-square test of independence@$\chi^2$ test of independence}.
 \end{itemize}
 \inferencestep{Check} Check that the test statistic follows a chi-square distribution.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from a single random sample.
-\item[] 2. All expected counts are $\ge 5$ (calculate and record expected counts).
+\item[] 1. Independence:  Data come from one random sample.  If sampling without replacement, check that the sample size is less than 10\% of the population size.
+\item[] 2. Expected counts:  All expected counts are $\ge 5$ (calculate and record expected counts).
 \end{itemize}
 \inferencestep{Calculate} Calculate the $\chi^2$-statistic, $df$, and p-value.\vspace{-1mm}  
 \begin{itemize}
@@ -2428,7 +2447,7 @@ Carry out an appropriate test at the 0.10 significance level to see if there is 
 \newline $H_0$: Gender and knowing how to adjust Facebook privacy settings are \mbox{independent.}
 \newline $H_A$: Gender and knowing how to adjust Facebook privacy settings are \mbox{dependent.}
 \item[\inferencestep{Choose}] Two variables were recorded on the respondents: gender and response to the question regarding privacy settings.  We want to know if these variables are associated / dependent, so we will carry out a chi-square test of independence.  
-\item[\inferencestep{Check}] According to the problem, there was one random sample taken.  All values in the table of expected counts are $\ge$ 5.
+\item[\inferencestep{Check}] According to the problem, there was one random sample taken.  We note that the population of Facebook users is much larger than 10 times the sample size of 806, so independence is reasonable.  All values in the table of expected counts are $\ge$ 5.
 Table of expected counts:
 \begin{center}
 \begin{tabular}{l l c c l}
@@ -2455,7 +2474,7 @@ Table of expected counts:
 In context, interpret the p-value of the test in the previous example.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The p-value in this test corresponds to the area to the right of $\chi^2 = 3.13$ under the chi-square curve with 2 degrees of freedom.  It is the probability of getting a $\chi^2$-statistic larger than 3.13 if $H_0$ were true and assuming a chi-square model with 2 degrees of freedom holds.  Equivalently, it is the probability of our observed counts being this different from the expected counts, relative to the expected counts, if gender and response really are independent (and the model holds).}
+\footnotetext{The p-value in this test corresponds to the area to the right of $\chi^2 = 3.13$ under the chi-square curve with 2 degrees of freedom.  Assuming the probability model is true and assuming the null hypothesis is true, i.e. that gender and response really are independent, there is a 0.209 probability of getting a $\chi^2$-statistic as large or larger than 3.13.  Equivalently, it is the probability of our observed counts being this different from the expected counts, relative to the expected counts, if the null is true and the model holds.  Because the p-value is large, we do not reject the null.}
 
 
 \D{\newpage}
@@ -2579,28 +2598,29 @@ Disapprove			    & 726.41    & 688.55 & 689.04  \\
 \subsection*{Section summary}
 \begin{itemize}
 
-\item When there are two categorical variables, rather than one, the data must be arranged in a \term{two-way table} and a $\chi^2$ test of homogeneity or a $\chi^2$ test of independence is appropriate.  
-\item These tests use the same $\chi^2$-statistic as the chi-square goodness of fit test, but instead of number of categories $-$ 1, the \term{degrees of freedom} is ($\# \text{ of rows} - 1)\times (\# \text{ of columns} -1$).  All expected counts must be at least 5.
+\item When there are two categorical variables, rather than one, the data can be arranged in a \term{two-way table}.
 
 \item When working with a two-way table, the \term{expected count} for each row,column combination is calculated as: expected count = $\frac{(\text{row total})\times (\text{column total})}{\text{table total}}$.  
 
-\item The $\chi^2$ test of homogeneity and the $\chi^2$ test of independence are almost identical.  The differences lie in the data collection method and in the hypotheses.
+\item When categorical data are arranged in a two way table, use the $\chi^2$ test of homogeneity or the $\chi^2$ test of independence.  These tests are almost identical;  the differences lie in the data collection method and in the hypotheses.
 
-\item When there are \textbf{multiple samples or treatments} and we are comparing the distribution of a categorical variable across several groups, e.g. comparing the distribution of rural/urban/suburban dwellers among 4 states, the hypotheses can often be written as follows:  
+\item When there are \textbf{multiple random samples or treatments} and we are comparing the distribution of a categorical variable across several groups, e.g. comparing the distribution of rural/urban/suburban dwellers among 4 states, the hypotheses can be written as follows:  
  \begin{itemize}
 \item[] $H_0$:  The distribution of [...] is the same for each population/treatment.  
 \item[] $H_A$:  The distribution of [...] is not the same for each population/treatment.
-
-\item[] We test these hypotheses at the $\alpha$ significance level using a \termsub{$\pmb{\chi^2}$ test of homogeneity}{chi-square test of homogeneity@$\chi^2$ test of homogeneity}.
 \end{itemize}
-\item When there is \textbf{one sample} and we are looking for association or dependence between two categorical variables, e.g. testing for an association between gender and political party, the hypotheses can be written as:
+\item[] We test these hypotheses at the $\alpha$ significance level using a \termsub{$\pmb{\chi^2}$ test of homogeneity}{chi-square test of homogeneity@$\chi^2$ test of homogeneity}.
+
+\item When there is \textbf{one random sample} and we are looking for association or dependence between two categorical variables, e.g. testing for an association between gender and political party, the hypotheses can be written as:
 \begin{itemize}
 \item[] $H_0$:  [variable 1] and [variable 2] are independent.   
 \item[]  $H_A$:  [variable 1] and [variable 2] are dependent.
 \end{itemize}
 \item[] We test these hypotheses at the $\alpha$ significance level using a \termsub{$\pmb{\chi^2}$ test of independence}{chi-square test of independence@$\chi^2$ test of independence}.
-\item Both of the $\chi^2$ tests for two-way tables require that all expected counts are $\ge$ 5.  
-\item The chi-square statistic is:
+
+\item   In addition to the independence/random condition, all expected counts must be at least 5 for the test statistic to follow a chi-square distribution.  
+
+\item The chi-square statistic and associated $df$ are found as follows:
 \begin{itemize}
 \item[] test statistic:  $\chi^2 =\sum{ \frac{\text{(observed } - \text{ expected})^2}{\text{expected}}}$\\
 \\$df =$ (\# of rows $-$ 1)(\# of cols $-$ 1)

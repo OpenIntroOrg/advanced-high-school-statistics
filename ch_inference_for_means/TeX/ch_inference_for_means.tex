@@ -364,13 +364,14 @@ To carry out a complete confidence interval procedure to estimate a single \mbox
 \end{itemize}
 \inferencestep{Choose} Choose the appropriate interval procedure and identify it by name.\vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{1-sample $t$-interval}.
+\item[] To estimate a single mean we use a \term{1-sample $t$-interval}.
 \end{itemize}
-\inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}$ to nearly normal.\vspace{-1mm}
+\inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from a random sample or random process.
-\item[] 2. The sample size $n\ge 30$ or the population distribution is nearly normal.
+\item[] 1. Independence:  Data come from a random sample or random process.  When sampling 
+\item[] \quad \ without replacement, check that sample size is less than 10\% of the population size.
+\item[] 2. Large sample or normal population:  $n\ge 30$ or the population distr. is nearly normal.
 \item[] \quad \ If the sample size is less than 30 and the population distribution is unknown, check 
 \item[] \quad \ for strong skew or outliers in the data.  If neither is found, the condition that the 
 \item[] \quad \ population distribution is nearly normal is considered reasonable.  
@@ -398,7 +399,7 @@ To carry out a complete confidence interval procedure to estimate a single \mbox
 \begin{description}
 \item[\inferencestep{Identify}] The parameter of interest is the true mean mercury content in croaker white fish (Pacific).  We want to estimate this at the 95\% confidence level.  
 \item[\inferencestep{Choose}] Because the parameter to be estimated is a single mean, we will use a 1-sample $t$-interval.
-\item[\inferencestep{Check}] We will assume that the sample constitutes a random sample of croaker white fish (Pacific). The sample size $n$ is small, but there are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not too great. Therefore we think it is reasonable that the population distribution of mercury content in croaker white fish (Pacific) could be nearly normal.  
+\item[\inferencestep{Check}] We must check that the sampling distribution of the mean can be modeled using a normal distribution.  We will assume that the sample constitutes a random sample of less than 10\% of all croaker white fish (Pacific) and that independence is reasonable. The sample size $n$ is small, but there are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not too great. Therefore we think it is reasonable that the population distribution of mercury content in croaker white fish (Pacific) could be nearly normal.  
 \item[\inferencestep{Calculate}]  We will calculate the interval:
 \begin{align*}
 \text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}
@@ -633,14 +634,15 @@ To carry out a complete hypothesis test to test the claim that a single mean $\m
 \end{itemize} 
 \inferencestep{Choose} Choose the appropriate test procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{1-sample $t$-test}.
+\item[] To carry out a test for a single mean we use a \term{1-sample \pmb{$t$}-test}.
 \end{itemize}
  \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from a random sample or random process.
-\item[] 2. The sample size $n\ge 30$ or the population distribution is nearly normal.
-\item[] \quad \ If the sample size is less than 30 and the population distribution is unknown, check 
+\item[] 1.  Independence:  Data come from a random sample or random process.  When sampling 
+\item[] \quad \ without replacement, check that sample size is less than 10\% of the population size.
+\item[] 2. Large sample or normal population:  $n\ge 30$ or the population distr. is nearly normal.
+\item[] \quad \ - If the sample size is less than 30 and the population distribution is unknown, check 
 \item[] \quad \ for strong skew or outliers in the data.  If neither is found, then the condition that the 
 \item[] \quad \ population is nearly normal is considered reasonable.  
 \end{itemize}
@@ -671,7 +673,7 @@ $H_0$: $\mu=0.25$   \\
 $H_A$: $\mu \ne 0.25$ \quad The mean mercury content is not 0.25 ppm.\\
  
 \item[\inferencestep{Choose}] Because we are hypothesizing about a single mean we choose the \mbox{1-sample $t$-test.}
-\item[\inferencestep{Check}]  The conditions were checked previously, namely -- the data come from a random sample, and because $n$ is less than 30, we verified that there is no strong skew or outliers in the data, so the assumption that the population distribution of mercury is nearly normally distributed is reasonable.  
+\item[\inferencestep{Check}]  The conditions were checked previously, namely -- the data come from a random sample of less than 10\% of the population of all croaker white fish (Pacific), and because $n$ is less than 30, we verified that there is no strong skew or outliers in the data, so the assumption that the population distribution of mercury is nearly normally distributed is reasonable.  
 \item[ \inferencestep{Calculate} ]  We will calculate the $t$-statistic and the p-value.
 \begin{align*}
 T = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}
@@ -795,11 +797,11 @@ The average time for all runners who finished the Cherry Blossom Run in 2006 was
 \item Test $H_0$: $\mu=\mu_0$ at the $\alpha$ significance level using a \term{1-sample t-test}. 
 \end{itemize}
 
-\item The conditions for the one sample $t$-interval and $t$-test are the same.  
+\item The one sample $t$-interval and $t$-test require that the sampling distribution of $\bar{x}$ be nearly normal.  For this reason we must check that the following conditions are met.
 \begin{itemize}
-\item[1.] The data come from a random sample or random process.
-\item[2.]  The sample size $n\ge 30$ or the population distribution is nearly normal.
-\item[]  If the sample size is less than 30 and the population distribution is unknown, check for strong skew or outliers in the data.  If neither is found, then the condition that the population distribution is nearly normal is considered reasonable.
+\item[1.] Independence:  The data come from a random sample or random process.  When sampling without replacement, check that the sample size is less than 10\% of the population size.
+\item[2.]  Large sample or normal population: $n\ge 30$ or population distribution is nearly normal. 
+- If the sample size is less than 30 and the population distribution is unknown, check for strong skew or outliers in the data.  If neither is found, then the condition that the population distribution is nearly normal is considered reasonable.
 \end{itemize}
 
 \item When the conditions are met, we calculate the confidence interval and the test statistic as we did in the previous chapter, except that we use $t^{\star}$ for the critical value and we use $T$ for the test statistic.
@@ -1085,14 +1087,16 @@ To carry out a complete hypothesis test to test the claim that a mean of differe
 \end{itemize} 
 \inferencestep{Choose} Choose the appropriate test procedure and identify it by name.  \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{matched pairs  $t$-test}.
+\item[] To carry out a test for the mean of paired differences we use a \term{matched pairs  $t$-test}.
 \end{itemize}
  \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. There is paired data from a random sample or from a matched pairs experiment.
-\item[] 2. $n_{\text{\emph{diff}}}\ge 30$ or the population of differences is nearly normal.
- \item[] \quad \  If the number of differences is less than 30 and the distribution of the population 
+\item[] 1. Independence:  Data come from one random sample (with paired data) or from a 
+\item[] \ \quad randomized matched pairs experiment.  When sampling without replacement, check 
+\item[] \ \quad that the sample size is less than 10\% of the population size.
+\item[] 2. Large sample or normal population:  $n_{\text{\emph{diff}}}\ge 30$ or population of diffs is nearly normal.
+ \item[] \quad \  - If the number of differences is less than 30 and the distribution of the population 
  \item[] \quad \ of differences is unknown, check for strong skew or outliers in the sample differences.
 \item[] \quad \ If neither is found, then the condition that the population of differences is nearly normal 
 \item[] \quad \ is considered reasonable.  
@@ -1136,8 +1140,7 @@ Here,  ${\text{\emph{diff}}}$ = ${\text{SAT score after course - SAT score befor
 
 \item[\inferencestep{Choose}] Because we have paired data and the parameter to be estimated is a mean of differences, we will use a matched pairs $t$-test.
 
-\item[\inferencestep{Check}] We have a random sample with paired observations and the number of differences is \\
-$n_{\text{\emph{diff}}}=30\ge 30$, so we can proceed with the matched pairs $t$-test.  
+\item[\inferencestep{Check}] We have a random sample of students and have paired data on them.  We will assume that this sample of size 30 represents less than 10\% of the total population of such students.  Finally, the number of differences is $n_{\text{\emph{diff}}}=30\ge 30$, so we can proceed with the matched pairs $t$-test.  
  
 \item[\inferencestep{Calculate}]  We will calculate the test statistic, $df$, and p-value.
 \begin{align*}
@@ -1214,7 +1217,7 @@ $\calctextmath{\bar{x}}$ & the sample mean of the differences \\
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Compute the paired differences of the observations.
-\item Using the computed differences, follow the instructions for a 1-sample $t$-test
+\item Using the computed differences, follow the instructions for a 1-sample $t$-test.
 \end{enumerate}
 \end{onebox}
 
@@ -1276,14 +1279,16 @@ To carry out a complete confidence interval procedure to estimate a mean of diff
 \end{itemize}
 \inferencestep{Choose} Choose the appropriate interval procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{matched pairs $t$-interval}.
+\item[] To estimate the mean of paired differences we use a \term{matched pairs $t$-interval}.
 \end{itemize}
 \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. There is paired data from a random sample or from a matched pairs experiment.
-\item[] 2. $n_{\text{\emph{diff}}}\ge 30$ or the population of differences is nearly normal.
- \item[] \quad \  If the number of differences is less than 30 and the distribution of the population 
+\item[] 1. Independence:  Data come from one random sample (with paired data) or from a 
+\item[] \ \quad randomized matched pairs experiment.  When sampling without replacement, check 
+\item[] \ \quad that the sample size is less than 10\% of the population size.
+\item[] 2. Large sample or normal population:  $n_{\text{\emph{diff}}}\ge 30$ or population of diffs is nearly normal.
+ \item[] \quad \  - If the number of differences is less than 30 and the distribution of the population 
  \item[] \quad \ of differences is unknown, check for strong skew or outliers in the sample differences.
 \item[] \quad \ If neither is found, then the condition that the population of differences is nearly normal 
 \item[] \quad \ is considered reasonable.  
@@ -1312,8 +1317,7 @@ To carry out a complete confidence interval procedure to estimate a mean of diff
 
 \item[\inferencestep{Choose}] Because we have paired data and the parameter to be estimated is a mean of differences, we will use a matched pairs $t$-interval.
 
-\item[\inferencestep{Check}] We have a random sample with paired observations and the number of differences is \\
-$n_{\text{\emph{diff}}}=30\ge 30$, so we can proceed with the matched pairs $t$-interval.  
+\item[\inferencestep{Check}] We have a random sample of students with paired observations on them.  We will assume that these 30 students represent less than 10\% of the total number of such students.  Finally, the number of differences is $n_{\text{\emph{diff}}}=30\ge 30$, so we can proceed with the matched pairs $t$-interval.  
  
 \item[\inferencestep{Calculate}]  We will calculate the confidence interval as follows.
 \begin{align*}
@@ -1430,11 +1434,11 @@ $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\h
 \item Test $H_0$: $\mu_{\text{\emph{diff}}}=0$ at the $\alpha$ significance level using a \term{matched pairs $t$-test}. 
 \end{itemize}
 
-\item The conditions for the matched pairs $t$-interval and $t$-test are the same.  
+\item The matched pairs $t$-interval and $t$-test require the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.  For this reason, we must check that the following conditions are met.
 \begin{itemize}
-\item[1.]  There is paired data from a random sample or a matched pairs experiment.
-\item[2.]  $n_{\text{\emph{diff}}}\ge 30$ or the population of differences is nearly normal.
- \item[] If the number of differences is less than 30 and it is not known that the population of differences is nearly normal, we argue that the population of differences could be nearly normal if there is no strong skew or outliers in the sample differences.
+\item[1.]  Independence:  Data should come from one random sample (with paired observations) or from a randomized matched pairs experiment.  If sampling without replacement, check that the sample size is less than 10\% of the population size.
+\item[2.]  Large sample or normal population:  $n_{\text{\emph{diff}}}\ge 30$ or  population of differences nearly normal.
+- If the number of differences is less than 30 and it is not known that the population of differences is nearly normal, we argue that the population of differences could be nearly normal if there is no strong skew or outliers in the sample differences.
 \end{itemize}
 
 
@@ -1511,7 +1515,7 @@ Finally, we are interested in the shape of the sampling distribution of  $\bar{x
 When comparing two means, we carry out inference on a difference of means, $\mu_1-\mu_2$.  We will use the $t$-distribution just as we did when carrying out inference on a single mean.  The assumptions are that the observations are independent, both between groups and within groups and that the sampling distribution of $\bar{x}_1-\bar{x}_2$ is nearly normal.  We check whether these assumptions are reasonable by verifying the following conditions.
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Independent.] Observations can be considered independent when the data are collected from two independent random samples or, in the context of experiments, from two randomly assigned treatments.  Randomly assigning subjects to treatments is equivalent to randomly assigning treatments to subjects.  
+\item[Independent.] Observations can be considered independent when the data are collected from two independent random samples or from a randomized experiment with two treatments.  Randomly assigning subjects to treatments is equivalent to randomly assigning treatments to subjects.  
 \item[Nearly normal sampling distribution.] The sampling distribution of $\bar{x}_1-\bar{x}_2$ will be nearly normal when the sampling distribution of $\bar{x}_1$ and of $\bar{x}_2$ are nearly normal, that is when both population distributions are nearly normal or both sample sizes are at least 30.  
 \end{description}
 
@@ -1619,14 +1623,17 @@ To carry out a complete confidence interval procedure to estimate the difference
 \end{itemize}
  \inferencestep{Choose} Choose the appropriate interval procedure and identify it by name.  \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{2-sample $t$-interval}.
+\item[] To estimate the difference of means we use a \term{2-sample $t$-interval}.
 \end{itemize}
  \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_1-\bar{x}_2$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from 2 independent random samples or 2 randomly assigned treatments. 
-\item[] 2. $n_1\ge 30$ and $n_2\ge 30$ or both population distributions are nearly normal.
-\item[] \quad \ If the sample sizes are less than 30 and the population distributions are unknown, 
+\item[] 1. Independence:  Data come from 2 independent random samples or from a randomized 
+\item[] \ \quad experiment with 2 treatments.  When sampling without replacement, check that the  
+\item[] \ \quad sample size is less than 10\% of the population size for each sample.
+\item[] 2. Large samples or normal populations:  $n_1\ge 30$ and $n_2\ge 30$ or both population 
+\item[] \ \quad distributions are nearly normal.
+\item[] \quad \ - If the sample sizes are less than 30 and the population distributions are unknown, 
 \item[] \quad \ check for strong skew or outliers in either data set.  If neither is found, the condition 
 \item[] \quad \ that both population distributions are nearly normal is considered reasonable.  
 \end{itemize}
@@ -1668,7 +1675,7 @@ B		& 30		& 74.1		& 20		& 32		& 100 \\
 
 \item[\inferencestep{Choose}] Because we are comparing two means, we will use a 2-sample $t$-interval.
 
-\item[\inferencestep{Check}] The data was collected from an experiment with two randomly assigned treatments, Version A and Version B of test.   Both groups sizes are 30, so the condition that they are at least 30 is met.   
+\item[\inferencestep{Check}] The data was collected from a randomized experiment with two treatments:  Version A and Version B of test.   The 10\% condition does not need to be checked here since we are not sampling from a population.  There were 30 students in each group, so the condition that both group sizes are at least 30 is met.   
 \item[\inferencestep{Calculate}]  We will calculate the confidence interval as follows.
 \begin{align*}
 \text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}
@@ -1921,14 +1928,17 @@ To carry out a complete hypothesis test to test the claim that two means $\mu_1$
 \end{itemize}
  \inferencestep{Choose} Choose the appropriate test procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{2-sample $t$-test}.
+\item[] To carry out a test for the difference of means we use a \term{2-sample $t$-test}.
 \end{itemize}
  \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_1-\bar{x}_2$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from 2 independent random samples or 2 randomly assigned treatments. 
-\item[] 2. $n_1\ge 30$ and $n_2\ge 30$ or both population distributions are nearly normal.
-\item[] \quad \ If the sample sizes are less than 30 and the population distributions are unknown, 
+\item[] 1. Independence:  Data come from 2 independent random samples or from a randomized 
+\item[] \ \quad experiment with 2 treatments.  When sampling without replacement, check that the  
+\item[] \ \quad sample size is less than 10\% of the population size for each sample.
+\item[] 2. Large samples or normal populations:  $n_1\ge 30$ and $n_2\ge 30$ or both population 
+\item[] \ \quad distributions are nearly normal.
+\item[] \quad \ - If the sample sizes are less than 30 and the population distributions are unknown, 
 \item[] \quad \ check for excessive skew or outliers in either data set.  If neither is found, the condition 
 \item[] \quad \ that both population distributions are nearly normal is considered reasonable.  
 \end{itemize}
@@ -1977,7 +1987,7 @@ $H_0$: $\mu_{1} - \mu_{2} = 0$. The stem cells do not improve heart pumping func
 $H_A$: $\mu_{1} - \mu_{2} > 0$. The stem cells do improve heart pumping function.
 
 \item[\inferencestep{Choose}] Because we are hypothesizing about a difference of means we choose the \mbox{2-sample $t$-test.}
-\item[\inferencestep{Check}]  The data come from an experiment with two randomly assigned treatments.  The group sizes are small, but the data show no excessive skew or outliers, so the assumption that the population distributions are normal is reasonable.
+\item[\inferencestep{Check}]  The data come from a randomized experiment with two treatment groups: ESC and control.  Because this is an experiment, we do not need to check the 10\% condition.  The group sizes are small, but the data show no excessive skew or outliers, so the assumption that the population distributions are nearly normal is reasonable.
 \item[ \inferencestep{Calculate} ]  We will calculate the $t$-statistic and the p-value.
 \begin{align*}
 T = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}
@@ -2097,14 +2107,14 @@ control		& 9		& -4.33		& 2.76  	 \\
 \begin{itemize}\vspace{-1mm}
 \setlength{\itemsep}{0mm}
 \item Estimate $\mu_1-\mu_2$ at the C\% confidence level using a \term{2-sample t-interval}.
-\item Test $H_0$: $\mu_1-\mu_2=0$ (i.e. $\mu_1=\mu_2$) at the $\alpha$ significance level using a \term{2-sample t-test} .
+\item Test $H_0$: $\mu_1-\mu_2=0$ at the $\alpha$ significance level using a \term{2-sample t-test}.
 \end{itemize}
 
-\item The conditions for the two sample $t$-interval and $t$-test are the same.  
+\item The 2-sample $t$-test and $t$-interval require the sampling distribution of $\bar{x}_1-\bar{x}_2$ to be nearly normal.  For this reason we must check that the following conditions are met.
 \begin{itemize}
-\item[1.] The data come from 2 independent random samples or 2 randomly assigned treatments.
-\item[2.] $n_1\ge 30$ and $n_2\ge 30$ or both population distributions are nearly normal.
-\item[]  If the sample sizes are less than 30 and it is not known that both population distributions are nearly normal, check for excessive skew or outliers in the data.  If neither exists, the condition that both population distributions could be nearly normal is considered reasonable.
+\item[1.] Independence:  The data should come from 2 independent random samples or from a randomized experiment with 2 treatments.  When sampling without replacement, check that the sample size is less than 10\% of the population size for each sample.
+\item[2.] Large samples or normal populations:  $n_1\ge 30$ and $n_2\ge 30$ or both population distributions are nearly normal. \\
+- If the sample sizes are less than 30 and it is not known that both population distributions are nearly normal, check for excessive skew or outliers in the data.  If neither exists, the condition that both population distributions could be nearly normal is considered reasonable.
 \end{itemize}
 
 

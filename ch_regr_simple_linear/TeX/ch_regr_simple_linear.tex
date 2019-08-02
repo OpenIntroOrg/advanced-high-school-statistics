@@ -1185,7 +1185,7 @@ Because the entire interval is negative, we have evidence that the slope of the 
 \end{examplewrap}
 
 \begin{onebox}{Constructing a confidence interval for the slope of regression line}
-To carry out a complete confidence interval procedure to estimate the slope of the population regression line $\beta$ of a regression line,
+To carry out a complete confidence interval procedure to estimate the slope of the population regression line $\beta$,
 \\
 \\
 \inferencestep{Identify} Identify the parameter and the confidence level, C\%.\vspace{-1mm}
@@ -1194,14 +1194,22 @@ To carry out a complete confidence interval procedure to estimate the slope of t
 \end{itemize}
 \inferencestep{Choose} Choose the correct interval procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we use choose the \termsub{$\pmb{t}$-interval for the slope}{t-interval for the slope@$t$-interval for the slope}.
+\item[] To estimate the slope of a regression model we use a \termsub{$\pmb{t}$-interval for the slope}{t-interval for the slope@$t$-interval for the slope}.
 \end{itemize}
 \inferencestep{Check} Check conditions for using a $t$-interval for the slope.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1.  Data come from a random sample or randomized experiment.
-\item[] 2.  The residual plot shows no pattern implying that a linear model is reasonable. \item[] \quad \ More specifically, the residuals should be independent, nearly normal (or $n\ge 30$),
-\item [] \quad \  and have constant standard deviation.
+\item[]  1. Independence:  Data should come from a random sample or randomized experiment.  If 
+\item[] \ \quad sampling without replacement, check that the sample size is less than 10\% of the 
+\item[] \ \quad population size.
+\item[] 2.  Linearity:  Check that the scatterplot does not show a curved trend and that the 
+\item[] \ \quad residual plot shows no $\cup$-shape pattern.  
+\item[] 3.  Constant variability:  Use the residual plot to check that the standard deviation of the 
+\item[] \ \quad residuals is constant across all $x$-values.
+\item[] 4. Normality:  The population of residuals is nearly normal or the sample size is $\ge 30$.  If 
+\item[] \ \quad the sample size is less than 30 check for strong skew or outliers in the sample residuals.  
+\item[] \ \quad If neither is found, then the condition that the population of residuals is nearly normal 
+\item[] \ \quad is considered reasonable.  
 \end{itemize}
 \inferencestep{Calculate} Calculate the confidence interval and record it in interval form.
 \begin{itemize}
@@ -1222,8 +1230,8 @@ To carry out a complete confidence interval procedure to estimate the slope of t
 \begin{figure}%
    \centering
   \begin{tabular}{cc}
-   \includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/possumInference/possumScatter}
-   \includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/possumInference/possumResidual}
+   \includegraphics[width=0.45\textwidth]{ch_regr_simple_linear/figures/possumInference/possumScatter}
+   \includegraphics[width=0.45\textwidth]{ch_regr_simple_linear/figures/possumInference/possumResidual}
 \end{tabular}
    \caption{Left: Scatterplot of head length versus total length for 104 brushtail possums.   Right: Residual plot for the model shown in left panel.  }
 \label{possumInferencePlots}
@@ -1244,11 +1252,12 @@ The regression summary below shows statistical software output from fitting the 
 %\label{rOutputForPossum}
 \\
 \\
-Construct a 95\% confidence interval for the slope of the regression line.  Is there convincing evidence that there is a positive, linear relationship between head length and total length? Use the five step framework to organize your work.}
+Construct a 95\% confidence interval for the slope of the regression line.  Is there convincing evidence that there is a positive, linear relationship between head length and total length? %Use the five step framework to organize your work.
+}
 \begin{description}
 \item[\inferencestep{Identify}] The parameter of interest is the slope of the population regression line for predicting head length from body length.  We want to estimate this at the 95\% confidence level.  
 \item[\inferencestep{Choose}] Because the parameter to be estimated is the slope of a regression line, we will use the $t$-interval for the slope.
-\item[\inferencestep{Check}] These data come from a random sample.  The residual plot shows no pattern.  In general, the residuals have constant standard deviation and there are no outliers or influential points.  Also $n=104\ge 30$ so some skew in the residuals would be acceptable. A linear model is reasonable here.
+\item[\inferencestep{Check}] These data come from a random sample.  The residual plot shows no pattern so a linear model seems reasonable.  The residual plot also shows that the residuals have constant standard deviation.  Finally, $n=104\ge 30$ so we do not have to check for skew in the residuals.  All four conditions are met.
 \item[\inferencestep{Calculate}]  We will calculate the interval:
 $\text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}$
 
@@ -1458,14 +1467,22 @@ To carry out a complete hypothesis test for the claim that there is no linear re
 \end{itemize} 
 \inferencestep{Choose} Choose the correct test procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \termsub{$\pmb{t}$-test for the slope}{t-test for the slope@$t$-test for the slope}. 
+\item[] To carry out a test for the slope of a regression model we use a \termsub{$\pmb{t}$-test for the slope}{t-test for the slope@$t$-test for the slope}. 
 \end{itemize}
  \inferencestep{Check} Check conditions for using a $t$-test for the slope.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1.  Data come from a random sample or randomized experiment.
-\item[] 2.  The residual plot shows no pattern implying that a linear model is reasonable. \item[] \quad \ More specifically, the residuals should be independent, nearly normal (or $n\ge 30$),
-\item [] \quad \  and have constant standard deviation.
+\item[]  1. Independence:  Data should come from a random sample or randomized experiment.  If 
+\item[] \ \quad sampling without replacement, check that the sample size is less than 10\% of the 
+\item[] \ \quad population size.
+\item[] 2.  Linearity:  Check that the scatterplot does not show a curved trend and that the 
+\item[] \ \quad residual plot shows no $\cup$-shape pattern.  
+\item[] 3.  Constant variability:  Use the residual plot to check that the standard deviation of the 
+\item[] \ \quad residuals is constant across all $x$-values.
+\item[] 4. Normality:  The population of residuals is nearly normal or the sample size is $\ge 30$.  If 
+\item[] \ \quad the sample size is less than 30 check for strong skew or outliers in the sample residuals.  
+\item[] \ \quad If neither is found, then the condition that the population of residuals is nearly normal 
+\item[] \ \quad is considered reasonable.  
 \end{itemize}
  \inferencestep{Calculate}  Calculate the $t$-statistic, $df$, and p-value.
 \begin{itemize}
@@ -1486,7 +1503,7 @@ To carry out a complete hypothesis test for the claim that there is no linear re
 
 \begin{examplewrap}
 \begin{nexample}{
-The regression summary below shows statistical software output from fitting the least squares regression line for predicting gift aid based on family income for 50 freshman students at Elmhurst College.  The scatterplot and residual plot were shown in Figure~\ref{elmhurstInferencePlots}. 
+The regression summary below shows statistical software output from fitting the least squares regression line for predicting gift aid based on family income for 50 randomly selected freshman students at Elmhurst College.  The scatterplot and residual plot were shown in Figure~\ref{elmhurstInferencePlots}. 
 \\
 \\
 \texttt{Predictor \ \ \ \ \ \ \ Coef \ \ \ \ \ \ \ SE Coef \ \ T \ \ \ \ \ \ \ P} \\
@@ -1507,7 +1524,7 @@ $H_A$: $\beta < 0$. There is a negative linear relationship.
 \\
 Here, $\beta$ is the slope of the population regression line for predicting gift aid from family income at Elmhurst College.
 \item[\inferencestep{Choose}] Because the hypotheses are about the slope of a regression line, we choose the $t$-test for a slope.  
-\item[\inferencestep{Check}]  The data come from a random sample.  Also, the residual plot shows that the residuals have constant variance and no outliers or influential points (and $n=50\ge 30$).  The lack of any pattern in the residual plot indicates that a linear model is appropriate.
+\item[\inferencestep{Check}]  The data come from a random sample of less than 10\% of the total population of freshman students at Elmhurst College.  The lack of any pattern in the residual plot indicates that a linear model is reasonable. Also, the residual plot shows that the residuals have constant variance. Finally, $n=50\ge 30$ so we do not have to worry too much about any skew in the residuals.  All four conditions are met.
 \item[\inferencestep{Calculate}]  We will calculate the $t$-statistic, degrees of freedom, and the p-value.
 \begin{align*}
 T = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}
@@ -1525,13 +1542,16 @@ Because $H_A$ uses a less than sign ($<$), meaning that it is a lower-tail test,
 \end{description}
 
 
-
 \end{nexample}
 \end{examplewrap}
 \label{overallAidIncomeInformalAssessmentOfRegressionLineSlope}
 
-
-
+\begin{exercisewrap}
+\begin{exercise}
+In context, interpret the p-value from the previous example.\footnotemark
+\end{exercise}
+\end{exercisewrap}
+\footnotetext{Assuming that the probability model is true and assuming that the null hypothesis is true, i.e. there really is no linear relationship between family income and gift aid at Elmhurst College, there is only a 0.0001 chance of getting a test statistic this small or smaller ($H_A$ uses a $<$, so the p-value represents the area in the left tail).  Because this value is so small, we reject the null hypothesis. }
 
 \D{\newpage}
 
@@ -1673,8 +1693,11 @@ A teacher gives her class a pretest and a posttest.  Does this result in paired 
 \item The conditions for the $t$-interval and $t$-test for the slope of a regression line are the same.
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[1.] Data come from a random sample or randomized experiment.
-\item[2.] The residual plot shows no pattern implying that a linear model is reasonable. \item[] More specifically, the residuals should be independent, nearly normal (or $n\ge 30$), and have constant standard deviation.
+\item[1.] Independence:  Data come from a random sample or randomized experiment.  If sampling without replacement, check that the sample size is less than 10\% of the population size.
+\item[2.] Linearity:  Check that the scatterplot does not show a curved trend and that the residual plot shows no $\cup$-shape pattern.  
+\item[3.] Constant variability:  Use the residual plot to check that the standard deviation of the residuals is constant across all $x$-values.
+\item[3.] Normality:  The population of residuals is nearly normal or the sample size is $\ge 30$.  If the sample size is less than 30 check for strong skew or outliers in the sample residuals.  If neither is found, then the condition that the population of residuals is nearly normal is considered reasonable.  
+
 \end{itemize}
 \item The confidence interval and test statistic are calculated as follows:   
 \begin{itemize}
