@@ -154,16 +154,16 @@ What about  the probability of rolling a \resp{1}, \resp{2}, \resp{3}, \resp{4},
 	&&\quad= P(\text{\resp{1}})+P(\text{\resp{2}})+P(\text{\resp{3}})+P(\text{\resp{4}})+P(\text{\resp{5}})+P(\text{\resp{6}}) \\
 	&&\quad= 1/6 + 1/6 + 1/6 + 1/6 + 1/6 + 1/6 = 1.
 \end{eqnarray*}
-The \term{Addition Rule} guarantees the accuracy of this approach when the outcomes are disjoint.
+The Addition Rule guarantees the accuracy of this approach when the outcomes are disjoint.
 
-\begin{onebox}{Addition Rule of disjoint outcomes} If $A_1$ and $A_2$ represent two disjoint outcomes, then the probability that one of them occurs is given by
+\begin{onebox}{Addition Rule of disjoint outcomes}\index{Addition Rule of disjoint outcomes} If $A_1$ and $A_2$ represent two disjoint outcomes, then the probability that one of them occurs is given by
 \begin{eqnarray*}
 P(A_1\text{ or } A_2) = P(A_1) + P(A_2)
 \end{eqnarray*}
 If there are many disjoint outcomes $A_1$, ..., $A_k$, then the probability that one of these outcomes will occur is
-\begin{eqnarray}
+\begin{eqnarray*}
 P(A_1) + P(A_2) + \cdots + P(A_k)
-\end{eqnarray}
+\end{eqnarray*}
 \end{onebox}
 
 \begin{exercisewrap}
@@ -271,20 +271,20 @@ P(A) + P(B) = P({\color{redcards}\diamondsuit}) + P(\text{face card}) = 13/52 + 
 \label{overCountFaceDiamond}
 \end{eqnarray*}
 However, the three cards that are in both events were counted twice, once in each probability. We must correct this double counting:
-\begin{eqnarray}
+\begin{eqnarray*}
 P(A\text{ or } B) &=&P({\color{redcards}\diamondsuit}) + P(\text{face card})  \notag \\
  &=& P({\color{redcards}\diamondsuit}) + P(\text{face card}) - P({\color{redcards}\diamondsuit}  \text{ and face card}) \label{diamondFace} \\
  &=& 13/52 + 12/52 - 3/52 \notag \\
  &=& 22/52 = 11/26 \notag
-\end{eqnarray}
+\end{eqnarray*}
 Equation~(\ref{diamondFace}) is an example of the \term{General Addition Rule}.
 
 \begin{onebox}{General Addition Rule}
 If $A$ and $B$ are any two events, disjoint or not, then the probability that A or B will occur is
-\begin{eqnarray}
+\begin{eqnarray*}
 P(A\text{ or }B) = P(A) + P(B) - P(A\text{ and }B)
 \label{generalAdditionRule}
-\end{eqnarray}
+\end{eqnarray*}
 where $P(A$ and $B)$ is the probability that both events occur.\end{onebox}
 
 
@@ -294,9 +294,9 @@ The symbol $\cap$ means intersection and is equivalent to ``and".
 The symbol  $\cup$ means union and is equivalent to ``or".
 
 It is common to see the General Addition Rule written as
-\begin{eqnarray}
+\begin{eqnarray*}
 P(A \cup B) = P(A) + P(B) - P(A \cap B)
-\end{eqnarray}
+\end{eqnarray*}
 \end{onebox}
 
 \begin{onebox}{``or'' is inclusive}
@@ -370,9 +370,9 @@ An event $A$ together with its complement $A^c$ comprise the entire sample space
 
 \begin{onebox}{Complement}
 The complement of event $A$ is denoted $A^c$, and $A^c$ represents all outcomes not in~$A$. $A$ and $A^c$ are mathematically related: \vspace{-2mm}
-\begin{eqnarray}\label{complement}
+\begin{eqnarray*}\label{complement}
 P(A) + P(A^c) = 1, \quad\text{i.e.}\quad P(A) = 1-P(A^c)
-\end{eqnarray}\vspace{-6.5mm}\end{onebox}
+\end{eqnarray*}\vspace{-6.5mm}\end{onebox}
 
 In simple examples, computing $A$ or $A^c$ is feasible in a few steps. However, using the complement can save a lot of time as problems grow in complexity.
 
@@ -413,11 +413,11 @@ P(white=\text{\small\resp{1} and } red=\text{\small\resp{1} and } blue=\text{\sm
 
 Examples~\ref{probOf2Ones} and~\ref{threeDice} illustrate what is called the Multiplication Rule for independent processes.
 
-\begin{onebox}{Multiplication Rule for independent processes}\index{Multiplication Rule}
+\begin{onebox}{Multiplication Rule for independent processes}\index{Multiplication Rule for independent events}
 If $A$ and $B$ represent events from two different and independent processes, then the probability that both $A$ and $B$ occur can be calculated as the product of their separate probabilities: \vspace{-1.5mm}
-\begin{eqnarray}\label{eqForIndependentEvents}
+\begin{eqnarray*}\label{eqForIndependentEvents}
 P(A \text{ and }B) = P(A) \times  P(B)
-\end{eqnarray}
+\end{eqnarray*}
 Similarly, if there are $k$ events $A_1$, ..., $A_k$ from $k$ independent processes, then the probability they all occur is\vspace{-1.5mm}
 \begin{eqnarray*}
 P(A_1) \times  P(A_2)\times  \cdots \times  P(A_k)
@@ -2968,7 +2968,7 @@ This fraction is the same as the proportion of the histogram's area that falls i
 
 Examine the transition from a boxy hollow histogram in the top-left of Figure~\ref{fdicHistograms} to the much smoother plot in the lower-right. In this last plot, the bins are so slim that the hollow histogram is starting to resemble a smooth curve. This suggests the population height as a \emph{continuous} numerical variable might best be explained by a curve that represents the outline of extremely slim bins.
 
-This smooth curve represents a \term{probability density function} (also called a \term{density} or \term{distribution}), and such a curve is shown in Figure~\ref{fdicHeightContDist} overlaid on a histogram of the sample. A density has a special property: the total area under the density's curve is 1.
+This smooth curve represents a \term{continuous distribution}, also called a \textbf{density curve}.  Such a distribution is shown in Figure~\ref{fdicHeightContDist} overlaid on a histogram of the sample. A  continuous distribution has a special property: the total area under the curve is 1.
 
 \begin{figure}[tbh]
 \centering
@@ -3055,23 +3055,23 @@ Suppose a person's height is rounded to the nearest centimeter. Is there a chanc
 \\
 \\The main probability techniques covered in this chapter are as follows:
 \begin{itemize}
-\item The \term{General Multiplication Rule} for \textbf{and} probabilities (intersection), along with the special case when events are \term{independent}.
-\item The \term{General Addition Rule} for \textbf{or} probabilities (union), along with the special case when events are \term{mutually exclusive}.  
-\item The \term{Conditional Probability Rule}.
-\item Tree diagrams and \term{Bayes' Theorem} to solve more complex conditional problems.
-\item The \termsub{Binomial Formula}{binomial formula} for finding the probability of exactly $x$ successes in $n$ independent trials.
-\item \termsub{Simulations}{simulation} and the use of random digits to estimate probabilities.
+\item The \textbf{General Multiplication Rule} for \textbf{and} probabilities (intersection), along with the special case when events are \term{independent}.
+\item The \textbf{General Addition Rule} for \textbf{or} probabilities (union), along with the special case when events are \textbf{mutually exclusive}.  
+\item The \textbf{Conditional Probability Rule}.
+\item Tree diagrams and \textbf{Bayes' Theorem} to solve more complex conditional problems.
+\item The \textbf{binomial formula} for finding the probability of exactly $x$ successes in $n$ independent trials.
+\item \textbf{Simulations} and the use of random digits to estimate probabilities.
 \end{itemize}
-Fundamental to all of these problems is understanding when events are independent and when they are mutually exclusive.  Two events are \term{independent} when the outcome of one does not affect the outcome of the other, i.e. $P(A | B) = P(A)$.  Two events are \term{mutually exclusive} when they cannot both happen together, i.e. $P(A \text{ and } B) = 0$.
+Fundamental to all of these problems is understanding when events are independent and when they are mutually exclusive.  Two events are \textbf{independent} when the outcome of one does not affect the outcome of the other, i.e. $P(A | B) = P(A)$.  Two events are \textbf{mutually exclusive} when they cannot both happen together, i.e. $P(A \text{ and } B) = 0$.
 \\ 
 \\
 Moving from solving individual probability questions to studying probability distributions helps us better understand chance processes and quantify expected chance variation. 
 \begin{itemize}
-\item For a \term{discrete probability distribution}, the \term{sum} of the probabilities must equal 1.  For a \term{continuous probability distribution}, the \term{area under the curve} represents a probability and the total area under the curve must equal~1.
+\item For a \term{discrete probability distribution}, the \textbf{sum} of the probabilities must equal 1.  For a \term{continuous probability distribution}, the \textbf{area under the curve} represents a probability and the total area under the curve must equal~1.
 
-\item As with any distribution, one can calculate the mean and standard deviation of a probability distribution.  In the context of a probability distribution, the \term{mean} and \term{standard deviation} describe the average and the typical  deviation from the average, respectively, after many, many repetitions of the chance process.  
+\item As with any distribution, one can calculate the mean and standard deviation of a probability distribution.  In the context of a probability distribution, the \textbf{mean} and \textbf{standard deviation} describe the average and the typical  deviation from the average, respectively, after many, many repetitions of the chance process.  
 
-\item A probability distribution can be summarized by its \term{center} (mean, median), \term{spread} (SD, IQR), and \term{shape} (right skewed, left skewed, approximately symmetric).  
+\item A probability distribution can be summarized by its \textbf{center} (mean, median), \textbf{spread} (SD, IQR), and \textbf{shape} (right skewed, left skewed, approximately symmetric).  
 
 \item Adding a constant to every value in a probability distribution adds that value to the mean, but it does not affect the standard deviation. When multiplying every value by a constant, this multiplies the mean by the constant and it multiplies the standard deviation by the absolute value of the
 constant.
