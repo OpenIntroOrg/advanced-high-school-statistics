@@ -752,8 +752,13 @@ If a linear model has an $R^2$ or explained variance of 0.94, what is the correl
 \footnotetext{We take the square root of $R^2$ and get 0.97, but we must be careful, because $r$ could be 0.97 \emph{or} -0.97.  Without knowing the slope or seeing the scatterplot, we have no way of knowing if $r$ is positive or negative.}
 
 %%
-\subsection{Calculator/Desmos: linear correlation and regression}
+\subsection{Technology: linear correlation and regression}
 \label{calclinreg}
+
+\noindent Get started quickly with this \oiRedirect{desmos-linreg}{Desmos Calculator}.
+\begin{center}
+\oiRedirect{desmos-linreg}{\includegraphics[width=.95\textwidth]{ch_regr_simple_linear/figures/desmosLinReg/desmosLinReg}}
+\end{center}
 
 \begin{onebox}{\videohref{ti84_calculating_regression_summary_statistics} TI-84: finding $\MakeLowercase{\pmb{a}}$, \MakeLowercase{\pmb{$b$}}, $\pmb{R^2}$, and \MakeLowercase{\pmb{$r$}} for a linear model}
 Use \calctext{STAT}, \calctext{CALC}, \calctext{LinReg(a + bx)}.
@@ -776,7 +781,7 @@ $\calctextmath{r^2}$ & $R^2$, the explained variance \\
 \calctext{r} & $r$, the correlation coefficient
 \end{tabular}
 \end{enumerate}
-TI-83: Do steps 1-3, then enter the $x$ list and $y$ list separated by a comma, e.g. \calctext{LinReg(a+bx) L1, L2}, then hit \calctext{ENTER}.\end{onebox} 
+TI-83: Do steps 1-3, then enter the $x$ list and $y$ list separated by a comma, e.g. \calctext{LinReg(a+bx) L1, L2}, then hit \calctext{ENTER}.\end{onebox}
 
 \begin{onebox}{What to do if \pmb{$r^2$} and \MakeLowercase{\pmb{$r$}} do not show up on a TI-83/84}
 If $r^2$ and $r$ do now show up when doing \calctext{STAT}, \calctext{CALC}, \calctext{LinReg}, the \emph{diagnostics} must be turned on.  This only needs to be once and the diagnostics will remain on.
@@ -825,11 +830,12 @@ If you select \calctext{ax+b} (\calcbutton{F1}), the \calctext{a} and \calctext{
 
 
 
+\newpage
 
 \begin{exercisewrap}
 \begin{nexercise}\label{subsetOfLoan50}%
 The data set \data{loan50}, introduced in Chapter 1, contains information on randomly sampled loans offered through Lending Club.  A subset of the data matrix is shown in
-Figure~\ref{data_for_regr_calc_exercise_loan50}.  Use a calculator to find the equation of the least squares regression line for predicting loan amount from total income.\footnotemark 
+Figure~\ref{data_for_regr_calc_exercise_loan50}.  Use a calculator to find the equation of the least squares regression line for predicting loan amount from total income based on this subset.\footnotemark 
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{$\calctext{a}=11121$ and $\calctext{b}=0.0043$, therefore $\hat{y}=11121 + 0.0043x$.}
@@ -854,18 +860,18 @@ Figure~\ref{data_for_regr_calc_exercise_loan50}.  Use a calculator to find the e
 \end{figure}
 
 
-\D{\newpage}
-
-\begin{examplewrap}
-\begin{nexample}
-{Use the full \data{loan50} data set (\oiRedirect{data}{\small{openintro.org/ahss/data}}) and this \oiRedirect{desmos-linregcalculator}{Desmos Calculator} \mbox{(\small{openintro.org/ahss/desmos})} to draw the scatterplot and find the equation of the least squares regression line for prediction loan amount ($y$) from total income ($x$).}
-\begin{center}
-\oiRedirect{desmos-loan50scatter}{
-\includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/loan50Desmos/loan50Desmos}}
-\end{center}
-\end{nexample}
-\end{examplewrap}
+\begin{exercisewrap}
+\begin{nexercise}
+Use the full \data{loan50} \oiRedirect{data-loan50}{data set} and one of these \oiRedirect{desmos-linreg2}{Desmos Calculators}  to draw the scatterplot and find the equation of the least squares regression line for prediction loan amount ($y$) from total income ($x$).  Also draw the residual plot and find the standard error of the residuals.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \label{loan50Desmos}
+\footnotetext{
+This will require a minor data cleaning step.  After downloading the loan50 data, notice the oddly formatted numbers under total$\_$income column.  This will confuse Desmos!  Highight the column, do Format, Cells, Number, and set decimal places to 0.  Finally, copy and paste the loan$\_$amount column to the right of total$\_$income.  Then you can copy the two columns into Desmos.\\
+\includegraphics[width=0.45\textwidth]{ch_regr_simple_linear/figures/loan50Desmos/loan50Desmos}\qquad 
+\includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/loan50Desmos/desmosResidual}
+}
+
 \D{\newpage}
 
 %%%%
@@ -1281,8 +1287,17 @@ So the 95\% confidence interval is given by:
 \D{\newpage}
 
 %%
-\subsection[Calculator: the $t$-interval for the slope]{Calculator: the linear regression \pmb{$t$}-interval for the slope}
-We will rely on regression output from statistical software when constructing confidence intervals for the slope of a regression line.  We include calculator instructions here simply for completion.
+\subsection[Technology: the $t$-interval for the slope]{Technology: the linear regression \pmb{$t$}-interval for the slope}
+
+\noindent We usually rely on regression output from statistical software when constructing confidence intervals for the slope of a regression line.  However, it is also possible to use Desmos or a calculator.\\
+
+\noindent Get started quickly with this \oiRedirect{desmos-linregCI}{Desmos Calculator}.
+\begin{center}
+\includegraphics[width=0.90\textwidth]{ch_regr_simple_linear/figures/desmosLinReg/desmosLinRegCI}
+\end{center}
+
+
+\noindent Entering a lot of data into a calculator is not practical;  we include calculator instructions here simply for completion.
 
 \begin{onebox}{\videohref{ti84_regression_t_confint} TI-84: T-interval for \pmb{$\beta$}}
 \label{LinRegint}
@@ -1436,7 +1451,7 @@ This value corresponds to the $T$-score reported in the regression output in the
 
 \begin{examplewrap}
 \begin{nexample}{In this example, the sample size $n=27$. Identify the degrees of freedom and p-value for the hypothesis test.}
-The degrees of freedom for this test is $n-2$, or $df = 27-2 = 25$. We could use a table or a calculator to find the probability of a value less than -1.07 under the $t$-distribution with 25 degrees of freedom.  However, the two-side p-value is given in Figure~\ref{midtermElectionUnemploymentRRegressionOutput}, next to the corresponding $t$-statistic.  Because we have a one-sided alternate hypothesis, we take half of this.  The p-value for the test is $\frac{0.2961}{2}=0.148$.  
+The degrees of freedom for this test is $n-2$, or $df = 27-2 = 25$. We could use a table or a calculator to find the probability of a value less than -1.07 under the $t$-distribution with 25 degrees of freedom.  However, the two-side p-value is given in Figure~\ref{midtermElectionUnemploymentRRegressionOutput}, next to the corresponding $t$-statistic.  Because we have a one-sided alternative hypothesis, we take half of this.  The p-value for the test is $\frac{0.2961}{2}=0.148$.  
 \index{data!midterm elections|)}
 \end{nexample}
 \end{examplewrap}
@@ -1556,11 +1571,21 @@ In context, interpret the p-value from the previous example.\footnotemark
 \D{\newpage}
 
 %%
-\subsection[Calculator: the $t$-test for the slope]{Calculator: the \pmb{$t$}-test for the slope}
+\subsection[Technology: the $t$-test for the slope]{Technology: the \pmb{$t$}-test for the slope}
 
-When performing this type of inference, we generally make use of regression output that provides us with the necessary quantities: $b$ and $SE \text{ of } {b}$.  The calculator functions below require knowing all of the data and are, therefore, rarely used.  We describe them here for the sake of completion. 
+\noindent We generally rely on regression output from statistical software programs to provide us with the necessary quantities: $b$ and $SE \text{ of } {b}$.  However we can also find the test statistic and p-value using Desmos or a calculator.\\
 
-\begin{onebox}{\videohref{ti84_regression_t_test} TI-83/84: Linear regression T-test on \pmb{$\beta$}}
+\noindent Get started quickly with this \oiRedirect{desmos-linregtest}{Desmos Calculator}.
+\begin{center}
+\includegraphics[width=0.95\textwidth]{ch_regr_simple_linear/figures/desmosLinReg/desmosLinRegTest}
+\end{center}
+
+
+\noindent \\ 
+\\
+Entering a lot of data into a calculator is not practical; we include calculator instructions here simply for the sake of completion. 
+
+\begin{onebox}{\videohref{ti84_regression_t_test} TI-83/84: Linear regression T-test for \pmb{$\beta$}}
 \label{LinRegtest}
 Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
 \begin{enumerate}
@@ -1586,7 +1611,7 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
 \end{enumerate}
 \end{onebox} 
 
-\begin{onebox}{\videohref{casio_regression_t_test} Casio fx-9750GII: Linear regression T-test on \pmb{$\beta$}}
+\begin{onebox}{\videohref{casio_regression_t_test} Casio fx-9750GII: Linear regression T-test for \pmb{$\beta$}}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
@@ -1609,14 +1634,12 @@ Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
 
 \begin{examplewrap}
 \begin{nexample}
-{Why does the calculator test include the symbol $\rho$ when choosing the direction of the alternate hypothesis?}
+{Why does the calculator test include the symbol $\rho$ when choosing the direction of the alternative hypothesis?}
 Recall the we used the letter $r$ to represent correlation.  The Greek letter $\rho=0$ represents the correlation for the entire population.  The slope $b=r\frac{s_y}{s_x}$.  If the slope of the population regression line is zero, the correlation for the population must also be zero.  For this reason, the $t$-test for $\beta=0$ is equivalent to a test for $\rho=0$.
 \end{nexample}
 \end{examplewrap}
 
 
-
-\D{\newpage}
 
 %%
 \subsection{Which inference procedure to use for paired data?}
