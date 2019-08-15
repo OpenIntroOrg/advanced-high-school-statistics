@@ -698,7 +698,33 @@ Formulas and methods used to compute the variance and standard deviation for a p
 \begin{onebox}{thinking about the standard deviation}
 It is useful to think of the standard deviation as the ``typical" or ``average" distance that observations fall from the mean.\end{onebox}
 
-In Chapter~4, we encounter a bell-shaped distribution known as the \emph{normal distribution}.  The \term{empirical rule} tells us that for normal distributions, about 68\% of the data will be within one standard deviation of the mean, about 95\% will be within two standard deviations of the mean, and about 99.7\% will be within three standard deviations of the mean. However, as seen in Figures~\ref{emailCharactersDotPlotStackedRoundedWithSD} and~\ref{severalDiffDistWithSdOf1}, these percentages generally do not hold if the distribution is not bell-shaped.  
+
+
+\begin{examplewrap}
+\begin{nexample}{Earlier we reported that the mean family income in the U.S. in 2017 was \$99,114. Estimating the standard deviation of income as approximately \$50,000, is a family income of \$60,000 far from the mean or relatively close to the mean?}
+Because \$60,000 is less that one standard deviation from the mean, it is relatively close to the mean. If the value were more than 2 standard deviations away from the mean, we would consider it far from the mean.
+\end{nexample}
+\end{examplewrap}
+
+
+
+%%%
+\subsection{The empircal rule for normal distributions}
+
+\Add{The standard deviation gives us as sense of how much spread or variability there is within a data set.  Some data sets have a special property:  they follow a symmetric, bell-shaped distribution, known as the \term{normal curve}.  
+
+}
+In Chapter~4, we encounter a bell-shaped distribution known as the \emph{normal distribution}.  
+
+The \term{empirical rule} tells us that for normal distributions, about 68\% of the data will be within one standard deviation of the mean, about 95\% will be within two standard deviations of the mean, and about 99.7\% will be within three standard deviations of the mean. \Add{When data follow an approximately normal distribution, then the empircal rule can provide easy estimates for what percent fall within 1, 2, and 3 standard deviations from the mean. This will be useful in a wide range of practical settings.}. However, as seen in Figures~\ref{emailCharactersDotPlotStackedRoundedWithSD} and~\ref{severalDiffDistWithSdOf1}, these percentages generally do not hold if the distribution is not close to normal.  
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.72\textwidth]{ch_distributions/figures/6895997/6895997}
+\caption{Probabilities for falling within 1, 2, and 3 standard deviations of the mean in a normal distribution.}
+\label{6895997}
+\end{figure}
+
 
 \begin{figure}[h]
 \centering
@@ -707,6 +733,7 @@ In Chapter~4, we encounter a bell-shaped distribution known as the \emph{normal 
 \caption{In the \var{num\_\hspace{0.3mm}char} data, 40 of the 50 emails (80\%) are within 1~standard deviation of the mean, and 47 of the 50 emails (94\%) are within 2 standard deviations. The empirical rule does not hold well for skewed data, as shown in this example.}
 \label{emailCharactersDotPlotStackedRoundedWithSD}
 \end{figure}
+
 
 \begin{figure}
 \centering
@@ -722,13 +749,77 @@ On page~\pageref{shapeFirstDiscussed}, the concept of shape of a distribution wa
 \end{exercisewrap}
 \footnotetext{Figure~\ref{severalDiffDistWithSdOf1} shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a~distribution.}
 
+\begin{exercisewrap}
+\begin{nexercise}
+For which of the distributions in Figure~\ref{severalDiffDistWithSdOf1} do you think the empirical rule will provide good estimates?  That is, which of the distributions do you expect approximately 68\% to fall within one standard deviation of the mean and approximately 95\% to fall within 2 standard deviations of the mean?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{While the top distribution in Figure~\ref{severalDiffDistWithSdOf1} is symmetric, it does not follow an approximately normal shape.  In fact, 100\% fall within 1 standard deviation of the mean.  The bottom distribution is right skewed, so we do not expect the emprical rule to be that accurate.  Only the middle distribution is approximately normal.  We expect the emprical rule to hold quite well for this distribution.}
+
+\begin{exercisewrap}
+\begin{nexercise}
+SAT scores closely follow the normal model with mean $\mu = 1100$ and standard deviation $\sigma = 200$. (a) About what percent of test takers score 700 to 1500? (b) About what percent score between 1100 and 1500?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{(a) 700 and 1500 represent two standard deviations above and below the mean.  Because the scores are approximately normally distributed, by the empirical rule, we can estimate that about 95\% of test takers will score between 700 and 1500. (b)~Since the normal model is symmetric, then half of the test takers from part~(a) are estimated to score between 1100 and 1500.  $\frac{95\%}{2}=47.5\%$, so we estimate that 47.5\% score between 1100 and 1500.}
+
+
 \D{\newpage}
 
+%%
+\subsection{Evaluating the normal approximation (special topic)}
+\label{assessingNormal}
+
+It is important to remember normality is always an approximation. Testing the appropriateness of the normal assumption is a key step in many data analyses.
+
+%\index{normal probability plot|(}
+
+The distribution of heights of US males is well approximated by the normal model. We are interested in proceeding under the assumption that the data are normally distributed, but first we must check to see if this is reasonable.
+
+There are two visual methods for checking the assumption of normality that can be implemented and interpreted quickly. The first is a simple histogram with the best fitting normal curve overlaid on the plot, as shown in the left panel of Figure~\ref{fcidMHeights}. The sample mean $\bar{x}$ and standard deviation $s$ are used as the parameters of the best fitting normal curve. The closer this curve fits the histogram, the more reasonable the normal model assumption. Another more common method is examining a \term{normal probability plot},\footnote{Also commonly called a quantile-quantile plot.} shown in the right panel of Figure~\ref{fcidMHeights}. The closer the points are to a perfect straight line, the more confident we can be that the data follow the normal model.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.78\textwidth]{ch_distributions/figures/fcidMHeights/fcidMHeights}
+\caption{A sample of 100 male heights. The observations are rounded to the nearest whole inch, explaining why the points appear to jump in increments in the normal probability plot.}
+\label{fcidMHeights}
+\end{figure}
+
+\Comment{check placement of figures}
+
 \begin{examplewrap}
-\begin{nexample}{Earlier we reported that the mean family income in the U.S. in 2017 was \$99,114. Estimating the standard deviation of income as approximately \$50,000, is a family income of \$60,000 far from the mean or relatively close to the mean?}
-Because \$60,000 is less that one standard deviation from the mean, it is relatively close to the mean. If the value were more than 2 standard deviations away from the mean, we would consider it far from the mean.
+\begin{nexample}{Consider all NBA players from the 2018-2019 season presented in Figure~\ref{nbaNormal}.\footnotemark\,  Based on the graphs, are NBA player heights normally distributed? }
+We first create a histogram and normal probability plot of the NBA player heights. The histogram in the left panel is slightly left skewed, which contrasts with the symmetric normal distribution. The points in the normal probability plot do not appear to closely follow a straight line but show what appears to be a ``wave''. NBA player heights do not appear to come from a normal distribution.
 \end{nexample}
 \end{examplewrap}
+\footnotetext{These data were collected from \oiRedirect{textbook-nba_com}{www.nba.com}.}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{ch_distributions/figures/nbaNormal/nbaNormal}
+\caption{Histogram and normal probability plot for the NBA heights from the 2018-2019 season.}
+\label{nbaNormal}
+\end{figure}
+
+
+\begin{exercisewrap}
+\begin{nexercise} \label{normalQuantileExerciseAdditional}
+Figure~\ref{normalQuantileExerAdditional} shows normal probability plots for two distributions that are skewed. One distribution is skewed to the low end (left skewed) and the other to the high end (right skewed). Which is which?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Examine where the points fall along the vertical axis. In the first plot, most points are near the low end with fewer observations scattered along the high end; this describes a distribution that is right skewed. The second plot shows the opposite features, and this distribution is left skewed.}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{ch_distributions/figures/normalQuantileExer/normalQuantileExerAdditional}
+\caption{Normal probability plots for Guided Practice~\ref{normalQuantileExerciseAdditional}.}
+\label{normalQuantileExerAdditional}
+\end{figure}
+
+
+
+
+
 
 When describing any distribution, comment on the three important characteristics of center, spread, and shape. Also note any especially unusual cases.
 
@@ -745,7 +836,8 @@ The distribution of email character counts is unimodal and very strongly skewed 
 \end{nexample}
 \end{examplewrap}
 
-In this chapter we use standard deviation as a descriptive statistic to describe the variability in a given data set. In Chapter~\ref{foundationsForInference} we will use the standard deviation to assess how close a sample mean is to the population mean.
+\Comment{change foundationsforinference ref}
+In this chapter we use standard deviation as a descriptive statistic to describe the variability in a given data set. In Chapter~\ref{foundationsForInference} we will use standard deviation to assess how close a sample mean is likely to be to the population mean.
 
 
 \D{\newpage}
@@ -964,17 +1056,18 @@ There are no numbers less than -41, so there are no outliers on the low end. The
 
 \D{\newpage}
 
-\subsection{Calculator/Desmos: summarizing 1-variable statistics}
+\subsection{Technology: summarizing 1-variable statistics}
 \label{summarizedata}
 
-One can use a handheld calculator or online software such as Desmos to calculate summary statistics.  More advanced statistical software packages include R (in which most of the graphs in this text were made), Python, SAS, and STATA.
+\noindent Online calculators such as Desmos or a handheld calculator can be used to calculate summary statistics.  More advanced statistical software packages include R (which was used for most of the graphs in this text), Python, SAS, and STATA.\\
 
-\begin{figure}[h]
-   \centering
-     \oiRedirect{textbook-desmos-1varstats}{ \includegraphics[width=0.85\textwidth]{ch_summarizing_data/figures/email50Desmos/email50Desmos}}
-\caption{Use this \oiRedirect{textbook-desmos-1varstats}{1-Var Stats calculator} (\small{openintro.org/ahss/desmos}) to graph and find summary statistics for a single variable in Desmos, as shown in the figure.}
-   \label{desmos1VarStats}
-\end{figure}
+\noindent Get started quickly with this Desmos \oiRedirect{desmos-1varstats}{1-VarStats Calculator}.\footnote{Find this other Desmos Calculators and Activities referenced in the textbook at \oiRedirect{openintro-desmos}{openintro.org/ahss/desmos}.}
+
+\begin{center} 
+\oiRedirect{desmos-1varstats}{ \includegraphics[width=0.95\textwidth]{ch_summarizing_data/figures/desmos1VarStats/desmos1VarStats}}
+\end{center}
+
+\noindent TI and Casio instructions
 
 \begin{onebox}{\videohref{ti84_entering_data} TI-83/84: Entering data}
 The first step in summarizing data or making a graph is to  enter the data set into a list. Use \calcbutton{STAT}, \calctext{Edit}.
@@ -996,6 +1089,8 @@ The first step in summarizing data or making a graph is to  enter the data set i
 \end{enumerate}
 \end{onebox}
 
+\newpage
+
 \begin{onebox}{\videohref{ti84_calculating_summary_statistics} TI-84: Calculating Summary Statistics}
 \label{summstat}
 Use the \calcbutton{STAT}, \calctext{CALC}, \calctext{1-Var Stats} command to find summary statistics such as mean, standard deviation, and quartiles.
@@ -1012,7 +1107,7 @@ Use the \calcbutton{STAT}, \calctext{CALC}, \calctext{1-Var Stats} command to fi
 TI-83: Do steps 1-4, then type \calctext{L1} (i.e. \calcbutton{2nd} \calcbutton{1}) or the list's name and hit \calcbutton{ENTER}.
 \end{onebox}
 
-Calculating the summary statistics will return the following information. It will be necessary to hit the down arrow to see all of the summary statistics.
+\noindent Calculating the summary statistics will return the following information. It will be necessary to hit the down arrow to see all of the summary statistics.
 
 \begin{center}
 \begin{tabular}{ll l ll}
@@ -1043,6 +1138,16 @@ $\calctextmath{\sigma x}$ & Population standard deviation &&
 \end{enumerate}
 \end{onebox}
 
+\begin{onebox}{TI-83/84: What to do if you cannot find {L1} or another list}
+Restore lists \calctext{L1}-\calctext{L6} using the following steps:
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Press \calcbutton{STAT}.
+\item Choose \calctext{5:SetUpEditor}.
+\item Hit \calcbutton{ENTER}.
+\end{enumerate}\end{onebox}
+
+
 \begin{onebox}{\videohref{casio_1_var_stats_and_box_plot} Casio fx-9750GII: Drawing a box plot and 1-variable statistics}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1059,31 +1164,6 @@ $\calctextmath{\sigma x}$ & Population standard deviation &&
 \end{enumerate}
 \end{onebox}
 
-\begin{examplewrap}
-\begin{nexample}{Enter the following 10 data points into a calculator or into this \oiRedirect{textbook-desmos-1varstatsdiscrete}{Desmos 1-Var Stats calculator} \mbox{(\small{openintro.org/ahss/desmos}):}
-\begin{center}
-{5, 8, 1, 19, 3, 1, 11, 18, 20, 5}
-\end{center}
-Find the summary statistics and make a box plot of the data.}
-The summary statistics should be $\calctextmath{\bar{x}} = 9.1$, $\calctextmath{Sx} = 7.48$, $\calctextmath{Q1} = 3$, etc. The box plot should be as follows.
-\begin{center}
-\includegraphics[width=0.48\textwidth]{ch_summarizing_data/figures/TI83_box_plot_A/TI83_box_plot_A} 
-\includegraphics[width=0.48\textwidth]{ch_summarizing_data/figures/TI83_box_plot_A/1VarStatsDesmos}
-\end{center}
-\end{nexample}
-\end{examplewrap}
-
-
-\begin{onebox}{TI-83/84: What to do if you cannot find {L1} or another list}
-Restore lists \calctext{L1}-\calctext{L6} using the following steps:
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Press \calcbutton{STAT}.
-\item Choose \calctext{5:SetUpEditor}.
-\item Hit \calcbutton{ENTER}.
-\end{enumerate}\end{onebox}
-
-\newpage
 \begin{onebox}{\videohref{casio_1_var_stats_and_box_plot} Casio fx-9750GII: Deleting a data list}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1093,6 +1173,32 @@ Restore lists \calctext{L1}-\calctext{L6} using the following steps:
 \item Select \calctext{DEL-A} (\calcbutton{F4}) and then \calcbutton{F1} to confirm.
 \end{enumerate}
 \end{onebox}
+
+\begin{exercisewrap}
+\begin{nexercise}Enter the following 10 data points into a calculator.
+\begin{center}
+5, 8, 1, 19, 3, 1, 11, 18, 20, 5
+\end{center}
+Find the summary statistics and make a box plot of the data.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The summary statistics should be $\calctextmath{\bar{x}} = 9.1$, $\calctextmath{Sx} = 7.48$, $\calctextmath{Q1} = 3$, etc. The box plot should be as follows.
+\includegraphics[width=0.3\textwidth]{ch_summarizing_data/figures/TI83_box_plot_A/TI83_box_plot_A}
+}
+
+\newpage
+
+\begin{exercisewrap}
+\begin{nexercise}
+ Use the \oiRedirect{data-email50}{\data{email50}} data set at \oiRedirect{openintro-data}{openintro.org/data} and Screen 2 of the Desmos \oiRedirect{desmos-1varstats2}{1-Var Stats Calculator} to summarize the num$\_$char variable (number of characters in an email).\footnotemark  
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Remember, the Desmos Calculators and Activities in this book can be found at \oiRedirect{openintro-desmos}{openintro.org/ahss/desmos}.
+\includegraphics[width=0.5\textwidth]{ch_summarizing_data/figures/email50Desmos/email50Desmos}
+}
+
+
+
 
 
 %%
