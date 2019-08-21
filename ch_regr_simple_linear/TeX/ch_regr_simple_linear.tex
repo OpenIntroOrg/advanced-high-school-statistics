@@ -4,8 +4,9 @@
   \label{ch_regr_simple_linear}
   \chaptersection{fitting_line_to_data_section}
   \chaptersection{fittingALineByLSR}
-  \chaptersection{inferenceForLinearRegression}
    \chaptersection{transformationForNonlinearData}
+
+  \chaptersection{inferenceForLinearRegression}
 \end{chapterpage}
 \renewcommand{\chapterfolder}{ch_regr_simple_linear}
 \index{linear regression|textbf}
@@ -473,8 +474,9 @@ where $r$ is the correlation between the variables $x$ and $y$, and $s_x$ and $s
 \begin{align*}
 \bar{y} &= a  + b\bar{x}
 &&a=\bar{y}-b\bar{x}
-\label{interceptOfLSRLine}
 \end{align*}
+\label{interceptOfLSRLine}
+
 \end{itemize}
 
 
@@ -1021,6 +1023,227 @@ b=r\frac{s_y}{s_x} \qquad \text{and} \qquad a=\bar{y} - b\bar{x}.
 
 
 
+
+%%________________________________
+
+
+\section{Transformations for skewed data}
+\label{transformationForNonlinearData}
+\sectionintro{
+\noindent%
+County population size among the counties in the US is very strongly right skewed.
+Can we apply a transformation to make the distribution more symmetric?  How would such a transformation affect the scatterplot and residual plot when another variable is graphed against this variable?  In this section, we will see the power of transformations for very skewed data.
+
+
+%%
+\subsection*{Learning objectives}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+
+\item See how a log transformation can bring symmetry to an extremely skewed variable.
+\item Recognize that data can often be transformed to produce a linear relationship, and that this transformation often involves log of the $y$-values and sometimes log of the $x$-values.
+
+\item Use residual plots to assess whether a linear model for transformed data is reasonable.
+\end{enumerate}
+}
+
+
+%%
+\subsection{Introduction to transformations}
+
+\begin{examplewrap}
+\begin{nexample}{Consider the histogram of county populations
+    shown in Figure~\ref{county_pop_transformed_i},
+    which shows extreme skew\index{skew!example: extreme}.
+    What isn't useful about this plot?}
+  Nearly all of the data fall into the left-most bin,
+  and the extreme skew obscures many of the potentially
+  interesting details in the data.
+\end{nexample}
+\end{examplewrap}
+
+
+
+
+
+There are some standard transformations that may be
+useful for strongly right skewed data where much of the
+data is positive but clustered near zero.
+A \term{transformation} is a rescaling of the data
+using a function.
+For instance, a plot of the logarithm (base 10) of
+county populations results in the new histogram in
+Figure~\ref{county_pop_transformed_log}.
+This data is symmetric, and any potential outliers
+appear much less extreme than in the original data set.
+By reigning in the outliers and extreme skew,
+transformations like this often make it easier to build
+statistical models against the data.
+
+Transformations can also be applied to one or both
+variables in a scatterplot.
+A scatterplot of the population change from 2010 to 2017
+against the population in 2010 is shown in Figure~\ref{county_pop_change_v_pop_transform_i}.
+In this first scatterplot, it's hard to decipher any
+interesting patterns because the population variable
+is so strongly skewed.
+However, if we apply a log$_{10}$ transformation to
+the population variable, as shown in
+Figure~\ref{county_pop_change_v_pop_transform_log},
+a positive association between the variables is revealed.
+While fitting a line to predict population change (2010 to 2017) from population (in 2010) does not seem reasonable, fitting a line to predict population from log$_{10}$(population) does seem reasonable.  
+
+
+\begin{figure}[ht]
+    \label{county_pop_transformed}
+  \centering
+  \subfigure[]{
+    \Figures{0.48}
+        {county_pop_transformed}
+        {county_pop_transformed_i}
+    \label{county_pop_transformed_i}
+  }
+  \subfigure[]{
+    \Figures{0.48}
+        {county_pop_transformed}
+        {county_pop_transformed_log}
+  \label{county_pop_transformed_log}
+  }
+  \caption{\subref{county_pop_transformed_i} A histogram of
+      the populations of all US counties.
+      \subref{county_pop_transformed_log} A histogram of
+      log$_{10}$-transformed county populations.
+      For this plot, the x-value corresponds to the power
+      of 10, e.g. ``4'' on the x-axis corresponds to
+      $10^4 =$ 10,000.}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \subfigure[]{
+    \Figures{0.48}
+        {county_pop_change_v_pop_transform}
+        {county_pop_change_v_pop_transform_i}
+    \label{county_pop_change_v_pop_transform_i}
+  }
+  \subfigure[]{
+    \Figures{0.48}
+        {county_pop_change_v_pop_transform}
+        {county_pop_change_v_pop_transform_log}
+    \label{county_pop_change_v_pop_transform_log}
+  }
+  \caption{\subref{county_pop_change_v_pop_transform_i}
+      Scatterplot of population change
+      against the population before the change.
+      \subref{county_pop_change_v_pop_transform_log}~A~scatterplot
+      of the same data but where the population
+      size has been log-transformed.}
+  \label{county_pop_change_v_pop_transform_main}
+\end{figure}
+
+Transformations other than the logarithm can be useful, too.
+For instance, the square root
+($\sqrt{\text{original observation}}$) and inverse
+($\frac{1}{\text{original observation}}$) are commonly used
+by data scientists.
+Common goals in transforming data are to see the data
+structure differently, reduce skew, assist in modeling,
+or straighten a nonlinear relationship in a scatterplot.
+
+\index{data!county|)}
+
+
+\D{\newpage}
+
+%%
+\subsection{Transformations to achieve linearity}
+
+\begin{figure}[ht]
+   \begin{center}
+   \includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/NeedsTransform/NeedsTransform-PreTransform}
+\label{pretransform}
+   \caption{Variable $y$ is plotted against $x$. A nonlinear relationship is evident by the $\cup$-pattern shown in the residual plot.  The curvature is also visible in the original plot.}
+   \label{NeedsTransform-PreTransform}
+\end{center}
+\end{figure}
+
+
+\begin{examplewrap}
+\begin{nexample}{Consider the scatterplot and residual plot in Figure~\ref{NeedsTransform-PreTransform}. The regression output is also provided.  Is the linear model $\hat{y} = -52.3564 + 2.7842 x$ a good model for the data?
+\\
+\\
+\texttt{The regression equation is} \\
+
+\texttt{y = -52.3564 + 2.7842 x} \\
+
+\texttt{Predictor \ \ \ \ \ \ Coef \ \ SE Coef \ \ \ \ \ \ \ \ T \ \ \ \ \ \ \ \ \ P} \\
+\texttt{Constant \ \ \ -52.3564 \ \ \ 7.2757 \ \ \ -7.196 \ \ \ \ \ 3e-08} \\
+\texttt{x \ \ \ \ \ \ \ \ \ \ \ \ 2.7842 \ \ \ 0.1768 \ \ \ 15.752 \ \ \ < 2e-16} \\
+
+\texttt{S = 13.76\ \ \ \ R-Sq = 88.26\% \ \ \ R-Sq(adj) = 87.91\%}
+}
+
+We can note the $R^2$ value is fairly large.  However, this alone does not mean that the model is good.  Another model might be much better.  When assessing the appropriateness of a linear model, we should look at the residual plot.  The $\cup$-pattern in the residual plot tells us the original data is curved. If we inspect the two plots, we can see that for small and large values of $x$ we systematically underestimate $y$, whereas for middle values of $x$, we systematically overestimate $y$.  The curved trend can also be seen in the original scatterplot.  Because of this, the linear model is not appropriate, and it would not be appropriate to perform a $t$-test for the slope because the conditions for inference are not met.  However, we might be able to use a transformation to linearize the data.
+\end{nexample}
+\end{examplewrap}
+
+Regression analysis is easier to perform on linear data.  When data are nonlinear, we sometimes \term{transform} the data in a way that makes the resulting relationship linear.  The most common \term{transformation} is log of the $y$ values. Sometimes we also apply a transformation to the $x$ values.  We generally use the residuals as a way to evaluate whether the transformed data are more linear. If so, we can say that a better model has been found.
+
+
+\begin{examplewrap}
+\begin{nexample}{Using the regression output for the transformed data, write the new linear regression equation.\\
+\\
+\texttt{The regression equation is} \\
+
+\texttt{log(y) = 1.722540 + 0.052985 x} \\
+
+\texttt{Predictor \ \ \ \ \ \ \ \ Coef \ \ \ \ SE Coef \ \ \ \ \ \ \ T \ \ \ \ \ \ \ \ \ P} \\
+\texttt{Constant \ \ \ \ \ 1.722540 \ \ \ 0.056731 \ \ \ 30.36 \ \ \ < 2e-16} \\
+\texttt{x \ \ \ \ \ \ \ \ \ \ \ \ 0.052985 \ \ \ 0.001378 \ \ \ 38.45 \ \ \ < 2e-16} \\
+
+
+\texttt{S = 0.1073\ \ \ \ R-Sq = 97.82\% \ \ \ R-Sq(adj) = 97.75\%}}
+The linear regression equation can be written as:  $\widehat{\text{log}(y)} = 1.723 +0.053 x$
+\end{nexample}
+\end{examplewrap}
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/NeedsTransform/NeedsTransform-PostTransform}
+   \caption{A plot of $\text{log}(y)$ against $x$. The residuals don't show any evident patterns, which suggests the transformed data is well-fit by a linear model.}
+   \label{NeedsTransform-PostTransform}
+\end{figure}
+
+
+\begin{exercisewrap}
+\begin{nexercise}Which of the following statements are true?  There may be more than one.\footnotemark 
+\begin{enumerate}[(a)]
+\item There is an apparent linear relationship between $x$ and $y$.
+\item There is an apparent linear relationship between $x$ and $\widehat{\text{log}(y)}$.
+\item The model provided by Regression I ($\hat{y} = -52.3564 + 2.7842 x$) yields a better~fit.
+\item The model provided by Regression II ($\widehat{\text{log}(y)} = 1.723 +0.053 x$) yields a better~fit.
+\end{enumerate}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Part~(a) is \emph{false} since there is a nonlinear (curved) trend in the data. Part~(b) is true. Since the transformed data shows a stronger linear trend, it is a better fit, i.e. Part~(c) is \emph{false}, and Part~(d) is true.}
+
+
+\D{\newpage}
+
+%%
+\subsection*{Section summary}
+\begin{itemize}
+\item A \term{transformation} is a rescaling of the data using a function.  When data are very skewed, a log transformation often results in more symmetric data.
+
+\item Regression analysis is easier to perform on linear data. When data are nonlinear, we sometimes \term{transform} the data in a way that results in a linear relationship. The most common transformation is log of the $y$-values. Sometimes we also apply a transformation to the $x$-values. 
+
+\item To assess the model, we look at the \textbf{residual plot} of the \emph{transformed} data.  If the residual plot of the original data has a pattern, but the residual plot of the transformed data has no pattern, a linear model for the transformed data is reasonable, and the transformed model provides a better fit than the simple linear model.
+
+\end{itemize}
+
+
+%%%%%%%%%%%Section Exercises
+{\input{ch_regr_simple_linear/TeX/transformations_for_nonlinear_data.tex}}
 
 
 
@@ -1744,229 +1967,6 @@ A teacher gives her class a pretest and a posttest.  Does this result in paired 
 %%%%%%%%%%%Section Exercises
 {\input{ch_regr_simple_linear/TeX/inference_for_linear_regression.tex}}
 
-
-%%________________________________
-
-
-\section{Transformations for skewed data}
-\label{transformationForNonlinearData}
-\sectionintro{
-\noindent%
-County population size among the counties in the US is very strongly right skewed.
-Can we apply a transformation to make the distribution more symmetric?  How would such a transformation affect the scatterplot and residual plot when another variable is graphed against this variable?  In this section, we will see the power of transformations for very skewed data.
-
-
-%%
-\subsection*{Learning objectives}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-
-\item See how a log transformation can bring symmetry to an extremely skewed variable.
-\item Recognize that data can often be transformed to produce a linear relationship, and that this transformation often involves log of the $y$-values and sometimes log of the $x$-values.
-
-\item Use residual plots to assess whether a linear model for transformed data is reasonable.
-\end{enumerate}
-}
-
-
-%%
-\subsection{Introduction to transformations}
-
-\begin{examplewrap}
-\begin{nexample}{Consider the histogram of county populations
-    shown in Figure~\ref{county_pop_transformed_i},
-    which shows extreme skew\index{skew!example: extreme}.
-    What isn't useful about this plot?}
-  Nearly all of the data fall into the left-most bin,
-  and the extreme skew obscures many of the potentially
-  interesting details in the data.
-\end{nexample}
-\end{examplewrap}
-
-\begin{figure}[ht]
-    \label{county_pop_transformed}
-  \centering
-  \subfigure[]{
-    \Figures{0.48}
-        {county_pop_transformed}
-        {county_pop_transformed_i}
-    \label{county_pop_transformed_i}
-  }
-  \subfigure[]{
-    \Figures{0.48}
-        {county_pop_transformed}
-        {county_pop_transformed_log}
-  \label{county_pop_transformed_log}
-  }
-  \caption{\subref{county_pop_transformed_i} A histogram of
-      the populations of all US counties.
-      \subref{county_pop_transformed_log} A histogram of
-      log$_{10}$-transformed county populations.
-      For this plot, the x-value corresponds to the power
-      of 10, e.g. ``4'' on the x-axis corresponds to
-      $10^4 =$ 10,000.}
-\end{figure}
-
-
-
-
-
-There are some standard transformations that may be
-useful for strongly right skewed data where much of the
-data is positive but clustered near zero.
-A \term{transformation} is a rescaling of the data
-using a function.
-For instance, a plot of the logarithm (base 10) of
-county populations results in the new histogram in
-Figure~\ref{county_pop_transformed_log}.
-This data is symmetric, and any potential outliers
-appear much less extreme than in the original data set.
-By reigning in the outliers and extreme skew,
-transformations like this often make it easier to build
-statistical models against the data.
-
-Transformations can also be applied to one or both
-variables in a scatterplot.
-A scatterplot of the population change from 2010 to 2017
-against the population in 2010 is shown in Figure~\ref{county_pop_change_v_pop_transform_i}.
-In this first scatterplot, it's hard to decipher any
-interesting patterns because the population variable
-is so strongly skewed.
-However, if we apply a log$_{10}$ transformation to
-the population variable, as shown in
-Figure~\ref{county_pop_change_v_pop_transform_log},
-a positive association between the variables is revealed.
-While fitting a line to predict population change (2010 to 2017) from population (in 2010) does not seem reasonable, fitting a line to predict population from log$_{10}$(population) does seem reasonable.  
-
-\begin{figure}
-  \centering
-  \subfigure[]{
-    \Figures{0.48}
-        {county_pop_change_v_pop_transform}
-        {county_pop_change_v_pop_transform_i}
-    \label{county_pop_change_v_pop_transform_i}
-  }
-  \subfigure[]{
-    \Figures{0.48}
-        {county_pop_change_v_pop_transform}
-        {county_pop_change_v_pop_transform_log}
-    \label{county_pop_change_v_pop_transform_log}
-  }
-  \caption{\subref{county_pop_change_v_pop_transform_i}
-      Scatterplot of population change
-      against the population before the change.
-      \subref{county_pop_change_v_pop_transform_log}~A~scatterplot
-      of the same data but where the population
-      size has been log-transformed.}
-  \label{county_pop_change_v_pop_transform_main}
-\end{figure}
-
-Transformations other than the logarithm can be useful, too.
-For instance, the square root
-($\sqrt{\text{original observation}}$) and inverse
-($\frac{1}{\text{original observation}}$) are commonly used
-by data scientists.
-Common goals in transforming data are to see the data
-structure differently, reduce skew, assist in modeling,
-or straighten a nonlinear relationship in a scatterplot.
-
-\index{data!county|)}
-
-\D{\newpage}
-
-~
-
-\D{\newpage}
-
-%%
-\subsection{Transformations to achieve linearity}
-
-\begin{figure}[ht]
-   \begin{center}
-   \includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/NeedsTransform/NeedsTransform-PreTransform}
-\label{pretransform}
-   \caption{Variable $y$ is plotted against $x$. A nonlinear relationship is evident by the $\cup$-pattern shown in the residual plot.  The curvature is also visible in the original plot.}
-   \label{NeedsTransform-PreTransform}
-\end{center}
-\end{figure}
-
-
-\begin{examplewrap}
-\begin{nexample}{Consider the scatterplot and residual plot in Figure~\ref{NeedsTransform-PreTransform}. The regression output is also provided.  Is the linear model $\hat{y} = -52.3564 + 2.7842 x$ a good model for the data?
-\\
-\\
-\texttt{The regression equation is} \\
-
-\texttt{y = -52.3564 + 2.7842 x} \\
-
-\texttt{Predictor \ \ \ \ \ \ Coef \ \ SE Coef \ \ \ \ \ \ \ \ T \ \ \ \ \ \ \ \ \ P} \\
-\texttt{Constant \ \ \ -52.3564 \ \ \ 7.2757 \ \ \ -7.196 \ \ \ \ \ 3e-08} \\
-\texttt{x \ \ \ \ \ \ \ \ \ \ \ \ 2.7842 \ \ \ 0.1768 \ \ \ 15.752 \ \ \ < 2e-16} \\
-
-\texttt{S = 13.76\ \ \ \ R-Sq = 88.26\% \ \ \ R-Sq(adj) = 87.91\%}
-}
-
-We can note the $R^2$ value is fairly large.  However, this alone does not mean that the model is good.  Another model might be much better.  When assessing the appropriateness of a linear model, we should look at the residual plot.  The $\cup$-pattern in the residual plot tells us the original data is curved. If we inspect the two plots, we can see that for small and large values of $x$ we systematically underestimate $y$, whereas for middle values of $x$, we systematically overestimate $y$.  The curved trend can also be seen in the original scatterplot.  Because of this, the linear model is not appropriate, and it would not be appropriate to perform a $t$-test for the slope because the conditions for inference are not met.  However, we might be able to use a transformation to linearize the data.
-\end{nexample}
-\end{examplewrap}
-
-Regression analysis is easier to perform on linear data.  When data are nonlinear, we sometimes \term{transform} the data in a way that makes the resulting relationship linear.  The most common \term{transformation} is log of the $y$ values. Sometimes we also apply a transformation to the $x$ values.  We generally use the residuals as a way to evaluate whether the transformed data are more linear. If so, we can say that a better model has been found.
-
-
-\begin{examplewrap}
-\begin{nexample}{Using the regression output for the transformed data, write the new linear regression equation.\\
-\\
-\texttt{The regression equation is} \\
-
-\texttt{log(y) = 1.722540 + 0.052985 x} \\
-
-\texttt{Predictor \ \ \ \ \ \ \ \ Coef \ \ \ \ SE Coef \ \ \ \ \ \ \ T \ \ \ \ \ \ \ \ \ P} \\
-\texttt{Constant \ \ \ \ \ 1.722540 \ \ \ 0.056731 \ \ \ 30.36 \ \ \ < 2e-16} \\
-\texttt{x \ \ \ \ \ \ \ \ \ \ \ \ 0.052985 \ \ \ 0.001378 \ \ \ 38.45 \ \ \ < 2e-16} \\
-
-
-\texttt{S = 0.1073\ \ \ \ R-Sq = 97.82\% \ \ \ R-Sq(adj) = 97.75\%}}
-The linear regression equation can be written as:  $\widehat{\text{log}(y)} = 1.723 +0.053 x$
-\end{nexample}
-\end{examplewrap}
-
-\begin{figure}[h]
-   \centering
-   \includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/NeedsTransform/NeedsTransform-PostTransform}
-   \caption{A plot of $\text{log}(y)$ against $x$. The residuals don't show any evident patterns, which suggests the transformed data is well-fit by a linear model.}
-   \label{NeedsTransform-PostTransform}
-\end{figure}
-
-
-\begin{exercisewrap}
-\begin{nexercise}Which of the following statements are true?  There may be more than one.\footnotemark 
-\begin{enumerate}[(a)]
-\item There is an apparent linear relationship between $x$ and $y$.
-\item There is an apparent linear relationship between $x$ and $\widehat{\text{log}(y)}$.
-\item The model provided by Regression I ($\hat{y} = -52.3564 + 2.7842 x$) yields a better~fit.
-\item The model provided by Regression II ($\widehat{\text{log}(y)} = 1.723 +0.053 x$) yields a better~fit.
-\end{enumerate}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Part~(a) is \emph{false} since there is a nonlinear (curved) trend in the data. Part~(b) is true. Since the transformed data shows a stronger linear trend, it is a better fit, i.e. Part~(c) is \emph{false}, and Part~(d) is true.}
-
-
-\D{\newpage}
-
-%%
-\subsection*{Section summary}
-\begin{itemize}
-\item A \term{transformation} is a rescaling of the data using a function.  When data are very skewed, a log transformation often results in more symmetric data.
-
-\item Regression analysis is easier to perform on linear data. When data are nonlinear, we sometimes \term{transform} the data in a way that results in a linear relationship. The most common transformation is log of the $y$-values. Sometimes we also apply a transformation to the $x$-values. 
-
-\item To assess the model, we look at the \textbf{residual plot} of the \emph{transformed} data.  If the residual plot of the original data has a pattern, but the residual plot of the transformed data has no pattern, a linear model for the transformed data is reasonable, and the transformed model provides a better fit than the simple linear model.
-
-\end{itemize}
-
-
-%%%%%%%%%%%Section Exercises
-{\input{ch_regr_simple_linear/TeX/transformations_for_nonlinear_data.tex}}
 
 
 %_______________________
