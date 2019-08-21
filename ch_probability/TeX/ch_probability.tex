@@ -1,13 +1,14 @@
-\begin{chapterpage}{Probability}
-  \chaptertitle{Probability}
+\begin{chapterpage}{Probability and probability distributions}
+  \chaptertitle{Probability and probability \titlebreak{} distributions}
   \label{probability}
   \label{ch_probability}
   \chaptersection{basicsOfProbability}
   \chaptersection{conditionalProbabilitySection}
-  \chaptersection{binomialForm}
 \chaptersection{simulations}
   \chaptersection{randomVariablesSection}
-  \chaptersection{contDist}
+  \chaptersection{geomDist}
+  \chaptersection{binomDist}
+
 \end{chapterpage}
 \renewcommand{\chapterfolder}{ch_probability}
 \index{probability|(}
@@ -1585,560 +1586,6 @@ $P(A \text{ and } B) = P(A | B)\times P(B)$.
 
 
 
-%______________________________________________
-\section[The binomial formula]{The binomial formula }
-\label{binomialForm}
-
-\sectionintro{
-\noindent%
-What is the probability of exactly 50 heads in
-100 coin tosses?
-Or the probability of randomly sampling 8 people and having
-exactly 1 of them be left-handed?
-Or of at most 3~people exceeding their insurance deductible
-in a random sample of 20 people?
-The binomial formula can help us answer these questions.
-
-
-%%
-\subsection*{Learning objectives}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Calculate the number of possible scenarios for obtaining $x$ successes in $n$ trials.
-
-\item Determine whether a scenario is binomial or not.
-
-\item Calculate the probability of obtaining exactly $x$ successes in $n$ independent trials.  
-
-\item Recognize that the binomial formula uses the special Addition Rule for mutually exclusive events.
-
-\item Find probabilities of the form ``at least” or ``at most” by applying the binomial formula multiple times.
-
-\end{enumerate}
-}
-
-%%
-\subsection{Introducing the binomial formula}
-
-\newcommand{\insureSprob}{0.7}
-\newcommand{\insureSperc}{70\%}
-\newcommand{\insureFprob}{0.3}
-\newcommand{\insureFperc}{30\%}
-\newcommand{\insureDistA}{0.7}
-\newcommand{\insureDistB}{0.21}
-\newcommand{\insureDistC}{0.063}
-\newcommand{\insureDistD}{0.019}
-\newcommand{\insureDistE}{0.006}
-\newcommand{\insureCDistA}{0.7}
-\newcommand{\insureCDistB}{0.91}
-\newcommand{\insureCDistC}{0.973}
-\newcommand{\insureCDistCComplement}{0.027}
-\newcommand{\insureCDistD}{0.992}
-\newcommand{\insureCDistE}{0.998}
-\newcommand{\insureGeomMean}{1.43}
-\newcommand{\insureS}{\resp{not}}
-\newcommand{\insureF}{\resp{exceed}}
-% Doesn't consider binomial coefficient in next calculated value.
-\newcommand{\insureBinomCinDSingleScenario}{0.103}
-\newcommand{\insureBinomCinD}{0.412}
-\newcommand{\insureBinomEinHSingleScenario}{0.00454}
-\newcommand{\insureBinomEinH}{0.254}
-\newcommand{\insureBinomFourtyExpValue}{28}
-\newcommand{\insureBinomFourtySD}{2.9}
-\newcommand{\insureBinomFourtyLower}{22}
-\newcommand{\insureBinomFourtyUpper}{34}
-
-Many health insurance plans in the United States have
-a deductible, where the insured individual is responsible
-for costs up to the deductible, and then the costs above
-the deductible are shared between the individual and
-insurance company for the remainder of the year.
-
-Suppose a health insurance company found that \insureSperc{} of the
-people they insure stay below their deductible in any given year.
-Each of these people can be thought of as a \term{trial}.
-We label a person a \term{success} if her healthcare costs
-do not exceed the deductible.
-We label a person a \term{failure} if she does exceed her
-deductible in the year.
-Because 70\% of the individuals will not hit their deductible,
-we denote the \term{probability of a success} as
-$p = \insureSprob{}$.
-
-
-\begin{examplewrap}
-\begin{nexample}{Suppose the insurance agency is considering
-    a random sample of four individuals they insure.
-    What is the chance exactly one of them will exceed
-    the deductible and the other three will not?
-    Let's call the four people
-    Ariana ($A$),
-    Brittany ($B$),
-    Carlton ($C$),
-    and Damian ($D$)
-    for convenience.}
-  \label{insureOneOfFourExceedsDeductible}%
-  Let's consider a scenario where one person exceeds
-  the deductible:
-  \begin{align*}
-  &P(A=\text{\insureF{}},
-      \text{ }B=\text{\insureS{}},
-      \text{ }C=\text{\insureS{}},
-      \text{ }D=\text{\insureS{}}) \\
-    &\quad = P(A=\text{\insureF{}})\ 
-        P(B=\text{\insureS{}})\ 
-        P(C=\text{\insureS{}})\ 
-        P(D=\text{\insureS{}}) \\
-    &\quad =  (\insureFprob{})
-        (\insureSprob{})
-        (\insureSprob{})
-        (\insureSprob{}) \\
-    &\quad = (\insureSprob{})^3 (\insureFprob{})^1 \\
-    &\quad = \insureBinomCinDSingleScenario{}
-  \end{align*}
-  But there are three other scenarios: Brittany, Carlton,
-  or Damian could have been the one to exceed the deductible.
-  In each of these cases, the probability is again
-  $(\insureSprob{})^3 (\insureFprob{})^1$.
-  These four scenarios exhaust all the possible ways that
-  exactly one of these four people could have exceeded
-  the deductible, so the total probability is
-  $4 \times (\insureSprob{})^3 (\insureFprob{})^1
-      = \insureBinomCinD{}$.
-\end{nexample}
-\end{examplewrap}
-
-\begin{exercisewrap}
-\begin{nexercise}
-Verify that the scenario where Brittany is the only one to exceed the deductible has probability
-$(\insureSprob{})^3 (\insureFprob{})^1$.~\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{
-  $P(A=\text{\insureS{}},
-      \text{ }B=\text{\insureF{}},
-      \text{ }C=\text{\insureS{}},
-      \text{ }D=\text{\insureS{}})
-    = (\insureSprob{})(\insureFprob{})
-        (\insureSprob{})(\insureSprob{})
-    = (\insureSprob{})^3 (\insureFprob{})^1$.}
-
-
-The binomial distribution describes the probability of having exactly $x$ successes
-in $n$ independent trials with probability
-of a success $p$
-(in Example~\ref{insureOneOfFourExceedsDeductible},
-$n=4$, $x=3$, $p=\insureSprob{}$).
-We would like to determine the probabilities associated
-with the binomial distribution more generally,
-i.e. we want a formula where we can use $n$, $x$, and $p$
-to obtain the probability.
-To do this, we reexamine each part of
-Example~\ref{insureOneOfFourExceedsDeductible}.
-
-There were four individuals who could have been the one
-to exceed the deductible, and each of these four scenarios
-had the same probability.
-Thus, we could identify the final probability as
-\begin{align*}
-[\text{\# of scenarios}] \times P(\text{single scenario})
-\end{align*}
-The first component of this equation is the number of ways
-to arrange the $x=3$ successes among the $n=4$ trials.
-The second component is the probability of any of the four
-(equally probable) scenarios.
-
-Consider $P($single scenario$)$ under the general case of
-$x$ successes and $n-x$ failures in the $n$ trials.
-In any such scenario, we apply the Multiplication Rule
-for independent events:
-\begin{align*}
-p^x (1 - p)^{n - x}
-\end{align*}
-This is our general formula for $P($single scenario$)$.
-
-Secondly, we introduce the \term{binomial coefficient}, which gives the number
-of ways to choose $x$ successes in $n$ trials,
-i.e. arrange $x$ successes and $n - x$ failures:
-\begin{align*}
-{n\choose x} = \frac{n!}{x! (n - x)!}
-\end{align*}
-The quantity ${n\choose x}$ is read
-\term{n choose x}.\footnote{Other notations for
-  $n$ choose $x$ includes $_nC_x$, $C_n^x$, and $C(n,x)$.}
-The exclamation point notation (e.g. $n!$) denotes
-a \term{factorial} expression.
-\begin{align*}
-& 0! = 1 \\
-& 1! = 1 \\
-& 2! = 2\times1 = 2 \\
-& 3! = 3\times2\times1 = 6 \\
-& 4! = 4\times3\times2\times1 = 24 \\
-& \vdots \\
-& n! = n\times(n-1)\times...\times3\times2\times1
-\end{align*}
-Using the formula, we can compute the number of ways
-to choose $x = 3$ successes in $n = 4$ trials:
-\begin{align*}
-{4 \choose 3} = \frac{4!}{3!(4-3)!}
-  = \frac{4!}{3!1!} 
-  = \frac{4\times3\times2\times1}{(3\times2\times1) (1)}
-  = 4
-\end{align*}
-This result is exactly what we found by carefully thinking
-of each possible scenario in
-Example~\ref{insureOneOfFourExceedsDeductible}.
-
-Substituting $n$ choose $x$ for the number of scenarios
-and $p^x(1-p)^{n-x}$ for the single scenario probability
-yields the \term{binomial formula}.
-
-\D{\newpage}
-
-\begin{onebox}{Binomial formula}
-Suppose the probability of a single trial being a success is $p$. Then the probability of observing exactly $x$ successes in $n$ independent trials is given by\vspace{-1mm}
-\begin{eqnarray*}
-P(X=x)={n\choose x}p^x(1-p)^{n-x} = \frac{n!}{x!(n-x)!}p^x(1-p)^{n-x}
-\label{binomialFormula}
-\end{eqnarray*}
-\end{onebox}
-
-
-%%
-\subsection{When and how to apply the formula}
-
-\begin{onebox}{Is it binomial? Four conditions to check.}
-  \label{isItBinomialTipBox}%
-  (1) The trials are independent. \\
-  (2) The number of trials, $n$, is fixed. \\
-  (3) Each trial outcome can be classified as a \emph{success}
-      or \emph{failure}. \\
-  (4) The probability of a success, $p$, is the same for
-      each trial.
-\end{onebox}
-
-\begin{examplewrap}
-\begin{nexample}{What is the probability that 3 of 8 randomly
-    selected individuals will have exceeded the insurance
-    deductible, i.e. that 5 of 8 will not exceed the deductible?
-    Recall that 70\% of individuals will not exceed the
-    deductible.}
-  We would like to apply the binomial model,
-  so we check the conditions.
-  The number of trials is fixed ($n = 8$) (condition 2)
-  and each trial outcome can be classified as a success
-  or failure (condition 3).
-  Because the sample is random, the trials are independent
-  (condition~1) and the probability of a success is the same
-  for each trial (condition~4).
-
-  In the outcome of interest, there are $x = 5$ successes
-  in $n = 8$ trials (recall that a success is an individual
-  who does \emph{not} exceed the deductible, and the
-  probability of a success is $p = \insureSprob{}$.
-  So the probability that 5 of 8 will not exceed the
-  deductible and 3 will exceed the deductible is given by
-  \begin{align*}
-  { 8 \choose 5}(\insureSprob{})^5
-  (1-\insureSprob{})^{8-5}
-    &= \frac{8!}{5!(5-3)!}
-        (\insureSprob{})^5(1-\insureSprob{})^{8-5} \\
-    &= \frac{8!}{5!3!}
-        (\insureSprob{})^5(\insureFprob{})^3
-  \end{align*}
-  Dealing with the factorial part:
-  \begin{align*}
-  \frac{8!}{5!3!}
-    = \frac{8\times7\times6\times5\times4\times3\times2\times1}
-        {(5\times4\times3\times2\times1)(3\times2\times1)}
-    = \frac{8\times7\times6}{3\times2\times1}
-    = 56
-  \end{align*}
-  Using $(\insureSprob{})^5(\insureFprob{})^3
-    \approx \insureBinomEinHSingleScenario{}$,
-  the final probability is about
-  $56\times \insureBinomEinHSingleScenario{}
-    \approx \insureBinomEinH{}$.
-\end{nexample}
-\end{examplewrap}
-
-
-  If you must calculate the binomial coefficient by hand, it's often useful
-  to cancel out as many terms as possible in the top and
-  bottom.  See Section~\ref{calculatorBinomial} for how to evaluate the binomial coefficient and the binomial formula using a calculator.
-
-\begin{onebox}{Computing binomial probabilities}
-  The first step in using the binomial model is to check
-  that the model is appropriate.
-  The second step is to identify $n$, $p$, and $x$.
-  Finally, apply the binomial formula to determine the probability and interpret the results.%
-  \vspace{3mm}
-
-\end{onebox}
-
-
-
-%%%%%%%
-\begin{examplewrap}
-\begin{nexample}{Approximately 35\% of a population has blood type O+.  Suppose four people show up at a hospital and we want to find the probability that exactly one of them has blood type O+.  Can we use the binomial formula?  }
-To check if the binomial model is appropriate,
-  we must verify the conditions.
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item If we suppose that these 4 people comprise a random sample, then we can treat them as independent.  This seems reasonable, since one person with a particular blood type showing up at a hospital seems unlikely to affect the chance that other people with that blood type would show up at the hospital.  
-\item We have a fixed number of trials ($n=4$).
-\item Each outcome is a success or failure (blood type O+ or not blood type O+).
-\item The probability of a success is the same for each
-  trial  since the individuals are like a random sample
-  ($p=0.35$ if we say a ``success'' is someone having blood type O+).
-\end{enumerate}
-\end{nexample}
-\end{examplewrap}
-
- \begin{exercisewrap}
-\begin{nexercise}
-The probability that a random smoker will develop a severe
-lung condition in his or her lifetime is about $0.3$.
-If you have 4 friends who smoke and you want to find the probability that 1 of them will develop a severe lung condition in his or her lifetime, can you apply the binomial formula?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{While conditions (2) and (3) are met, most likely the friends know each other, so the independence
-  assumption (1) is probably not satisfied.
-  For example, acquaintances may have similar smoking habits,
-  or those friends might make a pact to quit together.  Condition (4) is also not satisfied since this is not a random sample of people.}
-
-
-\begin{examplewrap}
-\begin{nexample}
-{Given that 35\% of a population has blood type O+, what is the probabilty that in a random sample of 4 people:  
-\begin{enumerate}[(a)]
-\setlength{\itemsep}{0mm}
-\item
-    none of them have blood type O+?
-\item
-    one will have blood type O+?
-\item
-    no more than one will have blood type O+?
-\end{enumerate}
-}
-  Compute parts~(a) and~(b) using the binomial formula:
-\begin{enumerate}[(a)]
-\item
-  $P(X=0)
-    = {4 \choose 0} (0.35)^0 (0.65)^4
-    = 1\times1\times 0.65^4 = 0.65^4
-    = 0.179$\\
-Note that we could have answered this question without the binomial formula, using methods from the previous section.
-\item 
-  $P(X=1)
-    = {4 \choose 1} (0.35)^1(0.65)^{3}
-    = 0.384$.
-  \item This can be computed as the sum of parts~(a) and~(b):
-  $P(X=0) + P(X=1) = 0.179 + 0.384 = 0.563$.
-  That is, there is about a 56.3\% chance that no more than
-  one of them will have blood type O+.
-\end{enumerate}
-\label{bloodTypeOPos}
-\end{nexample}
-\end{examplewrap}
-
-\D{\newpage}
-
-\begin{exercisewrap}
-\begin{nexercise}
-What is the probability that at least 3 of 4 people in a random sample will have blood type O+ if 35\% of the population has blood type O+?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{$P(\text{at least 3 of 4 have blood type O+})
-      = P(X=3) + P(X=4) = {4 \choose 3} (0.35)^3 (0.65)^1+(0.35)^4= 0.111 + 0.015 = 0.126$}
-
-
-
-
-
-\begin{examplewrap}
-\begin{nexample}{There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{without replacement}. Find the probability you get exactly 3 blue marbles.}Because the probability of success $p$ is not the same for each trial, we cannot use the binomial formula. However, we can use the same logic to arrive at the following answer. 
-\begin{align*}
-P(X = 3) &= (\text{\# of combinations with 3 blue})\times P(\text{3 blue and 2 red in a \emph{specific} order}) \\
-&={5\choose 3}\times P(\text{BBBRR}) \\
-&= {5\choose 3}\left(\frac{4}{13}\times \frac{3}{12}\times \frac{2}{11} \times \frac{9}{10} \times \frac{8}{9}\right) \\
-&= 0.1119
-\end{align*}
-\end{nexample}
-\end{examplewrap}
-
-\begin{exercisewrap}
-\begin{nexercise}
-{Draw 4 cards without replacement from a deck of 52 cards.  What is the probability that you get at least two hearts?}\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{$P\text{(at least 2 hearts in 4 draws from a deck)} = 1 - [P(X=0) + P(X=1)] = 1 - [(\frac{39}{52})(\frac{38}{51})(\frac{37}{50})(\frac{36}{49}) + {4 \choose 1}(\frac{13}{52})(\frac{39}{51})(\frac{38}{50})(\frac{37}{49})] = 1 - [.0.3038 + 0.4388] = 0.2574$.
-}
-
-Lastly, we consider the binomial coefficient,,
-$n$ choose $x$, under some special scenarios.
-
-\begin{exercisewrap}
-\begin{nexercise}
-Why is it true that ${n \choose 0}=1$ and ${n \choose n}=1$
-for any number $n$?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Frame these expressions into words.
-  How many different ways are there to arrange 0 successes
-  and $n$ failures in $n$ trials?
-  (1 way.)
-  How many different ways are there to arrange $n$ successes
-  and 0 failures in $n$ trials?
-  (1 way.)}
-
-\begin{exercisewrap}
-\begin{nexercise}
-How many ways can you arrange one success and $n-1$ failures
-in $n$ trials?
-How many ways can you arrange $n-1$ successes and one failure
-in $n$ trials?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{One success and $n-1$ failures:
-  there are exactly $n$ unique places we can put
-  the success, so there are $n$ ways to arrange one
-  success and $n-1$ failures.
-  A~similar argument is used for the second question.
-  Mathematically, we show these results by verifying
-  the following two equations:
-  \begin{align*}
-  {n \choose 1} = n,
-    \qquad {n \choose n-1} = n
-  \end{align*}}
-
-
-\D{\newpage}
-
-%%
-\subsection{Calculator: binomial probabilities}
-\label{calculatorBinomial}
-
-\begin{onebox}{\videohref{ti84_binomial_coefficient} TI-83/84: Computing the binomial coefficient \MakeLowercase{\pmb{${n\choose x}$}}}
-Use \calctext{MATH}, \calctext{PRB}, \calctext{nCr} to evaluate $n$ choose $r$. Here $r$ and $x$ are different letters for the same quantity.
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Type the value of $n$.
-\item Select \calctext{MATH}.
-\item Right arrow to \calctext{PRB}.
-\item Choose \calctext{3:nCr}.
-\item Type the value of $x$.
-\item Hit \calcbutton{ENTER}.
-\end{enumerate}
-Example: \calctext{5 nCr 3} means {5 choose 3}.\end{onebox}
-
-\begin{onebox}{\videohref{casio_binomial_coefficient} Casio fx-9750GII: Computing the binomial coefficient \MakeLowercase{\pmb{${n\choose x}$}}}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Navigate to the \calctext{RUN-MAT} section (hit \calcbutton{MENU}, then hit \calcbutton{1}).
-\item Enter a value for $n$.
-\item Go to \calctext{CATALOG} (hit buttons \calcbutton{SHIFT} and then \calcbutton{7}).
-\item Type \calctext{C} (hit the \calcbutton{ln} button), then navigate down to the bolded \calctext{\textbf{C}} and hit \calcbutton{EXE}.
-\item Enter the value of $x$. Example of what it should look like: \calctext{7\textbf{C}3}.
-\item Hit \calcbutton{EXE}.
-\end{enumerate}
-\end{onebox}
-
-\begin{onebox}{\videohref{ti84_binomial_formula} TI-84: Computing the binomial formula, \pmb{$P(X = \MakeLowercase{x)={n\choose x}p^x(1-p)^{n-x}}$}}
-\label{binomialformula}
-Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{binompdf} to evaluate the probability of \emph{exactly} $x$ occurrences out of $n$ independent trials of an event with probability $p$. 
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Select \calcbutton{2ND} \calcbutton{VARS} (i.e. \calctext{DISTR})
-\item Choose \calctext{A:binompdf} (use the down arrow to scroll down).
-\item Let \calctext{trials} be $n$.
-\item Let \calctext{p} be $p$
-\item Let \calctext{x value} be $x$.
-\item Select \calctext{Paste} and hit \calcbutton{ENTER}.\vspace{-1.5mm}
-\end{enumerate}
-TI-83: Do step 1, choose \calctext{0:binompdf}, then enter $n$, $p$, and $x$ separated by commas:\\
-	\calctext{binompdf(n,~p,~x)}. Then hit \calcbutton{ENTER}. 
-\end{onebox}
-
-\begin{onebox}{\videohref{ti84_binomial_cdf} TI-84: Computing \pmb{$P(X \le \MakeLowercase{x)= {n\choose 0}p^0(1-p)^{n-0} + ... + {n\choose x}p^x(1-p)^{n-x}}$} }
-\label{binomialcumulative}
-Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{binomcdf} to evaluate the cumulative probability of \emph{at most} $x$ occurrences out of $n$ independent trials of an event with probability $p$. 
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Select \calcbutton{2ND} \calcbutton{VARS} (i.e. \calctext{DISTR})
-\item Choose \calctext{B:binomcdf} (use the down arrow).
-\item Let \calctext{trials} be $n$.
-\item Let \calctext{p} be $p$
-\item Let \calctext{x value} be $x$.
-\item Select \calctext{Paste} and hit \calcbutton{ENTER}.\vspace{-1.5mm}
-\end{enumerate}
-TI-83: Do steps 1-2, then enter the values for $n$, $p$, and $x$ separated by commas as follows: \calctext{binomcdf(n,~p,~x)}. Then hit \calctext{ENTER}.\end{onebox}
-
-
-\begin{onebox}{\videohref{casio_binomial_calculations} Casio fx-9750GII: Binomial calculations}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Navigate to \calctext{STAT} (\calcbutton{MENU}, then hit \calcbutton{2}).
-\item Select \calctext{DIST} (\calcbutton{F5}), and then \calctext{BINM} (\calcbutton{F5}).
-\item Choose whether to calculate the binomial distribution for a specific number of successes, $P(X = k)$, or for a range $P(X \leq k)$ of values (0~successes, 1~success, ..., $x$~successes).\vspace{-1.5mm}
-  \begin{itemize}
-  \setlength{\itemsep}{0mm}
-  \item For a specific number of successes, choose \calctext{Bpd} (\calcbutton{F1}). %, which stands for \emph{binomial probability distribution}.
-  \item To consider the range 0, 1, ..., $x$ successes, choose \calctext{Bcd}(\calcbutton{F1}). %, which stands for \emph{binomial cumulative distribution}.
-  \end{itemize}
-\item If needed, set \calctext{Data} to \calctext{Variable} (\calctext{Var} option, which is \calcbutton{F2}).
-\item Enter the value for \calctext{x} ($x$), \calctext{Numtrial} ($n$), and \calctext{p} (probability of a success).
-\item Hit \calctext{EXE}.
-\end{enumerate}
-\end{onebox}
-
-\begin{exercisewrap}
-\begin{nexercise}
-Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Here \calctext{$n$} = 5 and \calctext{$x$} = 3.  Doing 5 \calctext{nCr} 3 gives the number of combinations as 10.}
-
-\begin{exercisewrap}
-\begin{nexercise}There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{with replacement}. Find the probability you get exactly 3 blue marbles.\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Here, $n$ = 5, $p$ = 4/13, and $x$ = 3, so set \calctext{trials} = 5, \calctext{p} = 4/13 and \calctext{x value} = 3.  The probability is 0.1396.}
-
-\begin{exercisewrap}
-\begin{nexercise}There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{with replacement}. Find the probability you get \emph{at most} 3 blue marbles (i.e. less than or equal to 3 blue marbles).\footnotemark\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Similarly, set \calctext{trials} = 5, \calctext{p} = 4/13 and \calctext{x value} = 3.  The cumulative probability is 0.9662.}
-
-
-\D{\newpage}
-
-%%
-\subsection*{Section summary}
-
-\begin{itemize}
-\item $n\choose x$, the \term{binomial coefficient}, describes the number of combinations for arranging $x$ successes among $n$ trials.  $n\choose x$ $=\frac{n!}{x!(n-x)!}$, where $n!=1\times 2\times 3\times...n$, and $0!$=0.
-
-\item The \term{binomial formula} can be used to find the probability that something happens \textit{exactly x times in n trials}.  Suppose the probability of a single trial being a success is $p$. Then the probability of observing exactly $x$ successes in $n$ independent trials is given by\vspace{-1mm}
-\begin{eqnarray*}
-{n\choose x}p^x(1-p)^{n-x}   \quad= \quad  \frac{n!}{x!(n-x)!}p^x(1-p)^{n-x}
-\end{eqnarray*}
-
-\item To apply the binomial formula, the events must be \term{independent} from trial to trial.  Additionally, $n$, the number of trials must be fixed in advance, and $p$, the probability of the event occurring in a given trial, must be the same for each trial.
-
-\item To use the binomial formula, first confirm that the binomial conditions are met.  Next, identify the number of trials $n$, the number of times the event is to be a ``success'' $x$, and the probability that a single trial is a success $p$. Finally, plug these three numbers into the formula to get the probability of exactly $x$ successes in $n$ trials.
-
-\item The $p^x(1-p)^{n-x}$ part of the binomial formula is the probability of just one combination.  Since there are $n\choose x$ combinations, we add $p^x(1-p)^{n-x}$ up $n\choose x$ times.  We can think of the binomial formula as: $[\# \text{ of combinations}] \times P(\text{a single combination})$.
-
-\item To find a probability involving \emph{at least} or \emph{at most}, first determine if the scenario is binomial.  If so, apply the binomial formula as many times as needed and add up the results.  e.g. $P(\text{at least 3 Heads in 5 tosses of a fair coin})=P(\text{exactly 3 Heads})+P(\text{exactly 4 Heads})+P(\text{exactly 5 Heads})$, where each probability can be found using the binomial formula.
-
-\end{itemize}
-
-%%%%%%%%%Section Exercises
-{\input{ch_probability/TeX/binomial_formula.tex}}
-
-
-
 %__________________________________________
 \section[Simulations]{Simulations}
 \label{simulations}
@@ -2846,7 +2293,60 @@ The SD is about \$26.25.}
 
 Consider again Guided Practice~\ref{elenaIsSellingATVAndBuyingAToasterOvenAtAnAuctionVariability}. The negative coefficient for $Y$ in the linear combination was eliminated when we squared the coefficients. This generally holds true: negatives in a linear combination will have no impact on the variability computed for a linear combination, but they do impact the expected value computations.
 
+%%
+%%
+\subsection{Normal approximation for sums of random variables}
+\label{normapproxsumrv}
+
+We have seen that many distributions are approximately normal. The sum and the difference of normally distributed variables is also normal. While we cannot prove this here, the usefulness of it is seen in the following example.
+
+\begin{examplewrap}
+\begin{nexample}{Three friends are playing a cooperative video game in which they have to complete a puzzle as fast as possible. Assume that the individual times of the 3 friends are independent of each other. The individual times of the friends in similar puzzles are approximately normally distributed with the following means and standard deviations. 
+\begin{center}
+\begin{tabular}{lrr}
+& Mean &  SD \\
+Friend 1 	& 5.6 & 0.11  \\
+Friend 2 	& 5.8  & 0.13 \\
+Friend 3 	& 6.1  & 0.12  
+\end{tabular}
+\end{center}
+To advance to the next level of the game, the friends' total time must not exceed 17.1 minutes. What is the probability that they will advance to the next level?}
+Because each friend's time is approximately normally distributed, \emph{the sum of their times is also approximately normally distributed}. We will do a normal approximation, but first we need to find the mean and standard deviation of the \emph{sum}. We learned how to do this in Section~\ref{randomVariablesSection}.
+
+Let the three friends be labeled $X$, $Y$, $Z$. We want $P(X + Y + Z < 17.1)$. The mean and standard deviation of the sum of $X$, $Y$, and $Z$ is given by:
+\begin{align*}
+\mu_{sum} &= E(X+Y+Z)
+	& \sigma_{sum}&= \sqrt{(SD_X)^2+(SD_Y)^2 + (SD_Z)^2} \\
+&= E(X) + E(Y) + E(Z)
+	& &= \sqrt{(0.11)^2+(0.13)^2+(0.12)^2}\\
+&=4.6+4.8+4.5
+	& &= 0.208 \\
+&=17.5
+\end{align*}
+Now we can find the Z-score. 
+\begin{align*}
+Z &= \frac{x_{sum}-\mu_{sum}}{\sigma_{sum}} \\
+&=\frac{17.1-17.5}{0.208} \\
+&=-1.92
+\end{align*}
+Finally, we want the probability that the sum is less than 17.5, so we shade the area to the left of $Z = -1.92$. Using technology, we get
+\begin{align*}
+P(Z < -1.92) = 0.027
+\end{align*}
+There is a 2.7\% chance that the friends will advance to the next level.
+\end{nexample}
+\end{examplewrap}
+
+\begin{exercisewrap}
+\begin{nexercise}
+What is the probability that Friend 2 will complete the puzzle with a faster time than Friend 1?  Hint:  find $P(Y < X)$, or $P(Y - X < 0)$.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{First find the mean and standard deviation of $Y - X$. The mean of $Y - X$ is $\mu_{Y-X} = 5.8 - 5.6 =  0.2$. The standard deviation is  $SD_{Y-X}=\sqrt{(0.13)^2+(0.11)^2}=0.170$. Then $Z=\frac{0-0.2}{0.170}=-1.18$ and $P(Z < -1.18)= .119$. There is an 11.9\% chance that Friend 2 will complete the puzzle with a faster time than Friend 1.}
+
+
 \index{random variable|)}
+
 
 \D{\newpage}
 
@@ -2895,6 +2395,20 @@ The standard deviation of a sum or a difference is the square root of the sum of
 \end{itemize}
 
 The SD properties require that $X$ and $Y$ be independent.  The expected value properties hold true whether or not $X$ and $Y$ are independent.
+
+\item Because the sum or difference of two normally distributed variables is itself a normally distributed variable, the normal approximation is also used in the following type of problem.
+\item[] \textit{Find the probability that a sum $X+Y$ or a difference $X-Y$ is greater/less than some value}.
+\begin{enumerate}\vspace{-1mm}
+\setlength{\itemsep}{0mm}
+\item Verify that the distribution of $X$ and the distribution of $Y$ are approximately normal.  
+\item Find the mean of the sum or difference.  Recall: the mean of a sum is the 
+\\sum of the means.  The mean of a difference is the difference of the means.  
+\\Find the SD of the sum or difference using:  
+\\$SD(X+Y) = SD(X - Y) =  \sqrt{(SD(X))^2 + (SD(Y))^2}$.
+\item Calculate the Z-score.  Use the calculated mean and SD to standardize the given sum or difference.
+\item Find the appropriate area under the normal curve. 
+\end{enumerate}
+
 \end{itemize}
 
 
@@ -2903,149 +2417,1194 @@ The SD properties require that $X$ and $Y$ be independent.  The expected value p
 {\input{ch_probability/TeX/random_variables.tex}}
 
 
-
-
-%_______________________________________
-\section[Continuous distributions]{Continuous distributions }
-\label{contDist}
+%__________________________________________
+\section[Geometric distribution]{Geometric distribution}
+\label{geomDist}
 
 \sectionintro{
 \noindent%
-So far we have looked only at cases where the random variable takes on integer values.
-What happens when we consider random variables that produce a continuous numerical variable, such as wait time for a bus?
-In this section, we introduce the concept of a continuous distribution.
-In the next chapter, you will encounter the most famous continuous distribution of all.\footnote{It's the normal distribution!}
+How many times should we expect to roll a die until we get a \resp{1}?
+How many people should we expect to see at a hospital until we get someone with blood type O+?
+These questions can be answered using the geometric distribution.
+
+%We will see that unlike with the distribution of a sample mean, the shape of the geometric distribution is never normal.
+
+%%
+\subsection*{Learning objectives}
+
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+
+\item Determine if a scenario is geometric.
+
+\item Calculate the probabilities of the possible values of a geometric random variable.
+
+\item Find and interpret the mean (expected value) and standard deviation of a geometric distribution.
+
+\item Understand the shape of the geometric distribution.
+
+\end{enumerate}
+
+}
+
+%%
+\subsection{Bernoulli distribution}
+\label{bernoulli}
+
+\newcommand{\insureSprob}{0.7}
+\newcommand{\insureSperc}{70\%}
+\newcommand{\insureFprob}{0.3}
+\newcommand{\insureFperc}{30\%}
+\newcommand{\insureDistA}{0.7}
+\newcommand{\insureDistB}{0.21}
+\newcommand{\insureDistC}{0.063}
+\newcommand{\insureDistD}{0.019}
+\newcommand{\insureDistE}{0.006}
+\newcommand{\insureCDistA}{0.7}
+\newcommand{\insureCDistB}{0.91}
+\newcommand{\insureCDistC}{0.973}
+\newcommand{\insureCDistCComplement}{0.027}
+\newcommand{\insureCDistD}{0.992}
+\newcommand{\insureCDistE}{0.998}
+\newcommand{\insureGeomMean}{1.43}
+
+\index{distribution!Bernoulli|(}
+
+%We begin by revisiting a scenario encountered when studying the binomial formula (section~\ref{binomialForm}), and we formalize the notion of a yes/no variable.
+
+Many health insurance plans in the United States have
+a deductible, where the insured individual is responsible
+for costs up to the deductible, and then the costs above
+the deductible are shared between the individual and
+insurance company for the remainder of the year.
+
+Suppose a health insurance company found that \insureSperc{} of the
+people they insure stay below their deductible in any given year.
+Each of these people can be thought of as a \term{trial}.
+We label a person a \term{success} if her healthcare costs
+do not exceed the deductible.
+We label a person a \term{failure} if she does exceed her
+deductible in the year.
+Because \insureSperc{} of the individuals will not exceed their deductible,
+we denote the \term{probability of a success} as
+$p = \insureSprob{}$.
+The probability of a failure is sometimes denoted with
+$q = 1 - p$, which would be \insureFprob{} in for the insurance
+example.
+
+When an individual trial only has two possible outcomes, often
+labeled as \resp{success} or \resp{failure}, it is called a
+\termsub{Bernoulli random variable}{distribution!Bernoulli}.
+We chose to label a person who does not exceed her deductible
+as a ``success'' and all others as ``failures''.
+However, we could just as easily have reversed these labels.
+The mathematical framework we will build does not depend
+on which outcome is labeled a success and which a failure,
+as long as we are consistent.
+
+
+Bernoulli random variables are often denoted as \resp{1}
+for a success and \resp{0} for a failure.
+In addition to being convenient in entering data,
+it is also mathematically handy.
+Suppose we observe ten trials:
+\begin{center}
+\resp{1} \resp{1} \resp{1} \resp{0} \resp{1} \resp{0} \resp{0} \resp{1} \resp{1} \resp{0}
+\end{center}
+Then the \term{sample proportion}, $\hat{p}$, is the
+sample mean of these observations:
+\begin{align*}
+\hat{p} = \frac{\text{\# of successes}}{\text{\# of trials}}
+    = \frac{1+1+1+0+1+0+0+1+1+0}{10} = 0.6
+\end{align*}%
+This mathematical inquiry of Bernoulli random variables can
+be extended even further.
+%\Comment{Maybe the next footnote should instead be an EOCE?}
+Because \resp{0} and \resp{1} are numerical outcomes,
+we can define the {mean} and {standard deviation}
+of a Bernoulli random variable.\footnote{If ${p}$ is the true probability of a success, then the mean of a Bernoulli random variable $X$ is given by
+\begin{align*}
+\mu = E(X) &=  0\cdot P(X = 0) +  1\cdot P(X=1) \\
+	&=   0\cdot (1 - p) +  1\cdot p = 0 + p = p
+\end{align*}
+Similarly, the variance of $X$ can be computed:
+\begin{align*}
+\sigma^2 &= {(0-p)^2\cdot P(X=0) + (1-p)^2\cdot P(X=1)} \\
+	&= {p^2\cdot (1-p) + (1-p)^2\cdot p} = {p(1-p)}
+\end{align*}
+The standard deviation is $\sigma=\sqrt{p(1-p)}$.}
+
+\begin{onebox}{Bernoulli random variable}
+%  A Bernoulli random variable has exactly two possible
+%  outcomes, often labeled \resp{1} for the ``success''
+%  outcome and \resp{0} for the ``failure'' outcome.\vspace{3mm}
+  If $X$ is a random variable that takes value 1 with
+  probability of success $p$ and 0 with probability $1-p$,
+  then $X$ is a Bernoulli random variable with mean
+  and standard deviation
+  \begin{align*}
+  \mu &= p
+      &\sigma&= \sqrt{p(1-p)}
+  \end{align*}
+\end{onebox}
+
+In general, it is useful to think about a Bernoulli random variable as a random process with only two outcomes: a success or failure. Then we build our mathematical framework using the numerical labels \resp{1} and \resp{0} for successes and failures, respectively.
+
+\index{distribution!Bernoulli|)}
+
+
+
+%%
+\subsection{Geometric distribution}
+
+\index{distribution!geometric|(}
+
+The \termsub{geometric distribution}{distribution!geometric}
+is used to describe how
+many trials it takes to observe a success.
+Let's first look at an example.
+
+\begin{examplewrap}
+\begin{nexample}{Suppose we are working at the insurance
+    company and need to find a case where the person did
+    not exceed her (or his) deductible as a case study.
+    If the probability a person will not exceed her
+    deductible is \insureSprob{} and we are drawing people
+    at random, what are the chances that the first person
+    will not have exceeded her deductible, i.e. be a success?
+    The second person?
+    The third?
+    What about the probability that we pull $x - 1$ cases before we find
+    the first success, i.e. the first success is the
+    $x^{th}$ person?
+    (If the first success is the fifth person, then we say $x=5$.)}
+  \label{waitForDeductible}%
+  The probability of stopping after the first person is just
+  the chance the first person will not exceed her (or his)
+  deductible:~\insureSprob{}.
+The probability the second person is the first to exceed
+  her deductible is  \begin{align*}
+  &P(\text{second person is the first to exceed deductible})  \\
+  &\quad
+    = P(\text{the first won't, the second will})
+    = (\insureFprob{})(\insureSprob{})
+    = \insureDistB{}
+  \end{align*}
+  Likewise, the probability it will be the third case is
+  $(\insureFprob{})(\insureFprob{})(\insureSprob{})
+    = \insureDistC$.
+
+  If the first success is on the $x^{th}$ person,
+  then there are $x-1$ failures and finally 1 success,
+  which corresponds to the probability
+  $(\insureFprob{})^{x-1}(\insureSprob{})$.
+  This is the same as
+  $(1-\insureSprob{})^{x-1}(\insureSprob{})$.
+\end{nexample}
+\end{examplewrap}
+
+
+Example~\ref{waitForDeductible} illustrates what the
+\termsub{geometric distribution}{distribution!geometric},
+which describes the waiting
+time until a success for
+\term{independent and identically distributed (iid)}
+Bernoulli random variables.
+In this case, the \emph{independence} aspect just means
+the individuals in the example don't affect each other,
+and \emph{identical} means they each have the same probability
+of success.
+
+The geometric distribution from Example~\ref{waitForDeductible} is shown in Figure~\ref{geometricDist70}. In general, the probabilities for a geometric distribution decrease \term{exponentially} fast.
+
+\begin{figure}[h]
+  \centering
+  \Figure{0.65}{geometricDist70}
+  \caption{The geometric distribution when the probability
+      of success is $p = \insureSprob{}$.}
+  \label{geometricDist70}
+\end{figure}
+
+While this text will not derive the formulas for the mean (expected) number of trials needed to find the first success or the standard deviation of this distribution, we present general formulas for each.
+
+\begin{onebox}{Geometric Distribution}
+  \index{distribution!geometric|textbf}%
+  Let X have a geometric distribution with one parameter $p$, where $p$ is the probability of a success in one trial.   Then the
+  probability of finding the first success in the
+  $x^{th}$ trial is given by\vspace{-1.5mm}
+  \begin{align*}
+  P(X = x) = (1-p)^{x-1}p
+  \end{align*}
+where $x=1,2,3,\dots$\\
+\\
+  The mean (i.e. expected value) and standard deviation of this wait time are given by
+  \begin{align*}
+  \mu_{\scriptscriptstyle{X}} = \frac{1}{p}
+      \qquad \sigma_{\scriptscriptstyle{X}} = \frac{\sqrt{1-p\ }}{p}
+  \end{align*}
+\end{onebox}
+
+It is no accident that we use the symbol $\mu$ for both the mean and expected value. The mean and the expected value are one and the same.
+
+It takes, on average, $1/p$ trials to get a success under the geometric distribution. This mathematical result is consistent with what we would expect intuitively. If the probability of a success is high (e.g. 0.8), then we don't usually wait very long for a success: $1/0.8 = 1.25$ trials on average. If the probability of a success is low (e.g. 0.1), then we would expect to view many trials before we see a success: $1/0.1 = 10$ trials.
+
+
+\begin{exercisewrap}
+\begin{nexercise}
+The probability that a particular case would not exceed their
+deductible is said to be \insureSprob{}.
+If we were to examine cases until we found one that where
+the person did not exceed her deductible, how many cases should
+we expect to check?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{We would expect to see about
+    $1 / \insureSprob{} \approx \insureGeomMean{}$
+    individuals to find the first success.}
+
+\begin{examplewrap}
+\begin{nexample}{What is the chance that we would find
+    the first success within the first 3 cases?}
+  \label{insureFirstSuccessInLT4}%
+  This is the chance the first ($X=1$), second ($X=2$),
+  or third ($X=3$) case is the first success, which are three
+  disjoint outcomes.
+  Because the individuals in the sample are randomly sampled
+  from a large population, they are independent.
+  We compute the probability of each case and add the separate
+  results:
+  \begin{align*}
+  &P(X=1, 2, \text{ or }3) \\
+    & \quad = P(X=1)+P(X=2)+P(X=3) \\
+    & \quad = (\insureFprob{})^{1-1}(\insureSprob{})
+        + (\insureFprob{})^{2-1}(\insureSprob{})
+        + (\insureFprob{})^{3-1}(\insureSprob{}) \\
+    & \quad = \insureCDistC{}
+  \end{align*}
+  There is a probability of \insureCDistC{} that we would
+  find a successful case within 3 cases.
+\end{nexample}
+\end{examplewrap}
+
+\begin{exercisewrap}
+\begin{nexercise}
+Determine a more clever way to solve Example~\ref{insureFirstSuccessInLT4}.
+Show that you get the same result.\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{First find the probability of the complement:
+  $P($no success in first 3~trials$)
+      = \insureFprob{}^3 = \insureCDistCComplement{}$.
+  Next, compute one minus this probability:
+  $1 - P($no success in 3 trials$)
+      = 1 - \insureCDistCComplement{}
+      = \insureCDistC{}$.}
+
+\begin{examplewrap}
+\begin{nexample}{Suppose a car insurer has determined
+    that 88\% of its drivers will not exceed their deductible
+    in a given year.
+    If someone at the company were to randomly draw
+    driver files until they found one that had not exceeded
+    their deductible, what is the expected number of drivers
+    the insurance employee must check?
+    What is the standard deviation of the number of driver files
+    that must be drawn?}
+  \label{carInsure08DrawOne}%
+  In this example, a success is again when someone will not
+  exceed the insurance deductible, which has probability
+  $p = 0.88$.
+  The expected number of people to be checked is
+  $1 / p = 1 / 0.88 = 1.14$ and the standard deviation is
+  $\frac{\sqrt{1-p\ }}{p}=\frac{\sqrt{1-0.88\ }}{0.88} = 0.39$.
+\end{nexample}
+\end{examplewrap}
+
+
+\Comment{reworded}
+
+\begin{exercisewrap}
+\begin{nexercise}
+Using the results from Example~\ref{carInsure08DrawOne},
+$\mu_{\scriptscriptstyle{X}} = 1.14$ and $\sigma_{\scriptscriptstyle{X}} = 0.39$, would it be appropriate
+to use the empirical rule to find what proportion
+of experiments would end in 1.14 $\pm$ 0.39 trials?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{No. The geometric distribution is always
+  right skewed and can never be well-approximated by a
+  normal model.}
+
+The independence assumption is crucial to the geometric
+distribution's accurate description of a scenario.
+Mathematically, we can see that to construct the probability
+of the success on the $x^{th}$ trial, we had to use the
+General Multiplication Rule for independent processes.
+It is no simple task to generalize the geometric model
+for dependent trials.
+
+\index{distribution!geometric|)}
+
+
+\subsection{Technology: geometric probablities}
+
+\noindent Get started quickly with this Desmos \oiRedirect{desmos-geometric}{Geometric Calculator}.
+
+\begin{center}
+\oiRedirect{desmos-geometric}{\includegraphics[width=0.95\textwidth]{ch_probability/figures/desmosGeometric/desmosGeometric}}
+\end{center}
+
+\B{\newpage}
+%%
+\subsection*{Section summary}
+
+\begin{itemize}
+\item It is useful to model yes/no, success/failure with the values 1 and 0, respectively. We call the \term{probability of success $p$ }and the \term{probability of failure $1-p$}.
+
+\item When the trials are \term{independent} and the value of $p$ is constant, the probability of finding \term{the first success on the $x^{th}$ trial} is given by $(1-p)^{x-1}p$.  We can see the reasoning behind this formula as follows:  for the first success to happen on the $x^{th}$ trial, it has to \emph{not} happen the first $x-1$ trials (with probability $1-p$), and then happen on the $x^{th}$ trial (with probability $p$).  
+
+\item When we consider the \emph{entire distribution} of possible values for the how long \emph{until} the first success, we get a discrete probability distribution known as the geometric distribution. The \term{geometric distribution} describes the waiting time \emph{until} the first success, when the trials are independent and the probability of success, $p$, is constant.  If X has a geometric distribution with parameter $p$, then $P(X=x)=(1-p)^{x-1}p$, where $x=1,2,3\dots$.
+
+\item The geometric distribution is always \emph{right skewed} and, in fact, has no maximum value.  The probabilities, though, decrease exponentially fast.
+
+\item Even though the geometric distribution has an infinite number of values, it has a well-defined \textbf{mean}: $\mu_{\scriptscriptstyle{X}}=\frac{1}{p}$ and \textbf{standard deviation}: $\sigma_{\scriptscriptstyle{X}} = \frac{\sqrt{1-p \ }}{p}$.  If the probability of success is $\frac{1}{10}$, then \emph{on average} it takes 10 trials until we see the first success.
+
+\item Note that when the trials are not independent, we can modify the geometric formula to find the probability that the first success happens on the $x^{th}$ trial. Instead of simply raising ($1-p$) to the $x-1$, multiply the appropriate \emph{conditional} probabilities.
+
+\end{itemize}
+
+
+
+{\input{ch_probability/TeX/geometric_distribution.tex}}
+
+
+
+
+
+%______________________________________________
+\section[Binomial distribution]{Binomial distribution }
+\label{binomDist}
+
+\sectionintro{
+\noindent%
+What is the probability of exactly 50 heads in
+100 coin tosses?
+Or the probability of randomly sampling 12 people and having
+more than 9 of them identify as male?  
+ If the probability of a defective part is 1\%, how many defective items would we expect in a random shipment of 200 of those parts?  We can model these scenarios and answer these questions using the binomial distribution.
 
 
 %%
 \subsection*{Learning objectives}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Understand the difference between a discrete random variable and a continuous random variable.
+\item Calculate the number of possible scenarios for obtaining $x$ successes in $n$ trials.
 
-\item Recognize that when working with continuous probability distributions area represents probability and the total area under the curve must equal 1. 
+\item Determine whether a scenario is binomial or not.
 
+\item Calculate the probabilities of the possible values of a binomial random variable using the binomial formula.
+
+\item Recognize that the binomial formula uses the special Addition Rule for mutually exclusive events.
+
+\item Find probabilities of the form ``at least” or ``at most” by applying the binomial formula multiple times.
+
+\item Calculate and interpret the mean (expected value) and standard deviation of the number of successes in $n$ binomial trials.
+
+\item Determine whether a binomial distribution can be modeled as approximatelynormal. If so, use normal approximation to estimate cumulative binomial probabilities.
 \end{enumerate}
 }
 
 %%
-\subsection{From histograms to continuous distributions}
+\subsection{Introducing the binomial formula}
 
-\index{data!FCID|(}
-\index{hollow histogram|(}
+%\newcommand{\insureSprob}{0.7}
+%\newcommand{\insureSperc}{70\%}
+%\newcommand{\insureFprob}{0.3}
+%\newcommand{\insureFperc}{30\%}
+%\newcommand{\insureDistA}{0.7}
+%\newcommand{\insureDistB}{0.21}
+%\newcommand{\insureDistC}{0.063}
+%\newcommand{\insureDistD}{0.019}
+%\newcommand{\insureDistE}{0.006}
+%\newcommand{\insureCDistA}{0.7}
+%\newcommand{\insureCDistB}{0.91}
+%\newcommand{\insureCDistC}{0.973}
+%\newcommand{\insureCDistCComplement}{0.027}
+%\newcommand{\insureCDistD}{0.992}
+%\newcommand{\insureCDistE}{0.998}
+%\newcommand{\insureGeomMean}{1.43}
+\newcommand{\insureS}{\resp{not}}
+\newcommand{\insureF}{\resp{exceed}}
+% Doesn't consider binomial coefficient in next calculated value.
+\newcommand{\insureBinomCinDSingleScenario}{0.103}
+\newcommand{\insureBinomCinD}{0.412}
+\newcommand{\insureBinomEinHSingleScenario}{0.00454}
+\newcommand{\insureBinomEinH}{0.254}
+\newcommand{\insureBinomFourtyExpValue}{28}
+\newcommand{\insureBinomFourtySD}{2.9}
+\newcommand{\insureBinomFourtyLower}{22}
+\newcommand{\insureBinomFourtyUpper}{34}
+
+
+\index{distribution!binomial|(}
+
+
+Let's again imagine ourselves back at the insurance agency
+where \insureSperc{} of individuals do not exceed their
+deductible.  Each people is thought of as a \term{trial}.
+We label a trial a \term{success} if the individual healthcare costs
+do not exceed the deductible.
+We label a trial a \term{failure} if the individual healthcare costs do exceed the
+deductible.
+Because 70\% of the individuals will not exceed their deductible,
+we denote the \term{probability of a success} as
+$p = \insureSprob{}$.
+
+
 \begin{examplewrap}
-\begin{nexample}{Figure~\ref{fdicHistograms} shows a few different hollow histograms of the variable \var{height} for 3 million US adults from the mid-90's.\footnotemark\, How does changing the number of bins allow you to make different interpretations of the data?}\label{usHeights}
-Adding more bins provides greater detail. This sample is extremely large, which is why much smaller bins still work well. Usually we do not use so many bins with smaller sample sizes since small counts per bin mean the bin heights are very volatile.
+\begin{nexample}{Suppose the insurance agency is considering
+    a random sample of four individuals they insure.
+    What is the chance exactly one of them will exceed
+    the deductible and the other three will not?
+    Let's call the four people
+    Ariana ($A$),
+    Brittany ($B$),
+    Carlton ($C$),
+    and Damian ($D$)
+    for convenience.}
+  \label{insureOneOfFourExceedsDeductible}%
+  Let's consider a scenario where one person exceeds
+  the deductible:
+  \begin{align*}
+  &P(A=\text{\insureF{}},
+      \text{ }B=\text{\insureS{}},
+      \text{ }C=\text{\insureS{}},
+      \text{ }D=\text{\insureS{}}) \\
+    &\quad = P(A=\text{\insureF{}})\ 
+        P(B=\text{\insureS{}})\ 
+        P(C=\text{\insureS{}})\ 
+        P(D=\text{\insureS{}}) \\
+    &\quad =  (\insureFprob{})
+        (\insureSprob{})
+        (\insureSprob{})
+        (\insureSprob{}) \\
+    &\quad = (\insureSprob{})^3 (\insureFprob{})^1 \\
+    &\quad = \insureBinomCinDSingleScenario{}
+  \end{align*}
+  But there are three other scenarios: Brittany, Carlton,
+  or Damian could have been the one to exceed the deductible.
+  In each of these cases, the probability is again
+  $(\insureSprob{})^3 (\insureFprob{})^1$.
+  These four scenarios exhaust all the possible ways that
+  exactly one of these four people could have exceeded
+  the deductible, so the total probability is
+  $4 \times (\insureSprob{})^3 (\insureFprob{})^1
+      = \insureBinomCinD{}$.
 \end{nexample}
 \end{examplewrap}
-\footnotetext{This sample can be considered a simple random sample from the US population. It relies on the USDA Food Commodity Intake Database.} 
+
+\begin{exercisewrap}
+\begin{nexercise}
+Verify that the scenario where Brittany is the only one to exceed the deductible has probability
+$(\insureSprob{})^3 (\insureFprob{})^1$.~\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{
+  $P(A=\text{\insureS{}},
+      \text{ }B=\text{\insureF{}},
+      \text{ }C=\text{\insureS{}},
+      \text{ }D=\text{\insureS{}})
+    = (\insureSprob{})(\insureFprob{})
+        (\insureSprob{})(\insureSprob{})
+    = (\insureSprob{})^3 (\insureFprob{})^1$.}
+
+
+The binomial distribution describes the probability of having exactly $x$ successes
+in $n$ independent trials with probability
+of a success $p$
+(in Example~\ref{insureOneOfFourExceedsDeductible},
+$n=4$, $x=3$, $p=\insureSprob{}$).
+We would like to determine the probabilities associated
+with the binomial distribution more generally,
+i.e. we want a formula where we can use $n$, $x$, and $p$
+to obtain the probability.
+To do this, we reexamine each part of
+Example~\ref{insureOneOfFourExceedsDeductible}.
+
+There were four individuals who could have been the one
+to exceed the deductible, and each of these four scenarios
+had the same probability.
+Thus, we could identify the final probability as
+\begin{align*}
+[\text{\# of scenarios}] \times P(\text{single scenario})
+\end{align*}
+The first component of this equation is the number of ways
+to arrange the $x=3$ successes among the $n=4$ trials.
+The second component is the probability of any of the four
+(equally probable) scenarios.
+
+Consider $P($single scenario$)$ under the general case of
+$x$ successes and $n-x$ failures in the $n$ trials.
+In any such scenario, we apply the Multiplication Rule
+for independent events:
+\begin{align*}
+p^x (1 - p)^{n - x}
+\end{align*}
+This is our general formula for $P($single scenario$)$.
+
+Secondly, we introduce the \term{binomial coefficient}, which gives the number
+of ways to choose $x$ successes in $n$ trials,
+i.e. arrange $x$ successes and $n - x$ failures:
+\begin{align*}
+{n\choose x} = \frac{n!}{x! (n - x)!}
+\end{align*}
+The quantity ${n\choose x}$ is read
+\term{n choose x}.\footnote{Other notations for
+  $n$ choose $x$ includes $_nC_x$, $C_n^x$, and $C(n,x)$.}
+The exclamation point notation (e.g. $n!$) denotes
+a \term{factorial} expression.
+\begin{align*}
+& 0! = 1 \\
+& 1! = 1 \\
+& 2! = 2\times1 = 2 \\
+& 3! = 3\times2\times1 = 6 \\
+& 4! = 4\times3\times2\times1 = 24 \\
+& \vdots \\
+& n! = n\times(n-1)\times...\times3\times2\times1
+\end{align*}
+Using the formula, we can compute the number of ways
+to choose $x = 3$ successes in $n = 4$ trials:
+\begin{align*}
+{4 \choose 3} = \frac{4!}{3!(4-3)!}
+  = \frac{4!}{3!1!} 
+  = \frac{4\times3\times2\times1}{(3\times2\times1) (1)}
+  = 4
+\end{align*}
+This result is exactly what we found by carefully thinking
+of each possible scenario in
+Example~\ref{insureOneOfFourExceedsDeductible}.
+
+Substituting $n$ choose $x$ for the number of scenarios
+and $p^x(1-p)^{n-x}$ for the single scenario probability
+yields the \term{binomial formula}.
+\B{\newpage}
+
+\begin{onebox}{Binomial formula}
+Suppose the probability of a single trial being a success is $p$. Then the probability of observing exactly $x$ successes in $n$ independent trials is given by\vspace{-1mm}
+\begin{eqnarray*}
+P(X=x)={n\choose x}p^x(1-p)^{n-x} = \frac{n!}{x!(n-x)!}p^x(1-p)^{n-x}
+\label{binomialFormula}
+\end{eqnarray*}
+\end{onebox}
+
+
+
+%%
+\subsection{When and how to apply the formula}
+
+\begin{onebox}{Is it binomial? Four conditions to check.}
+  \label{isItBinomialTipBox}%
+  (1) The trials are independent. \\
+  (2) The number of trials, $n$, is fixed. \\
+  (3) Each trial outcome can be classified as a \emph{success}
+      or \emph{failure}. \\
+  (4) The probability of a success, $p$, is the same for
+      each trial.
+\end{onebox}
+
+\begin{examplewrap}
+\begin{nexample}{What is the probability that 3 of 8 randomly
+    selected individuals will have exceeded the insurance
+    deductible, i.e. that 5 of 8 will not exceed the deductible?
+    Recall that 70\% of individuals will not exceed the
+    deductible.}
+  We would like to apply the binomial model,
+  so we check the conditions.
+  The number of trials is fixed ($n = 8$) (condition 2)
+  and each trial outcome can be classified as a success
+  or failure (condition 3).
+  Because the sample is random, the trials are independent
+  (condition~1) and the probability of a success is the same
+  for each trial (condition~4).
+
+  In the outcome of interest, there are $x = 5$ successes
+  in $n = 8$ trials (recall that a success is an individual
+  who does \emph{not} exceed the deductible, and the
+  probability of a success is $p = \insureSprob{}$.
+  So the probability that 5 of 8 will not exceed the
+  deductible and 3 will exceed the deductible is given by
+  \begin{align*}
+  { 8 \choose 5}(\insureSprob{})^5
+  (1-\insureSprob{})^{8-5}
+    &= \frac{8!}{5!(5-3)!}
+        (\insureSprob{})^5(1-\insureSprob{})^{8-5} \\
+    &= \frac{8!}{5!3!}
+        (\insureSprob{})^5(\insureFprob{})^3
+  \end{align*}
+  Dealing with the factorial part:
+  \begin{align*}
+  \frac{8!}{5!3!}
+    = \frac{8\times7\times6\times5\times4\times3\times2\times1}
+        {(5\times4\times3\times2\times1)(3\times2\times1)}
+    = \frac{8\times7\times6}{3\times2\times1}
+    = 56
+  \end{align*}
+  Using $(\insureSprob{})^5(\insureFprob{})^3
+    \approx \insureBinomEinHSingleScenario{}$,
+  the final probability is about
+  $56\times \insureBinomEinHSingleScenario{}
+    \approx \insureBinomEinH{}$.
+\end{nexample}
+\end{examplewrap}
+
+
+  If you must calculate the binomial coefficient by hand, it's often useful
+  to cancel out as many terms as possible in the top and
+  bottom.  See Section~\ref{calculatorBinomial} for how to evaluate the binomial coefficient and the binomial formula using a calculator.
+
+\begin{onebox}{Computing binomial probabilities}
+  The first step in using the binomial model is to check
+  that the model is appropriate.
+  The second step is to identify $n$, $p$, and $x$.
+  Finally, apply the binomial formula to determine the probability and interpret the results.%
+  \vspace{3mm}
+
+\end{onebox}
+
+
+
+%%%%%%%
+\Comment{added without replacement consideration}
+
+\begin{examplewrap}
+\begin{nexample}{Approximately 35\% of a population has blood type O+.  Suppose four people show up at a hospital and we want to find the probability that exactly one of them has blood type O+.  Can we use the binomial formula?  }
+To check if the binomial model is appropriate,
+  we must verify the conditions.
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item We will suppose that these 4 people comprise a random sample.  This seems reasonable, since one person with a particular blood type showing up at a hospital seems unlikely to affect the chance that other people with that blood type would show up at the hospital.  This sample is without replacement, though, not with replacement, so the observations are not entirely independent.  However, when the sample size is very small compared to the population size, we can treat the observations \emph{as if they were with replacement}, since the composition of the population changes very little with each additional person sampled.  Since we have a random sample of a very small percent of the population, we will consider the independence condition met.  
+\item We have a fixed number of trials ($n=4$).
+\item Each outcome is a success or failure (blood type O+ or not blood type O+).
+\item The probability of a success is the same for each
+  trial  since the individuals are like a random sample
+  ($p=0.35$ if we say a ``success'' is someone having blood type O+).
+\end{enumerate}
+\end{nexample}
+\end{examplewrap}
+
+\begin{onebox}{Sampling without replacement}
+When randomly sampling without replacement, if the sample size is small relative to the population size (rule of thumb: sample size less than 1/10 of the population size), we will consider the observations to be independent. 
+\end{onebox}
+
+
+\begin{examplewrap}
+\begin{nexample}
+{Given that 35\% of a population has blood type O+, what is the probabilty that in a random sample of 4 people:  
+\begin{enumerate}[(a)]
+\setlength{\itemsep}{0mm}
+\item
+    none of them have blood type O+?
+\item
+    one will have blood type O+?
+\item
+    no more than one will have blood type O+?
+\end{enumerate}
+}
+\begin{enumerate}[(a)]
+\item
+  $P(X=0)
+    = {4 \choose 0} (0.35)^0 (0.65)^4
+    = 1\times1\times 0.65^4 = 0.65^4
+    = 0.179$\\
+Note that we could have answered this question without the binomial formula, using methods from the previous section.
+\item 
+  $P(X=1)
+    = {4 \choose 1} (0.35)^1(0.65)^{3}
+    = 0.384$.
+  \item This can be computed as the sum of parts~(a) and~(b):
+  $P(X=0) + P(X=1) = 0.179 + 0.384 = 0.563$.
+  That is, there is about a 56.3\% chance that no more than
+  one of them will have blood type O+.
+\end{enumerate}
+\label{bloodTypeOPos}
+\end{nexample}
+\end{examplewrap}
+
+
+\begin{exercisewrap}
+\begin{nexercise}
+What is the probability that at least 3 of 4 people in a random sample will have blood type O+ if 35\% of the population has blood type O+?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$P(\text{at least 3 of 4 have blood type O+})
+      = P(X=3) + P(X=4) = {4 \choose 3} (0.35)^3 (0.65)^1+(0.35)^4= 0.111 + 0.015 = 0.126$}
+
+
+ \begin{exercisewrap}
+\begin{nexercise}
+The probability that a random smoker will develop a severe
+lung condition in his or her lifetime is about $0.3$.
+If you have 4 friends who smoke and you want to find the probability that 1 of them will develop a severe lung condition in his or her lifetime, can you apply the binomial formula?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{While conditions (2) and (3) are met, most likely the friends know each other, so the independence
+  assumption (1) is probably not satisfied.
+  For example, acquaintances may have similar smoking habits,
+  or those friends might make a pact to quit together.  Condition (4) is also not satisfied since this is not a random sample of people.}
+
+
+
+
+\begin{examplewrap}
+\begin{nexample}{There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{without replacement}. Find the probability you get exactly 3 blue marbles.  Because we are drawing without replacement the probability of success $p$ is not the same for each trial.  Also, the sample size is large compared to the population size (much greater than 1/10 of the population size), so we cannot treat these observations as independent and we cannot use the binomial formula. However, we can use the same logic to arrive at the following answer. }
+\begin{align*}
+P(X = 3) &= (\text{\# of combinations with 3 blue})\times P(\text{3 blue and 2 red in a \emph{specific} order}) \\
+&={5\choose 3}\times P(\text{BBBRR}) \\
+&= {5\choose 3}\left(\frac{4}{13}\times \frac{3}{12}\times \frac{2}{11} \times \frac{9}{10} \times \frac{8}{9}\right) \\
+&= 0.1119
+\end{align*}
+\end{nexample}
+\end{examplewrap}
+
+\begin{exercisewrap}
+\begin{nexercise}
+{Draw 4 cards without replacement from a deck of 52 cards.  What is the probability that you get at least two hearts?}\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$P\text{(at least 2 hearts in 4 draws from a deck)} = 1 - [P(X=0) + P(X=1)] = 1 - [(\frac{39}{52})(\frac{38}{51})(\frac{37}{50})(\frac{36}{49}) + {4 \choose 1}(\frac{13}{52})(\frac{39}{51})(\frac{38}{50})(\frac{37}{49})] = 1 - [.0.3038 + 0.4388] = 0.2574$.
+}
+
+Lastly, we consider the binomial coefficient,,
+$n$ choose $x$, under some special scenarios.
+
+\begin{exercisewrap}
+\begin{nexercise}
+Why is it true that ${n \choose 0}=1$ and ${n \choose n}=1$
+for any number $n$?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Frame these expressions into words.
+  How many different ways are there to arrange 0 successes
+  and $n$ failures in $n$ trials?
+  (1 way.)
+  How many different ways are there to arrange $n$ successes
+  and 0 failures in $n$ trials?
+  (1 way.)}
+
+\begin{exercisewrap}
+\begin{nexercise}
+How many ways can you arrange one success and $n-1$ failures
+in $n$ trials?
+How many ways can you arrange $n-1$ successes and one failure
+in $n$ trials?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{One success and $n-1$ failures:
+  there are exactly $n$ unique places we can put
+  the success, so there are $n$ ways to arrange one
+  success and $n-1$ failures.
+  A~similar argument is used for the second question.
+  Mathematically, we show these results by verifying
+  the following two equations:
+  \begin{align*}
+  {n \choose 1} = n,
+    \qquad {n \choose n-1} = n
+  \end{align*}}
+
+
+\D{\newpage}
+
+
+%%
+\subsection{Technology: binomial probabilities}
+\label{calculatorBinomial}
+
+\noindent Get started quickly with this Desmos \oiRedirect{desmos-binomial}{Binomial Calculator}.
+
+\begin{center}
+\oiRedirect{desmos-binomial}{\includegraphics[width=0.95\textwidth]{ch_probability/figures/desmosBinomial/desmosBinomial}}
+\end{center}
+
+\noindent 
+\\
+Calculator instructions
+
+\begin{onebox}{\videohref{ti84_binomial_coefficient} TI-83/84: Computing the binomial coefficient \MakeLowercase{\pmb{${n\choose x}$}}}
+Use \calctext{MATH}, \calctext{PRB}, \calctext{nCr} to evaluate $n$ choose $r$. Here $r$ and $x$ are different letters for the same quantity.
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Type the value of $n$.
+\item Select \calctext{MATH}.
+\item Right arrow to \calctext{PRB}.
+\item Choose \calctext{3:nCr}.
+\item Type the value of $x$.
+\item Hit \calcbutton{ENTER}.
+\end{enumerate}
+Example: \calctext{5 nCr 3} means {5 choose 3}.\end{onebox}
+
+\begin{onebox}{\videohref{casio_binomial_coefficient} Casio fx-9750GII: Computing the binomial coefficient \MakeLowercase{\pmb{${n\choose x}$}}}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Navigate to the \calctext{RUN-MAT} section (hit \calcbutton{MENU}, then hit \calcbutton{1}).
+\item Enter a value for $n$.
+\item Go to \calctext{CATALOG} (hit buttons \calcbutton{SHIFT} and then \calcbutton{7}).
+\item Type \calctext{C} (hit the \calcbutton{ln} button), then navigate down to the bolded \calctext{\textbf{C}} and hit \calcbutton{EXE}.
+\item Enter the value of $x$. Example of what it should look like: \calctext{7\textbf{C}3}.
+\item Hit \calcbutton{EXE}.
+\end{enumerate}
+\end{onebox}
+
+\begin{onebox}{\videohref{ti84_binomial_formula} TI-84: Computing the binomial formula, \pmb{$P(X = \MakeLowercase{x)={n\choose x}p^x(1-p)^{n-x}}$}}
+\label{binomialformula}
+Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{binompdf} to evaluate the probability of \emph{exactly} $x$ occurrences out of $n$ independent trials of an event with probability $p$. 
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Select \calcbutton{2ND} \calcbutton{VARS} (i.e. \calctext{DISTR})
+\item Choose \calctext{A:binompdf} (use the down arrow to scroll down).
+\item Let \calctext{trials} be $n$.
+\item Let \calctext{p} be $p$
+\item Let \calctext{x value} be $x$.
+\item Select \calctext{Paste} and hit \calcbutton{ENTER}.\vspace{-1.5mm}
+\end{enumerate}
+TI-83: Do step 1, choose \calctext{0:binompdf}, then enter $n$, $p$, and $x$ separated by commas:\\
+	\calctext{binompdf(n,~p,~x)}. Then hit \calcbutton{ENTER}. 
+\end{onebox}
+
+\begin{onebox}{\videohref{ti84_binomial_cdf} TI-84: Computing \pmb{$P(X \le \MakeLowercase{x)= {n\choose 0}p^0(1-p)^{n-0} + ... + {n\choose x}p^x(1-p)^{n-x}}$} }
+\label{binomialcumulative}
+Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{binomcdf} to evaluate the cumulative probability of \emph{at most} $x$ occurrences out of $n$ independent trials of an event with probability $p$. 
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Select \calcbutton{2ND} \calcbutton{VARS} (i.e. \calctext{DISTR})
+\item Choose \calctext{B:binomcdf} (use the down arrow).
+\item Let \calctext{trials} be $n$.
+\item Let \calctext{p} be $p$
+\item Let \calctext{x value} be $x$.
+\item Select \calctext{Paste} and hit \calcbutton{ENTER}.\vspace{-1.5mm}
+\end{enumerate}
+TI-83: Do steps 1-2, then enter the values for $n$, $p$, and $x$ separated by commas as follows: \calctext{binomcdf(n,~p,~x)}. Then hit \calctext{ENTER}.\end{onebox}
+
+
+\begin{onebox}{\videohref{casio_binomial_calculations} Casio fx-9750GII: Binomial calculations}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Navigate to \calctext{STAT} (\calcbutton{MENU}, then hit \calcbutton{2}).
+\item Select \calctext{DIST} (\calcbutton{F5}), and then \calctext{BINM} (\calcbutton{F5}).
+\item Choose whether to calculate the binomial distribution for a specific number of successes, $P(X = k)$, or for a range $P(X \leq k)$ of values (0~successes, 1~success, ..., $x$~successes).\vspace{-1.5mm}
+  \begin{itemize}
+  \setlength{\itemsep}{0mm}
+  \item For a specific number of successes, choose \calctext{Bpd} (\calcbutton{F1}). %, which stands for \emph{binomial probability distribution}.
+  \item To consider the range 0, 1, ..., $x$ successes, choose \calctext{Bcd}(\calcbutton{F1}). %, which stands for \emph{binomial cumulative distribution}.
+  \end{itemize}
+\item If needed, set \calctext{Data} to \calctext{Variable} (\calctext{Var} option, which is \calcbutton{F2}).
+\item Enter the value for \calctext{x} ($x$), \calctext{Numtrial} ($n$), and \calctext{p} (probability of a success).
+\item Hit \calctext{EXE}.
+\end{enumerate}
+\end{onebox}
+
+\begin{exercisewrap}
+\begin{nexercise}
+Find the number of ways of arranging 3 blue marbles and 2 red marbles.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Here \calctext{$n$} = 5 and \calctext{$x$} = 3.  Doing 5 \calctext{nCr} 3 gives the number of combinations as 10.}
+
+\B{\newpage}
+\begin{exercisewrap}
+\begin{nexercise}There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{with replacement}. Find the probability you get exactly 3 blue marbles.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Here, $n$ = 5, $p$ = 4/13, and $x$ = 3, so set \calctext{trials} = 5, \calctext{p} = 4/13 and \calctext{x value} = 3.  The probability is 0.1396.}
+
+\begin{exercisewrap}
+\begin{nexercise}There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles \emph{with replacement}. Find the probability you get \emph{at most} 3 blue marbles (i.e. less than or equal to 3 blue marbles).\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Similarly, set \calctext{trials} = 5, \calctext{p} = 4/13 and \calctext{x value} = 3.  The cumulative probability is 0.9662.}
+
+
+
+%%
+\subsection{An example of a binomial distribution}
+
+\newcommand{\oposprob}[0]{0.35}
+\newcommand{\oposprobcomp}[0]{0.65}
+
+In Guided Practice~\ref{bloodTypeOPos}, we asked various probability questions regarding the number of people out of 4 with blood type O+.  We verified that the scenario was binomial and that each problem could be solved using the binomial formula. Instead of looking at it piecewise, we could describe the entire \emph{distribution} of possible values and their corresponding probabilities. Since there are 4 people, there are several possible outcomes for the number who might have blood type O+: 0, 1, 2, 3, 4.
+We can make a distribution table with these outcomes.
+Recall that the probability of a randomly sampled person being blood type O+ is about~\oposprob{}.
+
+The \termsub{binomial distribution}{distribution!binomial}
+is used to describe
+the number of successes in a fixed number of trials.
+This is different from the geometric distribution,
+which described the number of trials we must wait before
+we observe a success.
+
+\begin{figure}[h]
+\begin{minipage}[c]{0.37\textwidth}\centering%
+\begin{tabular}{l l}
+$x_i$ & $P(x_i)$ \\
+\hline
+0 &  ${4\choose 0}(\oposprob{})^0(\oposprobcomp{})^{4} = 0.179$ \vspace{1mm}\\
+1 &  ${4\choose 1}(\oposprob{})^1(\oposprobcomp{})^{3} = 0.384$  \vspace{1mm}\\
+2 & ${4\choose 2}(\oposprob{})^2(\oposprobcomp{})^{2} = 0.311$  \vspace{1mm}\\
+3 & ${4\choose 3}(\oposprob{})^3(\oposprobcomp{})^{1} = 0.111$  \vspace{1mm}\\
+4 & ${4\choose 4}(\oposprob{})^4(\oposprobcomp{})^{0} = 0.015$  \vspace{1mm}\\
+\hline
+\end{tabular}
+\end{minipage}
+\begin{minipage}[c]{0.6\textwidth}\centering%
+\Figure{0.95}{oPositive4}
+\end{minipage}
+\caption{Probability distribution for the number with blood type O+ in a random sample of 4 people. This is a binomial distribution. Correcting for rounding error, the probabilities add up to~1, as they must for any probability distribution.}
+\label{oPositive4}
+\label{binomDistrOPositive}
+\end{figure}
+
+
+
+%%
+\subsection{The mean and standard deviation of a binomial distribution}
+
+Since this is a probability distribution we could find its mean and
+standard deviation using the formulas from Chapter~\ref{probability}.
+Those formulas require a lot of calculations, so it is fortunate there's
+an easier way to compute the mean and standard deviation for a binomial
+random variable.
+
+\begin{onebox}{Mean and standard deviation of the binomial distribution}
+For a binomial distribution with parameters $n$ and $p$, where $n$ is the number of trials and $p$ is the probability of a success, the mean and standard deviation of the number of observed successes are\vspace{-2mm}
+\begin{align*}
+\mu_{\scriptscriptstyle{X}} &= np
+	&\sigma_{\scriptscriptstyle{X}} &= \sqrt{np(1-p)}
+\end{align*}
+\end{onebox}
+
+\begin{examplewrap}
+\begin{nexample}{If the probability that a person has blood type O+ is \oposprob{} and you have 40 randomly selected people, about how many would you expect to have blood type O+? What is the standard deviation of the number of people who would have blood type O+ among the 40 people?}
+We are asked to determine the expected number (the mean) and the standard deviation, both of which can be directly computed from the formulas above. 
+ \begin{align*}
+\mu_{\scriptscriptstyle{X}}&=np = 40(\oposprob{}) = 14 \\
+ \sigma_{\scriptscriptstyle{X}} &= \sqrt{np(1-p)} = \sqrt{40(\oposprob{})(\oposprobcomp{})} = 3.0
+\end{align*}%
+\end{nexample}
+\end{examplewrap}
+
+The exact distribution is shown in Figure~\ref{oPositive40}.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{ch_probability/figures/fdicHistograms/fdicHistograms}
-\caption{Four hollow histograms of US adults heights with varying bin widths.}
-\label{fdicHistograms}
+\Figure{0.7}{oPositive40}
+\caption{Distribution for the number of people with blood type O+ in a random sample of size 40, where $p=\oposprob{}$.  The distribution is binomial and is centered on~14 with a standard deviation of 3.  }
+\label{oPositive40}
 \end{figure}
-
-\begin{examplewrap}
-\begin{nexample}{What proportion of the sample is between 180 cm and 185 cm tall (about 5'11" to 6'1")?}\label{contDistProb}
-We can add up the heights of the bins in the range 180 cm and 185 and divide by the sample size. For instance, this can be done with the two shaded bins shown in Figure~\ref{usHeightsHist180185}. The two bins in this region have counts of 195,307 and 156,239 people, resulting in the following estimate of the probability:
-\begin{eqnarray*}
-\frac{195307+156239}{\text{3,000,000}} = 0.1172
-\end{eqnarray*}
-This fraction is the same as the proportion of the histogram's area that falls in the range 180 to 185~cm.
-\end{nexample}
-\end{examplewrap}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.95\textwidth]{ch_probability/figures/usHeightsHist180185/usHeightsHist180185}
-\caption{A histogram with bin sizes of 2.5 cm. The shaded region represents individuals with heights between 180 and 185 cm.}
-\label{usHeightsHist180185}
-\end{figure}
-
-\D{\newpage}
-
-Examine the transition from a boxy hollow histogram in the top-left of Figure~\ref{fdicHistograms} to the much smoother plot in the lower-right. In this last plot, the bins are so slim that the hollow histogram is starting to resemble a smooth curve. This suggests the population height as a \emph{continuous} numerical variable might best be explained by a curve that represents the outline of extremely slim bins.
-
-This smooth curve represents a \term{continuous distribution}, also called a \textbf{density curve}.  Such a distribution is shown in Figure~\ref{fdicHeightContDist} overlaid on a histogram of the sample. A  continuous distribution has a special property: the total area under the curve is 1.
-
-\begin{figure}[tbh]
-\centering
-\includegraphics[width=0.87\textwidth]{ch_probability/figures/fdicHeightContDist/fdicHeightContDist}
-\caption{The continuous probability distribution of heights for US adults.}
-\label{fdicHeightContDist}
-\end{figure}
-
-\index{hollow histogram|)}
 
 
 %%
-\subsection{Probabilities from continuous distributions}
 
-We computed the proportion of individuals with heights 180 to 185 cm in Example~\ref{contDistProb} as a fraction:
-\begin{eqnarray*}
-\frac{\text{number of people between 180 and 185}}{\text{total sample size}}
-\end{eqnarray*}
-We found the number of people with heights between 180 and 185 cm by determining the fraction of the histogram's area in this region. Similarly, we can use the area in the shaded region under the curve to find a probability (with the help of a computer):
-\begin{eqnarray*}
-P(\text{\var{height} between 180 and 185})
-	= \text{area between 180 and 185}
-	= 0.1157
-\end{eqnarray*}
-The probability that a randomly selected person is between 180 and 185 cm is 0.1157. This is very close to the estimate from Example~\ref{contDistProb}: 0.1172.
 
+
+
+
+%%
+\subsection{Normal approximation to the binomial distribution}
+
+\index{distribution!binomial!normal approximation|(}
+
+The binomial formula is cumbersome when the sample size ($n$) is large, particularly when we consider a range of observations.
+
+\begin{examplewrap}
+\begin{nexample}
+{Find the probability that fewer than 12 out of 40 randomly selected people would have blood type O+, where probability of blood type O+ is \oposprob{}.}
+This is equivalent to asking, what is the probability of observing $X=0, 1, 2, ..., \text{ or } 11$ with blood type O+ in a sample of size 40 when $p=0.35$?  We previously verified that this scenario is binomial.  We can compute each of the 12 probabilities using the binomial formula and add them together to find the answer:
+ \begin{align*}
+  &P(X=0\text{ or }X=1\text{ or }\cdots\text{ or } X=11) \\
+	&\qquad = P(X=0) + P(X=1) + \cdots + P(X=11) \\
+	&\qquad = {40\choose 0}(\oposprob{})^0(\oposprobcomp{})^{40} + {40\choose 1}(\oposprob{})^1(\oposprobcomp{})^{39} + \cdots + {40\choose 11}(\oposprob{})^{11}(\oposprobcomp{})^{29}\\
+	&\qquad = 0.21
+  \end{align*}
+If the true proportion with blood type O+ in the population is $p = \oposprob{}$, then the probability of observing fewer than 12 in a sample of $n = 40$ is 0.21.
+\end{nexample}
+\end{examplewrap}
+\label{exactbin}
+
+The computations in Example~\ref{exactbin} are tedious and long.  In general, we should avoid such work if an alternative method exists that is faster, easier, and still accurate. Recall that calculating probabilities of a range of values is much easier in the normal model. In some cases we may use the normal distribution to estimate binomial probabilities. While a normal approximation for the distribution in Figure~\ref{oPositive4} when the sample size was $n = 4$ would not be appropriate, it might not be too bad for the distribution in Figure~\ref{oPositive40} where $n = 40$.  We might wonder, when is it reasonable to use the normal model to approximate a binomial distribution?
 
 \begin{exercisewrap}
 \begin{nexercise}
-Three US adults are randomly selected. The probability a single adult is between 180 and 185 cm is 0.1157.\footnotemark \vspace{-1.5mm}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item[(a)] What is the probability that all three are between 180 and 185 cm tall?
-\item[(b)] What is the probability that none are between 180 and 185 cm?
-\end{enumerate}
+Here we consider the binomial model when the probability of a success is $p=0.10$. Figure~\ref{fourBinomialModelsShowingApproxToNormal} shows four hollow histograms for simulated samples from the binomial distribution using four different sample sizes: $n=10$, 30, 100, 300. What happens to the shape of the distributions as the sample size increases?  How does the binomial distribution change as $n$ gets larger?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Brief answers: (a) $0.1157 \times 0.1157 \times 0.1157 = 0.0015$. (b) $(1-0.1157)^3 = 0.692$}
+\footnotetext{The distribution is transformed from a blocky and skewed distribution into one that rather resembles the normal distribution in the last hollow histogram.}
 
-\D{\newpage}
+\begin{figure}[h]
+\centering
+\Figure{0.75}{fourBinomialModelsShowingApproxToNormal}
+\caption{Hollow histograms of samples from the binomial model when $p=0.10$. The sample sizes for the four plots are $n=10$, 30, 100, and 300, respectively.}
+\label{fourBinomialModelsShowingApproxToNormal}
+\end{figure}
+
+The shape of the binomial distribution depends upon both $n$ and $p$.     Here we introduce a rule of thumb for when normal approximation of a binomial distribution is reasonable.  We will use this rule of thumb in many applications going forward.  
+
+\begin{onebox}{Normal approximation of the binomial distribution}
+The binomial distribution with probability of success $p$ is nearly normal when the sample size $n$ is sufficiently large that $np\ge 10$ and $n(1-p)\ge 10$. The approximate normal distribution has parameters corresponding to the mean and standard deviation of the binomial distribution:\vspace{-1.5mm}
+\begin{align*}
+\mu &= np
+&&\sigma= \sqrt{np(1-p)}
+\end{align*}\end{onebox}
+
+
+The normal approximation may be used when computing the range of many possible successes. For instance, we may apply the normal distribution to the setting described in Figure~\ref{oPositive40}.
+
 
 \begin{examplewrap}
-\begin{nexample}{What is the probability that a randomly selected person is \textbf{exactly} 180~cm? Assume you can measure perfectly.}
-\label{probabilityOfExactly180cm}
-This probability is zero. A person might be close to 180 cm, but not exactly 180 cm tall. This also makes sense with the definition of probability as area; there is no area captured between 180~cm and 180~cm.
+\begin{nexample}{Use the normal approximation to estimate the probability of observing fewer than 12 with blood type O+ in a random sample of 40, if the true proportion with blood type O+ in the population is $p=\oposprob{}$.}
+\label{approxBinomialForN40P35OPosExample}%
+First we verify that $np$ and $n(1-p)$ are at least 10 so that we can apply the normal approximation to the binomial model:
+\begin{align*}
+np& = 40(\oposprob{})=14\ge 10
+&
+n(1-p)& = 40(\oposprobcomp{}) = 26\ge 10
+\end{align*}
+With these conditions checked, we may use the normal distribution to approximate the binomial distribution with the following mean and standard deviation:
+\begin{align*}
+\mu &= np = 40(\oposprob{})=14\\
+\sigma &= \sqrt{np(1-p)} = \sqrt{40(\oposprob{})(\oposprobcomp{})} = 3.0
+\end{align*}
+We want to find the probability of observing fewer than 12 with blood type O+ using this model. We note that 12 is less than 1~standard deviation below the mean:
+\begin{center}
+\Figures{0.4}{bloodtypeOpos}{bloodtypeOpos40}
+\end{center}
+Next, we compute the Z-score as $Z=\frac{12 - 14}{3} = -0.67$ to find the shaded area in the picture: $P(Z < -0.67) = 0.25$. This probability of 0.25 using the normal approximation is reasonably close to the true probability of 0.21 computed using the binomial distribution.
+\end{nexample}
+\end{examplewrap}
+
+
+
+\begin{examplewrap}
+\begin{nexample}{Use the normal approximation to estimate the probability of observing fewer than 120 people with blood type O+ in a random sample of 400, if the true proportion with blood type O+ in the population is $p=\oposprob{}$.}
+\label{approxBinomialForN400P20SmokerExample}%
+We have previously verified that the binomial model is reasonable for this context.
+Now we will verify that both $np$ and $n(1-p)$ are at least 10 so we can apply the normal approximation to the binomial model:
+\begin{align*}
+np&=400(\oposprob{})=140\ge 10
+&
+n(1-p)&=400(\oposprob{})=260\ge 10
+\end{align*}
+With these conditions checked, we may use the normal approximation in place of the binomial distribution with the following mean and standard deviation:
+\begin{align*}
+\mu &= np = 400(\oposprob{})=140\\
+\sigma &= \sqrt{np(1-p)} = \sqrt{400(\oposprob{})(\oposprobcomp{})}= 9.5
+\end{align*}
+We want to find the probability of observing fewer than 120 with blood type O+ using this model. We note that 120 is just over 2~standard deviations below the mean:
+\begin{center}
+\Figures{0.48}{bloodtypeOpos}{bloodtypeOpos400}
+\end{center}
+Next, we compute the Z-score as $Z=\frac{120 - 140}{9.5} = -2.1$ to find the shaded area in the picture: $P(Z < -2.1) = 0.0179$. This probability of 0.0179 using the normal approximation is very close to the true probability of 0.0196 from the binomial distribution.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Suppose a person's height is rounded to the nearest centimeter. Is there a chance that a random person's \textbf{measured} height will be 180~cm?\footnotemark
+Use normal approximation, if applicable, to estimate the probability of getting greater than 15 sixes in 100 rolls of a fair die.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{This has positive probability. Anyone between 179.5 cm and 180.5 cm will have a \emph{measured} height of 180 cm. This is probably a more realistic scenario to encounter in practice versus Example~\ref{probabilityOfExactly180cm}.}
+\footnotetext{$np=100(1/6)=16.7\ge 10$ and 
+$n(1-p)=100(5/6)=83.3\ge 10$  
 
-\index{data!FCID|)}
+$\mu=np=100(1/6)=16.7; \sigma=\sqrt{np(1-p)}=\sqrt{100(1/6)(5/6)}=3.7$ 
 
+$Z=\frac{15 - 16.7}{3.7} = -0.46$. 
 
-\D{\newpage}
+$P(Z > -0.46) = 0.677$
+}
+
 
 %%
+\subsection{Normal approximation breaks down on small intervals (special topic)}
+
+\begin{onebox}{The normal approximation may fail on small intervals}
+{The normal approximation to the binomial distribution tends to perform poorly when estimating the probability of a small range of counts, even when the conditions are met.}
+\end{onebox}
+
+We consider again our example where 35\% of people are blood type O+.  Suppose we want to find the probability that between 129 and 131 people, inclusive, have blood type O+ in a random sample of 400 people.  We want to compute the probability of observing 129, 130, or 131 people with blood type O+ when $p=0.20$ and $n=400$.  With such a large sample, we might be tempted to apply the normal approximation and use the range 129 to 131. However, we would find that the binomial solution and the normal approximation notably differ:
+\begin{align*}
+\text{Binomial:}&\ 0.0732
+&\text{Normal:}&\ 0.0483
+\end{align*}
+We can identify the cause of this discrepancy using Figure~\ref{normApproxToBinomFail}, which shows the areas representing the binomial probability (outlined) and normal approximation (shaded). Notice that the width of the area under the normal distribution is 0.5 units too slim on both sides of the interval. The binomial distribution is a discrete distribution, and the each bar is centered over an integer value. Looking closely at Figure~\ref{normApproxToBinomFail}, we can see that the bar corresponding to 129 begins at 128.5 and ends at 129.5, the bar corresponding to 131 begins at 130.5 and ends at 131.5, etc.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{ch_distributions/figures/normApproxToBinomFail/normApproxToBinomFail-n400-p35}
+\caption{A normal curve with the area between 129 and 131 shaded. The outlined area from 128.5 to 131.5 represents the exact binomial probability.}
+\label{normApproxToBinomFail}
+\end{figure}
+
+
+\begin{onebox}{Improving accuracy of the normal approximation to the binomial distribution}
+The normal approximation to the binomial distribution for intervals of values is usually improved if cutoff values for the lower end of a shaded region are reduced by 0.5 and the cutoff value for the upper end are increased by 0.5. This correction is called the continuity correction and accounts for the fact that the binomial distribution is discrete.\end{onebox}
+
+\begin{examplewrap}
+\begin{nexample}{Use the method described to find a more accurate estimate for the probability of observing 129, 130, or 131 people with blood type O+ in 400 randomly selected people when $p=0.35$.}
+Instead of standardizing 129 and 131, we will standardize 128.5 and 131.5:
+\begin{align*}
+Z_{left} &= \frac{128.5-140}{9.5} = -1.263 \\
+Z_{right} &= \frac{131.5-140}{9.5} = -0.895 \\
+P(-1.263 &< Z < -0.895) = 0.0772
+\end{align*}
+The probability 0.0772 is much closer to the true value of 0.0732 than the previous estimate of 0.0483 we calculated using normal approximation without the continuity correction.
+\end{nexample}
+\end{examplewrap}
+
+It is always possible to apply the continuity correction when finding a normal approximation to the binomial distribution. However, when $n$ is very large or when the interval is wide, the benefit of the modification is limited since the added area becomes negligible compared to the overall area being calculated.
+
+\index{distribution!binomial!normal approximation|)}
+\index{distribution!binomial|)}
+
+
+\B{\newpage}
+
 \subsection*{Section summary}
+
 \begin{itemize}
-\item Histograms use bins with a specific width to display the distribution of a variable.  When there is enough data and the data does not have gaps, as the bin width gets smaller and smaller, the histogram begins to resemble a smooth curve, or a \term{continuous distribution}. 
+\item $n\choose x$, the \term{binomial coefficient}, describes the number of combinations for arranging $x$ successes among $n$ trials.  $n\choose x$ $=\frac{n!}{x!(n-x)!}$, where $n!=1\times 2\times 3\times...n$, and $0!$=0.
 
-\item Continuous distributions are often used to approximate relative frequencies and probabilities.  In a continuous distribution, the \emph{area under the curve} corresponds to relative frequency or probability.  The total area under a continuous probability distribution must equal 1.  
+\item The \term{binomial formula} can be used to find the probability that something happens \textit{exactly x times in n trials}.  Suppose the probability of a single trial being a success is $p$. Then the probability of observing exactly $x$ successes in $n$ independent trials is given by\vspace{-1mm}
+\begin{eqnarray*}
+{n\choose x}p^x(1-p)^{n-x}   \quad= \quad  \frac{n!}{x!(n-x)!}p^x(1-p)^{n-x}
+\end{eqnarray*}
 
-\item Because the area under the curve for a single point is zero, the probability of any specific value is zero.  This implies that, for example, $P(X < 5) = P(X \le 5)$ for a continuous probability distribution.
+\item To apply the binomial formula, the events must be \term{independent} from trial to trial.  Additionally, $n$, the number of trials must be fixed in advance, and $p$, the probability of the event occurring in a given trial, must be the same for each trial.
 
-\item Finding areas under curves is challenging; it is common to use distribution tables, calculators, or other technology to find such areas.
+\item To use the binomial formula, first confirm that the binomial conditions are met.  Next, identify the number of trials $n$, the number of times the event is to be a ``success'' $x$, and the probability that a single trial is a success $p$. Finally, plug these three numbers into the formula to get the probability of exactly $x$ successes in $n$ trials.
+
+
+\item To find a probability involving \emph{at least} or \emph{at most}, first determine if the scenario is binomial.  If so, apply the binomial formula as many times as needed and add up the results.  e.g. $P(\text{at least 3 Heads in 5 tosses of a fair coin})=P(\text{exactly 3 Heads})+P(\text{exactly 4 Heads})+P(\text{exactly 5 Heads})$, where each probability can be found using the binomial formula.
+
+
+\item The distribution of the \textit{number of successes} in $n$ independent trials gives rise to a \term{binomial distribution}.  If X has a binomial distribution with parameters $n$ and $p$, then \\
+$P(X=x) = {n\choose x}p^x(1-p)^n-x$, where $x=0,1,2,3\dots,n$.
+
+\item To write out a binomial probability \textbf{distribution table}, list all possible values for $x$, the number of successes, then use the binomial formula to find the probability of each of those values.  
+
+
+\item If \textit{X} follows a binomial distribution with parameters $n$ and $p$, then:
+\begin{itemize}\vspace{-1mm}
+\setlength{\itemsep}{0mm}
+\item The mean is given by $\mu_{\scriptscriptstyle{X}} = np$. \quad (\emph{center})
+\item The standard deviation is given by $\sigma_{\scriptscriptstyle{X}} = \sqrt{np(1-p)}$. \quad (\emph{spread})
+\item When $np\ge 10$ and $n(1-p)\ge 10$, the binomial distribution is approximately normal.  \quad (\emph{shape})
+\end{itemize}
 
 \end{itemize}
 
 
+%%%%%%%%%%Section exercises
+{\input{ch_probability/TeX/binomial_distribution.tex}}
 
-%%%%%%Section Exercises
-{\input{ch_probability/TeX/continuous_distributions.tex}}
+
 
 
 %______________________________________________
@@ -3059,7 +3618,6 @@ Suppose a person's height is rounded to the nearest centimeter. Is there a chanc
 \item The \textbf{General Addition Rule} for \textbf{or} probabilities (union), along with the special case when events are \textbf{mutually exclusive}.  
 \item The \textbf{Conditional Probability Rule}.
 \item Tree diagrams and \textbf{Bayes' Theorem} to solve more complex conditional problems.
-\item The \textbf{binomial formula} for finding the probability of exactly $x$ successes in $n$ independent trials.
 \item \textbf{Simulations} and the use of random digits to estimate probabilities.
 \end{itemize}
 Fundamental to all of these problems is understanding when events are independent and when they are mutually exclusive.  Two events are \textbf{independent} when the outcome of one does not affect the outcome of the other, i.e. $P(A | B) = P(A)$.  Two events are \textbf{mutually exclusive} when they cannot both happen together, i.e. $P(A \text{ and } B) = 0$.
@@ -3067,8 +3625,7 @@ Fundamental to all of these problems is understanding when events are independen
 \\
 Moving from solving individual probability questions to studying probability distributions helps us better understand chance processes and quantify expected chance variation. 
 \begin{itemize}
-\item For a \term{discrete probability distribution}, the \textbf{sum} of the probabilities must equal 1.  For a \term{continuous probability distribution}, the \textbf{area under the curve} represents a probability and the total area under the curve must equal~1.
-
+\item For a \term{discrete probability distribution}, the \textbf{sum} of the probabilities must equal 1.  
 \item As with any distribution, one can calculate the mean and standard deviation of a probability distribution.  In the context of a probability distribution, the \textbf{mean} and \textbf{standard deviation} describe the average and the typical  deviation from the average, respectively, after many, many repetitions of the chance process.  
 
 \item A probability distribution can be summarized by its \textbf{center} (mean, median), \textbf{spread} (SD, IQR), and \textbf{shape} (right skewed, left skewed, approximately symmetric).  
@@ -3077,6 +3634,10 @@ Moving from solving individual probability questions to studying probability dis
 constant.
 
 \item The mean of the sum of two random variables equals the sum of the means.  However, this is not true for standard deviations.  Instead, when finding the standard deviation of a sum or difference of random variables, take the square root of the sum of each of the standard deviations squared.
+
+\item The \textbf{geometric distribution} provides a model for the number of trials until the first success, when the trials are independent.
+\item The \textbf{binomial distribution} provides a model for the number of successes in $n$ independent trials.
+\item The geometric distribution is always right skewed.  However, when the success-failure rule is met (at least 10 success and 10 failures), the binomial distribution can be modeled using a normal distribution with mean = $np$ and standard deviation $\sqrt{np(1-p)}$. 
 
 \end{itemize}
 The study of probability is useful for measuring uncertainty and assessing risk.  In addition, probability serves as the foundation for inference, providing a framework for evaluating when an outcome falls outside of the range of what would be expected by chance alone.

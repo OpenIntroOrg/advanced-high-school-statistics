@@ -4,6 +4,7 @@
   \label{ch_summarizing_data}
   \chaptersection{numericalData}
 \chaptersection{numericalSummariesAndBoxPlots}
+\chaptersection{normalDist}
   \chaptersection{categoricalData}
   \chaptersection{caseStudyMalariaVaccine}
 \end{chapterpage}
@@ -536,8 +537,6 @@ How do you know if a value is ``far" from the center?  What does it mean to an o
 
 \item Understand the effect changing units has on each of the summary quantities.
 
-\item Use the empirical rule to summarize approximately normal distributions.
-
 \item Use quartiles, percentiles, and Z-scores to measure the relative position of a data point within the data set.
 
 \item Compare the distribution of a numerical variable using dot plots / histograms with the same scale, back-to-back stem-and-leaf plots, or parallel box plots.  Compare the distributions with respect to center, spread, shape, and outliers.
@@ -701,39 +700,22 @@ It is useful to think of the standard deviation as the ``typical" or ``average" 
 
 
 \begin{examplewrap}
-\begin{nexample}{Earlier we reported that the mean family income in the U.S. in 2017 was \$99,114. Estimating the standard deviation of income as approximately \$50,000, is a family income of \$60,000 far from the mean or relatively close to the mean?}
+\begin{nexample}{Based on American Community Survey data, the mean family income in the U.S. in 2017 was \$99,114.\footnotemark \ Estimating the standard deviation of income as approximately \$50,000, is a family income of \$60,000 far from the mean or relatively close to the mean?}
 Because \$60,000 is less that one standard deviation from the mean, it is relatively close to the mean. If the value were more than 2 standard deviations away from the mean, we would consider it far from the mean.
 \end{nexample}
 \end{examplewrap}
+\footnotetext{\url{https://data.census.gov/cedsci/table?hidePreview=true&tid=ACSST1Y2017.S1901}} 
 
-
-
-%%%
-\subsection{The empircal rule for normal distributions}
-
-\Add{The standard deviation gives us as sense of how much spread or variability there is within a data set.  Some data sets have a special property:  they follow a symmetric, bell-shaped distribution, known as the \term{normal curve}.  
-
-}
-In Chapter~4, we encounter a bell-shaped distribution known as the \emph{normal distribution}.  
-
-The \term{empirical rule} tells us that for normal distributions, about 68\% of the data will be within one standard deviation of the mean, about 95\% will be within two standard deviations of the mean, and about 99.7\% will be within three standard deviations of the mean. \Add{When data follow an approximately normal distribution, then the empircal rule can provide easy estimates for what percent fall within 1, 2, and 3 standard deviations from the mean. This will be useful in a wide range of practical settings.}. However, as seen in Figures~\ref{emailCharactersDotPlotStackedRoundedWithSD} and~\ref{severalDiffDistWithSdOf1}, these percentages generally do not hold if the distribution is not close to normal.  
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.72\textwidth]{ch_distributions/figures/6895997/6895997}
-\caption{Probabilities for falling within 1, 2, and 3 standard deviations of the mean in a normal distribution.}
-\label{6895997}
-\end{figure}
-
+In the next section, we encounter a bell-shaped distribution known as the \emph{normal distribution}.  The \term{empirical rule} tells us that for nearly normal distributions, about 68\% of the data will be within one standard deviation of the mean, about 95\% will be within two standard deviations of the mean, and about 99.7\% will be within three standard deviations of the mean. However, as seen in Figures~\ref{emailCharactersDotPlotStackedRoundedWithSD} and~\ref{severalDiffDistWithSdOf1}, these percentages generally do not hold if the distribution is not bell-shaped.  
 
 \begin{figure}[h]
 \centering
 \Figures{}{emailCharactersDotPlot}
     {emailCharactersDotPlotStackedRoundedWithSD}
-\caption{In the \var{num\_\hspace{0.3mm}char} data, 40 of the 50 emails (80\%) are within 1~standard deviation of the mean, and 47 of the 50 emails (94\%) are within 2 standard deviations. The empirical rule does not hold well for skewed data, as shown in this example.}
+\caption{In the \var{num\_\hspace{0.3mm}char} data, 40 of the 50 emails (80\%) are within 1~standard deviation of the mean, and 47 of the 50 emails (9
+4\%) are within 2 standard deviations. The empirical rule does not hold well for skewed data, as shown in this example.}
 \label{emailCharactersDotPlotStackedRoundedWithSD}
 \end{figure}
-
 
 \begin{figure}
 \centering
@@ -748,75 +730,6 @@ On page~\pageref{shapeFirstDiscussed}, the concept of shape of a distribution wa
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Figure~\ref{severalDiffDistWithSdOf1} shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a~distribution.}
-
-\begin{exercisewrap}
-\begin{nexercise}
-For which of the distributions in Figure~\ref{severalDiffDistWithSdOf1} do you think the empirical rule will provide good estimates?  That is, which of the distributions do you expect approximately 68\% to fall within one standard deviation of the mean and approximately 95\% to fall within 2 standard deviations of the mean?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{While the top distribution in Figure~\ref{severalDiffDistWithSdOf1} is symmetric, it does not follow an approximately normal shape.  In fact, 100\% fall within 1 standard deviation of the mean.  The bottom distribution is right skewed, so we do not expect the emprical rule to be that accurate.  Only the middle distribution is approximately normal.  We expect the emprical rule to hold quite well for this distribution.}
-
-\begin{exercisewrap}
-\begin{nexercise}
-SAT scores closely follow the normal model with mean $\mu = 1100$ and standard deviation $\sigma = 200$. (a) About what percent of test takers score 700 to 1500? (b) About what percent score between 1100 and 1500?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{(a) 700 and 1500 represent two standard deviations above and below the mean.  Because the scores are approximately normally distributed, by the empirical rule, we can estimate that about 95\% of test takers will score between 700 and 1500. (b)~Since the normal model is symmetric, then half of the test takers from part~(a) are estimated to score between 1100 and 1500.  $\frac{95\%}{2}=47.5\%$, so we estimate that 47.5\% score between 1100 and 1500.}
-
-
-\D{\newpage}
-
-%%
-\subsection{Evaluating the normal approximation (special topic)}
-\label{assessingNormal}
-
-It is important to remember normality is always an approximation. Testing the appropriateness of the normal assumption is a key step in many data analyses.
-
-%\index{normal probability plot|(}
-
-The distribution of heights of US males is well approximated by the normal model. We are interested in proceeding under the assumption that the data are normally distributed, but first we must check to see if this is reasonable.
-
-There are two visual methods for checking the assumption of normality that can be implemented and interpreted quickly. The first is a simple histogram with the best fitting normal curve overlaid on the plot, as shown in the left panel of Figure~\ref{fcidMHeights}. The sample mean $\bar{x}$ and standard deviation $s$ are used as the parameters of the best fitting normal curve. The closer this curve fits the histogram, the more reasonable the normal model assumption. Another more common method is examining a \term{normal probability plot},\footnote{Also commonly called a quantile-quantile plot.} shown in the right panel of Figure~\ref{fcidMHeights}. The closer the points are to a perfect straight line, the more confident we can be that the data follow the normal model.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.78\textwidth]{ch_distributions/figures/fcidMHeights/fcidMHeights}
-\caption{A sample of 100 male heights. The observations are rounded to the nearest whole inch, explaining why the points appear to jump in increments in the normal probability plot.}
-\label{fcidMHeights}
-\end{figure}
-
-\Comment{check placement of figures}
-
-\begin{examplewrap}
-\begin{nexample}{Consider all NBA players from the 2018-2019 season presented in Figure~\ref{nbaNormal}.\footnotemark\,  Based on the graphs, are NBA player heights normally distributed? }
-We first create a histogram and normal probability plot of the NBA player heights. The histogram in the left panel is slightly left skewed, which contrasts with the symmetric normal distribution. The points in the normal probability plot do not appear to closely follow a straight line but show what appears to be a ``wave''. NBA player heights do not appear to come from a normal distribution.
-\end{nexample}
-\end{examplewrap}
-\footnotetext{These data were collected from \oiRedirect{textbook-nba_com}{www.nba.com}.}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{ch_distributions/figures/nbaNormal/nbaNormal}
-\caption{Histogram and normal probability plot for the NBA heights from the 2018-2019 season.}
-\label{nbaNormal}
-\end{figure}
-
-
-\begin{exercisewrap}
-\begin{nexercise} \label{normalQuantileExerciseAdditional}
-Figure~\ref{normalQuantileExerAdditional} shows normal probability plots for two distributions that are skewed. One distribution is skewed to the low end (left skewed) and the other to the high end (right skewed). Which is which?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Examine where the points fall along the vertical axis. In the first plot, most points are near the low end with fewer observations scattered along the high end; this describes a distribution that is right skewed. The second plot shows the opposite features, and this distribution is left skewed.}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.75\textwidth]{ch_distributions/figures/normalQuantileExer/normalQuantileExerAdditional}
-\caption{Normal probability plots for Guided Practice~\ref{normalQuantileExerciseAdditional}.}
-\label{normalQuantileExerAdditional}
-\end{figure}
-
-
 
 
 
@@ -836,22 +749,21 @@ The distribution of email character counts is unimodal and very strongly skewed 
 \end{nexample}
 \end{examplewrap}
 
-\Comment{change foundationsforinference ref}
-In this chapter we use standard deviation as a descriptive statistic to describe the variability in a given data set. In Chapter~\ref{foundationsForInference} we will use standard deviation to assess how close a sample mean is likely to be to the population mean.
+In this chapter we use standard deviation as a descriptive statistic to describe the variability in a given data set. In Chapter~\ref{ch_distributions} we will use standard deviation to assess how close a sample mean is likely to be to the population mean.
 
 
 \D{\newpage}
 
 %%
 \subsection{Z-scores}
-
+\label{zscores}
 
 
 Knowing how many standard deviations a value is from the mean is often more useful than simply knowing how far a value is from the mean.
 
 \begin{examplewrap}
 \begin{nexample}
-{Consider that the mean family income in the U.S. in 2017 was \$99,114. Let's round this to \$100,000 and estimate the standard deviation of income as \$50,000.  Using these estimates, how many standard deviations above the mean is an income of \$200,000?  }
+{Previously, we saw that the mean family income in the U.S. in 2017 was \$99,114. Let's round this to \$100,000 and estimate the standard deviation of income as \$50,000.  Using these estimates, how many standard deviations above the mean is a family income of \$200,000?  }
 The value \$200,000 is \$100,000 above the mean.  \$100,000 is 2 standard deviations above the mean.  This can be found by doing
   \begin{align*}
   \frac{200,000 - 100,000}{50,000} = 2
@@ -1067,7 +979,7 @@ There are no numbers less than -41, so there are no outliers on the low end. The
 \oiRedirect{desmos-1varstats}{ \includegraphics[width=0.95\textwidth]{ch_summarizing_data/figures/desmos1VarStats/desmos1VarStats}}
 \end{center}
 
-\noindent \\TI and Casio instructions
+\noindent \\Calculator instructions
 
 \begin{onebox}{\videohref{ti84_entering_data} TI-83/84: Entering data}
 The first step in summarizing data or making a graph is to  enter the data set into a list. Use \calcbutton{STAT}, \calctext{Edit}.
@@ -1279,6 +1191,7 @@ The distribution of vehicle prices tends to be right skewed, with a few luxury a
 \end{exercisewrap}
 \footnotetext{Buyers of a ``regular car'' should be concerned about the median price. High-end car sales can drastically inflate the mean price while the median will be more robust to the influence of those sales.}
 
+\B{\newpage}
 %%
 \subsection{Linear transformations of data}
 \label{linearTransformationOfData}
@@ -1289,8 +1202,6 @@ The original list has a mean of 3 and a standard deviation of 2. The new list: {
 \end{nexample}
 \end{examplewrap}
 \footnotetext{Here, the population standard deviation was used in the calculation. These properties can be proven mathematically using properties of sigma (summation).}
-
-\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{Start with the following list:  {1, 1, 5, 5}. Multiply all of the numbers by \mbox{-0.5}. What happens to the mean? What happens to the standard deviation? How do these compare to the mean and the standard deviation of the original list?}
@@ -1335,9 +1246,10 @@ Adding a constant to every value in a data set shifts the mean but does not affe
 \begin{nexample}{Consider the temperature example. How would converting from Celsuis to Fahrenheit affect the median? The IQR?}
 The median is affected in the same way as the mean and the IQR is affected in the same way as the standard deviation. To get the new median, multiply the old median by $9/5$ and add 32. The IQR is computed by subtracting $Q_1$ from $Q_3$. While $Q_1$ and $Q_3$ are each affected in the same way as the median, the additional 32 added to each will cancel when we take $Q_3 - Q_1$. That is, the IQR will be increase by a factor of $9/5$ but will be unaffected by the addition of~32.
 
-For a more mathematical explanation of the IQR calculation, see the footnote.\footnote{new IQR = $\left(\frac{9}{5} Q_3 + 32\right) - \left(\frac{9}{5} Q_1 + 32\right) = \frac{9}{5} \left(Q_3 - Q_1\right) = \frac{9}{5} \times \text{(old IQR)}$.}
+For a more mathematical explanation of the IQR calculation, see the footnote.\footnotemark
 \end{nexample}
 \end{examplewrap}
+\footnotetext{new IQR = $\left(\frac{9}{5} Q_3 + 32\right) - \left(\frac{9}{5} Q_1 + 32\right) = \frac{9}{5} \left(Q_3 - Q_1\right) = \frac{9}{5} \times \text{(old IQR)}$.}
 
 %%
 \subsection{Comparing numerical data across groups}
@@ -1663,22 +1575,548 @@ Figure~\ref{countyMedIncomeMap}?\footnotemark{}
 \item more than 2 standard deviations above or below the mean
 \item more than $1.5 \times IQR$ below $Q_1$ or above $Q_3$
 \end{itemize}
-Note: These rules of thumb generally produce different cutoffs.
 \item Mean and SD are sensitive to outliers.  Median and IQR are more robust and less sensitive to outliers.
 
-\item The \term{empirical rule} states that for normal distributions, about 68\% of the data will be within one standard deviation of the mean, about 95\% will be within two standard deviations of the mean, and about 99.7\% will be within three standard deviations of the mean.
+\item A \term{Z-score} represents the number of standard deviations a value in a data set is above or below the mean.  To calculate a \mbox{Z-score} use: $Z = \frac{x-\text{mean}}{SD}$.  
+
+\item \emph{Z-scores do not depend on units}.  When looking at distributions with different units or different standard deviations, \mbox{Z-scores} are useful for comparing how far values are away from the mean (relative to the distribution of the data). 
+
 \item \termsub{Linear transformations of data}{linear transformations of data}.  Adding a constant to every value in a data set shifts the mean but does not affect the standard deviation. Multiplying the values in a data set by a constant will multiply the mean and the standard deviation by that constant, except that the standard deviation must always remain positive. 
 
 \item \termsub{Box plots}{box plot} do not show the \textit{distribution} of a data set in the way that histograms do.
-Rather, they provide a visual depiction of the \term{5-number summary}, which consists of: $min$, $Q_1$, $Q_2$, $Q_3$, $max$.
-It is important to be able to identify the median, $IQR$, and direction of skew from a box plot.  
-
+Rather, they provide a visual depiction of the \term{5-number summary}, which consists of: $min$, $Q_1$, $Q_2$, $Q_3$, $max$.  While a box plot does not indicate modes, it can show skew and outliers.  
 
 \end{itemize}
 
 
 %%%%%%%%%%%Section Exercises
 {\input{ch_summarizing_data/TeX/numerical_summaries_and_boxplots.tex}}
+
+
+%__________________________________________________
+\section[Normal distribution]{Normal distribution}
+\label{normalDist}
+
+\sectionintro{
+\noindent%
+What proportion of adults have systolic blood pressure above 140?  What is the probability of getting more than 250 heads in 400 tosses of a fair coin?
+If the average weight of a piece of carry-on luggage is 11 pounds, what is the probability that 200 random carry on pieces will weigh more than 2500 pounds?
+If 55\% of a population supports a certain candidate, what is the probability that she will have less than 50\% support in a random sample of size 200? \vspace{3mm}
+
+\noindent%
+There is one distribution that can help us answer all of these questions.
+Can you guess what it is?
+That's right -- it's the normal distribution.
+
+\subsection*{Learning objectives}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+
+\item Use Z-scores and the standard normal model to approximate a distribution where appropriate.
+
+\item Find probabilities and percentiles using the normal approximation.
+
+\item Find the value that corresponds to a given percentile when the distribution is approximately normal.  
+
+\end{enumerate}
+}
+
+
+%%
+\subsection{Normal distribution model}
+
+Among all the distributions we see in practice, one is overwhelmingly the most common. The symmetric, unimodal, bell curve is ubiquitous throughout statistics. Indeed it is so common, that people often know it as the \term{normal curve} or \termsub{normal distribution}{distribution!normal}.\footnote{It is also introduced as the Gaussian distribution after Frederic Gauss, the first person to formalize its mathematical expression.} A normal curve is shown in Figure~\ref{simpleNormal}. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{ch_distributions/figures/simpleNormal/simpleNormal}
+\caption{A normal curve.}
+\label{simpleNormal}
+\end{figure}
+
+
+The \term{normal distribution} always describes a symmetric, unimodal, bell-shaped curve. However, these curves can look different depending on the details of the model. Specifically, the normal distribution model can be adjusted using two parameters: mean and standard deviation. As you can probably guess, changing the mean shifts the bell curve to the left or right, while changing the standard deviation stretches or constricts the curve. 
+\newpage
+Figure~\ref{twoSampleNormals} shows the normal distribution with mean $0$ and standard deviation $1$ in the left panel and the normal distributions with mean $19$ and standard deviation $4$ in the right panel. Figure~\ref{twoSampleNormalsStacked} shows these distributions on the same axis.
+
+
+\begin{figure}[hht]
+\centering
+\includegraphics[width=0.95\textwidth]{ch_distributions/figures/twoSampleNormals/twoSampleNormals}
+\caption{Both curves represent the normal distribution.  However, they differ in their center and spread. }
+\label{twoSampleNormals}
+\end{figure}
+
+\begin{figure}[hht]
+\centering
+\includegraphics[width=0.67\textwidth]{ch_distributions/figures/twoSampleNormalsStacked/twoSampleNormalsStacked}
+\caption{The normal distributions shown in Figure~\ref{twoSampleNormals} but plotted together and on the same scale.}
+\label{twoSampleNormalsStacked}
+\end{figure}
+
+Because the mean and standard deviation describe a normal distribution exactly, they are called the distribution's \termsub{parameters}{parameter}.  The normal distribution with mean $\mu=0$ and standard deviation $\sigma = 1$ is called the \term{standard normal distribution}.%
+\index{normal distribution!standard|textbf}.
+
+
+\begin{onebox}{Normal distribution facts}
+Many variables are nearly normal, but none are exactly normal. The normal distribution, while never perfect, provides very close approximations for a variety of scenarios. We will use it to model data as well as probability distributions.\vspace{0.7mm}\end{onebox}
+
+
+\B{\newpage}
+
+%%
+\subsection{Using the normal distribution to approximate empirical distributions}
+\noindent%
+We often want to put data onto a standardized scale,
+which can make comparisons more reasonable.
+
+\newcommand{\satmean}{1100}
+\newcommand{\satsd}{200}
+\newcommand{\actmean}{21}
+\newcommand{\actsd}{6}
+\newcommand{\annsatscore}{1300}
+\newcommand{\annsatzscore}{1}
+\newcommand{\tomsatscore}{24}
+\newcommand{\tomsatzscore}{0.5}
+
+
+
+ \begin{examplewrap}
+\begin{nexample}{ Figure~\vref{satACTstats} shows the mean
+    and standard deviation for total scores on the SAT and ACT.
+    The distribution of SAT and ACT scores are both nearly normal.  Suppose Ann scored \annsatscore{} on her SAT and Tom scored
+    \tomsatscore{} on his ACT.
+    Who performed better?}
+As we saw in section~\ref{zscores}, we can use Z-scores to compare observations from different distributions.  Using Ann's SAT score, \annsatscore{} , along with the SAT mean and SD, we can find Ann's Z-score.
+$$Z_{_{\text{Ann}}}
+  = \frac{x_{_{\text{Ann}}} - \mu_{_{\text{SAT}}}}
+      {\sigma_{_{\text{SAT}}}}
+  = \frac{\annsatscore{} - \satmean{}}{\satsd{}}
+  = \annsatzscore{}$$
+Similarly, using Tom's ACT score, \tomsatscore{}, along with the ACT mean and
+SD we can find his Z-score.
+$$Z_{Tom}
+  = \frac{x_{\text{Tom}} - \mu_{\text{ACT}}}
+      {\sigma_{\text{ACT}}}
+  = \frac{\tomsatscore{} - \actmean{}}{\actsd{}}
+  = \tomsatzscore{}$$
+Because Ann's score was 1 standard deviation above the mean, while Tom's score was 0.5 standard deviations above the mean, we can say that Ann did better than Tom.
+ \end{nexample}
+\end{examplewrap}
+
+  \begin{figure}[h]
+\centering
+\begin{tabular}{l r r}
+  \hline
+  & SAT & ACT \\
+  \hline
+  Mean \hspace{0.3cm} & \satmean{} & \actmean{} \\
+  SD & \satsd{} & \actsd{} \\
+  \hline
+\end{tabular}
+\caption{Mean and standard deviation for the SAT and ACT.}
+\label{satACTstats}
+\end{figure}
+
+Assuming that both the SAT and ACT distributions are nearly normally distributed, what percent of test takers scored lower than Ann?  What percent scored lower than Tom?  To answer these question exactly, we would need all of the data.  However, if we use the information that SAT and ACT distributions are nearly normal, we can estimate these percents.  Figure~\ref{satActNormals} shows these distributions modeled with a normal curve.  If we can find the percent of the normal curve that is to the left of Ann's score, we could use that percent as our estimate of the percent of the data points that are smaller than Ann's score.  We call this process \emph{normal approximation}.  The steps are:
+\begin{enumerate}
+\item First verify that the distribution can be reasonably modeled with a normal distribution.
+\item Convert value or values of interest to Z-scores.  
+\item Find the relevant area/percent under the standard normal curve.
+\end{enumerate}
+We use the area/percent that we find from the normal curve as our \emph{estimate} of the desired percent. 
+
+
+
+\begin{figure}[h]
+  \centering
+  \Figure{0.52}{satActNormals}
+  \caption{Ann's and Tom's scores shown with the distributions
+      of SAT and ACT scores.}
+  \label{satActNormals}
+\end{figure}
+
+
+
+
+\B{\newpage}
+
+%%
+\subsection{Finding areas under the normal curve}
+
+It's very useful in statistics to be able to identify areas
+of distributions, especially tail areas.
+For instance, what percent of people have an SAT score below
+Ann's score of 1300?
+This is the same as Ann's \term{percentile}.  We previously determined that a score of 1300 corresponds to a Z-score of 1 and that SAT scores are approximately normally distributed.  We can visualize such a tail area by sketching a normal curve and shading everything below $Z=1$ as shown in Figure~\ref{satBelow1300}.
+
+
+\begin{figure}[h]
+  \centering
+  \Figure{0.45}{satBelow1300}
+  \caption{The area to the left of the Z-score represents the
+      percentile of the observation.}
+  \label{satBelow1300}
+\end{figure}
+
+There are many techniques for finding this area, and we'll discuss
+three of the options.
+\begin{enumerate}
+\item
+    The most common approach in practice is to use
+    statistical software.
+    For example, in the program \R{}, we could find the area
+    shown in Figure~\ref{satBelow1300} using the
+    following command, which takes in the Z-score of 1
+    and returns the lower tail area: \\
+    {\color{white}.....}%
+        \texttt{> pnorm(1)} \\
+    {\color{white}.....}%
+        \texttt{[1] 0.8413447} \\
+\\
+   Using the online Desmos calculator, we could do:
+        \texttt{normaldist( )}, check the ``Find Cumulative Probability (CDF)" box and set Max to 1.\\
+\\
+    According to these calculation,
+    the area shaded that is below $Z = 1$
+    is 0.841, so we estimate that 84.1\% of SAT test
+    takers score below 1300 and that Ann is at the $84^{th}$ percentile.
+   
+ There are many other software options, such as Python or SAS; even spreadsheet programs such as
+    Excel and Google Sheets support these calculations.
+\item
+    A common strategy in classrooms is to use a graphing
+    calculator, such as a TI or Casio calculator.
+   Instructions for finding areas of a normal distribution using these calculators are provided in Section~\ref{normal}. 
+\item
+    The last option for finding tail areas is to use
+    what's called a \term{probability table};
+    these are occasionally used in classrooms
+    but rarely in practice.
+    Appendix~\ref{normalProbabilityTable}
+    contains such a table and a guide for how to use it.
+\end{enumerate}
+
+We will solve normal distribution problems in this section
+by always first finding the Z-score.
+The reason is that we will encounter close parallels
+called \indexthis{test statistics}{test statistic}
+beginning in Chapter~\ref{ch_foundations_for_inf};
+these are, in many instances, an equivalent of a Z-score.  
+
+Readers may find it helpful to familiarize themselves with one of the options above before continuing on to the applications that follow.  
+
+%No matter the approach you choose,
+%try the Guided Practice exercises in this section
+%using your preferred method.
+
+\B{\newpage}
+%%
+\subsection{Normal probability examples}
+
+\Cut{Cumulative}\Add{Combined} SAT scores are approximated well by a normal model with mean \satmean{} and standard deviation \satsd{}.
+
+\begin{examplewrap}
+\begin{nexample}{What is the probability that a randomly selected SAT taker scores at least 1190 on the SAT?}\label{satAbove1190Exam}
+The probability that a randomly selected SAT taker scores at least 1190 on the SAT is equivalent to the proportion of all SAT takers that score at least 1190 on the SAT. First, always draw and label a picture of the normal distribution. (Drawings need not be exact to be useful.) We are interested in the probability that a randomly selected score will be above 1190, so we shade this upper tail:
+\begin{center}
+\includegraphics[height=0.9in]{ch_distributions/figures/satAbove1190/satAbove1190}
+\end{center}
+The picture shows the mean and the values at 2 standard deviations above and below the mean. The simplest way to find the shaded area under the curve makes use of the Z-score of the cutoff value. With $\mu=\satmean{}$, $\sigma=\satsd{}$, and the cutoff value $x=1190$, the Z-score is computed as
+\begin{eqnarray*}
+Z = \frac{x - \mu}{\sigma} = \frac{1190 - \satmean{}}{\satsd{}} = \frac{90}{200} = 0.45
+\end{eqnarray*}
+Next, we want to find the area under the normal curve to right of  $Z=0.45$.  Using technology, we find $P(Z > 0.45) = 0.3264$. 
+The probability that a randomly selected score is at least 1190 on the SAT is 0.3264.
+\end{nexample}
+\end{examplewrap}
+
+
+\begin{onebox}{Always draw a picture first, and find the Z-score second}
+For any normal probability situation, \emph{always always always} draw and label the normal curve and shade the area of interest first. The picture will provide an estimate of the probability. \vspace{3mm}
+
+After drawing a figure to represent the situation, identify the Z-score for the observation of interest.\vspace{1mm}\end{onebox}
+
+\begin{exercisewrap}
+\begin{nexercise}
+If the probability that a randomly selected score is at least 1190 is 0.3264, what is the probability that the score is less than 1190? Draw the normal curve representing this exercise, shading the lower region instead of the upper one.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{We found the probability in Example~\ref{satAbove1190Exam}: 0.6736. A picture for this exercise is represented by the shaded area below ``0.6736'' in Example~\ref{satAbove1190Exam}.}
+
+\B{\newpage}
+
+\begin{examplewrap}
+\begin{nexample}{Edward earned a 1030 on his SAT. What is his percentile?} \label{edwardSatBelow1030}
+First, a picture is needed. Edward's percentile is the proportion of people who do not get as high as a 1030. These are the scores to the left of 1030.
+\begin{center}
+\includegraphics[height=22mm]{ch_distributions/figures/satBelow1030/satBelow1030}
+\end{center}
+Identifying the mean $\mu=1100$, the standard deviation $\sigma=200$, and the cutoff for the tail area $x=1030$ makes it easy to compute the Z-score:
+\begin{eqnarray*}
+Z = \frac{x - \mu}{\sigma} = \frac{1030 - 1100}{200} = -0.35
+\end{eqnarray*}
+Using technology we find that $P(Z < -0.35) = 0.3632$. Edward is at the $36^{th}$ percentile.
+\end{nexample}
+\end{examplewrap}
+
+\begin{exercisewrap}
+\begin{nexercise}
+Use the results of Example~\ref{edwardSatBelow1030} to compute the proportion of SAT takers who did better than Edward. Also draw a new picture.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{If Edward did better than 36\% of SAT takers, then about 64\% must have done better than him. \\
+\includegraphics[width=0.35\textwidth]{ch_distributions/figures/satBelow1030/satAbove1030}}
+
+
+
+The last several problems have focused on finding the probability or percentile for a particular observation. It is also possible to identify the value corresponding to a particular percentile.
+
+\B{\newpage}
+
+\begin{examplewrap}
+\begin{nexample}{Carlos believes he can get into his preferred college if he scores at least in the 80th percentile on the SAT. What score should he aim for?}
+Here, we are given a percentile rather than a Z-score, so we work backwards. As always, first draw the picture.
+\begin{center}
+\includegraphics[height=22mm]{ch_distributions/figures/sat80thPercentile/sat80thPercentile}
+\end{center}
+We want to find the observation that corresponds to the 80th percentile. First, we find the Z-score associated with the 80th percentile. Using technology, we find that $P(Z < 0.84) = 0.80$. In any normal distribution, a value with a Z-score of 0.84 will be at the 80th percentile. Once we have the Z-score, we work backwards to find x.
+\begin{align*}
+Z &= \frac{x-\mu}{\sigma} \\
+0.84 &= \frac{x-1100}{200} \\
+0.84 \times 200+1100 &= x \\
+x& = 1268
+\end{align*}
+The 80th percentile on the SAT corresponds to a score of 1268.
+\end{nexample}
+\end{examplewrap}
+
+\begin{exercisewrap}
+\begin{nexercise}Imani scored at the 72nd percentile on the SAT. What was her SAT score?\footnotemark\end{nexercise}
+\end{exercisewrap}
+\footnotetext{First, draw a picture! The closest percentile in the table to 0.72 is 0.7190, which corresponds to $Z = 0.58$. Next, set up the Z-score formula and solve for $x$: $0.58 = \frac{x-1100}{200} \rightarrow x = 1216$. Imani scored 1216.}
+
+
+\Comment{reworded}
+
+\begin{onebox}{If the data are not nearly normal, don't use normal approximation}
+{Before using the normal approximation method, verify that the data or distribution is approximately normal. If it is not, the normal approximation will give incorrect results. Also remember:  all answers based on normal approximations are approximations and are not exact.}
+\end{onebox}
+
+Finally, we should observe that it is possible for a normal random variable to fall 4,~5, or~even more standard deviations from the mean. The probability of being further than 4 standard deviations from the mean is about 1-in-15,000. For 5 and 6 standard deviations, it is about 1-in-2 million and 1-in-500 million, respectively.  \Add{However, while the tails of the normal distribution extend infinitely in either direction, our data sets are finite and normal approximation in the extreme tails is unlikely to be very accurate, even for bell-shaped data sets.}
+
+\B{\newpage}
+
+
+\subsection{Evaluating the normal approximation (special topic)}
+\label{assessingNormal}
+
+It is important to remember normality is always an approximation. Testing the appropriateness of the normal assumption is a key step in many data analyses.
+
+%\index{normal probability plot|(}
+
+The distribution of heights of US males is well approximated by the normal model. We are interested in proceeding under the assumption that the data are normally distributed, but first we must check to see if this is reasonable.
+
+There are two visual methods for checking the assumption of normality that can be implemented and interpreted quickly. The first is a simple histogram with the best fitting normal curve overlaid on the plot, as shown in the left panel of Figure~\ref{fcidMHeights}. The sample mean $\bar{x}$ and standard deviation $s$ are used as the parameters of the best fitting normal curve. The closer this curve fits the histogram, the more reasonable the normal model assumption. Another more common method is examining a \term{normal probability plot},\footnote{Also commonly called a quantile-quantile plot.} shown in the right panel of Figure~\ref{fcidMHeights}. The closer the points are to a perfect straight line, the more confident we can be that the data follow the normal model.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.78\textwidth]{ch_distributions/figures/fcidMHeights/fcidMHeights}
+\caption{A sample of 100 male heights. The observations are rounded to the nearest whole inch, explaining why the points appear to jump in increments in the normal probability plot.}
+\label{fcidMHeights}
+\end{figure}
+
+\Comment{check placement of figures}
+
+\begin{examplewrap}
+\begin{nexample}{Consider all NBA players from the 2018-2019 season presented in Figure~\ref{nbaNormal}.\footnotemark\,  Based on the graphs, are NBA player heights normally distributed? }
+We first create a histogram and normal probability plot of the NBA player heights. The histogram in the left panel is slightly left skewed, which contrasts with the symmetric normal distribution. The points in the normal probability plot do not appear to closely follow a straight line but show what appears to be a ``wave''. NBA player heights do not appear to come from a normal distribution.
+\end{nexample}
+\end{examplewrap}
+\footnotetext{These data were collected from \oiRedirect{textbook-nba_com}{www.nba.com}.}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{ch_distributions/figures/nbaNormal/nbaNormal}
+\caption{Histogram and normal probability plot for the NBA heights from the 2018-2019 season.}
+\label{nbaNormal}
+\end{figure}
+
+
+\begin{exercisewrap}
+\begin{nexercise} \label{normalQuantileExerciseAdditional}
+Figure~\ref{normalQuantileExerAdditional} shows normal probability plots for two distributions that are skewed. One distribution is skewed to the low end (left skewed) and the other to the high end (right skewed). Which is which?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Examine where the points fall along the vertical axis. In the first plot, most points are near the low end with fewer observations scattered along the high end; this describes a distribution that is right skewed. The second plot shows the opposite features, and this distribution is left skewed.}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{ch_distributions/figures/normalQuantileExer/normalQuantileExerAdditional}
+\caption{Normal probability plots for Guided Practice~\ref{normalQuantileExerciseAdditional}.}
+\label{normalQuantileExerAdditional}
+\end{figure}
+
+
+
+\B{\newpage}
+\subsection{Technology: finding normal probabilities}
+\label{normal}
+
+\noindent Get started quickly with this \oiRedirect{desmos-normal}{Desmos calculator}.
+
+\begin{center}
+\oiRedirect{desmos-normal}{\includegraphics[width=0.95\textwidth]{ch_summarizing_data/figures/desmosNormal/desmosNormal}}
+\end{center}
+
+\B{\newpage}
+\noindent Calculator instructions
+
+\begin{onebox}{\videohref{ti84_normal_curve_area} TI-84: Finding area under the normal curve}
+Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{normalcdf} to find an area/proportion/probability between two Z-scores or to the left or right of a Z-score.\vspace{-1mm}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Choose \calcbutton{2ND} \calcbutton{VARS} (i.e. \calctext{DISTR}).
+\item Choose \calctext{2:normalcdf}.
+\item Enter the \calctext{lower} (left) Z-score and the \calctext{upper} (right) Z-score.
+\vspace{-1.5mm}
+  \begin{itemize}
+  \setlength{\itemsep}{0mm}
+  \item If finding just a lower tail area, set \calctext{lower} to \calctext{-5}.
+  \item If finding just an upper tail area, set \calctext{upper} to \calctext{5}.
+\end{itemize}
+\item Leave $\calctextmath{\mu}$ as \calctext{0} and $\calctextmath{\sigma}$ as \calctext{1}.
+\item Down arrow, choose \calctext{Paste}, and hit \calcbutton{ENTER}.\vspace{-1.5mm}
+\end{enumerate}
+TI-83: Do steps 1-2, then enter the lower bound and upper bound separated by a comma, e.g. \calctext{normalcdf(2, 5)}, and hit \calcbutton{ENTER}.\end{onebox}
+
+\begin{onebox}{\videohref{casio_normal_curve_area} Casio fx-9750GII: Finding area under the normal curve}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Navigate to \calctext{STAT} (\calcbutton{MENU}, then hit \calcbutton{2}).
+\item Select \calctext{DIST} (\calcbutton{F5}), then \calctext{NORM} (\calcbutton{F1}), and then \calctext{Ncd} (\calcbutton{F2}).
+\item If needed, set \calctext{Data} to \calctext{Variable} (\calctext{Var} option, which is \calcbutton{F2}).
+\item Enter the \calctext{Lower} Z-score and the \calctext{Upper} Z-score. Set $\calctextmath{\sigma}$ to \calctext{1} and $\calctextmath{\mu}$ to \calctext{0}.\vspace{-1.5mm}
+  \begin{itemize}
+  \setlength{\itemsep}{0mm}
+  \item If finding just a lower tail area, set \calctext{Lower} to \calctext{-5}.
+  \item For an upper tail area, set \calctext{Upper} to \calctext{5}.
+  %\item If finding a middle area (e.g. $Z_{lower} = 0.5$ to $Z_{upper} = 1.5$), set the \calctext{lower} and \calctext{upper} values appropriately.
+  \end{itemize}
+\item Hit \calctext{EXE}, which will return the area probability (\calctext{p}) along with the Z-scores for the lower and upper bounds.
+\end{enumerate}
+\end{onebox}
+
+
+\begin{exercisewrap}
+\begin{nexercise}
+Use a calculator or software to confirm that about 68\%, 95\%, and 99.7\% of observations fall within 1, 2, and 3, standard deviations of the mean in the normal distribution, respectively.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{To find the area between $Z=-1$ and $Z=1$, let lower bound be -1 and upper bound be 1. We find that $P(-1 < Z < 1) = 0.6827$.  Similarly, $P(-2 < Z < 2)=0.9545$ and $P(-3 < Z < 3) = 0.9973$. }
+
+\begin{exercisewrap}
+\begin{nexercise}Find the area under the normal curve between -1.5 and~1.5.~\footnotemark\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Lower bound is -1.5 and upper bound is 1.5. The area under the normal curve between -1.5 and 1.5 = $P(-1.5 < Z < 1.5) = 0.866$.  Note that is not simply the average of 0.6827 and 0.9545, as the normal curve is not a rectangle.}
+
+
+\begin{examplewrap}
+\begin{nexample}{Use a calculator to determine what percentile corresponds to a Z-score of 1.5.\footnotemark}
+
+\includegraphics[width=0.4\textwidth]{ch_distributions/figures/zscoreleftof1point5/zscoreleftof1point5}\vspace{-2mm}
+
+To find an area under the normal curve using a calculator, first identify a lower bound and an upper bound. We want all of the area to the left of 1.5, so the lower bound should be -$\infty$. However, the area under the curve is negligible when $Z$ is smaller than -5, so we will use -5 as the lower bound. Using a lower bound of -5 and an upper bound of 1.5, we get $P(Z < 1.5) = 0.933$.
+\end{nexample}
+\end{examplewrap}
+\footnotetext{normalcdf gives the result without drawing the graph. To draw the graph, do 2nd VARS, DRAW, 1:ShadeNorm. However, beware of errors caused by other plots that might interfere with this plot.}
+
+\begin{exercisewrap}
+\begin{nexercise}
+Find the area under the normal curve to right of $Z=2$.~\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Now we want to shade to the right. Therefore our lower bound will be 2 and the upper bound will be +5 (or a number bigger than 5) to get $P(Z > 2) = 0.023$.}
+
+
+
+
+\begin{onebox}{\videohref{ti84_Z_score_for_a_percentile} TI-84: Find a Z-score that corresponds to a percentile}
+\label{invNorm}
+Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{invNorm} to find the Z-score that corresponds to a given percentile.
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Choose \calcbutton{2ND} \calcbutton{VARS} (i.e. \calctext{DISTR}).
+\item Choose \calctext{3:invNorm}.
+\item Let \calctext{Area} be the percentile as a decimal (the area to the left of desired Z-score).
+\item Leave $\calctextmath{\mu}$ as \calctext{0} and $\calctextmath{\sigma}$ as \calctext{1}.
+\item Down arrow, choose \calctext{Paste}, and hit \calcbutton{ENTER}.\vspace{-1.5mm}
+\end{enumerate}
+TI-83: Do steps 1-2, then enter the percentile as a decimal, e.g.~\mbox{\calctext{invNorm(.40)},} then hit \calcbutton{ENTER}.\end{onebox}
+
+\begin{onebox}{\videohref{casio_Z_score_for_a_percentile} Casio fx-9750GII: Find a Z-score that corresponds to a percentile}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\setlength{\itemsep}{0mm}
+\item Navigate to \calctext{STAT} (\calcbutton{MENU}, then hit \calcbutton{2}).
+\item Select \calctext{DIST} (\calcbutton{F5}), then \calctext{NORM} (\calcbutton{F1}), and then \calctext{InvN} (\calcbutton{F3}).
+\item If needed, set \calctext{Data} to \calctext{Variable} (\calctext{Var} option, which is \calcbutton{F2}).
+\item Decide which tail area to use (\calctext{Tail}), the tail area (\calctext{Area}), and then enter the $\calctextmath{\sigma}$ and $\calctextmath{\mu}$ values.
+\item Hit \calctext{EXE}.
+\end{enumerate}
+\end{onebox}
+
+
+\begin{examplewrap}
+\begin{nexample}{Use a calculator to find the Z-score that corresponds to the 40th percentile.}Letting area be 0.40, a calculator gives -0.253. This means that $Z = -0.253$ corresponds to the 40th percentile, that~is, $P(Z < -0.253) = 0.40$.
+\end{nexample}
+\end{examplewrap}
+
+\begin{exercisewrap}
+\begin{nexercise}Find the Z-score such that 20 percent of the area is to the right of that Z-score.\footnotemark\end{nexercise}
+\end{exercisewrap}	
+\footnotetext{If 20\% of the area is the right, then 80\% of the area is to the left. Letting area be 0.80, we get $Z = 0.841$.}
+
+
+\B{\newpage}
+
+%%
+\subsection*{Section summary}
+
+\begin{itemize}
+\item A \term{Z-score} represents the number of standard deviations a value in a data set is above or below the mean.  To calculate a \mbox{Z-score} use: $Z = \frac{x-\text{mean}}{SD}$.  
+
+\item The \term{normal distribution} is the most commonly used distribution in Statistics.  Many distribution are approximately normal, but none are exactly normal.  
+
+\item The empirical rule (68-95-99.7 Rule) comes from the normal distribution.  The closer a distribution is to normal, the better this rule will hold.
+
+\item It is often useful to use the standard normal distribution, which has mean~0 and SD~1, to approximate a discrete histogram.  There are two common types of \textbf{normal approximation problems}, and for each a key step is to find a \mbox{Z-score}.   
+\begin{itemize}
+\item[A:] \textit{Find the percent or probability of a value greater/less than a given \textit{x}-value.  }
+\begin{enumerate}\vspace{-1mm}
+\setlength{\itemsep}{0mm}
+\item Verify that the distribution of interest is approximately normal.
+\item Calculate the \mbox{Z-score}.  Use the provided population mean and SD to standardize the given $x$-value.
+\item Use a calculator function (e.g. \calctext{normcdf} on a TI) or other technology to find the area under the normal curve to the right/left of this \mbox{Z-score}; this is the \textit{estimate} for the percent/probability.
+\end{enumerate}
+
+\item[B:] \textit{Find the \textit{x}-value that corresponds to a given percentile.}
+\begin{enumerate}\vspace{-1mm}
+\setlength{\itemsep}{0mm}
+\item Verify that the distribution of interest is approximately normal.
+\item Find the Z-score that corresponds to the given percentile (using, for example, \calctext{invNorm} on a TI).  
+\item Use the Z-score along with the given mean and SD to solve for the \textit{x}-value.  
+\end{enumerate}
+\end{itemize}
+
+
+
+
+\end{itemize}
+
+%%%%%%%%Section exercises
+{\input{ch_summarizing_data/TeX/normal_distribution.tex}}
+
 
 
 %______________________________________________
@@ -2810,7 +3248,9 @@ discussion rigorous.
 \item When looking at a single \term{numerical variable}, we try to understand the \textbf{distribution} of the variable.  The distribution of a variable can be represented with a frequency table and with a graph, such as a \textbf{stem-and-leaf plot} or \textbf{dot plot} for small data sets, or a \textbf {histogram} for larger data sets.  If only a summary is desired, a \textbf{box plot} may be used.
 \item The \textbf{distribution} of a variable can be described and summarized with \textbf{center} (mean or median), \textbf{spread} (SD or IQR), and \textbf{shape} (right skewed, left skewed, approximately symmetric). 
 \item \textbf{Z-scores} and \textbf{percentiles} are useful for identifying a data point's relative position within a data set.
+\item \Add{When a distribution is nearly normal, we can use the \textbf{empirical rule} (68-95-99.7 rule) and we can use \textbf{normal approximation} to approximate area/percent under a histogram using area/percent under the normal curve.}
 \item \termsub{Outliers}{outlier} are values that appear extreme relative to the rest of the data.  Investigating outliers can provide insight into properties of the data or may reveal data collection/entry errors.
+
 \item When \termsub{comparing the distribution}{comparing distributions} of two variables, use two dot plots, two histograms, a back-to-back stem-and-leaf, or parallel box plots.
 \item To look at the \textbf{association} between two numerical variables, use a \textbf{scatterplot}.
 \end{itemize}
