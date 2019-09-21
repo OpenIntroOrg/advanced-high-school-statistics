@@ -30,7 +30,7 @@ par(mar=c(4,2,0,0), las=1, mgp=c(2.8,0.55,0))
 
 histPlot(d, breaks=seq(-0.6, 0.7, 0.02), col=COL[7,4], 
          main="", xlab=expression(hat(p)[trtmt] - hat(p)[ctrl]*"    "), 
-         ylab="", axes=FALSE,yaxs="i")
+         ylab="", axes=FALSE)
 axis(1)
 axis(2, at=(0:5)*N/20, labels=c(0, NA, 2, NA, 4, NA)/20)
 abline(h = 0)
@@ -47,7 +47,7 @@ par(mar=c(4,2,0,0), las=1, mgp=c(2.8,0.55,0))
 
 histPlot(d, breaks=seq(-0.6, 0.7, 0.02), col=COL[7,4], 
          main="", xlab=expression(hat(p)[trtmt] - hat(p)[ctrl]*"    "), 
-         ylab="", axes=FALSE,yaxs="i")
+         ylab="", axes=FALSE)
 axis(1)
 axis(2, at=(0:5)*N/20, labels=c(0, NA, 2, NA, 4, NA)/20)
 abline(h = 0)

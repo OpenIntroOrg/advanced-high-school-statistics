@@ -16,7 +16,7 @@ pdf("heightsFcoll_hist.pdf", height = 4, width = 6)
 
 par(mar=c(3.7,2.2,1,1), las=1, mgp=c(2.5,0.7,0), mfrow = c(1,1), cex.lab = 1.5, cex.axis = 1.5)
 
-histPlot(heights, col = COL[1], xlab = "Heights", ylab = "", probability = TRUE, axes = FALSE, yaxs="i", ylim = c(0,0.09),yaxs="i")
+histPlot(heights, col = COL[1], xlab = "Heights", ylab = "", probability = TRUE, axes = FALSE, ylim = c(0,0.085))
 axis(1)
 #axis(2, labels = NA)
 

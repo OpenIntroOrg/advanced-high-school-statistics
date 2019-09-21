@@ -26,7 +26,7 @@ par(mar=c(4,4,0,0), las=1, mgp=c(2.5,1,0))
 
 histPlot(pHat, breaks = (-1:(2*M)+0.75)/2/n, 
          xlab = expression(hat(p)[sim]*"    "), 
-         col = COL[7,3], ylab = "", axes = FALSE,yaxs="i")
+         col = COL[7,3], ylab = "", axes = FALSE)
 axis(1)
 axis(2, at = (0:3)*N/20, labels=c("0","0.05","0.10","0.15"))
 abline(h = 0)
@@ -43,13 +43,13 @@ par(mar=c(4,4,0,0), las=1, mgp=c(2.5,1,0))
 
 histPlot(pHat, breaks = (-1:(2*M)+0.75)/2/n, 
          xlab = expression(hat(p)[sim]*"    "), 
-         col = COL[7,3], ylab = "", axes = FALSE,yaxs="i")
+         col = COL[7,3], ylab = "", axes = FALSE)
 axis(1)
 axis(2, at = (0:3)*N/20, labels=c("0","0.05","0.10","0.15"))
 abline(h = 0)
 
 histPlot(pHat[pHat >= pHatObs], breaks = (-1:(2*M)+0.75)/2/n, 
-         col = COL[1], add = TRUE,yaxs="i")
+         col = COL[1], add = TRUE)
 
 lines(rep(pHatObs, 2), c(0, 3)*N/22, lty=3, lwd=1.7)
 text(x = pHatObs, y = 3*N/22, as.character(pHatObs), pos=3, cex=1.25)

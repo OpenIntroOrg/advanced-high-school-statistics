@@ -12,7 +12,7 @@ cat(paste("\\stackrel{", 1:20, "}{", sort(scores), "}", sep=""), sep=", ")
 
 # plot histogram of scores  -----------------------------------------
 
-pdf("stats_scores_hist.pdf", height = 4, width = 6)
+pdf("scores_hist.pdf", height = 4, width = 6)
 
 par(mar = c(3.7, 2.2, 1, 1), las = 1, 
     mgp = c(2.5,0.7,0), mfrow = c(1,1), 
@@ -21,7 +21,7 @@ par(mar = c(3.7, 2.2, 1, 1), las = 1,
 histPlot(scores, col = COL[1], 
          xlab = "Scores", ylab = "", 
          probability = TRUE, 
-         axes = FALSE,yaxs="i")
+         axes = FALSE)
 axis(1)
 #axis(2, labels = NA)
 
@@ -34,7 +34,7 @@ dev.off()
 
 # normal probability plot of scores  --------------------------------
 
-pdf("stats_scores_qq.pdf", height = 4, width = 6)
+pdf("scores_qq.pdf", height = 4, width = 6)
 
 par(mar=c(3.7,3.7,1,1), las=1, 
     mgp=c(2.5,0.7,0), mfrow = c(1,1), 

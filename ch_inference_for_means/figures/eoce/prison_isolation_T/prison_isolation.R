@@ -20,7 +20,7 @@ H <- function(x, xlab) {
       xlab = xlab,
       ylab = "",
       main = "",
-      axes = FALSE,yaxs="i")
+      axes = FALSE)
   axis(1, at = pretty(tmp$breaks, n = 3))
   axis(2, at = pretty(c(0, max(tmp$counts)), n = 3))
   # rug(x)

@@ -1,6 +1,5 @@
 # load openintro package for colors ---------------------------------
 library(openintro)
-library(dplyr)
 
 # load data ---------------------------------------------------------
 pm25_durham = read.csv("pm25_2011_durham.csv", 
@@ -26,13 +25,13 @@ par(mar = c(4, 4.1, 1, 1), las = 1, mgp = c(2.9, 0.7, 0),
     cex.axis = 1.5, cex.lab = 1.5)
 hist(pm25_durham$DAILY_AQI_VALUE, 
      main = "", xlab = "Daily AQI", ylab = "",
-     col = COL[1], axes = FALSE, ylim = c(0,five_perc*4),yaxs="i")
+     col = COL[1], axes = FALSE, ylim = c(0,five_perc*4))
 axis(1)
 axis(2, at = seq(0, five_perc*4, five_perc), label = round(seq(0, 0.20, 0.05),2))
 abline(h = seq(0, five_perc*4, five_perc), lty = 2, col = COL[6])
 hist(pm25_durham$DAILY_AQI_VALUE, 
      main = "", xlab = "Daily AQI", ylab = "",
-     col = COL[1], axes = FALSE, ylim = c(0,five_perc*4), add = TRUE,yaxs="i")
+     col = COL[1], axes = FALSE, ylim = c(0,five_perc*4), add = TRUE)
 dev.off()
 
 # relative frequency histogram - solution ---------------------------

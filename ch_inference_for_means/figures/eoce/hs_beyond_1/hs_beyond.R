@@ -26,5 +26,5 @@ pdf("hs_beyond_diff_hist.pdf", height = 3, width = 5.5)
 par(mar=c(3.3, 2, 0.5, 0.5), las = 1, mgp = c(2.1, 0.7, 0), 
     cex.lab = 1.25, cex.axis = 1.25)
 histPlot(hsb2$read - hsb2$write, col = COL[1], 
-         xlab = "Differences in scores (read - write)", ylab = "",yaxs="i")
+         xlab = "Differences in scores (read - write)", ylab = "")
 dev.off()

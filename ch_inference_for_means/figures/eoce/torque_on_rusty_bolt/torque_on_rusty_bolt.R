@@ -12,7 +12,7 @@ dotPlot(d$torque, d$treatment,
     xlab = paste(
         "Torque Required to Loosen Rusty Bolt,",
         "in Foot-Pounds"),
-    ylab = "",yaxs="i")
+    ylab = "")
 abline(h = 1:8, col = COL[5, 7])
 dev.off()
 

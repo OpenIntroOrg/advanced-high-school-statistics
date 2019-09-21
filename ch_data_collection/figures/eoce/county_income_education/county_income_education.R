@@ -8,7 +8,7 @@ nrow(county_complete) # n = 3142
 pdf("county_income_education_scatterplot.pdf", 5, 4)
 par(mar = c(4, 4.6, 1, 1), las = 1, mgp = c(2.5, 0.7, 0), 
     cex.axis = 1.25, cex.lab = 1.4)
-plot(county_complete$per_capita_income_2017 ~ county_complete$bachelors_2017, 
+plot(county_complete$per_capita_income_2010 ~ county_complete$bachelors_2010, 
     xlab = "Percent with Bachelor's Degree", 
     ylab = "", 
     pch = 20, col = COL[1,3], axes = FALSE, 
