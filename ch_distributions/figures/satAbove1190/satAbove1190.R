@@ -10,4 +10,5 @@ normTail(1100, 200,
          col = COL[1],yaxs="i", ylim = c(0, 0.0021))
 axis(1, at = c(700, 1100, 1500),
      cex.axis = 0.8)
+abline(h=0, lwd=2)
 dev.off()

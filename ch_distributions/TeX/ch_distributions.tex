@@ -1,15 +1,19 @@
-\begin{chapterpage}{Distributions of random variables}
-  \chaptertitle[30]{Distributions of random \titlebreak{} variables}
+\begin{chapterpage}{Sampling distributions}
+  \chaptertitle[30]{Sampling distributions}
   \label{ch_distributions}
   \chaptersection{normalDist}
-\chaptersection{distributionofxbar}
-  \chaptersection{geomDist}
-  \chaptersection{binomialModel}
   \chaptersection{distributionphat}
+\chaptersection{diffofprops}
+\chaptersection{distributionofxbar}
+\chaptersection{diffofmeans}
+
+
 \end{chapterpage}
 \renewcommand{\chapterfolder}{ch_distributions}
 \index{distribution!normal|(}
 \index{normal distribution|}
+
+\Comment{ update intro}
 
 \chapterintro{In this chapter, we discuss statistical distributions that frequently arise in the context of data analysis or statistical
   inference.  We start with the normal distribution in the first section,
@@ -19,666 +23,153 @@
   We also introduce the fundamental concept of a sampling distribution.  The sampling distribution of a sample proportion and of a sample mean underlie the inference procedures encountered in next chapters.}
 
 
-%__________________________________________________
-\section[Normal distribution]{Normal distribution}
-\label{normalDist}
+%_______________________________________
+\section[Continuous distributions]{Continuous distributions }
+\label{contDist}
 
 \sectionintro{
 \noindent%
-What proportion of adults have systolic blood pressure above 140?  What is the probability of getting more than 250 heads in 400 tosses of a fair coin?
-If the average weight of a piece of carry-on luggage is 11 pounds, what is the probability that 200 random carry on pieces will weigh more than 2500 pounds?
-If 55\% of a population supports a certain candidate, what is the probability that she will have less than 50\% support in a random sample of size 200? \vspace{3mm}
+So far we have looked only at cases where the random variable takes on integer values.
+What happens when we consider random variables that produce a continuous numerical variable, such as wait time for a bus?
+In this section, we introduce the concept of a continuous distribution.
+In the next chapter, you will encounter the most famous continuous distribution of all.\footnote{It's the normal distribution!}
 
-\noindent%
-There is one distribution that can help us answer all of these questions.
-Can you guess what it is?
-That's right -- it's the normal distribution.
 
+%%
 \subsection*{Learning objectives}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Calculate and interpret a Z-score.
+\item Understand the difference between a discrete random variable and a continuous random variable.
 
-\item Understand that Z-scores are unitless (standard units) and are not affected by change of units.
-
-\item Use the normal model to approximate a distribution where appropriate.
-
-\item Find probabilities and percentiles using the normal approximation.
-
-\item Find the value that corresponds to a given percentile when the distribution is approximately normal.  
+\item Recognize that when working with continuous probability distributions area represents probability and the total area under the curve must equal 1. 
 
 \end{enumerate}
 }
 
-
 %%
-\subsection{Normal distribution model}
+\subsection{From histograms to continuous distributions}
 
-Among all the distributions we see in practice, one is overwhelmingly the most common. The symmetric, unimodal, bell curve is ubiquitous throughout statistics. Indeed it is so common, that people often know it as the \term{normal curve} or \termsub{normal distribution}{distribution!normal}.\footnote{It is also introduced as the Gaussian distribution after Frederic Gauss, the first person to formalize its mathematical expression.} A normal curve is shown in Figure~\ref{simpleNormal}. 
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.6\textwidth]{ch_distributions/figures/simpleNormal/simpleNormal}
-\caption{A normal curve.}
-\label{simpleNormal}
-\end{figure}
-
-\D{\newpage}
-
-The \term{normal distribution} always describes a symmetric, unimodal, bell-shaped curve. However, these curves can look different depending on the details of the model. Specifically, the normal distribution model can be adjusted using two parameters: mean and standard deviation. As you can probably guess, changing the mean shifts the bell curve to the left or right, while changing the standard deviation stretches or constricts the curve. Figure~\ref{twoSampleNormals} shows the normal distribution with mean $0$ and standard deviation $1$ in the left panel and the normal distributions with mean $19$ and standard deviation $4$ in the right panel. Figure~\ref{twoSampleNormalsStacked} shows these distributions on the same axis.
-
-
-\begin{figure}[hht]
-\centering
-\includegraphics[width=0.95\textwidth]{ch_distributions/figures/twoSampleNormals/twoSampleNormals}
-\caption{Both curves represent the normal distribution.  However, they differ in their center and spread. }
-\label{twoSampleNormals}
-\end{figure}
-
-\begin{figure}[hht]
-\centering
-\includegraphics[width=0.67\textwidth]{ch_distributions/figures/twoSampleNormalsStacked/twoSampleNormalsStacked}
-\caption{The normal distributions shown in Figure~\ref{twoSampleNormals} but plotted together and on the same scale.}
-\label{twoSampleNormalsStacked}
-\end{figure}
-
-Because the mean and standard deviation describe a normal distribution exactly, they are called the distribution's \termsub{parameters}{parameter}.  The normal distribution with mean $\mu=0$ and standard deviation $\sigma = 1$ is called the \term{standard normal distribution}.%
-\index{normal distribution!standard|textbf}.
-
-
-\begin{onebox}{Normal distribution facts}
-Many variables are nearly normal, but none are exactly normal. The normal distribution, while never perfect, provides very close approximations for a variety of scenarios. We will use it to model data as well as probability distributions.\vspace{0.7mm}\end{onebox}
-
-
-\D{\newpage}
-
-%%
-\subsection{Standardizing with Z-scores}
-\noindent%
-We often want to put data onto a standardized scale,
-which can make comparisons more reasonable.
-
-\newcommand{\satmean}{1100}
-\newcommand{\satsd}{200}
-\newcommand{\actmean}{21}
-\newcommand{\actsd}{6}
-\newcommand{\annsatscore}{1300}
-\newcommand{\annsatzscore}{1}
-\newcommand{\tomsatscore}{24}
-\newcommand{\tomsatzscore}{0.5}
-
+\index{data!FCID|(}
+\index{hollow histogram|(}
 \begin{examplewrap}
-\begin{nexample}{Figure~\vref{satACTstats} shows the mean
-    and standard deviation for total scores on the SAT and ACT.
-    The distribution of SAT and ACT scores are both nearly normal.
-    Suppose Ann scored \annsatscore{} on her SAT and Tom scored
-    \tomsatscore{} on his ACT.
-    Who performed better?}
-  \label{actSAT}%
-  We use the standard deviation as a guide.
-  Ann is \annsatzscore{} standard deviation above average
-  on the SAT: $\satmean{} + \satsd{} = \annsatscore{}$.
-  Tom is \tomsatzscore{} standard deviations above the mean
-  on the ACT:
-  $\actmean{} + \tomsatzscore{} \times \actsd{} = \tomsatscore{}$.
-  In Figure~\ref{satActNormals}, we can see that Ann tends
-  to do better with respect to everyone else than Tom did,
-  so her score was better.
+\begin{nexample}{Figure~\ref{fdicHistograms} shows a few different hollow histograms of the variable \var{height} for 3 million US adults from the mid-90's.\footnotemark\, How does changing the number of bins allow you to make different interpretations of the data?}\label{usHeights}
+Adding more bins provides greater detail. This sample is extremely large, which is why much smaller bins still work well. Usually we do not use so many bins with smaller sample sizes since small counts per bin mean the bin heights are very volatile.
 \end{nexample}
 \end{examplewrap}
-
-\begin{figure}[h]
-\centering
-\begin{tabular}{l r r}
-  \hline
-  & SAT & ACT \\
-  \hline
-  Mean \hspace{0.3cm} & \satmean{} & \actmean{} \\
-  SD & \satsd{} & \actsd{} \\
-  \hline
-\end{tabular}
-\caption{Mean and standard deviation for the SAT and ACT.}
-\label{satACTstats}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \Figure{0.61}{satActNormals}
-  \caption{Ann's and Tom's scores shown with the distributions
-      of SAT and ACT scores.}
-  \label{satActNormals}
-\end{figure}
-
-Example~\ref{actSAT} used a standardization technique called
-a Z-score, a method most commonly employed for nearly normal
-observations but that may be used with any distribution.
-Recall from Chapter 2 that the \term{Z-score} of an observation is defined
-as the number of standard deviations it falls above or below
-the mean.
-If the observation is one standard deviation above the mean,
-its Z-score is~1.
-If it is 1.5 standard deviations \emph{below} the mean,
-then its Z-score is -1.5.
-If $x$ is an observation from a distribution with mean $\mu$ and standard deviation $\sigma$,
-we define the Z-score mathematically as
-\begin{align*}
-Z = \frac{x - \mu}{\sigma}
-\end{align*}
-Using $\mu_{SAT} = \satmean{}$, $\sigma_{SAT} = \satsd{}$,
-and $x_{_{\text{Ann}}} = \annsatscore{}$, we find Ann's Z-score:
-\begin{align*}
-Z_{_{\text{Ann}}}
-  = \frac{x_{_{\text{Ann}}} - \mu_{_{\text{SAT}}}}
-      {\sigma_{_{\text{SAT}}}}
-  = \frac{\annsatscore{} - \satmean{}}{\satsd{}}
-  = \annsatzscore{}
-\end{align*}
-
-\begin{exercisewrap}
-\begin{nexercise}
-Use Tom's ACT score, \tomsatscore{}, along with the ACT mean and
-standard deviation to find his Z-score.\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{$Z_{Tom}
-  = \frac{x_{\text{Tom}} - \mu_{\text{ACT}}}
-      {\sigma_{\text{ACT}}}
-  = \frac{\tomsatscore{} - \actmean{}}{\actsd{}}
-  = \tomsatzscore{}$}
-
-%%
-\subsection{Normal probability table}
-
-\begin{examplewrap}
-\begin{nexample}{Ann from Example~\ref{actSAT} earned a score of \annsatscore{} on her SAT with a corresponding $Z=1$. She would like to know what percentile she falls in among all SAT test-takers.}
-Ann's \term{percentile} is the percentage of people who earned a lower SAT score than Ann. We shade the area representing those individuals in Figure~\ref{satBelow1300}. The total area under the normal curve is always equal to 1, and the proportion of people who scored below Ann on the SAT is equal to the \emph{area} shaded in Figure~\ref{satBelow1300}: 0.8413. In other words, Ann is in the $84^{th}$ percentile of SAT takers.
-\end{nexample}
-\end{examplewrap}
-
-\begin{figure}[htb]
-   \centering
-   \includegraphics[width=0.45\textwidth]{ch_distributions/figures/satBelow1300/satBelow1300}
-   \caption{The normal model for SAT scores, shading the area of those individuals who scored below Ann.}
-   \label{satBelow1300}
-\end{figure}
-
-We can use the normal model to find percentiles. A \term{normal probability table}, which lists Z-scores and corresponding percentiles, can be used to identify a percentile based on the Z-score (and vice versa). Statistical software can also be used.
-
-\D{\newpage}
-
-A normal probability table is given in Appendix~\vref{normalProbabilityTable} and abbreviated in Figure~\ref{zTableShort}. We use this table to identify the percentile corresponding to any particular Z-score. For instance, the percentile of $Z=0.43$ is shown in row $0.4$ and column $0.03$ in Figure~\ref{zTableShort}: 0.6664, or the $66.64^{th}$ percentile. Generally, we round $Z$ to two decimals, identify the proper row in the normal probability table up through the first decimal, and then determine the column representing the second decimal value. The intersection of this row and column is the percentile of the observation.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.7\textwidth]{ch_distributions/figures/normalTails/normalTails}
-\caption{The area to the left of $Z$ represents the percentile of the observation.}
-\label{normalTails}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\begin{tabular}{c | rrrrr | rrrrr |}
-  \cline{2-11}
-&&&& \multicolumn{4}{c}{Second decimal place of $Z$} &&& \\
-  \cline{2-11}
-$Z$ & 0.00 & 0.01 & 0.02 & 0.03 & \highlightO{0.04} & \highlightT{0.05
-} & 0.06 & 0.07 & 0.08 & 0.09 \\
-  \hline
-  \hline
-0.0 & \scriptsize{0.5000} & \scriptsize{0.5040} & \scriptsize{0.5080} & \scriptsize{0.5120} & \scriptsize{0.5160} & \scriptsize{0.5199} & \scriptsize{0.5239} & \scriptsize{0.5279} & \scriptsize{0.5319} & \scriptsize{0.5359} \\
-  0.1 & \scriptsize{0.5398} & \scriptsize{0.5438} & \scriptsize{0.5478} & \scriptsize{0.5517} & \scriptsize{0.5557} & \scriptsize{0.5596} & \scriptsize{0.5636} & \scriptsize{0.5675} & \scriptsize{0.5714} & \scriptsize{0.5753} \\
-  0.2 & \scriptsize{0.5793} & \scriptsize{0.5832} & \scriptsize{0.5871} & \scriptsize{0.5910} & \scriptsize{0.5948} & \scriptsize{0.5987} & \scriptsize{0.6026} & \scriptsize{0.6064} & \scriptsize{0.6103} & \scriptsize{0.6141} \\
-%  May comment out 0.0-0.2 to make extra space. Then insert the following line:
-%  $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ \\
-  0.3 & \scriptsize{0.6179} & \scriptsize{0.6217} & \scriptsize{0.6255} & \scriptsize{0.6293} & \scriptsize{0.6331} & \scriptsize{0.6368} & \scriptsize{0.6406} & \scriptsize{0.6443} & \scriptsize{0.6480} & \scriptsize{0.6517} \\
-\highlightT{0.4} & \scriptsize{0.6554} & \scriptsize{0.6591} & \scriptsize{0.6628} & \scriptsize{0.6664}& \scriptsize{0.6700} & \highlightT{\scriptsize{0.6736}} & \scriptsize{0.6772} & \scriptsize{0.6808} & \scriptsize{0.6844} & \scriptsize{0.6879} \\
-  \hline
-  0.5 & \scriptsize{0.6915} & \scriptsize{0.6950} & \scriptsize{0.6985} & \scriptsize{0.7019} & \scriptsize{0.7054} & \scriptsize{0.7088} & \scriptsize{0.7123} & \scriptsize{0.7157} & \scriptsize{0.7190} & \scriptsize{0.7224} \\
-  0.6 & \scriptsize{0.7257} & \scriptsize{0.7291} & \scriptsize{0.7324} & \scriptsize{0.7357} & \scriptsize{0.7389} & \scriptsize{0.7422} & \scriptsize{0.7454} & \scriptsize{0.7486} & \scriptsize{0.7517} & \scriptsize{0.7549} \\
-  0.7 & \scriptsize{0.7580} & \scriptsize{0.7611} & \scriptsize{0.7642} & \scriptsize{0.7673} & \scriptsize{0.7704} & \scriptsize{0.7734} & \scriptsize{0.7764} & \scriptsize{0.7794} & \scriptsize{0.7823} & \scriptsize{0.7852} \\
-\highlightO{0.8} & \scriptsize{0.7881} & \scriptsize{0.7910} & \scriptsize{0.7939} & \scriptsize{0.7967} & \highlightO{\scriptsize{0.7995}} & \scriptsize{0.8023} & \scriptsize{0.8051} & \scriptsize{0.8078} & \scriptsize{0.8106} & \scriptsize{0.8133} \\
-%  0.9 & \scriptsize{0.8159} & \scriptsize{0.8186} & \scriptsize{0.8212} & \scriptsize{0.8238} & \scriptsize{0.8264} & \scriptsize{0.8289} & \scriptsize{0.8315} & \scriptsize{0.8340} & \scriptsize{0.8365} & \scriptsize{0.8389} \\
-%  \hline
-%  \hline
-%  1.0 & \scriptsize{0.8413} & \scriptsize{0.8438} & \scriptsize{0.8461} & \scriptsize{0.8485} & \scriptsize{0.8508} & \scriptsize{0.8531} & \scriptsize{0.8554} & \scriptsize{0.8577} & \scriptsize{0.8599} & \scriptsize{0.8621} \\
-%  1.1 & \scriptsize{0.8643} & \scriptsize{0.8665} & \scriptsize{0.8686} & \scriptsize{0.8708} & \scriptsize{0.8729} & \scriptsize{0.8749} & \scriptsize{0.8770} & \scriptsize{0.8790} & \scriptsize{0.8810} & \scriptsize{0.8830} \\
-  $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ \\
-   \hline
-\end{tabular}
-\caption{A section of the normal probability table. The percentile for a normal random variable with $Z=0.45$ has been \highlightT{highlighted}, and the percentile closest to 0.8000 has also been \highlightO{highlighted}.}
-\label{zTableShort}
-\end{figure}
-
-We can also find the Z-score associated with a percentile. For example, to identify Z for the $80^{th}$ percentile, we look for the value closest to 0.8000 in the middle portion of the table: 0.7995. We determine the Z-score for the $80^{th}$ percentile by combining the row and column Z values: 0.84.
-
-\begin{exercisewrap}
-\begin{nexercise}
-Determine the proportion of SAT test takers who scored better than Ann on the SAT.\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{If 84\% had lower scores than Ann, the proportion of people who had better scores must be 16\%. (Generally ties are ignored when the normal model, or any other continuous distribution, is used.)}
-
-
-\D{\newpage}
-
-%%
-\subsection{Normal probability examples}
-
-Cumulative SAT scores are approximated well by a normal model with mean \satmean{} and standard deviation \satsd{}.
-
-\begin{examplewrap}
-\begin{nexample}{What is the probability that a randomly selected SAT taker scores at least 1190 on the SAT?}\label{satAbove1190Exam}
-The probability that a randomly selected SAT taker scores at least 1190 on the SAT is equivalent to the proportion of all SAT takers that score at least 1190 on the SAT. First, always draw and label a picture of the normal distribution. (Drawings need not be exact to be useful.) We are interested in the probability that a randomly selected score will be above 1190, so we shade this upper tail:
-\begin{center}
-\includegraphics[height=0.9in]{ch_distributions/figures/satAbove1190/satAbove1190}
-\end{center}
-The picture shows the mean and the values at 2 standard deviations above and below the mean. The simplest way to find the shaded area under the curve makes use of the Z-score of the cutoff value. With $\mu=\satmean{}$, $\sigma=\satsd{}$, and the cutoff value $x=1190$, the Z-score is computed as
-\begin{eqnarray*}
-Z = \frac{x - \mu}{\sigma} = \frac{1190 - \satmean{}}{\satsd{}} = \frac{90}{200} = 0.45
-\end{eqnarray*}
-We look up the percentile of $Z=0.45$ in the normal probability table shown in Figure~\ref{zTableShort} or in Appendix~\vref{normalProbabilityTable}, which yields 0.6736. However, the percentile describes those who had a Z-score \emph{lower} than 0.45. To find the area \emph{above} $Z=0.45$, we compute one minus the area of the lower tail:
-\begin{center}
-\includegraphics[height=0.8in]{ch_distributions/figures/subtractingArea/subtractingArea}
-\end{center}
-The probability that a randomly selected score is at least 1190 on the SAT is 0.3264.
-\end{nexample}
-\end{examplewrap}
-
-\begin{onebox}{Always draw a picture first, and find the Z-score second}
-For any normal probability situation, \emph{always always always} draw and label the normal curve and shade the area of interest first. The picture will provide an estimate of the probability. \vspace{3mm}
-
-After drawing a figure to represent the situation, identify the Z-score for the observation of interest.\vspace{1mm}\end{onebox}
-
-\begin{exercisewrap}
-\begin{nexercise}
-If the probability that a randomly selected score is at least 1190 is 0.3264, what is the probability that the score is less than 1190? Draw the normal curve representing this exercise, shading the lower region instead of the upper one.\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{We found the probability in Example~\ref{satAbove1190Exam}: 0.6736. A picture for this exercise is represented by the shaded area below ``0.6736'' in Example~\ref{satAbove1190Exam}.}
-
-\D{\newpage}
-
-\begin{examplewrap}
-\begin{nexample}{Edward earned a 1030 on his SAT. What is his percentile?} \label{edwardSatBelow1030}
-First, a picture is needed. Edward's percentile is the proportion of people who do not get as high as a 1030. These are the scores to the left of 1030.
-\begin{center}
-\includegraphics[height=22mm]{ch_distributions/figures/satBelow1030/satBelow1030}
-\end{center}
-Identifying the mean $\mu=1100$, the standard deviation $\sigma=200$, and the cutoff for the tail area $x=1030$ makes it easy to compute the Z-score:
-\begin{eqnarray*}
-Z = \frac{x - \mu}{\sigma} = \frac{1030 - 1100}{200} = -0.35
-\end{eqnarray*}
-Using the normal probability table, identify the row of $-0.3$ and column of $0.05$, which corresponds to the probability $0.3632$. Edward is at the $36^{th}$ percentile.
-\end{nexample}
-\end{examplewrap}
-
-\begin{exercisewrap}
-\begin{nexercise}
-Use the results of Example~\ref{edwardSatBelow1030} to compute the proportion of SAT takers who did better than Edward. Also draw a new picture.\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{If Edward did better than 36\% of SAT takers, then about 64\% must have done better than him. \\
-\includegraphics[width=0.35\textwidth]{ch_distributions/figures/satBelow1030/satAbove1030}}
-
-
-\begin{onebox}{Areas to the right}
-The normal probability table in most books gives the area to the left. If you would like the area to the right, first find the area to the left and then subtract this amount from~one.\end{onebox}
-
-The last several problems have focused on finding the probability or percentile for a particular observation. It is also possible to identify the value corresponding to a particular percentile.
-
-\D{\newpage}
-
-\begin{examplewrap}
-\begin{nexample}{Carlos believes he can get into his preferred college if he scores at least in the 80th percentile on the SAT. What score should he aim for?}
-Here, we are given a percentile rather than a Z-score, so we work backwards. As always, first draw the picture.
-\begin{center}
-\includegraphics[height=22mm]{ch_distributions/figures/sat80thPercentile/sat80thPercentile}
-\end{center}
-We want to find the observation that corresponds to the 80th percentile. First, we find the Z-score associated with the 80th percentile using the normal probability table. Looking at Figure~\ref{zTableShort}., we look for the number closest to 0.80 \emph{inside} the table. The closest number we find is 0.7995 (highlighted). 0.7995 falls on row 0.8 and column 0.04, therefore it corresponds to a Z-score of 0.84. In any normal distribution, a value with a Z-score of 0.84 will be at the 80th percentile. Once we have the Z-score, we work backwards to find x.
-\begin{align*}
-Z &= \frac{x-\mu}{\sigma} \\
-0.84 &= \frac{x-1100}{200} \\
-0.84 \times 200+1100 &= x \\
-x& = 1268
-\end{align*}
-The 80th percentile on the SAT corresponds to a score of 1268.
-\end{nexample}
-\end{examplewrap}
-
-\begin{exercisewrap}
-\begin{nexercise}Imani scored at the 72nd percentile on the SAT. What was her SAT score?\footnotemark\end{nexercise}
-\end{exercisewrap}
-\footnotetext{First, draw a picture! The closest percentile in the table to 0.72 is 0.7190, which corresponds to $Z = 0.58$. Next, set up the Z-score formula and solve for $x$: $0.58 = \frac{x-1100}{200} \rightarrow x = 1216$. Imani scored 1216.}
-
-
-\begin{onebox}{If the data are not nearly normal, don't use a normal table}
-{Before using the normal table, verify that the data or distribution is approximately normal. If it is not, the normal table will give incorrect results. Also, all answers based on normal approximations are approximations and are not exact.}
-\end{onebox}
-
-
-
-\D{\newpage}
-
-%%
-\subsection{Calculator: finding normal probabilities}
-\label{normal}
-
-\begin{onebox}{\videohref{ti84_normal_curve_area} TI-84: Finding area under the normal curve}
-Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{normalcdf} to find an area/proportion/probability between two Z-scores or to the left or right of a Z-score.\vspace{-1mm}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Choose \calcbutton{2ND} \calcbutton{VARS} (i.e. \calctext{DISTR}).
-\item Choose \calctext{2:normalcdf}.
-\item Enter the \calctext{lower} (left) Z-score and the \calctext{upper} (right) Z-score.
-\vspace{-1.5mm}
-  \begin{itemize}
-  \setlength{\itemsep}{0mm}
-  \item If finding just a lower tail area, set \calctext{lower} to \calctext{-5}.
-  \item If finding just an upper tail area, set \calctext{upper} to \calctext{5}.
-\end{itemize}
-\item Leave $\calctextmath{\mu}$ as \calctext{0} and $\calctextmath{\sigma}$ as \calctext{1}.
-\item Down arrow, choose \calctext{Paste}, and hit \calcbutton{ENTER}.\vspace{-1.5mm}
-\end{enumerate}
-TI-83: Do steps 1-2, then enter the lower bound and upper bound separated by a comma, e.g. \calctext{normalcdf(2, 5)}, and hit \calcbutton{ENTER}.\end{onebox}
-
-\begin{onebox}{\videohref{casio_normal_curve_area} Casio fx-9750GII: Finding area under the normal curve}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Navigate to \calctext{STAT} (\calcbutton{MENU}, then hit \calcbutton{2}).
-\item Select \calctext{DIST} (\calcbutton{F5}), then \calctext{NORM} (\calcbutton{F1}), and then \calctext{Ncd} (\calcbutton{F2}).
-\item If needed, set \calctext{Data} to \calctext{Variable} (\calctext{Var} option, which is \calcbutton{F2}).
-\item Enter the \calctext{Lower} Z-score and the \calctext{Upper} Z-score. Set $\calctextmath{\sigma}$ to \calctext{1} and $\calctextmath{\mu}$ to \calctext{0}.\vspace{-1.5mm}
-  \begin{itemize}
-  \setlength{\itemsep}{0mm}
-  \item If finding just a lower tail area, set \calctext{Lower} to \calctext{-5}.
-  \item For an upper tail area, set \calctext{Upper} to \calctext{5}.
-  %\item If finding a middle area (e.g. $Z_{lower} = 0.5$ to $Z_{upper} = 1.5$), set the \calctext{lower} and \calctext{upper} values appropriately.
-  \end{itemize}
-\item Hit \calctext{EXE}, which will return the area probability (\calctext{p}) along with the Z-scores for the lower and upper bounds.
-\end{enumerate}
-\end{onebox}
-
-\begin{examplewrap}
-\begin{nexample}{Use a calculator to determine what percentile corresponds to a Z-score of 1.5.}
-Always first sketch a graph:\footnotemark
-\begin{center}
-\includegraphics[width=0.5\textwidth]{ch_distributions/figures/zscoreleftof1point5/zscoreleftof1point5}\vspace{-2mm}
-\end{center}
-To find an area under the normal curve using a calculator, first identify a lower bound and an upper bound. Theoretically, we want all of the area to the left of 1.5, so the left endpoint should be -$\infty$. However, the area under the curve is nearly negligible when $Z$ is smaller than -4, so we will use -5 as the lower bound when not given a lower bound (any other negative number smaller than -5 will also work). Using a lower bound of -5 and an upper bound of 1.5, we get $P(Z < 1.5) = 0.933$.
-\end{nexample}
-\end{examplewrap}
-\footnotetext{normalcdf gives the result without drawing the graph. To draw the graph, do 2nd VARS, DRAW, 1:ShadeNorm. However, beware of errors caused by other plots that might interfere with this plot.}
-
-\begin{exercisewrap}
-\begin{nexercise}
-Find the area under the normal curve to right of $Z=2$.~\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Now we want to shade to the right. Therefore our lower bound will be 2 and the upper bound will be +5 (or a number bigger than 5) to get $P(Z > 2) = 0.023$.}
-
-\begin{exercisewrap}
-\begin{nexercise}Find the area under the normal curve between -1.5 and~1.5.~\footnotemark\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Here we are given both the lower and the upper bound. Lower bound is -1.5 and upper bound is 1.5. The area under the normal curve between -1.5 and 1.5 = $P(-1.5 < Z < 1.5) = 0.866$.}
-
-
-\begin{onebox}{\videohref{ti84_Z_score_for_a_percentile} TI-84: Find a Z-score that corresponds to a percentile}
-\label{invNorm}
-Use \calcbutton{2ND} \calcbutton{VARS}, \calctext{invNorm} to find the Z-score that corresponds to a given percentile.
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Choose \calcbutton{2ND} \calcbutton{VARS} (i.e. \calctext{DISTR}).
-\item Choose \calctext{3:invNorm}.
-\item Let \calctext{Area} be the percentile as a decimal (the area to the left of desired Z-score).
-\item Leave $\calctextmath{\mu}$ as \calctext{0} and $\calctextmath{\sigma}$ as \calctext{1}.
-\item Down arrow, choose \calctext{Paste}, and hit \calcbutton{ENTER}.\vspace{-1.5mm}
-\end{enumerate}
-TI-83: Do steps 1-2, then enter the percentile as a decimal, e.g.~\mbox{\calctext{invNorm(.40)},} then hit \calcbutton{ENTER}.\end{onebox}
-
-\begin{onebox}{\videohref{casio_Z_score_for_a_percentile} Casio fx-9750GII: Find a Z-score that corresponds to a percentile}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\setlength{\itemsep}{0mm}
-\item Navigate to \calctext{STAT} (\calcbutton{MENU}, then hit \calcbutton{2}).
-\item Select \calctext{DIST} (\calcbutton{F5}), then \calctext{NORM} (\calcbutton{F1}), and then \calctext{InvN} (\calcbutton{F3}).
-\item If needed, set \calctext{Data} to \calctext{Variable} (\calctext{Var} option, which is \calcbutton{F2}).
-\item Decide which tail area to use (\calctext{Tail}), the tail area (\calctext{Area}), and then enter the $\calctextmath{\sigma}$ and $\calctextmath{\mu}$ values.
-\item Hit \calctext{EXE}.
-\end{enumerate}
-\end{onebox}
-
-\begin{examplewrap}
-\begin{nexample}{Use a calculator to find the Z-score that corresponds to the 40th percentile.}Letting Area be 0.40, a calculator gives -0.253. This means that $Z = -0.253$ corresponds to the 40th percentile, that~is, $P(Z < -0.253) = 0.40$.
-\end{nexample}
-\end{examplewrap}
-
-\begin{exercisewrap}
-\begin{nexercise}Find the Z-score such that 20 percent of the area is to the right of that Z-score.\footnotemark\end{nexercise}
-\end{exercisewrap}	
-\footnotetext{If 20\% of the area is the right, then 80\% of the area is to the left. Letting area be 0.80, we get $Z = 0.841$.}
-
-\D{\newpage}
-
-\begin{examplewrap}
-\begin{nexample}{In a large study of birth weight of newborns, the weights of 23,419 newborn boys were recorded.\footnotemark\, The distribution of weights was approximately normal with a mean of 7.44 lbs (3376 grams) and a standard deviation of 1.33 lbs (603 grams). The government classifies a newborn as having low birth weight if the weight is less than 5.5 pounds. What percent of these newborns had a low birth weight?}
-We find an area under the normal curve between -5 (or a number smaller than -5, e.g. -10) and a Z-score that we will calculate. There is no need to write calculator commands in a solution. Instead, continue to use standard statistical notation. 
-\begin{align*}
-Z&=\frac{5.5-7.44}{1.33}\\
-&=-1.49\\
-P(Z < -1.49) &= 0.068
-\end{align*}
-Approximately 6.8\% of the newborns were of low birth weight.
-\end{nexample}
-\end{examplewrap}
-\footnotetext{\oiRedirect{textbook-birthweight_for_Scottish_singleton_births}{www.biomedcentral.com/1471-2393/8/5}}
-
-\begin{exercisewrap}
-\begin{nexercise}Approximately what percent of these babies weighed greater than 10 pounds?\footnotemark\end{nexercise}
-\end{exercisewrap}
-\footnotetext{$Z=\frac{10-7.44}{1.33}=1.925$. Using a lower bound of 2 and an upper bound of 5, we get $P(Z > 1.925) = 0.027$. Approximately 2.7\% of the newborns weighed over 10 pounds.}
-
-
-\begin{exercisewrap}
-\begin{nexercise}Approximately \emph{how many} of these newborns weighed greater than 10 pounds?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Approximately 2.7\% of the newborns weighed over 10 pounds. Because there were 23,419 of them, about $0.027 \times 23419 \approx 632$ weighed greater than 10 pounds.}
-
-\begin{exercisewrap}
-\begin{nexercise}How much would a newborn have to weigh in order to be at the 90th percentile among this group?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Because we have the percentile, this is the inverse problem. To get the Z-score, use the inverse normal option with 0.90 to get $Z = 1.28$. Then solve for $x$ in $1.28 = \frac{x - 7.44}{1.33}$ to get $x = 9.15$. To be at the 90th percentile among this group, a newborn would have to weigh 9.15 pounds.}
-
-
-\D{\newpage}
-
-%%
-\subsection{68-95-99.7 rule}
-
-Here, we present a useful rule of thumb for the probability of falling within 1, 2, and 3 standard deviations of the mean in the normal distribution. This will be useful in a wide range of practical settings, especially when trying to make a quick estimate without a calculator or Z table.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.72\textwidth]{ch_distributions/figures/6895997/6895997}
-\caption{Probabilities for falling within 1, 2, and 3 standard deviations of the mean in a normal distribution.}
-\label{6895997}
-\end{figure}
-
-\begin{exercisewrap}
-\begin{nexercise}
-Use the Z table to confirm that about 68\%, 95\%, and 99.7\% of observations fall within 1, 2, and 3, standard deviations of the mean in the normal distribution, respectively. For instance, first find the area that falls between $Z=-1$ and $Z=1$, which should have an area of about 0.68. Similarly there should be an area of about 0.95 between $Z=-2$ and $Z=2$.\footnotemark\end{nexercise}
-\end{exercisewrap}
-\footnotetext{First draw the pictures. To find the area between $Z=-1$ and $Z=1$, use the normal probability table to determine the areas below $Z=-1$ and above $Z=1$. Next verify the area between $Z=-1$ and $Z=1$ is about 0.68. Repeat this for $Z=-2$ to $Z=2$ and also for $Z=-3$ to $Z=3$.}
-
-It is possible for a normal random variable to fall 4,~5, or~even more standard deviations from the mean. However, these occurrences are very rare if the data are nearly normal. The probability of being further than 4 standard deviations from the mean is about 1-in-15,000. For 5 and 6 standard deviations, it is about 1-in-2 million and 1-in-500 million, respectively.
-
-\begin{exercisewrap}
-\begin{nexercise}
-SAT scores closely follow the normal model with mean $\mu = 1100$ and standard deviation $\sigma = 200$. (a) About what percent of test takers score 700 to 1500? (b) What percent score between 1100 and 1500?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{(a) 700 and 1500 represent two standard deviations above and below the mean, which means about 95\% of test takers will score between 700 and 1500. (b)~Since the normal model is symmetric, then half of the test takers from part~(a) ($\frac{95\%}{2} = 47.5\%$ of all test takers) will score 700 to 1500 while 47.5\% score between 1100 and 1500.}
-
-
-\D{\newpage}
-
-%%
-\subsection{Evaluating the normal approximation (special topic)}
-\label{assessingNormal}
-
-It is important to remember normality is always an approximation. Testing the appropriateness of the normal assumption is a key step in many data analyses.
-
-%\index{normal probability plot|(}
-
-The distribution of heights of US males is well approximated by the normal model. We are interested in proceeding under the assumption that the data are normally distributed, but first we must check to see if this is reasonable.
-
-There are two visual methods for checking the assumption of normality that can be implemented and interpreted quickly. The first is a simple histogram with the best fitting normal curve overlaid on the plot, as shown in the left panel of Figure~\ref{fcidMHeights}. The sample mean $\bar{x}$ and standard deviation $s$ are used as the parameters of the best fitting normal curve. The closer this curve fits the histogram, the more reasonable the normal model assumption. Another more common method is examining a \term{normal probability plot},\footnote{Also commonly called a quantile-quantile plot.} shown in the right panel of Figure~\ref{fcidMHeights}. The closer the points are to a perfect straight line, the more confident we can be that the data follow the normal model.
+\footnotetext{This sample can be considered a simple random sample from the US population. It relies on the USDA Food Commodity Intake Database.} 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.78\textwidth]{ch_distributions/figures/fcidMHeights/fcidMHeights}
-\caption{A sample of 100 male heights. The observations are rounded to the nearest whole inch, explaining why the points appear to jump in increments in the normal probability plot.}
-\label{fcidMHeights}
+\includegraphics[width=\textwidth]{ch_probability/figures/fdicHistograms/fdicHistograms}
+\caption{Four hollow histograms of US adults heights with varying bin widths.}
+\label{fdicHistograms}
 \end{figure}
 
-\Comment{check placement of figures}
-
 \begin{examplewrap}
-\begin{nexample}{Consider all NBA players from the 2018-2019 season presented in Figure~\ref{nbaNormal}.\footnotemark\,  Based on the graphs, are NBA player heights normally distributed? }
-We first create a histogram and normal probability plot of the NBA player heights. The histogram in the left panel is slightly left skewed, which contrasts with the symmetric normal distribution. The points in the normal probability plot do not appear to closely follow a straight line but show what appears to be a ``wave''. NBA player heights do not appear to come from a normal distribution.
+\begin{nexample}{What proportion of the sample is between 180 cm and 185 cm tall (about 5'11" to 6'1")?}\label{contDistProb}
+We can add up the heights of the bins in the range 180 cm and 185 and divide by the sample size. For instance, this can be done with the two shaded bins shown in Figure~\ref{usHeightsHist180185}. The two bins in this region have counts of 195,307 and 156,239 people, resulting in the following estimate of the probability:
+\begin{eqnarray*}
+\frac{195307+156239}{\text{3,000,000}} = 0.1172
+\end{eqnarray*}
+This fraction is the same as the proportion of the histogram's area that falls in the range 180 to 185~cm.
 \end{nexample}
 \end{examplewrap}
-\footnotetext{These data were collected from \oiRedirect{textbook-nba_com}{www.nba.com}.}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{ch_distributions/figures/nbaNormal/nbaNormal}
-\caption{Histogram and normal probability plot for the NBA heights from the 2018-2019 season.}
-\label{nbaNormal}
+\includegraphics[width=0.95\textwidth]{ch_probability/figures/usHeightsHist180185/usHeightsHist180185}
+\caption{A histogram with bin sizes of 2.5 cm. The shaded region represents individuals with heights between 180 and 185 cm.}
+\label{usHeightsHist180185}
 \end{figure}
+
+\D{\newpage}
+
+Examine the transition from a boxy hollow histogram in the top-left of Figure~\ref{fdicHistograms} to the much smoother plot in the lower-right. In this last plot, the bins are so slim that the hollow histogram is starting to resemble a smooth curve. This suggests the population height as a \emph{continuous} numerical variable might best be explained by a curve that represents the outline of extremely slim bins.
+
+This smooth curve represents a \term{continuous distribution}, also called a \textbf{density curve}.  Such a distribution is shown in Figure~\ref{fdicHeightContDist} overlaid on a histogram of the sample. A  continuous distribution has a special property: the total area under the curve is 1.
+
+\begin{figure}[tbh]
+\centering
+\includegraphics[width=0.87\textwidth]{ch_probability/figures/fdicHeightContDist/fdicHeightContDist}
+\caption{The continuous probability distribution of heights for US adults.}
+\label{fdicHeightContDist}
+\end{figure}
+
+\index{hollow histogram|)}
+
+
+%%
+\subsection{Probabilities from continuous distributions}
+
+We computed the proportion of individuals with heights 180 to 185 cm in Example~\ref{contDistProb} as a fraction:
+\begin{eqnarray*}
+\frac{\text{number of people between 180 and 185}}{\text{total sample size}}
+\end{eqnarray*}
+We found the number of people with heights between 180 and 185 cm by determining the fraction of the histogram's area in this region. Similarly, we can use the area in the shaded region under the curve to find a probability (with the help of a computer):
+\begin{eqnarray*}
+P(\text{\var{height} between 180 and 185})
+	= \text{area between 180 and 185}
+	= 0.1157
+\end{eqnarray*}
+The probability that a randomly selected person is between 180 and 185 cm is 0.1157. This is very close to the estimate from Example~\ref{contDistProb}: 0.1172.
 
 
 \begin{exercisewrap}
-\begin{nexercise} \label{normalQuantileExerciseAdditional}
-Figure~\ref{normalQuantileExerAdditional} shows normal probability plots for two distributions that are skewed. One distribution is skewed to the low end (left skewed) and the other to the high end (right skewed). Which is which?\footnotemark
+\begin{nexercise}
+Three US adults are randomly selected. The probability a single adult is between 180 and 185 cm is 0.1157.\footnotemark \vspace{-1.5mm}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item[(a)] What is the probability that all three are between 180 and 185 cm tall?
+\item[(b)] What is the probability that none are between 180 and 185 cm?
+\end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Examine where the points fall along the vertical axis. In the first plot, most points are near the low end with fewer observations scattered along the high end; this describes a distribution that is right skewed. The second plot shows the opposite features, and this distribution is left skewed.}
+\footnotetext{Brief answers: (a) $0.1157 \times 0.1157 \times 0.1157 = 0.0015$. (b) $(1-0.1157)^3 = 0.692$}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.75\textwidth]{ch_distributions/figures/normalQuantileExer/normalQuantileExerAdditional}
-\caption{Normal probability plots for Guided Practice~\ref{normalQuantileExerciseAdditional}.}
-\label{normalQuantileExerAdditional}
-\end{figure}
-
-
-
-%%
-%%
-\subsection{Normal approximation for sums of random variables}
-\label{normapproxsumrv}
-
-We have seen that many distributions are approximately normal. The sum and the difference of normally distributed variables is also normal. While we cannot prove this here, the usefulness of it is seen in the following example.
+\D{\newpage}
 
 \begin{examplewrap}
-\begin{nexample}{Three friends are playing a cooperative video game in which they have to complete a puzzle as fast as possible. Assume that the individual times of the 3 friends are independent of each other. The individual times of the friends in similar puzzles are approximately normally distributed with the following means and standard deviations. 
-\begin{center}
-\begin{tabular}{lrr}
-& Mean &  SD \\
-Friend 1 	& 5.6 & 0.11  \\
-Friend 2 	& 5.8  & 0.13 \\
-Friend 3 	& 6.1  & 0.12  
-\end{tabular}
-\end{center}
-To advance to the next level of the game, the friends' total time must not exceed 17.1 minutes. What is the probability that they will advance to the next level?}
-Because each friend's time is approximately normally distributed, \emph{the sum of their times is also approximately normally distributed}. We will do a normal approximation, but first we need to find the mean and standard deviation of the \emph{sum}. We learned how to do this in Section~\ref{randomVariablesSection}.
-
-Let the three friends be labeled $X$, $Y$, $Z$. We want $P(X + Y + Z < 17.1)$. The mean and standard deviation of the sum of $X$, $Y$, and $Z$ is given by:
-\begin{align*}
-\mu_{sum} &= E(X+Y+Z)
-	& \sigma_{sum}&= \sqrt{(SD_X)^2+(SD_Y)^2 + (SD_Z)^2} \\
-&= E(X) + E(Y) + E(Z)
-	& &= \sqrt{(0.11)^2+(0.13)^2+(0.12)^2}\\
-&=4.6+4.8+4.5
-	& &= 0.208 \\
-&=17.5
-\end{align*}
-Now we can find the Z-score. 
-\begin{align*}
-Z &= \frac{x_{sum}-\mu_{sum}}{\sigma_{sum}} \\
-&=\frac{17.1-17.5}{0.208} \\
-&=-1.92
-\end{align*}
-Finally, we want the probability that the sum is less than 17.5, so we shade the area to the left of $Z = -1.92$. Using the normal table or a calculator, we get
-\begin{align*}
-P(Z < -1.92) = 0.027
-\end{align*}
-There is a 2.7\% chance that the friends will advance to the next level.
+\begin{nexample}{What is the probability that a randomly selected person is \textbf{exactly} 180~cm? Assume you can measure perfectly.}
+\label{probabilityOfExactly180cm}
+This probability is zero. A person might be close to 180 cm, but not exactly 180 cm tall. This also makes sense with the definition of probability as area; there is no area captured between 180~cm and 180~cm.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-What is the probability that Friend 2 will complete the puzzle with a faster time than Friend 1?  Hint:  find $P(Y < X)$, or $P(Y - X < 0)$.\footnotemark
+Suppose a person's height is rounded to the nearest centimeter. Is there a chance that a random person's \textbf{measured} height will be 180~cm?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{First find the mean and standard deviation of $Y - X$. The mean of $Y - X$ is $\mu_{Y-X} = 5.8 - 5.6 =  0.2$. The standard deviation is  $SD_{Y-X}=\sqrt{(0.13)^2+(0.11)^2}=0.170$. Then $Z=\frac{0-0.2}{0.170}=-1.18$ and $P(Z < -1.18)= .119$. There is an 11.9\% chance that Friend 2 will complete the puzzle with a faster time than Friend 1.}
+\footnotetext{This has positive probability. Anyone between 179.5 cm and 180.5 cm will have a \emph{measured} height of 180 cm. This is probably a more realistic scenario to encounter in practice versus Example~\ref{probabilityOfExactly180cm}.}
+
+\index{data!FCID|)}
 
 
 \D{\newpage}
 
 %%
 \subsection*{Section summary}
-
 \begin{itemize}
-\item A \term{Z-score} represents the number of standard deviations a value in a data set is above or below the mean.  To calculate a \mbox{Z-score} use: $Z = \frac{x-\text{mean}}{SD}$.  
+\item Histograms use bins with a specific width to display the distribution of a variable.  When there is enough data and the data does not have gaps, as the bin width gets smaller and smaller, the histogram begins to resemble a smooth curve, or a \term{continuous distribution}. 
 
-\item \emph{Z-scores do not depend on units}.  When looking at distributions with different units or different standard deviations, \mbox{Z-scores} are useful for comparing how far values are away from the mean (relative to the distribution of the data). 
+\item Continuous distributions are often used to approximate relative frequencies and probabilities.  In a continuous distribution, the \emph{area under the curve} corresponds to relative frequency or probability.  The total area under a continuous probability distribution must equal 1.  
 
-\item The \term{normal distribution} is the most commonly used distribution in Statistics.  Many distribution are approximately normal, but none are exactly normal.  
+\item Because the area under the curve for a single point is zero, the probability of any specific value is zero.  This implies that, for example, $P(X < 5) = P(X \le 5)$ for a continuous probability distribution.
 
-\item The empirical rule (68-95-99.7 Rule) comes from the normal distribution.  The closer a distribution is to normal, the better this rule will hold.
-
-\item It is often useful to use the standard normal distribution, which has mean~0 and SD~1, to approximate a discrete histogram.  There are two common types of \textbf{normal approximation problems}, and for each a key step is to find a \mbox{Z-score}.   
-\begin{itemize}
-\item[A:] \textit{Find the percent or probability of a value greater/less than a given \textit{x}-value.  }
-\begin{enumerate}\vspace{-1mm}
-\setlength{\itemsep}{0mm}
-\item Verify that the distribution of interest is approximately normal.
-\item Calculate the \mbox{Z-score}.  Use the provided population mean and SD to standardize the given $x$-value.
-\item Use a calculator function (e.g. \calctext{normcdf} on a TI) or a normal table to find the area under the normal curve to the right/left of this \mbox{Z-score}; this is the \textit{estimate} for the percent/probability.
-\end{enumerate}
-
-\item[B:] \textit{Find the \textit{x}-value that corresponds to a given percentile.}
-\begin{enumerate}\vspace{-1mm}
-\setlength{\itemsep}{0mm}
-\item Verify that the distribution of interest is approximately normal.
-\item Find the Z-score that corresponds to the given percentile (using, for example, \calctext{invNorm} on a TI).  
-\item Use the Z-score along with the given mean and SD to solve for the \textit{x}-value.  
-\end{enumerate}
-\end{itemize}
-
-\item Because the sum or difference of two normally distributed variables is itself a normally distributed variable, the normal approximation is also used in the following type of problem.
-\item[] \textit{Find the probability that a sum $X+Y$ or a difference $X-Y$ is greater/less than some value}.
-\begin{enumerate}\vspace{-1mm}
-\setlength{\itemsep}{0mm}
-\item Verify that the distribution of $X$ and the distribution of $Y$ are approximately normal.  
-\item Find the mean of the sum or difference.  Recall: the mean of a sum is the 
-\\sum of the means.  The mean of a difference is the difference of the means.  
-\\Find the SD of the sum or difference using:  
-\\$SD(X+Y) = SD(X - Y) =  \sqrt{(SD(X))^2 + (SD(Y))^2}$.
-\item Calculate the Z-score.  Use the calculated mean and SD to standardize the given sum or difference.
-\item Find the appropriate area under the normal curve. 
-\end{enumerate}
-
+\item Finding areas under curves is challenging; it is common to use distribution tables, calculators, or other technology to find such areas.
 
 \end{itemize}
 
-%%%%%%%%Section exercises
-{\input{ch_distributions/TeX/normal_distribution.tex}}
 
+
+%%%%%%Section Exercises
+{\input{ch_probability/TeX/continuous_distributions.tex}}
+
+
+
+\D{\newpage}
+
+\D{\newpage}
 
 %____________________________________
 \section[Sampling distribution of a sample mean]{Sampling distribution of a sample mean }
@@ -1042,660 +533,9 @@ When finding the probability that an \emph{average} or mean is greater or less t
 \end{itemize}
 \end{itemize}
 
-
 %%%%%%%%%%Section exercises
 {\input{ch_distributions/TeX/sampling_distribution_of_a_sample_mean.tex}}
 
-
-%__________________________________________
-\section{Geometric distribution}
-\label{geomDist}
-
-\sectionintro{
-\noindent%
-How many times should we expect to roll a die until we get a \resp{1}?
-How many people should we expect to see at a hospital until we get someone with blood type O+?
-These questions can be answered using the geometric distribution.
-We will see that unlike with the distribution of a sample mean, the shape of the geometric distribution is never normal.
-
-%%
-\subsection*{Learning objectives}
-
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-
-\item Determine if a scenario is geometric.
-
-\item Calculate the probabilities of the possible values of a geometric random variable.
-
-\item Find and interpret the mean (expected value) of a geometric distribution.
-
-\item Understand the shape of the geometric distribution.
-
-\end{enumerate}
-}
-
-%%
-\subsection{Bernoulli distribution}
-\label{bernoulli}
-
-%\newcommand{\insureSprob}{0.7}
-%\newcommand{\insureSperc}{70\%}
-%\newcommand{\insureFprob}{0.3}
-%\newcommand{\insureFperc}{30\%}
-%\newcommand{\insureDistA}{0.7}
-%\newcommand{\insureDistB}{0.21}
-%\newcommand{\insureDistC}{0.063}
-%\newcommand{\insureDistD}{0.019}
-%\newcommand{\insureDistE}{0.006}
-%\newcommand{\insureCDistA}{0.7}
-%\newcommand{\insureCDistB}{0.91}
-%\newcommand{\insureCDistC}{0.973}
-%\newcommand{\insureCDistCComplement}{0.027}
-%\newcommand{\insureCDistD}{0.992}
-%\newcommand{\insureCDistE}{0.998}
-%\newcommand{\insureGeomMean}{1.43}
-
-\index{distribution!Bernoulli|(}
-
-We begin by revisiting a scenario encountered when studying the binomial formula (section~\ref{binomialForm}), and we formalize the notion of a yes/no variable.
-
-Many health insurance plans in the United States have
-a deductible, where the insured individual is responsible
-for costs up to the deductible, and then the costs above
-the deductible are shared between the individual and
-insurance company for the remainder of the year.
-
-Suppose a health insurance company found that \insureSperc{} of the
-people they insure stay below their deductible in any given year.
-Each of these people can be thought of as a \term{trial}.
-We label a person a \term{success} if her healthcare costs
-do not exceed the deductible.
-We label a person a \term{failure} if she does exceed her
-deductible in the year.
-Because \insureSperc{} of the individuals will not exceed their deductible,
-we denote the \term{probability of a success} as
-$p = \insureSprob{}$.
-The probability of a failure is sometimes denoted with
-$q = 1 - p$, which would be \insureFprob{} in for the insurance
-example.
-
-When an individual trial only has two possible outcomes, often
-labeled as \resp{success} or \resp{failure}, it is called a
-\termsub{Bernoulli random variable}{distribution!Bernoulli}.
-We chose to label a person who does not exceed her deductible
-as a ``success'' and all others as ``failures''.
-However, we could just as easily have reversed these labels.
-The mathematical framework we will build does not depend
-on which outcome is labeled a success and which a failure,
-as long as we are consistent.
-
-\D{\newpage}
-
-Bernoulli random variables are often denoted as \resp{1}
-for a success and \resp{0} for a failure.
-In addition to being convenient in entering data,
-it is also mathematically handy.
-Suppose we observe ten trials:
-\begin{center}
-\resp{1} \resp{1} \resp{1} \resp{0} \resp{1} \resp{0} \resp{0} \resp{1} \resp{1} \resp{0}
-\end{center}
-Then the \term{sample proportion}, $\hat{p}$, is the
-sample mean of these observations:
-\begin{align*}
-\hat{p} = \frac{\text{\# of successes}}{\text{\# of trials}}
-    = \frac{1+1+1+0+1+0+0+1+1+0}{10} = 0.6
-\end{align*}%
-This mathematical inquiry of Bernoulli random variables can
-be extended even further.
-%\Comment{Maybe the next footnote should instead be an EOCE?}
-Because \resp{0} and \resp{1} are numerical outcomes,
-we can define the {mean} and {standard deviation}
-of a Bernoulli random variable.\footnote{If ${p}$ is the true probability of a success, then the mean of a Bernoulli random variable $X$ is given by
-\begin{align*}
-\mu = E(X) &=  0\cdot P(X = 0) +  1\cdot P(X=1) \\
-	&=   0\cdot (1 - p) +  1\cdot p = 0 + p = p
-\end{align*}
-Similarly, the variance of $X$ can be computed:
-\begin{align*}
-\sigma^2 &= {(0-p)^2\cdot P(X=0) + (1-p)^2\cdot P(X=1)} \\
-	&= {p^2\cdot (1-p) + (1-p)^2\cdot p} = {p(1-p)}
-\end{align*}
-The standard deviation is $\sigma=\sqrt{p(1-p)}$.}
-
-\begin{onebox}{Bernoulli random variable}
-%  A Bernoulli random variable has exactly two possible
-%  outcomes, often labeled \resp{1} for the ``success''
-%  outcome and \resp{0} for the ``failure'' outcome.\vspace{3mm}
-  If $X$ is a random variable that takes value 1 with
-  probability of success $p$ and 0 with probability $1-p$,
-  then $X$ is a Bernoulli random variable with mean
-  and standard deviation
-  \begin{align*}
-  \mu &= p
-      &\sigma&= \sqrt{p(1-p)}
-  \end{align*}
-\end{onebox}
-
-In general, it is useful to think about a Bernoulli random variable as a random process with only two outcomes: a success or failure. Then we build our mathematical framework using the numerical labels \resp{1} and \resp{0} for successes and failures, respectively.
-
-\index{distribution!Bernoulli|)}
-
-
-
-%%
-\subsection{Geometric distribution}
-
-\index{distribution!geometric|(}
-
-The \termsub{geometric distribution}{distribution!geometric}
-is used to describe how
-many trials it takes to observe a success.
-Let's first look at an example.
-
-\begin{examplewrap}
-\begin{nexample}{Suppose we are working at the insurance
-    company and need to find a case where the person did
-    not exceed her (or his) deductible as a case study.
-    If the probability a person will not exceed her
-    deductible is \insureSprob{} and we are drawing people
-    at random, what are the chances that the first person
-    will not have exceeded her deductible, i.e. be a success?
-    The second person?
-    The third?
-    What about the probability that we pull $x - 1$ cases before we find
-    the first success, i.e. the first success is the
-    $x^{th}$ person?
-    (If the first success is the fifth person, then we say $x=5$.)}
-  \label{waitForDeductible}%
-  The probability of stopping after the first person is just
-  the chance the first person will not exceed her (or his)
-  deductible:~\insureSprob{}.
-The probability the second person is the first to exceed
-  her deductible is  \begin{align*}
-  &P(\text{second person is the first to exceed deductible})  \\
-  &\quad
-    = P(\text{the first won't, the second will})
-    = (\insureFprob{})(\insureSprob{})
-    = \insureDistB{}
-  \end{align*}
-  Likewise, the probability it will be the third case is
-  $(\insureFprob{})(\insureFprob{})(\insureSprob{})
-    = \insureDistC$.
-
-  If the first success is on the $x^{th}$ person,
-  then there are $x-1$ failures and finally 1 success,
-  which corresponds to the probability
-  $(\insureFprob{})^{x-1}(\insureSprob{})$.
-  This is the same as
-  $(1-\insureSprob{})^{x-1}(\insureSprob{})$.
-\end{nexample}
-\end{examplewrap}
-
-\D{\newpage}
-
-Example~\ref{waitForDeductible} illustrates what the
-\termsub{geometric distribution}{distribution!geometric},
-which describes the waiting
-time until a success for
-\term{independent and identically distributed (iid)}
-Bernoulli random variables.
-In this case, the \emph{independence} aspect just means
-the individuals in the example don't affect each other,
-and \emph{identical} means they each have the same probability
-of success.
-
-The geometric distribution from Example~\ref{waitForDeductible} is shown in Figure~\ref{geometricDist70}. In general, the probabilities for a geometric distribution decrease \term{exponentially} fast.
-
-\begin{figure}[h]
-  \centering
-  \Figure{0.75}{geometricDist70}
-  \caption{The geometric distribution when the probability
-      of success is $p = \insureSprob{}$.}
-  \label{geometricDist70}
-\end{figure}
-
-While this text will not derive the formulas for the mean (expected) number of trials needed to find the first success or the standard deviation or variance of this distribution, we present general formulas for each.
-
-\begin{onebox}{Geometric Distribution}
-  \index{distribution!geometric|textbf}%
-  Let X have a geometric distribution with one parameter $p$, where $p$ is the probability of a success in one trial.   Then the
-  probability of finding the first success in the
-  $x^{th}$ trial is given by\vspace{-1.5mm}
-  \begin{align*}
-  P(X = x) = (1-p)^{x-1}p
-  \end{align*}
-where $x=1,2,3,\dots$\\
-\\
-  The mean (i.e. expected value) and standard deviation of this wait time are given by
-  \begin{align*}
-  \mu_{\scriptscriptstyle{X}} = \frac{1}{p}
-      \qquad \sigma_{\scriptscriptstyle{X}} = \frac{\sqrt{1-p\ }}{p}
-  \end{align*}
-\end{onebox}
-
-It is no accident that we use the symbol $\mu$ for both the mean and expected value. The mean and the expected value are one and the same.
-
-It takes, on average, $1/p$ trials to get a success under the geometric distribution. This mathematical result is consistent with what we would expect intuitively. If the probability of a success is high (e.g. 0.8), then we don't usually wait very long for a success: $1/0.8 = 1.25$ trials on average. If the probability of a success is low (e.g. 0.1), then we would expect to view many trials before we see a success: $1/0.1 = 10$ trials.
-
-\D{\newpage}
-
-\begin{exercisewrap}
-\begin{nexercise}
-The probability that a particular case would not exceed their
-deductible is said to be \insureSprob{}.
-If we were to examine cases until we found one that where
-the person did not exceed her deductible, how many cases should
-we expect to check?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{We would expect to see about
-    $1 / \insureSprob{} \approx \insureGeomMean{}$
-    individuals to find the first success.}
-
-\begin{examplewrap}
-\begin{nexample}{What is the chance that we would find
-    the first success within the first 3 cases?}
-  \label{insureFirstSuccessInLT4}%
-  This is the chance the first ($X=1$), second ($X=2$),
-  or third ($X=3$) case is the first success, which are three
-  disjoint outcomes.
-  Because the individuals in the sample are randomly sampled
-  from a large population, they are independent.
-  We compute the probability of each case and add the separate
-  results:
-  \begin{align*}
-  &P(X=1, 2, \text{ or }3) \\
-    & \quad = P(X=1)+P(X=2)+P(X=3) \\
-    & \quad = (\insureFprob{})^{1-1}(\insureSprob{})
-        + (\insureFprob{})^{2-1}(\insureSprob{})
-        + (\insureFprob{})^{3-1}(\insureSprob{}) \\
-    & \quad = \insureCDistC{}
-  \end{align*}
-  There is a probability of \insureCDistC{} that we would
-  find a successful case within 3 cases.
-\end{nexample}
-\end{examplewrap}
-
-\begin{exercisewrap}
-\begin{nexercise}
-Determine a more clever way to solve Example~\ref{insureFirstSuccessInLT4}.
-Show that you get the same result.\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{First find the probability of the complement:
-  $P($no success in first 3~trials$)
-      = \insureFprob{}^3 = \insureCDistCComplement{}$.
-  Next, compute one minus this probability:
-  $1 - P($no success in 3 trials$)
-      = 1 - \insureCDistCComplement{}
-      = \insureCDistC{}$.}
-
-\begin{examplewrap}
-\begin{nexample}{Suppose a car insurer has determined
-    that 88\% of its drivers will not exceed their deductible
-    in a given year.
-    If someone at the company were to randomly draw
-    driver files until they found one that had not exceeded
-    their deductible, what is the expected number of drivers
-    the insurance employee must check?
-    What is the standard deviation of the number of driver files
-    that must be drawn?}
-  \label{carInsure08DrawOne}%
-  In this example, a success is again when someone will not
-  exceed the insurance deductible, which has probability
-  $p = 0.88$.
-  The expected number of people to be checked is
-  $1 / p = 1 / 0.88 = 1.14$ and the standard deviation is
-  $\frac{\sqrt{1-p\ }}{p}=\frac{\sqrt{1-0.88\ }}{0.88} = 0.39$.
-\end{nexample}
-\end{examplewrap}
-
-\begin{exercisewrap}
-\begin{nexercise}
-Using the results from Example~\ref{carInsure08DrawOne},
-$\mu_{\scriptscriptstyle{X}} = 1.14$ and $\sigma_{\scriptscriptstyle{X}} = 0.39$, would it be appropriate
-to use the normal model to find what proportion
-of experiments would end in 3 or fewer trials?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{No. The geometric distribution is always
-  right skewed and can never be well-approximated by the
-  normal model.}
-
-The independence assumption is crucial to the geometric
-distribution's accurate description of a scenario.
-Mathematically, we can see that to construct the probability
-of the success on the $x^{th}$ trial, we had to use the
-General Multiplication Rule for independent processes.
-It is no simple task to generalize the geometric model
-for dependent trials.
-
-\index{distribution!geometric|)}
-
-
-\D{\newpage}
-
-%%
-\subsection*{Section summary}
-
-\begin{itemize}
-\item It is useful to model yes/no, success/failure with the values 1 and 0, respectively. We call the \term{probability of success $p$ }and the \term{probability of failure $1-p$}.
-
-\item When the trials are \term{independent} and the value of $p$ is constant, the probability of finding \term{the first success on the $x^{th}$ trial} is given by $(1-p)^{x-1}p$.  We can see the reasoning behind this formula as follows:  for the first success to happen on the $x^{th}$ trial, it has to \emph{not} happen the first $x-1$ trials (with probability $1-p$), and then happen on the $x^{th}$ trial (with probability $p$).  
-
-\item When we consider the \emph{entire distribution} of possible values for the how long \emph{until} the first success, we get a discrete probability distribution known as the geometric distribution. The \term{geometric distribution} describes the waiting time \emph{until} the first success, when the trials are independent and the probability of success, $p$, is constant.  If X has a geometric distribution with parameter $p$, then $P(X=x)=(1-p)^{x-1}p$, where $x=1,2,3\dots$.
-
-\item The geometric distribution is always \emph{right skewed} and, in fact, has no maximum value.  The probabilities, though, decrease exponentially fast.
-
-\item Even though the geometric distribution has an infinite number of values, it has a well-defined \textbf{mean}: $\mu_{\scriptscriptstyle{X}}=\frac{1}{p}$ and \textbf{standard deviation}: $\sigma_{\scriptscriptstyle{X}} = \frac{\sqrt{1-p \ }}{p}$.  If the probability of success is $\frac{1}{10}$, then \emph{on average} it takes 10 trials until we see the first success.
-
-\item Note that when the trials are not independent, we can modify the geometric formula to find the probability that the first success happens on the $x^{th}$ trial. Instead of simply raising ($1-p$) to the $x-1$, multiply the appropriate \emph{conditional} probabilities.
-
-\end{itemize}
-
-
-{\input{ch_distributions/TeX/geometric_distribution.tex}}
-
-
-
-%______________________________________________
-\section[Binomial distribution]{Binomial distribution }
-\label{binomialModel}
-
-\index{distribution!binomial|(}
-
-\sectionintro{
-\noindent%
-What is the probabilty that more than half of a random sample of 40 people would have blood type O+?  If the probability of a defective part is 1\%, how many defective items would we expect in a random shipment of 200 of those parts?  We can model these scenarios and answer these questions using the binomial distribution.
-
-
-\subsection*{Learning objectives}
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item Determine if a scenario is binomial. 
-
-\item Calculate the probabilities of the possible values of a binomial random variable.
-
-\item Calculate and interpret the mean (expected value) and standard deviation of the number of successes in $n$ binomial trials.
-
-\item Determine whether a binomial distribution can be modeled as approximately normal.  If so, use normal approximation to estimate cumulative binomial probabilities.
-\end{itemize}
-}
-
-
-%%
-\subsection{An example of a binomial distribution}
-
-\newcommand{\oposprob}[0]{0.35}
-\newcommand{\oposprobcomp}[0]{0.65}
-
-In Guided Practice~\ref{bloodTypeOPos}, we asked various probability questions regarding the number of people out of 4 with blood type O+.  We verified that the scenario was binomial and that each problem could be solved using the binomial formula. Instead of looking at it piecewise, we could describe the entire \emph{distribution} of possible values and their corresponding probabilities. Since there are 4 people, there are several possible outcomes for the number who might have blood type O+: 0, 1, 2, 3, 4.
-We can make a distribution table with these outcomes.
-Recall that the probability of a randomly sampled person being blood type O+ is about~\oposprob{}.
-
-\begin{figure}[h]
-\begin{minipage}[c]{0.37\textwidth}\centering%
-\begin{tabular}{l l}
-$x_i$ & $P(x_i)$ \\
-\hline
-0 &  ${4\choose 0}(\oposprob{})^0(\oposprobcomp{})^{4} = 0.179$ \vspace{1mm}\\
-1 &  ${4\choose 1}(\oposprob{})^1(\oposprobcomp{})^{3} = 0.384$  \vspace{1mm}\\
-2 & ${4\choose 2}(\oposprob{})^2(\oposprobcomp{})^{2} = 0.311$  \vspace{1mm}\\
-3 & ${4\choose 3}(\oposprob{})^3(\oposprobcomp{})^{1} = 0.111$  \vspace{1mm}\\
-4 & ${4\choose 4}(\oposprob{})^4(\oposprobcomp{})^{0} = 0.015$  \vspace{1mm}\\
-\hline
-\end{tabular}
-\end{minipage}
-\begin{minipage}[c]{0.6\textwidth}\centering%
-\Figure{0.95}{oPositive4}
-\end{minipage}
-\caption{Probability distribution for the number with blood type O+ in a random sample of 4 people. This is a binomial distribution. Correcting for rounding error, the probabilities add up to~1, as they must for any probability distribution.}
-\label{oPositive4}
-\label{binomDistrOPositive}
-\end{figure}
-
-
-
-\D{\newpage}
-
-%%
-\subsection{The mean and standard deviation of a binomial distribution}
-
-Since this is a probability distribution we could find its mean and
-standard deviation using the formulas from Chapter~\ref{probability}.
-Those formulas require a lot of calculations, so it is fortunate there's
-an easier way to compute the mean and standard deviation for a binomial
-random variable.
-
-\begin{onebox}{Mean and standard deviation of the binomial distribution}
-For a binomial distribution with parameters $n$ and $p$, where $n$ is the number of trials and $p$ is the probability of a success, the mean and standard deviation of the number of observed successes are\vspace{-2mm}
-\begin{align*}
-\mu_{\scriptscriptstyle{X}} &= np
-	&\sigma_{\scriptscriptstyle{X}} &= \sqrt{np(1-p)}
-\end{align*}
-\end{onebox}
-
-\begin{examplewrap}
-\begin{nexample}{If the probability that a person has blood type O+ is \oposprob{} and you have 40 randomly selected people, about how many would you expect to have blood type O+? What is the standard deviation of the number of people who would have blood type O+ among the 40 people?}
-We are asked to determine the expected number (the mean) and the standard deviation, both of which can be directly computed from the formulas above. 
- \begin{align*}
-\mu_{\scriptscriptstyle{X}}&=np = 40(\oposprob{}) = 14 \\
- \sigma_{\scriptscriptstyle{X}} &= \sqrt{np(1-p)} = \sqrt{40(\oposprob{})(\oposprobcomp{})} = 3.0
-\end{align*}%
-\end{nexample}
-\end{examplewrap}
-
-The exact distribution is shown in Figure~\ref{oPositive40}.
-
-\begin{figure}[ht]
-\centering
-\Figure{0.7}{oPositive40}
-\caption{Distribution for the number of people with blood type O+ in a random sample of size 40, where $p=\oposprob{}$.  The distribution is binomial and is centered on~14 with a standard deviation of 3.  }
-\label{oPositive40}
-\end{figure}
-
-
-
-\D{\newpage}
-
-%%
-\subsection{Normal approximation to the binomial distribution}
-
-\index{distribution!binomial!normal approximation|(}
-
-The binomial formula is cumbersome when the sample size ($n$) is large, particularly when we consider a range of observations.
-
-\begin{examplewrap}
-\begin{nexample}
-{Find the probability that fewer than 12 out of 40 randomly selected people would have blood type O+, where probability of blood type O+ is \oposprob{}.}
-This is equivalent to asking, what is the probability of observing $X=0, 1, 2, ..., \text{ or } 11$ with blood type O+ in a sample of size 40 when $p=0.35$?  We previously verified that this scenario is binomial.  We can compute each of the 12 probabilities using the binomial formula and add them together to find the answer:
- \begin{align*}
-  &P(X=0\text{ or }X=1\text{ or }\cdots\text{ or } X=11) \\
-	&\qquad = P(X=0) + P(X=1) + \cdots + P(X=11) \\
-	&\qquad = {40\choose 0}(\oposprob{})^0(\oposprobcomp{})^{40} + {40\choose 1}(\oposprob{})^1(\oposprobcomp{})^{39} + \cdots + {40\choose 11}(\oposprob{})^{11}(\oposprobcomp{})^{29}\\
-	&\qquad = 0.21
-  \end{align*}
-If the true proportion with blood type O+ in the population is $p = \oposprob{}$, then the probability of observing fewer than 12 in a sample of $n = 40$ is 0.21.
-\end{nexample}
-\end{examplewrap}
-\label{exactbin}
-
-The computations in Example~\ref{exactbin} are tedious and long.  In general, we should avoid such work if an alternative method exists that is faster, easier, and still accurate. Recall that calculating probabilities of a range of values is much easier in the normal model. In some cases we may use the normal distribution to estimate binomial probabilities. While a normal approximation for the distribution in Figure~\ref{oPositive4} when the sample size was $n = 4$ would not be appropriate, it might not be too bad for the distribution in Figure~\ref{oPositive40} where $n = 40$.  We might wonder, when is it reasonable to use the normal model to approximate a binomial distribution?
-
-\begin{exercisewrap}
-\begin{nexercise}
-Here we consider the binomial model when the probability of a success is $p=0.10$. Figure~\ref{fourBinomialModelsShowingApproxToNormal} shows four hollow histograms for simulated samples from the binomial distribution using four different sample sizes: $n=10$, 30, 100, 300. What happens to the shape of the distributions as the sample size increases?  How does the binomial distribution change as $n$ gets larger?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{The distribution is transformed from a blocky and skewed distribution into one that rather resembles the normal distribution in the last hollow histogram.}
-
-\begin{figure}[h]
-\centering
-\Figure{0.75}{fourBinomialModelsShowingApproxToNormal}
-\caption{Hollow histograms of samples from the binomial model when $p=0.10$. The sample sizes for the four plots are $n=10$, 30, 100, and 300, respectively.}
-\label{fourBinomialModelsShowingApproxToNormal}
-\end{figure}
-
-The shape of the binomial distribution depends upon both $n$ and $p$.     Here we introduce a rule of thumb for when normal approximation of a binomial distribution is reasonable.  We will use this rule of thumb in many applications going forward.  
-
-\begin{onebox}{Normal approximation of the binomial distribution}
-The binomial distribution with probability of success $p$ is nearly normal when the sample size $n$ is sufficiently large that $np\ge 10$ and $n(1-p)\ge 10$. The approximate normal distribution has parameters corresponding to the mean and standard deviation of the binomial distribution:\vspace{-1.5mm}
-\begin{align*}
-\mu &= np
-&&\sigma= \sqrt{np(1-p)}
-\end{align*}\end{onebox}
-
-\D{\newpage}
-
-The normal approximation may be used when computing the range of many possible successes. For instance, we may apply the normal distribution to the setting described in Figure~\ref{oPositive40}.
-
-
-\begin{examplewrap}
-\begin{nexample}{Use the normal approximation to estimate the probability of observing fewer than 12 with blood type O+ in a random sample of 40, if the true proportion with blood type O+ in the population is $p=\oposprob{}$.}
-\label{approxBinomialForN40P35OPosExample}%
-First we verify that $np$ and $n(1-p)$ are at least 10 so that we can apply the normal approximation to the binomial model:
-\begin{align*}
-np& = 40(\oposprob{})=14\ge 10
-&
-n(1-p)& = 40(\oposprobcomp{}) = 26\ge 10
-\end{align*}
-With these conditions checked, we may use the normal distribution to approximate the binomial distribution with the following mean and standard deviation:
-\begin{align*}
-\mu &= np = 40(\oposprob{})=14\\
-\sigma &= \sqrt{np(1-p)} = \sqrt{40(\oposprob{})(\oposprobcomp{})} = 3.0
-\end{align*}
-We want to find the probability of observing fewer than 12 with blood type O+ using this model. We note that 12 is less than 1~standard deviation below the mean:
-\begin{center}
-\Figures{0.4}{bloodtypeOpos}{bloodtypeOpos40}
-\end{center}
-Next, we compute the Z-score as $Z=\frac{12 - 14}{3} = -0.67$ to find the shaded area in the picture: $P(Z < -0.67) = 0.25$. This probability of 0.25 using the normal approximation is reasonably close to the true probability of 0.21 computed using the binomial distribution.
-\end{nexample}
-\end{examplewrap}
-
-
-
-\begin{examplewrap}
-\begin{nexample}{Use the normal approximation to estimate the probability of observing fewer than 120 people with blood type O+ in a random sample of 400, if the true proportion with blood type O+ in the population is $p=\oposprob{}$.}
-\label{approxBinomialForN400P20SmokerExample}%
-We have previously verified that the binomial model is reasonable for this context.
-Now we will verify that both $np$ and $n(1-p)$ are at least 10 so we can apply the normal approximation to the binomial model:
-\begin{align*}
-np&=400(\oposprob{})=140\ge 10
-&
-n(1-p)&=400(\oposprob{})=260\ge 10
-\end{align*}
-With these conditions checked, we may use the normal approximation in place of the binomial distribution with the following mean and standard deviation:
-\begin{align*}
-\mu &= np = 400(\oposprob{})=140\\
-\sigma &= \sqrt{np(1-p)} = \sqrt{400(\oposprob{})(\oposprobcomp{})}= 9.5
-\end{align*}
-We want to find the probability of observing fewer than 120 with blood type O+ using this model. We note that 120 is just over 2~standard deviations below the mean:
-\begin{center}
-\Figures{0.48}{bloodtypeOpos}{bloodtypeOpos400}
-\end{center}
-Next, we compute the Z-score as $Z=\frac{120 - 140}{9.5} = -2.1$ to find the shaded area in the picture: $P(Z < -2.1) = 0.0179$. This probability of 0.0179 using the normal approximation is very close to the true probability of 0.0196 from the binomial distribution.
-\end{nexample}
-\end{examplewrap}
-
-\begin{exercisewrap}
-\begin{nexercise}
-Use normal approximation, if applicable, to estimate the probability of getting greater than 15 sixes in 100 rolls of a fair die.\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{$np=100(1/6)=16.7\ge 10$ and 
-$n(1-p)=100(5/6)=83.3\ge 10$  
-
-$\mu=np=100(1/6)=16.7; \sigma=\sqrt{np(1-p)}=\sqrt{100(1/6)(5/6)}=3.7$ 
-
-$Z=\frac{15 - 16.7}{3.7} = -0.46$. 
-
-$P(Z > -0.46) = 0.677$
-}
-
-
-%%
-\subsection{Normal approximation breaks down on small intervals (special topic)}
-
-\begin{onebox}{The normal approximation may fail on small intervals}
-{The normal approximation to the binomial distribution tends to perform poorly when estimating the probability of a small range of counts, even when the conditions are met.}
-\end{onebox}
-
-We consider again our example where 35\% of people are blood type O+.  Suppose we want to find the probability that between 129 and 131 people, inclusive, have blood type O+ in a random sample of 400 people.  We want to compute the probability of observing 129, 130, or 131 people with blood type O+ when $p=0.20$ and $n=400$.  With such a large sample, we might be tempted to apply the normal approximation and use the range 129 to 131. However, we would find that the binomial solution and the normal approximation notably differ:
-\begin{align*}
-\text{Binomial:}&\ 0.0732
-&\text{Normal:}&\ 0.0483
-\end{align*}
-We can identify the cause of this discrepancy using Figure~\ref{normApproxToBinomFail}, which shows the areas representing the binomial probability (outlined) and normal approximation (shaded). Notice that the width of the area under the normal distribution is 0.5 units too slim on both sides of the interval. The binomial distribution is a discrete distribution, and the each bar is centered over an integer value. Looking closely at Figure~\ref{normApproxToBinomFail}, we can see that the bar corresponding to 129 begins at 128.5 and ends at 129.5, the bar corresponding to 131 begins at 130.5 and ends at 131.5, etc.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{ch_distributions/figures/normApproxToBinomFail/normApproxToBinomFail-n400-p35}
-\caption{A normal curve with the area between 129 and 131 shaded. The outlined area from 128.5 to 131.5 represents the exact binomial probability.}
-\label{normApproxToBinomFail}
-\end{figure}
-
-
-\begin{onebox}{Improving accuracy of the normal approximation to the binomial distribution}
-The normal approximation to the binomial distribution for intervals of values is usually improved if cutoff values for the lower end of a shaded region are reduced by 0.5 and the cutoff value for the upper end are increased by 0.5. This correction is called the continuity correction and accounts for the fact that the binomial distribution is discrete.\end{onebox}
-
-\begin{examplewrap}
-\begin{nexample}{Use the method described to find a more accurate estimate for the probability of observing 129, 130, or 131 people with blood type O+ in 400 randomly selected people when $p=0.35$.}
-Instead of standardizing 129 and 131, we will standardize 128.5 and 131.5:
-\begin{align*}
-Z_{left} &= \frac{128.5-140}{9.5} = -1.263 \\
-Z_{right} &= \frac{131.5-140}{9.5} = -0.895 \\
-P(-1.263 &< Z < -0.895) = 0.0772
-\end{align*}
-The probability 0.0772 is much closer to the true value of 0.0732 than the previous estimate of 0.0483 we calculated using normal approximation without the continuity correction.
-\end{nexample}
-\end{examplewrap}
-
-It is always possible to apply the continuity correction when finding a normal approximation to the binomial distribution. However, when $n$ is very large or when the interval is wide, the benefit of the modification is limited since the added area becomes negligible compared to the overall area being calculated.
-
-\index{distribution!binomial!normal approximation|)}
-\index{distribution!binomial|)}
-
-
-\D{\newpage}
-
-%%
-\subsection*{Section summary}
-
-\noindent In the previous chapter, we introduced the binomial formula to find the probability of exactly $x$ successes in $n$ trials for an event that has probability $p$ of success.  Instead of looking at this scenario piecewise, we can describe the entire \textit{distribution} of the number of successes and their corresponding probabilities.  
-\begin{itemize}
-\item The distribution of the \textit{number of successes} in $n$ independent trials gives rise to a \term{binomial distribution}.  If X has a binomial distribution with parameters $n$ and $p$, then \\
-$P(X=x) = {n\choose x}p^x(1-p)^n-x$, where $x=0,1,2,3\dots,n$.
-
-\item To write out a binomial probability \textbf{distribution table}, list all possible values for $x$, the number of successes, then use the binomial formula to find the probability of each of those values.  
-
-\item Because a binomial distribution can be thought of as the \emph{sum} of a bunch of 0s and 1s, the \term{Central Limit Theorem} applies.  As $n$ gets larger, the shape of the binomial distribution becomes more normal.  
-
-\item  We call the rule of thumb for when the binomial distribution can be well modeled with a normal distribution the \term{success-failure condition}.  The success-failure condition is met when there are at least 10 successes and 10 failures, or when $np\ge 10$ and $n(1-p)\ge 10$.
-
-\item If \textit{X} follows a binomial distribution with parameters $n$ and $p$, then:
-\begin{itemize}\vspace{-1mm}
-\setlength{\itemsep}{0mm}
-\item The mean is given by $\mu_{\scriptscriptstyle{X}} = np$. \quad (\emph{center})
-\item The standard deviation is given by $\sigma_{\scriptscriptstyle{X}} = \sqrt{np(1-p)}$. \quad (\emph{spread})
-\item When $np\ge 10$ and $n(1-p)\ge 10$, the binomial distribution is approximately normal.  \quad (\emph{shape})
-\end{itemize}
-
-\item It is often easier to use \termsub{normal approximation to the binomial distribution}{normal approximation!binomial distribution} rather than evaluate the binomial formula many times. These three properties of the binomial distribution are used when solving the following type of problem.  
-\\
-\\ \textit{Find the probability of getting more than / fewer than x yeses in $n$ trials or in a sample of size $n$}.  
-\begin{enumerate}\vspace{-1mm}
-\setlength{\itemsep}{0mm}
-\item Identify $n$ and $p$. Verify than $np\ge 10$ and $n(1-p)\ge 10$, which implies that normal approximation is reasonable. 
-\item Calculate the Z-score.  Use $\mu_{\scriptscriptstyle{X}} = np$ and $\sigma_{\scriptscriptstyle{X}} = \sqrt{np(1-p)}$ to standardize the $x$ value.  
-\item Find the appropriate area under the normal curve.   
-\end{enumerate}
-
-\end{itemize}
-
-
-%%%%%%%%%%Section exercises
-{\input{ch_distributions/TeX/binomial_distribution.tex}}
 
 
 
