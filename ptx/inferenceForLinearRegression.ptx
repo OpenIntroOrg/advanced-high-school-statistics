@@ -1,0 +1,1740 @@
+<section xml:id="inferenceForLinearRegression">
+  <title>Inference for the slope of a regression line</title>
+  <introduction>
+    <p>
+      Here we encounter our last confidence interval and hypothesis test procedures,
+      this time for making inferences about the slope of the population regression line.
+      We can use this to answer questions such as the following:
+      <ul>
+        <li>
+          <p>
+            Is the unemployment rate a significant linear predictor for the loss of the President's party in the House of Representatives?
+          </p>
+        </li>
+        <li>
+          <p>
+            On average, how much less in college gift aid do students receive when their parents earn an additional $1000 in income?
+          </p>
+        </li>
+      </ul>
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Recognize that the slope of the sample regression line is a point estimate and has an associated standard error.
+        </p>
+      </li>
+      <li>
+        <p>
+          Be able to read the results of computer regression output and identify the quantities needed for inference for the slope of the regression line,
+          specifically the slope of the sample regression line,
+          the <m>SE</m> of the slope, and the degrees of freedom.
+        </p>
+      </li>
+      <li>
+        <p>
+          State and verify whether or not the conditions are met for inference on the slope of the regression line based using the <m>t</m>-distribution.
+        </p>
+      </li>
+      <li>
+        <p>
+          Carry out a complete confidence interval procedure for the slope of the regression line.
+        </p>
+      </li>
+      <li>
+        <p>
+          Carry out a complete hypothesis test for the slope of the regression line.
+        </p>
+      </li>
+      <li>
+        <p>
+          Distinguish between when to use the <m>t</m>-test for the slope of a regression line and when to use the matched pairs <m>t</m>-test for a mean of differences.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>The role of inference for regression parameters</title>
+    <p>
+      Previously, we found the equation of the regression line for predicting gift aid from family income at Elmhurst College.
+      The slope, <m>b</m>, was equal to <m>-0.0431</m>.
+      This is the slope for our sample data.
+      However, the sample was taken from a larger population.
+      We would like to use the slope computed from our sample data to estimate the slope of the population regression line.
+    </p>
+    <p>
+      The equation for the population regression line can be written as
+      <md>
+        <mrow>\mu_y = \alpha + \beta x</mrow>
+      </md>
+    </p>
+    <p>
+      Here, <m>\alpha</m> and <m>\beta</m> represent two model parameters,
+          <idx><h>parameter</h></idx>
+      namely the <m>y</m>-intercept and the slope of the true or population regression line. (This use of <m>\alpha</m> and <m>\beta</m><idx><h>Greek</h><h>beta@beta (<m>\beta</m>)</h></idx> have nothing to do with the <m>\alpha</m> and <m>\beta</m> we used previously to represent the probability of a Type<nbsp/>I Error and Type<nbsp/>II Error!) The parameters <m>\alpha</m> and <m>\beta</m> are estimated using data.
+      We can look at the equation of the regression line calculated from a particular data set:
+      <md>
+        <mrow>\hat{y} =\amp  a  + bx</mrow>
+      </md>
+      and see that <m>a</m> and <m>b</m> are point estimates for <m>\alpha</m> and <m>\beta</m>,
+      respectively.
+      If we plug in the values of <m>a</m> and <m>b</m>,
+      the regression equation for predicting gift aid based on family income is:
+      <md>
+        <mrow>\hat{y}=24.3193-0.0431x</mrow>
+      </md>
+    </p>
+    <p>
+      The slope of the sample regression line, <m>-0.0431</m>,
+      is our best estimate for the slope of the population regression line,
+      but there is variability in this estimate since it is based on a sample.
+      A different sample would produce a somewhat different estimate of the slope.
+      The standard error of the slope tells us the typical variation in the slope of the sample regression line and the typical error in using this slope to estimate the slope of the population regression line.
+    </p>
+    <p>
+      We would like to construct a 95% confidence interval for <m>\beta</m>,
+      the slope of the population regression line.
+      As with means,
+      inference for the slope of a regression line is based on the <m>t</m>-distribution.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        Inference for the slope of a regression line is based on the <m>t</m>-distribution with <m>n-2</m> degrees of freedom,
+        where <m>n</m> is the number of paired observations.
+      </p>
+    </assemblage>
+    <p>
+      Once we verify that conditions for using the <m>t</m>-distribution are met,
+      we will be able to construct the confidence interval for the slope using a critical value
+      <m>t^{\star}</m> based on <m>n-2</m> degrees of freedom.
+      We will use a table of the regression summary to find the point estimate and standard error for the slope.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Conditions for the least squares line</title>
+    <p>
+      Conditions for inference in the context of regression can be more complicated than when dealing with means or proportions.
+    </p>
+    <p>
+      Inference for parameters of a regression line involves the following assumptions:
+      <ul>
+        <li>
+          <title>Linearity.</title>
+          <p>
+            The true relationship between the two variables follows a linear trend.
+            We check whether this is reasonable by examining whether the data follows a linear trend.
+            If there is a nonlinear trend (e.g. left panel of <xref ref="whatCanGoWrongWithLinearModel">Figure</xref>),
+            an advanced regression method from another book or later course should be applied.
+          </p>
+        </li>
+        <li>
+          <title>Nearly normal residuals.</title>
+          <p>
+            For each <m>x</m>-value, the residuals should be nearly normal.
+            When this assumption is found to be unreasonable,
+            it is usually because of outliers or concerns about influential points.
+            An example which suggestions non-normal residuals is shown in the second panel of <xref ref="whatCanGoWrongWithLinearModel">Figure</xref>.
+            If the sample size <m>n\ge 30</m>,
+            then this assumption is not necessary.
+          </p>
+        </li>
+        <li>
+          <title>Constant variability.</title>
+          <p>
+            The variability of points around the true least squares line is constant for all values of <m>x</m>.
+            An example of non-constant variability is shown in the third panel of <xref ref="whatCanGoWrongWithLinearModel">Figure</xref>.
+          </p>
+        </li>
+        <li>
+          <title>Independent.</title>
+          <p>
+            The observations are independent of one other.
+            The observations can be considered independent when they are collected from a random sample or randomized experiment.
+            Be careful of data collected sequentially in what is called a <term>time series</term>.
+            An example of data collected in such a fashion is shown in the fourth panel of <xref ref="whatCanGoWrongWithLinearModel">Figure</xref>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <figure xml:id="whatCanGoWrongWithLinearModel">
+      <caption>Four examples showing when the inference methods in this chapter are insufficient to apply to the data. In the left panel, a straight line does not fit the data. In the second panel, there are outliers; two points on the left are relatively distant from the rest of the data, and one of these points is very far away from the line. In the third panel, the variability of the data around the line increases with larger values of <m>x</m>. In the last panel, a time series data set is shown, where successive observations are highly correlated.</caption>
+      <image width="73%" source="images/whatCanGoWrongWithLinearModel.png" />
+    </figure>
+    <p>
+      We see in <xref ref="whatCanGoWrongWithLinearModel">Figure</xref>,
+      that patterns in the residual plots suggest that the assumptions for regression inference are not met in those four examples.
+      In fact, identifying nonlinear trends in the data, outliers,
+      and non-constant variability in the residuals are often easier to detect in a residual plot than in a scatterplot.
+    </p>
+    <p>
+      We note that the second assumption regarding nearly normal residuals is particularly difficult to assess when the sample size is small.
+      We can make a graph, such as a histogram, of the residuals,
+      but we cannot expect a small data set to be nearly normal.
+      All we can do is to look for excessive skew or outliers.
+      Outliers and influential points in the data can be seen from the residual plot as well as from a histogram of the residuals.
+    </p>
+    <assemblage>
+      <title></title>
+      <ol>
+        <li>
+          <p>
+            The data is collected from a random sample or randomized experiment.
+          </p>
+        </li>
+        <li>
+          <p>
+            The residual plot appears as a random cloud of points and does not have any patterns or significant outliers that would suggest that the linearity,
+            nearly normal residuals,
+            constant variability, or independence assumptions are unreasonable.
+          </p>
+        </li>
+      </ol>
+    </assemblage>
+  </subsection>
+  <subsection>
+    <title>Constructing a confidence interval for the slope of a regression line</title>
+    <p>
+      We would like to construct a confidence interval for the slope of the regression line for predicting gift aid based on family income for <em>all</em>
+      freshmen at Elmhurst college.
+    </p>
+    <p>
+      Do conditions seem to be satisfied?
+      We recall that the 50 freshmen in the sample were randomly chosen,
+      so the observations are independent.
+      Next, we need to look carefully at the scatterplot and the residual plot.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        Do not blindly apply formulas or rely on regression output;
+        always first look at a scatterplot or a residual plot.
+        If conditions for fitting the regression line are not met,
+        the methods presented here should not be applied.
+      </p>
+    </assemblage>
+    <p>
+      The scatterplot seems to show a linear trend,
+      which matches the fact that there is no curved trend apparent in the residual plot.
+      Also, the standard deviation of the residuals is mostly constant for different <m>x</m> values and there are no outliers or influential points.
+      There are no patterns in the residual plot that would suggest that a linear model is not appropriate,
+      so the conditions are reasonably met.
+      We are now ready to calculate the 95% confidence interval.
+    </p>
+    <table xml:id="elmhurstInferencePlots">
+      <caption>Left: Scatterplot of gift aid versus family income for 50 freshmen at Elmhurst college.  Right: Residual plot for the model shown in left panel.</caption>
+      <tabular>
+        <row>
+          <cell><image width="50%" source="images/elmhurstScatter.png" />
+            <image width="50%" source="images/elmhurstResidual.png" /></cell>
+        </row>
+      </tabular>
+    </table>
+    <table xml:id="rOutputForIncomeAidLSRLine2">
+      <caption>Summary of least squares fit for the Elmhurst College data, where we are predicting gift aid by the university based on the family income of students.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\vspace{-3.7mm}</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Estimate</cell>
+          <cell>Std. Error</cell>
+          <cell>t value</cell>
+          <cell>Pr(<m>></m><m>|</m>t<m>|</m>)</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\vspace{-3.6mm}</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>(Intercept)</cell>
+          <cell>24.3193</cell>
+          <cell>1.2915</cell>
+          <cell>18.83</cell>
+          <cell>0.0000</cell>
+        </row>
+        <row>
+          <cell>family\usincome</cell>
+          <cell>-0.0431</cell>
+          <cell>0.0108</cell>
+          <cell>-3.98</cell>
+          <cell>0.0002</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <example>
+      <statement>
+        <p>
+          Construct a 95% confidence interval for the slope of the regression line for predicting gift aid from family income at Elmhurst college.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Construct a 95% confidence interval for the slope of the regression line for predicting gift aid from family income at Elmhurst college.
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Intepret the confidence interval in context.
+          What can we conclude?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Intepret the confidence interval in context.
+          What can we conclude?
+        </p>
+      </solution>
+    </example>
+    <assemblage>
+      <title></title>
+      <p>
+        To carry out a complete confidence interval procedure to estimate the slope of the population regression line <m>\beta</m>,
+      </p>
+      <p>
+        <em>Identify</em>: Identify the parameter and the confidence level, C%.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              The parameter will be a slope of the population regression line,
+              e.g. the slope of the population regression line relating air quality index to average rainfall per year for each city in the United States.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Choose</em>: Choose the correct interval procedure and identify it by name.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              Here we use choose the <em><m>t</m>-interval for the slope</em>.
+    <idx><h>t-interval for the slope@<m>t</m>-interval for the slope|textbf</h></idx>
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Check</em>: Check conditions for using a <m>t</m>-interval for the slope.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              1. Data come from a random sample or randomized experiment.
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              2. The residual plot shows no pattern implying that a linear model is reasonable.
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              More specifically, the residuals should be independent,
+              nearly normal (or <m>n\ge 30</m>),
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              and have constant standard deviation.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Calculate</em>: Calculate the confidence interval and record it in interval form.
+      </p>
+      <ul>
+        <li class="custom-list-style-type" label="">
+          <p>
+            <m>\text{ point estimate } \ \pm\ t^{\star} \times SE\ \text{ of estimate }</m>,
+            <m>df = n - 2</m>
+          </p>
+          <ul>
+            <li class="custom-list-style-type" label="">
+              <p>
+                point estimate: the slope <m>b</m> of the sample regression line
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                <m>SE</m> of estimate: <m>SE</m> of slope (find using computer output)
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                <m>t^{\star}</m>: use a <m>t</m>-distribution with
+                <m>df = n-2</m> and confidence level C
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li class="custom-list-style-type" label="">
+          <p>
+            (<em><nbsp/> <nbsp/> <nbsp/></em>,
+            <em><nbsp/> <nbsp/> <nbsp/></em>)
+          </p>
+        </li>
+      </ul>
+      <p>
+        <em>Conclude</em>: Interpret the interval and,
+        if applicable, draw a conclusion in context.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              We are C% confident that the true
+              <em>slope</em> of the regression line,
+              the average change in [y] for each unit increase in [x], is between
+              <em><nbsp/> <nbsp/> <nbsp/></em>
+              and <em><nbsp/> <nbsp/> <nbsp/></em>.
+              If applicable,
+              draw a conclusion based on whether the interval is entirely above,
+              is entirely below, or contains the value 0.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </assemblage>
+    <table xml:id="possumInferencePlots">
+      <caption>Left: Scatterplot of head length versus total length for 104 brushtail possums.   Right: Residual plot for the model shown in left panel.</caption>
+      <tabular>
+        <row>
+          <cell><image width="50%" source="images/possumScatter.png" />
+            <image width="50%" source="images/possumResidual.png" /></cell>
+        </row>
+      </tabular>
+    </table>
+    <example>
+      <statement>
+        <p>
+          The regression summary below shows statistical software output from fitting the least squares regression line for predicting head length from total length for 104 brushtail possums.
+          The scatterplot and residual plot are shown above.
+        </p>
+        <p>
+           <c>Predictor        Coef        SE Coef   T        P</c>
+        </p>
+        <p>
+           <c>Constant         42.70979    5.17281   8.257   5.66e-13</c>
+        </p>
+        <p>
+           <c>total\uslength<nbsp/>     0.57290    0.05933   9.657   4.68e-16</c>
+        </p>
+        <p>
+           <c>S = 2.595<nbsp/>   R-Sq = 47.76%    R-Sq(adj) = 47.25%</c>
+        </p>
+        <p>
+          Construct a 95% confidence interval for the slope of the regression line.
+          Is there convincing evidence that there is a positive,
+          linear relationship between head length and total length?
+          Use the five step framework to organize your work.
+        </p>
+      </statement>
+      <answer>
+        <ul>
+          <li>
+            <title>\inferencestep{Identify}</title>
+            <p>
+              The parameter of interest is the slope of the population regression line for predicting head length from body length.
+              We want to estimate this at the 95% confidence level.
+            </p>
+          </li>
+          <li>
+            <title>\inferencestep{Choose}</title>
+            <p>
+              Because the parameter to be estimated is the slope of a regression line,
+              we will use the <m>t</m>-interval for the slope.
+            </p>
+          </li>
+          <li>
+            <title>\inferencestep{Check}</title>
+            <p>
+              These data come from a random sample.
+              The residual plot shows no pattern.
+              In general, the residuals have constant standard deviation and there are no outliers or influential points.
+              Also <m>n=104\ge 30</m> so some skew in the residuals would be acceptable.
+              A linear model is reasonable here.
+            </p>
+          </li>
+          <li>
+            <title>\inferencestep{Calculate}</title>
+            <p>
+              We will calculate the interval:
+              <m>\text{ point estimate } \ \pm\ t^{\star} \times SE\ \text{ of estimate }</m>  We read the slope of the sample regression line and the corresponding <m>SE</m> from the table.
+              The point estimate is <m>b = 0.57290</m>.
+              The <m>SE</m> of the slope is 0.05933,
+              which can be found next to the slope of 0.57290.
+              The degrees of freedom is <m>df=n-2=104-2=102</m>.
+              As before, we find the critical value
+              <m>t^{\star}</m> using a <m>t</m>-table
+              (the <m>t^{\star}</m> value is not the same as the <m>T</m>-statistic for the hypothesis test).
+              Using the <m>t</m>-table at row <m>df = 100</m>
+              (round down since 102 is not on the table)
+              and confidence level 95%, we get <m>t^{\star}=1.984</m>.
+              So the 95% confidence interval is given by:
+              <md>
+                <mrow>0.57290 \ \pm\  \amp 1.984\times  0.05933</mrow>
+                <mrow>(0.456\amp , 0.691)</mrow>
+              </md>
+            </p>
+          </li>
+          <li>
+            <title>\inferencestep{Conclude}</title>
+            <p>
+              We are 95% confident that the slope of the population regression line is between 0.456 and 0.691.
+              That is, we are 95% confident that the true average <em>increase</em>
+              in head length for each additional<nbsp/>cm in total length is between 0.456<nbsp/>mm and 0.691<nbsp/>mm.
+              Because the interval is entirely above 0, we do have evidence of a positive linear association between the head length and body length for brushtail possums.
+            </p>
+          </li>
+        </ul>
+      </answer>
+    </example>
+  </subsection>
+  <subsection xml:id="LinRegint">
+    <title>Calculator: the linear regression <m>t</m>-interval for the slope</title>
+    <p>
+      We will rely on regression output from statistical software when constructing confidence intervals for the slope of a regression line.
+      We include calculator instructions here simply for completion.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        Use <c>STAT</c>, <c>TESTS</c>, <c>LinRegTInt</c>.
+        <ol>
+          <li>
+            <p>
+              Choose <c>STAT</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Right arrow to <c>TESTS</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Down arrow and choose <c>G:</c> <c>LinRegTInt</c>.
+              <ul>
+                <li>
+                  <p>
+                    This test is not built into the TI-83.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>Xlist</c> be <c>L1</c> and <c>Ylist</c> be <c>L2</c>. (Don't forget to enter the <m>x</m> and <m>y</m> values in <c>L1</c> and <c>L2</c> before doing this interval.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>Freq</c> be <c>1</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Enter the desired confidence level.
+            </p>
+          </li>
+          <li>
+            <p>
+              Leave <c>RegEQ</c> blank.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>Calculate</c> and hit <c>ENTER</c>,
+              which returns:
+              <tabular>
+                <row>
+                  <cell><c>(<em><nbsp/><nbsp/></em>,<em><nbsp/><nbsp/></em>)</c></cell>
+                  <cell>the confidence interval</cell>
+                </row>
+                <row>
+                  <cell><c>b</c></cell>
+                  <cell><m>b</m>, the slope of best fit line of the sample data</cell>
+                </row>
+                <row>
+                  <cell><c>df</c></cell>
+                  <cell>degrees of freedom associated with this confidence interval</cell>
+                </row>
+                <row>
+                  <cell><c>s</c></cell>
+                  <cell>standard deviation of the residuals (not the same as <m>SE</m> of the slope)</cell>
+                </row>
+                <row>
+                  <cell><c>a</c></cell>
+                  <cell><m>a</m>, the y-intercept of the best fit line of the sample data</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{r^2}</m></cell>
+                  <cell><m>R^2</m>, the explained variance</cell>
+                </row>
+                <row>
+                  <cell><c>r</c></cell>
+                  <cell><m>r</m>, the correlation coefficient</cell>
+                </row>
+              </tabular>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </assemblage>
+  </subsection>
+  <subsection>
+    <title>Midterm elections and unemployment</title>
+    <p>
+          <idx><h>data</h><h>midterm elections</h></idx>
+    </p>
+    <p>
+      Elections for members of the United States House of Representatives occur every two years,
+      coinciding every four years with the U.S. Presidential election.
+      The set of House elections occurring during the middle of a Presidential term are called midterm elections.
+          <idx><h>midterm election</h></idx>
+      In America's two-party system,
+      one political theory suggests the higher the unemployment rate,
+      the worse the President's party will do in the midterm elections.
+    </p>
+    <p>
+      To assess the validity of this claim,
+      we can compile historical data and look for a connection.
+      We consider every midterm election from 1898 to 2018,
+      with the exception of those elections during the Great Depression.
+      <xref ref="unemploymentAndChangeInHouse">Figure</xref>
+      shows these data and the least-squares regression line:
+      <md>
+        <mrow>\amp \text{ \% change in House seats for President's party }</mrow>
+        <mrow>\amp \qquad\qquad= -7.36 - 0.89\times \text{ (unemployment rate) }</mrow>
+      </md>
+    </p>
+    <p>
+      We consider the percent change in the number of seats of the President's party (e.g. percent change in the number of seats for Republicans in 2018) against the unemployment rate.
+    </p>
+    <p>
+      Examining the data, there are no clear deviations from linearity,
+      the constant variance condition,
+      or the normality of residuals.
+      While the data are collected sequentially,
+      a separate analysis was used to check for any apparent correlation between successive observations;
+      no such correlation was found.
+    </p>
+    <figure xml:id="unemploymentAndChangeInHouse">
+      <caption>The percent change in House seats for the President's party in each election from 1898 to 2018 plotted against the unemployment rate. The two points for the Great Depression have been removed, and a least squares regression line has been fit to the data.  Explore this data set on Tableau Public\tableauhref{tableau-scatter-changeinseats-unemployment}.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          The data for the Great Depression (1934 and 1938) were removed because the unemployment rate was 21% and 18%, respectively.
+          Do you agree that they should be removed for this investigation?
+          Why or why not?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      There is a negative slope in the line shown in <xref ref="unemploymentAndChangeInHouse">Figure</xref>.
+      However, this slope
+      (and the y-intercept)
+      are only estimates of the parameter values.
+      We might wonder, is this convincing evidence that the
+      <q>true</q>
+      linear model has a negative slope?
+      That is, do the data provide strong evidence that the political theory is accurate?
+      We can frame this investigation as a statistical hypothesis test:
+      <ul>
+        <li>
+          <title>invalidlabel</title>
+          <p>
+            <m>\beta = 0</m>.
+            The true linear model has slope zero.
+          </p>
+        </li>
+        <li>
+          <title>invalidlabel</title>
+          <p>
+            <m>\beta \lt 0</m>.
+            The true linear model has a slope less than zero.
+            The higher the unemployment,
+            the greater the loss for the President's party in the House of Representatives.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      We would reject <m>H_0</m> in favor of <m>H_A</m> if the data provide strong evidence that the slope of the population regression line is less than zero.
+      To assess the hypotheses, we identify a standard error for the estimate,
+      compute an appropriate test statistic, and identify the p-value.
+      Before we calculate these quantities,
+      how good are we at visually determining from a scatterplot when a slope is significantly less than or greater than 0?
+      And why do we tend to use a 0.05 significance level as our cutoff?
+      Try out the following activity which will help answer these questions.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        What does it mean to say that the slope of the population regression line is significantly greater than 0?
+        And why do we tend to use a cutoff of <m>\alpha = 0.05</m>?
+        This 5-minute interactive task will explain: MISSINGoiRedirect
+      </p>
+    </assemblage>
+  </subsection>
+  <subsection xml:id="testStatisticForTheSlope">
+    <title>Understanding regression output from software</title>
+    <p>
+      The residual plot shown in <xref ref="unemploymentAndChangeInHouseResiduals">Figure</xref>
+      shows no pattern that would indicate that a linear model is inappropriate.
+      Therefore we can carry out a test on the population slope using the sample slope as our point estimate.
+      Just as for other point estimates we have seen before,
+      we can compute a standard error and test statistic for <m>b</m>.
+      The test statistic <m>T</m> follows a <m>t</m>-distribution with <m>n-2</m> degrees of freedom.
+    </p>
+    <figure xml:id="unemploymentAndChangeInHouseResiduals">
+      <caption>The residual plot shows no pattern that would indicate that a linear model is inappropriate.  Explore this data set on Tableau Public\tableauhref{tableau-residuals-changeinsets-unemployment}.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <assemblage>
+      <title></title>
+      <p>
+        Use a <m>t</m>-test with <m>n - 2</m> degrees of freedom when performing a hypothesis test on the slope of a regression line.
+      </p>
+    </assemblage>
+    <p>
+      We will rely on statistical software to compute the standard error and leave the explanation of how this standard error is determined to a second or third statistics course.
+      <xref ref="midtermElectionUnemploymentRRegressionOutput">Figure</xref>
+      shows software output for the least squares regression line in <xref ref="unemploymentAndChangeInHouse">Figure</xref>.
+      The row labeled <em>unemp</em> represents the information for the slope,
+      which is the coefficient of the unemployment variable.
+    </p>
+    <table xml:id="midtermElectionUnemploymentRRegressionOutput">
+      <caption>Least squares regression summary for the percent change in seats of president's party in House of Reprepsentatives based on percent unemployment.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\vspace{-3.7mm}</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Estimate</cell>
+          <cell>Std. Error</cell>
+          <cell>t value</cell>
+          <cell>Pr(<m>></m><m>|</m>t<m>|</m>)</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\vspace{-3.6mm}</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>(Intercept)</cell>
+          <cell>-7.3644</cell>
+          <cell>5.1553</cell>
+          <cell>-1.43</cell>
+          <cell>0.1646</cell>
+        </row>
+        <row>
+          <cell>unemp</cell>
+          <cell>-0.8897</cell>
+          <cell>0.8350</cell>
+          <cell>-1.07</cell>
+          <cell>0.2961</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <example>
+      <statement>
+        <p>
+          What do the first column of numbers in the regression summary represent?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          What do the first column of numbers in the regression summary represent?
+        </p>
+      </solution>
+    </example>
+    <p>
+      We previously used a test statistic <m>T</m> for hypothesis testing in the context of means.
+      Regression is very similar.
+      Here, the point estimate is <m>b=-0.8897</m>.
+      The <m>SE</m> of the estimate is 0.8350,
+      which is given in the second column,
+      next to the estimate of <m>b</m>.
+      This <m>SE</m> represents the typical error when using the slope of the sample regression line to estimate the slope of the population regression line.
+    </p>
+    <p>
+      The null value for the slope is 0, so we now have everything we need to compute the test statistic.
+      We have:
+      <md>
+        <mrow>T = \frac{\text{ point estimate }  - \text{ null value } }{SE \text{ of estimate } } = \frac{-0.8897 - 0}{0.8350} = -1.07</mrow>
+      </md>
+    </p>
+    <p>
+      This value corresponds to the <m>T</m>-score reported in the regression output in the third column along the <em>unemp</em> row.
+    </p>
+    <figure xml:id="oneSidedTailForMidtermUnemploymentHT">
+      <caption>The distribution shown here is the sampling distribution for <m>b</m>, if the null hypothesis was true. The shaded tail represents the p-value for the hypothesis test evaluating whether there is convincing evidence that higher unemployment corresponds to a greater loss of House seats for the President's party during a midterm election.</caption>
+      <image width="82%" source="images/oneSidedTailForMidtermUnemploymentHT.png" />
+    </figure>
+    <example>
+      <statement>
+        <p>
+          In this example, the sample size <m>n=27</m>.
+          Identify the degrees of freedom and p-value for the hypothesis test.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          In this example, the sample size <m>n=27</m>.
+          Identify the degrees of freedom and p-value for the hypothesis test.
+        </p>
+      </solution>
+    </example>
+    <p>
+      Because the p-value is so large,
+      we do not reject the null hypothesis.
+      That is, the data do not provide convincing evidence that a higher unemployment rate is associated with a larger loss for the President's party in the House of Representatives in midterm elections.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        {The last column in regression output often lists p-values for one particular hypothesis:
+        a two-sided test where the null value is zero.
+        If your test is one-sided and the point estimate is in the direction of <m>H_A</m>,
+        then you can halve the software's p-value to get the one-tail area.
+        If neither of these scenarios match your hypothesis test,
+        be cautious about using the software output to obtain the p-value.}
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <p>
+        To carry out a complete hypothesis test for the claim that there is no linear relationship between two numerical variables,
+        i.e. that <m>\beta=0</m>,
+      </p>
+      <p>
+        <em>Identify</em>: Identify the hypotheses and the significance level,
+        <m>\alpha</m>.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              <m>H_0</m>: <m>\beta = 0</m>
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              <m>H_A</m>: <m>\beta \ne 0</m>; <m>H_A</m>:
+              <m>\beta > 0</m>; or <m>H_A</m>: <m>\beta \lt 0</m>
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Choose</em>: Choose the correct test procedure and identify it by name.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              Here we choose the <em><m>t</m>-test for the slope</em>.
+    <idx><h>t-test for the slope@<m>t</m>-test for the slope|textbf</h></idx>
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Check</em>: Check conditions for using a <m>t</m>-test for the slope.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              1. Data come from a random sample or randomized experiment.
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              2. The residual plot shows no pattern implying that a linear model is reasonable.
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              More specifically, the residuals should be independent,
+              nearly normal (or <m>n\ge 30</m>),
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              and have constant standard deviation.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Calculate</em>: Calculate the <m>t</m>-statistic, <m>df</m>,
+        and p-value.
+      </p>
+      <ul>
+        <li class="custom-list-style-type" label="">
+          <p>
+            <m>T= \frac{\text{ point estimate } - \text{ null value } }{SE \text{ of estimate } }</m>,
+            <m>df=n-2</m>
+          </p>
+          <ul>
+            <li class="custom-list-style-type" label="">
+              <p>
+                point estimate: the slope <m>b</m> of the sample regression line
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                <m>SE</m> of estimate: <m>SE</m> of slope (find using computer output)
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                null value: 0
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li class="custom-list-style-type" label="">
+          <p>
+            p-value = (based on the <m>t</m>-statistic, the <m>df</m>,
+            and the direction of <m>H_A</m>)
+          </p>
+        </li>
+      </ul>
+      <p>
+        <em>Conclude</em>: Compare the p-value to <m>\alpha</m>,
+        and draw a conclusion in context.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              If the p-value is <m>\lt \alpha</m>, reject <m>H_0</m>;
+              there is sufficient evidence that [<m>H_A</m> in context].
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              If the p-value is <m>> \alpha</m>, do not reject <m>H_0</m>;
+              there is not sufficient evidence that [<m>H_A</m> in context].
+            </p>
+          </li>
+        </ul>
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          The regression summary below shows statistical software output from fitting the least squares regression line for predicting gift aid based on family income for 50 freshman students at Elmhurst College.
+          The scatterplot and residual plot were shown in <xref ref="elmhurstInferencePlots">Figure</xref>.
+        </p>
+        <p>
+           <c>Predictor        Coef        SE Coef   T        P</c>
+        </p>
+        <p>
+           <c>Constant         24.31933    1.29145   18.831   &lt; 2e-16</c>
+        </p>
+        <p>
+           <c>family_income<nbsp/>   -0.04307    0.01081   -3.985   0.000229</c>
+        </p>
+        <p>
+           <c>S = 4.783<nbsp/>   R-Sq = 24.86%    R-Sq(adj) = 23.29%</c>
+        </p>
+        <p>
+          Do these data provide convincing evidence that there is a negative,
+          linear relationship between family income and gift aid?
+          Carry out a complete hypothesis test at the 0.05 significance level.
+          Use the five step framework to organize your work.
+        </p>
+      </statement>
+      <answer>
+        <ul>
+          <li>
+            <title>\inferencestep{Identify}</title>
+            <p>
+              We will test the following hypotheses at the <m>\alpha=0.05</m> significance level.
+              <m>H_0</m>: <m>\beta = 0</m>.
+              There is no linear relationship.
+              <m>H_A</m>: <m>\beta \lt 0</m>.
+              There is a negative linear relationship.
+              Here, <m>\beta</m> is the slope of the population regression line for predicting gift aid from family income at Elmhurst College.
+            </p>
+          </li>
+          <li>
+            <title>\inferencestep{Choose}</title>
+            <p>
+              Because the hypotheses are about the slope of a regression line,
+              we choose the <m>t</m>-test for a slope.
+            </p>
+          </li>
+          <li>
+            <title>\inferencestep{Check}</title>
+            <p>
+              The data come from a random sample.
+              Also, the residual plot shows that the residuals have constant variance and no outliers or influential points
+              (and <m>n=50\ge 30</m>).
+              The lack of any pattern in the residual plot indicates that a linear model is appropriate.
+            </p>
+          </li>
+          <li>
+            <title>\inferencestep{Calculate}</title>
+            <p>
+              We will calculate the <m>t</m>-statistic,
+              degrees of freedom, and the p-value.
+              <md>
+                <mrow>T = \frac{\text{ point estimate }  - \text{ null value } }{SE \text{ of estimate } }</mrow>
+              </md>
+              We read the slope of the sample regression line and the corresponding <m>SE</m> from the table.
+              The point estimate is: <m>b = -0.04307</m>.
+              The <m>SE</m> of the slope is: <m>SE = 0.01081</m>.
+              <md>
+                <mrow>T = \frac{-0.04307 - 0}{0.01081} = -3.985</mrow>
+              </md>
+              Because <m>H_A</m> uses a less than sign (<m>\lt</m>),
+              meaning that it is a lower-tail test,
+              the \mbox{p-value}  is the area to the <em>left</em>
+              of <m>t=-3.985</m> under the <m>t</m>-distribution with <m>50-2=48</m> degrees of freedom.
+              The p-value = <m>\frac{1}{2}(0.000229)\approx 0.0001</m>.
+            </p>
+          </li>
+          <li>
+            <title>\inferencestep{Conclude}</title>
+            <p>
+              The p-value of 0.0001 is <m>\lt 0.05</m>, so we reject <m>H_0</m>;
+              there is sufficient evidence that there is a negative linear relationship between family income and gift aid at Elmhurst College.
+            </p>
+          </li>
+        </ul>
+      </answer>
+    </example>
+  </subsection>
+  <subsection xml:id="LinRegtest">
+    <title>Calculator: the <m>t</m>-test for the slope</title>
+    <p>
+      When performing this type of inference,
+      we generally make use of regression output that provides us with the necessary quantities:
+      <m>b</m> and <m>SE \text{ of } {b}</m>.
+      The calculator functions below require knowing all of the data and are,
+      therefore,
+      rarely used.
+      We describe them here for the sake of completion.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        Use <c>STAT</c>, <c>TESTS</c>, <c>LinRegTTest</c>.
+        <ol>
+          <li>
+            <p>
+              Choose <c>STAT</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Right arrow to <c>TESTS</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Down arrow and choose <c>F:LinRegTTest</c>. (On TI-83 it is <c>E:LinRegTTest</c>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>Xlist</c> be <c>L1</c> and <c>Ylist</c> be <c>L2</c>. (Don't forget to enter the <m>x</m> and <m>y</m> values in <c>L1</c> and <c>L2</c> before doing this test.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>Freq</c> be <c>1</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <m>\textttmath{\ne}</m>, <m>\textttmath{\lt }</m>,
+              or <m>\textttmath{>}</m> to correspond to <m>H_A</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Leave <c>RegEQ</c> blank.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>Calculate</c> and hit <c>ENTER</c>,
+              which returns:
+              <tabular>
+                <row>
+                  <cell><c>t</c></cell>
+                  <cell>t statistic</cell>
+                  <cell><nbsp/><nbsp/></cell>
+                  <cell><c>b</c></cell>
+                  <cell><m>b</m>, slope of the line</cell>
+                </row>
+                <row>
+                  <cell><c>p</c></cell>
+                  <cell>p-value</cell>
+                  <cell></cell>
+                  <cell><c>s</c></cell>
+                  <cell>st.<nbsp/>dev.<nbsp/>of the residuals</cell>
+                </row>
+                <row>
+                  <cell><c>df</c></cell>
+                  <cell>degrees of freedom for the test</cell>
+                  <cell></cell>
+                  <cell><m>\textttmath{r^2}</m></cell>
+                  <cell><m>R^2</m>, explained variance</cell>
+                </row>
+                <row>
+                  <cell><c>a</c></cell>
+                  <cell><m>a</m>, y-intercept of the line</cell>
+                  <cell></cell>
+                  <cell><c>r</c></cell>
+                  <cell><m>r</m>, correlation coefficient</cell>
+                </row>
+              </tabular>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <ol>
+        <li>
+          <p>
+            Navigate to <c>STAT</c> (<c>MENU</c> button,
+            then hit the <c>2</c> button or select <c>STAT</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Enter your data into 2 lists.
+          </p>
+        </li>
+        <li>
+          <p>
+            Select <c>TEST</c> (<c>F3</c>), <c>t</c> (<c>F2</c>), and <c>REG</c> (<c>F3</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            If needed, update the sidedness of the test and the <c>XList</c> and <c>YList</c> lists.
+            The <c>Freq</c> should be set to <c>1</c>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Hit <c>EXE</c>,
+            which returns:
+            <tabular>
+              <row>
+                <cell><c>t</c></cell>
+                <cell>t statistic</cell>
+                <cell><nbsp/><nbsp/></cell>
+                <cell><c>b</c></cell>
+                <cell><m>b</m>, slope of the line</cell>
+              </row>
+              <row>
+                <cell><c>p</c></cell>
+                <cell>p-value</cell>
+                <cell></cell>
+                <cell><c>s</c></cell>
+                <cell>st.<nbsp/>dev.<nbsp/>of the residuals</cell>
+              </row>
+              <row>
+                <cell><c>df</c></cell>
+                <cell>degrees of freedom for the test</cell>
+                <cell></cell>
+                <cell><c>r</c></cell>
+                <cell><m>r</m>, correlation coefficient</cell>
+              </row>
+              <row>
+                <cell><c>a</c></cell>
+                <cell><m>a</m>, y-intercept of the line</cell>
+                <cell></cell>
+                <cell><m>\textttmath{r^2}</m></cell>
+                <cell><m>R^2</m>, explained variance</cell>
+              </row>
+            </tabular>
+          </p>
+        </li>
+      </ol>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          Why does the calculator test include the symbol <m>\rho</m> when choosing the direction of the alternate hypothesis?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Why does the calculator test include the symbol <m>\rho</m> when choosing the direction of the alternate hypothesis?
+        </p>
+      </solution>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Which inference procedure to use for paired data?</title>
+    <p>
+      In <xref ref="ciMeanOfDifferences">Section</xref>,
+      we looked at a set of paired data involving the price of textbooks for UCLA courses at the UCLA Bookstore and on Amazon.
+      The left panel of <xref ref="textbooksHistogramScatter">Figure</xref>
+      shows the difference in price (UCLA Bookstore <m>-</m> Amazon) for each book.
+      Because we have two data points on each textbook,
+      it also makes sense to construct a scatterplot,
+      as seen in the right panel of <xref ref="textbooksHistogramScatter">Figure</xref>.
+    </p>
+    <table xml:id="textbooksHistogramScatter">
+      <caption>Left: histogram of the difference (UCLA Bookstore - Amazon) in price for
+      each book sampled.  Right: scatterplot of Amazon Price versus UCLA Bookstore price.</caption>
+      <tabular>
+        <row>
+          <cell><image width="55%" source="images/diffInTextbookPricesF18.png" />
+            <image width="45%" source="images/textbooks_scatter.png" /></cell>
+        </row>
+      </tabular>
+    </table>
+    <example>
+      <statement>
+        <p>
+          What additional information does the scatterplot provide about the price of textbooks at UCLA Bookstore and on Amazon?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          What additional information does the scatterplot provide about the price of textbooks at UCLA Bookstore and on Amazon?
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Which test should we do if we want to check whether:
+          <ol>
+            <li>
+              <p>
+                prices for textbooks for UCLA courses are <em>higher</em>
+                at the UCLA Bookstore than on Amazon
+              </p>
+            </li>
+            <li>
+              <p>
+                there is a significant,
+                positive linear relationship between UCLA Bookstore price and Amazon price?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <answer>
+        <p>
+          In the first case,
+          we are interested in whether the differences (UCLA Bookstore <m>-</m> Amazon) are,
+          on average,
+          greater than 0, so we would do a matched pairs <m>t</m>-test for a mean of differences.
+          In the second case,
+          we are interested in whether the slope is significantly greater than 0, so we would do a <m>t</m>-test for the slope of a regression line.
+        </p>
+      </answer>
+    </example>
+    <p>
+      Likewise, a matched pairs <m>t</m>-interval for a mean of differences would provide an interval of reasonable values for mean of the differences for all UCLA textbooks,
+      whereas a <m>t</m>-interval for the slope would provide an interval of reasonable values for the slope of the regression line for all UCLA textbooks.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        A matched pairs <m>t</m>-interval or <m>t</m>-test for a mean of differences only makes sense when we are asking whether,
+        on average, one variable is <em>greater</em> than another
+        (think histogram of the differences).
+        A <m>t</m>-interval or <m>t</m>-test for the slope of a regression line makes sense when we are interested in the linear relationship between them
+        (think scatterplot).
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          Previously, we looked at the relationship betweeen body length and head length for bushtail possums.
+          We also looked at the relationship between gift aid and family income for freshmen at Elmhurst College.
+          Could we do a matched pairs <m>t</m>-test in either of these scenarios?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Previously, we looked at the relationship betweeen body length and head length for bushtail possums.
+          We also looked at the relationship between gift aid and family income for freshmen at Elmhurst College.
+          Could we do a matched pairs <m>t</m>-test in either of these scenarios?
+        </p>
+      </solution>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          A teacher gives her class a pretest and a posttest.
+          Does this result in paired data?
+          If so, which hypothesis test should she use?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <p>
+      In Chapter 6, we used a <m>\chi^2</m> test of independence to test for association between two categorical variables.
+      In this section,
+      we test for association/correlation between two numerical variables.
+    </p>
+    <ul>
+      <li>
+        <p>
+          We use the slope <m>b</m> as a <em>point estimate</em>
+          for the slope <m>\beta</m> of the population regression line.
+          The slope of the population regression line is the true increase/decrease in <m>y</m> for each unit increase in <m>x</m>.
+          If the slope of the population regression line is 0, there is no linear relationship between the two variables.
+        </p>
+      </li>
+      <li>
+        <p>
+          Under certain assumptions,
+          the sampling distribution of <m>b</m> is <em>normal</em>
+          and the distribution of the standardized test statistic using the standard error of the slope follows a <m>t</m><em>-distribution</em>
+          with <m>n-2</m> degrees of freedom.
+        </p>
+      </li>
+      <li>
+        <p>
+          When there is <m>(x, y)</m> data and the parameter of interest is the slope of the population regression line,
+          e.g. the slope of the population regression line relating air quality index to average rainfall per year for each city in the United States:
+        </p>
+        <ul>
+          <li>
+            <p>
+              Estimate <m>\beta</m> at the C% confidence level using a
+              <em><m>t</m>-interval for the slope</em>.
+            <idx><h>t-interval for the slope@<m>t</m>-interval for the slope|textbf</h></idx>
+            </p>
+          </li>
+          <li>
+            <p>
+              Test <m>H_0</m>:
+              <m>\beta=0</m> at the <m>\alpha</m> significance level using a
+              <em><m>t</m>-test for the slope</em>.
+            <idx><h>t-test for the slope@<m>t</m>-test for the slope|textbf</h></idx>
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          The conditions for the <m>t</m>-interval and <m>t</m>-test for the slope of a regression line are the same.
+          <ul>
+            <li>
+              <title>1.</title>
+              <p>
+                Data come from a random sample or randomized experiment.
+              </p>
+            </li>
+            <li>
+              <title>2.</title>
+              <p>
+                The residual plot shows no pattern implying that a linear model is reasonable.
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                More specifically, the residuals should be independent,
+                nearly normal
+                (or <m>n\ge 30</m>),
+                and have constant standard deviation.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+      <li>
+        <p>
+          The confidence interval and test statistic are calculated as follows:
+        </p>
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              Confidence interval:<nbsp/> <m>\text{ point estimate } \ \pm\ t^{\star} \times SE\ \text{ of estimate }</m>, or
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              Test statistic:
+              <m>T = \frac{\text{ point estimate } - \text{ null value } }{SE\ \text{ of estimate } }</m> and p-value
+            </p>
+            <ul>
+              <li class="custom-list-style-type" label="">
+                <p>
+                  point estimate: the slope <m>b</m> of the sample regression line
+                </p>
+              </li>
+              <li class="custom-list-style-type" label="">
+                <p>
+                  <m>SE</m> of estimate: <m>SE</m> of slope (find using computer output)
+                </p>
+              </li>
+              <li class="custom-list-style-type" label="">
+                <p>
+                  <m>df = n-2</m>
+                </p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          If the confidence interval for the slope of the population regression line estimates the true average increase in the <m>y</m>-variable for each unit increase in the <m>x</m>-variable.
+        </p>
+      </li>
+      <li>
+        <p>
+          The <m>t</m>-test for the slope and the matched pairs <m>t</m>-test for a mean of differences both involve
+          <em>paired</em>, numerical data.
+          However, the <m>t</m>-test for the slope asks if the two variables have a linear <em>relationship</em>,
+          specifically if the <em>slope</em>
+          of the population regression line is different from 0.
+          The matched pairs <m>t</m>-test for a mean of differences,
+          on the other hand,
+          asks if the two variables are in some way the <em>same</em>,
+          specifically if the <em>mean</em>
+          of the population differences is 0.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="body_measurements_weight_height_inf">
+      <title>Body measurements, Part IV</title>
+      <statement>
+        <p>
+          The scatterplot and least squares summary below show the relationship between weight measured in kilograms and height measured in centimeters of 507 physically active individuals.
+        </p>
+        <sidebyside>
+          <image width="73%" source="images/body_measurements_weight_height.png" />
+        </sidebyside>
+        <ol>
+          <li>
+            <p>
+              Describe the relationship between height and weight.
+            </p>
+          </li>
+          <li>
+            <p>
+              Write the equation of the regression line.
+              Interpret the slope and intercept in context.
+            </p>
+          </li>
+          <li>
+            <p>
+              Do the data provide strong evidence that an increase in height is associated with an increase in weight?
+              State the null and alternative hypotheses,
+              report the p-value, and state your conclusion.
+            </p>
+          </li>
+          <li>
+            <p>
+              The correlation coefficient for height and weight is 0.72.
+              Calculate <m>R^2</m> and interpret it in context.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="beer_blood_alcohol_inf">
+      <title>Beer and blood alcohol content</title>
+      <statement>
+        <p>
+          Many people believe that gender, weight, drinking habits,
+          and many other factors are much more important in predicting blood alcohol content (BAC) than simply considering the number of drinks a person consumed.
+          Here we examine data from sixteen student volunteers at Ohio State University who each drank a randomly assigned number of cans of beer.
+          These students were different genders,
+          and they differed in weight and drinking habits.
+          Thirty minutes later,
+          a police officer measured their blood alcohol content (BAC) in grams of alcohol per deciliter of blood. \footfullcite{Malkevitc+Lesser:2008} The scatterplot and regression table summarize the findings.
+        </p>
+        <sidebyside>
+          <image width="73%" source="images/beer_blood_alcohol.png" />
+        </sidebyside>
+        <ol>
+          <li>
+            <p>
+              Describe the relationship between the number of cans of beer and BAC.
+            </p>
+          </li>
+          <li>
+            <p>
+              Write the equation of the regression line.
+              Interpret the slope and intercept in context.
+            </p>
+          </li>
+          <li>
+            <p>
+              Do the data provide strong evidence that drinking more cans of beer is associated with an increase in blood alcohol?
+              State the null and alternative hypotheses,
+              report the p-value, and state your conclusion.
+            </p>
+          </li>
+          <li>
+            <p>
+              The correlation coefficient for number of cans of beer and BAC is 0.89.
+              Calculate <m>R^2</m> and interpret it in context.
+            </p>
+          </li>
+          <li>
+            <p>
+              Suppose we visit a bar, ask people how many drinks they have had,
+              and also take their BAC. Do you think the relationship between number of drinks and BAC would be as strong as the relationship found in the Ohio State study?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="husbands_wives_height_inf">
+      <title>Spouses, Part II</title>
+      <statement>
+        <p>
+          The scatterplot below summarizes womens' heights and their spouses' heights for a random sample of 170 married women in Britain,
+          where both partners' ages are below 65 years.
+          Summary output of the least squares fit for predicting spouse's height from the woman's height is also provided in the table.
+        </p>
+        <sidebyside>
+          <image width="73%" source="images/husbands_wives_height_inf_2s.png" />
+        </sidebyside>
+        <ol>
+          <li>
+            <p>
+              Is there strong evidence in this sample that taller women have taller spouses?
+              State the hypotheses and include any information used to conduct the test.
+            </p>
+          </li>
+          <li>
+            <p>
+              Write the equation of the regression line for predicting the height of a woman's spouse based on the woman's height.
+            </p>
+          </li>
+          <li>
+            <p>
+              Interpret the slope and intercept in the context of the application.
+            </p>
+          </li>
+          <li>
+            <p>
+              Given that <m>R^2 = 0.09</m>,
+              what is the correlation of heights in this data set?
+            </p>
+          </li>
+          <li>
+            <p>
+              You meet a married woman from Britain who is 5'9" (69 inches).
+              What would you predict her spouse's height to be?
+              How reliable is this prediction?
+            </p>
+          </li>
+          <li>
+            <p>
+              You meet another married woman from Britain who is 6'7" (79 inches).
+              Would it be wise to use the same linear model to predict her spouse's height?
+              Why or why not?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="urban_homeowners_cond">
+      <title>Urban homeowners, Part II</title>
+      <statement>
+        <p>
+          <xref ref="urban_homeowners_outlier">Exercise</xref>
+          gives a scatterplot displaying the relationship between the percent of families that own their home and the percent of the population living in urban areas.
+          Below is a similar scatterplot,
+          excluding District of Columbia,
+          as well as the residuals plot.
+          There were 51 cases.
+        </p>
+        <sidebyside>
+          <m>\:</m>
+        </sidebyside>
+        <image source="images/a3e68136b592ea119e82e2ce2aba4c90ee722b7f.png"/>
+      </statement>
+    </exercise>
+    <exercise xml:id="murders_poverty_inf">
+      <title>Murders and poverty, Part II</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> <xref ref="murders_poverty_reg">Exercise</xref>
+          presents regression output from a model for predicting annual murders per million from percentage living in poverty based on a random sample of 20 metropolitan areas.
+          The model output is also provided below.
+        </p>
+        <tabular>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Estimate</cell>
+            <cell>Std. Error</cell>
+            <cell>t value</cell>
+            <cell>Pr(<m>></m><m>|</m>t<m>|</m>)</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>(Intercept)</cell>
+            <cell>-29.901</cell>
+            <cell>7.789</cell>
+            <cell>-3.839</cell>
+            <cell>0.001</cell>
+          </row>
+          <row>
+            <cell>poverty%</cell>
+            <cell>2.559</cell>
+            <cell>0.390</cell>
+            <cell>6.562</cell>
+            <cell>0.000</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+        <me>
+          s = 5.512 \qquad R^2 = 70.52\% \qquad R^2_{adj} = 68.89\%
+        </me>
+        <ol>
+          <li>
+            <p>
+              What are the hypotheses for evaluating whether poverty percentage is a significant predictor of murder rate?
+            </p>
+          </li>
+          <li>
+            <p>
+              State the conclusion of the hypothesis test from part (a) in context of the data.
+            </p>
+          </li>
+          <li>
+            <p>
+              Calculate a 95% confidence interval for the slope of poverty percentage,
+              and interpret it in context of the data.
+            </p>
+          </li>
+          <li>
+            <p>
+              Do your results from the hypothesis test and the confidence interval agree?
+              Explain.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="babies_head_gestation_inf">
+      <title>Babies</title>
+      <statement>
+        <p>
+          Is the gestational age
+          (time between conception and birth)
+          of a low birth-weight baby useful in predicting head circumference at birth?
+          Twenty-five low birth-weight babies were studied at a Harvard teaching hospital;
+          the investigators calculated the regression of head circumference
+          (measured in centimeters)
+          against gestational age
+          (measured in weeks).
+          The estimated regression line is
+          <me>
+            \widehat{head~circumference} = 3.91 + 0.78 \times gestational~age
+          </me>
+          <ol>
+            <li>
+              <p>
+                What is the predicted head circumference for a baby whose gestational age is 28 weeks?
+              </p>
+            </li>
+            <li>
+              <p>
+                The standard error for the coefficient of gestational age is 0. 35,
+                which is associated with <m>df=23</m>.
+                Does the model provide strong evidence that gestational age is significantly associated with head circumference?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

@@ -1,0 +1,1751 @@
+<section xml:id="numericalData">
+  <title>Examining numerical data</title>
+  <introduction>
+    <p>
+      How do we visualize and describe the distribution of household income for counties within the United States?
+      What shape would the distribution have?
+      What other features might be important to notice?
+      In this section,
+      we will explore techniques for summarizing numerical variables.
+      We will apply these techniques using county-level data from the US Census Bureau,
+      which was introduced in <xref ref="dataBasics">Section</xref>,
+      and a new data set <c>email50</c>,
+      that comprises information on a random sample of 50 emails.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Use scatterplots to represent bivariate data and to see the relationship between two numerical variables.
+          Describe the direction, form,
+          and strength of the relationship,
+          as well as any unusual observations.
+        </p>
+      </li>
+      <li>
+        <p>
+          Understand what the term distribution means and how to summarize it in a table or a graph.
+        </p>
+      </li>
+      <li>
+        <p>
+          Create univariate displays,
+          including stem-and-leaf plots,
+          dot plots, and histograms,
+          to visualize the distribution of a numerical variable.
+          Be able to read off specific information and summary information from these graphs.
+        </p>
+      </li>
+      <li>
+        <p>
+          Identify the shape of a distribution as approximately symmetric,
+          right skewed, or left skewed.
+          Also, identify whether a distribution is unimodal,
+          bimodal, multimodal, or uniform.
+        </p>
+      </li>
+      <li>
+        <p>
+          Read and interpret a cumulative frequency or cumulative relative frequency histogram.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection xml:id="scatterPlots">
+    <title>Scatterplots for paired data</title>
+    <p>
+          <idx><h>data</h><h>loan50</h></idx>
+    </p>
+    <p>
+          <idx><h>data</h><h>email50</h></idx>
+    </p>
+    <p>
+      Sometimes researchers wish to see the relationship between two variables.
+      When we talk of a relationship or an association between variables,
+      we are interested in how one variable behaves as the other variable increases or decreases.
+    </p>
+    <p>
+      A <term>scatterplot</term> provides a case-by-case view of data that illustrates the relationship between two numerical variables.
+      A scatterplot is shown in <xref ref="email50LinesCharacters">Figure</xref>,
+      illustrating the relationship between the number of line breaks (<c>line_breaks</c>) and number of characters (<c>num_char</c>) in emails for the <c>email50</c> data set.
+      In any scatterplot, each point represents a single case.
+      Since there are 50 cases in <c>email50</c>,
+      there are 50 points in <xref ref="email50LinesCharacters">Figure</xref>.
+    </p>
+    <figure xml:id="email50LinesCharacters">
+      <caption>A scatterplot of <c>line_breaks</c> versus <c>num_char</c> for the <c>email50</c> data.</caption>
+      \Figure{0.8}{email50LinesCharacters}
+    </figure>
+    <example>
+      <statement>
+        <p>
+          A scatterplot requires <term>bivariate</term>,
+          or <term>paired data</term>.
+          What does paired data mean?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We say observations are <em>paired</em>
+          when the two observations correspond to the same case or individual.
+          In unpaired data, there is no such correspondence.
+          In our example the two observations correspond to a particular email.
+        </p>
+      </answer>
+    </example>
+    <p>
+      The variable that is suspected to be the response variable is plotted on the vertical (y)<nbsp/>axis and the variable that is suspected to be the explanatory variable is plotted on the horizontal (x)<nbsp/>axis.
+      In this example,
+      the variables could be switched since either variable could reasonably serve as the explanatory variable or the response variable.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        (1)<nbsp/>Decide which variable should go on each axis,
+        and draw and label the two axes.
+      </p>
+      <p>
+        (2)<nbsp/>Note the range of each variable,
+        and add tick marks and scales to each<nbsp/>axis.
+      </p>
+      <p>
+        (3)<nbsp/>Plot the dots as you would on an (<m>x, y</m>) coordinate plane.
+      </p>
+    </assemblage>
+    <p>
+      The association between two variables can be
+      <em>positive</em><idx><h>positive association|textbf</h></idx> or <em>negative</em>,
+          <idx><h>negative association|textbf</h></idx>
+      or there can be no association.
+      Positive association means that larger values of the first variable are associated with larger values of the second variable.
+      Additionally,
+      the association can follow a linear trend or a curved (nonlinear) trend.
+    </p>
+    <example>
+      <statement>
+        <p>
+          What would it mean for two variables to have a
+          <em>negative</em> association?
+          What about <em>no</em> association?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Negative association implies that larger values of the first variable are associated with smaller values of the second variable.
+          No association implies that the values of the second variable tend to be independent of changes in the first variable.
+        </p>
+      </answer>
+    </example>
+    <example>
+      <statement>
+        <p>
+          <xref ref="medianHHIncomePoverty">Figure</xref>
+          shows a plot of median household income against the poverty rate for 3,142 counties.
+          What can be said about the relationship between these variables?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The relationship is evidently <term>nonlinear</term>,
+          as highlighted by the dashed line.
+          This is different from previous scatterplots we've seen,
+          which show relationships that do not show much,
+          if any, curvature in the trend.
+          There is also a negative association,
+          as higher rates of poverty tend to be associated with lower median household income.
+        </p>
+      </answer>
+    </example>
+    <figure xml:id="medianHHIncomePoverty">
+      <caption>A scatterplot of the median household income
+      against the poverty rate for the
+<c>county</c> data set.
+      A statistical model has also been fit to the data
+      and is shown as a dashed line.  Explore dozens of scatterplots using American Community Survey data on Tableau Public<nbsp/>\tableauhref{tableau-scatterplotschoose}.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          What do scatterplots reveal about the data, and how are they useful?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Describe two variables that would have a horseshoe-shaped association in a scatterplot
+          (<m>\cap</m> or <m>\cup</m>).
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="dotPlot">
+    <title>Stem-and-leaf plots and dot plots</title>
+    <p>
+      Sometimes two variables is one too many:
+      only one variable may be of interest.
+      In these cases we want to focus not on the association between two variables,
+      but on the distribution of a single,
+      or <term>univariate</term>, variable.
+      The term <term>distribution</term>
+      refers to the values that a variable takes and the frequency of these values.
+      Here we introduce a new data set,
+      the <c>email50</c> data set.
+      This data set contains the number of characters in 50 emails.
+      To simplify the data,
+      we will round the numbers and record the values in thousands.
+      Thus, 22105 is recorded as 22.
+    </p>
+    <table>
+      <caption>The number of characters, in thousands, for the data set of 50<nbsp/>emails.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>22</cell>
+          <cell>0</cell>
+          <cell>64</cell>
+          <cell>10</cell>
+          <cell>6</cell>
+          <cell>26</cell>
+          <cell>25</cell>
+          <cell>11</cell>
+          <cell>4</cell>
+          <cell>14</cell>
+        </row>
+        <row>
+          <cell>7</cell>
+          <cell>1</cell>
+          <cell>10</cell>
+          <cell>2</cell>
+          <cell>7</cell>
+          <cell>5</cell>
+          <cell>7</cell>
+          <cell>4</cell>
+          <cell>14</cell>
+          <cell>3</cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>5</cell>
+          <cell>43</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>3</cell>
+          <cell>25</cell>
+          <cell>1</cell>
+          <cell>9</cell>
+          <cell>1</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>9</cell>
+          <cell>0</cell>
+          <cell>5</cell>
+          <cell>3</cell>
+          <cell>6</cell>
+          <cell>26</cell>
+          <cell>11</cell>
+          <cell>25</cell>
+          <cell>9</cell>
+        </row>
+        <row>
+          <cell>42</cell>
+          <cell>17</cell>
+          <cell>29</cell>
+          <cell>12</cell>
+          <cell>27</cell>
+          <cell>10</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>1</cell>
+          <cell>16</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      Rather than look at the data as a list of numbers,
+      which makes the distribution difficult to discern,
+      we will organize it into a table called a
+      <term>stem-and-leaf plot</term>
+      shown in <xref ref="stemandleafemail50">Figure</xref>.
+      In a stem-and-leaf plot, each number is broken into two parts.
+      The first part is called the <term>stem</term>
+      and consists of the beginning digit(s).
+      The second part is called the <term>leaf</term>
+      and consists of the final digit(s).
+      The stems are written in a column in ascending order,
+      and the leaves that match up with those stems are written on the corresponding row.
+      <xref ref="stemandleafemail50">Figure</xref>
+      shows a stem-and-leaf plot of the number of characters in 50 emails.
+      The stem represents the ten thousands place and the leaf represents the thousands place.
+      For example, <c>1 <m>|</m> 2</c> corresponds to 12 thousand.
+      When making a stem-and-leaf plot,
+      remember to include a legend that describes what the stem and what the leaf represent.
+      Without this,
+      there is no way of knowing if 1 <m>|</m> 2 represents 1.2, 12, 120, 1200, etc.
+    </p>
+    <figure xml:id="stemandleafemail50">
+      <caption>A stem-and-leaf plot of the number of characters in 50 emails.</caption>
+<pre>
+0 | 00000011111223334455566777999
+1 | 0001124467
+2 | 25556679
+3 |
+4 | 23
+5 |
+6 | 4
+Legend: 1 | 2 = 12,000
+</pre>
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          There are a lot of numbers on the first row of the stem-and-leaf plot.
+          Why is this the case?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      When there are too many numbers on one row or there are only a few stems,
+      we <em>split</em> each row into two halves,
+      with the leaves from 0-4 on the first half and the leaves from 5-9 on the second half.
+      The resulting graph is called a
+      <em>split stem-and-leaf plot</em>.
+          <idx><h>stem-and-leaf plot</h><h>split stem-and-leaf plot|textbf</h></idx>
+      <xref ref="splitstemandleaf50email">Figure</xref>
+      shows the previous stem-and-leaf redone as a split stem-and-leaf.
+    </p>
+    <figure xml:id="splitstemandleaf50email">
+      <caption>A split stem-and-leaf.</caption>
+<pre>
+0 | 000000111112233344
+0 | 55566777999
+1 | 00011244
+1 | 67
+2 | 2
+2 | 5556679
+3 |
+3 |
+4 | 23
+4 |
+5 |
+5 |
+6 | 4
+Legend: 1 | 2 = 12,000
+</pre>
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          What is the smallest number in the <c>email50</c> data set?
+          What is the largest?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Another simple graph for univariate numerical data is a dot plot.
+      A<nbsp/><term>dot plot</term> uses dots to show the <term>frequency</term>,
+      or number of occurrences, of the values in a data set.
+      The higher the stack of dots,
+      the greater the number occurrences there are of the corresponding value.
+      An example using the same data set,
+      number of characters from 50 emails,
+      is shown in <xref ref="emailCharactersDotPlotStacked">Figure</xref>.
+    </p>
+    <figure xml:id="emailCharactersDotPlotStacked">
+      <caption>A dot plot of <c>num_char</c> for the <c>email50</c> data set.</caption>
+      <image width="82%" source="images/emailCharactersDotPlotStackedRounded.png" />
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          Imagine rotating the dot plot 90 degrees clockwise.
+          What do you notice?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      These graphs make it easy to observe important features of the data,
+      such as the location of clusters and presence of gaps.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Based on both the stem-and-leaf and dot plot,
+          where are the values clustered and where are the gaps for the <c>email50</c> data set?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          There is a large cluster in the 0 to less than 20 thousand range,
+          with a peak around 1 thousand.
+          There are gaps between 30 and 40 thousand and between the two values in the 40 thousands and the largest value of approximately 64 thousand.
+        </p>
+      </answer>
+    </example>
+    <p>
+      Additionally,
+      we can easily identify any observations that appear to be unusually distant from the rest of the data.
+      Unusually distant observations are called <em>outliers</em>.
+          <idx><h>outlier|textbf</h></idx>
+      Later in this chapter we will provide numerical rules of thumb for identifying outliers.
+      For now, it is sufficient to identify them by observing gaps in the graph.
+      In this case,
+      it would be reasonable to classify the emails with character counts of 42 thousand, 43 thousand,
+      and 64 thousand as outliers since they are numerically distant from most of the data.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        An <term>outlier</term> is an observation that appears extreme relative to the rest of the data.
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <p>
+        Examination of data for possible outliers serves many useful purposes,
+        including
+        <ol>
+          <li>
+            <p>
+              Identifying asymmetry in the distribution.
+            </p>
+          </li>
+          <li>
+            <p>
+              Identifying data collection or entry errors.
+              For instance,
+              we re-examined the email purported to have 64 thousand characters to ensure this value was accurate.
+            </p>
+          </li>
+          <li>
+            <p>
+              Providing insight into interesting properties of the data.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          The observation 64 thousand,
+          a suspected outlier, was found to be an accurate observation.
+          What would such an observation suggest about the nature of character counts in emails?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Consider a data set that consists of the following numbers: 12, 12, 12, 12, 12, 13, 13, 14, 14, 15, 19.
+          Which graph would better illustrate the data:
+          a stem-and-leaf plot or a dot plot?
+          Explain.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="histogramsAndShape">
+    <title>Histograms</title>
+    <p>
+      Stem-and-leaf plots and dot plots are ideal for displaying data from small samples because they show the exact values of the observations and how frequently they occur.
+      However, they are impractical for larger samples.
+      For larger samples, rather than showing the frequency of every value,
+      we prefer to think of the value as belonging to a <em>bin</em>.
+      For example,
+      in the <c>email50</c> data set,
+      we create a table of counts for the number of cases with character counts between 0 and 5,000,
+      then the number of cases between 5,000 and 10,000, and so on.
+      Such a table,
+      shown in <xref ref="binnedNumCharTable">Figure</xref>,
+      is called a <term>frequency table</term>.
+      Bins usually include the observations that fall on their left (lower) boundary and exclude observations that fall on their right (upper) boundary.
+      This is called <em>left inclusive</em>.
+      For example, 5 (i.e. 5000) would be counted in the 5-10 bin,
+      not in the 0-5 bin.
+      These binned counts are plotted as bars in <xref ref="email50NumCharHist">Figure</xref>
+      into what is called a <term>histogram</term>
+      or <term>frequency histogram</term>,
+      which resembles the stacked dot plot shown in <xref ref="emailCharactersDotPlotStacked">Figure</xref>.
+    </p>
+    <table xml:id="binnedNumCharTable">
+      <caption>The counts for the binned <c>num_char</c> data.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Characters</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>(in thousands)</cell>
+          <cell>0-5</cell>
+          <cell>5-10</cell>
+          <cell>10-15</cell>
+          <cell>15-20</cell>
+          <cell>20-25</cell>
+          <cell>25-30</cell>
+          <cell><m>\cdots</m></cell>
+          <cell>55-60</cell>
+          <cell>60-65</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Count</cell>
+          <cell>19</cell>
+          <cell>12</cell>
+          <cell>6</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>5</cell>
+          <cell><m>\cdots</m></cell>
+          <cell>0</cell>
+          <cell>1</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <figure xml:id="email50NumCharHist">
+      <caption>A histogram of <c>num_char</c>. This histogram uses bins or class intervals of width 5.  Explore this histogram and dozens of histograms using American Community Survey data on Tableau Public<nbsp/>\tableauhref{tableau-histogramschoose}.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          What can you see in the dot plot and stem-and-leaf plot that you cannot see in the frequency histogram?
+        </p>
+      </statement>
+    </exercise>
+    <assemblage>
+      <title></title>
+      <p>
+        1. The variable is always placed on the horizontal axis.
+        Before drawing the histogram,
+        label both axes and draw a scale for each.
+      </p>
+      <p>
+        2. Draw bars such that the height of the bar is the frequency of that bin and the width of the bar corresponds to the bin width.
+      </p>
+    </assemblage>
+    <p>
+      Histograms provide a view of the
+      <term>data density</term>.
+      Higher bars represent where the data are relatively more common.
+      For instance,
+      there are many more emails between 0 and 10,000 characters than emails between 10,000 and 20,000 in the data set.
+      The bars make it easy to see how the density of the data changes relative to the number of characters.
+    </p>
+    <example>
+      <statement>
+        <p>
+          How many emails had fewer than 10 thousand characters?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          How many emails had fewer than 10 thousand characters?
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Approximately how many emails had fewer than 1 thousand chacters?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Approximately how many emails had fewer than 1 thousand chacters?
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          What <em>percent</em> of the emails had 10 thousand or more characters?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          From the first example,
+          we know that 31 emails had fewer than 10 thousand characters.
+          Since there are 50 emails in total,
+          there must be 19 emails that have 10 thousand or more characters.
+          To find the percent, compute <m>19/50 = 0.38 = 38\%</m>.
+        </p>
+      </answer>
+    </example>
+    <p>
+      Sometimes questions such as the previous ones can be answered more easily with a
+      <term>cumulative frequency histogram</term>.
+      This type of histogram shows cumulative, or total,
+      frequency achieved by each bin,
+      rather than the frequency in that particular bin.
+    </p>
+    <table xml:id="binnedNumCharTableCumulative">
+      <caption>The cumulative frequencies for the binned <c>num_char</c> data.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Characters</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>(in thousands)</cell>
+          <cell>0-5</cell>
+          <cell>5-10</cell>
+          <cell>10-15</cell>
+          <cell>15-20</cell>
+          <cell>20-25</cell>
+          <cell>25-30</cell>
+          <cell>30-35</cell>
+          <cell><m>\cdots</m></cell>
+          <cell>55-60</cell>
+          <cell>60-65</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Cumulative</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Frequency</cell>
+          <cell>19</cell>
+          <cell>31</cell>
+          <cell>37</cell>
+          <cell>39</cell>
+          <cell>42</cell>
+          <cell>47</cell>
+          <cell>47</cell>
+          <cell><m>\cdots</m></cell>
+          <cell>49</cell>
+          <cell>50</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <figure xml:id="email50NumCharCumulativeFreqHist">
+      <caption>A cumulative frequency histogram of <c>num_char</c>. This histogram uses bins or class intervals of width 5.  Compare frequency, relative frequency, cumulative frequency, and cumulative relative frequency histograms on Tableau Public<nbsp/>\tableauhref{tableau-histograms}.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <example>
+      <statement>
+        <p>
+          How many of the emails had fewer than 20 thousand characters?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          How many of the emails had fewer than 20 thousand characters?
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Using the cumulative frequency histogram,
+          how many of the emails had 10-15 thousand characters?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Using the cumulative frequency histogram,
+          how many of the emails had 10-15 thousand characters?
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Approximately 25 of the emails had fewer than how many characters?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Approximately 25 of the emails had fewer than how many characters?
+        </p>
+      </solution>
+    </example>
+    <p>
+      Knowing that 25 of the emails had fewer than a value between 5 and 10 thousand characters is useful information,
+      but it is even more useful if we know what percent of the total 25 represents.
+      Knowing that there were 50 total emails tells us that
+      <m>25 / 50 = 0.5 = 50\%</m> of the emails had fewer than a value between 5 and 10 thousand characters.
+      When we want to know what fraction or percent of the data meet a certain criteria,
+      we use relative frequency instead of frequency.
+      <em>Relative frequency</em><idx><h>relative frequency|textbf</h></idx> is a fancy term for percent or proportion.
+      It tells us how large a number is relative to the total.
+    </p>
+    <p>
+      Just as we constructed a frequency table, frequency histogram,
+      and cumulative frequency histogram,
+      we can construct a relative frequency table,
+      relative frequency histogram,
+      and cumulative relative frequency histogram.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          How will the <em>shape</em> of the relative frequency histograms differ from the frequency histograms?
+        </p>
+      </statement>
+    </exercise>
+    <assemblage>
+      <title></title>
+      <p>
+        {We can misinterpret a histogram if we forget to check whether the vertical axis represents frequency,
+        relative frequency,
+        cumulative frequency, or cumulative relative frequency.}
+      </p>
+    </assemblage>
+  </subsection>
+  <subsection xml:id="shape">
+    <title>Describing Shape</title>
+    <p>
+      Frequency and relative frequency histograms are especially convenient for describing the <term>shape</term>
+      of the data distribution . <xref ref="email50NumCharHist">Figure</xref>
+      shows that most emails have a relatively small number of characters,
+      while fewer emails have a very large number of characters.
+      When data trail off to the right in this way and have a longer right tail
+          <idx><h>tail|textbf</h></idx>,
+          <idx><h>skew</h><h>tail</h></idx>
+      the shape is said to be <em>right skewed</em>.
+          <idx><h>skew</h><h>right skewed|textbf</h></idx>
+      <fn>
+      Other ways to describe data that are right skewed: \termni{skewed to the right}, \termni{skewed to the high end}, or \termni{skewed to the positive end}.
+      </fn>
+    </p>
+    <p>
+      Data sets with the reverse characteristic <mdash/> a long,
+      thin tail to the left <mdash/> are said to be <em>left skewed</em>.
+          <idx><h>skew</h><h>left skewed|textbf</h></idx>
+      We also say that such a distribution has a long left tail.
+      Data sets that show roughly equal trailing off in both directions are called <term>symmetric</term>.
+          <idx><h>skew</h><h>symmetric</h></idx>
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        When data trail off in one direction,
+        the distribution has a <term>long tail</term>.
+            <idx><h>skew</h><h>long tail|textbf</h></idx>
+        If a distribution has a long left tail, it is left skewed.
+        If a distribution has a long right tail, it is right skewed.
+      </p>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          Take a look at the dot plot in <xref ref="emailCharactersDotPlotStacked">Figure</xref>.
+          Can you see the skew in the data?
+          Is it easier to see the skew in the frequency histogram,
+          the dot plot, or the stem-and-leaf plot?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Would you expect the distribution of number of pets per household to be right skewed,
+          left skewed, or approximately symmetric?
+          Explain.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In addition to looking at whether a distribution is skewed or symmetric,
+      histograms,
+      stem-and-leaf plots, and dot plots can be used to identify modes.
+      A <term>mode</term> is represented by a prominent peak in the distribution.<fn>
+      Another definition of mode,
+      which is not typically used in statistics,
+      is the value with the most occurrences.
+      It is common to have <em>no</em>
+      observations with the same value in a data set,
+      which makes this other definition useless for many real data sets.
+      </fn> There is only one prominent peak in the histogram of <c>num_char</c>.
+    </p>
+    <p>
+      <xref ref="singleBiMultiModalPlots">Figure</xref>
+      shows histograms that have one,
+      two, or three prominent peaks.
+      Such distributions are called <em>unimodal</em>,
+          <idx><h>modality</h><h>unimodal|textbf</h></idx>
+      <em>bimodal</em>,
+          <idx><h>modality</h><h>bimodal|textbf</h></idx>
+      and <em>multimodal</em>,
+          <idx><h>modality</h><h>multimodal|textbf</h></idx>
+      respectively.
+      Any distribution with more than 2 prominent peaks is called multimodal.
+      Notice that in <xref ref="email50NumCharHist">Figure</xref>
+      there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.
+    </p>
+    <figure xml:id="singleBiMultiModalPlots">
+      <caption>Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal.</caption>
+      <image width="73%" source="images/singleBiMultiModalPlots.png" />
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          Height measurements of young students and adult teachers at a K-3 elementary school were taken.
+          How many modes would you anticipate in this height data set?
+        </p>
+      </statement>
+    </exercise>
+    <assemblage>
+      <title></title>
+      <p>
+        Looking for modes isn't about finding a clear and correct answer about the number of modes in a distribution,
+        which is why <em>prominent</em>
+        is not rigorously defined in this book.
+        The important part of this examination is to better understand your data and how it might be structured.
+      </p>
+    </assemblage>
+  </subsection>
+  <subsection>
+    <title>Descriptive versus inferential statistics</title>
+    <p>
+      Finally, we note that the graphical summaries of this section and the numerical summaries of the next section fall into the realm of
+      <term>descriptive statistics</term>.
+      Descriptive statistics is about describing or summarizing data;
+      it does not attribute properties of the data to a larger population.
+      <em>Inferential statistics</em>,
+          <idx><h>inferential statistics|textbf</h></idx>
+      on the other hand,
+      uses samples to generalize or to infer something about a larger population.
+      We will have to wait until Chapter<nbsp/>5 to enter the exciting world of inferential statistics.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          A <term>scatterplot</term> is a <term>bivariate</term>
+          display illustrating the relationship between two numerical variables.
+          The observations must be <term>paired</term>,
+          which is to say that they correspond to the same case or individual.
+          The linear association between two variables can be positive or negative,
+          or there can be no association.
+          <em>Positive association</em><idx><h>positive association|textbf</h></idx> means that larger values of the first variable are associated with larger values of the second variable.
+          <em>Negative association</em><idx><h>negative association|textbf</h></idx> means that larger values of the first variable are associated with smaller values of the second variable.
+          Additionally,
+          the association can follow a linear trend or a curved (nonlinear) trend.
+        </p>
+      </li>
+      <li>
+        <p>
+          When looking at a <term>univariate</term> display,
+          researchers want to understand the distribution of the variable.
+          The term <term>distribution</term>
+          refers to the values that a variable takes and the frequency of those values.
+          When looking at a distribution,
+          note the presence of clusters,
+          gaps, and <em>outliers</em>.
+            <idx><h>outlier|textbf</h></idx>
+        </p>
+      </li>
+      <li>
+        <p>
+          Distributions may be <term>symmetric</term>
+          or they may have a long tail.
+          If a distribution has a long left tail
+          (with greater density over the higher numbers),
+          it is <term>left skewed</term>.
+          If a distribution has a long right tail
+          (with greater density over the smaller numbers),
+          it is <term>right skewed</term>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Distributions may be <term>unimodal</term>,
+          <term>bimodal</term>, or <term>multimodal</term>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Two graphs that are useful for showing the distribution of a small number of observations are the
+          <term>stem-and-leaf plot</term>
+          and <term>dot plot</term>.
+          These graphs are ideal for displaying data from small samples because they show the exact values of the observations and how frequently they occur.
+          However, they are impractical for larger data sets.
+        </p>
+      </li>
+      <li>
+        <p>
+          For larger data sets it is common to use a
+          <term>frequency histogram</term>
+          or a <term>relative frequency histogram</term>
+          to display the distribution of a variable.
+          This requires choosing bins of an appropriate width.
+        </p>
+      </li>
+      <li>
+        <p>
+          To see cumulative amounts, use a
+          <term>cumulative frequency histogram</term>.
+          A <term>cumulative relative frequency histogram</term>
+          is ideal for showing <em>percentiles</em>.
+            <idx><h>percentile|textbf</h></idx>
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Descriptive statistics</em><idx><h>descriptive statistics|textbf</h></idx> describes or summarizes data,
+          while <term>inferential statistics</term>
+          uses samples to generalize or infer something about a larger population.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="acs_age_income">
+      <title>ACS, Part I</title>
+      <statement>
+        <p>
+          Each year, the US Census Bureau surveys about 3.5 million households with The American Community Survey (ACS).
+          Data collected from the ACS have been crucial in government and policy decisions,
+          helping to determine the allocation of federal and state funds each year.
+          Some of the questions asked on the survey are about their income, age
+          (in years),
+          and gender.
+          The table below contains this information for a random sample of 20 respondents to the 2012 ACS. \footfullcite{data:acs:2012}
+        </p>
+        <sidebyside>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell></cell>
+              <cell>Income</cell>
+              <cell>Age</cell>
+              <cell>Gender</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>1</cell>
+              <cell>53,000</cell>
+              <cell>28</cell>
+              <cell>male</cell>
+            </row>
+            <row>
+              <cell>2</cell>
+              <cell>1600</cell>
+              <cell>18</cell>
+              <cell>female</cell>
+            </row>
+            <row>
+              <cell>3</cell>
+              <cell>70,000</cell>
+              <cell>54</cell>
+              <cell>male</cell>
+            </row>
+            <row>
+              <cell>4</cell>
+              <cell>12,800</cell>
+              <cell>22</cell>
+              <cell>male</cell>
+            </row>
+            <row>
+              <cell>5</cell>
+              <cell>1,200</cell>
+              <cell>18</cell>
+              <cell>female</cell>
+            </row>
+            <row>
+              <cell>6</cell>
+              <cell>30,000</cell>
+              <cell>34</cell>
+              <cell>male</cell>
+            </row>
+            <row>
+              <cell>7</cell>
+              <cell>4,500</cell>
+              <cell>21</cell>
+              <cell>male</cell>
+            </row>
+            <row>
+              <cell>8</cell>
+              <cell>20,000</cell>
+              <cell>28</cell>
+              <cell>female</cell>
+            </row>
+            <row>
+              <cell>9</cell>
+              <cell>25,000</cell>
+              <cell>29</cell>
+              <cell>female</cell>
+            </row>
+            <row>
+              <cell>10</cell>
+              <cell>42,000</cell>
+              <cell>33</cell>
+              <cell>male</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell></cell>
+              <cell>Income</cell>
+              <cell>Age</cell>
+              <cell>Gender</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>11</cell>
+              <cell>670</cell>
+              <cell>34</cell>
+              <cell>female</cell>
+            </row>
+            <row>
+              <cell>12</cell>
+              <cell>29,000</cell>
+              <cell>55</cell>
+              <cell>female</cell>
+            </row>
+            <row>
+              <cell>13</cell>
+              <cell>44,000</cell>
+              <cell>33</cell>
+              <cell>female</cell>
+            </row>
+            <row>
+              <cell>14</cell>
+              <cell>48,000</cell>
+              <cell>41</cell>
+              <cell>male</cell>
+            </row>
+            <row>
+              <cell>15</cell>
+              <cell>30,000</cell>
+              <cell>47</cell>
+              <cell>female</cell>
+            </row>
+            <row>
+              <cell>16</cell>
+              <cell>60,000</cell>
+              <cell>30</cell>
+              <cell>male</cell>
+            </row>
+            <row>
+              <cell>17</cell>
+              <cell>108,000</cell>
+              <cell>61</cell>
+              <cell>male</cell>
+            </row>
+            <row>
+              <cell>18</cell>
+              <cell>5,800</cell>
+              <cell>50</cell>
+              <cell>female</cell>
+            </row>
+            <row>
+              <cell>19</cell>
+              <cell>50,000</cell>
+              <cell>24</cell>
+              <cell>female</cell>
+            </row>
+            <row>
+              <cell>20</cell>
+              <cell>11,000</cell>
+              <cell>19</cell>
+              <cell>male</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+        </sidebyside>
+        <ol>
+          <li>
+            <p>
+              Create a scatterplot of income vs. age,
+              and describe the relationship between these two variables.
+            </p>
+          </li>
+          <li>
+            <p>
+              Now create two scatterplots:
+              one for income vs. age for males and another for females.
+            </p>
+          </li>
+          <li>
+            <p>
+              How, if at all,
+              do the relationships between income and age differ for males and females?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>MLB stats</title>
+      <statement>
+        <p>
+          A baseball team's success in a season is usually measured by their number of wins.
+          In order to win,
+          the team has to have scored more points (runs) than their opponent in any given game.
+          As such, number of runs is often a good proxy for the success of the team.
+          The table below shows number of runs, home runs,
+          and batting averages for a random sample of 10 teams in the 2014 Major League Baseball season. \footfullcite{data:MLB:2014}
+        </p>
+        <tabular>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Team</cell>
+            <cell>Runs</cell>
+            <cell>Home runs</cell>
+            <cell>Batting avg.</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>1</cell>
+            <cell>Baltimore</cell>
+            <cell>705</cell>
+            <cell>211</cell>
+            <cell>0.256</cell>
+          </row>
+          <row>
+            <cell>2</cell>
+            <cell>Boston</cell>
+            <cell>634</cell>
+            <cell>123</cell>
+            <cell>0.244</cell>
+          </row>
+          <row>
+            <cell>3</cell>
+            <cell>Cincinnati</cell>
+            <cell>595</cell>
+            <cell>131</cell>
+            <cell>0.238</cell>
+          </row>
+          <row>
+            <cell>4</cell>
+            <cell>Cleveland</cell>
+            <cell>669</cell>
+            <cell>142</cell>
+            <cell>0.253</cell>
+          </row>
+          <row>
+            <cell>5</cell>
+            <cell>Detroit</cell>
+            <cell>757</cell>
+            <cell>155</cell>
+            <cell>0.277</cell>
+          </row>
+          <row>
+            <cell>6</cell>
+            <cell>Houston</cell>
+            <cell>629</cell>
+            <cell>163</cell>
+            <cell>0.242</cell>
+          </row>
+          <row>
+            <cell>7</cell>
+            <cell>Minnesota</cell>
+            <cell>715</cell>
+            <cell>128</cell>
+            <cell>0.254</cell>
+          </row>
+          <row>
+            <cell>8</cell>
+            <cell>NY Yankees</cell>
+            <cell>633</cell>
+            <cell>147</cell>
+            <cell>0.245</cell>
+          </row>
+          <row>
+            <cell>9</cell>
+            <cell>Pittsburgh</cell>
+            <cell>682</cell>
+            <cell>156</cell>
+            <cell>0.259</cell>
+          </row>
+          <row>
+            <cell>10</cell>
+            <cell>San Francisco</cell>
+            <cell>665</cell>
+            <cell>132</cell>
+            <cell>0.255</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              Draw a scatterplot of runs vs. home runs.
+            </p>
+          </li>
+          <li>
+            <p>
+              Draw a scatterplot of runs vs. batting averages.
+            </p>
+          </li>
+          <li>
+            <p>
+              Are home runs or batting averages more strongly associated with number of runs?
+              Explain your reasoning.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="fiber_cereal">
+      <title>Fiber in your cereal</title>
+      <statement>
+        <p>
+          The Cereal FACTS report provides information on nutrition content of cereals as well as who they are targeted for
+          (adults, children, families).
+          We have selected a random sample of 20 cereals from the data provided in this report.
+          Shown below are the fiber contents
+          (percentage of fiber per gram of cereal)
+          for these cereals. \footfullcite{Harris:2012}
+        </p>
+        <sidebyside>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell></cell>
+              <cell>Brand</cell>
+              <cell>Fiber %</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>1</cell>
+              <cell>Pebbles Fruity</cell>
+              <cell>0.0%</cell>
+            </row>
+            <row>
+              <cell>2</cell>
+              <cell>Rice Krispies Treats</cell>
+              <cell>0.0%</cell>
+            </row>
+            <row>
+              <cell>3</cell>
+              <cell>Pebbles Cocoa</cell>
+              <cell>0.0%</cell>
+            </row>
+            <row>
+              <cell>4</cell>
+              <cell>Pebbles Marshmallow</cell>
+              <cell>0.0%</cell>
+            </row>
+            <row>
+              <cell>5</cell>
+              <cell>Frosted Rice Krispies</cell>
+              <cell>0.0%</cell>
+            </row>
+            <row>
+              <cell>6</cell>
+              <cell>Rice Krispies</cell>
+              <cell>3.0%</cell>
+            </row>
+            <row>
+              <cell>7</cell>
+              <cell>Trix</cell>
+              <cell>3.1%</cell>
+            </row>
+            <row>
+              <cell>8</cell>
+              <cell>Honey Comb</cell>
+              <cell>3.1%</cell>
+            </row>
+            <row>
+              <cell>9</cell>
+              <cell>Rice Krispies Gluten Free</cell>
+              <cell>3.3%</cell>
+            </row>
+            <row>
+              <cell>10</cell>
+              <cell>Frosted Flakes</cell>
+              <cell>3.3%</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell></cell>
+              <cell>Brand</cell>
+              <cell>Fiber %</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>11</cell>
+              <cell>Cinnamon Toast Crunch</cell>
+              <cell>3.3%</cell>
+            </row>
+            <row>
+              <cell>12</cell>
+              <cell>Reese's Puffs</cell>
+              <cell>3.4%</cell>
+            </row>
+            <row>
+              <cell>13</cell>
+              <cell>Cheerios Honey Nut</cell>
+              <cell>7.1%</cell>
+            </row>
+            <row>
+              <cell>14</cell>
+              <cell>Lucky Charms</cell>
+              <cell>7.4%</cell>
+            </row>
+            <row>
+              <cell>15</cell>
+              <cell>Pebbles Boulders Chocolate PB</cell>
+              <cell>7.4%</cell>
+            </row>
+            <row>
+              <cell>16</cell>
+              <cell>Corn Pops</cell>
+              <cell>9.4%</cell>
+            </row>
+            <row>
+              <cell>17</cell>
+              <cell>Frosted Flakes Reduced Sugar</cell>
+              <cell>10.0%</cell>
+            </row>
+            <row>
+              <cell>18</cell>
+              <cell>Clifford Crunch</cell>
+              <cell>10.0%</cell>
+            </row>
+            <row>
+              <cell>19</cell>
+              <cell>Apple Jacks</cell>
+              <cell>10.7%</cell>
+            </row>
+            <row>
+              <cell>20</cell>
+              <cell>Dora the Explorer</cell>
+              <cell>11.1%</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+        </sidebyside>
+        <ol>
+          <li>
+            <p>
+              Create a stem and leaf plot of the distribution of the fiber content of these cereals.
+            </p>
+          </li>
+          <li>
+            <p>
+              Create a dot plot of the fiber content of these cereals.
+            </p>
+          </li>
+          <li>
+            <p>
+              Create a histogram and a relative frequency histogram of the fiber content of these cereals.
+            </p>
+          </li>
+          <li>
+            <p>
+              What percent of cereals contain more than 7% fiber?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Sugar in your cereal</title>
+      <statement>
+        <p>
+          The Cereal FACTS report from <xref ref="fiber_cereal">Exercise</xref>
+          also provides information on sugar content of cereals.
+          We have selected a random sample of 20 cereals from the data provided in this report.
+          Shown below are the sugar contents
+          (percentage of sugar per gram of cereal)
+          for these cereals.
+        </p>
+        <sidebyside>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell></cell>
+              <cell>Brand</cell>
+              <cell>Sugar %</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>1</cell>
+              <cell>Rice Krispies Gluten Free</cell>
+              <cell>3%</cell>
+            </row>
+            <row>
+              <cell>2</cell>
+              <cell>Rice Krispies</cell>
+              <cell>12%</cell>
+            </row>
+            <row>
+              <cell>3</cell>
+              <cell>Dora the Explorer</cell>
+              <cell>22%</cell>
+            </row>
+            <row>
+              <cell>4</cell>
+              <cell>Frosted Flakes Red. Sugar</cell>
+              <cell>27%</cell>
+            </row>
+            <row>
+              <cell>5</cell>
+              <cell>Clifford Crunch</cell>
+              <cell>27%</cell>
+            </row>
+            <row>
+              <cell>6</cell>
+              <cell>Rice Krispies Treats</cell>
+              <cell>30%</cell>
+            </row>
+            <row>
+              <cell>7</cell>
+              <cell>Pebbles Boulders Choc. PB</cell>
+              <cell>30%</cell>
+            </row>
+            <row>
+              <cell>8</cell>
+              <cell>Cinnamon Toast Crunch</cell>
+              <cell>30%</cell>
+            </row>
+            <row>
+              <cell>9</cell>
+              <cell>Trix</cell>
+              <cell>31%</cell>
+            </row>
+            <row>
+              <cell>10</cell>
+              <cell>Honey Comb</cell>
+              <cell>31%</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell></cell>
+              <cell>Brand</cell>
+              <cell>Sugar %</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>11</cell>
+              <cell>Corn Pops</cell>
+              <cell>31%</cell>
+            </row>
+            <row>
+              <cell>12</cell>
+              <cell>Cheerios Honey Nut</cell>
+              <cell>32%</cell>
+            </row>
+            <row>
+              <cell>13</cell>
+              <cell>Reese's Puffs</cell>
+              <cell>34%</cell>
+            </row>
+            <row>
+              <cell>14</cell>
+              <cell>Pebbles Fruity</cell>
+              <cell>37%</cell>
+            </row>
+            <row>
+              <cell>15</cell>
+              <cell>Pebbles Cocoa</cell>
+              <cell>37%</cell>
+            </row>
+            <row>
+              <cell>16</cell>
+              <cell>Lucky Charms</cell>
+              <cell>37%</cell>
+            </row>
+            <row>
+              <cell>17</cell>
+              <cell>Frosted Flakes</cell>
+              <cell>37%</cell>
+            </row>
+            <row>
+              <cell>18</cell>
+              <cell>Pebbles Marshmallow</cell>
+              <cell>37%</cell>
+            </row>
+            <row>
+              <cell>19</cell>
+              <cell>Frosted Rice Krispies</cell>
+              <cell>40%</cell>
+            </row>
+            <row>
+              <cell>20</cell>
+              <cell>Apple Jacks</cell>
+              <cell>43%</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+        </sidebyside>
+        <ol>
+          <li>
+            <p>
+              Create a stem and leaf plot of the distribution of the sugar content of these cereals.
+            </p>
+          </li>
+          <li>
+            <p>
+              Create a dot plot of the sugar content of these cereals.
+            </p>
+          </li>
+          <li>
+            <p>
+              Create a histogram and a relative frequency histogram of the sugar content of these cereals.
+            </p>
+          </li>
+          <li>
+            <p>
+              What percent of cereals contain more than 30% sugar?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="mammal_life_spans">
+      <title>Mammal life spans</title>
+      <statement>
+        <p>
+          Data were collected on life spans
+          (in years)
+          and gestation lengths
+          (in days)
+          for 62 mammals.
+          A scatterplot of life span versus length of gestation is shown below. \footfullcite{Allison+Cicchetti:1975}
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                What type of an association is apparent between life span and length of gestation?
+              </p>
+            </li>
+            <li>
+              <p>
+                What type of an association would you expect to see if the axes of the plot were reversed,
+                i.e. if we plotted length of gestation versus life span?
+              </p>
+            </li>
+            <li>
+              <p>
+                Are life span and length of gestation independent?
+                Explain your reasoning.
+              </p>
+            </li>
+          </ol>
+          <image width="86%" source="images/mammal_life_spans_scatterplot.png" />
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="association_plots">
+      <title>Associations</title>
+      <statement>
+        <p>
+          Indicate which of the plots show (a)<nbsp/>a positive association, (b)<nbsp/>a negative association,
+          or (c)<nbsp/>no<nbsp/>association.
+          Also determine if the positive and negative associations are linear or nonlinear.
+          Each part may refer to more than one plot.
+          <image width="95%" source="images/association_plots.png" />
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

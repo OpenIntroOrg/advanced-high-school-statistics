@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pretext xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+  <docinfo>
+<macros>
+\newcommand{\versiondate}{August 10th, 2019}
+\renewcommand{\thepage}{}
+\newcommand{\printlocation}{}
+\renewcommand{\thepage}{\arabic{page}}
+\renewcommand{\headrulewidth}{0pt}
+\newcommand{\chapterpagepadding}{7mm}
+\renewcommand{\footrulewidth}{0pt}
+\newcommand{\sectionheaderspaceA}{1mm}
+\newcommand{\stdspace}{3mm}
+\newcommand{\sectionheaderspaceB}{4mm}
+\newcommand{\stdvspace}{\vspace{\stdspace{}}}
+\newcommand{\sectionheaderspaceC}{2mm}
+\newcommand{\stdaddvspace}{\addvspace{\stdspace{}}}
+\newcommand{\sectionheaderspaceD}{6mm}
+\newcommand{\officialtextheight}{9.7in}
+\newcommand{\setupfont}{\LARGE\bfseries }
+\newcommand{\officialtextwidth}{6in}
+\newcommand{\setupfontsectionexercises}{\bfseries }
+\newcommand{\officialvoffset}{-0.6in}
+\newcommand{\setfontsize}[1]{\fontsize{#1}{#1}\selectfont}
+\newcommand{\titlebreak}[1][5mm]{\\[#1]}
+\renewcommand{\headrulewidth}{0pt}
+\newcommand{\referrer}{os4_pdf}
+\newcommand{\vspaceB}[1]{}
+\newcommand{\hspaceB}[1]{}
+\newcommand{\clearpageforsection}{\clearpage}
+\newcommand{\textB}[1]{}
+\def\oldsection{\section}
+\newcommand{\textC}[1]{}
+\renewcommand{\section}{\clearpageforsection\oldsection}
+\newcommand{\reviewheader}[1]{
+\clearpageforsection
+{{\color{oiR}\titlerule[1mm]}
+\vspace{\sectionheaderspaceC}
+\setupfont{}#1 \\[-1mm]
+{\color{oiR}\titlerule[1mm]} \\[2mm]
+}
+\addcontentsline{toc}{section}{#1}
+}
+\newcommand{\APVersion}[2]{#2}
+\newcommand{\reviewchapterheader}[1][Chapter highlights]{
+\reviewheader{#1}
+}
+\newcommand{\MultipleRegression}[2]{#1}
+\newcommand{\MultipleRegressionChapter}[2]{#1}
+\newcommand{\nsubsection}[1]{\subsection{\MakeUppercase{#1}}}
+\newcommand{\SimulationAndRandomization}[1]{#1}
+\newcommand{\reviewexercisesheader}[1][Chapter exercises]{\reviewheader{#1}
+}
+\newcommand{\ANOVASection}[2]{#1}
+\newcommand{\exercisesheader}[1][Exercises]{
+\clearpageforsection
+{{\color{oiR}\titlerule[1.0mm]}
+\vspace{\sectionheaderspaceC}
+\setupfont{}\large\textbf{#1}
+} \vspace{\sectionheaderspaceD{}}
+}
+\newcommand{\GLMSection}[2]{#1}
+\renewcommand{\chapterfolder}{ch_data_collection}
+\renewcommand{\theeoce}{\arabic{chapter}.\arabic{eoce}}
+\newcommand{\popchangevmedianhhincomequestion}{
+Does a higher than average increase in county population
+tend to correspond to counties with higher or lower median
+household incomes?}
+\renewcommand{\theeocesol}{\arabic{eocesolch}.\arabic{eocesol}}
+\renewcommand{\chapterfolder}{ch_summarizing_data}
+\renewcommand{\theeoceNeedSolution}{\arabic{chapter}.\arabic{eoceNeedSolution}}
+\newcommand{\loanA}{10.90}
+\renewcommand{\theeoceReplace}{\arabic{chapter}.\arabic{eoceReplace}}
+\newcommand{\loanB}{9.92}
+\renewcommand{\theeoceFF}{\arabic{chapter}.\arabic{eoceFF}}
+\newcommand{\loanC}{26.30}
+\newcommand{\includechapter}[2]{
+\normalsize
+IIIII
+IIIII
+}
+\newcommand{\loanD}{9.92}
+\newcommand{\chapterpagepaddingtopinner}{35mm}
+\newcommand{\loanY}{9.43}
+\newcommand{\chapterpagepaddingrightinner}{30mm}
+\newcommand{\loanZ}{6.08}
+\newcommand{\chapterpagepaddinginner}{25mm}
+\newcommand{\loanAvg}{11.57}
+\newcommand{\chapterXfontsize}{92}
+\newcommand{\loanVar}{25.52}
+\newcommand{\chaptertitlefontsize}{30}
+\newcommand{\loanSD}{5.05}
+\newcommand{\Add}[1]{\footnote{\Huge\color{oiR}$\bullet$}{#1}}
+\newcommand{\loanN}{50}
+\newcommand{\Cut}[1]{\footnote{\Huge\color{oiR}$\bullet$}{\color{oiGC}#1}}
+\newcommand{\loanMedianBelow}{9.93\%}
+\newcommand{\Comment}[1]{\footnote{\Huge\color{oiR}$\bullet$} {\color{oiG}{[#1]}}}
+\newcommand{\loanMedianAbove}{9.93\%}
+\newcommand{\note}[1]{\Comment{#1}}
+\newcommand{\loanMedian}{9.93\%}
+\newcommand{\degree}{^\circ}
+\newcommand{\loanQA}{7.96}
+\newcommand{\R}{\textbf{\textsf{R}}}
+\newcommand{\loanQC}{13.72}
+\newcommand{\terminology}[1]{\textbf{#1}\index{#1|textbf}}
+\newcommand{\loanIQR}{5.76}
+\newcommand{\termsub}[2]{\textbf{#1}\index{#2|textbf}}
+\newcommand{\loanAdev}{-0.67}
+\newcommand{\termni}[1]{\textbf{#1}}
+\newcommand{\loanBdev}{-1.65}
+\newcommand{\hiddenterm}[1]{#1\index{#1|textbf}}
+\newcommand{\loanCdev}{14.73}
+\newcommand{\indexthis}[2]{#1\index{#2}}
+\newcommand{\loanDdev}{-1.65}
+\newcommand{\termO}[1]{\textbf{\color{termOColor}#1}}
+\newcommand{\loanYdev}{-2.14}
+\newcommand{\datalink}[1]{\index{#1|textbf}\texttt{MISSINGoiRedirect}}
+\newcommand{\loanZdev}{-5.49}
+\newcommand{\lmlevel}[1]{:~\emph{#1}}
+\newcommand{\loanSmallestValue}{5.31}
+\newcommand{\codeindent}{\hspace{5mm}}
+\newcommand{\loanLargestValue}{26.30}
+\newcommand{\textbf}[1]{\textbf{#1}}
+\newcommand{\numcountieswithgains}{1454}
+\newcommand{\textbf}[1]{\emph{\color{oiR}#1}}
+\newcommand{\numcountieswithgainsC}{1,454}
+\newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
+\newcommand{\numcountieswithoutgains}{1672}
+\newcommand{\oiRedirectUrl}[1]{http://www.openintro.org/redirect.php?go=#1\amp referrer=ahss2_pdf}
+\newcommand{\numcountieswithoutgainsC}{1,672}
+\newcommand{\npgpad}[1]{\hspace{2mm}#1\hspace{1.5mm}\ }
+\newcommand{\videoicon}[1][4.5mm]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}~}
+\newcommand{\loanapphomeAA}{3496}
+\newcommand{\CalculatorVideos}[1]{}
+\newcommand{\loanapphomeAB}{3839}
+\newcommand{\videohref}[2][4.5mm]{\oiRedirect{#2}{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}
+\newcommand{\loanapphomeAC}{1170}
+\newcommand{\tableauhref}[2][4.5mm]{\oiRedirect{#2}{\includegraphics[height=#1]{extraTeX/icons/tableau}}}
+\newcommand{\loanapphomeAD}{8505}
+\newcommand{\slideshref}[2][4.5mm]{\oiRedirect{#2}{\includegraphics[height=#1]{extraTeX/icons/slides.png}}}
+\newcommand{\loanapphomeBA}{362}
+\newcommand{\videomarginhref}[2][4mm]{\oiRedirect{#2}{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}
+\newcommand{\loanapphomeBB}{950}
+\newcommand{\sectionvideohref}[2][6mm]{\oiRedirect{#2}{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}
+\newcommand{\loanapphomeBC}{183}
+\newcommand{\sectionslideshref}[2][6mm]{\oiRedirect{#2}{\includegraphics[height=#1]{extraTeX/icons/slides.png}}}
+\newcommand{\loanapphomeBD}{1495}
+\newcommand{\loanapphomeDA}{3858}
+\newcommand{\us}{\_}
+\newcommand{\loanapphomeDAPt}{0.3858}
+\newcommand{\indfunc}[2]{\texttt{#1}_{\texttt{#2}}}
+\newcommand{\loanapphomeDB}{4789}
+\newcommand{\inferencestep}[1]{\textbf{#1}:}
+\newcommand{\loanapphomeDC}{1353}
+\newcommand{\loanapphomeDD}{10000}
+\newcommand{\Figure}[2]{\includegraphics[width=#1\textwidth]{\chapterfolder/figures/#2/#2}}
+\newcommand{\loanapphomeN}{\loanapphomeDD{}}
+\newcommand{\Figures}[3]{\includegraphics[width=#1\textwidth]{\chapterfolder/figures/#2/#3}}
+\newcommand{\loanapptypehomesegbarplotwidth}{0.46\textwidth}
+\newcommand{\Figuress}[3]{\includegraphics[width=#1]{\chapterfolder/figures/#2/#3}}
+\newcommand{\malariaAA}{5}
+\newcommand{\chapterfolder}{}
+\newcommand{\malariaAB}{9}
+\newcommand{\excolor}[1]{{\color{excolor}#1}}
+\newcommand{\malariaAD}{14}
+\newcommand{\theexercise}{\thechapter.\arabic{equation}}
+\newcommand{\malariaBA}{6}
+\newcommand{\theexample}{\thechapter.\arabic{equation}}
+\newcommand{\malariaBB}{0}
+\newcommand{\malariaBD}{6}
+\def\marginsymbolhelper{\tabto*{0mm} {\dbend} \tabto*{0mm}}
+\newcommand{\malariaDA}{11}
+\newcommand{\exampleicon}[1]{\vspace{#1} \raggedleft\includegraphics[width=5mm]{extraTeX/icons/example.png}\hspace{2mm}\ }
+\newcommand{\malariaDB}{9}
+\newcommand{\exampletitle}[1]{\textbf {\MakeUppercase{Example~#1}} \\[1mm]}
+\newcommand{\malariaDD}{20}
+\newcommand{\exercisetitle}[1]{\textbf {\MakeUppercase{Guided Practice~#1}} \\[1mm]}
+\newcommand{\malariaVIR}{0.357}
+\newcommand{\exspace}{\stdvspace{}}
+\newcommand{\malariaVIRPerc}{35.7\%}
+\newcommand{\eocesolch}[1]{
+\textbf{\arabic{eocesolch}\hspace{2mm}#1}
+\addvspace{2mm}
+}
+\newcommand{\malariaPIR}{1.000}
+\newcommand{\eocesol}[1]{\textbf{{{ \ref{eoce_\arabic{eocesolch}_\arabic{eocesol}}}}\label{eoce_sol_\arabic{eocesolch}_\arabic{eocesol}}}\hspace{2mm}#1\makebox[0pt]{\color{white}\tiny \label{eoce_sol_\arabic{eocesolch}_\arabic{eocesol}}}
+\addvspace{1mm}
+}
+\newcommand{\malariaPIRPerc}{100\%}
+\newcommand{\qt}[2][.]{{ \textcolor{oiB}{\textbf{#2#1}}}}
+\newcommand{\malariaIRDiff}{0.643}
+\newcommand{\qtq}[1]{{ \textcolor{oiB}{\textbf{#1?}}}}
+\newcommand{\malariaIRDiffPerc}{64.3\%}
+\newcommand{\ec}[1]{\textcolor{oiB}{{~(#1)}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eoceNeedSolution}[1][]{\textbf{ \color{red}ADD SOLUTION. #1}}
+\renewcommand{\chapterfolder}{ch_probability}
+\newcommand{\eoceReplace}[1][]{\textbf{ \color{red}REPLACE THIS EXERCISE. #1}}
+\newcommand{\fashN}{1822}
+\newcommand{\eoceFF}[1][]{\textbf{ \color{red}FINAL FORMATTING.}}
+\newcommand{\fashYY}{197}
+\newcommand{\tBoxTitleBuffer}{\\[1.5mm]}
+\newcommand{\fashYN}{22}
+\renewcommand{\contentsname}{Table of Contents}
+\newcommand{\fashYA}{219}
+\newcommand{\fashNY}{112}
+\newcommand{\fashNN}{1491}
+\newcommand{\fashNA}{1603}
+\newcommand{\fashAY}{309}
+\newcommand{\fashAN}{1513}
+\newcommand{\fashAA}{\fashN{}}
+\newcommand{\fashCYPY}{0.96}
+\newcommand{\fashCYPN}{0.04}
+\newcommand{\fashCNPY}{0.07}
+\newcommand{\fashCNPN}{0.93}
+\newcommand{\ultruthfashion}{\underline{\texttt{truth} is \texttt{fashion}}}
+\newcommand{\insureSprob}{0.7}
+\newcommand{\insureSperc}{70\%}
+\newcommand{\insureFprob}{0.3}
+\newcommand{\insureFperc}{30\%}
+\newcommand{\insureDistA}{0.7}
+\newcommand{\insureDistB}{0.21}
+\newcommand{\insureDistC}{0.063}
+\newcommand{\insureDistD}{0.019}
+\newcommand{\insureDistE}{0.006}
+\newcommand{\insureCDistA}{0.7}
+\newcommand{\insureCDistB}{0.91}
+\newcommand{\insureCDistC}{0.973}
+\newcommand{\insureCDistCComplement}{0.027}
+\newcommand{\insureCDistD}{0.992}
+\newcommand{\insureCDistE}{0.998}
+\newcommand{\insureGeomMean}{1.43}
+\newcommand{\insureS}{\texttt{not}}
+\newcommand{\insureF}{\texttt{exceed}}
+\newcommand{\insureBinomCinDSingleScenario}{0.103}
+\newcommand{\insureBinomCinD}{0.412}
+\newcommand{\insureBinomEinHSingleScenario}{0.00454}
+\newcommand{\insureBinomEinH}{0.254}
+\newcommand{\insureBinomFourtyExpValue}{28}
+\newcommand{\insureBinomFourtySD}{2.9}
+\newcommand{\insureBinomFourtyLower}{22}
+\newcommand{\insureBinomFourtyUpper}{34}
+\renewcommand{\chapterfolder}{ch_distributions}
+\newcommand{\satmean}{1100}
+\newcommand{\satsd}{200}
+\newcommand{\actmean}{21}
+\newcommand{\actsd}{6}
+\newcommand{\annsatscore}{1300}
+\newcommand{\annsatzscore}{1}
+\newcommand{\tomsatscore}{24}
+\newcommand{\tomsatzscore}{0.5}
+\newcommand{\oposprob}{0.35}
+\newcommand{\oposprobcomp}{0.65}
+\renewcommand{\chapterfolder}{ch_foundations_for_inf}
+\newcommand{\pewsolarpollsize}{1000}
+\newcommand{\pewsolarparprop}{0.88}
+\newcommand{\pewsolarparpropcomplement}{0.12}
+\newcommand{\pewsolarparpercent}{88\%}
+\newcommand{\pewsolarparpercentcomplement}{12\%}
+\newcommand{\pewsolarpollprop}{0.887}
+\newcommand{\pewsolarpollpropcomplement}{0.113}
+\newcommand{\pewsolarpollpercent}{88.7\%}
+\newcommand{\pewsolarpollpercentcomplement}{11.3\%}
+\newcommand{\pewsolarpollcount}{887}
+\newcommand{\pewsolarpollexpcount}{880}
+\newcommand{\pewsolarpollcountcomplement}{113}
+\newcommand{\pewsolarpollexpcountcomplement}{120}
+\newcommand{\pewsolarpollse}{0.010}
+\renewcommand{\chapterfolder}{ch_inference_for_props}
+\renewcommand{\chapterfolder}{ch_inference_for_means}
+\newcommand{\cherryblossomn}{100}
+\newcommand{\cherryblossommean}{97.3}
+\newcommand{\cherryblossomnull}{93.3}
+\newcommand{\cherryblossomsd}{17.0}
+\newcommand{\cherryblossomse}{1.7}
+\newcommand{\cherryblossomt}{2.35}
+\newcommand{\uclabookN}{68}
+\newcommand{\uclabookM}{3.58}
+\newcommand{\uclabookSD}{13.42}
+\newcommand{\uclabookSE}{1.63}
+\newcommand{\johnn}{63}
+\newcommand{\jennifern}{64}
+\newcommand{\johnmean}{30,238}
+\newcommand{\jennifermean}{26,508}
+\newcommand{\johnsd}{5567}
+\newcommand{\jennifersd}{7247}
+\newcommand{\johnjenniferSE}{1151}
+\renewcommand{\chapterfolder}{ch_regr_simple_linear}
+\newcommand{\clearpageforsection}{\addvspace{8mm}
+}
+\newcommand{\datappendixch}[1]{
+\addvspace{10mm}
+\textbf{\Large#1} \\
+}
+</macros>
+<latex-image-preamble>
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\usepackage{tkz-euclide}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+\usetikzlibrary{through,intersections,decorations,shadows,fadings}
+\usepackage{pgfplots}
+</latex-image-preamble>
+  </docinfo>
+  <book>
+    <title>Title Goes Here</title>
+    <frontmatter>
+      <titlepage>
+      </titlepage>
+    </frontmatter>
+    <xi:include href="./chapter1.ptx" />
+    <xi:include href="./introductionToData.ptx" />
+    <xi:include href="./summarizingData.ptx" />
+    <xi:include href="./probability.ptx" />
+    <xi:include href="./ch_distributions.ptx" />
+    <xi:include href="./foundationsForInference.ptx" />
+    <xi:include href="./inferenceForCategoricalData.ptx" />
+    <xi:include href="./inferenceForNumericalData.ptx" />
+    <xi:include href="./linRegrForTwoVar.ptx" />
+    <backmatter>
+      <xi:include href="./bibliography.ptx" />
+      <index>
+        <title>Index</title>
+        <index-list />
+      </index>
+    </backmatter>
+  </book>
+</pretext>

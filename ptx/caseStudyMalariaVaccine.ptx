@@ -1,0 +1,665 @@
+<section xml:id="caseStudyMalariaVaccine">
+  <title>Case study: malaria vaccine (special topic)</title>
+  <introduction>
+    <p>
+      How large does an observed difference need to be for it to provide convincing evidence that something real is going on,
+      something beyond random variation?
+      Answering this question requires the tools that we will encounter in the later chapters on probability and inference.
+      However, this is such an interesting and important question,
+      and we'll also address it here using simulation.
+      This section can be covered now or in tandem with <xref ref="ch_foundations_for_inf">Chapter</xref>: Foundations for Inference.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Recognize that an observed difference in sample statistics may be due to random chance and that we use hypothesis testing to determine if this difference statistically significant (i.e. too large to be attributed to random chance).
+        </p>
+      </li>
+      <li>
+        <p>
+          Set up competing hypotheses and use the results of a simulation to evaluate the degree of support the data provide against the null hypothesis and for the alternative hypothesis.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection xml:id="variabilityWithinData">
+    <title>Variability within data</title>
+    <p>
+          <idx><h>data</h><h>malaria vaccine</h></idx>
+    </p>
+    <example xml:id="classRightLeftSideApple">
+      <statement>
+        <p>
+          Suppose your professor splits the students in class into two groups:
+          students on the left and students on the right.
+          If <m>\hat{p}_{_L}</m> and
+          <m>\hat{p}_{_R}</m> represent the proportion of students who own an Apple product on the left and right,
+          respectively,
+          would you be surprised if <m>\hat{p}_{_L}</m> did not {exactly} equal <m>\hat{p}_{_R}</m>?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          While the proportions would probably be close to each other,
+          it would be unusual for them to be exactly the same.
+          We would probably observe a small difference due to {chance}.
+        </p>
+      </answer>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          If we don't think the side of the room a person sits on in class is related to whether the person owns an Apple product,
+          what assumption are we making about the relationship between these two variables?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We consider a study on a new malaria vaccine called PfSPZ. In this study,
+      volunteer patients were randomized into one of two experiment groups: 14 patients received an experimental vaccine or 6 patients received a placebo vaccine.
+      Nineteen weeks later,
+      all 20 patients were exposed to a drug-sensitive malaria virus strain;
+      the motivation of using a drug-sensitive strain of virus here is for ethical considerations,
+      allowing any infections to be treated effectively.
+      The results are summarized in <xref ref="malaria_vaccine_20_exp_summary">Figure</xref>,
+      where 9 of the 14 treatment patients remained free of signs of infection while all of the<nbsp/>6 patients in the control group patients showed some baseline signs of infection.
+    </p>
+    <table xml:id="malaria_vaccine_20_exp_summary">
+      <caption>Summary results for the malaria vaccine experiment.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>\multicolumn{2}{c}{<c>outcome</c>}</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>{infection}</cell>
+          <cell>{no infection}</cell>
+          <cell>Total</cell>
+          <cell>\hspace{3mm}</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>{vaccine}</cell>
+          <cell>\malariaAA</cell>
+          <cell>\malariaAB</cell>
+          <cell>\malariaAD</cell>
+        </row>
+        <row>
+          <cell><c>treatment</c></cell>
+          <cell>{placebo}</cell>
+          <cell>\malariaBA</cell>
+          <cell>\malariaBB</cell>
+          <cell>\malariaBD</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Total</cell>
+          <cell>\malariaDA</cell>
+          <cell>\malariaDB</cell>
+          <cell>\malariaDD</cell>
+        </row>
+        <row>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <exercise>
+      <statement>
+        <p>
+          Is this an observational study or an experiment?
+          What implications does the study type have on what can be inferred from the results?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In this study,
+      a smaller proportion of patients who received the vaccine showed signs of an infection (35.7% versus 100%).
+      However, the sample is very small,
+      and it is unclear whether the difference provides
+      <em>convincing evidence</em>
+      that the vaccine is effective.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Data scientists are sometimes called upon to evaluate the strength of evidence.
+          When looking at the rates of infection for patients in the two groups in this study,
+          what comes to mind as we try to determine whether the data show convincing evidence of a real difference?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Data scientists are sometimes called upon to evaluate the strength of evidence.
+          When looking at the rates of infection for patients in the two groups in this study,
+          what comes to mind as we try to determine whether the data show convincing evidence of a real difference?
+        </p>
+      </solution>
+    </example>
+    <p>
+      <xref ref="malaria_vaccine_20_what_is_convincing">Example</xref>
+      is a reminder that the observed outcomes in the data sample may not perfectly reflect the true relationships between variables since there is
+      <term>random noise</term>.
+      While the observed difference in rates of infection is large,
+      the sample size for the study is small,
+      making it unclear if this observed difference represents efficacy of the vaccine or whether it is simply due to chance.
+      We label these two competing claims,
+      <m>H_0</m> and <m>H_A</m>, which are spoken as
+      <q>H-nought</q>
+      and
+      <q>H-A</q>:
+      <ul>
+        <li>
+          <title>invalidlabel</title>
+          <p>
+            <em>Independence model.</em> The variables <c>treatment</c> and <c>outcome</c> are independent.
+            They have no relationship,
+            and the observed difference between the proportion of patients who developed an infection in the two groups, 64.3%, was due to chance.
+          </p>
+        </li>
+        <li>
+          <title>invalidlabel</title>
+          <p>
+            <em>Alternative model.</em> The variables are
+            <em>not</em> independent.
+            The difference in infection rates of 64.3% was not due to chance,
+            and vaccine affected the rate of infection.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      What would it mean if the independence model,
+      which says the vaccine had no influence on the rate of infection, is true?
+      It would mean 11<nbsp/>patients were going to develop an infection
+      <em>no matter which group they were randomized into</em>,
+      and 9<nbsp/>patients would not develop an infection
+      <em>no matter which group they were randomized into</em>.
+      That<nbsp/>is,
+      if the vaccine did not affect the rate of infection,
+      the difference in the infection rates was due to chance alone in how the patients were randomized.
+    </p>
+    <p>
+      Now consider the alternative model:
+      infection rates were influenced by whether a patient received the vaccine or not.
+      If this was true, and especially if this influence was substantial,
+      we would expect to see some difference in the infection rates of patients in the groups.
+    </p>
+    <p>
+      We choose between these two competing claims by assessing if the data conflict so much with <m>H_0</m> that the independence model cannot be deemed reasonable.
+      If this is the case, and the data support <m>H_A</m>,
+      then we will reject the notion of independence and conclude there was discrimination.
+    </p>
+  </subsection>
+  <subsection xml:id="simulatingTheStudy">
+    <title>Simulating the study</title>
+    <p>
+      We're going to implement <em>simulations</em>,
+          <idx><h>simulation|textbf</h></idx>
+      where we will pretend we know that the malaria vaccine being tested does <em>not</em> work.
+      Ultimately, we want to understand if the large difference we observed is common in these simulations.
+      If it is common,
+      then maybe the difference we observed was purely due to chance.
+      If it is very uncommon,
+      then the possibility that the vaccine was helpful seems more plausible.
+    </p>
+    <p>
+      <xref ref="malaria_vaccine_20_exp_summary">Figure</xref>
+      shows that 11 patients developed infections and 9 did not.
+      For our simulation,
+      we will suppose the infections were independent of the vaccine and we were able to <em>rewind</em>
+      back to when the researchers randomized the patients in the study.
+      If we happened to randomize the patients differently,
+      we may get a different result in this hypothetical world where the vaccine doesn't influence the infection.
+      Let's complete another <term>randomization</term> using a simulation.
+    </p>
+    <p>
+      In this <term>simulation</term>,
+      we take 20 notecards to represent the 20 patients, where we write down
+      <q>infection</q>
+      on 11 cards and
+      <q>no infection</q>
+      on 9 cards.
+      In this hypothetical world,
+      we believe each patient that got an infection was going to get it regardless of which group they were in,
+      so let's see what happens if we randomly assign the patients to the treatment and control groups again.
+      We thoroughly shuffle the notecards and deal 14 into a <c>vaccine</c> pile and 6 into a <c>placebo</c> pile.
+      Finally, we tabulate the results,
+      which are shown in <xref ref="malaria_vaccine_20_exp_summary_rand_1">Figure</xref>.
+    </p>
+    <table xml:id="malaria_vaccine_20_exp_summary_rand_1">
+      <caption>Simulation results, where any difference
+      in infection rates is purely due to chance.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>\multicolumn{2}{c}{<c>outcome</c>}</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>{infection}</cell>
+          <cell>{no infection}</cell>
+          <cell>Total</cell>
+          <cell>\hspace{3mm}</cell>
+        </row>
+        <row>
+          <cell>treatment</cell>
+          <cell>{vaccine}</cell>
+          <cell>7</cell>
+          <cell>7</cell>
+          <cell>14</cell>
+        </row>
+        <row>
+          <cell>(simulated)</cell>
+          <cell>{placebo}</cell>
+          <cell>4</cell>
+          <cell>2</cell>
+          <cell>6</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Total</cell>
+          <cell>11</cell>
+          <cell>9</cell>
+          <cell>20</cell>
+        </row>
+        <row>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <exercise xml:id="malaria_vaccine_20_exp_summary_rand_1_diff">
+      <statement>
+        <p>
+          What is the difference in infection rates between the two simulated groups in <xref ref="malaria_vaccine_20_exp_summary_rand_1">Figure</xref>?
+          How does this compare to the observed 64.3% difference in the actual data?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>Checking for independence</title>
+    <p>
+      We computed one possible difference under the independence model in Guided <xref ref="malaria_vaccine_20_exp_summary_rand_1_diff">Practice</xref>,
+      which represents one difference due to chance.
+      While in this first simulation,
+      we physically dealt out notecards to represent the patients,
+      it is more efficient to perform this simulation using a computer.
+      Repeating the simulation on a computer,
+      we get another difference due to chance:
+      <md>
+        <mrow>\frac{2}{\malariaBD{}} - \frac{9}{\malariaAD{}} = -0.310</mrow>
+      </md>
+    </p>
+    <p>
+      And another:
+      <md>
+        <mrow>\frac{3}{\malariaBD{}} - \frac{8}{\malariaAD{}} = -0.071</mrow>
+      </md>
+    </p>
+    <p>
+      And so on until we repeat the simulation enough times that we have a good idea of what represents the
+      <em>distribution of differences from chance alone</em>.
+      <xref ref="malaria_rand_dot_plot">Figure</xref>
+      shows a stacked plot of the differences found from 100 simulations,
+      where each dot represents a simulated difference between the infection rates
+      (control rate minus treatment rate).
+    </p>
+    <figure xml:id="malaria_rand_dot_plot">
+      <caption>A stacked dot plot of differences from
+      100 simulations produced under the independence model,
+      <m>H_0</m>, where in these simulations infections are
+      unaffected by the vaccine.
+      Two of the 100 simulations had a difference of
+      at least \malariaIRDiffPerc, the difference observed
+      in the study.</caption>
+      \Figure{0.74}{malaria_rand_dot_plot}
+    </figure>
+    <p>
+      Note that the distribution of these simulated differences is centered around 0.
+      We simulated these differences assuming that the independence model was true,
+      and under this condition,
+      we expect the difference to be near zero with some random fluctuation,
+      where <em>near</em> is pretty generous in this case since the sample sizes are so small in this study.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Given the results of the simulation shown in <xref ref="malaria_rand_dot_plot">Figure</xref>,
+          about how often would you expect to observe a result as large as 64.3% if <m>H_0</m> were true?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Because a result this large happened 2 times out the 100 simulations,
+          we would expect such a large value only 2% of the time if <m>H_0</m> were true.
+        </p>
+      </answer>
+    </example>
+    <p>
+      There are two possible interpretations of the results of the study:
+      <ul>
+        <li>
+          <title>invalidlabel</title>
+          <p>
+            <em>Independence model.</em> The vaccine has no effect on infection rate,
+            and we just happened to observe a rare event.
+          </p>
+        </li>
+        <li>
+          <title>invalidlabel</title>
+          <p>
+            <em>Alternative model.</em> The vaccine has an effect on infection rate,
+            and the difference we observed was actually due to the vaccine being effective at combatting malaria,
+            which explains the large difference of<nbsp/>64.3%.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Based on the simulations,
+      we have two options. (1)<nbsp/>We conclude that the study results do not provide strong enough evidence against the independence model,
+      meaning we do not conclude that the vaccine had an effect in this clinical setting. (2)<nbsp/>We conclude the evidence is sufficiently strong to reject <m>H_0</m>,
+      and we assert that the vaccine was useful.
+    </p>
+    <p>
+      Is 2% small enough to make us reject the independence model?
+      That depends on how much evidence we require.
+      The smaller that probability is,
+      the more evidence it provides against <m>H_0</m>.
+      Later, we will see that researchers often use a cutoff of 5%, though it can depend upon the situation.
+      Using the 5% cutoff,
+      we would reject the independence model in favor of the alternative.
+      That is, we are concluding the data provide strong evidence that the vaccine provides some protection against malaria in this clinical setting.
+    </p>
+    <p>
+      When there is strong enough evidence that the result points to a real difference and is not simply due to random variation,
+      we call the result <term>statistically significant</term>.
+    </p>
+    <p>
+          <idx><h>data</h><h>malaria vaccine</h></idx>
+    </p>
+    <p>
+      One field of statistics, statistical inference,
+      is built on evaluating whether such differences are due to chance.
+      In statistical inference,
+      data scientists evaluate which model is most reasonable given the data.
+      Errors do occur, just like rare events,
+      and we might choose the wrong model.
+      While we do not always choose correctly,
+      statistical inference gives us tools to control and evaluate how often these errors occur.
+      In <xref ref="foundationsForInference">Chapter</xref>,
+      we give a formal introduction to the problem of model selection.
+      We spend the next two chapters building a foundation of probability and theory necessary to make that discussion rigorous.
+    </p>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="randomization_avandia">
+      <title>Side effects of Avandia</title>
+      <statement>
+        <p>
+          Rosiglitazone is the active ingredient in the controversial type<nbsp/>2 diabetes medicine Avandia and has been linked to an increased risk of serious cardiovascular problems such as stroke,
+          heart failure,
+          and death.
+          A common alternative treatment is pioglitazone,
+          the active ingredient in a diabetes medicine called Actos.
+          In a nationwide retrospective observational study of 227,571 Medicare beneficiaries aged 65 years or older,
+          it was found that 2,593 of the 67,593 patients using rosiglitazone and 5,386 of the 159,978 using pioglitazone had serious cardiovascular problems.
+          These data are summarized in the contingency table below. \footfullcite{Graham:2010}
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{2}{c}{<em>Cardiovascular problems</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Yes</cell>
+            <cell>No</cell>
+            <cell>Total</cell>
+          </row>
+          <row>
+            <cell>\multirow{2}{*}{<em>Treatment</em>}</cell>
+            <cell>Rosiglitazone</cell>
+            <cell>2,593</cell>
+            <cell>65,000</cell>
+            <cell>67,593</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Pioglitazone</cell>
+            <cell>5,386</cell>
+            <cell>154,592</cell>
+            <cell>159,978</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>7,979</cell>
+            <cell>219,592</cell>
+            <cell>227,571</cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              Determine if each of the following statements is true or false.
+              If false, explain why.
+              <em>Be careful:</em> The reasoning may be wrong even if the statement's conclusion is correct.
+              In such cases, the statement should be considered false.
+              <task>
+                Since more patients on pioglitazone had cardiovascular problems (5,386 vs. 2,593), we can conclude that the rate of cardiovascular problems for those on a pioglitazone treatment is higher.
+              </task>
+              <task>
+                The data suggest that diabetic patients who are taking rosiglitazone are more likely to have cardiovascular problems since the rate of incidence was (2,593 / 67,593 = 0.038) 3.8% for patients on this treatment, while it was only (5,386 / 159,978 = 0.034) 3.4% for patients on pioglitazone.
+              </task>
+              <task>
+                The fact that the rate of incidence is higher for the rosiglitazone group proves that rosiglitazone causes serious cardiovascular problems.
+              </task>
+              <task>
+                Based on the information provided so far, we cannot tell if the difference between the rates of incidences is due to a relationship between the two variables or due to chance.
+              </task>
+            </p>
+          </li>
+          <li>
+            <p>
+              What proportion of all patients had cardiovascular problems?
+            </p>
+          </li>
+          <li>
+            <p>
+              If the type of treatment and having cardiovascular problems were independent,
+              about how many patients in the rosiglitazone group would we expect to have had cardiovascular problems?
+            </p>
+          </li>
+          <li>
+            <p>
+              We can investigate the relationship between outcome and treatment in this study using a randomization technique.
+              While in reality we would carry out the simulations required for randomization using statistical software,
+              suppose we actually simulate using index cards.
+              In order to simulate from the independence model,
+              which states that the outcomes were independent of the treatment,
+              we write whether or not each patient had a cardiovascular problem on cards,
+              shuffled all the cards together,
+              then deal them into two groups of size 67,593 and 159,978.
+              We repeat this simulation 1,000 times and each time record the number of people in the rosiglitazone group who had cardiovascular problems.
+              Use the relative frequency histogram of these counts to answer (i)-(iii).
+            </p>
+          </li>
+        </ol>
+        <sidebyside>
+          <task>
+            What are the claims being tested?
+          </task>
+          <task>
+            Compared to the number calculated in part (b), which would provide more support for the alternative hypothesis,  <em>more</em> or <em>fewer</em> patients with cardiovascular problems in the rosiglitazone group?
+          </task>
+          <task>
+            What do the simulation results suggest about the relationship between taking rosiglitazone and having cardiovascular problems in diabetic patients?
+          </task>
+          <image width="73%" source="images/randomization_avandia.png" />
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="randomization_heart_transplants">
+      <title>Heart transplants</title>
+      <statement>
+        <p>
+          The Stanford University Heart Transplant Study was conducted to determine whether an experimental heart transplant program increased lifespan.
+          Each patient entering the program was designated an official heart transplant candidate,
+          meaning that he was gravely ill and would most likely benefit from a new heart.
+          Some patients got a transplant and some did not.
+          The variable <c>transplant</c> indicates which group the patients were in;
+          patients in the treatment group got a transplant and those in the control group did not.
+          Of the 34 patients in the control group, 30 died.
+          Of the 69 people in the treatment group, 45 died.
+          Another variable called <c>survived</c> was used to indicate whether or not the patient was alive at the end of the study. \footfullcite{Turnbull+Brown+Hu:1974} <image width="48%" source="images/randomization_heart_transplants_mosaic.png" /> <image width="48%" source="images/randomization_heart_transplants_box.png" />
+          <ol>
+            <li>
+              <p>
+                Based on the mosaic plot,
+                is survival independent of whether or not the patient got a transplant?
+                Explain your reasoning.
+              </p>
+            </li>
+            <li>
+              <p>
+                What do the box plots below suggest about the efficacy (effectiveness) of the heart transplant treatment.
+              </p>
+            </li>
+            <li>
+              <p>
+                What proportion of patients in the treatment group and what proportion of patients in the control group died?
+              </p>
+            </li>
+            <li>
+              <p>
+                One approach for investigating whether or not the treatment is effective is to use a randomization technique.
+                <task>
+                  What are the claims being tested?
+                </task>
+                <task>
+                  The paragraph below describes the set up for such approach, if we were to do it without using statistical software. Fill in the blanks with a number or phrase, whichever is appropriate. We write <em>alive</em> on \rule{2cm}{0.5pt} cards representing patients who were alive at the end of the study, and <em>dead</em> on \rule{2cm}{0.5pt} cards representing patients who were not. Then, we shuffle these cards and split them into two groups: one group of size \rule{2cm}{0.5pt} representing treatment, and another group of size \rule{2cm}{0.5pt} representing control. We calculate the difference between the proportion of <em>dead</em> cards in the treatment and control groups (treatment - control) and record this value. We repeat this 100 times to build a distribution centered at \rule{2cm}{0.5pt}. Lastly, we calculate the fraction of simulations where the simulated differences in proportions are \rule{2cm}{0.5pt}. If this fraction is low, we conclude that it is unlikely to have observed such an outcome by chance and that the null hypothesis should be rejected in favor of the alternative.
+                </task>
+                <task>
+                  What do the simulation results shown below suggest about the effectiveness of the transplant program?
+                </task>
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          <image width="60%" source="images/randomization_heart_transplants_rando.png" />
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      \addvspace{8mm} {{\titlerule[1mm]} \setupfont {\titlerule[1mm]} }
+    </p>
+    <p>
+      A raw data matrix/table may have thousands of rows.
+      The data need to be summarized in order to makes sense of all the information.
+      In this chapter,
+      we looked at ways to summarize data <term>graphically</term>,
+      <term>numerically</term>, and <term>verbally</term>.
+    </p>
+    <p>
+      <em>Categorical data</em>
+          <idx><h>categorical|textbf</h></idx>
+      <ul>
+        <li>
+          <p>
+            A single <term>categorical variable</term>
+            is summarized with <term>counts</term> or <em>proportions</em>
+              <idx><h>proportion|textbf</h></idx>
+            in a <term>one-way table</term>.
+            A <term>bar<nbsp/>chart</term> is used to show the frequency or relative frequency of the categories that the variable takes on.
+          </p>
+        </li>
+        <li>
+          <p>
+            Two categorical variables can be summarized in a
+            <term>two-way table</term>
+            and with a <term>side-by-side bar<nbsp/>chart</term>
+            or a <term>segmented bar<nbsp/>chart</term>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      <em>Numerical data</em>
+          <idx><h>numerical data|textbf</h></idx>
+      <ul>
+        <li>
+          <p>
+            When looking at a single <term>numerical variable</term>,
+            we try to understand the <term>distribution</term> of the variable.
+            The distribution of a variable can be represented with a frequency table and with a graph,
+            such as a <term>stem-and-leaf plot</term>
+            or <term>dot plot</term> for small data sets,
+            or a <term>histogram</term> for larger data sets.
+            If only a summary is desired,
+            a <term>box plot</term> may be used.
+          </p>
+        </li>
+        <li>
+          <p>
+            The <term>distribution</term> of a variable can be described and summarized with <term>center</term>
+            (mean or median),
+            <term>spread</term> (SD or IQR), and <term>shape</term>
+            (right skewed, left skewed, approximately symmetric).
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Z-scores</em>
+              <idx><h>Z-score|textbf</h></idx>
+            and <em>percentiles</em>
+              <idx><h>percentile|textbf</h></idx>
+            are useful for identifying a data point's relative position within a data set.
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Outliers</em>
+              <idx><h>outlier|textbf</h></idx>
+            are values that appear extreme relative to the rest of the data.
+            Investigating outliers can provide insight into properties of the data or may reveal data collection/entry errors.
+          </p>
+        </li>
+        <li>
+          <p>
+            When <em>comparing the distribution</em><idx><h>comparing distributions|textbf</h></idx> of two variables,
+            use two dot plots, two histograms,
+            a back-to-back stem-and-leaf, or parallel box plots.
+          </p>
+        </li>
+        <li>
+          <p>
+            To look at the <term>association</term>
+            between two numerical variables,
+            use a <term>scatterplot</term>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Graphs and numbers can summarize data,
+      but they alone are insufficient.
+      It is the role of the researcher or data scientist to ask questions,
+      to use these tools to identify patterns and departure from patterns,
+      and to make sense of this in the context of the data.
+      Strong writing skills are critical for being able to communicate the results to a wider audience.
+    </p>
+  </subsection>
+</section>

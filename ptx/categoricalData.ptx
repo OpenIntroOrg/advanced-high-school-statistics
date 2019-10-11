@@ -1,0 +1,839 @@
+<section xml:id="categoricalData">
+  <title>Considering categorical data</title>
+  <introduction>
+    <p>
+          <idx><h>data</h><h>email</h></idx>
+    </p>
+    <p>
+      How do we visualize and summarize categorical data?
+      In this section,
+      we will introduce tables and other basic tools for categorical data that are used throughout this book and will answer the following questions:
+      <ul>
+        <li>
+          <p>
+            Based on the <c>loan50</c> data,
+            is there an assocation between the categorical variables of homeownership and application type (individual, joint)?
+          </p>
+        </li>
+        <li>
+          <p>
+            Using the <c>email50</c> data,
+            does email type provide any useful value in classifying email as spam or not spam?
+          </p>
+        </li>
+      </ul>
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Use a one-way table and a bar<nbsp/>chart to summarize a categorical variable.
+          Use counts (frequency) or proportions
+          (relative frequency).
+        </p>
+      </li>
+      <li>
+        <p>
+          Compare distributions of a categorical variable using a two-way table and a side-by-side bar<nbsp/>chart,
+          segmented bar<nbsp/>chart, or mosaic plot.
+        </p>
+      </li>
+      <li>
+        <p>
+          Calculate marginal and joint frequencies for two-way tables.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Contingency tables and bar<nbsp/>charts</title>
+    <p>
+          <idx><h>data</h><h>loans</h></idx>
+    </p>
+    <p>
+      <xref ref="loan_home_app_type_totals">Figure</xref>
+      summarizes two variables: <c>app\ustype</c> and <c>homeownership</c>.
+      A table that summarizes data for two categorical variables in this way is called a
+      <term>contingency table</term>.
+      Each value in the table represents the number of times a particular combination of variable outcomes occurred.
+      For example,
+      the value 3496 corresponds to the number of loans in the data set where the borrower rents their home and the application type was by an individual.
+      Row and column totals are also included.
+      The <term>row totals</term> <idx><h>contingency table</h><h>row totals</h></idx> provide the total counts across each row (e.g.
+      <m>\loanapphomeAA{} + \loanapphomeAB{} + \loanapphomeAC{} = \loanapphomeAD{}</m>),
+      and <term>column totals</term> <idx><h>contingency table</h><h>column totals</h></idx> are total counts down each column.
+      We can also create a table that shows only the overall percentages or proportions for each combination of categories,
+      or we can create a table for a single variable,
+      such as the one shown in <xref ref="loan_homeownership_totals">Figure</xref>
+      for the <c>homeownership</c> variable.
+    </p>
+    <table xml:id="loan_home_app_type_totals">
+      <caption>A contingency table for
+<c>app\ustype</c> and <c>homeownership</c>.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>\multicolumn{3}{c}<em><c>homeownership</c></em></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>rent</cell>
+          <cell>mortgage</cell>
+          <cell>own</cell>
+          <cell>Total</cell>
+          <cell>\hspace{2mm}<nbsp/></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>individual</cell>
+          <cell>\loanapphomeAA</cell>
+          <cell>\loanapphomeAB</cell>
+          <cell>\loanapphomeAC</cell>
+          <cell>\loanapphomeAD</cell>
+        </row>
+        <row>
+          <cell><c>app\ustype</c></cell>
+          <cell>joint</cell>
+          <cell>\loanapphomeBA</cell>
+          <cell>\loanapphomeBB</cell>
+          <cell>\loanapphomeBC</cell>
+          <cell>\loanapphomeBD</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Total</cell>
+          <cell>\loanapphomeDA</cell>
+          <cell>\loanapphomeDB</cell>
+          <cell>\loanapphomeDC</cell>
+          <cell>\loanapphomeDD</cell>
+        </row>
+        <row>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <table xml:id="loan_homeownership_totals">
+      <caption>A table summarizing the frequencies of each
+      value for the <c>homeownership</c> variable.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><c>homeownership</c></cell>
+          <cell>Count</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>rent</cell>
+          <cell>\loanapphomeDA</cell>
+        </row>
+        <row>
+          <cell>mortgage</cell>
+          <cell>\loanapphomeDB</cell>
+        </row>
+        <row>
+          <cell>own</cell>
+          <cell>\loanapphomeDC</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>\loanapphomeDD</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      A <term>bar<nbsp/>chart</term>
+      (also called bar<nbsp/>plot or bar<nbsp/>graph)
+      is a common way to display a single categorical variable.
+      The left panel of <xref ref="loan_homeownership_bar_plot">Figure</xref>
+      shows a bar<nbsp/>chart for the <c>homeownership</c> variable.
+      In the right panel, the counts are converted into proportions,
+      showing the proportion of observations that are in each level (e.g.
+      <m>\loanapphomeDA{} / \loanapphomeDD{} = 0.3858</m> for <c>rent</c>).
+    </p>
+    <figure xml:id="loan_homeownership_bar_plot">
+      <caption>Two bar<nbsp/>charts of <c>number</c>.
+      The left panel shows the counts, and the right panel
+      shows the proportions in each group.</caption>
+      \Figure{0.82}{loan_homeownership_bar_plot}
+    </figure>
+  </subsection>
+  <subsection>
+    <title>Row and column proportions</title>
+    <p>
+      Sometimes it is useful to understand the fractional breakdown of one variable in another,
+      and we can modify our contingency table to provide such a view.
+      <xref ref="rowPropAppTypeHomeownership">Figure</xref>
+      shows the <em>row proportions</em><idx><h>contingency table</h><h>row proportions|textbf</h></idx> for <xref ref="loan_home_app_type_totals">Figure</xref>,
+      which are computed as the counts divided by their row totals.
+      The value 3496 at the intersection of <c>individual</c> and <c>rent</c> is replaced by <m>\loanapphomeAA{}/\loanapphomeAD{} = 0.411</m>,
+      i.e. 3496 divided by its row total, 8505.
+      So what does 0.411 represent?
+      It corresponds to the proportion of individual applicants who rent.
+    </p>
+    <table xml:id="rowPropAppTypeHomeownership">
+      <caption>A contingency table with row proportions
+      for the <c>app\ustype</c> and
+<c>homeownership</c> variables.
+      The row total is off by 0.001 for the
+<c>joint</c> row due to a rounding error.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>rent</cell>
+          <cell>mortgage</cell>
+          <cell>own</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>individual</cell>
+          <cell>0.411</cell>
+          <cell>0.451</cell>
+          <cell>0.138</cell>
+          <cell>1.000</cell>
+        </row>
+        <row>
+          <cell>joint</cell>
+          <cell>0.242</cell>
+          <cell>0.635</cell>
+          <cell>0.122</cell>
+          <cell>1.000</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>0.386</cell>
+          <cell>0.479</cell>
+          <cell>0.135</cell>
+          <cell>1.000</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      A contingency table of the column proportions is computed in a similar way,
+      where each <em>column proportion</em><idx><h>contingency table</h><h>column proportion|textbf</h></idx> is computed as the count divided by the corresponding column total.
+      <xref ref="colPropAppTypeHomeownership">Figure</xref> shows such a table,
+      and here the value 0.906 indicates that 90.6% of renters applied as individuals for the loan.
+      This rate is higher compared to loans from people with mortgages (80.2%) or who own their home (85.1%).
+      Because these rates vary between the three levels of <c>homeownership</c> (<c>rent</c>, <c>mortgage</c>, <c>own</c>), this provides evidence that the <c>app\ustype</c> and <c>homeownership</c> variables are associated.
+    </p>
+    <table xml:id="colPropAppTypeHomeownership">
+      <caption>A contingency table with column proportions for the
+<c>app\ustype</c> and <c>homeownership</c>
+      variables.
+      The total for the last column is off by 0.001 due
+      to a rounding error.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>rent</cell>
+          <cell>mortgage</cell>
+          <cell>own</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>individual</cell>
+          <cell>0.906</cell>
+          <cell>0.802</cell>
+          <cell>0.865</cell>
+          <cell>0.851</cell>
+        </row>
+        <row>
+          <cell>joint</cell>
+          <cell>0.094</cell>
+          <cell>0.198</cell>
+          <cell>0.135</cell>
+          <cell>0.150</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>1.000</cell>
+          <cell>1.000</cell>
+          <cell>1.000</cell>
+          <cell>1.000</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      We could also have checked for an association between <c>app\ustype</c> and <c>homeownership</c> in <xref ref="rowPropAppTypeHomeownership">Figure</xref> using row proportions.
+      When comparing these row proportions,
+      we would look down columns to see if the fraction of loans where the borrower rents,
+      has a mortgage,
+      or owns varied across the <c>individual</c> to <c>joint</c> application types.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          (a)<nbsp/>What does 0.451 represent in <xref ref="rowPropAppTypeHomeownership">Figure</xref>?
+        </p>
+        <p>
+          (b)<nbsp/>What does 0.802 represent in <xref ref="colPropAppTypeHomeownership">Figure</xref>?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          (a)<nbsp/>What does 0.122 at the intersection of <c>joint</c> and <c>own</c> represent in <xref ref="rowPropAppTypeHomeownership">Figure</xref>?
+        </p>
+        <p>
+          (b)<nbsp/>What does 0.135 represent in the <xref ref="colPropAppTypeHomeownership">Figure</xref>?
+        </p>
+      </statement>
+    </exercise>
+    <example xml:id="weighingRowColumnProportions">
+      <statement>
+        <p>
+          Data scientists use statistics to filter spam from incoming email messages.
+          By noting specific characteristics of an email,
+          a data scientist may be able to classify some emails as spam or not spam with high accuracy.
+          One such characteristic is whether the email contains no numbers,
+          small numbers, or big numbers.
+          Another characteristic is the email format,
+          which indicates whether or not an email has any HTML content,
+          such as bolded text.
+          We'll focus on email format and spam status using the <c>email</c> data set,
+          and these variables are summarized in a contingency table in <xref ref="emailSpamHTMLTableTotals">Figure</xref>.
+          Which would be more helpful to someone hoping to classify email as spam or regular email for this table:
+          row or column proportions?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          A data scientist would be interested in how the proportion of spam changes within each email format.
+          This corresponds to column proportions:
+          the proportion of spam in plain text emails and the proportion of spam in HTML emails.
+        </p>
+        <p>
+          If we generate the column proportions,
+          we can see that a higher fraction of plain text emails are spam (<m>209/1195 = 17.5\%</m>) than compared to HTML emails
+          (<m>158/2726 = 5.8\%</m>).
+          This information on its own is insufficient to classify an email as spam or not spam,
+          as over 80% of plain text emails are not spam.
+          Yet, when we carefully combine this information with many other characteristics,
+          we stand a reasonable chance of being able to classify some emails as spam or not spam with confidence.
+        </p>
+      </answer>
+    </example>
+    <table xml:id="emailSpamHTMLTableTotals">
+      <caption>A contingency table for <c>spam</c> and <c>format</c>.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>text</cell>
+          <cell>HTML</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>spam</cell>
+          <cell>209</cell>
+          <cell>158</cell>
+          <cell>367</cell>
+        </row>
+        <row>
+          <cell>not spam</cell>
+          <cell>986</cell>
+          <cell>2568</cell>
+          <cell>3554</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>1195</cell>
+          <cell>2726</cell>
+          <cell>3921</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      <xref ref="weighingRowColumnProportions">Example</xref>
+      points out that row and column proportions are not equivalent.
+      Before settling on one form for a table,
+      it is important to consider each to ensure that the most useful table is constructed.
+      However, sometimes it simply isn't clear which,
+      if either, is more useful.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Look back to <xref ref="rowPropAppTypeHomeownership">Tables</xref>
+          and <xref ref="colPropAppTypeHomeownership"></xref>.
+          Are there any obvious scenarios where one might be more useful than the other?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          None that we thought were obvious!
+          What is distinct about <c>app\ustype</c> and <c>homeownership</c> vs the email example is that these two variables don't have a clear explanatory-response variable relationship that we might hypothesize
+          (see <xref ref="explanatoryAndResponse">Section</xref> for these terms).
+          Usually it is most useful to
+          <q>condition</q>
+          on the explanatory variable.
+          For instance, in the email example,
+          the email format was seen as a possible explanatory variable of whether the message was spam,
+          so we would find it more interesting to compute the relative frequencies (proportions) for each email format.
+        </p>
+      </answer>
+    </example>
+  </subsection>
+  <subsection xml:id="bar_plots_subsection">
+    <title>Using a bar<nbsp/>chart with two variables</title>
+    <p>
+      Contingency tables using row or column proportions are especially useful for examining how two categorical variables are related.
+      Segmented bar<nbsp/>charts provide a way to visualize the information in these tables.
+    </p>
+    <p>
+      A <em>segmented bar<nbsp/>chart</em>,
+          <idx><h>bar chart</h><h>segmented|textbf</h></idx>
+      or stacked bar<nbsp/>chart,
+      is a graphical display of contingency table information.
+      For example,
+      a<nbsp/>segmented bar<nbsp/>chart representing <xref ref="colPropAppTypeHomeownership">Figure</xref>
+      is shown in <xref ref="loan_app_type_home_seg_bar">Figure</xref>,
+      where we have first created a bar<nbsp/>chart using the <c>homeownership</c> variable and then divided each group by the levels of \mbox{\texttt{app\us{}type}} .
+    </p>
+    <p>
+      One related visualization to the segmented bar<nbsp/>chart is the
+      <em>side-by-side bar<nbsp/>chart</em>,
+          <idx><h>bar chart</h><h>side-by-side|textbf</h></idx>
+      where an example is shown in <xref ref="loan_app_type_home_sbs_bar">Figure</xref>.
+    </p>
+    <p>
+      For the last type of bar<nbsp/>chart we introduce,
+      the column proportions for the <c>app\ustype</c> and <c>homeownership</c> contingency table have been translated into a standardized segmented bar<nbsp/>chart in <xref ref="loan_app_type_home_seg_bar_standardized">Figure</xref>.
+      This type of visualization is helpful in understanding the fraction of individual or joint loan applications for borrowers in each level of <c>homeownership</c>.
+      Additionally,
+      since the proportions of <c>joint</c> and <c>individual</c> vary across the groups,
+      we can conclude that the two variables are associated.
+    </p>
+    <figure xml:id="loan_app_type_home_seg_bar_plot">
+      <caption>\subref{loan_app_type_home_seg_bar} segmented
+      bar<nbsp/>chart for <c>homeownership</c>,
+      where the counts have been further broken down
+      by <c>app\ustype</c>.
+      \subref{loan_app_type_home_sbs_bar}<nbsp/>Side-by-side
+      bar<nbsp/>chart for <c>homeownership</c>
+      and <c>app\ustype</c>.
+      \subref{loan_app_type_home_seg_bar_standardized}<nbsp/>Standardized
+      version of the segmented bar<nbsp/>chart.
+      \subref{loan_app_type_home_sbs_bar_standardized}<nbsp/>Standardized
+      side-by-side bar<nbsp/>chart.
+      See these bar charts on Tableau Public<nbsp/>\tableauhref{tableau-bargraphs2V}.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <example>
+      <statement>
+        <p>
+          Examine the four bar<nbsp/>charts in <xref ref="loan_app_type_home_seg_bar_plot">Figure</xref>.
+          When is the segmented, side-by-side,
+          standardized segmented bar<nbsp/>chart,
+          or standardized side-by-side the most useful?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The segmented bar<nbsp/>chart is most useful when it's reasonable to assign one variable as the explanatory variable and the other variable as the response,
+          since we are effectively grouping by one variable first and then breaking it down by the others.
+        </p>
+        <p>
+          Side-by-side bar<nbsp/>charts are more agnostic in their display about which variable, if any,
+          represents the explanatory and which the response variable.
+          It is also easy to discern the number of cases in of the six different group combinations.
+          However, one downside is that it tends to require more horizontal space;
+          the narrowness of <xref ref="loan_app_type_home_sbs_bar">Figure</xref>
+          makes the plot feel a bit cramped.
+          Additionally, when two groups are of very different sizes,
+          as we see in the <c>own</c> group relative to either of the other two groups,
+          it is difficult to discern if there is an association between the variables.
+        </p>
+        <p>
+          The standardized segmented bar<nbsp/>chart is helpful if the primary variable in the segmented bar<nbsp/>chart is relatively imbalanced,
+          e.g. the <c>own</c> category has only a third of the observations in the <c>mortgage</c> category,
+          making the simple segmented bar<nbsp/>chart less useful for checking for an association.
+          The major downside of the standardized version is that we lose all sense of how many cases each of the bars represents.
+        </p>
+        <p>
+          The last plot is a standardized side-by-side bar chart.
+          It shows the joint and individual groups as proportions within each level of homeownership,
+          and it offers similar benefits and tradeoffs to the standardized version of the stacked bar plot.
+        </p>
+      </answer>
+    </example>
+  </subsection>
+  <subsection xml:id="mosaic_plots_subsection">
+    <title>Mosaic plots</title>
+    <p>
+      A <term>mosaic plot</term> is a visualization technique suitable for contingency tables that resembles a standardized segmented bar<nbsp/>chart with the benefit that we still see the relative group sizes of the primary variable as well.
+    </p>
+    <p>
+      To get started in creating our first mosaic plot,
+      we'll break a square into columns for each category of the <c>homeownership</c> variable,
+      with the result shown in <xref ref="loan_home_mosaic">Figure</xref>.
+      Each column represents a level of <c>homeownership</c>,
+      and the column widths correspond to the proportion of loans in each of those categories.
+      For<nbsp/>instance,
+      there are fewer loans where the borrower is an owner than where the borrower has a mortgage.
+      In general, mosaic plots use box <em>areas</em>
+      to represent the number of cases in each category.
+    </p>
+    <figure xml:id="loan_home_mosaic">
+      <caption>\subref{loan_home_mosaic}<nbsp/>The one-variable mosaic
+      plot for <c>homeownership</c>.
+      \subref{loan_app_type_home_mosaic}<nbsp/>Two-variable mosaic
+      plot for both <c>homeownership</c>
+      and <c>app\ustype</c>.</caption>
+      \Figures{0.36}
+      {loan_app_type_home_mosaic_plot}
+      {loan_home_mosaic} }
+      \Figures{0.44}
+      {loan_app_type_home_mosaic_plot}
+      {loan_app_type_home_mosaic} }
+    </figure>
+    <p>
+      To create a completed mosaic plot,
+      the single-variable mosaic plot is further divided into pieces in <xref ref="loan_app_type_home_mosaic">Figure</xref>
+      using the <c>app\ustype</c> variable.
+      Each column is split proportional to the number of loans from individual and joint borrowers.
+      For example,
+      the second column represents loans where the borrower has a mortgage,
+      and it was divided into individual loans (upper) and joint loans
+      (lower).
+      As another example,
+      the bottom segment of the third column represents loans where the borrower owns their home and applied jointly,
+      while the upper segment of this column represents borrowers who are homeowners and filed individually.
+      We can again use this plot to see that the <c>homeownership</c> and <c>app\ustype</c> variables are associated,
+      since some columns are divided in different vertical locations than others,
+      which was the same technique used for checking an association in the standardized segmented bar<nbsp/>chart.
+    </p>
+    <p>
+      In <xref ref="loan_app_type_home_mosaic_rev">Figure</xref>,
+      we chose to first split by the homeowner status of the borrower.
+      However, we could have instead first split by the application type,
+      as in <xref ref="loan_app_type_home_mosaic_rev">Figure</xref>.
+      Like with the bar<nbsp/>charts,
+      it's common to use the explanatory variable to represent the first split in a mosaic plot,
+      and then for the response to break up each level of the explanatory variable,
+      if these labels are reasonable to attach to the variables under consideration.
+    </p>
+    <figure xml:id="loan_app_type_home_mosaic_rev">
+      <caption>Mosaic plot where loans are grouped by
+      the <c>homeownership</c> variable after they've
+      been divided into the <c>individual</c> and
+<c>joint</c> application types.</caption>
+      \Figures{0.5}
+      {loan_app_type_home_mosaic_plot}
+      {loan_app_type_home_mosaic_rev}
+    </figure>
+  </subsection>
+  <subsection>
+    <title>The only pie chart you will see in this book</title>
+    <p>
+      A <term>pie chart</term> is shown in <xref ref="loan_homeownership_pie_chart">Figure</xref>
+      alongside a bar<nbsp/>chart representing the same information.
+      Pie charts can be useful for giving a high-level overview to show how a set of cases break down.
+      However, it is also difficult to decipher details in a pie chart.
+      For example,
+      it takes a couple seconds longer to recognize that there are more loans where the borrower has a mortgage than rent when looking at the pie chart,
+      while this detail is very obvious in the bar<nbsp/>chart.
+      While pie charts can be useful,
+      we prefer bar<nbsp/>charts for their ease in comparing groups.
+    </p>
+    <figure xml:id="loan_homeownership_pie_chart">
+      <caption>A pie chart and bar<nbsp/>chart of <c>homeownership</c>.  Compare multiple ways of summarizing a single categorical variable on Tableau Public<nbsp/>\tableauhref{tableau-bargraphs1V}.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <p>
+          <idx><h>data</h><h>loans</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          <em>Categorical variables</em>,
+            <idx><h>categorical variable|textbf</h></idx>
+          unlike numerical variables, are simply summarized by <term>counts</term>
+          (how many)
+          and <em>proportions</em>.
+            <idx><h>proportion|textbf</h></idx>
+        These are referred to as frequency and relative frequency,
+          respectively.
+        </p>
+      </li>
+      <li>
+        <p>
+          When summarizing one categorical variable,
+          a <term>one-way frequency table</term> is useful.
+          For summarizing two categorical variables and their relationship,
+          use a <term>two-way frequency table</term>
+          (also known as a contingency table).
+        </p>
+      </li>
+      <li>
+        <p>
+          To graphically summarize a single categorical variable,
+          use a <term>bar<nbsp/>chart</term>.
+          To summarize and compare two categorical variables,
+          use a <term>side-by-side bar<nbsp/>chart</term>,
+          a <term>segmented bar<nbsp/>chart</term>,
+          or a <term>mosaic plot</term>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Pie charts</em>
+            <idx><h>pie chart|textbf</h></idx>
+          are another option for summarizing categorical data,
+          but they are more difficult to read and bar<nbsp/>charts are generally a better option.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="antibiotic_use_children">
+      <title>Antibiotic use in children</title>
+      <statement>
+        <p>
+          The bar plot and the pie chart below show the distribution of pre-existing medical conditions of children involved in a study on the optimal duration of antibiotic use in treatment of tracheitis,
+          which is an upper respiratory infection.
+          <image width="45%" source="images/antibiotic_use_children_bar.png" /> <image width="45%" source="images/antibiotic_use_children_pie.png" />
+          <ol>
+            <li>
+              <p>
+                What features are apparent in the bar plot but not in the pie chart?
+              </p>
+            </li>
+            <li>
+              <p>
+                What features are apparent in the pie chart but not in the bar plot?
+              </p>
+            </li>
+            <li>
+              <p>
+                Which graph would you prefer to use for displaying these categorical data?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="immigration">
+      <title>Views on immigration</title>
+      <statement>
+        <p>
+          910 randomly sampled registered voters from Tampa, FL were asked if they thought workers who have illegally entered the US should be (i) allowed to keep their jobs and apply for US citizenship, (ii) allowed to keep their jobs as temporary guest workers but not allowed to apply for US citizenship,
+          or (iii) lose their jobs and have to leave the country.
+          The results of the survey by political ideology are shown below.\footfullcite{survey:immigFL:2012}
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{3}{c}{<em>Political ideology</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Conservative</cell>
+            <cell>Moderate</cell>
+            <cell>Liberal</cell>
+            <cell>Total</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>(i) Apply for citizenship</cell>
+            <cell>57</cell>
+            <cell>120</cell>
+            <cell>101</cell>
+            <cell>278</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>(ii) Guest worker</cell>
+            <cell>121</cell>
+            <cell>113</cell>
+            <cell>28</cell>
+            <cell>262</cell>
+          </row>
+          <row>
+            <cell><em>Response</em></cell>
+            <cell>(iii) Leave the country</cell>
+            <cell>179</cell>
+            <cell>126</cell>
+            <cell>45</cell>
+            <cell>350</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>(iv) Not sure</cell>
+            <cell>15</cell>
+            <cell>4</cell>
+            <cell>1</cell>
+            <cell>20</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>372</cell>
+            <cell>363</cell>
+            <cell>175</cell>
+            <cell>910</cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              What percent of these Tampa, FL voters identify themselves as conservatives?
+            </p>
+          </li>
+          <li>
+            <p>
+              What percent of these Tampa, FL voters are in favor of the citizenship option?
+            </p>
+          </li>
+          <li>
+            <p>
+              What percent of these Tampa, FL voters identify themselves as conservatives and are in favor of the citizenship option?
+            </p>
+          </li>
+          <li>
+            <p>
+              What percent of these Tampa, FL voters who identify themselves as conservatives are also in favor of the citizenship option?
+              What percent of moderates share this view?
+              What percent of liberals share this view?
+            </p>
+          </li>
+          <li>
+            <p>
+              Do political ideology and views on immigration appear to be independent?
+              Explain your reasoning.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="dream_act_mosaic">
+      <title>Views on the DREAM Act</title>
+      <statement>
+        <p>
+          A random sample of registered voters from Tampa, FL were asked if they support the DREAM Act,
+          a proposed law which would provide a path to citizenship for people brought illegally to the US as children.
+          The survey also collected information on the political ideology of the respondents.
+          Based on the mosaic plot shown below,
+          do views on the DREAM Act and political ideology appear to be independent?
+          Explain your reasoning. \footfullcite{survey:immigFL:2012} <image width="80%" source="images/dream_act_mosaic.png" />
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="raise_taxes_mosaic">
+      <title>Raise taxes</title>
+      <statement>
+        <p>
+          A random sample of registered voters nationally were asked whether they think it's better to raise taxes on the rich or raise taxes on the poor.
+          The survey also collected information on the political party affiliation of the respondents.
+          Based on the mosaic plot shown below,
+          do views on raising taxes and political affiliation appear to be independent?
+          Explain your reasoning. \footfullcite{survey:raiseTaxes:2015} <image width="75%" source="images/raise_taxes_mosaic.png" />
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

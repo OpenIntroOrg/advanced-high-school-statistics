@@ -1,0 +1,815 @@
+<section xml:id="binomialForm">
+  <title>The binomial formula</title>
+  <introduction>
+    <p>
+      What is the probability of exactly 50 heads in 100 coin tosses?
+      Or the probability of randomly sampling 8 people and having exactly 1 of them be left-handed?
+      Or of at most 3<nbsp/>people exceeding their insurance deductible in a random sample of 20 people?
+      The binomial formula can help us answer these questions.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Calculate the number of possible scenarios for obtaining <m>x</m> successes in <m>n</m> trials.
+        </p>
+      </li>
+      <li>
+        <p>
+          Determine whether a scenario is binomial or not.
+        </p>
+      </li>
+      <li>
+        <p>
+          Calculate the probability of obtaining exactly <m>x</m> successes in <m>n</m> independent trials.
+        </p>
+      </li>
+      <li>
+        <p>
+          Recognize that the binomial formula uses the special Addition Rule for mutually exclusive events.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find probabilities of the form
+          <q>at least</q>
+          or
+          <q>at most</q>
+          by applying the binomial formula multiple times.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Introducing the binomial formula</title>
+    <p>
+      Many health insurance plans in the United States have a deductible,
+      where the insured individual is responsible for costs up to the deductible,
+      and then the costs above the deductible are shared between the individual and insurance company for the remainder of the year.
+    </p>
+    <p>
+      Suppose a health insurance company found that 70% of the people they insure stay below their deductible in any given year.
+      Each of these people can be thought of as a <term>trial</term>.
+      We label a person a <term>success</term>
+      if her healthcare costs do not exceed the deductible.
+      We label a person a <term>failure</term>
+      if she does exceed her deductible in the year.
+      Because 70% of the individuals will not hit their deductible,
+      we denote the <term>probability of a success</term>
+      as <m>p = \insureSprob{}</m>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Suppose the insurance agency is considering a random sample of four individuals they insure.
+          What is the chance exactly one of them will exceed the deductible and the other three will not?
+          Let's call the four people Ariana (<m>A</m>), Brittany (<m>B</m>), Carlton (<m>C</m>),
+          and Damian (<m>D</m>) for convenience.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Suppose the insurance agency is considering a random sample of four individuals they insure.
+          What is the chance exactly one of them will exceed the deductible and the other three will not?
+          Let's call the four people Ariana (<m>A</m>), Brittany (<m>B</m>), Carlton (<m>C</m>),
+          and Damian (<m>D</m>) for convenience.
+        </p>
+      </solution>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Verify that the scenario where Brittany is the only one to exceed the deductible has probability <m>(\insureSprob{})^3 (\insureFprob{})^1</m>.<nbsp/>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The binomial distribution describes the probability of having exactly <m>x</m> successes in <m>n</m> independent trials with probability of a success <m>p</m>
+      (in <xref ref="insureOneOfFourExceedsDeductible">Example</xref>,
+      <m>n=4</m>,
+      <m>x=3</m>, <m>p=\insureSprob{}</m>).
+      We would like to determine the probabilities associated with the binomial distribution more generally,
+      i.e. we want a formula where we can use <m>n</m>, <m>x</m>,
+      and <m>p</m> to obtain the probability.
+      To do this, we reexamine each part of <xref ref="insureOneOfFourExceedsDeductible">Example</xref>.
+    </p>
+    <p>
+      There were four individuals who could have been the one to exceed the deductible,
+      and each of these four scenarios had the same probability.
+      Thus, we could identify the final probability as
+      <md>
+        <mrow>\times P(\text{ single scenario } )</mrow>
+      </md>
+    </p>
+    <p>
+      The first component of this equation is the number of ways to arrange the <m>x=3</m> successes among the <m>n=4</m> trials.
+      The second component is the probability of any of the four
+      (equally probable)
+      scenarios.
+    </p>
+    <p>
+      Consider <m>P(</m>single scenario<m>)</m> under the general case of <m>x</m> successes and <m>n-x</m> failures in the <m>n</m> trials.
+      In any such scenario,
+      we apply the Multiplication Rule for independent events:
+      <md>
+        <mrow>p^x (1 - p)^{n - x}</mrow>
+      </md>
+    </p>
+    <p>
+      This is our general formula for <m>P(</m>single scenario<m>)</m>.
+    </p>
+    <p>
+      Secondly, we introduce the <term>binomial coefficient</term>,
+      which gives the number of ways to choose <m>x</m> successes in <m>n</m> trials,
+      i.e. arrange <m>x</m> successes and <m>n - x</m> failures:
+      <md>
+        <mrow>{n\choose x} = \frac{n!}{x! (n - x)!}</mrow>
+      </md>
+    </p>
+    <p>
+      The quantity <m>{n\choose x}</m> is read
+      <term>n choose x</term>.<fn>
+      Other notations for <m>n</m> choose <m>x</m> includes <m>_nC_x</m>,
+      <m>C_n^x</m>, and <m>C(n,x)</m>.
+      </fn> The exclamation point notation (e.g.
+      <m>n!</m>) denotes a <term>factorial</term> expression.
+      <md>
+        <mrow>\amp  0! = 1</mrow>
+        <mrow>\amp  1! = 1</mrow>
+        <mrow>\amp  2! = 2\times1 = 2</mrow>
+        <mrow>\amp  3! = 3\times2\times1 = 6</mrow>
+        <mrow>\amp  4! = 4\times3\times2\times1 = 24</mrow>
+        <mrow>\amp  \vdots</mrow>
+        <mrow>\amp  n! = n\times(n-1)\times...\times3\times2\times1</mrow>
+      </md>
+    </p>
+    <p>
+      Using the formula,
+      we can compute the number of ways to choose <m>x = 3</m> successes in <m>n = 4</m> trials:
+      <md>
+        <mrow>{4 \choose 3} = \frac{4!}{3!(4-3)!} = \frac{4!}{3!1!} = \frac{4\times3\times2\times1}{(3\times2\times1) (1)} = 4</mrow>
+      </md>
+    </p>
+    <p>
+      This result is exactly what we found by carefully thinking of each possible scenario in <xref ref="insureOneOfFourExceedsDeductible">Example</xref>.
+    </p>
+    <p>
+      Substituting <m>n</m> choose <m>x</m> for the number of scenarios and
+      <m>p^x(1-p)^{n-x}</m> for the single scenario probability yields the
+      <term>binomial formula</term>.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        Suppose the probability of a single trial being a success is <m>p</m>.
+        Then the probability of observing exactly <m>x</m> successes in <m>n</m> independent trials is given by
+        <md>
+          <mrow>P(X=x)={n\choose x}p^x(1-p)^{n-x} = \frac{n!}{x!(n-x)!}p^x(1-p)^{n-x}</mrow>
+        </md>
+      </p>
+    </assemblage>
+  </subsection>
+  <subsection xml:id="isItBinomialTipBox">
+    <title>When and how to apply the formula</title>
+    <assemblage>
+      <title></title>
+      <p>
+        (1) The trials are independent.
+      </p>
+      <p>
+        (2) The number of trials, <m>n</m>, is fixed.
+      </p>
+      <p>
+        (3) Each trial outcome can be classified as a
+        <em>success</em> or <em>failure</em>.
+      </p>
+      <p>
+        (4) The probability of a success,
+        <m>p</m>, is the same for each trial.
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          What is the probability that 3 of 8 randomly selected individuals will have exceeded the insurance deductible,
+          i.e. that 5 of 8 will not exceed the deductible?
+          Recall that 70% of individuals will not exceed the deductible.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          What is the probability that 3 of 8 randomly selected individuals will have exceeded the insurance deductible,
+          i.e. that 5 of 8 will not exceed the deductible?
+          Recall that 70% of individuals will not exceed the deductible.
+        </p>
+      </solution>
+    </example>
+    <p>
+      If you must calculate the binomial coefficient by hand,
+      it's often useful to cancel out as many terms as possible in the top and bottom.
+      See <xref ref="calculatorBinomial">Section</xref>
+      for how to evaluate the binomial coefficient and the binomial formula using a calculator.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        The first step in using the binomial model is to check that the model is appropriate.
+        The second step is to identify <m>n</m>, <m>p</m>, and <m>x</m>.
+        Finally, apply the binomial formula to determine the probability and interpret the results.
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          Approximately 35% of a population has blood type O+. Suppose four people show up at a hospital and we want to find the probability that exactly one of them has blood type O+. Can we use the binomial formula?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Approximately 35% of a population has blood type O+. Suppose four people show up at a hospital and we want to find the probability that exactly one of them has blood type O+. Can we use the binomial formula?
+        </p>
+      </solution>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          The probability that a random smoker will develop a severe lung condition in his or her lifetime is about <m>0.3</m>.
+          If you have 4 friends who smoke and you want to find the probability that 1 of them will develop a severe lung condition in his or her lifetime,
+          can you apply the binomial formula?
+        </p>
+      </statement>
+    </exercise>
+    <example xml:id="bloodTypeOPos">
+      <statement>
+        <p>
+          Given that 35% of a population has blood type O+, what is the probabilty that in a random sample of 4 people:
+          <ol type="a">
+            <li>
+              <p>
+                none of them have blood type O+?
+              </p>
+            </li>
+            <li>
+              <p>
+                one will have blood type O+?
+              </p>
+            </li>
+            <li>
+              <p>
+                no more than one will have blood type O+?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Compute parts<nbsp/>(a) and<nbsp/>(b) using the binomial formula:
+          <ol type="a">
+            <li>
+              <p>
+                <m>P(X=0) = {4 \choose 0} (0.35)^0 (0.65)^4 = 1\times1\times 0.65^4 = 0.65^4 = 0.179</m> Note that we could have answered this question without the binomial formula,
+                using methods from the previous section.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>P(X=1) = {4 \choose 1} (0.35)^1(0.65)^{3} = 0.384</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                This can be computed as the sum of parts<nbsp/>(a) and<nbsp/>(b):
+                <m>P(X=0) + P(X=1) = 0.179 + 0.384 = 0.563</m>.
+                That is, there is about a 56.3% chance that no more than one of them will have blood type O+.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </answer>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          What is the probability that at least 3 of 4 people in a random sample will have blood type O+ if 35% of the population has blood type O+?
+        </p>
+      </statement>
+    </exercise>
+    <example>
+      <statement>
+        <p>
+          There are 13 marbles in a bag. 4 are blue and 9 are red.
+          Randomly draw 5 marbles <em>without replacement</em>.
+          Find the probability you get exactly 3 blue marbles.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Because the probability of success <m>p</m> is not the same for each trial,
+          we cannot use the binomial formula.
+          However, we can use the same logic to arrive at the following answer.
+          <md>
+            <mrow>P(X = 3) \amp = (\text{ \# of combinations with 3 blue } )\times P(\text{3 blue and 2 red in a \emph{specific} order} )</mrow>
+            <mrow>\amp ={5\choose 3}\times P(\text{ BBBRR } )</mrow>
+            <mrow>\amp = {5\choose 3}\left(\frac{4}{13}\times \frac{3}{12}\times \frac{2}{11} \times \frac{9}{10} \times \frac{8}{9}\right)</mrow>
+            <mrow>\amp = 0.1119</mrow>
+          </md>
+        </p>
+      </answer>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          {Draw 4 cards without replacement from a deck of 52 cards.
+          What is the probability that you get at least two hearts?}
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Lastly, we consider the binomial coefficient,, <m>n</m> choose <m>x</m>,
+      under some special scenarios.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Why is it true that <m>{n \choose 0}=1</m> and
+          <m>{n \choose n}=1</m> for any number <m>n</m>?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          How many ways can you arrange one success and <m>n-1</m> failures in <m>n</m> trials?
+          How many ways can you arrange <m>n-1</m> successes and one failure in <m>n</m> trials?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="calculatorBinomial">
+    <title>Calculator: binomial probabilities</title>
+    <assemblage>
+      <p>
+        {MISSINGVIDEOLINK TI-83/84: Computing the binomial coefficient {<m>{n\choose x}</m>}} Use <c>MATH</c>, <c>PRB</c>, <c>nCr</c> to evaluate <m>n</m> choose <m>r</m>.
+        Here <m>r</m> and <m>x</m> are different letters for the same quantity.
+        <ol>
+          <li>
+            <p>
+              Type the value of <m>n</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Select <c>MATH</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Right arrow to <c>PRB</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>3:nCr</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Type the value of <m>x</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Hit <c>ENTER</c>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        Example: <c>5 nCr 3</c> means {5 choose 3}.
+      </p>
+    </assemblage>
+    <assemblage>
+      <p>
+        {MISSINGVIDEOLINK Casio fx-9750GII: Computing the binomial coefficient {<m>{n\choose x}</m>}}
+        <ol>
+          <li>
+            <p>
+              Navigate to the <c>RUN-MAT</c> section
+              (hit <c>MENU</c>,
+              then hit <c>1</c>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Enter a value for <m>n</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Go to <c>CATALOG</c> (hit buttons <c>SHIFT</c> and then <c>7</c>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Type <c>C</c> (hit the <c>ln</c> button),
+              then navigate down to the bolded <c><em>C</em></c> and hit <c>EXE</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Enter the value of <m>x</m>.
+              Example of what it should look like: <c>7<em>C</em>3</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Hit <c>EXE</c>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </assemblage>
+    <assemblage>
+      <p>
+        {MISSINGVIDEOLINK TI-84: Computing the binomial formula,
+        <m>P(X = {x)={n\choose x}p^x(1-p)^{n-x}}</m>} Use <c>2ND</c> <c>VARS</c>, <c>binompdf</c> to evaluate the probability of <em>exactly</em>
+        <m>x</m> occurrences out of <m>n</m> independent trials of an event with probability <m>p</m>.
+        <ol>
+          <li>
+            <p>
+              Select <c>2ND</c> <c>VARS</c> (i.e. <c>DISTR</c>)
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>A:binompdf</c> (use the down arrow to scroll down).
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>trials</c> be <m>n</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>p</c> be <m>p</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>x value</c> be <m>x</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Select <c>Paste</c> and hit <c>ENTER</c>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        TI-83: Do step 1, choose <c>0:binompdf</c>,
+        then enter <m>n</m>,
+        <m>p</m>,
+        and <m>x</m> separated by commas:
+      </p>
+      <p>
+         <c>binompdf(n,<nbsp/>p,<nbsp/>x)</c>.
+        Then hit <c>ENTER</c>.
+      </p>
+    </assemblage>
+    <assemblage>
+      <p>
+        {MISSINGVIDEOLINK TI-84: Computing
+        <m>P(X \le {x)= {n\choose 0}p^0(1-p)^{n-0} + ... + {n\choose x}p^x(1-p)^{n-x}}</m> } Use <c>2ND</c> <c>VARS</c>, <c>binomcdf</c> to evaluate the cumulative probability of <em>at most</em>
+        <m>x</m> occurrences out of <m>n</m> independent trials of an event with probability <m>p</m>.
+        <ol>
+          <li>
+            <p>
+              Select <c>2ND</c> <c>VARS</c> (i.e. <c>DISTR</c>)
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>B:binomcdf</c> (use the down arrow).
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>trials</c> be <m>n</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>p</c> be <m>p</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>x value</c> be <m>x</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Select <c>Paste</c> and hit <c>ENTER</c>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        TI-83: Do steps 1-2, then enter the values for <m>n</m>,
+        <m>p</m>,
+        and <m>x</m> separated by commas as follows: <c>binomcdf(n,<nbsp/>p,<nbsp/>x)</c>.
+        Then hit <c>ENTER</c>.
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <ol>
+        <li>
+          <p>
+            Navigate to <c>STAT</c> (<c>MENU</c>,
+            then hit <c>2</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Select <c>DIST</c> (<c>F5</c>), and then <c>BINM</c> (<c>F5</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose whether to calculate the binomial distribution for a specific number of successes,
+            <m>P(X = k)</m>,
+            or for a range <m>P(X \leq k)</m> of values (0<nbsp/>successes, 1<nbsp/>success, ..., <m>x</m><nbsp/>successes).
+            <ul>
+              <li>
+                <p>
+                  For a specific number of successes,
+                  choose <c>Bpd</c> (<c>F1</c>).
+                </p>
+              </li>
+              <li>
+                <p>
+                  To consider the range 0, 1, ..., <m>x</m> successes,
+                  choose <c>Bcd</c>(<c>F1</c>).
+                </p>
+              </li>
+            </ul>
+          </p>
+        </li>
+        <li>
+          <p>
+            If needed, set <c>Data</c> to <c>Variable</c> (<c>Var</c> option,
+            which is <c>F2</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Enter the value for <c>x</c> (<m>x</m>), <c>Numtrial</c> (<m>n</m>),
+            and <c>p</c> (probability of a success).
+          </p>
+        </li>
+        <li>
+          <p>
+            Hit <c>EXE</c>.
+          </p>
+        </li>
+      </ol>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          Find the number of ways of arranging 3 blue marbles and 2 red marbles.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          There are 13 marbles in a bag. 4 are blue and 9 are red.
+          Randomly draw 5 marbles <em>with replacement</em>.
+          Find the probability you get exactly 3 blue marbles.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          There are 13 marbles in a bag. 4 are blue and 9 are red.
+          Randomly draw 5 marbles <em>with replacement</em>.
+          Find the probability you get <em>at most</em>
+          3 blue marbles (i.e. less than or equal to 3 blue marbles).
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          <m>n\choose x</m>, the <term>binomial coefficient</term>,
+          describes the number of combinations for arranging <m>x</m> successes among <m>n</m> trials.
+          <m>n\choose x</m> <m>=\frac{n!}{x!(n-x)!}</m>,
+          where <m>n!=1\times 2\times 3\times...n</m>, and <m>0!</m>=0.
+        </p>
+      </li>
+      <li>
+        <p>
+          The <term>binomial formula</term>
+          can be used to find the probability that something happens
+          <em>exactly x times in n trials</em>.
+          Suppose the probability of a single trial being a success is <m>p</m>.
+          Then the probability of observing exactly <m>x</m> successes in <m>n</m> independent trials is given by
+          <md>
+            <mrow>{n\choose x}p^x(1-p)^{n-x}   =   \frac{n!}{x!(n-x)!}p^x(1-p)^{n-x}</mrow>
+          </md>
+        </p>
+      </li>
+      <li>
+        <p>
+          To apply the binomial formula,
+          the events must be <term>independent</term> from trial to trial.
+          Additionally, <m>n</m>,
+          the number of trials must be fixed in advance, and <m>p</m>,
+          the probability of the event occurring in a given trial,
+          must be the same for each trial.
+        </p>
+      </li>
+      <li>
+        <p>
+          To use the binomial formula,
+          first confirm that the binomial conditions are met.
+          Next, identify the number of trials <m>n</m>,
+          the number of times the event is to be a
+          <q>success</q>
+          <m>x</m>, and the probability that a single trial is a success <m>p</m>.
+          Finally, plug these three numbers into the formula to get the probability of exactly <m>x</m> successes in <m>n</m> trials.
+        </p>
+      </li>
+      <li>
+        <p>
+          The <m>p^x(1-p)^{n-x}</m> part of the binomial formula is the probability of just one combination.
+          Since there are <m>n\choose x</m> combinations,
+          we add <m>p^x(1-p)^{n-x}</m> up <m>n\choose x</m> times.
+          We can think of the binomial formula as:
+          <m>[\# \text{ of combinations } ] \times P(\text{ a single combination } )</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          To find a probability involving
+          <em>at least</em> or <em>at most</em>,
+          first determine if the scenario is binomial.
+          If so, apply the binomial formula as many times as needed and add up the results. e.g.
+          <m>P(\text{ at least 3 Heads in 5 tosses of a fair coin } )=P(\text{ exactly 3 Heads } )+P(\text{ exactly 4 Heads } )+P(\text{ exactly 5 Heads } )</m>,
+          where each probability can be found using the binomial formula.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise>
+      <title>Exploring combinations</title>
+      <statement>
+        <p>
+          A coin is tossed 5 times.
+          How many sequences / combinations of Heads/Tails are there that have:
+          <ol>
+            <li>
+              <p>
+                Exactly 1 Tail?
+              </p>
+            </li>
+            <li>
+              <p>
+                Exactly 4 Tails?
+              </p>
+            </li>
+            <li>
+              <p>
+                Eactly 3 Tails?
+              </p>
+            </li>
+            <li>
+              <p>
+                At least 3 Tails?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Political affiliation</title>
+      <statement>
+        <p>
+          Suppose that in a large population, 51% identify as Democrat.
+          A researcher takes a random sample of 3 people.
+          <ol>
+            <li>
+              <p>
+                Use the binomial model to calculate the probability that two of them identify as Democrat.
+              </p>
+            </li>
+            <li>
+              <p>
+                Write out all possible orderings of 3 people, 2 of whom identify as Democrat.
+                Use these scenarios to calculate the same probability from part (a) but using the Addition Rule for disjoint events.
+                Confirm that your answers from parts (a) and (b) match.
+              </p>
+            </li>
+            <li>
+              <p>
+                If we wanted to calculate the probability that a random sample of 8 people will have 3 that identify as Democrat,
+                briefly describe why the approach from part (b) would be more tedious than the approach from part (a).
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="underage_drinking_intro">
+      <title>Underage drinking, Part I</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> Data collected by the Substance Abuse and Mental Health Services Administration (SAMSHA) suggests that 69.7% of 18-20 year olds consumed alcoholic beverages in any given year.\footfullcite{webpage:alcohol}
+          <ol>
+            <li>
+              <p>
+                Suppose a random sample of ten 18-20 year olds is taken.
+                Is the use of the binomial distribution appropriate for calculating the probability that exactly six consumed alcoholic beverages?
+                Explain.
+              </p>
+            </li>
+            <li>
+              <p>
+                Calculate the probability that exactly 6 out of 10 randomly sampled 18- 20 year olds consumed an alcoholic drink.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the probability that exactly four out of ten 18-20 year olds have <em>not</em>
+                consumed an alcoholic beverage?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the probability that at most 2 out of 5 randomly sampled 18-20 year olds have consumed alcoholic beverages?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the probability that at least 1 out of 5 randomly sampled 18-20 year olds have consumed alcoholic beverages?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="chicken_pox_intro">
+      <title>Chicken pox, Part I</title>
+      <statement>
+        <p>
+          The National Vaccine Information Center estimates that 90% of Americans have had chickenpox by the time they reach adulthood. \footfullcite{webpage:chickenpox}
+          <ol>
+            <li>
+              <p>
+                Suppose we take a random sample of 100 American adults.
+                Is the use of the binomial distribution appropriate for calculating the probability that exactly 97 out of 100 randomly sampled American adults had chickenpox during childhood?
+                Explain.
+              </p>
+            </li>
+            <li>
+              <p>
+                Calculate the probability that exactly 97 out of 100 randomly sampled American adults had chickenpox during childhood.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the probability that exactly 3 out of a new sample of 100 American adults have <em>not</em>
+                had chickenpox in their childhood?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the probability that at least 1 out of 10 randomly sampled American adults have had chickenpox?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the probability that at most 3 out of 10 randomly sampled American adults have
+                <em>not</em> had chickenpox?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

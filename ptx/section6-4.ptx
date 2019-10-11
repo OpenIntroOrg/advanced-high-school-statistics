@@ -1,0 +1,298 @@
+<section>
+  <title>Does it make sense?</title>
+  <introduction>
+    <p>
+      It is the responsibility of the data scientist to know when the use of these inference procedures is appropriate and to correctly interpret the results.
+      In<nbsp/>this section,
+      we look at considerations around the misuse or misinterpretation of these procedures.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Understand the two general conditions for when the confidence interval and hypothesis testing procedures apply.
+          Explain why these conditions are necessary.
+        </p>
+      </li>
+      <li>
+        <p>
+          Distinguish between statistically significant and practically significant.
+          What role does sample size play here?
+        </p>
+      </li>
+      <li>
+        <p>
+          Recognize that not all statistically significant results correspond to real differences,
+          due to Type<nbsp/>I Errors.
+          What role does the significance level <m>\alpha</m> play here?
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection xml:id="whenToRetreat">
+    <title>When to retreat</title>
+    <p>
+      Statistical tools rely on conditions.
+      When the conditions are not met,
+      these tools are unreliable and drawing conclusions from them is treacherous.
+      The conditions for these tools typically come in two forms.
+      <ul>
+        <li>
+          <p>
+            <em>The individual observations must be independent.</em>
+            A random sample from less than 10% of the population ensures the observations are independent.
+            In experiments,
+            we generally require that subjects are randomized into groups.
+            If independence fails, then advanced techniques must be used,
+            and in some such cases, inference may not be possible.
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Other conditions focus on sample size and skew.</em> For example,
+            if the sample size is too small, the skew too strong,
+            or extreme outliers are present,
+            then a normal model for the sample mean will fail.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Verification of conditions for statistical tools is always necessary.
+      Whenever conditions are not satisfied for a statistical technique,
+      there are three options.
+      The first is to learn new methods that are appropriate for the data.
+      The second route is to consult a data scientist.<fn>
+      If you work at a university,
+      then there may be campus consulting services to assist you.
+      Alternatively,
+      there are many private consulting firms that are also available for hire.
+      </fn> The third route is to ignore the failure of conditions.
+      This last option effectively invalidates any analysis and may discredit novel and interesting findings.
+    </p>
+    <p>
+      Finally, we caution that there may be no inference tools helpful when considering data that include unknown biases,
+      such as convenience samples.
+      For this reason, there are books, courses,
+      and researchers devoted to the techniques of sampling and experimental design.
+      See <xref ref="overviewOfDataCollectionPrinciples">Sections</xref>- <xref ref="experimentsSection"></xref>
+      for basic principles of data collection.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Statistical significance versus practical significance</title>
+    <p>
+      When the sample size becomes larger,
+      point estimates become more precise and any real differences in the mean and null value become easier to detect and recognize.
+      Even a very small difference would likely be detected if we took a large enough sample.
+      Sometimes researchers will take such large samples that even the slightest difference is detected.
+      While we still say that difference is
+      <term>statistically significant</term>,
+      it might not be <term>practically significant</term>.
+    </p>
+    <p>
+      Statistically significant differences are sometimes so minor that they are not practically relevant.
+      This is especially important to research:
+      if we conduct a study, we want to focus on finding a meaningful result.
+      We don't want to spend lots of money finding results that hold no practical value.
+    </p>
+    <p>
+      The role of a data scientist in conducting a study often includes planning the size of the study.
+      The data scientist might first consult experts or scientific literature to learn what would be the smallest meaningful difference from the null value.
+      She also would obtain some reasonable estimate for the standard deviation.
+      With these important pieces of information,
+      she would choose a sufficiently large sample size so that the power for the meaningful difference is perhaps 80% or 90%. While larger sample sizes may still be used,
+      she might advise against using them in some cases,
+      especially in sensitive areas of research.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Statistical significance versus a real difference</title>
+    <p>
+      When a result is statistically significant at the <m>\alpha=0.05</m> level,
+      we have evidence that the result is real.
+      However, when there is no difference or effect,
+      we can expect that 5% of the time the test conclusion will lead to a Type<nbsp/>I Error and incorrectly reject the null hypothesis.
+      Therefore we must beware of what is called p-hacking,
+      in which researchers may test many,
+      many hypotheses and then publish the ones that come out statistically significant.
+      As we noted,
+      we can expect 5% of the results to be significant when the null hypothesis is true and there really is no difference or effect.<fn>
+      The problem is even greater than p-hacking.
+      In what has been called the
+      <q>reproducibility crisis</q>, researchers have failed to reproduce a large proportion of results that were found significant and were published in scientific journals.
+      This problem highlights the importance of research that reproduces earlier work rather than taking the word of a single study.
+      Also keep in mind that the probability that a difference will be found to be significant given that there is no real difference is not the same as the probability that a difference is not real,
+      given that it was found significant.
+      Depending upon the veracity of the hypotheses tested,
+      the latter can be upwards of 80%, leading some to assert that
+      <q>most published research is false</q>. MISSINGoiRedirect
+      </fn>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <p>
+      The inference procedures in this book require
+      <em>two conditions</em> to be met.
+      <ul>
+        <li>
+          <p>
+            The first is that some type of <term>random sampling</term>
+            or <term>random assignment</term> must be involved.
+            If this is not the case,
+            the point statistic may be biased and may not follow the intended distribution.
+            Moreover, without a random sample or random assignment,
+            there is no way to accurately measure the standard error.
+            (When sampling without replacement,
+            the sample size should be less than 10% of the population size in order for the standard error formula to apply.
+            In sample surveys, this condition is generally met.)
+          </p>
+        </li>
+        <li>
+          <p>
+            The second condition focuses on
+            <term>sample size</term> and <term>skew</term>
+            to determine whether the point estimate follows the intended distribution.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Understanding what the term <term>statistically significant</term> does and does not mean.
+      <ul>
+        <li>
+          <p>
+            <em>A small percent of the time (<m>\alpha</m>),
+            a significant result will not be a real result.</em> If many tests are run,
+            a small percent of them will produce significant results due to chance alone.<fn>
+            Similarly, if many confidence intervals are constructed,
+            a small percent (100 - C%) of them will fail to capture a true value due to chance alone.
+            A value outside the confidence interval is not an
+            <em>impossible</em> value.
+            </fn>
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>With a very large sample,
+            a significant result may point to a result that is real but unimportant</em>.
+            With a larger sample,
+            the power of a test increases and it becomes easier to detect a small difference.
+            If an extremely large sample is used,
+            the result may be statistically significant,
+            but not be <em>practically significant</em>.
+            That is, the difference detected may be so small as to be unimportant or meaningless.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      \addvspace{8mm} {{\titlerule[1mm]} \setupfont {\titlerule[1mm]} }
+    </p>
+    <p>
+      Statistical inference is the practice of making decisions from data in the context of uncertainty.
+      In this chapter, we introduced two frameworks for inference:
+      <em>confidence intervals</em><idx><h>confidence interval|textbf</h></idx> and
+      <em>hypothesis tests</em>.
+          <idx><h>hypothesis test|textbf</h></idx>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Confidence intervals are used for <em>estimating</em>
+          unknown population parameters by providing an
+          <em>interval of reasonable values</em>
+          for the unknown parameter with a certain level of confidence.
+        </p>
+      </li>
+      <li>
+        <p>
+          Hypothesis tests are used to assess how reasonable a <em>particular</em>
+          value is for an unknown population parameter by providing
+          <em>degrees of evidence</em> against that value.
+        </p>
+      </li>
+      <li>
+        <p>
+          The results of confidence intervals and hypothesis tests are,
+          generally speaking, <em>consistent</em>.<fn>
+          In the context of proportions there will be a small range of cases where this is not true.
+          This is because when working with proportions,
+          the <m>SE</m> used for confidence intervals and the <m>SE</m> used for tests are slightly different,
+          as we will see in the next chapter.
+          </fn>  That is:
+        </p>
+        <ul>
+          <li>
+            <p>
+              Values that fall <em>inside</em>
+              a 95% confidence interval
+              (implying they are reasonable)
+              will <em>not be rejected</em> by a test at the 5% significance level
+              (implying they are reasonable),
+              and vice-versa.
+            </p>
+          </li>
+          <li>
+            <p>
+              Values that fall <em>outside</em>
+              a 95% confidence interval
+              (implying they are not reasonable)
+              will <em>be rejected</em> by a test at the 5% significance level
+              (implying they are not reasonable),
+              and vice-versa.
+            </p>
+          </li>
+          <li>
+            <p>
+              When the confidence level and the significance level add up to 100%, the conclusions of the two procedures are consistent.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          Many values fall inside of a confidence interval and will not be rejected by a hypothesis test.
+          <q>Not rejecting <m>H_0</m></q>
+          is NOT equivalent to <em>accepting</em> <m>H_0</m>.
+          When we
+          <q>do not reject <m>H_0</m></q>, we are asserting that the null value is <em>reasonable</em>,
+          not that the parameter is exactly
+          <em>equal to</em> the null value.
+        </p>
+      </li>
+      <li>
+        <p>
+          For a 95% confidence interval, 95% is not the probability that the true value lies inside the confidence interval
+          (it either does or it doesn't).
+          Likewise, for a hypothesis test,
+          <m>\alpha</m> is not the probability that <m>H_0</m> is true
+          (it either is or it isn't).
+          In both frameworks,
+          the probability is about what would happen in a random sample,
+          not about what is true of the population.
+        </p>
+      </li>
+      <li>
+        <p>
+          The confidence interval procedures and hypothesis tests described in this book should not be applied unless particular conditions
+          (described in more detail in the following chapters)
+          are met.
+          If these procedures are applied when the conditions are not met,
+          the results may be unreliable and misleading.
+        </p>
+      </li>
+    </ul>
+    <p>
+      While a given data set may not always lead us to a correct conclusion,
+      statistical inference gives us tools to
+      <em>control and evaluate how often errors occur</em>.
+    </p>
+    <p>
+      IIIII
+    </p>
+  </subsection>
+</section>

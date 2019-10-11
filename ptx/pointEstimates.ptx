@@ -1,0 +1,797 @@
+<section xml:id="pointEstimates">
+  <title>Estimating unknown parameters</title>
+  <introduction>
+    <p>
+      Companies such as the Gallup and Pew Research frequently conduct polls as a way to understand the state of public opinion or knowledge on many topics,
+      including politics,
+      scientific understanding, brand recognition, and more.
+      How well do these polls estimate the opinion or knowledge of the broader population?
+      Why is a larger sample generally preferable to a smaller sample?
+      And what role does the concept of a sampling distribution,
+      introduced in the previous chapter,
+      play in answering these questions?
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Explain the difference between probability and inference and identify when to use which one.
+        </p>
+      </li>
+      <li>
+        <p>
+          Understand the purpose and use of a point estimate.
+        </p>
+      </li>
+      <li>
+        <p>
+          Understand how to measure the variability/error in a point estimate.
+        </p>
+      </li>
+      <li>
+        <p>
+          Recognize the relationship between the standard error of a point estimate and the standard deviation of a sample statistic.
+        </p>
+      </li>
+      <li>
+        <p>
+          Understand how changing the sample size affects the variability/error in a point estimate.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Point estimates</title>
+    <p>
+          <idx><h>point estimate</h></idx>
+    </p>
+    <p>
+      With this chapter,
+      we move from the world of probability to the world of inference.
+      Whereas <term>probability</term> involves using a known population value (parameter) to make a prediction about the likelihood of a particular sample value (statistic),
+      <term>inference</term> involves using a calculated sample value (statistic) to estimate or better understand an unknown population value
+      (parameter).
+      For both of these,
+      the concept of the sampling distribution is fundamental.
+    </p>
+    <p>
+      Suppose a poll suggested the US President's approval rating is 45%. We would consider 45% to be a
+      <term>point estimate</term>
+          <idx><h>estimate</h></idx>
+      of the approval rating we might see if we collected responses from the entire population.
+      This entire-population response proportion is generally referred to as the
+      <term>parameter</term> of interest,
+          <idx><h>parameter of interest</h></idx>
+      and when the parameter is a proportion,
+      we denote it with the letter <m>p</m>.
+      We typically estimate the parameter by collecting information from a sample of the population;
+      we compute the observed proportion in the sample and we denote this sample proportion as <m>\hat{p}</m>.
+      Unless we collect responses from every individual in the sample,
+      <m>p</m> remains unknown,
+      and we use <m>\hat{p}</m> as our point estimate for<nbsp/><m>p</m>.
+    </p>
+    <p>
+      The difference we observe from the poll versus the parameter is called the
+      <term>error</term> in the estimate.
+      Generally, the error consists of two aspects:
+      sampling error and bias.
+    </p>
+    <p>
+      <em>Bias</em>
+          <idx><h>bias|textbf</h></idx>
+      describes a systematic tendency to over- or under-estimate the true population value.
+      For instance,
+      if we took a political poll but our sample didn't include a roughly representative distribution of the political parties,
+      the sample would likely skew in a particular direction and be biased.
+      Taking a truly random sample helps avoid bias.
+      However, as we saw in <xref ref="ch_data_collection">Chapter</xref>,
+      even with a random sample,
+      various types of response bias can still be present.
+      For<nbsp/>example,
+      if we were taking a student poll asking about support for a new college stadium,
+      we'd probably get a biased estimate of the stadium's level of student support by wording the question as,
+      <em>Do you support your school by supporting funding for the new stadium?</em>
+      We try to minimize bias through thoughtful data collection procedures,
+      but bias can creep into our estimates without us even be aware.
+    </p>
+    <p>
+      <em>Sampling error</em>
+          <idx><h>sampling error|textbf</h></idx>
+      is uncertainty in a point estimate that happens naturally from one sample to the next.
+      Much of statistics, including much of this book,
+      is focused on understanding and quantifying sampling error.
+      Remember though,
+      that sampling error does not account for the possible effects of leading questions or other types of response bias.
+      When we measure sampling error,
+      we are measuring the expected variability in a point estimate that arises from randomly sampling only a subset of the population.
+    </p>
+    <example>
+      <statement>
+        <p>
+          In <xref ref="summarizingData">Chapter</xref>,
+          we found the summary statistics for the number of characters in a set of 50 email data.
+          These values are summarized below.
+        </p>
+        <tabular>
+          <row>
+            <cell><m>\bar{x}</m></cell>
+            <cell>11,160</cell>
+          </row>
+          <row>
+            <cell>median</cell>
+            <cell>6,890</cell>
+          </row>
+          <row>
+            <cell><m>s_x</m></cell>
+            <cell>13,130</cell>
+          </row>
+        </tabular>
+        <p>
+          Estimate the <term>population mean</term> based on the sample.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The best estimate for the population mean is the <term>sample mean</term>.
+          That is, <m>\bar{x} = 11,160</m> is our best estimate for <m>\mu</m>.
+        </p>
+      </answer>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Using the email data,
+          what quantity should we use as a point estimate for the population standard deviation <m>\sigma</m>?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="simulationForUnderstandingVariabilitySection">
+    <title>Understanding the variability of a point estimate</title>
+    <p>
+      Suppose the proportion of American adults who support the expansion of solar energy is <m>p = \pewsolarparprop{}</m>,
+      which is our parameter of interest.<fn>
+      We haven't actually conducted a census to measure this value perfectly.
+      However, a very large sample has suggested the actual level of support is about \pewsolarparpercent.
+      </fn> If we were to take a poll of 1000 American adults on this topic,
+      the estimate would not be perfect,
+      but how close might we expect the sample proportion in the poll would be to 88%? We want to understand,
+      <em>how does the sample proportion <m>\hat{p}</m> behave when the true population proportion is 0.88</em>.<fn>
+      Note: \pewsolarparpercent written as a proportion would be \pewsolarparprop.
+      It is common to switch between proportion and percent.
+      </fn> Let's find out!
+      We can simulate responses we would get from a simple random sample of 1000 American adults,
+      which is only possible because we know the actual support expanding solar energy to be 0.88.
+      Here's how we might go about constructing such a simulation:
+      <ol>
+        <li>
+          <p>
+            There were about 250 million American adults in 2018.
+            On 250 million pieces of paper, write
+            <q>support</q>
+            on 88% of them and
+            <q>not</q>
+            on the other \pewsolarparpercentcomplement.
+          </p>
+        </li>
+        <li>
+          <p>
+            Mix up the pieces of paper and pull out 1000 pieces to represent our sample of 1000 American adults.
+          </p>
+        </li>
+        <li>
+          <p>
+            Compute the fraction of the sample that say
+            <q>support</q>.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      Any volunteers to conduct this simulation?
+      Probably not.
+      While this physical simulation is totally impractical,
+      we can simulate it thousands,
+      even millions, of times using computer code.
+      We've written a short computer simulation and run it 10,000 times.
+      The results are show in <xref ref="solarPollSimulationCodeR">Figure</xref>
+      in case you are curious what the computer code looks like.
+      In this simulation,
+      the sample gave a point estimate of <m>\hat{p}_1 = 0.894</m>.
+      We<nbsp/>know the population proportion for the simulation was <m>p = \pewsolarparprop{}</m>,
+      so we know the estimate had an error of <m>0.894 - \pewsolarparprop{} = \text{ +0.014 }</m>.
+    </p>
+    <figure xml:id="solarPollSimulationCodeR">
+      <caption>For those curious, this is code for
+      a single <m>\hat{p}</m> simulation using the
+      statistical software called \R<idx><h>R</h></idx>.
+      Each line that starts with <c>#</c> is a
+      <term>code comment</term>,
+      which is used to describe in regular language what the
+      code is doing. We've provided software labs in \R at
+      MISSINGoiRedirect
+      for anyone interested in learning more.</caption>
+<c># 1.<nbsp/>Create a set of 250 million entries,
+where \pewsolarparpercent of them are "support"
+#<nbsp/> <nbsp/> and \pewsolarparpercentcomplement are "not".
+pop\ussize <- 250000000
+possible_entries <- c(rep("support", \pewsolarparprop * pop\ussize), rep("not", \pewsolarparpropcomplement * pop\ussize))
+# 2.<nbsp/>Sample \pewsolarpollsize entries without replacement.
+sampled_entries <- sample(possible_entries, size = \pewsolarpollsize)
+# 3.<nbsp/>Compute p-hat:<nbsp/>count the number that are "support",
+then divide by
+#<nbsp/> <nbsp/> the sample size.
+sum(sampled_entries == "support") / \pewsolarpollsize</c>
+    </figure>
+    <p>
+      One simulation isn't enough to get a great sense of the distribution of estimates we might expect in the simulation,
+      so we should run more simulations.
+      In a second simulation, we get <m>\hat{p}_2 = 0.885</m>,
+      which has an error of<nbsp/>+0.005.
+      In another, <m>\hat{p}_3 = 0.878</m> for an error of -0.002.
+      And in another, an estimate of
+      <m>\hat{p}_4 = 0.859</m> with an error of -0.021.
+      With the help of a computer,
+      we've run the simulation 10,000 times and created a histogram of the results from all 10,000 simulations in <xref ref="sampling_10k_prop_88p">Figure</xref>.
+      This distribution of sample proportions is called a
+      <term>sampling distribution</term>.
+      We can characterize this sampling distribution as follows:
+      <ul>
+        <li>
+          <title>Center.</title>
+          <p>
+            The center of the distribution is <m>\mu_{\hat{p}} = \pewsolarparprop{}0</m>,
+            which is the same as the parameter.
+            Notice that the simulation mimicked a simple random sample of the population,
+            which is a straightforward sampling strategy that helps avoid sampling bias.
+          </p>
+        </li>
+        <li>
+          <title>Spread.</title>
+          <p>
+            The standard deviation of the distribution is <m>\sigma_{\hat{p}} = \pewsolarpollse{}</m>.
+          </p>
+        </li>
+        <li>
+          <title>Shape.</title>
+          <p>
+            The distribution is symmetric and bell-shaped,
+            and it <em>resembles a normal distribution</em>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      These findings are encouraging!
+      When the population proportion is
+      <m>p = \pewsolarparprop{}</m> and the sample size is <m>n = \pewsolarpollsize{}</m>,
+      the sample proportion <m>\hat{p}</m> tends to give a pretty good estimate of the population proportion.
+      We also have the interesting observation that the histogram resembles a normal distribution.
+    </p>
+    <figure xml:id="sampling_10k_prop_88p">
+      <caption>A histogram of 10,000 sample proportions sampled from a population where the population
+      proportion is \pewsolarparprop and the sample size is
+      <m>n = \pewsolarpollsize</m>.</caption>
+      \Figure{0.85}{sampling_10k_prop_88p}
+    </figure>
+    <assemblage>
+      <title></title>
+      <p>
+        In real-world applications,
+        we never actually observe the sampling distribution,
+        yet it is useful to always think of a point estimate as coming from such a hypothetical distribution. \mbox{Understanding} the sampling distribution will help us characterize and make sense of the point estimates that we do observe.
+      </p>
+    </assemblage>
+    <example xml:id="smallerSampleWhatHappensToPropErrorExercise">
+      <statement>
+        <p>
+          If we used a much smaller sample size of <m>n = 50</m>,
+          would you guess that the standard error for <m>\hat{p}</m> would be larger or smaller than when we used <m>n = \pewsolarpollsize{}</m>?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Intuitively, it seems like more data is better than less data,
+          and generally that is correct!
+          The typical error when <m>p = \pewsolarparprop{}</m> and <m>n = 50</m> would be larger than the error we would expect when <m>n = \pewsolarpollsize{}</m>.
+        </p>
+      </answer>
+    </example>
+    <p>
+      <xref ref="smallerSampleWhatHappensToPropErrorExercise">Example</xref>
+      highlights an important property we will see again and again:
+      a bigger sample tends to provide a more precise point estimate than a smaller sample.
+      Remember though, that this is only true for
+      <em>random</em> samples.
+      Additionally,
+      a<nbsp/>bigger sample cannot correct for response bias or other types of bias that may be present.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Introducing the standard error</title>
+    <p>
+      Point estimates only approximate the population parameter.
+      How can we quantify the expected variability in a point estimate <m>\hat{p}</m>?
+      The discussion in <xref ref="distributionphat">Section</xref> tells us how.
+      The variability in the distribution of <m>\hat{p}</m> is given by its standard deviation.
+      If we know the population proportion,
+      we can calculate the standard deviation of the point estimate <m>\hat{p}</m>.
+      In our simulation we knew <m>p</m> was 0.88.
+      Thus we can calculate the standard deviation as
+      <md>
+        <mrow>SD_{\hat{p}}\amp =\sqrt{\frac{p(1-p)}{n}} = \sqrt{\frac{(.088)(1-0.88)}{n}}= 0.01</mrow>
+      </md>
+    </p>
+    <p>
+      If we now look at the sampling distribution,
+      we see that the typical distance sample proportions are from the true value of 0.88 is about 0.01.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Consider a random sample of size 80 from a population.
+          We find that 15% of the sample support a controversial new ballot measure.
+          How far is our estimate likely to be from the true percent that support the measure?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Consider a random sample of size 80 from a population.
+          We find that 15% of the sample support a controversial new ballot measure.
+          How far is our estimate likely to be from the true percent that support the measure?
+        </p>
+      </solution>
+    </example>
+    <p>
+      This estimate of the standard deviation is known as the
+      <em>standard error</em>,
+          <idx><h>standard error|textbf</h></idx>
+      or <m>SE</m> for short.
+      <md>
+        <mrow>SE_{\hat{p}}\amp =\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}</mrow>
+      </md>
+    </p>
+    <example>
+      <statement>
+        <p>
+          Calculate and interpret the <m>SE</m> of <m>\hat{p}</m> for the previous example.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          <md>
+            <mrow>SE_{\hat{p}}=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} =\sqrt{\frac{0.15(1-0.15)}{80}}=0.04</mrow>
+          </md>
+          <p>
+            The typical or expected error in our estimate is 4%.
+          </p>
+        </p>
+      </answer>
+    </example>
+    <example>
+      <statement>
+        <p>
+          If we quadruple the sample size from 80 to 320,
+          what will happen to the <m>SE</m>?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          If we quadruple the sample size from 80 to 320,
+          what will happen to the <m>SE</m>?
+        </p>
+      </solution>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Basic properties of point estimates</title>
+    <p>
+      We achieved three goals in this section.
+      First, we determined that point estimates from a sample may be used to estimate population parameters.
+      We also determined that these point estimates are not exact:
+      they vary from one sample to another.
+      Lastly, we quantified the uncertainty of the sample proportion using what we call the standard error.
+    </p>
+    <p>
+      Remember that the standard error only measures sampling error.
+      It does not account for bias that results from leading questions or other types of response bias.
+    </p>
+    <p>
+      When our sampling method produces estimates in an unbiased way,
+      the sampling distribution will be <em>centered</em>
+      on the true value and we call the method <term>accurate</term>.
+      When the sampling method produces estimates that have
+      <em>low variability</em>,
+      the sampling distribution will have a low standard error,
+      and we call the method <term>precise</term>.
+    </p>
+    <figure>
+      MISSINGoiRedirect
+      Four sampling distributions shown, with parameter identified. Explore these distributions through a Desmos activity at MISSINGoiRedirect
+    </figure>
+    <example>
+      <statement>
+        <p>
+          Using <xref ref="fourSamplingDistributions">Figure</xref>,
+          which of the distributions were produced by methods that are biased?
+          That are accurate?
+          Order the distributions from most precise to least precise
+          (that is, from lowest variability to highest variability).
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Distributions (b) and (d) are centered on the parameter
+          (the true value),
+          so those methods are accurate.
+          The methods that produced distributions (a) and (c) are biased,
+          because those distributions are not centered on the parameter.
+          From most precise to least precise,
+          we have (a), (b), (c), (d).
+        </p>
+      </answer>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Why do we want a point estimate to be both precise and accurate?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Why do we want a point estimate to be both precise and accurate?
+        </p>
+      </solution>
+    </example>
+    <p>
+      The strategy of using a sample statistic to estimate a parameter is quite common,
+      and it's a strategy that we can apply to other statistics besides a proportion.
+      For instance,
+      if we want to estimate the average salary for graduates from a particular college,
+      we could survey a random sample of recent graduates;
+      in that example,
+      we'd be using a sample mean <m>\bar{x}</m> to estimate the population mean<nbsp/><m>\mu</m> for all graduates.
+      As another example,
+      if we want to estimate the difference in product prices for two websites,
+      we might take a random sample of products available on both sites,
+      check the prices on each, and use then compute the average difference;
+      this strategy certainly wouldn't give us a perfect measurement of the actual difference,
+      but it would give us a point estimate.
+    </p>
+    <p>
+      While this chapter emphases a single proportion context,
+      we'll encounter many different contexts throughout this book where these methods will be applied.
+      The principles and general ideas are the same,
+      even if the details change a little.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          In this section we laid the groundwork for our study of <term>inference</term>.
+          Inference involves using known sample values to estimate or better understand unknown population values.
+        </p>
+      </li>
+      <li>
+        <p>
+          A sample statistic can serve as a
+          <term>point estimate</term>
+          for an unknown parameter.
+          For example,
+          the sample mean is a point estimate for an unknown population mean,
+          and the sample proportion is a point estimate for an unknown population proportion.
+        </p>
+      </li>
+      <li>
+        <p>
+          It is helpful to imagine a point estimate as being drawn from a particular sampling distribution.
+        </p>
+      </li>
+      <li>
+        <p>
+          The <term>standard error</term> (<m>\textbf{SE}</m>) of a point estimate tells us the typical error or uncertainty associated with the point estimate.
+          It is also an estimate of the spread of the sampling distribution.
+        </p>
+      </li>
+      <li>
+        <p>
+          A point estimate is <term>unbiased</term>
+          (accurate) if the sampling distribution (i.e., the distribution of all possible outcomes of the point estimate from repeated samples from the same population) is <em>centered</em>
+          on the true population parameter.
+        </p>
+      </li>
+      <li>
+        <p>
+          A point estimate has <term>lower variability</term>
+          (more precise)
+          when the <em>standard deviation</em>
+          of the sampling distribution is smaller. item In a random sample,
+          increasing the sample size <m>n</m> will make the standard error smaller.
+          This is consistent with the intuition that larger samples tend to be more reliable,
+          all other things being equal.
+        </p>
+      </li>
+      <li>
+        <p>
+          In general, we want a point estimate to be unbiased and to have low variability.
+          Remember: the terms unbiased (accurate) and low variability (precise) are properties of generic point estimates,
+          which are variables that have a
+          <em>sampling distribution</em>.
+          These terms do not apply to individual values of a point estimate,
+          which are <em>numbers</em>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="identify_parameter_1">
+      <title>Identify the parameter, Part I</title>
+      <statement>
+        <p>
+          For each of the following situations,
+          state whether the parameter of interest is a mean or a proportion.
+          It may be helpful to examine whether individual responses are numerical or categorical.
+          <ol>
+            <li>
+              <p>
+                In a survey,
+                one hundred college students are asked how many hours per week they spend on the Internet.
+              </p>
+            </li>
+            <li>
+              <p>
+                In a survey,
+                one hundred college students are asked: ``What percentage of the time you spend on the Internet is part of your course work?"
+              </p>
+            </li>
+            <li>
+              <p>
+                In a survey,
+                one hundred college students are asked whether or not they cited information from Wikipedia in their papers.
+              </p>
+            </li>
+            <li>
+              <p>
+                In a survey,
+                one hundred college students are asked what percentage of their total weekly spending is on alcoholic beverages.
+              </p>
+            </li>
+            <li>
+              <p>
+                In a sample of one hundred recent college graduates,
+                it is found that 85 percent expect to get a job within one year of their graduation date.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="identify_parameter_2">
+      <title>Identify the parameter, Part II</title>
+      <statement>
+        <p>
+          For each of the following situations,
+          state whether the parameter of interest is a mean or a proportion.
+          <ol>
+            <li>
+              <p>
+                A poll shows that 64% of Americans personally worry a great deal about federal spending and the budget deficit.
+              </p>
+            </li>
+            <li>
+              <p>
+                A survey reports that local TV news has shown a 17% increase in revenue within a two year period while newspaper revenues decreased by 6.4% during this time period.
+              </p>
+            </li>
+            <li>
+              <p>
+                In a survey,
+                high school and college students are asked whether or not they use geolocation services on their smart phones.
+              </p>
+            </li>
+            <li>
+              <p>
+                In a survey,
+                smart phone users are asked whether or not they use a web-based taxi service.
+              </p>
+            </li>
+            <li>
+              <p>
+                In a survey,
+                smart phone users are asked how many times they used a web-based taxi service over the last year.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="comp_chips_quality_ctrl_prop">
+      <title>Quality control</title>
+      <statement>
+        <p>
+          As part of a quality control process for computer chips,
+          an engineer at a factory randomly samples 212 chips during a week of production to test the current rate of chips with severe defects.
+          She finds that 27 of the chips are defective.
+          <ol>
+            <li>
+              <p>
+                What population is under consideration in the data set?
+              </p>
+            </li>
+            <li>
+              <p>
+                What parameter is being estimated?
+              </p>
+            </li>
+            <li xml:id="comp_chips_quality_ctrl_prop_pt_est">
+              <p>
+                What is the point estimate for the parameter?
+              </p>
+            </li>
+            <li xml:id="comp_chips_quality_ctrl_prop_se_name">
+              <p>
+                What is the name of the statistic can we use to measure the uncertainty of the point estimate?
+              </p>
+            </li>
+            <li xml:id="comp_chips_quality_ctrl_prop_se_calc_w_pt_est">
+              <p>
+                Compute the value from part<nbsp/><xref ref="comp_chips_quality_ctrl_prop_se_name" /> for this context.
+              </p>
+            </li>
+            <li>
+              <p>
+                The historical rate of defects is 10%. Should the engineer be surprised by the observed rate of defects during the current week?
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose the true population value was found to be 10%. If we use this proportion to recompute the value in part<nbsp/><xref ref="comp_chips_quality_ctrl_prop_se_calc_w_pt_est" /> using <m>p = 0.1</m> instead of <m>\hat{p}</m>,
+                does the resulting value change much?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="us_emergency_expense_prop">
+      <title>Unexpected expense</title>
+      <statement>
+        <p>
+          In a random sample 765 adults in the United States, 322 say they could not cover a $400 unexpected expense without borrowing money or going into debt.
+          <ol>
+            <li>
+              <p>
+                What population is under consideration in the data set?
+              </p>
+            </li>
+            <li>
+              <p>
+                What parameter is being estimated?
+              </p>
+            </li>
+            <li xml:id="us_emergency_expense_prop_pt_est">
+              <p>
+                What is the point estimate for the parameter?
+              </p>
+            </li>
+            <li xml:id="us_emergency_expense_prop_se_name">
+              <p>
+                What is the name of the statistic can we use to measure the uncertainty of the point estimate?
+              </p>
+            </li>
+            <li xml:id="us_emergency_expense_prop_se_calc_w_pt_est">
+              <p>
+                Compute the value from part<nbsp/><xref ref="us_emergency_expense_prop_se_name" /> for this context.
+              </p>
+            </li>
+            <li>
+              <p>
+                A cable news pundit thinks the value is actually 50%. Should she be surprised by the data?
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose the true population value was found to be 40%. If we use this proportion to recompute the value in part<nbsp/><xref ref="us_emergency_expense_prop_se_calc_w_pt_est" /> using <m>p = 0.4</m> instead of <m>\hat{p}</m>,
+                does the resulting value change much?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="repeated_water_samples_prop">
+      <title>Repeated water samples</title>
+      <statement>
+        <p>
+          A nonprofit wants to understand the fraction of households that have elevated levels of lead in their drinking water.
+          They expect at least 5% of homes will have elevated levels of lead,
+          but not more than about 30%. They randomly sample 800 homes and work with the owners to retrieve water samples,
+          and they compute the fraction of these homes with elevated lead levels.
+          They repeat this 1,000 times and build a distribution of sample proportions.
+          <ol>
+            <li>
+              <p>
+                What is this distribution called?
+              </p>
+            </li>
+            <li>
+              <p>
+                Would you expect the shape of this distribution to be symmetric,
+                right skewed, or left skewed?
+                Explain your reasoning.
+              </p>
+            </li>
+            <li>
+              <p>
+                If the proportions are distributed around 8%, what is the variability of the distribution?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the formal name of the value you computed in<nbsp/>(c)?
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose the researchers' budget is reduced,
+                and they are only able to collect 250 observations per sample,
+                but they can still collect 1,000 samples.
+                They build a new distribution of sample proportions.
+                How will the variability of this new distribution compare to the variability of the distribution when each sample contained 800 observations?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="repeated_student_samples_prop">
+      <title>Repeated student samples</title>
+      <statement>
+        <p>
+          Of all freshman at a large college, 16% made the dean's list in the current year.
+          As part of a class project,
+          students randomly sample 40 students and check if those students made the list.
+          They repeat this 1,000 times and build a distribution of sample proportions.
+          <ol>
+            <li>
+              <p>
+                What is this distribution called?
+              </p>
+            </li>
+            <li>
+              <p>
+                Would you expect the shape of this distribution to be symmetric,
+                right skewed, or left skewed?
+                Explain your reasoning.
+              </p>
+            </li>
+            <li>
+              <p>
+                Calculate the variability of this distribution.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the formal name of the value you computed in<nbsp/>(c)?
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose the students decide to sample again,
+                this time collecting 90 students per sample,
+                and they again collect 1,000 samples.
+                They build a new distribution of sample proportions.
+                How will the variability of this new distribution compare to the variability of the distribution when each sample contained 40 observations?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

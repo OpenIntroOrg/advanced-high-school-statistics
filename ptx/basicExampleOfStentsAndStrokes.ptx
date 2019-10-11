@@ -1,0 +1,515 @@
+<section xml:id="basicExampleOfStentsAndStrokes">
+  <title>Case study: using stents to prevent strokes</title>
+  <introduction>
+    <p>
+          <idx><h>data</h><h>stroke</h></idx>
+    </p>
+    <p>
+      We start with a case study and we consider the following questions:
+      <ul>
+        <li>
+          <p>
+            Does the use of stents reduce the risk of stroke?
+          </p>
+        </li>
+        <li>
+          <p>
+            How do researchers collect data to answer this question?
+          </p>
+        </li>
+        <li>
+          <p>
+            What do they do with the data once it is collected?
+          </p>
+        </li>
+        <li>
+          <p>
+            How different must the risk of stroke be in each group before there is sufficient evidence that it's a real difference and not just random variation?
+          </p>
+        </li>
+      </ul>
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Understand the four steps of a statistical investigation
+          (identify a question, collect data,
+          analyze data, form a conclusion)
+          in the context of a real-world example.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the concept of statistical significance.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Case study</title>
+    <p>
+      <xref ref="basicExampleOfStentsAndStrokes">Section</xref>
+      introduces a classic challenge in statistics:
+      evaluating the efficacy of a medical treatment.
+      Terms in this section, and indeed much of this chapter,
+      will all be revisited later in the text.
+      The plan for now is simply to get a sense of the role statistics can play in practice.
+    </p>
+    <p>
+      In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke.<fn>
+      Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011.
+      Stenting versus Aggressive Medical Therapy for Intracranial Arterial Stenosis.
+      New England Journal of Medicine 365:993-1003.
+      MISSINGoiRedirect.
+      NY Times article reporting on the study: MISSINGoiRedirect.
+      </fn> Stents are devices put inside blood vessels that assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death.
+      Many doctors have hoped that there would be similar benefits for patients at risk of stroke.
+      We start by writing the principal question the researchers hope to answer:
+    </p>
+    <blockquote>
+      Does the use of stents reduce the risk of stroke?
+    </blockquote>
+    <p>
+      The researchers who asked this question collected data on 451 at-risk patients.
+      Each volunteer patient was randomly assigned to one of two groups:
+      <ul>
+        <li class="custom-list-style-type" label="">
+          <p>
+            <em>Treatment group</em>.
+    <idx><h>treatment group|textbf</h></idx>
+Patients in the treatment group received a stent and medical management.
+            The medical management included medications,
+            management of risk factors, and help in lifestyle modification.
+          </p>
+        </li>
+        <li class="custom-list-style-type" label="">
+          <p>
+            <em>Control group</em>.
+    <idx><h>control group|textbf</h></idx>
+Patients in the control group received the same medical management as the treatment group,
+            but they did not receive stents.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Researchers randomly assigned 224 patients to the treatment group and 227 to the control group.
+      In this study,
+      the control group provides a reference point against which we can measure the medical impact of stents in the treatment group.
+    </p>
+    <p>
+      Researchers studied the effect of stents at two time points: 30<nbsp/>days after enrollment and 365<nbsp/>days after enrollment.
+      The results of 5 patients are summarized in <xref ref="stentStudyResultsDF">Figure</xref>.
+      Patient outcomes are recorded as
+      <q>stroke</q>
+      or
+      <q>no event</q>, representing whether or not the patient had a stroke at the end of a time period.
+    </p>
+    <table xml:id="stentStudyResultsDF">
+      <caption>Results for five patients from the stent study.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Patient</cell>
+          <cell>group</cell>
+          <cell>0-30 days</cell>
+          <cell>0-365 days</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>treatment</cell>
+          <cell>no event</cell>
+          <cell>no event</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>treatment</cell>
+          <cell>stroke</cell>
+          <cell>stroke</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>treatment</cell>
+          <cell>no event</cell>
+          <cell>no event</cell>
+        </row>
+        <row>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+        </row>
+        <row>
+          <cell>450</cell>
+          <cell>control</cell>
+          <cell>no event</cell>
+          <cell>no event</cell>
+        </row>
+        <row>
+          <cell>451</cell>
+          <cell>control</cell>
+          <cell>no event</cell>
+          <cell>no event</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      Considering data from each patient individually would be a long,
+      cumbersome path towards answering the original research question.
+      Instead, performing a statistical data analysis allows us to consider all of the data at once.
+      <xref ref="stentStudyResults">Figure</xref>
+      summarizes the raw data in a more helpful way.
+      In this table,
+      we can quickly see what happened over the entire study.
+      For instance,
+      to identify the number of patients in the treatment group who had a stroke within 30 days,
+      we look on the left-side of the table at the intersection of the treatment and stroke: 33.
+    </p>
+    <table xml:id="stentStudyResults">
+      <caption>Descriptive statistics for the stent study.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell>0-30 days</cell>
+          <cell>\hspace{5mm}<nbsp/></cell>
+          <cell>0-365 days</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>stroke</cell>
+          <cell>no event</cell>
+          <cell></cell>
+          <cell>stroke</cell>
+          <cell>no event</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>treatment</cell>
+          <cell>33</cell>
+          <cell>191</cell>
+          <cell></cell>
+          <cell>45</cell>
+          <cell>179</cell>
+        </row>
+        <row>
+          <cell>control</cell>
+          <cell>13</cell>
+          <cell>214</cell>
+          <cell></cell>
+          <cell>28</cell>
+          <cell>199</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>46</cell>
+          <cell>405</cell>
+          <cell></cell>
+          <cell>73</cell>
+          <cell>378</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <exercise>
+      <statement>
+        <p>
+          What proportion of the patients in the treatment group had no stroke within the first 30 days of the study? (Please note:
+          answers to all Guided Practice exercises are provided using footnotes.)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We can compute summary statistics from the table.
+      A <term>summary statistic</term> is a single number summarizing a large amount of data.<fn>
+      Formally, a summary statistic is a value computed from the data.
+      Some summary statistics are more useful than others.
+      </fn> For instance,
+      the primary results of the study after 1<nbsp/>year could be described by two summary statistics:
+      the proportion of people who had a stroke in the treatment and control groups.
+      <ul>
+        <li class="custom-list-style-type" label="">
+          <p>
+            Proportion who had a stroke in the treatment (stent) group:
+            <m>45/224 = 0.20 = 20\%</m>.
+          </p>
+        </li>
+        <li class="custom-list-style-type" label="">
+          <p>
+            Proportion who had a stroke in the control group:
+            <m>28/227 = 0.12 = 12\%</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      These two summary statistics are useful in looking for differences in the groups,
+      and we are in for a surprise:
+      an additional 8% of patients in the treatment group had a stroke!
+      This is important for two reasons.
+      First, it is contrary to what doctors expected,
+      which was that stents would <em>reduce</em> the rate of strokes.
+      Second, it leads to a statistical question: do the data show a
+      <q>real</q>
+      difference between the groups?
+    </p>
+    <p>
+      This second question is subtle.
+      Suppose you flip a coin 100 times.
+      While the chance a coin lands heads in any given coin flip is 50%, we probably won't observe exactly 50 heads.
+      This type of fluctuation is part of almost any type of data generating process.
+      It is possible that the 8% difference in the stent study is due to this natural variation.
+      However, the larger the difference we observe
+      (for a particular sample size),
+      the less believable it is that the difference is due to chance.
+      So what we are really asking is whether the difference is
+      <term>statistically significant</term>, that is,
+      whether the difference so large that we should reject the notion that it was due to chance.
+    </p>
+    <p>
+      While we don't yet have the statistical tools to fully address this question on our own,
+      we can comprehend the conclusions of the published analysis:
+      there was compelling evidence of harm by stents in this study of stroke patients.
+    </p>
+    <p>
+      <em>Be careful:</em> do not generalize the results of this study to all patients and all stents.
+      This study looked at patients with very specific characteristics who volunteered to be a part of this study and who may not be representative of all stroke patients.
+      In addition,
+      there are many types of stents and this study only considered the self-expanding Wingspan stent (Boston Scientific).
+      However, this study does leave us with an important lesson:
+      we should keep our eyes open for surprises.
+    </p>
+    <p>
+          <idx><h>data</h><h>stroke</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          To test the effectiveness of a treatment,
+          researchers often carry out an experiment in which they randomly assign patients to a
+          <term>treatment group</term>
+          or a <term>control group</term>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Researchers compare the relevant
+          <em>summary statistics</em><idx><h>summary statistic|textbf</h></idx> to get a sense of whether the treatment group did better,
+          on average, than the control group.
+        </p>
+      </li>
+      <li>
+        <p>
+          Ultimately, researchers want to know whether the difference between the two groups is \mbox{significant} , that is,
+          larger than what would be expected by chance alone.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="migraine_and_acupuncture_intro">
+      <title>Migraine and acupuncture,
+      Part 1</title>
+      <statement>
+        <p>
+          A migraine is a particularly painful type of headache,
+          which patients sometimes wish to treat with acupuncture.
+          To determine whether acupuncture relieves migraine pain,
+          researchers conducted a randomized controlled study where 89 females diagnosed with migraine headaches were randomly assigned to one of two groups:
+          treatment or control. 43 patients in the treatment group received acupuncture that is specifically designed to treat migraines. 46 patients in the control group received placebo acupuncture
+          (needle insertion at non-acupoint locations). 24 hours after patients received acupuncture,
+          they were asked if they were pain free.
+          Results are summarized in the contingency table below.\footfullcite{Allais:2011}
+        </p>
+        <sidebyside>
+          <tabular>
+            <row>
+              <cell></cell>
+              <cell></cell>
+              <cell>\multicolumn{2}{c}{<em>Pain free</em>}</cell>
+            </row>
+            <row>
+              <cell></cell>
+              <cell></cell>
+              <cell>Yes</cell>
+              <cell>No</cell>
+              <cell>Total</cell>
+            </row>
+            <row>
+              <cell></cell>
+              <cell>Treatment</cell>
+              <cell>10</cell>
+              <cell>33</cell>
+              <cell>43</cell>
+            </row>
+            <row>
+              <cell><em>Group</em></cell>
+              <cell>Control</cell>
+              <cell>2</cell>
+              <cell>44</cell>
+              <cell>46</cell>
+            </row>
+            <row>
+              <cell></cell>
+              <cell>Total</cell>
+              <cell>12</cell>
+              <cell>77</cell>
+              <cell>89</cell>
+            </row>
+          </tabular>
+          <image width="75%" source="images/earacupuncture.png" />
+        </sidebyside>
+        <ol>
+          <li>
+            <p>
+              What percent of patients in the treatment group were pain free 24 hours after receiving acupuncture?
+            </p>
+          </li>
+          <li>
+            <p>
+              What percent were pain free in the control group?
+            </p>
+          </li>
+          <li>
+            <p>
+              In which group did a higher percent of patients become pain free 24 hours after receiving acupuncture?
+            </p>
+          </li>
+          <li>
+            <p>
+              Your findings so far might suggest that acupuncture is an effective treatment for migraines for all people who suffer from migraines.
+              However this is not the only possible conclusion that can be drawn based on your findings so far.
+              What is one other possible explanation for the observed difference between the percentages of patients that are pain free 24 hours after receiving acupuncture in the two groups?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="sinusitis_and_antibiotics_intro">
+      <title>Sinusitis and antibiotics,
+      Part 1</title>
+      <statement>
+        <p>
+          Researchers studying the effect of antibiotic treatment for acute sinusitis compared to symptomatic treatments randomly assigned 166 adults diagnosed with acute sinusitis to one of two groups:
+          treatment or control.
+          Study participants received either a 10-day course of amoxicillin
+          (an antibiotic)
+          or a placebo similar in appearance and taste.
+          The placebo consisted of symptomatic treatments such as acetaminophen,
+          nasal decongestants, etc.
+          At the end of the 10-day period,
+          patients were asked if they experienced improvement in symptoms.
+          The distribution of responses is summarized below. \footfullcite{Garbutt:2012}
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{2}{c}{<em>Self-reported improvement</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{2}{c}{<em>in symptoms</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Yes</cell>
+            <cell>No</cell>
+            <cell>Total</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Treatment</cell>
+            <cell>66</cell>
+            <cell>19</cell>
+            <cell>85</cell>
+          </row>
+          <row>
+            <cell><em>Group</em></cell>
+            <cell>Control</cell>
+            <cell>65</cell>
+            <cell>16</cell>
+            <cell>81</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>131</cell>
+            <cell>35</cell>
+            <cell>166</cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              What percent of patients in the treatment group experienced improvement in symptoms?
+            </p>
+          </li>
+          <li>
+            <p>
+              What percent experienced improvement in symptoms in the control group?
+            </p>
+          </li>
+          <li>
+            <p>
+              In which group did a higher percentage of patients experience improvement in symptoms?
+            </p>
+          </li>
+          <li>
+            <p>
+              Your findings so far might suggest a real difference in effectiveness of antibiotic and placebo treatments for improving symptoms of sinusitis.
+              However, this is not the only possible conclusion that can be drawn based on your findings so far.
+              What is one other possible explanation for the observed difference between the percentages of patients in the antibiotic and placebo treatment groups that experience improvement in symptoms of sinusitis?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

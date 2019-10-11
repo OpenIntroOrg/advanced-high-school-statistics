@@ -1,0 +1,2522 @@
+<section xml:id="numericalSummariesAndBoxPlots">
+  <title>Numerical summaries and box plots</title>
+  <introduction>
+    <p>
+      What are the different ways to measure the center of a distribution,
+      and why is there more than one way to measure the center?
+      How do you know if a value is
+      <q>far</q>
+      from the center?
+      What does it mean to an outlier?
+      We will continue with the <c>email50</c> data set and investigate multiple quantitative summarizes for numerical data.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Calculate, interpret, and compare the two measures of center
+          (mean and median)
+          and the three measures of spread
+          (standard deviation, interquartile range, and range).
+        </p>
+      </li>
+      <li>
+        <p>
+          Understand how the shape of a distribution affects the relationship between the mean and the median.
+        </p>
+      </li>
+      <li>
+        <p>
+          Identify and apply the two rules of thumb for identify outliers
+          (one involving standard deviation and mean and the other involving <m>Q_1</m> and <m>Q_3</m>).
+        </p>
+      </li>
+      <li>
+        <p>
+          Describe the distribution a numerical variable with respect to center,
+          spread, and shape, noting the presence of outliers.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find the 5 number summary and IQR, and draw a box plot with outliers shown.
+        </p>
+      </li>
+      <li>
+        <p>
+          Understand the effect changing units has on each of the summary quantities.
+        </p>
+      </li>
+      <li>
+        <p>
+          Use the empirical rule to summarize approximately normal distributions.
+        </p>
+      </li>
+      <li>
+        <p>
+          Use quartiles, percentiles,
+          and Z-scores to measure the relative position of a data point within the data set.
+        </p>
+      </li>
+      <li>
+        <p>
+          Compare the distribution of a numerical variable using dot plots / histograms with the same scale,
+          back-to-back stem-and-leaf plots, or parallel box plots.
+          Compare the distributions with respect to center,
+          spread, shape, and outliers.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection xml:id="center">
+    <title>Measures of center</title>
+    <p>
+      In the previous section,
+      we saw that modes can occur anywhere in a data set.
+      Therefore, mode is not a measure of <term>center</term>.
+      We understand the term <em>center</em> intuitively,
+      but quantifying what is the center can be a little more challenging.
+      This is because there are different definitions of center.
+      Here we will focus on the two most common: the mean and median.
+    </p>
+    <p>
+      The <term>mean</term>, sometimes called the average,
+          <idx><h>mean</h><h>average</h></idx>
+      is a common way to measure the center of a distribution of data.
+      To find the mean number of characters in the 50 emails,
+      we add up all the character counts and divide by the number of emails.
+      For computational convenience,
+      the number of characters is listed in the thousands and rounded to the first decimal.
+      <md>
+        <mrow>\bar{x} = \frac{21.7 + 7.0 + \cdots + 15.8}{50} = 11.6</mrow>
+      </md>
+    </p>
+    <p>
+      The sample mean is often labeled <m>\bar{x}</m>.
+      The letter <m>x</m> is being used as a generic placeholder for the variable of interest, <c>num_char</c>,
+      and the bar on the <m>x</m> communicates that the average number of characters in the 50 emails was 11,600.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        The sample mean of a numerical variable is computed as the sum of all of the observations divided by the number of observations:
+        <md>
+          <mrow>\bar{x} = \frac{1}{n}\sum{x_{i}} = \frac{\sum{x_i}}{n}=\frac{x_1+x_2+\cdots+x_n}{n}</mrow>
+        </md>
+        where <m>\sum</m> is the capital Greek letter sigma and
+        <m>\sum{x_{i}}</m> means take the sum of all the individual <m>x</m> values.
+        <m>x_1, x_2, \dots, x_n</m> represent the <m>n</m> observed values.
+      </p>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          Examine Equations<nbsp/><xref ref="sampleMeanEquation" /> and<nbsp/><xref ref="meanEquation" /> above.
+          What does <m>x_1</m> correspond to?
+          And <m>x_2</m>?
+          What does <m>x_i</m> represent?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          What was <m>n</m> in this sample of emails?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The <c>email50</c> data set represents a sample from a larger population of emails that were received in January and March.
+      We could compute a mean for this population in the same way as the sample mean, however,
+      the population mean has a special label: <m>\mu</m>.
+          <idx><h>Greek</h><h>mu@mu (<m>\mu</m>)</h></idx>
+      The symbol <m>\mu</m> is the Greek letter <em>mu</em>
+      and represents the average of all observations in the population.
+      Sometimes a subscript, such as <m>_x</m>,
+      is used to represent which variable the population mean refers to, e.g.
+      <m>\mu_x</m>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          The average number of characters across all emails can be estimated using the sample data.
+          Based on the sample of 50 emails,
+          what would be a reasonable estimate of <m>\mu_x</m>,
+          the mean number of characters in all emails in the <c>email</c> data set? (Recall that <c>email50</c> is a sample from <c>email</c>.)
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The sample mean, 11,600, may provide a reasonable estimate of <m>\mu_x</m>.
+          While this number will not be perfect,
+          it provides a <em>point estimate</em> of the population mean.
+          In <xref ref="foundationsForInference">Chapter</xref> and beyond,
+          we will develop tools to characterize the reliability of point estimates,
+          and we will find that point estimates based on larger samples tend to be more reliable than those based on smaller samples.
+        </p>
+      </answer>
+    </example>
+    <example xml:id="wtdMeanOfIncome">
+      <statement>
+        <p>
+          We might like to compute the average income per person in the US. To do so,
+          we might first think to take the mean of the per capita incomes across the 3,142 counties in the <c>county</c> data set.
+          What would be a better approach?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The <c>county</c> data set is special in that each county actually represents many individual people.
+          If we were to simply average across the <c>income</c> variable,
+          we would be treating counties with 5,000 and 5,000,000 residents equally in the calculations.
+          Instead, we should compute the total income for each county,
+          add up all the counties' totals,
+          and then divide by the number of people in all the counties.
+          If we completed these steps with the <c>county</c> data,
+          we would find that the per capita income for the US is $27,348.43.
+          Had we computed the <em>simple</em>
+          mean of per capita income across counties,
+          the result would have been just $22,504.70!
+        </p>
+      </answer>
+    </example>
+    <p>
+      <xref ref="wtdMeanOfIncome">Example</xref>
+      used what is called a <term>weighted mean</term>,
+          <idx><h>mean</h><h>weighted mean</h></idx>
+      which will not be a key topic in this textbook.
+      However, we have provided an online supplement on weighted means for interested readers: MISSINGoiRedirect
+    </p>
+    <p>
+      The median provides another measure of center.
+      The <term>median</term> splits an ordered data set in half.
+      There are 50 character counts in the <c>email50</c> data set
+      (an even number)
+      so the data are perfectly split into two groups of<nbsp/>25.
+      We take the median in this case to be the average of the two middle observations:
+      <m>(\text{ 6,768 } + \text{ 7,012 } ) / 2 = \text{ 6,890 }</m>.
+      When there are an odd number of observations,
+      there will be exactly one observation that splits the data into two halves,
+      and in this case that observation is the median
+      (no average needed).
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        In an ordered data set, the <term>median</term>
+        is the observation right in the middle.
+        If there are an even number of observations,
+        the median is the average of the two middle values.
+      </p>
+    </assemblage>
+    <p>
+      Graphically, we can think of the mean as the balancing point.
+      The median is the value such that 50% of the <em>area</em>
+      is to the left of it and 50% of the
+      <em>area</em> is to the right of it.
+    </p>
+    <figure xml:id="email50NumCharHistWMeanMedian">
+      <caption>A histogram of <c>num_char</c> with its mean and median shown.</caption>
+      <image width="80%" source="images/email50NumCharHistWMeanMedian.png" />
+    </figure>
+    <example>
+      <statement>
+        <p>
+          Based on the data,
+          why is the mean greater than the median in this data set?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Based on the data,
+          why is the mean greater than the median in this data set?
+        </p>
+      </solution>
+    </example>
+    <assemblage>
+      <title></title>
+      <p>
+        In a right skewed distribution,
+        the mean is greater than the median.
+      </p>
+      <p>
+        In a left skewed distribution,
+        the mean is less than the median.
+      </p>
+      <p>
+        In a symmetric distribution, the mean and median are approximately equal.
+      </p>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          Consider the distribution of individual income in the United States.
+          Which is greater: the mean or median?
+          Why?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="variability">
+    <title>Standard deviation as a measure of spread</title>
+    <p>
+      The U.S. Census Bureau reported that in 2017,
+      the median family income was $73,891 and the mean family income was $99,114.<fn>
+      MISSINGoiRedirect
+      </fn> Is a family income of $60,000 far from the mean or somewhat close to the mean?
+      In order to answer this question,
+      it is not enough to know the center of the data set and its <term>range</term>
+      (maximum value - minimum value).
+      We must know about the variability
+          <idx><h>variability</h></idx>
+      of the data set within that range.
+      Low variability or small spread means that the values tend to be more clustered together.
+      High variability or large spread means that the values tend to be far apart.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Is it possible for two data sets to have the same range but different spread?
+          If so, give an example.
+          If not, explain why not.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Is it possible for two data sets to have the same range but different spread?
+          If so, give an example.
+          If not, explain why not.
+        </p>
+      </solution>
+    </example>
+    <p>
+      Here, we introduce the standard deviation as a measure of spread.
+      Though its formula is a bit tedious to calculate by hand,
+      the standard deviation is very useful in data analysis and roughly describes how far away,
+      on average,
+      the observations are from the mean.
+    </p>
+    <p>
+      We call the distance of an observation from its mean its <term>deviation</term>.
+      Below are the deviations for the <m>1^{st}_{}</m>,
+      <m>2^{nd}_{}</m>, <m>3^{rd}</m>,
+      and <m>50^{th}_{}</m> observations in the <c>num_char</c> variable.
+      For computational convenience,
+      the number of characters is listed in the thousands and rounded to the first decimal.
+      <md>
+        <mrow>x_1^{}-\bar{x} \amp = 21.7 - 11.6 = 10.1 \hspace{5mm}\text{ }</mrow>
+        <mrow>x_2^{}-\bar{x} \amp = 7.0 - 11.6 = -4.6</mrow>
+        <mrow>x_3^{}-\bar{x} \amp = 0.6 - 11.6 = -11.0</mrow>
+        <mrow>\amp \ \vdots</mrow>
+        <mrow>x_{50}^{}-\bar{x} \amp = 15.8 - 11.6 = 4.2</mrow>
+      </md>
+    </p>
+    <p>
+      If we square these deviations and then take an average,
+      the result is about equal to the sample <term>variance</term>,
+      denoted by <m>s_{}^2</m>:
+      <md>
+        <mrow>s_{}^2 \amp = \frac{10.1_{}^2 + (-4.6)_{}^2 + (-11.0)_{}^2 + \cdots + 4.2_{}^2}{50-1}</mrow>
+        <mrow>\amp = \frac{102.01 + 21.16 + 121.00 + \cdots + 17.64}{49}</mrow>
+        <mrow>\amp = 172.44</mrow>
+      </md>
+    </p>
+    <p>
+      We divide by <m>n-1</m>,
+      rather than dividing by <m>n</m>,
+      when computing the variance;
+      you need not worry about this mathematical nuance for the material in this textbook.
+      Notice that squaring the deviations does two things.
+      First, it makes large values much larger,
+      seen by comparing <m>10.1^2</m>,
+      <m>(-4.6)^2</m>, <m>(-11.0)^2</m>, and <m>4.2^2</m>.
+      Second, it gets rid of any negative signs.
+    </p>
+    <p>
+      The <term>standard deviation</term>
+      is defined as the square root of the variance:
+      <me>
+        s=\sqrt{172.44} = 13.13
+      </me>
+    </p>
+    <p>
+      The standard deviation of the number of characters in an email is about 13.13 thousand.
+      A subscript of <m>_x</m> may be added to the variance and standard deviation, i.e.
+      <m>s_x^2</m> and <m>s_x^{}</m>,
+      as a reminder that these are the variance and standard deviation of the observations represented by <m>x_1^{}</m>,
+      <m>x_2^{}</m>, ..., <m>x_n^{}</m>.
+      The <m>_{x}</m> subscript is usually omitted when it is clear which data the variance or standard deviation is referencing.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        The standard deviation is the square root of the variance.
+        It is roughly the
+        <q>typical</q>
+        distance of the observations from the mean.
+        <md>
+          <mrow>s_{\scriptscriptstyle{X}} = \sqrt{\frac{1}{n-1} \sum{(x_i -  \bar{x})^2}}</mrow>
+        </md>
+      </p>
+    </assemblage>
+    <p>
+      The variance is useful for mathematical reasons,
+      but the standard deviation is easier to interpret because it has the same units as the data set.
+      The units for variance will be the units squared (e.g. meters<m>^2</m>).
+      Formulas and methods used to compute the variance and standard deviation for a population are similar to those used for a sample.<fn>
+      The only difference is that the population variance has a division by <m>n</m> instead of <m>n-1</m>.
+      </fn> However,
+      like the mean, the population values have special symbols:
+      <m>\sigma_{}^2</m> for the variance and <m>\sigma</m> for the standard deviation.
+      The symbol <m>\sigma</m> <idx><h>Greek</h><h>sigma@sigma (<m>\sigma</m>)</h></idx> is the Greek letter <em>sigma</em>.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        It is useful to think of the standard deviation as the
+        <q>typical</q>
+        or
+        <q>average</q>
+        distance that observations fall from the mean.
+      </p>
+    </assemblage>
+    <p>
+      In Chapter<nbsp/>4, we encounter a bell-shaped distribution known as the
+      <em>normal distribution</em>.
+      The <term>empirical rule</term> tells us that for normal distributions,
+      about 68% of the data will be within one standard deviation of the mean,
+      about 95% will be within two standard deviations of the mean,
+      and about 99.7% will be within three standard deviations of the mean.
+      However, as seen in <xref ref="emailCharactersDotPlotStackedRoundedWithSD">Figures</xref>
+      and <xref ref="severalDiffDistWithSdOf1"></xref>,
+      these percentages generally do not hold if the distribution is not bell-shaped.
+    </p>
+    <figure xml:id="emailCharactersDotPlotStackedRoundedWithSD">
+      <caption>In the <c>num_char</c> data, 40 of the 50 emails (80%) are within 1<nbsp/>standard deviation of the mean, and 47 of the 50 emails (94%) are within 2 standard deviations. The empirical rule does not hold well for skewed data, as shown in this example.</caption>
+      \Figures{emailCharactersDotPlot}
+      {emailCharactersDotPlotStackedRoundedWithSD}
+    </figure>
+    <figure xml:id="severalDiffDistWithSdOf1">
+      <caption>Three very different population distributions with the same mean <m>\mu=0</m> and standard deviation <m>\sigma=1</m>.</caption>
+      \Figure{0.7}{severalDiffDistWithSdOf1}
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          On <xref ref="shapeFirstDiscussed">page</xref>,
+          the concept of shape of a distribution was introduced.
+          A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side.
+          Using <xref ref="severalDiffDistWithSdOf1">Figure</xref> as an example,
+          explain why such a description is important.
+        </p>
+      </statement>
+    </exercise>
+    <example>
+      <statement>
+        <p>
+          Earlier we reported that the mean family income in the U.S. in 2017 was $99,114.
+          Estimating the standard deviation of income as approximately $50,000,
+          is a family income of $60,000 far from the mean or relatively close to the mean?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Earlier we reported that the mean family income in the U.S. in 2017 was $99,114.
+          Estimating the standard deviation of income as approximately $50,000,
+          is a family income of $60,000 far from the mean or relatively close to the mean?
+        </p>
+      </solution>
+    </example>
+    <p>
+      When describing any distribution,
+      comment on the three important characteristics of center, spread,
+      and shape.
+      Also note any especially unusual cases.
+    </p>
+    <example>
+      <statement>
+        <p>
+          In the data's context
+          (the number of characters in emails),
+          describe the distribution of the <c>num_char</c> variable shown in the histogram below. \includegraphics[width=0.65\textwidth]{ch_regr_simple_linear/figures/email50NumCharHist/email50NumCharHist}
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The distribution of email character counts is unimodal and very strongly skewed to the right.
+          Many of the counts fall near the mean at 11,600,
+          and most fall within one standard deviation (13,130) of the mean.
+          There is one exceptionally long email with about 65,000 characters.
+        </p>
+      </answer>
+    </example>
+    <p>
+      In this chapter we use standard deviation as a descriptive statistic to describe the variability in a given data set.
+      In <xref ref="foundationsForInference">Chapter</xref>
+      we will use the standard deviation to assess how close a sample mean is to the population mean.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Z-scores</title>
+    <p>
+      Knowing how many standard deviations a value is from the mean is often more useful than simply knowing how far a value is from the mean.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Consider that the mean family income in the U.S. in 2017 was $99,114.
+          Let's round this to $100,000 and estimate the standard deviation of income as $50,000.
+          Using these estimates,
+          how many standard deviations above the mean is an income of $200,000?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Consider that the mean family income in the U.S. in 2017 was $99,114.
+          Let's round this to $100,000 and estimate the standard deviation of income as $50,000.
+          Using these estimates,
+          how many standard deviations above the mean is an income of $200,000?
+        </p>
+      </solution>
+    </example>
+    <p>
+      The number of standard deviations a value is above or below the mean is known as the <term>Z-score</term>.
+          <idx><h>Z@<m>Z</m></h></idx>
+      A Z-score has no units, and therefore is sometimes also called
+      <em>standard units</em>.
+          <idx><h>standard units</h></idx>
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        The Z-score of an observation is the number of standard deviations it falls above or below the mean.
+        We compute the Z-score for an observation <m>x</m> that follows a distribution with mean <m>\mu</m> and standard deviation <m>\sigma</m> using
+        <md>
+          <mrow>Z = \frac{x - \mu}{\sigma}</mrow>
+        </md>
+      </p>
+    </assemblage>
+    <p>
+      Observations above the mean always have positive Z-scores,
+      while those below the mean always have negative Z-scores.
+      If an observation is equal to the mean,
+      then the Z-score is <m>0</m>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Head lengths of brushtail possums have a mean of 92.6 mm and standard deviation 3.6 mm.
+          Compute the Z-scores for possums with head lengths of 95.4 mm and 85.8<nbsp/>mm.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Head lengths of brushtail possums have a mean of 92.6 mm and standard deviation 3.6 mm.
+          Compute the Z-scores for possums with head lengths of 95.4 mm and 85.8<nbsp/>mm.
+        </p>
+      </solution>
+    </example>
+    <p>
+      We can use Z-scores to roughly identify which observations are more unusual than others.
+      An observation <m>x_1</m> is said to be more unusual than another observation <m>x_2</m> if the absolute value of its Z-score is larger than the absolute value of the other observation's Z-score:
+      <m>|Z_1| > |Z_2|</m>.
+      This technique is especially insightful when a distribution is symmetric.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Which of the observations in <xref ref="headLZScore">Example</xref> is more unusual?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>X</m> represent a random variable from a distribution with <m>\mu=3</m> and <m>\sigma=2</m>,
+          and suppose we observe <m>x=5.19</m>.
+        </p>
+        <p>
+          (a) Find the Z-score of <m>x</m>.
+        </p>
+        <p>
+          (b) Interpret the Z-score.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Because Z-scores have no units,
+      they are useful for comparing distance to the mean for distributions that have different standard deviations or different units.
+    </p>
+    <example>
+      <statement>
+        <p>
+          The average daily high temperature in June in LA is 77^\circ F with a standard deviation of 5^\circF. The average daily high temperature in June in Iceland is 13^\circC with a standard deviation of 3^\circC. Which would be considered more unusual:
+          an 83^\circF day in June in LA or a 19^\circC day in June in Iceland?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Both values are 6^\circ above the mean.
+          However, they are not the same number of standard deviations above the mean. 83 is
+          <m>(83-77)/5 = 1.2</m> standard deviations above the mean,
+          while 19 is <m>(19-13)/3 = 2</m> standard deviations above the mean.
+          Therefore, a 19^\circC day in June in Iceland would be more unusual than an 83^\circF day in June in LA.
+        </p>
+      </answer>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Box plots and quartiles</title>
+    <p>
+      A <term>box plot</term> summarizes a data set using five summary statistics while also plotting unusual observations,
+      called outliers.
+          <idx><h>outlier|textbf</h></idx>
+      <xref ref="boxPlotLayoutNumVar">Figure</xref>
+      provides a box plot of the <c>num_char</c> variable from the <c>email50</c> data set.
+    </p>
+    <figure xml:id="boxPlotLayoutNumVar">
+      <caption>A labeled box plot for the number of characters in 50 emails. The median (6,890) splits the data into the bottom 50% and the top 50%.  Explore dozens of boxplots with histograms using American Community Survey data on Tableau Public<nbsp/>\tableauhref{tableau-boxplotschoose}.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <p>
+      The five summary statistics used in a box plot are known as the
+      <term>five-number summary</term>,
+      which consists of the minimum, the maximum,
+      and the three quartiles (<m>Q_1</m>,
+      <m>Q_2</m>, <m>Q_3</m>) of the data set being studied.
+    </p>
+    <p>
+      <m>Q_2</m>
+          <idx><h>quantile 2@Q<m>_2</m></h></idx>
+      represents the <term>second quartile</term>,
+      which is equivalent to the 50th percentile (i.e. the median).
+      Previously, we saw that Q<m>_2</m>
+      (the median)
+      for the <c>email50</c> data set was the average of the two middle values:
+      <m>\frac{\text{ 6,768 } + \text{ 7,012 } }{2} = \text{ 6,890 }</m>.
+    </p>
+    <p>
+      <m>Q_1</m>
+          <idx><h>quantile 1@Q<m>_1</m></h></idx>
+      represents the <term>first quartile</term>,
+      which is the 25th percentile,
+      and is the median of the smaller half of the data set.
+      There are 25 values in the lower half of the data set,
+      so <m>Q_1</m> is the middle value: 2,454 characters.
+      <m>Q_3</m>
+          <idx><h>quantile 3@<m>Q_3</m></h></idx>
+      represents the <term>third quartile</term>, or 75th percentile,
+      and is the median of the larger half of the data set: 15,829 characters.
+    </p>
+    <p>
+      We calculate the variability in the data using the range of the middle 50% of the data:
+      <m>Q_3 - Q_1 = \text{ 13,375 }</m>.
+      This quantity is called the <em>interquartile range</em><idx><h>interquartile range (IQR)|textbf</h></idx> (IQR, for short).
+      It, like the standard deviation,
+      is a measure of variability
+          <idx><h>variability</h></idx>
+      or <term>spread</term> in data.
+      The more variable the data,
+      the larger the standard deviation and<nbsp/>IQR tend to be.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        The IQR<idx><h>interquartile range (IQR)</h></idx> is the length of the box in a box plot.
+        It is computed as
+        <md>
+          <mrow>IQR = Q_3 - Q_1</mrow>
+        </md>
+        where <m>Q_1</m> and <m>Q_3</m> are the <m>25^{th}</m> and <m>75^{th}</m> percentiles.
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <p>
+        When in the context of a box plot,
+        define an <term>outlier</term> as an \mbox{observation} that is more than
+        <m>1.5 \times IQR</m> above <m>Q_3</m> or <m>1.5 \times IQR</m> below <m>Q_1</m>.
+        Such points are marked using a dot or asterisk in a box plot.
+      </p>
+    </assemblage>
+    <p>
+      To build a box plot, draw an axis
+      (vertical or horizontal)
+      and draw a scale.
+      Draw a dark line denoting <m>Q_2</m>, the median.
+      Next, draw a line at <m>Q_1</m> and at <m>Q_3</m>.
+      Connect the <m>Q_1</m> and <m>Q_3</m> lines to form a rectangle.
+      The width of the rectangle corresponds to the IQR and the middle 50% of the data is in this interval.
+    </p>
+    <p>
+      Extending out from the rectangle,
+      the <term>whiskers</term> attempt to capture all of the data remaining outside of the box,
+      except outliers.
+      In <xref ref="boxPlotLayoutNumVar">Figure</xref>,
+      the upper whisker does not extend to the last three points,
+      which are beyond <m>Q_3 + 1.5\times IQR</m> and are outliers,
+      so it extends only to the last point below this limit.<fn>
+      You might wonder, isn't the choice of
+      <m>1.5 \times IQR</m> for defining an outlier arbitrary?
+      It is!
+      In practical data analyses,
+      we tend to avoid a strict definition since what is an unusual observation is highly dependent on the context of the data.
+      </fn> The lower whisker stops at the lowest value, 33,
+      since there are no additional data to reach.
+      Outliers are each marked with a dot or asterisk.
+      In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Compare the box plot to the graphs previously discussed:
+          stem-and-leaf plot, dot plot,
+          frequency and relative frequency histogram.
+          What can we learn more easily from a box plot?
+          What can we learn more easily from the other graphs?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Compare the box plot to the graphs previously discussed:
+          stem-and-leaf plot, dot plot,
+          frequency and relative frequency histogram.
+          What can we learn more easily from a box plot?
+          What can we learn more easily from the other graphs?
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Is it possible to identify skew from the box plot?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Is it possible to identify skew from the box plot?
+        </p>
+      </solution>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          True or false:
+          there is more data between the median and <m>Q_3</m> than between <m>Q_1</m> and the median.
+        </p>
+      </statement>
+    </exercise>
+    <example>
+      <statement>
+        <p>
+          Consider the following ordered data set.
+        </p>
+        <tabular>
+          <row>
+            <cell>5</cell>
+            <cell>5</cell>
+            <cell>9</cell>
+            <cell>10</cell>
+            <cell>15</cell>
+            <cell>16</cell>
+            <cell>20</cell>
+            <cell>30</cell>
+            <cell>80</cell>
+          </row>
+        </tabular>
+        <p>
+          Find the 5 number summary and identify how small or large a value would need to be to be considered an outlier.
+          Are there any outliers in this data set?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          There are nine numbers in this data set.
+          Because <m>n</m> is odd, the median is the middle number: 15.
+          When finding <m>Q_1</m>,
+          we find the median of the lower half of the data,
+          which in this case includes 4 numbers
+          (we do not include the 15 as belonging to either half of the data set).
+          <m>Q_1</m> then is the average of 5 and 9, which is <m>Q_1 = 7</m>,
+          and <m>Q_3</m> is the average of 20 and 30, so <m>Q_3 = 25</m>.
+          The min is 5 and the max is 80.
+          To see how small a number needs to be to be an outlier on the low end we do:
+          <md>
+            <mrow>Q_1 - 1.5 \times IQR \amp = Q_1 - 1.5 \times (Q_3 - Q_1)</mrow>
+            <mrow>\amp  = 7 - 1.5 \times (35 - 7)</mrow>
+            <mrow>\amp  = -35</mrow>
+          </md>
+        </p>
+        <p>
+          On the high end we need:
+          <md>
+            <mrow>Q_3 + 1.5 \times IQR \amp  = Q_3 + 1.5 \times (Q_3-Q_1)</mrow>
+            <mrow>\amp  = 35 + 1.5 \times (35 - 7)</mrow>
+            <mrow>\amp  = 77</mrow>
+          </md>
+        </p>
+        <p>
+          There are no numbers less than -41,
+          so there are no outliers on the low end.
+          The observation at 80 is greater than 77,
+          so 80 is an outlier on the high end.
+        </p>
+      </answer>
+    </example>
+  </subsection>
+  <subsection xml:id="summarizedata">
+    <title>Calculator/Desmos: summarizing 1-variable statistics</title>
+    <p>
+      One can use a handheld calculator or online software such as Desmos to calculate summary statistics.
+      More advanced statistical software packages include R
+      (in which most of the graphs in this text were made),
+      Python, SAS, and STATA.
+    </p>
+    <figure xml:id="desmos1VarStats">
+      <caption>Use this MISSINGoiRedirect ({openintro.org/ahss/desmos}) to graph and find summary statistics for a single variable in Desmos, as shown in the figure.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <assemblage>
+      <title></title>
+      <p>
+        The first step in summarizing data or making a graph is to enter the data set into a list.
+        Use <c>STAT</c>, <c>Edit</c>.
+        <ol>
+          <li>
+            <p>
+              Press <c>STAT</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>1:Edit</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Enter data into <c>L1</c> or another list.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <ol>
+        <li>
+          <p>
+            Navigate to <c>STAT</c> (<c>MENU</c> button,
+            then hit the <c>2</c> button or select <c>STAT</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Optional: use the left or right arrows to select a particular list.
+          </p>
+        </li>
+        <li>
+          <p>
+            Enter each numerical value and hit <c>EXE</c>.
+          </p>
+        </li>
+      </ol>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <p>
+        Use the <c>STAT</c>, <c>CALC</c>, <c>1-Var Stats</c> command to find summary statistics such as mean,
+        standard deviation, and quartiles.
+        <ol>
+          <li>
+            <p>
+              Enter the data as described previously.
+            </p>
+          </li>
+          <li>
+            <p>
+              Press <c>STAT</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Right arrow to <c>CALC</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>1:1-Var Stats</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Enter <c>L1</c> (i.e. <c>2ND</c> <c>1</c>) for List.
+              If the data is in a list other than <c>L1</c>,
+              type the name of that list.
+            </p>
+          </li>
+          <li>
+            <p>
+              Leave <c>FreqList</c> blank.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>Calculate</c> and hit <c>ENTER</c>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        TI-83: Do steps 1-4, then type <c>L1</c> (i.e. <c>2nd</c> <c>1</c>) or the list's name and hit <c>ENTER</c>.
+      </p>
+    </assemblage>
+    <p>
+      Calculating the summary statistics will return the following information.
+      It will be necessary to hit the down arrow to see all of the summary statistics.
+    </p>
+    <tabular>
+      <row>
+        <cell><m>\textttmath{\bar{\text{x} }}</m></cell>
+        <cell>Mean</cell>
+        <cell><nbsp/><nbsp/></cell>
+        <cell><c>n</c></cell>
+        <cell>Sample size or # of data points</cell>
+      </row>
+      <row>
+        <cell><m>\textttmath{\Sigma x}</m></cell>
+        <cell>Sum of all the data values</cell>
+        <cell></cell>
+        <cell><c>minX</c></cell>
+        <cell>Minimum</cell>
+      </row>
+      <row>
+        <cell><m>\textttmath{\Sigma x^2}</m></cell>
+        <cell>Sum of all the squared data values</cell>
+        <cell></cell>
+        <cell><m>\textttmath{Q_1}</m></cell>
+        <cell>First quartile</cell>
+      </row>
+      <row>
+        <cell><m>\textttmath{Sx}</m></cell>
+        <cell>Sample standard deviation</cell>
+        <cell></cell>
+        <cell><c>Med</c></cell>
+        <cell>Median</cell>
+      </row>
+      <row>
+        <cell><m>\textttmath{\sigma x}</m></cell>
+        <cell>Population standard deviation</cell>
+        <cell></cell>
+        <cell><c>maxX</c></cell>
+        <cell>Maximum</cell>
+      </row>
+    </tabular>
+    <assemblage>
+      <title></title>
+      <ol>
+        <li>
+          <p>
+            Enter the data to be graphed as described previously.
+          </p>
+        </li>
+        <li>
+          <p>
+            Hit <c>2ND</c> <c>Y=</c> (i.e. <c>STAT PLOT</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Hit <c>ENTER</c> (to choose the first plot).
+          </p>
+        </li>
+        <li>
+          <p>
+            Hit <c>ENTER</c> to choose <c>ON</c>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Down arrow and then right arrow three times to select box plot with outliers.
+          </p>
+        </li>
+        <li>
+          <p>
+            Down arrow again and make <c>Xlist:</c><nbsp/><c>L1</c> and <c>Freq:</c><nbsp/><c>1</c>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose <c>ZOOM</c> and then <c>9:ZoomStat</c> to get a good viewing window.
+          </p>
+        </li>
+      </ol>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <ol>
+        <li>
+          <p>
+            Navigate to <c>STAT</c> (<c>MENU</c>,
+            then hit <c>2</c>) and enter the data into a list.
+          </p>
+        </li>
+        <li>
+          <p>
+            Go to <c>GRPH</c> (<c>F1</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Next go to <c>SET</c> (<c>F6</c>) to set the graphing parameters.
+          </p>
+        </li>
+        <li>
+          <p>
+            To use the 2nd or 3rd graph instead of <c>GPH1</c>,
+            select <c>F2</c> or <c>F3</c>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Move down to <c>Graph Type</c> and select the
+            <m>\textttmath{\triangleright}</m> (<c>F6</c>) option to see more graphing options,
+            then select <c>Box</c> (<c>F2</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            If <c>XList</c> does not show the list where you entered the data,
+            hit <c>LIST</c> (<c>F1</c>) and enter the correct list number.
+          </p>
+        </li>
+        <li>
+          <p>
+            Leave <c>Frequency</c> at <c>1</c>.
+          </p>
+        </li>
+        <li>
+          <p>
+            For <c>Outliers</c>,
+            choose <c>On</c> (<c>F1</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Hit <c>EXE</c> and then choose the graph where you set the parameters <c>F1</c> (most common), <c>F2</c>,
+            or <c>F3</c>.
+          </p>
+        </li>
+        <li>
+          <p>
+            If desired, explore 1-variable statistics by selecting <c>1-Var</c> (<c>F1</c>).
+          </p>
+        </li>
+      </ol>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          Enter the following 10 data points into a calculator or into this MISSINGoiRedirect \mbox{({openintro.org/ahss/desmos}):} {5, 8, 1, 19, 3, 1, 11, 18, 20, 5} Find the summary statistics and make a box plot of the data.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The summary statistics should be <m>\textttmath{\bar{x}} = 9.1</m>,
+          <m>\textttmath{Sx} = 7.48</m>,
+          <m>\textttmath{Q1} = 3</m>, etc.
+          The box plot should be as follows.
+          <image width="48%" source="images/TI83_box_plot_A.png" /> <image width="48%" source="images/1VarStatsDesmos.png" />
+        </p>
+      </answer>
+    </example>
+    <assemblage>
+      <p>
+        {TI-83/84: What to do if you cannot find {L1} or another list} Restore lists <c>L1</c>-<c>L6</c> using the following steps:
+        <ol>
+          <li>
+            <p>
+              Press <c>STAT</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>5:SetUpEditor</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Hit <c>ENTER</c>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <ol>
+        <li>
+          <p>
+            Navigate to <c>STAT</c> (<c>MENU</c>,
+            then hit <c>2</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Use the arrow buttons to navigate to the list you would like to delete.
+          </p>
+        </li>
+        <li>
+          <p>
+            Select <m>\textttmath{\triangleright}</m> (<c>F6</c>) to see more options.
+          </p>
+        </li>
+        <li>
+          <p>
+            Select <c>DEL-A</c> (<c>F4</c>) and then <c>F1</c> to confirm.
+          </p>
+        </li>
+      </ol>
+    </assemblage>
+  </subsection>
+  <subsection>
+    <title>Outliers and robust statistics</title>
+    <assemblage>
+      <title></title>
+      <p>
+        There are two rules of thumb for identifying outliers:
+        <ul>
+          <li>
+            <p>
+              More than 1.5<times/> IQR below <m>Q_1</m> or above <m>Q_3</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              More than 2 standard deviations above or below the mean.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        Both are important for the AP exam.
+        In practice, consider these to be only rough guidelines.
+      </p>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          For the <c>email50</c> data set,<m>Q_1=</m> 2,536 and <m>Q_3=15,411</m>.
+          <m>\bar{x}</m> = 11,600 and <m>s</m> = 13,130.
+          What values would be considered an outlier on the low end using each rule?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Because there are no negative values in this data set,
+          there can be no outliers on the low end.
+          What does the fact that there are outliers on the high end but not on the low end suggestion?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      How are the sample statistics
+          <idx><h>sample statistic</h></idx>
+      of the <c>num_char</c> data set affected by the observation, 64,401?
+      What would have happened if this email wasn't observed?
+      What would happen to these summary statistics
+          <idx><h>summary statistic</h></idx>
+      if the observation at 64,401 had been even larger, say 150,000?
+      These scenarios are plotted alongside the original data in <xref ref="email50NumCharDotPlotRobustEx">Figure</xref>,
+      and sample statistics are computed under each scenario in <xref ref="robustOrNotTable">Figure</xref>.
+    </p>
+    <figure xml:id="email50NumCharDotPlotRobustEx">
+      <caption>Dot plots of the original character count data and two modified data sets.</caption>
+      <image width="73%" source="images/email50NumCharDotPlotRobustEx.png" />
+    </figure>
+    <table xml:id="robustOrNotTable">
+      <caption>A comparison of how the median, IQR, mean (<m>\bar{x}</m>), and standard deviation (<m>s</m>) change when extreme observations are present.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>\hspace{0mm}</cell>
+          <cell>robust</cell>
+          <cell>\hspace{2mm}</cell>
+          <cell>not robust</cell>
+        </row>
+        <row>
+          <cell>scenario</cell>
+          <cell></cell>
+          <cell>median</cell>
+          <cell>IQR</cell>
+          <cell></cell>
+          <cell><m>\bar{x}</m></cell>
+          <cell><m>s</m></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>original <c>num_char</c> data</cell>
+          <cell></cell>
+          <cell>6,890</cell>
+          <cell>12,875</cell>
+          <cell></cell>
+          <cell>11,600</cell>
+          <cell>13,130</cell>
+        </row>
+        <row>
+          <cell>drop 64,401 observation</cell>
+          <cell></cell>
+          <cell>6,768</cell>
+          <cell>11,702</cell>
+          <cell></cell>
+          <cell>10,521</cell>
+          <cell>10,798</cell>
+        </row>
+        <row>
+          <cell>move 64,401 to 150,000</cell>
+          <cell></cell>
+          <cell>6,890</cell>
+          <cell>12,875</cell>
+          <cell></cell>
+          <cell>13,310</cell>
+          <cell>22,434</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <exercise xml:id="numCharWhichIsMoreRobust">
+      <statement>
+        <p>
+          (a) Which is more affected by extreme observations, the mean or median?
+          <xref ref="robustOrNotTable">Figure</xref>
+          may be helpful. (b) Is the standard deviation or IQR more affected by extreme observations?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The median and IQR are called <term>robust estimates</term>
+      because extreme observations have little effect on their values.
+      The mean and standard deviation are much more affected by changes in extreme observations.
+    </p>
+    <example>
+      <statement>
+        <p>
+          The median and IQR do not change much under the three scenarios in <xref ref="robustOrNotTable">Figure</xref>.
+          Why might this be the case?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Since there are no large gaps between observations around the three quartiles, adding,
+          deleting, or changing one value,
+          no matter how extreme that value,
+          will have little effect on their values.
+        </p>
+      </answer>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          The distribution of vehicle prices tends to be right skewed,
+          with a few luxury and sports cars lingering out into the right tail.
+          If you were searching for a new car and cared about price,
+          should you be more interested in the mean or median price of vehicles sold,
+          assuming you are in the market for a regular car?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="linearTransformationOfData">
+    <title>Linear transformations of data</title>
+    <example>
+      <statement>
+        <p>
+          Begin with the following list: {1, 1, 5, 5}. Multiply all of the numbers by 10.
+          What happens to the mean?
+          What happens to the standard deviation?
+          How do these compare to the mean and the standard deviation of the original list?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The original list has a mean of 3 and a standard deviation of 2.
+          The new list: {10, 10, 50, 50} has a mean of 30 with a standard deviation of 20.
+          Because all of the values were multiplied by 10,
+          both the mean and the standard deviation were multiplied by<nbsp/>10.<nbsp/>
+        </p>
+      </answer>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Start with the following list: {1, 1, 5, 5}. Multiply all of the numbers by \mbox{-0.5} . What happens to the mean?
+          What happens to the standard deviation?
+          How do these compare to the mean and the standard deviation of the original list?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The new list: {-0.5, -0.5, -2.5, -2.5} has a mean of -1.5 with a standard deviation of<nbsp/>1.
+          Because all of the values were multiplied by<nbsp/>\mbox{-0.5} , the mean was multiplied by<nbsp/>\mbox{-0.5} . Multiplying all of the values by a negative flipped the sign of numbers,
+          which affects the location of the center, but not the spread.
+          Multiplying all of the values by \mbox{-0.5} multiplied the standard deviation by +0.5 since the standard deviation cannot be negative.
+        </p>
+      </answer>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Again, start with the following list: {1, 1, 5, 5}. Add 100 to every entry.
+          How do the new mean and standard deviation compare to the original mean and standard deviation?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The new list is: {101, 101, 105, 105}. The new mean of 103 is 100 greater than the original mean of 3.
+          The new standard deviation of 2 is the <em>same</em>
+          as the original standard deviation of 2.
+          Adding a constant to every entry shifted the values, but did not stretch them.
+        </p>
+      </answer>
+    </example>
+    <p>
+      Suppose that a researcher is looking at a list of 500 temperatures recorded in Celsius<nbsp/>(C).
+      The mean of the temperatures listed is given as 27^\circ C with a standard deviation of 3^\circ C. Because she is not familiar with the Celsius scale,
+      she would like to convert these summary statistics into Fahrenheit<nbsp/>(F).
+      To convert from Celsius to Fahrenheit,
+      we use the following conversion:
+      <md>
+        <mrow>x_{_F} = \frac{9}{5}x_{_C} + 32</mrow>
+      </md>
+    </p>
+    <p>
+      Fortunately,
+      she does not need to convert each of the 500 temperatures to Fahrenheit and then recalculate the mean and the standard deviation.
+      The unit conversion above is a linear transformation of the following form,
+      where <m>a=9/5</m> and <m>b=32</m>:
+      <md>
+        <mrow>aX + b</mrow>
+      </md>
+    </p>
+    <p>
+      Using the examples as a guide,
+      we can solve this temperature-conversion problem.
+      The mean was 27^\circ C and the standard deviation was 3^\circ C. To convert to Fahrenheit,
+      we multiply all of the values by <m>9/5</m>,
+      which multiplies both the mean and the standard deviation by <m>9/5</m>.
+      Then we add 32 to all of the values which adds 32 to the mean but does not change the standard deviation further.
+      <md>
+        <mrow>\bar{x}_{F} \amp = \frac{9}{5}\bar{x}_{C} + 32 \amp  \sigma_{F} \amp = \frac{9}{5}\sigma_{C}</mrow>
+        <mrow>\amp = \frac{5}{9}(27)+ 32 \amp  \amp =\frac{9}{5}(3)</mrow>
+        <mrow>\amp =80.6 \amp   \amp =5.4</mrow>
+      </md>
+    </p>
+    <figure xml:id="CToF_ConversionFigure">
+      <caption>500 temperatures shown in both Celsius and  Fahrenheit.</caption>
+      <image width="90%" source="images/CToF_ConversionFigure.png" />
+    </figure>
+    <assemblage>
+      <title></title>
+      <p>
+        Adding a constant to every value in a data set shifts the mean but does not affect the standard deviation.
+        Multiplying the values in a data set by a constant will change the mean and the standard deviation by the same multiple,
+        except that the standard deviation will always remain positive.
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          Consider the temperature example.
+          How would converting from Celsuis to Fahrenheit affect the median?
+          The IQR?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Consider the temperature example.
+          How would converting from Celsuis to Fahrenheit affect the median?
+          The IQR?
+        </p>
+      </solution>
+    </example>
+  </subsection>
+  <subsection xml:id="comparingAcrossGroups">
+    <title>Comparing numerical data across groups</title>
+    <p>
+          <idx><h>data</h><h>county</h></idx>
+    </p>
+    <p>
+      Some of the more interesting investigations can be considered by examining numerical data across groups.
+      The methods required here aren't really new.
+      All that is required is to make a numerical plot for each group.
+      To make a direct comparison between two groups,
+      create a pair of dot plots or a pair of histograms drawn using the same scales.
+      It is also common to use back-to-back stem-and-leaf plots,
+      parallel box plots, and hollow histograms,
+      the three of which are explored here.
+    </p>
+    <p>
+      We will take a look again at the <c>county</c> data set and compare the median household income for counties that gained population from 2010 to 2017 versus counties that had no gain.
+      While we might like to make a causal connection here,
+      remember that these are observational data and so such an interpretation would be, at best,
+      half-baked.
+    </p>
+    <p>
+      There were 1,454 counties where the population increased from 2010 to 2017,
+      and there were 1,672 counties with no gain
+      (all but one were a loss).
+      A<nbsp/>random sample of 100 counties from the first group and 50 from the second group are shown in <xref ref="countyIncomeSplitByPopGainTable">Figure</xref>
+      to give a better sense of some of the raw median income data.
+    </p>
+    <table xml:id="countyIncomeSplitByPopGainTable">
+      <caption>In this table, median household income (in $1000s)
+      from a random sample of 100 counties that had population
+      gains are shown on the left.
+      Median incomes from a random sample of 50 counties that
+      had no population gain are shown on the right.</caption>
+      <tabular>
+        <row>
+          <cell>Median Income for 150 Counties,
+            in $1000s</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\vspace{-2mm}</cell>
+        </row>
+        <row>
+          <cell>Population Gain</cell>
+          <cell>\hspace{5mm}<nbsp/></cell>
+          <cell>No Population Gain</cell>
+        </row>
+        <row>
+          <cell>38.2</cell>
+          <cell>43.6</cell>
+          <cell>42.2</cell>
+          <cell>61.5</cell>
+          <cell>51.1</cell>
+          <cell>45.7</cell>
+          <cell></cell>
+          <cell>\npgpad{48.3}</cell>
+          <cell>\npgpad{60.3}</cell>
+          <cell>\npgpad{50.7}</cell>
+        </row>
+        <row>
+          <cell>44.6</cell>
+          <cell>51.8</cell>
+          <cell>40.7</cell>
+          <cell>48.1</cell>
+          <cell>56.4</cell>
+          <cell>41.9</cell>
+          <cell></cell>
+          <cell>39.3</cell>
+          <cell>40.4</cell>
+          <cell>40.3</cell>
+        </row>
+        <row>
+          <cell>40.6</cell>
+          <cell>63.3</cell>
+          <cell>52.1</cell>
+          <cell>60.3</cell>
+          <cell>49.8</cell>
+          <cell>51.7</cell>
+          <cell></cell>
+          <cell>57</cell>
+          <cell>47.2</cell>
+          <cell>45.9</cell>
+        </row>
+        <row>
+          <cell>51.1</cell>
+          <cell>34.1</cell>
+          <cell>45.5</cell>
+          <cell>52.8</cell>
+          <cell>49.1</cell>
+          <cell>51</cell>
+          <cell></cell>
+          <cell>42.3</cell>
+          <cell>41.5</cell>
+          <cell>46.1</cell>
+        </row>
+        <row>
+          <cell>80.8</cell>
+          <cell>46.3</cell>
+          <cell>82.2</cell>
+          <cell>43.6</cell>
+          <cell>39.7</cell>
+          <cell>49.4</cell>
+          <cell></cell>
+          <cell>44.9</cell>
+          <cell>51.7</cell>
+          <cell>46.4</cell>
+        </row>
+        <row>
+          <cell>75.2</cell>
+          <cell>40.6</cell>
+          <cell>46.3</cell>
+          <cell>62.4</cell>
+          <cell>44.1</cell>
+          <cell>51.3</cell>
+          <cell></cell>
+          <cell>29.1</cell>
+          <cell>51.8</cell>
+          <cell>50.5</cell>
+        </row>
+        <row>
+          <cell>51.9</cell>
+          <cell>34.7</cell>
+          <cell>54</cell>
+          <cell>42.9</cell>
+          <cell>52.2</cell>
+          <cell>45.1</cell>
+          <cell></cell>
+          <cell>27</cell>
+          <cell>30.9</cell>
+          <cell>34.9</cell>
+        </row>
+        <row>
+          <cell>61</cell>
+          <cell>51.4</cell>
+          <cell>56.5</cell>
+          <cell>62</cell>
+          <cell>46</cell>
+          <cell>46.4</cell>
+          <cell></cell>
+          <cell>40.7</cell>
+          <cell>51.8</cell>
+          <cell>61.1</cell>
+        </row>
+        <row>
+          <cell>53.8</cell>
+          <cell>57.6</cell>
+          <cell>69.2</cell>
+          <cell>48.4</cell>
+          <cell>40.5</cell>
+          <cell>48.6</cell>
+          <cell></cell>
+          <cell>43.4</cell>
+          <cell>34.7</cell>
+          <cell>45.7</cell>
+        </row>
+        <row>
+          <cell>53.1</cell>
+          <cell>54.6</cell>
+          <cell>55</cell>
+          <cell>46.4</cell>
+          <cell>39.9</cell>
+          <cell>56.7</cell>
+          <cell></cell>
+          <cell>33.1</cell>
+          <cell>21</cell>
+          <cell>37</cell>
+        </row>
+        <row>
+          <cell>63</cell>
+          <cell>49.1</cell>
+          <cell>57.2</cell>
+          <cell>44.1</cell>
+          <cell>50</cell>
+          <cell>38.9</cell>
+          <cell></cell>
+          <cell>52</cell>
+          <cell>31.9</cell>
+          <cell>45.7</cell>
+        </row>
+        <row>
+          <cell>46.6</cell>
+          <cell>46.5</cell>
+          <cell>38.9</cell>
+          <cell>50.9</cell>
+          <cell>56</cell>
+          <cell>34.6</cell>
+          <cell></cell>
+          <cell>56.3</cell>
+          <cell>38.7</cell>
+          <cell>45.7</cell>
+        </row>
+        <row>
+          <cell>74.2</cell>
+          <cell>63</cell>
+          <cell>49.6</cell>
+          <cell>53.7</cell>
+          <cell>77.5</cell>
+          <cell>60</cell>
+          <cell></cell>
+          <cell>56.2</cell>
+          <cell>43</cell>
+          <cell>21.7</cell>
+        </row>
+        <row>
+          <cell>63.2</cell>
+          <cell>47.6</cell>
+          <cell>55.9</cell>
+          <cell>39.1</cell>
+          <cell>57.8</cell>
+          <cell>42.6</cell>
+          <cell></cell>
+          <cell>44.5</cell>
+          <cell>34.5</cell>
+          <cell>48.9</cell>
+        </row>
+        <row>
+          <cell>50.4</cell>
+          <cell>49</cell>
+          <cell>45.6</cell>
+          <cell>39</cell>
+          <cell>38.8</cell>
+          <cell>37.1</cell>
+          <cell></cell>
+          <cell>50.9</cell>
+          <cell>42.1</cell>
+          <cell>43.2</cell>
+        </row>
+        <row>
+          <cell>57.2</cell>
+          <cell>44.7</cell>
+          <cell>71.7</cell>
+          <cell>35.3</cell>
+          <cell>100.2</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell>35.4</cell>
+          <cell>41.3</cell>
+          <cell>33.6</cell>
+        </row>
+        <row>
+          <cell>42.6</cell>
+          <cell>55.5</cell>
+          <cell>38.6</cell>
+          <cell>52.7</cell>
+          <cell>63</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell>43.4</cell>
+          <cell>56.5</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <figure xml:id="stemandleafincomepopgainloss">
+      <caption>Back-to-back stem-and-leaf plot for median income, split by whether the count had a population gain or no gain.</caption>
+<pre>
+Population: Gain           Population: No Gain
+| 2 |12
+| 2 |79
+4| 3 |1234
+99999987555| 3 |5555799
+444433322111000| 4 |00111223333
+999998887666666665555| 4 |55666666789
+444333222221111110000| 5 |1112222
+887776666555| 5 |6677
+33333222100| 6 |01
+9| 6 |
+42| 7 |
+85| 7 |
+21| 8 |
+Legend: 2 |1 = 21,000 median income
+</pre>
+    </figure>
+    <p>
+      The <term>side-by-side box plot</term>
+          <idx><h>box plot</h><h>side-by-side box plot</h></idx>
+      is a traditional tool for comparing across groups.
+      An example is shown in the left panel of <xref ref="countyIncomeSplitByPopGain">Figure</xref>,
+      where there are two box plots, one for each group,
+      placed into one plotting window and drawn on the same scale.
+    </p>
+    <figure xml:id="countyIncomeSplitByPopGain">
+      <caption>Side-by-side box plot (left panel)
+      and hollow histograms (right panel) for
+<c>med\ushh\usincome</c>,
+      where the counties are split by whether or not there was a population gain from 2010 to 2017.  Explore this data set on Tableau Public<nbsp/>\tableauhref{tableau-medianincome-gainnogain-all}.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <p>
+      Another useful plotting method uses
+      <em>hollow histograms</em>
+          <idx><h>hollow histogram|textbf</h></idx>
+      to compare numerical data across groups.
+      These are just the outlines of histograms of each group put on the same plot,
+      as shown in the right panel of <xref ref="countyIncomeSplitByPopGain">Figure</xref>.
+    </p>
+    <exercise xml:id="comparingPriceByTypeExercise">
+      <statement>
+        <p>
+          Use the plots in <xref ref="countyIncomeSplitByPopGain">Figure</xref>
+          to compare the incomes for counties across the two groups.
+          What do you notice about the approximate center of each group?
+          What do you notice about the variability between groups?
+          Is the shape relatively consistent between groups?
+          How many <em>prominent</em> modes are there for each group?
+        </p>
+      </statement>
+    </exercise>
+    <assemblage>
+      <title></title>
+      <p>
+        When comparing distributions,
+        compare them with respect to center,
+        spread, and shape as well as any unusual observations.
+        Such descriptions should be in context.
+      </p>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          What components of each plot in <xref ref="countyIncomeSplitByPopGain">Figure</xref> do you find most useful?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Do these graphs tell us about any association between income for the two groups?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Looking at an association is different than comparing distributions.
+      When comparing distributions,
+      we are interested in questions such as,
+      <q>Which distribution has a greater average?</q>
+      and
+      <q>How do the shapes of the distribution differ?</q>
+      The number of elements in each data set need not be the same (e.g. height of women and height of men).
+      When we look at association,
+      we are interested in whether there is a positive, negative,
+      or no association between the variables.
+      This requires two data sets of equal length that are essentially paired (e.g. height and weight of individuals).
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        We compare two distributions with respect to center, spread,
+        and shape.
+        To compare the distributions visually,
+        we use 2 single-variable graphs,
+        such as two histograms, two dot plots,
+        parallel box plots, or a back-to-back stem-and-leaf.
+        When looking at association,
+        we look for a positive, negative,
+        or no relationship between the variables.
+        To see association visually, we require a scatterplot.
+      </p>
+    </assemblage>
+    <p>
+          <idx><h>data</h><h>email50</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Mapping data (special topic)</title>
+    <p>
+          <idx><h>data</h><h>county</h></idx>
+          <idx><h>intensity map</h></idx>
+    </p>
+    <p>
+      The <c>county</c> data set offers many numerical variables that we could plot using dot plots,
+      scatterplots,
+      or box plots, but these miss the true nature of the data.
+      Rather, when we encounter geographic data,
+      we should create an <term>intensity map</term>,
+      where colors are used to show higher and lower values of a variable.
+      <xref ref="countyIntensityMaps1">Figures</xref>
+      and <xref ref="countyIntensityMaps2"></xref>
+      shows intensity maps for poverty rate in percent (<c>poverty</c>), unemployment rate (<c>unemployment\usrate</c>), homeownership rate in percent (<c>homeownership</c>), and median household income (<c>median\ushh\usincome</c>).
+      The color key indicates which colors correspond to which values.
+      The intensity maps are not generally very helpful for getting precise values in any given county,
+      but they are very helpful for seeing geographic trends and generating interesting research questions or hypotheses.
+    </p>
+    <example>
+      <statement>
+        <p>
+          What interesting features are evident in the <c>poverty</c> and <c>unemployment\usrate</c> intensity maps?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Poverty rates are evidently higher in a few locations.
+          Notably, the deep south shows higher poverty rates,
+          as does much of Arizona and New Mexico.
+          High poverty rates are evident in the Mississippi flood plains a little north of New Orleans and also in a large section of Kentucky.
+        </p>
+        <p>
+          The unemployment rate follows similar trends,
+          and we can see correspondence between the two variables.
+          In fact, it makes sense for higher rates of unemployment to be closely related to poverty rates.
+          One observation that stand out when comparing the two maps:
+          the poverty rate is much higher than the unemployment rate,
+          meaning while many people may be working,
+          they are not making enough to break out of poverty.
+        </p>
+      </answer>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          What interesting features are evident in the <c>median\ushh\usincome</c> intensity map in <xref ref="countyMedIncomeMap">Figure</xref>?
+        </p>
+      </statement>
+    </exercise>
+    <figure xml:id="countyIntensityMaps1">
+      <caption>\subref{countyPovertyMap} Intensity map of
+      poverty rate (percent).
+      \subref{countyUnemploymentRateMap}<nbsp/>Intensity map of the
+      unemployment rate (percent).  Explore dozens of intensity maps using American Community Survey data on Tableau Public<nbsp/>\tableauhref{tableau-intensitymapsall}.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <figure xml:id="countyIntensityMaps2">
+      <caption>\subref{countyHomeownershipMap} Intensity map
+      of homeownership rate (percent).
+      \subref{countyMedIncomeMap}<nbsp/>Intensity map of median
+      household income ($1000s).  Explore dozens of intensity maps using American Community Survey data on Tableau Public<nbsp/>\tableauhref{tableau-intensitymapsall}.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <p>
+          <idx><h>intensity map</h></idx>
+          <idx><h>data</h><h>county</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          In this section we looked at univariate summaries,
+          including two measures of <term>center</term>
+          and three measures of <term>spread</term>.
+        </p>
+      </li>
+      <li>
+        <p>
+          When <term>summarizing</term> or
+          <term>comparing distributions</term>,
+          always comment on center, spread, and shape.
+          Also, mention outliers or gaps if applicable.
+          Put descriptions in <em>context</em>, that is,
+          identify the variable(s) being summarized by name and include relevant units.
+          Remember: <em>Center, Spread, and Shape!
+          In context!</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Mean</em>
+            <idx><h>mean|textbf</h></idx>
+          and <term>median</term> are measures of center. (A common mistake is to report
+          <term>mode</term> as a measure of center.
+          However, a mode can appear anywhere in a distribution.)
+          <ul>
+            <li>
+              <p>
+                The <term>mean</term> is the sum of all the observations divided by the number of observations,
+                <m>n</m>.
+                <m>\bar{x} = \frac{1}{n}\sum{x_{i}} = \frac{\sum{x_i}}{n}=\frac{x_1 + x_2 + ... + x_n}{n}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                In an ordered data set, the <term>median</term>
+                is the middle number when <m>n</m> is odd.
+                When <m>n</m> is even,
+                the median is the average of the two middle numbers.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+      <li>
+        <p>
+          Because large values exert more
+          <q>pull</q>
+          on the mean,
+          large values on the high end tend to increase the mean more than they increase the median.
+          In a <term>right skewed</term> distribution, therefore,
+          the mean is greater than the median.
+          Analogously, in a <term>left skewed</term> distribution,
+          the mean is less than the median.
+          Remember: <em>The mean follows the tail!
+          The skew is the tail!</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Standard deviation (SD)</em><idx><h>standard deviation|textbf</h></idx> and
+          <em>Interquartile range (IQR)</em><idx><h>interquartile range (IQR)|textbf</h></idx> are measures of spread.
+          SD measures the typical spread from the mean,
+          whereas IQR measures the spread of the middle 50% of the data.
+          <ul>
+            <li>
+              <p>
+                To calculate the standard deviation,
+                subtract the average from each value,
+                square all those differences,
+                add them up, divide by <m>n -1</m>,
+                then take the square root.
+                Note: The standard deviation is the square root of the variance.
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                <m>s_{\scriptscriptstyle{X}} = \sqrt{\frac{1}{n-1} \sum{(x_i - \bar{x})^2}}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                The IQR is the difference between the third quartile <m>Q_3</m> and the first quartile <m>Q_1</m>.
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                <m>IQR = Q_3 - Q_1</m>
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Range</em>
+            <idx><h>range|textbf</h></idx>
+          is also sometimes used as a measure of spread.
+          The range of a data set is defined as the difference between the maximum value and the minimum value, i.e.
+          <m>max - min</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Outliers</em>
+            <idx><h>outlier|textbf</h></idx>
+          are observations that are extreme relative to the rest of the data.
+          Two rules of thumb for identifying observations as outliers are:
+          <ul>
+            <li>
+              <p>
+                more than 2 standard deviations above or below the mean
+              </p>
+            </li>
+            <li>
+              <p>
+                more than <m>1.5 \times IQR</m> below <m>Q_1</m> or above <m>Q_3</m>
+              </p>
+            </li>
+          </ul>
+        </p>
+        Note: These rules of thumb generally produce different cutoffs.
+      </li>
+      <li>
+        <p>
+          Mean and SD are sensitive to outliers.
+          Median and IQR are more robust and less sensitive to outliers.
+        </p>
+      </li>
+      <li>
+        <p>
+          The <term>empirical rule</term> states that for normal distributions,
+          about 68% of the data will be within one standard deviation of the mean,
+          about 95% will be within two standard deviations of the mean,
+          and about 99.7% will be within three standard deviations of the mean.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Linear transformations of data</em>.
+            <idx><h>linear transformations of data|textbf</h></idx>
+        Adding a constant to every value in a data set shifts the mean but does not affect the standard deviation.
+          Multiplying the values in a data set by a constant will multiply the mean and the standard deviation by that constant,
+          except that the standard deviation must always remain positive.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Box plots</em>
+            <idx><h>box plot|textbf</h></idx>
+          do not show the <em>distribution</em>
+          of a data set in the way that histograms do.
+          Rather, they provide a visual depiction of the
+          <term>5-number summary</term>, which consists of:
+          <m>min</m>, <m>Q_1</m>, <m>Q_2</m>, <m>Q_3</m>, <m>max</m>.
+          It is important to be able to identify the median, <m>IQR</m>,
+          and direction of skew from a box plot.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="UKSmoking_amounts">
+      <title>Smoking habits of UK residents, Part I</title>
+      <statement>
+        <p>
+          A survey was conducted to study the smoking habits of UK residents.
+          The histograms below display the distributions of the number of cigarettes smoked on weekdays and weekends,
+          and they exclude data from people who identified themselves as non-smokers.
+          Describe the two distributions and compare them. \footfullcite{data:smoking} <image width="70%" source="images/smoking_amountHist.png" />
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="introStatsFinalScores">
+      <title>Stats scores, Part I</title>
+      <statement>
+        <p>
+          Below are the final exam scores of twenty introductory statistics students. 79, 83, 57, 82, 94, 83, 72, 74, 73, 71, 66, 89, 78, 81, 78, 81, 88, 69, 77, 79 Draw a histogram of these data and describe the distribution.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="UKSmoking_amounts_data">
+      <title>Smoking habits of UK residents, Part II</title>
+      <statement>
+        <p>
+          A random sample of 5 smokers from the data set discussed in <xref ref="UKSmoking_amounts">Exercise</xref> is provided below. {
+        </p>
+        <tabular>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>gender</cell>
+            <cell>age</cell>
+            <cell>maritalStatus</cell>
+            <cell>grossIncome</cell>
+            <cell>smoke</cell>
+            <cell>amtWeekends</cell>
+            <cell>amtWeekdays</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>Female</cell>
+            <cell>51</cell>
+            <cell>Married</cell>
+            <cell><m>\pounds</m>2,600 to <m>\pounds</m>5,200</cell>
+            <cell>Yes</cell>
+            <cell>20 cig/day</cell>
+            <cell>20 cig/day</cell>
+          </row>
+          <row>
+            <cell>Male</cell>
+            <cell>24</cell>
+            <cell>Single</cell>
+            <cell><m>\pounds</m>10,400 to <m>\pounds</m>15,600</cell>
+            <cell>Yes</cell>
+            <cell>20 cig/day</cell>
+            <cell>15 cig/day</cell>
+          </row>
+          <row>
+            <cell>Female</cell>
+            <cell>33</cell>
+            <cell>Married</cell>
+            <cell><m>\pounds</m>10,400 to <m>\pounds</m>15,600</cell>
+            <cell>Yes</cell>
+            <cell>20 cig/day</cell>
+            <cell>10 cig/day</cell>
+          </row>
+          <row>
+            <cell>Female</cell>
+            <cell>17</cell>
+            <cell>Single</cell>
+            <cell><m>\pounds</m>5,200 to <m>\pounds</m>10,400</cell>
+            <cell>Yes</cell>
+            <cell>20 cig/day</cell>
+            <cell>15 cig/day</cell>
+          </row>
+          <row>
+            <cell>Female</cell>
+            <cell>76</cell>
+            <cell>Widowed</cell>
+            <cell><m>\pounds</m>5,200 to <m>\pounds</m>10,400</cell>
+            <cell>Yes</cell>
+            <cell>20 cig/day</cell>
+            <cell>20 cig/day</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              Find the mean amount of cigarettes smoked on weekdays and weekends by these 5 respondents.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the standard deviation of the amount of cigarettes smoked on weekdays and on weekends by these 5 respondents.
+              Is the variability higher on weekends or on weekdays?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Factory defective rate</title>
+      <statement>
+        <p>
+          A factory quality control manager decides to investigate the percentage of defective items produced each day.
+          Within a given work week (Monday through Friday) the percentage of defective items produced was 2%, 1.4%, 4%, 3%, 2.2%.
+          <ol>
+            <li>
+              <p>
+                Calculate the mean for these data.
+              </p>
+            </li>
+            <li>
+              <p>
+                Calculate the standard deviation for these data,
+                showing each step in detail.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="days_off_mining">
+      <title>Days off at a mining plant</title>
+      <statement>
+        <p>
+          Workers at a particular mining site receive an average of 35 days paid vacation,
+          which is lower than the national average.
+          The manager of this plant is under pressure from a local union to increase the amount of paid time off.
+          However, he does not want to give more days off to the workers because that would be costly.
+          Instead he decides he should fire 10 employees in such a way as to raise the average number of days off that are reported by his employees.
+          In order to achieve this goal,
+          should he fire employees who have the most number of days off,
+          least number of days off,
+          or those who have about the average number of days off?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Medians and IQRs</title>
+      <statement>
+        <p>
+          For each part,
+          compare distributions (1) and (2) based on their medians and IQRs.
+          You do not need to calculate these statistics;
+          simply state how the medians and IQRs compare.
+          Make sure to explain your reasoning.
+          <ol>
+            <li>
+              <p>
+                (1) 3, 5, 6, 7, 9 (2) 3, 5, 6, 7, 20
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) 3, 5, 6, 7, 9 (2) 3, 5, 7, 8, 9
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) 1, 2, 3, 4, 5 (2) 6, 7, 8, 9, 10
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) 0, 10, 50, 60, 100 (2) 0, 100, 500, 600, 1000
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Means and SDs</title>
+      <statement>
+        <p>
+          For each part,
+          compare distributions (1) and (2) based on their means and standard deviations.
+          You do not need to calculate these statistics;
+          simply state how the means and the standard deviations compare.
+          Make sure to explain your reasoning.
+          <em>Hint:</em> It may be useful to sketch dot plots of the distributions.
+          <ol>
+            <li>
+              <p>
+                (1) 3, 5, 5, 5, 8, 11, 11, 11, 13 (2) 3, 5, 5, 5, 8, 11, 11, 11, 20
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) -20, 0, 0, 0, 15, 25, 30, 30 (2) -40, 0, 0, 0, 15, 25, 30, 30
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) 0, 2, 4, 6, 8, 10 (2) 20, 22, 24, 26, 28, 30
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) 100, 200, 300, 400, 500 (2) 0, 50, 300, 550, 600
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Mix-and-match</title>
+      <statement>
+        <p>
+          Describe the distribution in the histograms below and match them to the box plots.
+          <image width="73%" source="images/hist_box_match.png" />
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="air_quality_durham">
+      <title>Air quality</title>
+      <statement>
+        <p>
+          Daily air quality is measured by the air quality index (AQI) reported by the Environmental Protection Agency.
+          This index reports the pollution level and what associated health effects might be a concern.
+          The index is calculated for five major air pollutants regulated by the Clean Air Act and takes values from 0 to 300,
+          where a higher value indicates lower air quality.
+          AQI was reported for a sample of 91 days in 2011 in Durham, NC. The relative frequency histogram below shows the distribution of the AQI values on these days. \footfullcite{data:durhamAQI:2011}
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                Estimate the median AQI value of this sample.
+              </p>
+            </li>
+            <li>
+              <p>
+                Would you expect the mean AQI value of this sample to be higher or lower than the median?
+                Explain your reasoning.
+              </p>
+            </li>
+            <li>
+              <p>
+                Estimate Q1, Q3, and IQR for the distribution.
+              </p>
+            </li>
+            <li>
+              <p>
+                Would any of the days in this sample be considered to have an unusually low or high AQI? Explain your reasoning.
+              </p>
+            </li>
+          </ol>
+          <image width="73%" source="images/air_quality_durham_rel_freq_hist.png" />
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="estimate_mean_median_simple">
+      <title>Median vs. mean</title>
+      <statement>
+        <p>
+          Estimate the median for the 400 observations shown in the histogram,
+          and note whether you expect the mean to be higher or lower than the median.
+          <image width="60%" source="images/estimate_mean_median_simple.png" />
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="hist_vs_box">
+      <title>Histograms vs. box plots</title>
+      <statement>
+        <p>
+          Compare the two plots below.
+          What characteristics of the distribution are apparent in the histogram and not in the box plot?
+          What characteristics are apparent in the box plot but not in the histogram?
+          <image width="60%" source="images/hist_vs_box.png" />
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="dist_shape_fb_friends">
+      <title>Facebook friends</title>
+      <statement>
+        <p>
+          Facebook data indicate that 50% of Facebook users have 100 or more friends,
+          and that the average friend count of users is 190.
+          What do these findings suggest about the shape of the distribution of number of friends of Facebook users? \footfullcite{Backstrom:2011}
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="dist_shape_pets_dist_height">
+      <title>Distributions and appropriate statistics, Part I</title>
+      <statement>
+        <p>
+          For each of the following,
+          state whether you expect the distribution to be symmetric,
+          right skewed, or left skewed.
+          Also specify whether the mean or median would best represent a typical observation in the data,
+          and whether the variability of observations would be best represented using the standard deviation or IQR. Explain your reasoning.
+          <ol>
+            <li>
+              <p>
+                Number of pets per household.
+              </p>
+            </li>
+            <li>
+              <p>
+                Distance to work, i.e. number of miles between work and home.
+              </p>
+            </li>
+            <li>
+              <p>
+                Heights of adult males.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="dist_shape_housing_alcohol_salary">
+      <title>Distributions and appropriate statistics, Part II</title>
+      <statement>
+        <p>
+          For each of the following,
+          state whether you expect the distribution to be symmetric,
+          right skewed, or left skewed.
+          Also specify whether the mean or median would best represent a typical observation in the data,
+          and whether the variability of observations would be best represented using the standard deviation or IQR. Explain your reasoning.
+          <ol>
+            <li>
+              <p>
+                Housing prices in a country where 25% of the houses cost below $350,000, 50% of the houses cost below $450,000, 75% of the houses cost below $1,000,000 and there are a meaningful number of houses that cost more than $6,000,000.
+              </p>
+            </li>
+            <li>
+              <p>
+                Housing prices in a country where 25% of the houses cost below $300,000, 50% of the houses cost below $600,000, 75% of the houses cost below $900,000 and very few houses that cost more than $1,200,000.
+              </p>
+            </li>
+            <li>
+              <p>
+                Number of alcoholic drinks consumed by college students in a given week.
+                Assume that most of these students don't drink since they are under 21 years old,
+                and only a few drink excessively.
+              </p>
+            </li>
+            <li>
+              <p>
+                Annual salaries of the employees at a Fortune 500 company where only a few high level executives earn much higher salaries than all the other employees.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="income_coffee_shop">
+      <title>Income at the coffee shop</title>
+      <statement>
+        <p>
+          The first histogram below shows the distribution of the yearly incomes of 40 patrons at a college coffee shop.
+          Suppose two new people walk into the coffee shop:
+          one making $225,000 and the other $250,000.
+          The second histogram shows the new income distribution.
+          Summary statistics are also provided.
+        </p>
+        <sidebyside>
+          <image width="73%" source="images/income_coffee_shop.png" />
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell></cell>
+              <cell>(1)</cell>
+              <cell>(2)</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>n</cell>
+              <cell>40</cell>
+              <cell>42</cell>
+            </row>
+            <row>
+              <cell>Min.</cell>
+              <cell>60,680</cell>
+              <cell>60,680</cell>
+            </row>
+            <row>
+              <cell>1st Qu.</cell>
+              <cell>63,620</cell>
+              <cell>63,710</cell>
+            </row>
+            <row>
+              <cell>Median</cell>
+              <cell>65,240</cell>
+              <cell>65,350</cell>
+            </row>
+            <row>
+              <cell>Mean</cell>
+              <cell>65,090</cell>
+              <cell>73,300</cell>
+            </row>
+            <row>
+              <cell>3rd Qu.</cell>
+              <cell>66,160</cell>
+              <cell>66,540</cell>
+            </row>
+            <row>
+              <cell>Max.</cell>
+              <cell>69,890</cell>
+              <cell>250,000</cell>
+            </row>
+            <row>
+              <cell>SD</cell>
+              <cell>2,122</cell>
+              <cell>37,321</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+        </sidebyside>
+        <ol>
+          <li>
+            <p>
+              Would the mean or the median best represent what we might think of as a typical income for the 42 patrons at this coffee shop?
+              What does this say about the robustness of the two measures?
+            </p>
+          </li>
+          <li>
+            <p>
+              Would the standard deviation or the IQR best represent the amount of variability in the incomes of the 42 patrons at this coffee shop?
+              What does this say about the robustness of the two measures?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="midrange">
+      <title>Midrange</title>
+      <statement>
+        <p>
+          The <em>midrange</em> of a distribution is defined as the average of the maximum and the minimum of that distribution.
+          Is this statistic robust to outliers and extreme skew?
+          Explain your reasoning
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="county_commute_times">
+      <title>Commute times</title>
+      <statement>
+        <p>
+          The US census collects data on time it takes Americans to commute to work,
+          among many other variables.
+          The histogram below shows the distribution of average commute times in 3,142 US counties in 2017.
+          Also shown below is a spatial intensity map of the same data.
+          <url href="\oiRedirectUrl{tableau-histogramschoose}"><image width="46%" source="images/county_commute_times_hist.png" /></url>
+          \oiRedirect{
+          <url href="\oiRedirectUrl{tableau-intensitymapsall}">\includegraphics[height=tableau-histogramschoose]{extraTeX/icons/tableau}</url>
+          <image width="46%" source="images/county_commute_times_map.png" /> }\oiRedirect{\includegraphics[height=tableau-intensitymapsall]{extraTeX/icons/tableau}}
+          <ol>
+            <li>
+              <p>
+                Describe the numerical distribution and comment on whether or not a log transformation may be advisable for these data.
+              </p>
+            </li>
+            <li>
+              <p>
+                Describe the spatial distribution of commuting times using the map provided.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="county_hispanic_pop">
+      <title>Hispanic population</title>
+      <statement>
+        <p>
+          The US census collects data on race and ethnicity of Americans,
+          among many other variables.
+          The histogram below shows the distribution of the percentage of the population that is Hispanic in 3,142 counties in the US in 2017.
+          Also shown is a histogram of logs of these values.
+          <url href="\oiRedirectUrl{tableau-histogramschoose}"><image width="47%" source="images/county_hispanic_pop_hist.png" /></url>
+          \oiRedirect{<image width="47%" source="images/county_hispanic_pop_log_hist.png" />}{\includegraphics[height=tableau-histogramschoose]{extraTeX/icons/tableau}}
+          <url href="\oiRedirectUrl{tableau-intensitymapsall}"><image width="48%" source="images/county_hispanic_pop_map.png" /></url>
+          \oiRedirect{\includegraphics[height=tableau-intensitymapsall]{extraTeX/icons/tableau}}
+          <ol>
+            <li>
+              <p>
+                Describe the numerical distribution and comment on why we might want to use log-transformed values in analyzing or modeling these data.
+              </p>
+            </li>
+            <li>
+              <p>
+                What features of the distribution of the Hispanic population in US counties are apparent in the map but not in the histogram?
+                What features are apparent in the histogram but not the map?
+              </p>
+            </li>
+            <li>
+              <p>
+                Is one visualization more appropriate or helpful than the other?
+                Explain your reasoning.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

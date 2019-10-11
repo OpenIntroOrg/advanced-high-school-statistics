@@ -1,0 +1,1006 @@
+<section xml:id="section_obs_data_sampling">
+  <title>Observational studies and sampling strategies</title>
+  <introduction>
+    <p>
+      You have probably read or heard claims from many studies and polls.
+      A<nbsp/>background in statistical reasoning will help you assess the validity of such claims.
+      Some of the big questions we address in this section include:
+      <ul>
+        <li>
+          <p>
+            If a study finds a relationship between two variables,
+            such as eating chocolate and positive health outcomes,
+            is it reasonable to conclude eating chocolate improves health outcomes?
+          </p>
+        </li>
+        <li>
+          <p>
+            How do opinion polls work?
+            How do research organizations collect the data,
+            and what types of bias should we look out for?
+          </p>
+        </li>
+      </ul>
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Identify possible confounding factors in a study and explain,
+          in context, how they could confound.
+        </p>
+      </li>
+      <li>
+        <p>
+          Distinguish among and describe a convenience sample,
+          a volunteer sample, and a random sample.
+        </p>
+      </li>
+      <li>
+        <p>
+          Identify and describe the effects of different types of bias in sample surveys,
+          including undercoverage, non-response, and response bias.
+        </p>
+      </li>
+      <li>
+        <p>
+          Identify and describe how to implement different random sampling methods,
+          including simple, systematic, stratified, and cluster.
+        </p>
+      </li>
+      <li>
+        <p>
+          Recognize the benefits and drawbacks of choosing one sampling method over another.
+        </p>
+      </li>
+      <li>
+        <p>
+          Understand when it valid to generalize and to what population that generalization can be made.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Observational studies</title>
+    <p>
+      Generally, data in observational studies are collected only by monitoring what occurs,
+      while experiments require the primary explanatory variable in a study be assigned for each subject by the researchers.
+    </p>
+    <p>
+      Making causal conclusions based on experiments is often reasonable.
+      However, making the same causal conclusions based on observational data is treacherous and is not recommended.
+      Observational studies are generally only sufficient to show associations.
+    </p>
+    <exercise xml:id="sunscreenLurkingExample">
+      <statement>
+        <p>
+          Suppose an observational study tracked sunscreen use and skin cancer,
+          and it was found people who use sunscreen are more likely to get skin cancer than people who do not use sunscreen.
+          Does this mean sunscreen <em>causes</em> skin cancer?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Some previous research tells us that using sunscreen actually reduces skin cancer risk,
+      so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer.
+      One important piece of information that is absent is sun exposure.
+      Sun exposure is what is called a
+      <term>confounding variable</term>
+      (also called a <term>lurking variable</term>,
+      <term>confounding factor</term>,
+      or a <term>confounder</term>).
+      <image width="56%" source="images/sunCausesCancer.png" />
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        A confounding variable is a variable that is associated with both the explanatory
+        <em>and</em> response variables.
+        Because of the confounding variable's association with both variables,
+        we do not know if the response is due to the explanatory variable or due to the confounding variable.
+      </p>
+    </assemblage>
+    <p>
+      Sun exposure is a confounding factor because it is associated with both the use of sunscreen and the development of skin cancer.
+      People who are out in the sun all day are more likely to use sunscreen,
+      and people who are out in the sun all day are more likely to get skin cancer.
+      Research shows us the development of skin cancer is due to the sun exposure.
+      The variables of sunscreen usage and sun exposure are <term>confounded</term>,
+      and without this research,
+      we would have no way of knowing which one was the true cause of skin cancer.
+    </p>
+    <example>
+      <statement>
+        <p>
+          In a study that followed 1,169 non-diabetic men and women who had been hospitalized for a first heart attack,
+          the people that reported eating chocolate had increased survival rate over the next 8 years than those that reported not eating chocolate.
+          Also, those who ate more chocolate also tended to live longer on average.
+          The researched controlled for several confounding factors,
+          such as age,
+          physical activity, smoking, and many other factors.
+          Can we conclude that the consumption of chocolate caused the people to live longer?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          In a study that followed 1,169 non-diabetic men and women who had been hospitalized for a first heart attack,
+          the people that reported eating chocolate had increased survival rate over the next 8 years than those that reported not eating chocolate.
+          Also, those who ate more chocolate also tended to live longer on average.
+          The researched controlled for several confounding factors,
+          such as age,
+          physical activity, smoking, and many other factors.
+          Can we conclude that the consumption of chocolate caused the people to live longer?
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          The authors who conducted the study did warn in the article that additional studies would be necessary to determine whether the correlation between chocolate consumption and survival translates to any causal relationship.
+          That is, they acknowledged that there may be confounding factors.
+          One possible confounding factor not considered was mental health.
+          In context, explain what it would mean for mental health to be a confounding factor in this study.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The authors who conducted the study did warn in the article that additional studies would be necessary to determine whether the correlation between chocolate consumption and survival translates to any causal relationship.
+          That is, they acknowledged that there may be confounding factors.
+          One possible confounding factor not considered was mental health.
+          In context, explain what it would mean for mental health to be a confounding factor in this study.
+        </p>
+      </solution>
+    </example>
+    <p>
+      While one method to justify making causal conclusions from observational studies is to exhaust the search for confounding variables,
+      there is no guarantee that all confounding variables can be examined or measured.
+    </p>
+    <p>
+      In the same way,
+      the <c>county</c> data set is an observational study with confounding variables,
+      and its data cannot be used to make causal conclusions.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          <xref ref="multiunitsVsOwnership">Figure</xref>
+          shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county.
+          However, it is unreasonable to conclude that there is a causal relationship between the two variables.
+          Suggest one or more other variables that might explain the relationship visible in <xref ref="multiunitsVsOwnership">Figure</xref>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Observational studies come in two forms:
+      prospective and retrospective studies.
+      A <term>prospective study</term> identifies individuals and collects information as events unfold.
+      For instance,
+      medical researchers may identify and follow a group of similar individuals over many years to assess the possible influences of behavior on cancer risk.
+      One example of such a study is The Nurses' Health Study,
+      started in 1976 and expanded in 1989.<fn>
+      MISSINGoiRedirect
+      </fn> This prospective study recruits registered nurses and then collects data from them using questionnaires.
+      <em>Retrospective studies</em><idx><h>retrospective studies|textbf</h></idx> collect data after events have taken place,
+      e.g. researchers may review past events in medical records.
+      Some data sets,
+      such as <c>county</c>,
+      may contain both prospectively- and retrospectively-collected variables.
+      Local governments prospectively collect some variables as events unfolded (e.g. retails sales) while the federal government retrospectively collected others during the 2010 census (e.g. county population counts).
+    </p>
+  </subsection>
+  <subsection>
+    <title>Sampling from a population</title>
+    <p>
+          <idx><h>sample</h><h>random sample</h></idx>
+    </p>
+    <p>
+      We might try to estimate the time to graduation for Duke undergraduates in the last 5 years by collecting a sample of students.
+      All graduates in the last 5 years represent the <em>population</em>,
+          <idx><h>population</h></idx>
+      and graduates who are selected for review are collectively called the <em>sample</em>.
+          <idx><h>sample</h></idx>
+      The goal is to use information from the sample to generalize or make an inference to the population.
+      In order to be able to generalize,
+      we must <em>randomly</em> select a sample from the population of interest.
+      The most basic type of random selection is equivalent to how raffles are conducted.
+      For example, in selecting graduates,
+      we could write each graduate's name on a raffle ticket and draw 100 tickets.
+      The selected names would represent a random sample of 100 graduates.
+    </p>
+    <figure xml:id="popToSampleGraduates">
+      <caption>In this graphic, five graduates are randomly selected from the population to be included in the sample.</caption>
+      <image width="47%" source="images/popToSampleGraduates.png" />
+    </figure>
+    <p>
+      Why pick a sample randomly?
+      Why not just pick a sample by hand?
+      Consider the following scenario.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Suppose we ask a student who happens to be majoring in nutrition to select several graduates for the study.
+          What kind of students do you think she might select?
+          Do you think her sample would be representative of all graduates?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Suppose we ask a student who happens to be majoring in nutrition to select several graduates for the study.
+          What kind of students do you think she might select?
+          Do you think her sample would be representative of all graduates?
+        </p>
+      </solution>
+    </example>
+    <figure xml:id="popToSubSampleGraduates">
+      <caption>Instead of sampling from all graduates equally, a nutrition major might inadvertently pick graduates with health-related majors disproportionately often.</caption>
+      <image width="47%" source="images/popToSubSampleGraduates.png" />
+    </figure>
+    <p>
+      If the student majoring in nutrition picked a disproportionate number of graduates from health-related fields,
+      this would introduce undercoverage bias into the sample.
+      <em>Undercoverage bias</em><idx><h>undercoverage bias|textbf</h></idx> occurs when some individuals of the population are inherently less likely to be included in the sample than others,
+      making the sample not representative of the population.
+      In the example,
+      this bias creates a problem because a degree in health-related fields might take more or less time to complete than a degree in other fields.
+      Suppose that it takes longer.
+      Since graduates from other fields would be less likely to be in the sample,
+      the undercoverage bias would cause her to
+      <em>overestimate</em> the parameter.
+    </p>
+    <p>
+      Sampling randomly resolves the problem of undercoverage bias,
+      <em>if the sample is randomly selected from the entire population of interest</em>.
+      If the sample is randomly selected from only a subset of the population, say,
+      only graduates from health-related fields,
+      then the sample will not be representative of the population of interest.
+      Generalizations can only be made to the population from which the sample is randomly selected.
+    </p>
+    <p>
+      The most basic random sample is called a
+      <term>simple random sample</term>,
+      which is equivalent to using a raffle to select cases.
+      This means that each case in the population has an equal chance of being included and there is no implied connection between the cases in the sample.
+    </p>
+    <p>
+      A common downfall is a <term>convenience sample</term>,
+          <idx><h>sample</h><h>convenience sample</h></idx>
+      where individuals who are easily accessible are more likely to be included in the sample.
+      For instance,
+      if a political survey is done by stopping people walking in the Bronx,
+      this will not represent all of New York City.
+      It is often difficult to discern what sub-population a convenience sample represents.
+    </p>
+    <figure xml:id="surveySample">
+      <caption>Due to the possibility of non-response, surveys studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem.</caption>
+      <image width="50%" source="images/surveySample.png" />
+    </figure>
+    <p>
+      Similarly, a <term>volunteer sample</term>
+      is one in which people's responses are solicited and those who choose to participate, respond.
+      This is a problem because those who choose to participate may tend to have different opinions than the rest of the population,
+      resulting in a biased sample.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          We can easily access ratings for products, sellers,
+          and companies through websites.
+          These ratings are based only on those people who go out of their way to provide a rating.
+          If 50% of online reviews for a product are negative,
+          do you think this means that 50% of buyers are dissatisfied with the product?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The act of taking a random sample helps minimize bias;
+      however, bias can crop up in other ways.
+      Even when people are picked at random, e.g. for surveys,
+      caution must be exercised if the <term>non-response</term>
+          <idx><h>sample</h><h>non-response|textbf</h></idx>
+      is high.
+      For instance,
+      if only 30% of the people randomly sampled for a survey actually respond,
+      then it is unclear whether the results are
+      <term>representative</term>
+      of the entire population.
+      This <term>non-response bias</term>
+          <idx><h>sample</h><h>non-response bias|textbf</h></idx>
+      can skew results.
+    </p>
+    <p>
+      Even if a sample has no undercoverage bias and no non-response bias,
+      there is an additional type of bias that often crops up and undermines the validity of results,
+      known as response bias.
+      <em>Response bias</em>
+          <idx><h>response bias|textbf</h></idx>
+      refers to a broad range of factors that influence how a person responds,
+      such as question wording, question order,
+      and influence of the interviewer.
+      This type of bias can be present even when we collect data from an entire population in what is called a <term>census</term>.
+      Because response bias is often subtle,
+      one must pay careful attention to how questions were asked when attempting to draw conclusions from the data.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Suppose a high school student wants to investigate the student body's opinions on the food in the cafeteria.
+          Let's assume that she manages to survey every student in the school.
+          How might response bias arise in this context?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Suppose a high school student wants to investigate the student body's opinions on the food in the cafeteria.
+          Let's assume that she manages to survey every student in the school.
+          How might response bias arise in this context?
+        </p>
+      </solution>
+    </example>
+    <assemblage>
+      <title></title>
+      <p>
+        Undercoverage bias, non-response bias,
+        and response bias can still exist within a random sample.
+        Always determine how a sample was chosen,
+        ask what proportion of people failed to respond,
+        and critically examine the wording of the questions.
+      </p>
+    </assemblage>
+    <p>
+      When there is no bias in a sample,
+      increasing the sample size tends to increase the precision and reliability of the estimate.
+      When a sample is biased,
+      it may be impossible to decipher helpful information from the data,
+      even if the sample is very large.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          A researcher sends out questionnaires to 50 randomly selected households in a particular town asking whether or not they support the addition of a traffic light in their neighborhood.
+          Because only 20% of the questionnaires are returned,
+          she decides to mail questionnaires to 50 more randomly selected households in the same neighborhood.
+          Comment on the usefulness of this approach.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+          <idx><h>sample</h><h>random sample</h></idx>
+          <idx><h>population</h></idx>
+          <idx><h>sample</h></idx>
+    </p>
+  </subsection>
+  <subsection xml:id="threeSamplingMethods">
+    <title>Simple, systematic, stratified, cluster, and multistage sampling</title>
+    <p>
+      Almost all statistical methods for observational data rely on a sample being random and unbiased.
+      When a sample is collected in a biased way,
+      these statistical methods will not generally produce reliable information about the population.
+    </p>
+    <p>
+      The idea of a simple random sample was introduced in the last section.
+      Here we provide a more technical treatment of this method and introduce four new random sampling methods:
+      systematic, stratified, cluster, and multistage.<fn>
+      Multistage sampling is not part of the AP syllabus.
+      </fn> <xref ref="simple_systematic">Figure</xref>
+      provides a graphical representation of simple versus systematic sampling while <xref ref="stratified_cluster_multistage">Figure</xref>
+      provides a graphical representation of stratified,
+      cluster, and multistage sampling.
+    </p>
+    <figure xml:id="simple_systematic">
+      <caption>Examples of simple random sampling and systematic sampling. In the top panel, simple random sampling was used to randomly select 18 cases. In the lower panel, systematic random sampling was used to select every 7th individual.</caption>
+      \Figures{0.9}{samplingMethodsFigure}{simple_systematic}
+    </figure>
+    <p>
+      <em>Simple random sampling</em><idx><h>sample</h><h>simple random sampling|textbf</h></idx> is probably the most intuitive form of random sampling.
+      Consider the salaries of Major League Baseball (MLB) players,
+      where each player is a member of one of the league's 30 teams.
+      For the 2019 season, N, the population size or total number of players, is 750.
+      To take a simple random sample of <em>n</em>
+      = 120 of these baseball players and their salaries,
+      we could number each player from 1 to 750.
+      Then we could randomly select 120 numbers between 1 and 750
+      (without replacement)
+      using a random number generator or random digit table.
+      The players with the selected numbers would comprise our sample.
+    </p>
+    <p>
+      Two properties are always true in a simple random sample:
+      <ol>
+        <li>
+          <p>
+            Each case in the population has an equal chance of being included in the sample.
+          </p>
+        </li>
+        <li>
+          <p>
+            Each <em>group</em> of <em>n</em>
+            cases has an equal chance of making up the sample.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      The statistical methods in this book focus on data collected using simple random sampling.
+      Note that Property 2 <mdash/> that each group of <em>n</em>
+      cases has an equal chance making up the sample <mdash/> is not true for the remaining four sampling techniques.
+      As you read each one, consider why.
+    </p>
+    <p>
+      Though less common than simple random sampling,
+      <em>systematic sampling</em><idx><h>sample</h><h>systematic sampling|textbf</h></idx> is sometimes used when there exists a convenient list of all of the individuals of the population.
+      Suppose we have a roster with the names of all the MLB players from the 2019 season.
+      To take a systematic random sample,
+      number them from 1 to 750.
+      Select one random number between 1 and 750 and let that player be the first individual in the sample.
+      Then, depending on the desired sample size,
+      select every 10th number or 20th number,
+      for example, to arrive at the sample.<fn>
+      If we want a sample of size <em>n</em> = 150,
+      it would make sense to select every 5th player since \mbox{<m>750/150 = 5</m>.} Suppose we randomly select the number 741.
+      Then player 741, 746, 1, 6, 11,
+      <m>\cdots</m> , 731, and 736 would make up the sample.
+      </fn> If there are no patterns in the salaries based on the numbering then this could be a reasonable method.
+    </p>
+    <example>
+      <statement>
+        <p>
+          A systematic sample is not the same as a simple random sample.
+          Provide an example of a sample that can come from a simple random sample but not from a systematic random sample.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          A systematic sample is not the same as a simple random sample.
+          Provide an example of a sample that can come from a simple random sample but not from a systematic random sample.
+        </p>
+      </solution>
+    </example>
+    <p>
+      Sometimes there is a variable that is known to be associated with the quantity we want to estimate.
+      In this case, a stratified random sample might be selected.
+      <em>Stratified sampling</em><idx><h>sample</h><h>stratified sampling|textbf</h></idx> is a divide-and-conquer sampling strategy.
+      The population is divided into groups called <term>strata</term>.
+          <idx><h>sample</h><h>strata|textbf</h></idx>
+      The strata are chosen so that similar cases are grouped together and a sampling method,
+      usually simple random sampling,
+      is employed to select a certain number or a certain proportion of the whole within each stratum.
+      In the baseball salary example,
+      the 30 teams could represent the strata;
+      some teams have a lot more money
+      (we're looking at you, Yankees).
+    </p>
+    <figure xml:id="stratified_cluster_multistage">
+      <caption>Examples of stratified, cluster, and multistage sampling. In the top panel, stratified sampling was used: cases were grouped into strata, and then simple random sampling was employed within each stratum. In the middle panel, cluster sampling was used, where data were binned into nine cluster and three clusters were randomly selected. In the bottom panel, multistage sampling was used. Data were binned into the nine clusters, three of the cluster were randomly selected, and then six cases were randomly sampled in each of the three selected clusters.</caption>
+      \Figures{0.85}{samplingMethodsFigure}{stratified_cluster_multistage}
+    </figure>
+    <example>
+      <statement>
+        <p>
+          For this baseball example,
+          briefly explain how to select a stratified random sample of size <em>n</em> = 120.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Each team can serve as a stratum,
+          and we could take a simple random sample of 4 players from each of the 30 teams,
+          yielding a sample of 120 players.
+        </p>
+      </answer>
+    </example>
+    <p>
+      Stratified sampling is inherently different than simple random sampling.
+      For example,
+      the stratified sampling approach described would make it impossible for the entire Yankees team to be included in the sample.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Stratified sampling is especially useful when the cases in each stratum are very similar
+          <em>with respect to the outcome of interest</em>.
+          Why is it good for cases within each stratum to be very similar?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We should get a more stable estimate for the subpopulation in a stratum if the cases are very similar.
+          These improved estimates for each subpopulation will help us build a reliable estimate for the full population.
+          For example, in a simple random sample,
+          it is possible that just by random chance we could end up with proportionally too many Yankees players in our sample,
+          thus overestimating the true average salary of all MLB players.
+          A stratified random sample can assure proportional representation from each team.
+        </p>
+      </answer>
+    </example>
+    <p>
+      Next, let's consider a sampling technique that randomly selects groups of people.
+      <em>Cluster sampling</em><idx><h>sample</h><h>cluster sampling|textbf</h></idx> is much like simple random sampling,
+      but instead of randomly selecting <em>individuals</em>,
+      we randomly select groups or <term>clusters</term>.
+      Unlike stratified sampling,
+      cluster sampling is most helpful when there is a lot of case-to-case variability within a cluster but the clusters themselves don't look very different from one another.
+      That<nbsp/>is, we expect individual strata to be
+      <term>homogeneous</term> (self-similar),
+      while we expect individual clusters to be
+      <term>heterogeneous</term>
+      (diverse) with respect to the variable of interest.
+    </p>
+    <p>
+      Sometimes cluster sampling can be a more economical random sampling technique than the alternatives.
+      For example, if neighborhoods represented clusters,
+      this sampling method works best when each neighborhood is very diverse.
+      Because each neighborhood itself encompasses diversity,
+      a cluster sample can reduce the time and cost associated with data collection,
+      because the interviewer would need only go to some of the neighborhoods rather than to all parts of a city,
+      in order to collect a useful sample.
+    </p>
+    <p>
+      <em>Multistage sampling</em>,
+          <idx><h>sample</h><h>multistage sampling|textbf</h></idx>
+      also called <em>multistage cluster sampling</em>,
+          <idx><h>sample</h><h>multistage cluster sampling|textbf</h></idx>
+      is a two (or more) step strategy.
+      The first step is to take a cluster sample, as described above.
+      Then, instead of including all of the individuals in these clusters in our sample,
+      a second sampling method,
+      usually simple random sampling,
+      is employed within each of the selected clusters.
+      In the neighborhood example,
+      we could first randomly select some number of neighborhoods and then take a simple random sample from just those selected neighborhoods.
+      As seen in <xref ref="stratified_cluster_multistage">Figure</xref>,
+      stratified sampling requires observations to be sampled from <em>every</em> stratum.
+      Multistage sampling selects observations <em>only</em>
+      from those clusters that were randomly selected in the first step.
+    </p>
+    <p>
+      It is also possible to have more than two steps in multistage sampling.
+      Each cluster may be naturally divided into subclusters.
+      For example, each neighborhood could be divided into streets.
+      To take a three-stage sample,
+      we could first select some number of clusters (neighborhoods),
+      and then,
+      within the selected clusters,
+      select some number of subclusters
+      (streets).
+      Finally, we could select some number of individuals from each of the selected streets.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Suppose we are interested in estimating the proportion of students at a certain school that have part-time jobs.
+          It is believed that older students are more likely to work than younger students.
+          What sampling method should be employed?
+          Describe how to collect such a sample to get a sample size of 60.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Suppose we are interested in estimating the proportion of students at a certain school that have part-time jobs.
+          It is believed that older students are more likely to work than younger students.
+          What sampling method should be employed?
+          Describe how to collect such a sample to get a sample size of 60.
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Suppose we are interested in estimating the malaria rate in a densely tropical portion of rural Indonesia.
+          We learn that there are 30 villages in that part of the Indonesian jungle,
+          each more or less similar to the next.
+          Our goal is to test 150 individuals for malaria.
+          What sampling method should be employed?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Suppose we are interested in estimating the malaria rate in a densely tropical portion of rural Indonesia.
+          We learn that there are 30 villages in that part of the Indonesian jungle,
+          each more or less similar to the next.
+          Our goal is to test 150 individuals for malaria.
+          What sampling method should be employed?
+        </p>
+      </solution>
+    </example>
+    <assemblage>
+      <title></title>
+      <p>
+        {The methods of inference covered in this book generally only apply to simple random samples.
+        More advanced analysis techniques are required for systematic,
+        stratified, cluster, and multistage random sampling.}
+      </p>
+    </assemblage>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          In an <term>observational study</term>,
+          one must always consider the existence of
+          <em>confounding factors</em>.
+            <idx><h>confounding factor|textbf</h></idx>
+        A confounding factor is a
+          <q>spoiler variable</q>
+          that could explain an observed relationship between the explanatory variable and the response.
+          Remember: For a variable to be confounding it must be associated with both the explanatory variable
+          <em>and</em> the response variable.
+        </p>
+      </li>
+      <li>
+        <p>
+          When taking a sample from a population,
+          avoid <em>convenience samples</em><idx><h>convenience sample|textbf</h></idx> and
+          <em>volunteer samples</em>,
+            <idx><h>volunteer sample|textbf</h></idx>
+          which likely introduce bias.
+          Instead, use a <term>random</term> sampling method.
+        </p>
+      </li>
+      <li>
+        <p>
+          Generalizations from a sample can be made to a population only if the sample is random.
+          Furthermore,
+          the generalization can be made only to the population from which the sample was randomly selected,
+          not to a larger or different population.
+        </p>
+      </li>
+      <li>
+        <p>
+          Random sampling from the entire population of interest avoids the problem of
+          <term>undercoverage bias</term>.
+          However, <term>response bias</term>
+          and <term>non-response</term>
+          bias can be present in any type of sample, random or not.
+        </p>
+      </li>
+      <li>
+        <p>
+          In a <term>simple random sample</term>,
+          every <em>individual</em> as well as every
+          <em>group of individuals</em>
+          has the same probability of being in the sample.
+          A common way to select a simple random sample is to number each individual of the population from 1 to N. Using a random digit table or a random number generator,
+          numbers are randomly selected without replacement and the corresponding individuals become part of the sample.
+        </p>
+      </li>
+      <li>
+        <p>
+          A <term>systematic random sample</term>
+          involves choosing from of a population using a random starting point,
+          and then selecting members according to a fixed, periodic interval
+          (such as every 10th member).
+        </p>
+      </li>
+      <li>
+        <p>
+          A <term>stratified random sample</term>
+          involves randomly sampling from
+          <em>every</em> <term>strata</term>,
+          where the strata should correspond to a variable thought to be associated with the variable of interest.
+          This ensures that the sample will have appropriate representation from each of the different strata and reduces variability in the sample estimates.
+        </p>
+      </li>
+      <li>
+        <p>
+          A <term>cluster random sample</term>
+          involves randomly selecting a set of
+          <term>clusters</term>, or groups,
+          and then collecting data on all individuals in the selected clusters.
+          This can be useful when sampling clusters is more convenient and less expensive than sampling individuals,
+          and it is an effective strategy when each cluster is approximately representative of the population.
+        </p>
+      </li>
+      <li>
+        <p>
+          Remember: <em>Individual strata should be homogeneous (self-similar),
+          while individual clusters should be heterogeneous (diverse)</em>.
+          For example,
+          if smoking is correlated with what is being estimated,
+          let one stratum be all smokers and the other be all non-smokers,
+          then randomly select an appropriate number of <em>individuals</em>
+          from <em>each</em> strata.
+          Alternately,
+          if age is correlated with the variable being estimated,
+          one could randomly select a <em>subset</em> of clusters,
+          where each cluster has mixed age groups.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="course_satisfaction_sections">
+      <title>Course satisfaction across sections</title>
+      <statement>
+        <p>
+          A large college class has 160 students.
+          All 160 students attend the lectures together,
+          but the students are divided into 4 groups, each of 40 students,
+          for lab sections administered by different teaching assistants.
+          The professor wants to conduct a survey about how satisfied the students are with the course,
+          and he believes that the lab section a student is in might affect the student's overall satisfaction with the course.
+          <ol>
+            <li>
+              <p>
+                What type of study is this?
+              </p>
+            </li>
+            <li>
+              <p>
+                Suggest a sampling strategy for carrying out this study.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="housing_proposal_dorms">
+      <title>Housing proposal across dorms</title>
+      <statement>
+        <p>
+          On a large college campus first-year students and sophomores live in dorms located on the eastern part of the campus and juniors and seniors live in dorms located on the western part of the campus.
+          Suppose you want to collect student opinions on a new housing structure the college administration is proposing and you want to make sure your survey equally represents opinions from students from all years.
+          <ol>
+            <li>
+              <p>
+                What type of study is this?
+              </p>
+            </li>
+            <li>
+              <p>
+                Suggest a sampling strategy for carrying out this study.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="internet_life_expectancy">
+      <title>Internet use and life expectancy</title>
+      <statement>
+        <p>
+          The following scatterplot was created as part of a study evaluating the relationship between estimated life expectancy at birth
+          (as of 2014)
+          and percentage of internet users
+          (as of 2009)
+          in 208 countries for which such data were available.\footfullcite{data:ciaFactbook}
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                Describe the relationship between life expectancy and percentage of internet users.
+              </p>
+            </li>
+            <li>
+              <p>
+                What type of study is this?
+              </p>
+            </li>
+            <li>
+              <p>
+                State a possible confounding variable that might explain this relationship and describe its potential effect.
+              </p>
+            </li>
+          </ol>
+          \vspace{15mm}
+        </sidebyside>
+        <image source="images/b855d5b21d93e69bfae0b6f89ba231a3a28439d7.png"/>
+      </statement>
+    </exercise>
+    <exercise xml:id="stressed_out_observational">
+      <title>Stressed out, Part I</title>
+      <statement>
+        <p>
+          A study that surveyed a random sample of otherwise healthy high school students found that they are more likely to get muscle cramps when they are stressed.
+          The study also noted that students drink more coffee and sleep less when they are stressed.
+          <ol>
+            <li>
+              <p>
+                What type of study is this?
+              </p>
+            </li>
+            <li>
+              <p>
+                Can this study be used to conclude a causal relationship between increased stress and muscle cramps?
+              </p>
+            </li>
+            <li>
+              <p>
+                State possible confounding variables that might explain the observed relationship between increased stress and muscle cramps.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="evaluate_sampling_methods">
+      <title>Evaluate sampling methods</title>
+      <statement>
+        <p>
+          A university wants to determine what fraction of its undergraduate student body support a new $25 annual fee to improve the student union.
+          For each proposed method below,
+          indicate whether the method is reasonable or not.
+          <ol>
+            <li>
+              <p>
+                Survey a simple random sample of 500 students.
+              </p>
+            </li>
+            <li>
+              <p>
+                Stratify students by their field of study,
+                then sample 10% of students from each stratum.
+              </p>
+            </li>
+            <li>
+              <p>
+                Cluster students by their ages (e.g. 18 years old in one cluster, 19 years old in one cluster,
+                etc.), then randomly sample three clusters and survey all students in those clusters.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="random_digit_dialing">
+      <title>Random digit dialing</title>
+      <statement>
+        <p>
+          The Gallup Poll uses a procedure called random digit dialing,
+          which creates phone numbers based on a list of all area codes in America in conjunction with the associated number of residential households in each area code.
+          Give a possible reason the Gallup Poll chooses to use random digit dialing instead of picking phone numbers from the phone book.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="scope_haters">
+      <title>Haters are gonna hate, study confirms</title>
+      <statement>
+        <p>
+          A study published in the <em>Journal of Personality and Social Psychology</em>
+          asked a group of 200 randomly sampled men and women to evaluate how they felt about various subjects,
+          such as camping, health care,
+          architecture, taxidermy, crossword puzzles,
+          and Japan in order to measure their dispositional attitude towards mostly independent stimuli.
+          Then, they presented the participants with information about a new product:
+          a microwave oven.
+          This microwave oven does not exist,
+          but the participants didn't know this,
+          and were given three positive and three negative fake reviews.
+          People who reacted positively to the subjects on the dispositional attitude measurement also tended to react positively to the microwave oven,
+          and those who reacted negatively also tended to react negatively to it.
+          Researchers concluded that ``some people tend to like things,
+          whereas others tend to dislike things,
+          and a more thorough understanding of this tendency will lead to a more thorough understanding of the psychology of attitudes." \footfullcite{Hepler:2013}
+          <ol>
+            <li>
+              <p>
+                What are the cases?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is (are) the response variable(s) in this study?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is (are) the explanatory variable(s) in this study?
+              </p>
+            </li>
+            <li>
+              <p>
+                Does the study employ random sampling?
+              </p>
+            </li>
+            <li>
+              <p>
+                Is this an observational study or an experiment?
+                Explain your reasoning.
+              </p>
+            </li>
+            <li>
+              <p>
+                Can we establish a causal link between the explanatory and response variables?
+              </p>
+            </li>
+            <li>
+              <p>
+                Can the results of the study be generalized to the population at large?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="family_size">
+      <title>Family size</title>
+      <statement>
+        <p>
+          Suppose we want to estimate household size, where a
+          <q>household</q>
+          is defined as people living together in the same dwelling,
+          and sharing living accommodations.
+          If we select students at random at an elementary school and ask them what their family size is,
+          will this be a good measure of household size?
+          Or will our average be biased?
+          If so, will it overestimate or underestimate the true value?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="sampling_strategies">
+      <title>Sampling strategies</title>
+      <statement>
+        <p>
+          A statistics student who is curious about the relationship between the amount of time students spend on social networking sites and their performance at school decides to conduct a survey.
+          Various research strategies for collecting data are described below.
+          In each, name the sampling method proposed and any bias you might expect.
+          <ol>
+            <li>
+              <p>
+                He randomly samples 40 students from the study's population,
+                gives them the survey,
+                asks them to fill it out and bring it back the next day.
+              </p>
+            </li>
+            <li>
+              <p>
+                He gives out the survey only to his friends,
+                making sure each one of them fills out the survey.
+              </p>
+            </li>
+            <li>
+              <p>
+                He posts a link to an online survey on Facebook and asks his friends to fill out the survey.
+              </p>
+            </li>
+            <li>
+              <p>
+                He randomly samples 5 classes and asks a random sample of students from those classes to fill out the survey.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="reading_paper">
+      <title>Reading the paper</title>
+      <statement>
+        <p>
+          Below are excerpts from two articles published in the <em>NY Times</em>:
+          <ol>
+            <li>
+              <p>
+                An article titled <em>Risks: Smokers Found More Prone to Dementia</em>
+                states the following: \footfullcite{news:smokingDementia} { ``Researchers analyzed data from 23,123 health plan members who participated in a voluntary exam and health behavior survey from 1978 to 1985,
+                when they were 50-60 years old. 23 years later,
+                about 25% of the group had dementia,
+                including 1,136 with Alzheimer's disease and 416 with vascular dementia.
+                After adjusting for other factors,
+                the researchers concluded that pack-a-day smokers were 37% more likely than nonsmokers to develop dementia,
+                and the risks went up with increased smoking; 44% for one to two packs a day;
+                and twice the risk for more than two packs."} Based on this study,
+                can we conclude that smoking causes dementia later in life?
+                Explain your reasoning.
+              </p>
+            </li>
+            <li>
+              <p>
+                Another article titled <em>The School Bully Is Sleepy</em>
+                states the following: \footfullcite{news:bullySleep} { ``The University of Michigan study,
+                collected survey data from parents on each child's sleep habits and asked both parents and teachers to assess behavioral concerns.
+                About a third of the students studied were identified by parents or teachers as having problems with disruptive behavior or bullying.
+                The researchers found that children who had behavioral issues and those who were identified as bullies were twice as likely to have shown symptoms of sleep disorders."} A friend of yours who read the article says, ``The study shows that sleep disorders lead to bullying in school children." Is this statement justified?
+                If not, how best can you describe the conclusion that can be drawn from this study?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

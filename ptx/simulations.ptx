@@ -1,0 +1,548 @@
+<section xml:id="simulations">
+  <title>Simulations</title>
+  <introduction>
+    <p>
+          <idx><h>simulations</h></idx>
+    </p>
+    <p>
+      What is the probability of getting a sum greater than 16 in three rolls of a die?
+      Finding all possible combinations that satisfy this would be tedious,
+      but we could conduct a physical simulation or a computer simulation to estimate this probability.
+      With modern computing power,
+      simulations have become an important and powerful tool for data scientists.
+      In this section,
+      we will look at the concepts that underlie simulations.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Understand the purpose of a simulation and recognize the application of the long-run relative frequency interpretation of probability.
+        </p>
+      </li>
+      <li>
+        <p>
+          Understand how random digit tables work and how to assign digits to outcomes.
+        </p>
+      </li>
+      <li>
+        <p>
+          Be able to repeat a simulation a set number of trials or until a condition is true,
+          and use the results to estimate the probability of interest.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Setting up and carrying out simulations</title>
+    <p>
+      In the previous section we saw how to apply the binomial formula to find the probability of exactly <m>x</m> successes in <m>n</m> independent trials when a success has probability <m>p</m>.
+      Sometimes we have a problem we want to solve but we don't know the appropriate formula,
+      or even worse, a formula may not exist.
+      In this case,
+      one common approach is to estimate the probability using <em>simulations</em>.
+          <idx><h>simulation|textbf</h></idx>
+    </p>
+    <p>
+      You may already be familiar with simulations.
+      Want to know the probability of rolling a sum of 7 with a pair of dice?
+      Roll a pair of dice many, many,
+      many times and see what proportion of times the sum is 7.
+      The more times you roll the pair of dice,
+      the better the estimate will tend to be.
+      Of course, such experiments can be time consuming or even infeasible.
+    </p>
+    <p>
+      In this section, we consider simulations using
+      <term>random numbers</term>.
+      Random numbers
+      (or technically,
+      <em>psuedo-random numbers</em><idx><h>random numbers</h><h>psuedo-random numbers</h></idx>)
+      can be produced using a calculator or computer.
+      Random digits are produced such that each digit,
+      <em>0-9</em>, is equally likely to come up in each spot.
+      You'll find that occasionally we may have the same number in a row <mdash/> sometimes multiple times <mdash/> but in the long run,
+      each digit should appear 1/10th of the time.
+    </p>
+    <table xml:id="sampleRandomNumberTable">
+      <caption>Random number table. A full page of random numbers may be found in <xref ref="randomNumberTable">Appendix</xref> on <xref ref="randomNumberTable">page</xref>.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell>Column</cell>
+        </row>
+        <row>
+          <cell><nbsp/><nbsp/><nbsp/>Row<nbsp/><nbsp/><nbsp/><nbsp/></cell>
+          <cell>1-5</cell>
+          <cell></cell>
+          <cell>6-10</cell>
+          <cell></cell>
+          <cell>11-15</cell>
+          <cell></cell>
+          <cell>16-20</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>43087</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>41864</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>51009</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>39689</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>63432</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>72132</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>40269</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>56103</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>19025</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>83056</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>62511</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>52598</cell>
+        </row>
+        <row>
+          <cell>4</cell>
+          <cell>85117</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>16706</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>31083</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>24816</cell>
+        </row>
+        <row>
+          <cell>5</cell>
+          <cell>16285</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>56280</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>01494</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>90240</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>6</cell>
+          <cell>94342</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>18473</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>50845</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>77757</cell>
+        </row>
+        <row>
+          <cell>7</cell>
+          <cell>61099</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>14136</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>39052</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>50235</cell>
+        </row>
+        <row>
+          <cell>8</cell>
+          <cell>37537</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>58839</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>56876</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>02960</cell>
+        </row>
+        <row>
+          <cell>9</cell>
+          <cell>04510</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>16172</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>90838</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>15210</cell>
+        </row>
+        <row>
+          <cell>10</cell>
+          <cell>27217</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>12151</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>52645</cell>
+          <cell><nbsp/><nbsp/></cell>
+          <cell>96218</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <example>
+      <statement>
+        <p>
+          Mika's favorite brand of cereal is running a special where 20% of the cereal boxes contain a prize.
+          Mika really wants that prize.
+          If her mother buys 6 boxes of the cereal over the next few months,
+          what is the probability Mika will get a prize?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Mika's favorite brand of cereal is running a special where 20% of the cereal boxes contain a prize.
+          Mika really wants that prize.
+          If her mother buys 6 boxes of the cereal over the next few months,
+          what is the probability Mika will get a prize?
+        </p>
+      </solution>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Finish the simulation above and report the estimate for the probability that Mika will get a prize if her mother buys 6 boxes of cereal where each one has a 20% chance of containing a prize.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          In the previous example,
+          the probability that a box of cereal contains a prize is 20%. The question presented is equivalent to asking,
+          what is the probability of getting at least one prize in six randomly selected boxes of cereal.
+          This probability question can be solved explicitly using the method of complements.
+          Find this probability.
+          How does the estimate arrived at by simulation compare to this probability?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We can also use simulations to estimate quantities other than probabilities.
+      Consider the following example.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Let's say that instead of buying exactly 6 boxes of cereal, Mika's mother agrees to buy boxes of this cereal <em>until</em>
+          she finds one with a prize.
+          On average, how many boxes of cereal would one have to buy until one gets a prize?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          For this question, we can use the same digit assignment.
+          However, our stopping rule is different.
+          Each trial may require a different number of digits.
+          For each trial, the stopping rule is:
+          look at digits until we encounter a
+          <em>0</em> or a <em>1</em>.
+          Then, record how many digits/boxes of cereal it took.
+          Repeat the simulation for 20 trials,
+          and then average the numbers from each trial.
+        </p>
+        <p>
+          Let's begin again at row 1.
+          We can read across or down, depending upon what is most convenient.
+          Since there are 20 columns and we want 20 trials,
+          we will read down the columns.
+          Starting at column 1, we count how many digits
+          (boxes of cereal)
+          we encounter until we reach a <em>0</em> or <em>1</em>
+          (which represent a prize).
+          For trial 1 we see <em>461</em>, so we record 3.
+          For trial 2 we see <em>3395641</em>, so we record 7.
+          For trial 3, we see <em>0</em>, so we record 1.
+          The rest of this exercise is left as a Guided Practice problem for you to complete.
+        </p>
+      </answer>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Finish the simulation above and report your estimate for the average number of boxes of cereal one would have to buy until encountering a prize,
+          where the probability of a prize in each box is 20%.
+        </p>
+      </statement>
+    </exercise>
+    <example>
+      <statement>
+        <p>
+          Now, consider a case where the probability of interest is not 20%, but rather 28%. Which digits should correspond to success and which to failure?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Now, consider a case where the probability of interest is not 20%, but rather 28%. Which digits should correspond to success and which to failure?
+        </p>
+      </solution>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Assume the probability of winning a particular casino game is 45%. We want to carry out a simulation to estimate the probability that we will win at least 5 times in 10 plays.
+          We will use 30 trials of the simulation.
+          Assign digits to outcomes.
+          Also, how many total digits will we require to run this simulation?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Assume carnival spinner has 7 slots.
+          We want to carry out a simulation to estimate the probability that we will win at least 10 times in 60 plays.
+          Repeat 100 trials of the simulation.
+          Assign digits to outcomes.
+          Also, how many total digits will we require to run this simulation?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Does anyone perform simulations like this?
+      Sort of.
+      Simulations are used a lot in statistics,
+      and these often require the same principles covered in this section to properly set up those simulations.
+      The difference is in implementation after the setup.
+      Rather than use a random number table,
+      a data scientist will write a program that uses a pseudo-random number generator in a computer to run the simulations very quickly <mdash/> often times millions of trials each second,
+      which provides much more accurate estimates than running a couple dozen trials by hand.
+    </p>
+    <p>
+          <idx><h>simulations</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          When a probability is difficult to determine via a formula,
+          one can set up a <term>simulation</term>
+          to estimate the probability.
+        </p>
+      </li>
+      <li>
+        <p>
+          The <term>relative frequency</term>
+          theory of probability and the <term>Law of Large Numbers</term>
+          are the mathematical underpinning of simulations.
+          A larger number of trials should tend to produce better estimates.
+        </p>
+      </li>
+      <li>
+        <p>
+          The first step to setting up a simulation is to assign digits to represent outcomes.
+          This should be done in such a way as to give the event of interest the correct probability.
+          Then, using a random number table, calculator,
+          or computer, generate random digits
+          (outcomes).
+          Repeat this a specified number of trials or until a given stopping rule.
+          When this is finished,
+          count up how many times the event happened and divide that by the number of trials to get the estimate of the probability.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="smogCheck">
+      <title>Smog check, Part I</title>
+      <statement>
+        <p>
+          Suppose 16% of cars fail pollution tests
+          (smog checks)
+          in California.
+          We would like to estimate the probability that an entire fleet of seven cars would pass using a simulation.
+          We assume each car is independent.
+          We only want to know if the entire fleet passed,
+          i.e. none of the cars failed.
+          What is wrong with each of the following simulations to represent whether an entire (simulated) fleet passed?
+          <ol>
+            <li>
+              <p>
+                Flip a coin seven times where each toss represents a car.
+                A head means the car passed and a tail means it failed.
+                If all cars passed, we report PASS for the fleet.
+                If at least one car failed, we report FAIL.
+              </p>
+            </li>
+            <li>
+              <p>
+                Read across a random number table starting at line 5.
+                If a number is a 0 or 1, let it represent a failed car.
+                Otherwise the car passes.
+                We report PASS if all cars passed and FAIL otherwise.
+              </p>
+            </li>
+            <li>
+              <p>
+                Read across a random number table,
+                looking at two digits for each simulated car.
+                If a pair is in the range [00-16], then the corresponding car failed.
+                If it is in [17-99], the car passed.
+                We report PASS if all cars passed and FAIL otherwise.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Left-handed</title>
+      <statement>
+        <p>
+          Studies suggest that approximately 10% of the world population is left-handed.
+          Use ten simulations to answer each of the following questions.
+          For each question, describe your simulation scheme clearly.
+          <ol>
+            <li>
+              <p>
+                What is the probability that at least one out of eight people are left-handed?
+              </p>
+            </li>
+            <li>
+              <p>
+                On average, how many people would you have to sample until the first person who is left-handed?
+              </p>
+            </li>
+            <li>
+              <p>
+                On average, how many left-handed people would you expect to find among a random sample of six people?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Smog check, Part II</title>
+      <statement>
+        <p>
+          Consider the fleet of seven cars in <xref ref="smogCheck">Exercise</xref>.
+          Remember that 16% of cars fail pollution tests
+          (smog checks)
+          in California, and that we assume each car is independent.
+          <ol>
+            <li>
+              <p>
+                Write out how to calculate the probability of the fleet failing,
+                i.e. at least one of the cars in the fleet failing, via simulation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Simulate 5 fleets.
+                Based on these simulations,
+                estimate the probability at least one car will fail in a fleet.
+              </p>
+            </li>
+            <li>
+              <p>
+                Compute the probability at least one car fails in a fleet of seven.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="thief">
+      <title>To catch a thief</title>
+      <statement>
+        <p>
+          Suppose that at a retail store,
+          <m>1/5^{th}</m> of all employees steal some amount of merchandise.
+          The stores would like to put an end to this practice,
+          and one idea is to use lie detector tests to catch and fire thieves.
+          However, there is a problem:
+          lie detectors are not 100% accurate.
+          Suppose it is known that a lie detector has a failure rate of 25%. A thief will slip by the test 25% of the time and an honest employee will only pass 75% of the time.
+          <ol>
+            <li>
+              <p>
+                Describe how you would simulate whether an employee is honest or is a thief using a random number table.
+                Write your simulation very carefully so someone else can read it and follow the directions exactly.
+              </p>
+            </li>
+            <li>
+              <p>
+                Using a random number table,
+                simulate 20 employees working at this store and determine if they are honest or not.
+                Make sure to record the random digits assigned to each employee as you will refer back to these in part (c).
+              </p>
+            </li>
+            <li>
+              <p>
+                Determine the result of the lie detector test for each simulated employee from part (b) using a new simulation scheme.
+              </p>
+            </li>
+            <li>
+              <p>
+                How many of these employees are
+                <q>honest and passed</q>
+                and how many are
+                <q>honest and failed</q>?
+              </p>
+            </li>
+            <li>
+              <p>
+                How many of these employees are
+                <q>thief and passed</q>
+                and how many are
+                <q>thief and failed</q>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose the management decided to fire everyone who failed the lie detector test.
+                What percent of fired employees were honest?
+                What percent of not fired employees were thieves?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

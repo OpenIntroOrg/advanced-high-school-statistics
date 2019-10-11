@@ -1,0 +1,984 @@
+<section xml:id="lineFittingResidualsCorrelation">
+  <title>Line fitting, residuals, and correlation</title>
+  <introduction>
+    <p>
+      In this section, we investigate bivariate data.
+      We examine criteria for identifying a linear model and introduce a new bivariate summary called <em>correlation</em>.
+      We answer questions such as the following:
+      <ul>
+        <li>
+          <p>
+            How do we quantify the strength of the linear association between two numerical variables?
+          </p>
+        </li>
+        <li>
+          <p>
+            What does it mean for two variables to have no association or to have a nonlinear association?
+          </p>
+        </li>
+        <li>
+          <p>
+            Once we fit a model,
+            how do we measure the error in the model's predictions?
+          </p>
+        </li>
+      </ul>
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Distinguish between the data point <m>y</m> and the predicted value <m>\hat{y}</m> based on a model.
+        </p>
+      </li>
+      <li>
+        <p>
+          Calculate a residual and draw a residual plot.
+        </p>
+      </li>
+      <li>
+        <p>
+          Interpret the standard deviation of the residuals.
+        </p>
+      </li>
+      <li>
+        <p>
+          Interpret the correlation coefficient and estimate it from a scatterplot.
+        </p>
+      </li>
+      <li>
+        <p>
+          Know and apply the properties of the correlation coefficient.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Fitting a line to data</title>
+    <p>
+      Requests from twelve separate buyers were simultaneously placed with a trading company to purchase Target Corporation stock
+      (ticker <c>TGT</c>, April 26th, 2012).
+      We let <m>x</m> be the number of stocks to purchase and <m>y</m> be the total cost.
+      Because the cost is computed using a linear formula,
+      the linear fit is perfect, and the equation for the line is:
+      <m>y = 5 + 57.49x</m>.
+      If we know the number of stocks purchased,
+      we can determine the cost based on this linear equation with no error.
+      Additionally,
+      we can say that each additional share of the stock cost $57.49 and that there was a $5 fee for the transaction.
+    </p>
+    <figure xml:id="perfLinearModel">
+      <caption>Total cost of a trade against number of shares purchased.</caption>
+      \Figure{0.5}{perfLinearModel}
+    </figure>
+    <p>
+      Perfect linear relationships are unrealistic in almost any natural process.
+      For example, if we took family income (<m>x</m>),
+      this value would provide some useful information about how much financial support a college may offer a prospective student
+      (<m>y</m>).
+      However, the prediction would be far from perfect,
+      since other factors play a role in financial support beyond a family's income.
+    </p>
+    <p>
+      It is rare for all of the data to fall perfectly on a straight line.
+      Instead, it's more common for data to appear as a
+      <em>cloud of points</em>,
+      such as those shown in <xref ref="imperfLinearModel">Figure</xref>.
+      In each case, the data fall around a straight line,
+      even if none of the observations fall exactly on the line.
+      The first plot shows a relatively strong downward linear trend,
+      where the remaining variability in the data around the line is minor relative to the strength of the relationship between <m>x</m> and <m>y</m>.
+      The second plot shows an upward trend that,
+      while evident, is not as strong as the first.
+      The last plot shows a very weak downward trend in the data,
+      so slight we can hardly notice it.
+    </p>
+    <p>
+      In each of these examples, we can consider how to draw a
+      <q>best fit line</q>. For instance, we might wonder,
+      should we move the line up or down a little,
+      or should we tilt it more or less?
+      As we move forward in this chapter,
+      we will learn different criteria for line-fitting,
+      and we will also learn about the uncertainty associated with estimates of model parameters.
+    </p>
+    <figure xml:id="imperfLinearModel">
+      <caption>Three data sets where a linear model may be useful even though the data do not all fall exactly on the line.</caption>
+      \Figure{0.99}{imperfLinearModel}
+    </figure>
+    <p>
+      We will also see examples in this chapter where fitting a straight line to the data,
+      even if there is a clear relationship between the variables,
+      is not helpful.
+      One such case is shown in <xref ref="notGoodAtAllForALinearModel">Figure</xref>
+      where there is a very strong relationship between the variables even though the trend is not linear.
+    </p>
+    <figure xml:id="notGoodAtAllForALinearModel">
+      <caption>A linear model is not useful in this nonlinear case. These data are from an introductory physics experiment.</caption>
+      \Figure{0.75}{notGoodAtAllForALinearModel}
+    </figure>
+  </subsection>
+  <subsection>
+    <title>Using linear regression to predict possum head lengths</title>
+    <p>
+          <idx><h>data</h><h>possum</h></idx>
+    </p>
+    <p>
+      Brushtail possums are a marsupial that lives in Australia.
+      A photo of one is shown in <xref ref="possumpic">Figure</xref>.
+      Researchers captured 104 of these animals and took body measurements before releasing the animals back into the wild.
+      We consider two of these measurements:
+      the total length of each possum,
+      from head to tail, and the length of each possum's head.
+    </p>
+    <p>
+      <xref ref="scattHeadLTotalL">Figure</xref>
+      shows a scatterplot for the head length and total length of the 104 possums.
+      Each point represents a single point from the data.
+    </p>
+    <figure xml:id="possumpic">
+      <caption>The common brushtail possum of Australia.\vspace{-1mm}
+      <ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/>\vspace{-2mm}
+      { Photo by Peter Firminger on Flickr: MISSINGoiRedirect MISSINGoiRedirect.}</caption>
+      <image width="50%" source="images/possumPic.png" />
+    </figure>
+    <figure xml:id="scattHeadLTotalL">
+      <caption>A scatterplot showing head length against total length for 104 brushtail possums. A point representing a possum with head length 94.1<nbsp/>mm and total length 89<nbsp/>cm is highlighted.</caption>
+      <image width="80%" source="images/scattHeadLTotalL.png" />
+    </figure>
+    <p>
+      The head and total length variables are associated:
+      possums with an above average total length also tend to have above average head lengths.
+      While the relationship is not perfectly linear,
+      it could be helpful to partially explain the connection between these variables with a straight line.
+    </p>
+    <p>
+      We want to describe the relationship between the head length and total length variables in the possum data set using a line.
+      In this example, we will use the total length, <m>x</m>,
+      to explain or predict a possum's head length, <m>y</m>.
+      When we use <m>x</m> to predict <m>y</m>,
+      we usually call <m>x</m> the <term>explanatory variable</term> or predictor variable,
+      and we call <m>y</m> the <term>response variable</term>.
+      We could fit the linear relationship by eye,
+      as in <xref ref="scattHeadLTotalLLine">Figure</xref>.
+      The equation for this line is
+      <md>
+        <mrow>\hat{y} = 41 + 0.59x</mrow>
+      </md>
+    </p>
+    <p>
+      A
+      <q>hat</q>
+      on <m>y</m> is used to signify that this is a predicted value,
+      not an observed value.
+      We can use this line to discuss properties of possums.
+      For instance,
+      the equation predicts a possum with a total length of 80<nbsp/>cm will have a head length of
+      <md>
+        <mrow>\hat{y} \amp = 41 + 0.59(80)</mrow>
+        <mrow>\amp = 88.2</mrow>
+      </md>
+    </p>
+    <p>
+      The value <m>\hat{y}</m> may be viewed as an average:
+      the equation predicts that possums with a total length of 80<nbsp/>cm will have an average head length of 88.2<nbsp/>mm.
+      The value <m>\hat{y}</m> is also a prediction:
+      absent further information about an 80<nbsp/>cm possum,
+      this is our best prediction for a the head length of a single 80<nbsp/>cm possum.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Residuals</title>
+    <p>
+          <idx><h>residual</h></idx>
+    </p>
+    <p>
+      <em>Residuals</em>
+          <idx><h>residual|textbf</h></idx>
+      are the leftover variation in the response variable after fitting a model.
+      Each observation will have a residual,
+      and three of the residuals for the linear model we fit for the <c>possum</c> data are shown in <xref ref="scattHeadLTotalLLine">Figure</xref>.
+      If an observation is above the regression line, then its residual,
+      the vertical distance from the observation to the line,
+      is positive.
+      Observations below the line have negative residuals.
+      One goal in picking the right linear model is for these residuals to be as small as possible.
+    </p>
+    <figure xml:id="scattHeadLTotalLLine">
+      <caption>A reasonable linear model was fit to represent the relationship between head length and total length.</caption>
+      <image width="70%" source="images/scattHeadLTotalLLine.png" />
+    </figure>
+    <p>
+      Let's look closer at the three residuals featured in <xref ref="scattHeadLTotalLLine">Figure</xref>.
+      The observation marked by an
+      <q><times/></q>
+      has a small, negative residual of about -1;
+      the observation marked by
+      <q><m>+</m></q>
+      has a large residual of about +7;
+      and the observation marked by
+      <q><m>\triangle</m></q>
+      has a moderate residual of about -4.
+      The size of a residual is usually discussed in terms of its absolute value.
+      For example, the residual for
+      <q><m>\triangle</m></q>
+      is larger than that of
+      <q><times/></q>
+      because <m>|-4|</m> is larger than <m>|-1|</m>.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        The residual for a particular observation
+        <m>(x, \ y)</m> is the difference between the observed response and the response we would predict based on the model:
+        <md>
+          <mrow>\text{ residual }  =\amp  \ \text{ observed }  y - \text{ predicted }  y</mrow>
+          <mrow>=\amp \  y - \hat{y}</mrow>
+        </md>
+      </p>
+      <p>
+        We typically identify <m>\hat{y}</m> by plugging <m>x</m> into the model.
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          The linear fit shown in <xref ref="scattHeadLTotalLLine">Figure</xref>
+          is given as <m>\hat{y} = 41 + 0.59x</m>.
+          Based on this line,
+          compute and interpret the residual of the observation <m>(77.0, \ 85.3)</m>.
+          This observation is denoted by
+          <q><times/></q>
+          on the plot.
+          Recall that <m>x</m> is the total length measured in<nbsp/>cm and <m>y</m> is head length measured in<nbsp/>mm.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We first compute the predicted value based on the model:
+          <md>
+            <mrow>\hat{y} =\amp  \ 41+0.59x</mrow>
+            <mrow>=\amp  \ 41+0.59(77.0)</mrow>
+            <mrow>=\amp  \  86.4</mrow>
+          </md>
+        </p>
+        <p>
+          Next we compute the difference of the actual head length and the predicted head length:
+          <md>
+            <mrow>residual =\amp  \ y - \hat{y}</mrow>
+            <mrow>=\amp  \ 85.3 -  86.4</mrow>
+            <mrow>=\amp  \ -1.1</mrow>
+          </md>
+        </p>
+        <p>
+          The residual for this point is -1.1<nbsp/>mm,
+          which is very close to the visual estimate of -1<nbsp/>mm.
+          For this particular possum with total length of 77<nbsp/>cm,
+          the model's prediction for its head length was 1.1<nbsp/>mm <em>too high</em>.
+        </p>
+      </answer>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          If a model underestimates an observation,
+          will the residual be positive or negative?
+          What about if it overestimates the observation?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Compute the residual for the observation <m>(95.5, 94.0)</m>,
+          denoted by
+          <q><m>\triangle</m></q>
+          in the figure, using the linear model:
+          <m>\hat{y} = 41 + 0.59x</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Residuals are helpful in evaluating how well a linear model fits a data set.
+      We often display the residuals in a
+      <term>residual plot</term>
+      such as the one shown in <xref ref="scattHeadLTotalLResidualPlotReproduced">Figure</xref>.
+      Here, the residuals are calculated for each <m>x</m> value,
+      and plotted versus <m>x</m>.
+      For instance,
+      the point <m>(85.0,98.6)</m> had a residual of 7.45,
+      so in the residual plot it is placed at <m>(85.0, 7.45)</m>.
+      Creating a residual plot is sort of like tipping the scatterplot over so the regression line is horizontal.
+    </p>
+    <p>
+      From the residual plot, we can better estimate the
+      <term>standard deviation of the residuals</term>,
+      often denoted by the letter <m>s</m>.
+      The standard deviation of the residuals tells us typical size of the residuals.
+      As such, it is a measure of the typical deviation between the <m>y</m> values and the model predictions.
+      In other words,
+      it tells us the typical prediction error using the model.<fn>
+      The standard deviation of the residuals is calculated as:
+      <m>s=\sqrt{\frac{\sum{(y_i-\hat{y})^2}}{n-2}}</m>.
+      </fn>
+    </p>
+    <example>
+      <statement>
+        <p>
+          Estimate the standard deviation of the residuals for predicting head length from total length using the line:
+          <m>\hat{y} = 41+0.59x</m> using <xref ref="scattHeadLTotalLResidualPlotReproduced">Figure</xref>.
+          Also, interpret the quantity in context.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          To estimate this graphically, we use the residual plot.
+          The approximate 68, 95 rule for standard deviations applies.
+          Approximately 2/3 of the points are within <m>\pm</m> 2.5 and approximately 95% of the points are within <m>\pm</m> 5, so 2.5 is a good estimate for the standard deviation of the residuals.
+          The typical error when predicting head length using this model is about 2.5<nbsp/>mm.
+        </p>
+      </answer>
+    </example>
+    <p>
+          <idx><h>data</h><h>possum</h></idx>
+    </p>
+    <table xml:id="scattHeadLTotalLResidualPlotReproduced">
+      <caption>Left: Scatterplot of head length versus total length for 104 brushtail possums.  Three particular points have been highlighted.  Right: Residual plot for the model shown in left panel.</caption>
+      <tabular>
+        <row>
+          <cell><image width="70%" source="images/scattHeadLTotalLLine.png" />
+            <image width="50%" source="images/scattHeadLTotalLResidualPlot.png" /></cell>
+        </row>
+      </tabular>
+    </table>
+    <assemblage>
+      <title></title>
+      <p>
+        The standard deviation of the residuals,
+        often denoted by the letter <m>s</m>,
+        tells us the typical error in the predictions using the regression model.
+        It can be estimated from a residual plot.
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          One purpose of residual plots is to identify characteristics or patterns still apparent in data after fitting a model.
+          <xref ref="sampleLinesAndResPlots">Figure</xref>
+          shows three scatterplots with linear models in the first row and residual plots in the second row.
+          Can you identify any patterns remaining in the residuals?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          In the first data set
+          (first column),
+          the residuals show no obvious patterns.
+          The residuals appear to be scattered randomly around the dashed line that represents 0.
+        </p>
+        <p>
+          The second data set shows a pattern in the residuals.
+          There is some curvature in the scatterplot,
+          which is more obvious in the residual plot.
+          We should not use a straight line to model these data.
+          Instead, a more advanced technique should be used.
+        </p>
+        <p>
+          The last plot shows very little upwards trend,
+          and the residuals also show no obvious patterns.
+          It is reasonable to try to fit a linear model to the data.
+          However, it is unclear whether there is statistically significant evidence that the slope parameter is different from zero.
+          The slope of the sample regression line is not zero,
+          but we might wonder if this could be due to random variation.
+          We will address this sort of scenario in <xref ref="inferenceForLinearRegression">Section</xref>.
+              <idx><h>residual</h></idx>
+        </p>
+      </answer>
+    </example>
+    <figure xml:id="sampleLinesAndResPlots">
+      <caption>Sample data with their best fitting lines (top row) and their corresponding residual plots (bottom row).</caption>
+      <image width="73%" source="images/sampleLinesAndResPlots.png" />
+    </figure>
+  </subsection>
+  <subsection>
+    <title>Describing linear relationships with correlation</title>
+    <p>
+          <idx><h>correlation</h></idx>
+    </p>
+    <p>
+      When a linear relationship exists between two variables,
+      we can quantify the strength and direction of the linear relation with the correlation coefficient,
+      or just <term>correlation</term> for short.
+      <xref ref="posNegCorPlots">Figure</xref>
+      shows eight plots and their corresponding correlations.
+    </p>
+    <figure xml:id="posNegCorPlots">
+      <caption>Sample scatterplots and their correlations. The first row shows variables with a positive relationship, represented by the trend up and to the right. The second row shows variables with a negative trend, where a large value in one variable is associated with a low value in the other.</caption>
+      <image width="80%" source="images/posNegCorPlots.png" />
+    </figure>
+    <p>
+      Only when the relationship is perfectly linear is the correlation either <m>-1</m> or 1.
+      If<nbsp/>the linear relationship is strong and positive,
+      the correlation will be near +1.
+      If it is strong and negative,
+      it will be near <m>-1</m>.
+      If<nbsp/>there is no apparent linear relationship between the variables,
+      then the correlation will be near zero.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        <em>Correlation</em>,
+            <idx><h>correlation|textbf</h></idx>
+        which always takes values between -1 and 1, describes the direction and strength of the linear relationship between two numerical variables.
+        The strength can be strong, moderate, or<nbsp/>weak.
+      </p>
+    </assemblage>
+    <p>
+      We compute the correlation using a formula,
+      just as we did with the sample mean and standard deviation.
+      Formally, we can compute the correlation for observations <m>(x_1, y_1)</m>,
+      <m>(x_2, y_2)</m>, ..., <m>(x_n, y_n)</m> using the formula
+      <md>
+        <mrow>r =\frac{1}{n-1}\sum{\Big(\frac{x_i-\bar{x}}{s_x}\Big)\Big(\frac{y_i-\bar{y}}{s_y}\Big)}</mrow>
+      </md>
+      where <m>\bar{x}</m>, <m>\bar{y}</m>, <m>s_x</m>,
+      and <m>s_y</m> are the sample means and standard deviations for each variable.
+      This formula is rather complex,
+      and we generally perform the calculations on a computer or calculator.
+      We can note, though,
+      that the computation involves taking, for each point,
+      the product of the Z-scores that correspond to the <m>x</m> and <m>y</m> values.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Take a look at <xref ref="scattHeadLTotalLLine">Figure</xref>
+          on <xref ref="scattHeadLTotalLLine">page</xref>.
+          How would the correlation between head length and total body length of possums change if head length were measured in<nbsp/>cm rather than<nbsp/>mm?
+          What if head length were measured in inches rather than<nbsp/>mm?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Here, changing the units of <m>y</m> corresponds to multiplying all the <m>y</m> values by a certain number.
+          This would change the mean and the standard deviation of <m>y</m>,
+          but it would not change the correlation.
+          To see this,
+          imagine dividing every number on the vertical axis by 10.
+          The units of <m>y</m> are now in<nbsp/>cm rather than in<nbsp/>mm,
+          but the graph has remain exactly the same.
+          The units of <m>y</m> have changed,
+          by the relative distance of the <m>y</m> values about the mean are the same;
+          that is, the Z-scores corresponding to the <m>y</m><nbsp/>values have remained the same.
+        </p>
+      </answer>
+    </example>
+    <assemblage>
+      <title></title>
+      <p>
+        The correlation, <m>r</m>,
+        between two variables is not dependent upon the units in which the variables are recorded.
+        Correlation itself has no units.
+      </p>
+    </assemblage>
+    <p>
+      Correlation is intended to quantify the strength of a linear trend.
+      Nonlinear trends, even when strong,
+      sometimes produce correlations that do not reflect the strength of the relationship;
+      see three such examples in <xref ref="corForNonLinearPlots">Figure</xref>.
+    </p>
+    <figure xml:id="corForNonLinearPlots">
+      <caption>Sample scatterplots and their correlations. In each case, there is a strong relationship between the variables. However, the correlation is not very strong, and the relationship is not linear.</caption>
+      <image width="96%" source="images/corForNonLinearPlots.png" />
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          It appears no straight line would fit any of the datasets represented in <xref ref="corForNonLinearPlots">Figure</xref>.
+          Try drawing nonlinear curves on each plot.
+          Once you create a curve for each,
+          describe what is important in your fit.
+              <idx><h>correlation</h></idx>
+        </p>
+      </statement>
+    </exercise>
+    <example>
+      <statement>
+        <p>
+          Consider the four scatterplots in <xref ref="anscombe">Figure</xref>.
+          In which scatterplot is the correlation between <m>x</m> and <m>y</m> the strongest?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          All four data sets have the exact same correlation of
+          <m>r = 0.816</m> as well as the same equation for the best fit line!
+          This group of four graphs, known as Anscombe's Quartet,
+          remind us that knowing the value of the correlation does not tell us what the corresponding scatterplot looks like.
+          It is always important to first graph the data.
+          Investigate Anscombe's Quartet in Desmos: MISSINGoiRedirect
+        </p>
+      </answer>
+    </example>
+    <figure xml:id="anscombe">
+      <caption>Four scatterplots from Desmos with best fit line drawn in.</caption>
+      MISSINGoiRedirect
+    </figure>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          In Chapter 2 we introduced a bivariate display called a <em>scatterplot</em>,
+            <idx><h>scatterplot|textbf</h></idx>
+          which shows the relationship between two numerical variables.
+          When we use <m>x</m> to predict <m>y</m>,
+          we call <m>x</m> the <term>explanatory variable</term> or predictor variable,
+          and we call <m>y</m> the <term>response variable</term>.
+        </p>
+      </li>
+      <li>
+        <p>
+          A linear model for bivariate numerical data can be useful for prediction when the association between the variables follows a constant,
+          linear trend.
+          Linear models should not be used if the trend between the variables is curved.
+        </p>
+      </li>
+      <li>
+        <p>
+          When we write a linear model,
+          we use <m>\hat{y}</m> to indicate that it is the model or the prediction.
+          The value <m>\hat{y}</m> can be understood as a <term>prediction</term>
+          for <m>y</m> based on a given <m>x</m>,
+          or as an <term>average</term> of the <m>y</m> values for a given <m>x</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          The <term>residual</term> is the <em>error</em>
+          between the true value and the modeled value,
+          computed as <m>y - \hat{y}</m>.
+          The order of the difference matters,
+          and the sign of the residual will tell us if the model overpredicted or underpredicted a particular data point.
+        </p>
+      </li>
+      <li>
+        <p>
+          The symbol <m>s</m> in a linear model is used to denote the standard deviation of the residuals,
+          and it measures the typical prediction error by the model.
+        </p>
+      </li>
+      <li>
+        <p>
+          A <term>residual plot</term> is a scatterplot with the residuals on the vertical axis.
+          The residuals are often plotted against <m>x</m> on the horizontal axis,
+          but they can also be plotted against <m>y</m>,
+          <m>\hat{y}</m>, or other variables.
+          Two important uses of a residual plot are the following.
+          <ul>
+            <li>
+              <p>
+                Residual plots help us see patterns in the data that may not have been apparent in the scatterplot.
+              </p>
+            </li>
+            <li>
+              <p>
+                The standard deviation of the residuals is easier to estimate from a residual plot than from the original scatterplot.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Correlation</em>,
+            <idx><h>correlation|textbf</h></idx>
+          denoted with the letter <m>r</m>,
+          measures the strength and direction of a linear relationship.
+          The following are some important facts about correlation.
+          <ul>
+            <li>
+              <p>
+                The value of <m>r</m> is always between <m>-1</m> and <m>1</m>,
+                inclusive,
+                with an <m>r=-1</m> indicating a perfect negative relationship
+                (points fall exactly along a line that has negative slope)
+                and an <m>r=1</m> indicating a perfect positive relationship
+                (points fall exactly along a line that has positive slope).
+              </p>
+            </li>
+            <li>
+              <p>
+                An <m>r=0</m> indicates no <em>linear</em>
+                association between the variables,
+                though there may well exist a quadratic or other type of association.
+              </p>
+            </li>
+            <li>
+              <p>
+                Just like Z-scores, the correlation has no units.
+                Changing the units in which <m>x</m> or <m>y</m> are measured does not affect the correlation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Correlation is sensitive to outliers.
+                Adding or removing a single point can have a big effect on the correlation.
+              </p>
+            </li>
+            <li>
+              <p>
+                As we learned previously, correlation is not causation.
+                Even a very strong correlation cannot prove causation;
+                only a well-designed, controlled,
+                randomized experiment can prove causation.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="visualize_residuals">
+      <title>Visualize the residuals</title>
+      <statement>
+        <p>
+          The scatterplots shown below each have a superimposed regression line.
+          If we were to construct a residual plot
+          (residuals versus <m>x</m>)
+          for each, describe what those plots would look like.
+          <image width="42%" source="images/visualize_residuals_linear.png" /> <image width="42%" source="images/visualize_residuals_fan_back.png" />
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="trends_in_residuals">
+      <title>Trends in the residuals</title>
+      <statement>
+        <p>
+          Shown below are two plots of residuals remaining after fitting a linear model to two different sets of data.
+          Describe important features and determine if a linear model would be appropriate for these data.
+          Explain your reasoning.
+          <image width="42%" source="images/trends_in_residuals_fan.png" /> <image width="42%" source="images/trends_in_residuals_log.png" />
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="identify_relationships_1">
+      <title>Identify relationships, Part I</title>
+      <statement>
+        <p>
+          For each of the six plots,
+          identify the strength of the relationship (e.g. weak, moderate,
+          or strong) in the data and whether fitting a linear model would be reasonable.
+          <image width="32%" source="images/identify_relationships_u.png" /> <image width="32%" source="images/identify_relationships_lin_pos_strong.png" /> <image width="32%" source="images/identify_relationships_lin_pos_weak.png" /> <image width="32%" source="images/identify_relationships_n.png" /> <image width="32%" source="images/identify_relationships_lin_neg_strong.png" /> <image width="32%" source="images/identify_relationships_none.png" />
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="identify_relationships_2">
+      <title>Identify relationships, Part II</title>
+      <statement>
+        <p>
+          For each of the six plots,
+          identify the strength of the relationship (e.g. weak, moderate,
+          or strong) in the data and whether fitting a linear model would be reasonable.
+          <image width="32%" source="images/identify_relationships_s.png" /> <image width="32%" source="images/identify_relationships_hockey_stick.png" /> <image width="32%" source="images/identify_relationships_pos_lin_strong.png" /> <image width="32%" source="images/identify_relationships_pos_weak.png" /> <image width="32%" source="images/identify_relationships_pos_weaker.png" /> <image width="32%" source="images/identify_relationships_neg_lin_weak.png" />
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exams_grades_correlation">
+      <title>Exams and grades</title>
+      <statement>
+        <p>
+          The two scatterplots below show the relationship between final and mid-semester exam grades recorded during several years for a Statistics course at a university.
+          <ol>
+            <li>
+              <p>
+                Based on these graphs,
+                which of the two exams has the strongest correlation with the final exam grade?
+                Explain.
+              </p>
+            </li>
+            <li>
+              <p>
+                Can you think of a reason why the correlation between the exam you chose in part (a) and the final exam is higher?
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          <image width="48%" source="images/exam_grades_1.png" /> <image width="48%" source="images/exam_grades_2.png" />
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="husbands_wives_correlation">
+      <title>Spouses, Part I</title>
+      <statement>
+        <p>
+          The Great Britain Office of Population Census and Surveys once collected data on a random sample of 170 married women in Britain,
+          recording the age
+          (in years)
+          and heights
+          (converted here to inches)
+          of the women and their spouses.\footfullcite{Hand:1994} The scatterplot on the left shows the spouse's age plotted against the woman's age,
+          and the plot on the right shows spouse's height plotted against the woman's height.
+          <image width="36%" source="images/husbands_wives_age.png" /> <image width="36%" source="images/husbands_wives_height.png" />
+          <ol>
+            <li>
+              <p>
+                Describe the relationship between the ages of women in the sample and their spouses' ages.
+              </p>
+            </li>
+            <li>
+              <p>
+                Describe the relationship between the heights of women in the sample and their spouses' heights.
+              </p>
+            </li>
+            <li>
+              <p>
+                Which plot shows a stronger correlation?
+                Explain your reasoning.
+              </p>
+            </li>
+            <li>
+              <p>
+                Data on heights were originally collected in centimeters,
+                and then converted to inches.
+                Does this conversion affect the correlation between heights of women in the sample and their spouses' heights?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="match_corr_1">
+      <title>Match the correlation, Part I</title>
+      <statement>
+        <p>
+          Match each correlation to the corresponding scatterplot.
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                <m>r = -0.7</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>r = 0.45</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>r = 0.06</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>r = 0.92</m>
+              </p>
+            </li>
+          </ol>
+          \vspace{3mm}
+          <image width="22%" source="images/match_corr_1_u.png" />
+          <image width="22%" source="images/match_corr_2_strong_pos.png" />
+          <image width="22%" source="images/match_corr_3_weak_pos.png" />
+          <image width="22%" source="images/match_corr_4_weak_neg.png" />
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="match_corr_2">
+      <title>Match the correlation, Part II</title>
+      <statement>
+        <p>
+          Match each correlation to the corresponding scatterplot.
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                <m>r = 0.49</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>r = -0.48</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>r = -0.03</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>r = -0.85</m>
+              </p>
+            </li>
+          </ol>
+          \vspace{3mm}
+          <image width="24%" source="images/match_corr_1_strong_neg_curved.png" />
+          <image width="24%" source="images/match_corr_2_weak_pos.png" />
+          <image width="24%" source="images/match_corr_3_n.png" />
+          <image width="24%" source="images/match_corr_4_weak_neg.png" />
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="speed_height_gender">
+      <title>Speed and height</title>
+      <statement>
+        <p>
+          1,302 UCLA students were asked to fill out a survey where they were asked about their height,
+          fastest speed they have ever driven, and gender.
+          The scatterplot on the left displays the relationship between height and fastest speed,
+          and the scatterplot on the right displays the breakdown by gender in this relationship.
+          <image width="43%" source="images/speed_height.png" /> <image width="43%" source="images/speed_height_gender.png" />
+          <ol>
+            <li>
+              <p>
+                Describe the relationship between height and fastest speed.
+              </p>
+            </li>
+            <li>
+              <p>
+                Why do you think these variables are positively associated?
+              </p>
+            </li>
+            <li>
+              <p>
+                What role does gender play in the relationship between height and fastest driving speed?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="guess_correlation">
+      <title>Guess the correlation</title>
+      <statement>
+        <p>
+          Eduardo and Rosie are both collecting data on number of rainy days in a year and the total rainfall for the year.
+          Eduardo records rainfall in inches and Rosie in centimeters.
+          How will their correlation coefficients compare?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="coast_starlight_corr_units">
+      <title>The Coast Starlight, Part I</title>
+      <statement>
+        <p>
+          The Coast Starlight Amtrak train runs from Seattle to Los Angeles.
+          The scatterplot below displays the distance between each stop
+          (in miles)
+          and the amount of time it takes to travel from one stop to another
+          (in minutes).
+        </p>
+        <sidebyside>
+          <m>\:</m>
+          <image width="73%" source="images/coast_starlight.png" />
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="crawling_babies_corr_units">
+      <title>Crawling babies, Part I</title>
+      <statement>
+        <p>
+          A study conducted at the University of Denver investigated whether babies take longer to learn to crawl in cold months,
+          when they are often bundled in clothes that restrict their movement,
+          than in warmer months. \footfullcite{Benson:1993} Infants born during the study year were split into twelve groups,
+          one for each birth month.
+          We consider the average crawling age of babies in each group against the average temperature when the babies are six months old
+          (that's when babies often begin trying to crawl).
+          Temperature is measured in degrees Fahrenheit (^\circ F) and age is measured in weeks.
+        </p>
+        <sidebyside>
+          <m>\:</m>
+          <image width="73%" source="images/crawling_babies.png" />
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="body_measurements_shoulder_height_corr_units">
+      <title>Body measurements, Part I</title>
+      <statement>
+        <p>
+          Researchers studying anthropometry collected body girth measurements and skeletal diameter measurements,
+          as well as age, weight,
+          height and gender for 507 physically active individuals.\footfullcite{Heinz:2003} The scatterplot below shows the relationship between height and shoulder girth
+          (over deltoid muscles),
+          both measured in centimeters.
+        </p>
+        <sidebyside>
+          <m>\:</m>
+          <image width="73%" source="images/body_measurements_height_shoulder_girth.png" />
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="body_measurements_hip_weight_corr_units">
+      <title>Body measurements, Part II</title>
+      <statement>
+        <p>
+          The scatterplot below shows the relationship between weight measured in kilograms and hip girth measured in centimeters from the data described in <xref ref="body_measurements_shoulder_height_corr_units">Exercise</xref>.
+        </p>
+        <sidebyside>
+          <m>\:</m>
+          <image width="73%" source="images/body_measurements_weight_hip_girth.png" />
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="corr_husband_wife_age">
+      <title>Correlation, Part I</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> What would be the correlation between the ages of a set of women and their spouses if the set of women always married someone who was
+          <ol>
+            <li>
+              <p>
+                3 years younger than themselves?
+              </p>
+            </li>
+            <li>
+              <p>
+                2 years older than themselves?
+              </p>
+            </li>
+            <li>
+              <p>
+                half as old as themselves?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="corr_men_women_salary">
+      <title>Correlation, Part II</title>
+      <statement>
+        <p>
+          What would be the correlation between the annual salaries of males and females at a company if for a certain type of position men always made
+          <ol>
+            <li>
+              <p>
+                $5,000 more than women?
+              </p>
+            </li>
+            <li>
+              <p>
+                25% more than women?
+              </p>
+            </li>
+            <li>
+              <p>
+                15% less than women?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

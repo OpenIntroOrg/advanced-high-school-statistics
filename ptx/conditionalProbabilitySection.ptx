@@ -1,0 +1,2105 @@
+<section xml:id="conditionalProbabilitySection">
+  <title>Conditional probability</title>
+  <introduction>
+    <p>
+      In this section we will use conditional probabilities to answer the following questions:
+      <ul>
+        <li>
+          <p>
+            What is the likelihood that a machine learning algorithm will misclassify a photo as being about fashion if it is not actually about fashion?
+          </p>
+        </li>
+        <li>
+          <p>
+            How much more likely are children to attend college whose parents attended college than children whose parents did not attend college?
+          </p>
+        </li>
+        <li>
+          <p>
+            Given that a person receives a positive test result for a disease,
+            what is the probability that the person actually has the disease?
+          </p>
+        </li>
+      </ul>
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Understand conditional probability and how to calculate it.
+        </p>
+      </li>
+      <li>
+        <p>
+          Calculate joint and conditional probabilities based on a two-way table.
+        </p>
+      </li>
+      <li>
+        <p>
+          Use the General Multiplication Rule to find the probability of joint events.
+        </p>
+      </li>
+      <li>
+        <p>
+          Determine whether two events are independent and whether they are mutually exclusive,
+          based on the definitions of those terms.
+        </p>
+      </li>
+      <li>
+        <p>
+          Draw a tree diagram with at least two branches to organize possible outcomes and their probabilities.
+          Understand that the second branch represents conditional probabilities.
+        </p>
+      </li>
+      <li>
+        <p>
+          Use the tree diagram or Bayes' Theorem to solve
+          <q>inverted</q>
+          conditional probabilities.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exploring probabilities with a contingency table</title>
+    <p>
+          <idx><h>data</h><h>photo_classify</h></idx>
+    </p>
+    <p>
+      The <c>photo\usclassify</c> data set represents a sample of 1822 photos from a photo sharing website.
+      Data scientists have been working to improve a classifier for whether the photo is about fashion or not,
+      and these 659 photos represent a test for their classifier.
+      Each photo gets two classifications:
+      the first is called <c>mach\uslearn</c> and gives a classification from a machine learning<nbsp/>(ML)
+          <idx><h>machine learning (ML)</h></idx>
+      system of either <c>pred\usfashion</c> or <c>pred\usnot</c>.
+      Each of these 1822 photos have also been classified carefully by a team of people,
+      which we take to be the source of truth;
+      this variable is called <c>truth</c> and takes values <c>fashion</c> and <c>not</c>.
+      <xref ref="contTableOfFashionPhotos">Figure</xref> summarizes the results.
+    </p>
+    <table xml:id="contTableOfFashionPhotos">
+      <caption>Contingency table summarizing the
+<c>photo\usclassify</c> data set.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>\multicolumn{2}{c}{<c>truth</c>}</cell>
+          <cell>\hspace{1cm}</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell><c>fashion</c></cell>
+          <cell><c>not</c></cell>
+          <cell>Total</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>pred\usfashion</c></cell>
+          <cell>\fashYY</cell>
+          <cell>\fashYN</cell>
+          <cell>\fashYA</cell>
+        </row>
+        <row>
+          <cell><c>mach\uslearn</c></cell>
+          <cell><c>pred\usnot</c> \hspace{0.5cm}</cell>
+          <cell>\fashNY</cell>
+          <cell>\fashNN</cell>
+          <cell>\fashNA</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Total</cell>
+          <cell>\fashAY</cell>
+          <cell>\fashAN</cell>
+          <cell>\fashN</cell>
+        </row>
+      </tabular>
+    </table>
+    <figure xml:id="photoClassifyVenn">
+      <caption>A Venn diagram using boxes for the
+<c>photo\usclassify</c> data set.</caption>
+      \Figure{0.6}{photoClassifyVenn}
+    </figure>
+    <example>
+      <statement>
+        <p>
+          If a photo is actually about fashion,
+          what is the chance the ML classifier correctly identified the photo as being about fashion?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          If a photo is actually about fashion,
+          what is the chance the ML classifier correctly identified the photo as being about fashion?
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          We sample a photo from the data set and learn the ML algorithm predicted this photo was not about fashion.
+          What is the probability that it was incorrect and the photo is about fashion?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We sample a photo from the data set and learn the ML algorithm predicted this photo was not about fashion.
+          What is the probability that it was incorrect and the photo is about fashion?
+        </p>
+      </solution>
+    </example>
+  </subsection>
+  <subsection xml:id="marginalAndJointProbabilities">
+    <title>Marginal and joint probabilities</title>
+    <p>
+          <idx><h>marginal probability</h></idx>
+          <idx><h>joint probability</h></idx>
+    </p>
+    <p>
+      <xref ref="contTableOfFashionPhotos">Figure</xref>
+      includes row and column totals for each variable separately in the <c>photo\usclassify</c> data set.
+      These totals represent <em>marginal probabilities</em><idx><h>marginal probability|textbf</h></idx> for the sample,
+      which are the probabilities based on a single variable without regard to any other variables.
+      For instance,
+      a probability based solely on the <c>mach\uslearn</c> variable is a marginal probability:
+      <md>
+        <mrow>P(\text{\texttt{mach\us{}learn} is \texttt{pred\us{}fashion}} ) = \frac{\fashYA{}}{\fashN{}} = 0.12</mrow>
+      </md>
+    </p>
+    <p>
+      A probability of outcomes for two or more variables or processes is called a
+      <em>joint \mbox{probability} </em>:
+          <idx><h>joint probability|textbf</h></idx>
+      <md>
+        <mrow>P(\text{\texttt{mach\us{}learn} is \texttt{pred\us{}fashion} and \texttt{truth} is \texttt{fashion}} ) = \frac{\fashYY{}}{\fashN{}} = 0.11</mrow>
+      </md>
+    </p>
+    <p>
+      It is common to substitute a comma for
+      <q>and</q>
+      in a joint probability, although using either the word
+      <q>and</q>
+      or a comma is acceptable:
+      <m>P(\text{\texttt{mach\us{}learn} is \texttt{pred\us{}fashion}, \texttt{truth} is \texttt{fashion}} )</m>
+    </p>
+    <p>
+      means the same thing as
+    </p>
+    <p>
+      <m>P(\text{\texttt{mach\us{}learn} is \texttt{pred\us{}fashion} and \texttt{truth} is \texttt{fashion}} )</m>
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        If a probability is based on a single variable,
+        it is a <em>marginal probability<idx><h>marginal probability|textbf</h></idx>
+        </em>.
+        The probability of outcomes for two or more variables or processes is called a
+        <em>joint probability<idx><h>joint probability|textbf</h></idx>
+        </em>.
+      </p>
+    </assemblage>
+    <p>
+      We use <term>table proportions</term>
+      to summarize joint probabilities for the <c>photo\usclassify</c> sample.
+      These proportions are computed by dividing each count in <xref ref="contTableOfFashionPhotos">Figure</xref> by the table's total, 1822,
+      to obtain the proportions in <xref ref="photoClassifyProbTable">Figure</xref>.
+      The joint probability distribution of the <c>mach\uslearn</c> and <c>truth</c> variables is shown in <xref ref="photoClassifyDistribution">Figure</xref>.
+    </p>
+    <table xml:id="photoClassifyProbTable">
+      <caption>Probability table summarizing the
+<c>photo\usclassify</c> data set.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>truth</c>: <c>fashion</c></cell>
+          <cell><c>truth</c>: <c>not</c></cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><c>mach\uslearn</c>: <c>pred\usfashion</c> \hspace{0.5cm}</cell>
+          <cell>0.1081</cell>
+          <cell>0.0121</cell>
+          <cell>0.1202</cell>
+        </row>
+        <row>
+          <cell><c>mach\uslearn</c>: <c>pred\usnot</c></cell>
+          <cell>0.0615</cell>
+          <cell>0.8183</cell>
+          <cell>0.8798</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>0.1696</cell>
+          <cell>0.8304</cell>
+          <cell>1.00</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <table xml:id="photoClassifyDistribution">
+      <caption>Joint probability distribution for the <c>photo\usclassify</c> data set.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Joint outcome</cell>
+          <cell>Probability</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><c>mach\uslearn</c> is <c>pred\usfashion</c>
+            and <c>truth</c> is <c>fashion</c></cell>
+          <cell>0.1081</cell>
+        </row>
+        <row>
+          <cell><c>mach\uslearn</c> is <c>pred\usfashion</c>
+            and <c>truth</c> is <c>not</c></cell>
+          <cell>0.0121</cell>
+        </row>
+        <row>
+          <cell><c>mach\uslearn</c> is <c>pred\usnot</c>
+            and <c>truth</c> is <c>fashion</c></cell>
+          <cell>0.0615</cell>
+        </row>
+        <row>
+          <cell><c>mach\uslearn</c> is <c>pred\usnot</c>
+            and <c>truth</c> is <c>not</c></cell>
+          <cell>0.8183</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>1.0000</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <exercise>
+      <statement>
+        <p>
+          Verify <xref ref="photoClassifyDistribution">Figure</xref>
+          represents a probability distribution:
+          events are disjoint, all probabilities are non-negative,
+          and the probabilities sum to<nbsp/>1.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We can compute marginal probabilities using joint probabilities in simple cases.
+      For example,
+      the probability that a randomly selected photo from the data set is about fashion is found by summing the outcomes in which <c>truth</c> takes value <c>fashion</c>:
+          <idx><h>marginal probability</h></idx>
+          <idx><h>joint probability</h></idx>
+      <md>
+        <mrow>P(\text{\ultruthfashion{}} ) \amp = P(\text{\texttt{mach\us{}learn} is \texttt{pred\us{}fashion} and \ultruthfashion{}} )</mrow>
+        <mrow>\amp  \qquad + P(\text{\texttt{mach\us{}learn} is \texttt{pred\us{}not} and \ultruthfashion{}} )</mrow>
+        <mrow>\amp = 0.1081 + 0.0615</mrow>
+        <mrow>\amp = 0.1696</mrow>
+      </md>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Defining conditional probability</title>
+    <p>
+          <idx><h>conditional probability</h></idx>
+    </p>
+    <p>
+      The ML classifier predicts whether a photo is about fashion,
+      even if it is not perfect.
+      We would like to better understand how to use information from a variable like <c>mach\uslearn</c> to improve our probability estimation of a second variable,
+      which in this example is <c>truth</c>.
+    </p>
+    <p>
+      The probability that a random photo from the data set is about fashion is about 0.17.
+      If we knew the machine learning classifier predicted the photo was about fashion,
+      could we get a better estimate of the probability the photo is actually about fashion?
+      Absolutely.
+      To do so, we limit our view to only those 219 cases where the ML classifier predicted that the photo was about fashion and look at the fraction where the photo was actually about fashion:
+      <md>
+        <mrow>P(\text{\texttt{truth} is \texttt{fashion} given \texttt{mach\us{}learn} is \texttt{pred\us{}fashion}} ) = \frac{\fashYY{}}{\fashYA{}} = 0.900</mrow>
+      </md>
+    </p>
+    <p>
+      We call this a <term>conditional probability</term>
+      because we computed the probability under a condition:
+      the ML classifier prediction said the photo was about fashion.
+    </p>
+    <p>
+      There are two parts to a conditional probability,
+      the <term>outcome of interest</term>
+      and the <term>condition</term>.
+      It is useful to think of the condition as information we know to be true,
+      and this information usually can be described as a known outcome or<nbsp/>event.
+      We generally separate the text inside our probability notation into the outcome of interest and the condition with a vertical bar:
+      <md>
+        <mrow>\amp \amp  P(\text{\texttt{truth} is \texttt{fashion} given \texttt{mach\us{}learn} is \texttt{pred\us{}fashion}} )</mrow>
+        <mrow>\amp \amp   = P(\text{\texttt{truth} is \texttt{fashion}\ } | \textit{ \texttt{mach\us{}learn} is \texttt{pred\us{}fashion}}) = \frac{\fashYY{}}{\fashYA{}} = 0.900</mrow>
+      </md>
+    </p>
+    <p>
+      The vertical bar
+      <q><m>|</m></q>
+      is read as <em>given</em>.
+    </p>
+    <p>
+      In the last equation,
+      we computed the probability a photo was about fashion based on the condition that the ML algorithm predicted it was about fashion as a fraction:
+      <md>
+        <mrow>\amp  P(\text{\texttt{truth} is \texttt{fashion}\ } | \textit{ \texttt{mach\us{}learn} is \texttt{pred\us{}fashion}})</mrow>
+        <mrow>\amp  = \frac{\text{\# cases where \texttt{truth} is \texttt{fashion} and \texttt{mach\us{}learn} is \texttt{pred\us{}fashion}} } {\text{\# cases where \texttt{mach\us{}learn} is \texttt{pred\us{}fashion}} }</mrow>
+        <mrow>\amp  = \frac{\fashYY{}}{\fashYA{}} = 0.900</mrow>
+      </md>
+    </p>
+    <p>
+      We considered only those cases that met the condition, <c>mach\uslearn</c> is <c>pred\usfashion</c>,
+      and then we computed the ratio of those cases that satisfied our outcome of interest,
+      photo was actually about fashion.
+    </p>
+    <p>
+      Frequently, marginal and joint probabilities are provided instead of count data.
+      For example,
+      disease rates are commonly listed in percentages rather than in a count format.
+      We would like to be able to compute conditional probabilities even when no counts are available,
+      and we use the last equation as a template to understand this technique.
+    </p>
+    <p>
+      We considered only those cases that satisfied the condition,
+      where the ML algorithm predicted fashion.
+      Of these cases,
+      the conditional probability was the fraction representing the outcome of interest,
+      that the photo was about fashion.
+      Suppose we were provided only the information in <xref ref="photoClassifyProbTable">Figure</xref>,
+      i.e. only probability data.
+      Then if we took a sample of 1000 photos,
+      we would anticipate about 12.0% or
+      <m>0.120\times 1000 = 120</m> would be predicted to be about fashion (<c>mach\uslearn</c> is <c>pred\usfashion</c>).
+      Similarly, we would expect about 10.8% or
+      <m>0.108\times 1000 = 108</m> to meet both the information criteria and represent our outcome of interest.
+      Then the conditional probability can be computed as
+      <md>
+        <mrow>\amp P(\text{\texttt{truth} is \texttt{fashion}} \ |\ \text{\texttt{mach\us{}learn} is \texttt{pred\us{}fashion}} )</mrow>
+        <mrow>\amp = \frac{\text{\# (\texttt{truth} is \texttt{fashion} and \texttt{mach\us{}learn} is \texttt{pred\us{}fashion})} } {\text{\# (\texttt{mach\us{}learn} is \texttt{pred\us{}fashion})} }</mrow>
+        <mrow>\amp = \frac{108}{120} = \frac{0.108}{0.120} = 0.90</mrow>
+      </md>
+    </p>
+    <p>
+      Here we are examining exactly the fraction of two probabilities, 0.108 and 0.120, which we can write as
+      <md>
+        <mrow>P(\text{\texttt{truth} is \texttt{fashion} and \texttt{mach\us{}learn} is \texttt{pred\us{}fashion}} ) \text{ and } P(\text{\texttt{mach\us{}learn} is \texttt{pred\us{}fashion}} )</mrow>
+      </md>.
+    </p>
+    <p>
+      The fraction of these probabilities is an example of the general formula for conditional probability.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        The conditional probability of the outcome of interest <m>A</m> given condition <m>B</m> is computed as the following:
+        <md>
+          <mrow>P(A | B) = \frac{P(A\text{ and } B)}{P(B)}</mrow>
+        </md>
+      </p>
+    </assemblage>
+    <exercise xml:id="fashionProbOfMLNotGivenTruthNot">
+      <statement>
+        <p>
+          (a) Write out the following statement in conditional probability notation:
+          <q><em>The probability that the ML prediction was correct,
+          if the photo was about fashion</em></q>. Here the condition is now based on the photo's <c>truth</c> status,
+          not the ML algorithm.
+        </p>
+        <p>
+          (b)<nbsp/>Determine the probability from part (a).
+          <xref ref="photoClassifyProbTable">Figure</xref> may be helpful.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="whyCondProbSumTo1">
+      <statement>
+        <p>
+          (a)<nbsp/>Determine the probability that the algorithm is incorrect if it is known the photo is about fashion.
+        </p>
+        <p>
+          (b)<nbsp/>Using the answers from part<nbsp/>(a) and Guided <xref ref="fashionProbOfMLNotGivenTruthNot">Practice</xref>(b), compute
+          <md>
+            <mrow>\amp P(\text{\texttt{mach\us{}learn} is \texttt{pred\us{}fashion}} \ |\ \text{\texttt{truth} is \texttt{fashion}} )</mrow>
+            <mrow>\amp \qquad  +\ P(\text{\texttt{mach\us{}learn} is \texttt{pred\us{}not}} \ |\ \text{\texttt{truth} is \texttt{fashion}} )</mrow>
+          </md>
+        </p>
+        <p>
+          (c)<nbsp/>Provide an intuitive argument to explain why the sum in<nbsp/>(b) is<nbsp/>1.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+          <idx><h>conditional probability</h></idx>
+          <idx><h>data</h><h>photo_classify</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Smallpox in Boston, 1721</title>
+    <p>
+          <idx><h>data</h><h>smallpox</h></idx>
+    </p>
+    <p>
+      The <c>smallpox</c> data set provides a sample of 6,224 individuals from the year 1721 who were exposed to smallpox in Boston.<fn>
+      Fenner F. 1988.
+      <em>Smallpox and Its Eradication (History of International Public Health, No. 6)</em>.
+      Geneva: World Health Organization.
+      ISBN 92-4-156110-6.
+      </fn> Doctors at the time believed that inoculation,
+      which involves exposing a person to the disease in a controlled form,
+      could reduce the likelihood of death.
+    </p>
+    <p>
+      Each case represents one person with two variables: <c>inoculated</c> and <c>result</c>.
+      The variable <c>inoculated</c> takes two levels: <c>yes</c> or <c>no</c>,
+      indicating whether the person was inoculated or not.
+      The variable <c>result</c> has outcomes <c>lived</c> or <c>died</c>.
+      These data are summarized in <xref ref="smallpoxContingencyTable">Tables</xref>
+      and <xref ref="smallpoxProbabilityTable"></xref>.
+    </p>
+    <table xml:id="smallpoxContingencyTable">
+      <caption>Contingency table for the <c>smallpox</c> data set.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>inoculated</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell><c>yes</c></cell>
+          <cell><c>no</c></cell>
+          <cell>Total</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>lived</c></cell>
+          <cell>238</cell>
+          <cell>5136</cell>
+          <cell>5374</cell>
+        </row>
+        <row>
+          <cell><c>result</c></cell>
+          <cell><c>died</c> \hspace{0.5cm}</cell>
+          <cell>6</cell>
+          <cell>844</cell>
+          <cell>850</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Total</cell>
+          <cell>244</cell>
+          <cell>5980</cell>
+          <cell>6224</cell>
+        </row>
+      </tabular>
+    </table>
+    <table xml:id="smallpoxProbabilityTable">
+      <caption>Table proportions for the <c>smallpox</c> data, computed by dividing each count by the table total, 6224.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>inoculated</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell><c>yes</c></cell>
+          <cell><c>no</c></cell>
+          <cell>Total</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>lived</c></cell>
+          <cell>0.0382</cell>
+          <cell>0.8252</cell>
+          <cell>0.8634</cell>
+        </row>
+        <row>
+          <cell><c>result</c></cell>
+          <cell><c>died</c> \hspace{0.5cm}</cell>
+          <cell>0.0010</cell>
+          <cell>0.1356</cell>
+          <cell>0.1366</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Total</cell>
+          <cell>0.0392</cell>
+          <cell>0.9608</cell>
+          <cell>1.0000</cell>
+        </row>
+      </tabular>
+    </table>
+    <exercise xml:id="probDiedIfNotInoculated">
+      <statement>
+        <p>
+          Write out, in formal notation,
+          the probability a randomly selected person who was not inoculated died from smallpox,
+          and find this \mbox{probability.}
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Determine the probability that an inoculated person died from smallpox.
+          How does this result compare with the result of Guided <xref ref="probDiedIfNotInoculated">Practice</xref>?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="SmallpoxInoculationObsExpExercise">
+      <statement>
+        <p>
+          The people of Boston self-selected whether or not to be inoculated. (a) Is this study observational or was this an experiment? (b) Can we infer any causal connection using these data? (c) What are some potential confounding variables that might influence whether someone lived or died and also affect whether that person was inoculated?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>General multiplication rule</title>
+    <p>
+      <xref ref="probabilityIndependence">Section</xref>
+      introduced the Multiplication Rule for independent processes.
+      Here we provide the <term>General Multiplication Rule</term>
+      for events that might not be independent.
+    </p>
+    <assemblage>
+    <title></title>
+    <p>
+      If <m>A</m> and <m>B</m> represent two outcomes or events, then
+      <md>
+        <mrow>P(A\text{ and } B) = P(A | B)\times P(B)</mrow>
+      </md>
+    </p>
+    <p>
+      For the term <m>P(A | B)</m>,
+      it is useful to think of <m>A</m> as the outcome of interest and <m>B</m> as the condition.\end{onebox} This General Multiplication Rule is simply a rearrangement of the definition for conditional probability.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Consider the <c>smallpox</c> data set.
+          Suppose we are given only two pieces of information: 96.08% of residents were not inoculated,
+          and 85.88% of the residents who were not inoculated ended up surviving.
+          How could we compute the probability that a resident was not inoculated and lived?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We will compute our answer using the General Multiplication Rule and then verify it using <xref ref="smallpoxProbabilityTable">Figure</xref>.
+          We want to determine
+          <md>
+            <mrow>P(\text{\texttt{lived} and \texttt{not inoculated}} )</mrow>
+          </md>
+          and we are given that
+          <md>
+            <mrow>P(\text{\texttt{lived}} \ |\ \text{\texttt{not inoculated}} )=0.8588</mrow>
+            <mrow>P(\text{\texttt{not inoculated}} )=0.9608</mrow>
+          </md>
+        </p>
+        <p>
+          Among the 96.08% of people who were not inoculated, 85.88% survived:
+          <md>
+            <mrow>P(\text{\texttt{lived} and \texttt{not inoculated}} ) = 0.8588\times 0.9608 = 0.8251</mrow>
+          </md>
+        </p>
+        <p>
+          This is equivalent to the General Multiplication Rule.
+          We can confirm this probability in <xref ref="smallpoxProbabilityTable">Figure</xref>
+          at the intersection of <c>no</c> and <c>lived</c> (with a small rounding error).
+        </p>
+      </answer>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Use <m>P(</m><c>inoculated</c><m>) = 0.0392</m> and <m>P(</m><c>lived</c> <m>|</m> <c>inoculated</c><m>) = 0.9754</m> to determine the probability that a person was both inoculated and lived.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          If 97.54% of the inoculated people lived,
+          what proportion of inoculated people must have<nbsp/>died?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Based on the probabilities computed above,
+          does it appear that inoculation is effective at reducing the risk of death from smallpox?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="smallPop">
+    <title>Sampling without replacement</title>
+    <example>
+      <statement>
+        <p>
+          Professors sometimes select a student at random to answer a question.
+          If each student has an equal chance of being selected and there are 15 people in your class,
+          what is the chance that she will pick you for the next question?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Professors sometimes select a student at random to answer a question.
+          If each student has an equal chance of being selected and there are 15 people in your class,
+          what is the chance that she will pick you for the next question?
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          If the professor asks 3 questions,
+          what is the probability that you will not be selected?
+          Assume that she will not pick the same person twice in a given lecture.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          If the professor asks 3 questions,
+          what is the probability that you will not be selected?
+          Assume that she will not pick the same person twice in a given lecture.
+        </p>
+      </solution>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          What rule permitted us to multiply the probabilities in <xref ref="x3woRep">Example</xref>?
+        </p>
+      </statement>
+    </exercise>
+    <example>
+      <statement>
+        <p>
+          Suppose the professor randomly picks without regard to who she already selected,
+          i.e. students can be picked more than once.
+          What is the probability that you will not be picked for any of the three questions?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Suppose the professor randomly picks without regard to who she already selected,
+          i.e. students can be picked more than once.
+          What is the probability that you will not be picked for any of the three questions?
+        </p>
+      </solution>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Under the setup of <xref ref="x3wRep">Example</xref>,
+          what is the probability of being picked to answer all three questions?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      If we sample from a small population
+      <term>without replacement</term>,
+      we no longer have independence between our observations.
+      In <xref ref="x3woRep">Example</xref>,
+      the probability of not being picked for the second question was conditioned on the event that you were not picked for the first question.
+      In <xref ref="x3wRep">Example</xref>,
+      the professor sampled her students
+      <term>with replacement</term>:
+      she repeatedly sampled the entire class without regard to who she already picked.
+    </p>
+    <exercise xml:id="raffleOf30TicketsWWOReplacement">
+      <statement>
+        <p>
+          Your department is holding a raffle.
+          They sell 30 tickets and offer seven prizes. (a) They place the tickets in a hat and draw one for each prize.
+          The tickets are sampled without replacement,
+          i.e. the selected tickets are not placed back in the hat.
+          What is the probability of winning a prize if you buy one ticket? (b)<nbsp/>What if the tickets are sampled with replacement?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="followUpToRaffleOf30TicketsWWOReplacement">
+      <statement>
+        <p>
+          Compare your answers in Guided <xref ref="raffleOf30TicketsWWOReplacement">Practice</xref>.
+          How much influence does the sampling method have on your chances of winning a prize?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Had we repeated Guided <xref ref="raffleOf30TicketsWWOReplacement">Practice</xref>
+      with 300 tickets instead of 30,
+      we would have found something interesting:
+      the results would be nearly identical.
+      The probability would be 0.0233 without replacement and 0.0231 with replacement.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        When the sample size is only a small fraction of the population (under 10%), observations can be considered independent even when sampling without replacement.
+      </p>
+    </assemblage>
+  </subsection>
+  <subsection>
+    <title>Independence considerations in conditional probability</title>
+    <p>
+      If two processes are independent,
+      then knowing the outcome of one should provide no information about the other.
+      We can show this is mathematically true using conditional probabilities.
+    </p>
+    <exercise xml:id="condProbOfRollingA1AfterOne1">
+      <statement>
+        <p>
+          Let <m>X</m> and <m>Y</m> represent the outcomes of rolling two dice. (a)<nbsp/>What is the probability that the first die,
+          <m>X</m>,
+          is <c>1</c>? (b)<nbsp/>What is the probability that both <m>X</m> and <m>Y</m> are <c>1</c>? (c)<nbsp/>Use the formula for conditional probability to compute <m>P(Y =</m> <c>1</c> <m>| X =</m> <c>1</c><m>)</m>. (d)<nbsp/>What is <m>P(Y=1)</m>?
+          Is this different from the answer from part (c)?
+          Explain.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We can show in Guided <xref ref="condProbOfRollingA1AfterOne1">Practice</xref>(c) that the conditioning information has no influence by using the Multiplication Rule for independence processes:
+      <md>
+        <mrow>P(Y=\text{\texttt{1}} |X=\text{\texttt{1}} ) \amp =\amp  \frac{P(Y=\text{\texttt{1} and } X=\text{\texttt{1}} )}{P(X=\text{\texttt{1}} )}</mrow>
+        <mrow>\amp =\amp  \frac{P(Y=\text{\texttt{1}} )\times \color{oiGB}P(X=\text{\texttt{1}} )}{\color{oiGB}P(X=\text{\texttt{1}} )}</mrow>
+        <mrow>\amp =\amp  P(Y=\text{\texttt{1}} )</mrow>
+      </md>
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Ron is watching a roulette table in a casino and notices that the last five outcomes were <c>black</c>.
+          He figures that the chances of getting <c>black</c> six times in a row is very small
+          (about <m>1/64</m>)
+          and puts his paycheck on red.
+          What is wrong with his reasoning?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>Checking for independent and mutually exclusive events</title>
+    <p>
+      If <m>A</m> and <m>B</m> are independent events,
+      then the probability of <m>A</m> being true is unchanged if <m>B</m> is true.
+      Mathematically, this is written as
+      <md>
+        <mrow>P(A|B) \amp = P(A)</mrow>
+      </md>
+    </p>
+    <p>
+      The General Multiplication Rule states that
+      <m>P(A\text{ and } B)</m> equals <m>P(A | B)\times P(B)</m>.
+      If <m>A</m> and <m>B</m> are independent events,
+      we can replace <m>P(A|B)</m> with <m>P(A)</m> and the following multiplication rule applies:
+      <md>
+        <mrow>P(A\text{ and } B) \amp = P(A)\times P(B)</mrow>
+      </md>
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        When checking whether two events <m>A</m> and <m>B</m> are independent,
+        verify one of the following equations holds (there is no need to check both equations):
+        <md>
+          <mrow>P(A|B) \amp = P(A)\amp P(A\text{ and } B) \amp = P(A)\times P(B)</mrow>
+        </md>
+      </p>
+      <p>
+        If the equation that is checked holds true
+        (the left and right sides are equal),
+        <m>A</m> and <m>B</m> are independent.
+        If the equation does not hold,
+        then <m>A</m> and <m>B</m> are dependent.
+      </p>
+    </assemblage>
+    <example xml:id="teenParentCollegeIndependentExample">
+      <statement>
+        <p>
+          Are teenager college attendance and parent college degrees independent or dependent?
+          <xref ref="contTableOfParStCollegeCopy">Figure</xref> may be helpful.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We'll use the first equation above to check for independence.
+          If the <c>teen</c> and <c>parents</c> variables are independent,
+          it must be true that
+          <md>
+            <mrow>P(\text{\texttt{teen} \texttt{college}} \ |\ \text{\texttt{parent} \texttt{degree}} ) \amp = P(\text{\texttt{teen} \texttt{college}} )</mrow>
+          </md>
+        </p>
+        <p>
+          Using <xref ref="contTableOfParStCollegeCopy">Figure</xref>,
+          we check whether equality holds in this equation.
+          <md>
+            <mrow>P(\text{\texttt{teen} \texttt{college}} \ |\ \text{\texttt{parent} \texttt{degree}} ) \amp \overset{?}{=} P(\text{\texttt{teen} \texttt{college}} )</mrow>
+            <mrow>0.83 \amp \neq 0.56</mrow>
+          </md>
+        </p>
+        <p>
+          The value 0.83 came from a probability calculation using <xref ref="contTableOfParStCollegeCopy">Figure</xref>:
+          <m>\frac{231}{280} \approx 0.83</m>.
+          Because the sides are not equal,
+          teenager college attendance and parent degree are dependent.
+          That is, we estimate the probability a teenager attended college to be higher if we know that one of the teen's parents has a college degree.
+        </p>
+      </answer>
+    </example>
+    <table xml:id="contTableOfParStCollegeCopy">
+      <caption>Contingency table summarizing the <c>family\uscollege</c> data set.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>\multicolumn{2}{c}{<c>parents</c>}</cell>
+          <cell>\hspace{1cm}</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell><c>degree</c></cell>
+          <cell><c>not</c></cell>
+          <cell>Total</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>college</c></cell>
+          <cell>231</cell>
+          <cell>214</cell>
+          <cell>445</cell>
+        </row>
+        <row>
+          <cell><c>teen</c></cell>
+          <cell><c>not</c> \hspace{0.5cm}</cell>
+          <cell>49</cell>
+          <cell>298</cell>
+          <cell>347</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Total</cell>
+          <cell>280</cell>
+          <cell>512</cell>
+          <cell>792</cell>
+        </row>
+      </tabular>
+    </table>
+    <exercise>
+      <statement>
+        <p>
+          Use the second equation in the box above to show that teenager college attendance and parent college degrees are dependent.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      If <m>A</m> and <m>B</m> are mutually exclusive events,
+      then <m>A</m> and <m>B</m> cannot occur at the same time.
+      Mathematically, this is written as
+      <md>
+        <mrow>P(A \text{ and }  B) \amp = 0</mrow>
+      </md>
+    </p>
+    <p>
+      The General Addition Rule states that <m>P(A\text{ or } B) \text{ equals } P(A) + P(B) - P(A\text{ and } B)</m>.
+      If <m>A</m> and <m>B</m> are mutually exclusive events,
+      we can replace <m>P(A \text{ and } B)</m> with 0 and the following addition rule applies:
+      <md>
+        <mrow>P(A\text{ or } B) \amp = P(A) + P(B)</mrow>
+      </md>
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        If <m>A</m> and <m>B</m> are mutually exclusive events,
+        then they cannot occur at the same time.
+        If asked to determine if events <m>A</m> and <m>B</m> are mutually exclusive,
+        verify one of the following equations holds (there is no need to check both equations):
+        <md>
+          <mrow>P(A \text{ and } B) \amp = 0\amp P(A\text{ or } B) \amp = P(A) + P(B)</mrow>
+        </md>
+      </p>
+      <p>
+        If the equation that is checked holds true
+        (the left and right sides are equal),
+        <m>A</m> and <m>B</m> are mutually exclusive.
+        If the equation does not hold,
+        then <m>A</m> and <m>B</m> are not mutually exclusive.
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          Are teen college attendance and parent college degrees mutually exclusive?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Are teen college attendance and parent college degrees mutually exclusive?
+        </p>
+      </solution>
+    </example>
+    <assemblage>
+      <title></title>
+      <p>
+        If two events are mutually exclusive,
+        then if one is true, the other cannot be true.
+        This implies the two events are in some way connected,
+        meaning they must be dependent.
+      </p>
+      <p>
+        If two events are independent, then if one occurs,
+        it is still possible for the other to occur,
+        meaning the events are not mutually exclusive.
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <p>
+        {If two events are dependent,
+        we can<em>not</em> simply conclude they are mutually exclusive.
+        For example,
+        the college attendance of teenagers and a college degree by one of their parents are dependent,
+        but those events are not mutually exclusive.}
+      </p>
+    </assemblage>
+  </subsection>
+  <subsection>
+    <title>Tree diagrams</title>
+    <p>
+          <idx><h>data</h><h>smallpox</h></idx>
+          <idx><h>tree diagram</h></idx>
+    </p>
+    <p>
+      <em>Tree diagrams</em>
+          <idx><h>tree diagram|textbf</h></idx>
+      are a tool to organize outcomes and probabilities around the structure of the data.
+      They are most useful when two or more processes occur in a sequence and each process is conditioned on its predecessors.
+    </p>
+    <p>
+      The <c>smallpox</c> data fit this description.
+      We see the population as split by <c>inoculation</c>: <c>yes</c> and <c>no</c>.
+      Following this split, survival rates were observed for each group.
+      This structure is reflected in the tree diagram shown in <xref ref="smallpoxTreeDiagram">Figure</xref>.
+      The first branch for <c>inoculation</c> is said to be the <term>primary</term>
+      branch while the other branches are <term>secondary</term>.
+    </p>
+    <figure xml:id="smallpoxTreeDiagram">
+      <caption>A tree diagram of the <c>smallpox</c> data set.</caption>
+      \Figure{0.85}{smallpoxTreeDiagram}
+    </figure>
+    <p>
+      Tree diagrams are annotated with marginal and conditional probabilities,
+      as shown in <xref ref="smallpoxTreeDiagram">Figure</xref>.
+      This tree diagram splits the smallpox data by <c>inoculation</c> into the <c>yes</c> and <c>no</c> groups with respective marginal probabilities 0.0392 and 0.9608.
+      The secondary branches are conditioned on the first,
+      so we assign conditional probabilities to these branches.
+      For example,
+      the top branch in <xref ref="smallpoxTreeDiagram">Figure</xref>
+      is the probability that <c>lived</c> conditioned on the information that <c>inoculated</c>.
+    </p>
+    <p>
+      We may (and usually do) construct joint probabilities at the end of each branch in our tree by multiplying the numbers we come across as we move from left to right.
+      These joint probabilities are computed using the General Multiplication Rule:
+      <md>
+        <mrow>P(\text{\texttt{inoculated} and \texttt{lived}} ) \amp = P(\text{\texttt{inoculated}} )\times P(\text{\texttt{lived}} \ |\ \text{\texttt{inoculated}} )</mrow>
+        <mrow>\amp = 0.0392\times 0.9754</mrow>
+        <mrow>\amp =0.0382</mrow>
+      </md>
+    </p>
+    <example>
+      <statement>
+        <p>
+          What is the probability that a randomly selected person who was inoculated died?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          What is the probability that a randomly selected person who was inoculated died?
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          What is the probability that a randomly selected person lived?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          What is the probability that a randomly selected person lived?
+        </p>
+      </solution>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          After an introductory statistics course, 78% of students can successfully construct tree diagrams.
+          Of those who can construct tree diagrams, 97% passed,
+          while only 57% of those students who could not construct tree diagrams passed. (a)<nbsp/>Organize this information into a tree diagram. {(b)<nbsp/>What is the probability that a student who was able to construct tree diagrams did not pass? (c)<nbsp/>What is the probability that a randomly selected student was able to successfully construct tree diagrams and passed? (d)<nbsp/>What is the probability that a randomly selected student passed?}
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="bayesTheoremSubsection">
+    <title>Bayes' Theorem</title>
+    <p>
+          <idx><h>Bayes' Theorem</h></idx>
+    </p>
+    <p>
+      In many instances, we are given a conditional probability of the form
+      <md>
+        <mrow>P(\text{ statement about variable 1 } \ |\ \text{ statement about variable 2 } )</mrow>
+      </md>
+      but we would really like to know the inverted conditional probability:
+      <md>
+        <mrow>P(\text{ statement about variable 2 } \ |\ \text{ statement about variable 1 } )</mrow>
+      </md>
+    </p>
+    <p>
+      For example,
+      instead of wanting to know <m>P(</m>lived <m>|</m> inoculated<m>)</m>,
+      we might want to know <m>P(</m>inoculated <m>|</m> lived<m>)</m>.
+      This is more challenging because it cannot be read directly from the tree diagram.
+      In these instances we use <term>Bayes' Theorem</term>.
+      Let's begin by looking at a new example.
+    </p>
+    <example xml:id="probabilityOfBreastCancerGivenPositiveTestExample">
+      <statement>
+        <p>
+          In Canada, about 0.35% of women over 40 will develop breast cancer in any given year.
+          A common screening test for cancer is the mammogram,
+          but this test is not perfect.
+          In about 11% of patients with breast cancer,
+          the test gives a <term>false negative</term>:
+          it indicates a woman does not have breast cancer when she does have breast cancer.
+          Similarly, the test gives a <term>false positive</term>
+          in 7% of patients who do not have breast cancer:
+          it indicates these patients have breast cancer when they actually do not.If we tested a random woman over 40 for breast cancer using a mammogram and the test came back positive <mdash/> that is,
+          the test suggested the patient has cancer <mdash/> what is the probability that the patient actually has breast cancer?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We are given sufficient information to quickly compute the probability of testing positive if a woman has breast cancer
+          (<m>1.00 - 0.11 = 0.89</m>).
+          However, we seek the inverted probability of cancer given a positive test result:
+          <md>
+            <mrow>P(\text{ has BC } \ |\ \text{ mammogram\(^+\) } )</mrow>
+          </md>
+        </p>
+        <p>
+          Here,
+          <q>has BC</q>
+          is an abbreviation for the patient actually having breast cancer, and
+          <q>mammogram<m>^+</m></q>
+          means the mammogram screening was positive,
+          which in this case means the test suggests the patient has breast cancer.
+          (Watch out for the non-intuitive medical language:
+          a<nbsp/><em>positive</em> test result suggests the possible presence of cancer in a mammogram screening.)
+          We can use the conditional probability formula from the previous section:
+          <m>P(A|B) = \frac{P(A \text{ and }  B)}{P(B)}</m>.
+          Our conditional probability can be found as follows:
+          <md>
+            <mrow>P(\text{ has BC \(|\) mammogram\(^+\) } ) \amp =  \frac{P(\text{ has BC and mammogram\(^+\) } )}{P(\text{ mammogram\(^+\) } )}</mrow>
+          </md>
+        </p>
+        <p>
+          The probability that a mammogram is positive is as follows.
+          <md>
+            <mrow>P(\text{ mammogram\(^+\) } )=P(\text{ has BC and mammogram\(^+\) } ) +  P(\text{ no BC and mammogram\(^+\) } )</mrow>
+          </md>
+        </p>
+        <p>
+          A tree diagram is useful for identifying each probability and is shown in <xref ref="BreastCancerTreeDiagram">Figure</xref>.
+          Using the tree diagram, we find that
+          <md>
+            <mrow>P(\amp \text{ has BC \(|\) mammogram\(^+\) } )</mrow>
+            <mrow>\amp = \frac{P(\text{ has BC and mammogram\(^+\) } )}{P(\text{ has BC and mammogram\(^+\) } ) +  P(\text{ no BC and mammogram\(^+\) } )}</mrow>
+            <mrow>\amp = \frac{0.0035(0.89)}{0.0035(0.89)+0.9965(0.07)}</mrow>
+            <mrow>\amp = \frac{0.00312}{0.07288}\approx 0.0428</mrow>
+          </md>
+        </p>
+        <p>
+          That is, even if a patient has a positive mammogram screening,
+          there is still only a<nbsp/>4%<nbsp/>chance that she has breast cancer.
+        </p>
+      </answer>
+    </example>
+    <figure xml:id="BreastCancerTreeDiagram">
+      <caption>Tree diagram for <xref ref="probabilityOfBreastCancerGivenPositiveTestExample">Example</xref>, computing the probability a random patient who tests positive on a mammogram actually has breast cancer.</caption>
+      <image width="90%" source="images/BreastCancerTreeDiagram.png" />
+    </figure>
+    <p>
+      <xref ref="probabilityOfBreastCancerGivenPositiveTestExample">Example</xref>
+      highlights why doctors often run more tests regardless of a first positive test result.
+      When a medical condition is rare,
+      a single positive test isn't generally definitive.
+    </p>
+    <p>
+      Consider again the last equation of <xref ref="probabilityOfBreastCancerGivenPositiveTestExample">Example</xref>.
+      Using the tree diagram, we can see that the numerator
+      (the top of the fraction)
+      is equal to the following product:
+      <md>
+        <mrow>P(\text{ has BC and mammogram\(^+\) } ) = P(\text{ mammogram\(^+\) }  | \text{ has BC } )P(\text{ has BC } )</mrow>
+      </md>
+    </p>
+    <p>
+      The denominator <mdash/> the probability the screening was positive <mdash/> is equal to the sum of probabilities for each positive screening scenario:
+      <md>
+        <mrow>P(\text{\underline{\color{black}mammogram\(^+\)}} ) \amp = P(\text{\underline{\color{black}mammogram\(^+\)} and no BC} ) + P(\text{\underline{\color{black}mammogram\(^+\)} and has BC} )</mrow>
+      </md>
+    </p>
+    <p>
+      In the example,
+      each of the probabilities on the right side was broken down into a product of a conditional probability and marginal probability using the tree diagram.
+      <md>
+        <mrow>P(\text{ mammogram\(^+\) } ) \amp = P(\text{ mammogram\(^+\) and no BC } ) + P(\text{ mammogram\(^+\) and has BC } )</mrow>
+        <mrow>\amp = P(\text{ mammogram\(^+\) }  | \text{ no BC } )P(\text{ no BC } )</mrow>
+        <mrow>\amp \qquad\qquad + P(\text{ mammogram\(^+\) }  | \text{ has BC } )P(\text{ has BC } )</mrow>
+      </md>
+    </p>
+    <p>
+      We can see an application of Bayes' Theorem by substituting the resulting probability expressions into the numerator and denominator of the original conditional probability.
+      <md>
+        <mrow>\amp  P(\text{ has BC }  | \text{ mammogram\(^+\) } )</mrow>
+        <mrow>\amp  \qquad= \frac{P(\text{ mammogram\(^+\) }  | \text{ has BC } )P(\text{ has BC } )} {P(\text{ mammogram\(^+\) }  | \text{ no BC } )P(\text{ no BC } ) + P(\text{ mammogram\(^+\) }  | \text{ has BC } )P(\text{ has BC } )}</mrow>
+      </md>
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        Consider the following conditional probability for variable 1 and variable 2:
+        <md>
+          <mrow>P(\text{ outcome \(A_1\) of variable 1 }  | \text{ outcome \(B\) of variable 2 } )</mrow>
+        </md>
+      </p>
+      <p>
+        Bayes' Theorem states that this conditional probability can be identified as the following fraction:
+        <md>
+          <mrow>\frac{P(B | A_1) P(A_1)} {P(B | A_1) P(A_1) + P(B | A_2) P(A_2) + \cdots + P(B | A_k) P(A_k)}</mrow>
+        </md>
+        where <m>A_2</m>,
+        <m>A_3</m>, ..., and <m>A_k</m> represent all other possible outcomes of the first variable.
+            <idx><h>Bayes' Theorem|textbf</h></idx>
+      </p>
+    </assemblage>
+    <p>
+      Bayes' Theorem is just a generalization of what we have done using tree diagrams.
+      The formula need not be memorized,
+      since it can always be derived using a tree diagram:
+      <ul>
+        <li>
+          <p>
+            The numerator identifies the probability of getting both <m>A_1</m> and <m>B</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The denominator is the overall probability of getting <m>B</m>.
+            Traverse each branch of the tree diagram that ends with event <m>B</m>.
+            Add up the required products.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <exercise xml:id="exerciseForParkingLotOnCampusBeingFullAndWhetherOrNotThereIsASportingEvent">
+      <statement>
+        <p>
+          Jose visits campus every Thursday evening.
+          However, some days the parking garage is full,
+          often due to college events.
+          There are academic events on 35% of evenings,
+          sporting events on 20% of evenings,
+          and no events on 45% of evenings.
+          When there is an academic event,
+          the garage fills up about 25% of the time,
+          and it fills up 70% of evenings with sporting events.
+          On evenings when there are no events,
+          it only fills up about 5% of the time.
+          If Jose comes to campus and finds the garage full,
+          what is the probability that there is a sporting event?
+          Use a tree diagram to solve this problem.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The last several exercises offered a way to update our belief about whether there is a sporting event,
+      academic event,
+      or no event going on at the school based on the information that the parking lot was full.
+      This strategy of <em>updating beliefs</em>
+      using Bayes' Theorem is actually the foundation of an entire section of statistics called
+      <term>Bayesian statistics</term>.
+      While Bayesian statistics is very important and useful,
+      we will not have time to cover it in this book.
+    </p>
+    <p>
+          <idx><h>Bayes' Theorem</h></idx>
+          <idx><h>tree diagram</h></idx>
+          <idx><h>conditional probability</h></idx>
+          <idx><h>probability</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          A <term>conditional probability</term>
+          can be written as <m>P(A | B)</m> and is read,
+          <q>Probability of <m>A</m> given <m>B</m></q>. <m>P(A|B)</m> is the probability of <m>A</m>,
+          given that <m>B</m> has occurred.
+          In a conditional probability,
+          we are given some information.
+          In an <term>unconditional probability</term>,
+          such as <m>P(A)</m>, we are not given any information.
+        </p>
+      </li>
+      <li>
+        <p>
+          Sometimes <m>P(A | B)</m> can be deduced.
+          For example,
+          when drawing without replacement from a deck of cards,
+          <m>P(\text{ 2nd draw is an Ace } | \text{ 1st draw was an Ace } ) = \frac{3}{51}</m>.
+          When this is not the case, as when working with a table or a Venn diagram,
+          one must use the conditional probability rule <m>P(A | B) = \frac{P(A\text{ and } B)}{P(B)}</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          In the last section,
+          we saw that two events are <term>independent</term>
+          when the outcome of one has no effect on the outcome of the other.
+          When <m>A</m> and <m>B</m> are independent, <m>P(A | B) = P(A)</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          When <m>A</m> and <m>B</m> are <term>dependent</term>,
+          find the probability of <m>A</m> <em>and</em>
+          <m>B</m> using the <term>General Multiplication Rule</term>:
+          <m>P(A \text{ and } B) = P(A | B)\times P(B)</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          In the <em>special case</em> where <m>A</m> and <m>B</m> are <term>independent</term>,
+          <m>P(A \text{ and } B) = P(A)\times P(B)</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          If <m>A</m> and <m>B</m> are <term>mutually exclusive</term>,
+          they must be <term>dependent</term>,
+          since the occurrence of one of them changes the probability that the other occurs to 0.
+        </p>
+      </li>
+      <li>
+        <p>
+          When sampling <term>without replacement</term>,
+          such as drawing cards from a deck,
+          make sure to use <em>conditional probabilities</em><idx><h>conditional probability|textbf</h></idx> when solving <em>and</em> problems.
+        </p>
+      </li>
+      <li>
+        <p>
+          Sometimes, the conditional probability <m>P(B|A)</m> may be known,
+          but we are interested in the
+          <q>inverted</q>
+          probability <m>P(A|B)</m>.
+          <term>Bayes' Theorem</term> helps us solve such conditional probabilities that cannot be easily answered.
+          However, rather than memorize Bayes' Theorem,
+          one can generally draw a tree diagram and apply the conditional probability rule <m>P(A | B)=\frac{P(A\text{ and } B)}{P(B)}</m>.
+          The resulting answer often has the form <m>\frac{w\times x\text{ } +\text{ } y\times z}{w\times x}</m>,
+          where <m>w, x, y, z</m> are numbers from a tree diagram.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="joint_cond">
+      <title>Joint and conditional probabilities</title>
+      <statement>
+        <p>
+          P(A) = 0.3, P(B) = 0.7
+          <ol>
+            <li>
+              <p>
+                Can you compute P(A and B) if you only know P(A) and P(B)?
+              </p>
+            </li>
+            <li>
+              <p>
+                Assuming that events A and B arise from independent random processes,
+                <task>
+                  what is P(A and B)?
+                </task>
+                <task>
+                  what is P(A or B)?
+                </task>
+                <task>
+                  what is P(A<m>|</m>B)?
+                </task>
+              </p>
+            </li>
+            <li>
+              <p>
+                If we are given that P(A and B) = 0.1, are the random variables giving rise to events A and B independent?
+              </p>
+            </li>
+            <li>
+              <p>
+                If we are given that P(A and B) = 0.1, what is P(A<m>|</m>B)?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="pbj">
+      <title>PB &amp; J</title>
+      <statement>
+        <p>
+          Suppose 80% of people like peanut butter, 89% like jelly,
+          and 78% like both.
+          Given that a randomly sampled person likes peanut butter,
+          what's the probability that he also likes jelly?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="global_warming">
+      <title>Global warming</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> A Pew Research poll asked 1,306 Americans ``From what you've read and heard,
+          is there solid evidence that the average temperature on earth has been getting warmer over the past few decades,
+          or not?". The table below shows the distribution of responses by party and ideology,
+          where the counts have been replaced with relative frequencies. \footfullcite{globalWarming}
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{3}{c}{<em>Response</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Earth is</cell>
+            <cell>Not</cell>
+            <cell>Don't Know</cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>warming</cell>
+            <cell>warming</cell>
+            <cell>Refuse</cell>
+            <cell>Total</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Conservative Republican</cell>
+            <cell>0.11</cell>
+            <cell>0.20</cell>
+            <cell>0.02</cell>
+            <cell>0.33</cell>
+          </row>
+          <row>
+            <cell><em>Party and</em></cell>
+            <cell>Mod/Lib Republican</cell>
+            <cell>0.06</cell>
+            <cell>0.06</cell>
+            <cell>0.01</cell>
+            <cell>0.13</cell>
+          </row>
+          <row>
+            <cell><em>Ideology</em></cell>
+            <cell>Mod/Cons Democrat</cell>
+            <cell>0.25</cell>
+            <cell>0.07</cell>
+            <cell>0.02</cell>
+            <cell>0.34</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Liberal Democrat</cell>
+            <cell>0.18</cell>
+            <cell>0.01</cell>
+            <cell>0.01</cell>
+            <cell>0.20</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>0.60</cell>
+            <cell>0.34</cell>
+            <cell>0.06</cell>
+            <cell>1.00</cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              Are believing that the earth is warming and being a liberal Democrat mutually exclusive?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a randomly chosen respondent believes the earth is warming or is a liberal Democrat?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a randomly chosen respondent believes the earth is warming given that he is a liberal Democrat?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a randomly chosen respondent believes the earth is warming given that he is a conservative Republican?
+            </p>
+          </li>
+          <li>
+            <p>
+              Does it appear that whether or not a respondent believes the earth is warming is independent of their party and ideology?
+              Explain your reasoning.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a randomly chosen respondent is a moderate/liberal Republican given that he does not believe that the earth is warming?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="health_coverage_rel_freqs">
+      <title>Health coverage, relative frequencies</title>
+      <statement>
+        <p>
+          The Behavioral Risk Factor Surveillance System (BRFSS) is an annual telephone survey designed to identify risk factors in the adult population and report emerging health trends.
+          The following table displays the distribution of health status of respondents to this survey (excellent,
+          very good,
+          good, fair,
+          poor) and whether or not they have health insurance.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{5}{c}{<em>Health Status</em>}</cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Excellent</cell>
+            <cell>Very good</cell>
+            <cell>Good</cell>
+            <cell>Fair</cell>
+            <cell>Poor</cell>
+            <cell>Total</cell>
+          </row>
+          <row>
+            <cell><em>Health</em></cell>
+            <cell>No</cell>
+            <cell>0.0230</cell>
+            <cell>0.0364</cell>
+            <cell>0.0427</cell>
+            <cell>0.0192</cell>
+            <cell>0.0050</cell>
+            <cell>0.1262</cell>
+          </row>
+          <row>
+            <cell><em>Coverage</em></cell>
+            <cell>Yes</cell>
+            <cell>0.2099</cell>
+            <cell>0.3123</cell>
+            <cell>0.2410</cell>
+            <cell>0.0817</cell>
+            <cell>0.0289</cell>
+            <cell>0.8738</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>0.2329</cell>
+            <cell>0.3486</cell>
+            <cell>0.2838</cell>
+            <cell>0.1009</cell>
+            <cell>0.0338</cell>
+            <cell>1.0000</cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              Are being in excellent health and having health coverage mutually exclusive?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a randomly chosen individual has excellent health?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a randomly chosen individual has excellent health given that he has health coverage?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a randomly chosen individual has excellent health given that he doesn't have health coverage?
+            </p>
+          </li>
+          <li>
+            <p>
+              Do having excellent health and having health coverage appear to be independent?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="burger_preferences">
+      <title>Burger preferences</title>
+      <statement>
+        <p>
+          A 2010 SurveyUSA poll asked 500 Los Angeles residents,
+          <q>What is the best hamburger place in Southern California?
+          Five Guys Burgers?
+          In-N-Out Burger?
+          Fat Burger?
+          Tommy's Hamburgers?
+          Umami Burger?
+          Or somewhere else?</q>
+          The distribution of responses by gender is shown below. \footfullcite{burgers}
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{2}{c}{<em>Gender</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Male</cell>
+            <cell>Female</cell>
+            <cell>Total</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Five Guys Burgers</cell>
+            <cell>5</cell>
+            <cell>6</cell>
+            <cell>11</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>In-N-Out Burger</cell>
+            <cell>162</cell>
+            <cell>181</cell>
+            <cell>343</cell>
+          </row>
+          <row>
+            <cell><em>Best</em></cell>
+            <cell>Fat Burger</cell>
+            <cell>10</cell>
+            <cell>12</cell>
+            <cell>22</cell>
+          </row>
+          <row>
+            <cell><em>hamburger</em></cell>
+            <cell>Tommy's Hamburgers</cell>
+            <cell>27</cell>
+            <cell>27</cell>
+            <cell>54</cell>
+          </row>
+          <row>
+            <cell><em>place</em></cell>
+            <cell>Umami Burger</cell>
+            <cell>5</cell>
+            <cell>1</cell>
+            <cell>6</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Other</cell>
+            <cell>26</cell>
+            <cell>20</cell>
+            <cell>46</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Not Sure</cell>
+            <cell>13</cell>
+            <cell>5</cell>
+            <cell>18</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>248</cell>
+            <cell>252</cell>
+            <cell>500</cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              Are being female and liking Five Guys Burgers mutually exclusive?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a randomly chosen male likes In-N-Out the best?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a randomly chosen female likes In-N-Out the best?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a man and a woman who are dating both like In-N-Out the best?
+              Note any assumption you make and evaluate whether you think that assumption is reasonable.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a randomly chosen person likes Umami best or that person is female?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="assortative_mating">
+      <title>Assortative mating</title>
+      <statement>
+        <p>
+          Assortative mating is a nonrandom mating pattern where individuals with similar genotypes and/or phenotypes mate with one another more frequently than what would be expected under a random mating pattern.
+          Researchers studying this topic collected data on eye colors of 204 Scandinavian men and their female partners.
+          The table below summarizes the results.
+          For simplicity,
+          we only include heterosexual relationships in this exercise. \footfullcite{Laeng:2007}
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{3}{c}{<em>Partner (female)</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Blue</cell>
+            <cell>Brown</cell>
+            <cell>Green</cell>
+            <cell>Total</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Blue</cell>
+            <cell>78</cell>
+            <cell>23</cell>
+            <cell>13</cell>
+            <cell>114</cell>
+          </row>
+          <row>
+            <cell>\multirow{2}{*}{<em>Self (male)</em>}</cell>
+            <cell>Brown</cell>
+            <cell>19</cell>
+            <cell>23</cell>
+            <cell>12</cell>
+            <cell>54</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Green</cell>
+            <cell>11</cell>
+            <cell>9</cell>
+            <cell>16</cell>
+            <cell>36</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>108</cell>
+            <cell>55</cell>
+            <cell>41</cell>
+            <cell>204</cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              What is the probability that a randomly chosen male respondent or his partner has blue eyes?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a randomly chosen male respondent with blue eyes has a partner with blue eyes?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a randomly chosen male respondent with brown eyes has a partner with blue eyes?
+              What about the probability of a randomly chosen male respondent with green eyes having a partner with blue eyes?
+            </p>
+          </li>
+          <li>
+            <p>
+              Does it appear that the eye colors of male respondents and their partners are independent?
+              Explain your reasoning.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="marbles_in_urn">
+      <title>Marbles in an urn</title>
+      <statement>
+        <p>
+          Imagine you have an urn containing 5 red, 3 blue,
+          and 2 orange marbles in it.
+          <ol>
+            <li>
+              <p>
+                What is the probability that the first marble you draw is blue?
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose you drew a blue marble in the first draw.
+                If drawing with replacement,
+                what is the probability of drawing a blue marble in the second draw?
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose you instead drew an orange marble in the first draw.
+                If drawing with replacement,
+                what is the probability of drawing a blue marble in the second draw?
+              </p>
+            </li>
+            <li>
+              <p>
+                If drawing with replacement,
+                what is the probability of drawing two blue marbles in a row?
+              </p>
+            </li>
+            <li>
+              <p>
+                When drawing with replacement,
+                are the draws independent?
+                Explain.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="socks_in_drawer">
+      <title>Socks in a drawer</title>
+      <statement>
+        <p>
+          In your sock drawer you have 4 blue, 5 gray, and 3 black socks.
+          Half asleep one morning you grab 2 socks at random and put them on.
+          Find the probability you end up wearing
+          <ol>
+            <li>
+              <p>
+                2 blue socks
+              </p>
+            </li>
+            <li>
+              <p>
+                no gray socks
+              </p>
+            </li>
+            <li>
+              <p>
+                at least 1 black sock
+              </p>
+            </li>
+            <li>
+              <p>
+                a green sock
+              </p>
+            </li>
+            <li>
+              <p>
+                matching socks
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="chips_in_bag">
+      <title>Chips in a bag</title>
+      <statement>
+        <p>
+          Imagine you have a bag containing 5 red, 3 blue, and 2 orange chips.
+          <ol>
+            <li>
+              <p>
+                Suppose you draw a chip and it is blue.
+                If drawing without replacement,
+                what is the probability the next is also blue?
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose you draw a chip and it is orange,
+                and then you draw a second chip without replacement.
+                What is the probability this second chip is blue?
+              </p>
+            </li>
+            <li>
+              <p>
+                If drawing without replacement,
+                what is the probability of drawing two blue chips in a row?
+              </p>
+            </li>
+            <li>
+              <p>
+                When drawing without replacement,
+                are the draws independent?
+                Explain.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="books_on_shelf">
+      <title>Books on a bookshelf</title>
+      <statement>
+        <p>
+          The table below shows the distribution of books on a bookcase based on whether they are nonfiction or fiction and hardcover or paperback.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{2}{c}{<em>Format</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Hardcover</cell>
+            <cell>Paperback</cell>
+            <cell>Total</cell>
+          </row>
+          <row>
+            <cell>\multirow{2}{*}{<em>Type</em>}</cell>
+            <cell>Fiction</cell>
+            <cell>13</cell>
+            <cell>59</cell>
+            <cell>72</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Nonfiction</cell>
+            <cell>15</cell>
+            <cell>8</cell>
+            <cell>23</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>28</cell>
+            <cell>67</cell>
+            <cell>95</cell>
+          </row>
+          <row>
+            <cell></cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              Find the probability of drawing a hardcover book first then a paperback fiction book second when drawing without replacement.
+            </p>
+          </li>
+          <li>
+            <p>
+              Determine the probability of drawing a fiction book first and then a hardcover book second,
+              when drawing without replacement.
+            </p>
+          </li>
+          <li>
+            <p>
+              Calculate the probability of the scenario in part<nbsp/>(b),
+              except this time complete the calculations under the scenario where the first book is placed back on the bookcase before randomly drawing the second book.
+            </p>
+          </li>
+          <li>
+            <p>
+              The final answers to parts<nbsp/>(b) and<nbsp/>(c) are very similar.
+              Explain why this is the case.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="student_outfits">
+      <title>Student outfits</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> In a classroom with 24 students, 7 students are wearing jeans, 4 are wearing shorts, 8 are wearing skirts,
+          and the rest are wearing leggings.
+          If we randomly select 3 students without replacement,
+          what is the probability that one of the selected students is wearing leggings and the other two are wearing jeans?
+          Note that these are mutually exclusive clothing options.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="birthday_problem">
+      <title>The birthday problem</title>
+      <statement>
+        <p>
+          Suppose we pick three people at random.
+          For each of the following questions,
+          ignore the special case where someone might be born on February 29th,
+          and assume that births are evenly distributed throughout the year.
+          <ol>
+            <li>
+              <p>
+                What is the probability that the first two people share a birthday?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the probability that at least two people share a birthday?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="tree_drawing_box_plots">
+      <title>Drawing box plots</title>
+      <statement>
+        <p>
+          After an introductory statistics course, 80% of students can successfully construct box plots.
+          Of those who can construct box plots, 86% passed,
+          while only 65% of those students who could not construct box plots passed.
+          <ol>
+            <li>
+              <p>
+                Construct a tree diagram of this scenario.
+              </p>
+            </li>
+            <li>
+              <p>
+                Calculate the probability that a student is able to construct a box plot if it is known that he passed.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="tree_thrombosis">
+      <title>Predisposition for thrombosis</title>
+      <statement>
+        <p>
+          A genetic test is used to determine if people have a predisposition for <em>thrombosis</em>,
+          which is the formation of a blood clot inside a blood vessel that obstructs the flow of blood through the circulatory system.
+          It is believed that 3% of people actually have this predisposition.
+          The genetic test is 99% accurate if a person actually has the predisposition,
+          meaning that the probability of a positive test result when a person actually has the predisposition is 0.99.
+          The test is 98% accurate if a person does not have the predisposition.
+          What is the probability that a randomly selected person who tests positive for the predisposition by the test actually has the predisposition?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="tree_lupus">
+      <title>It's never lupus</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> Lupus is a medical phenomenon where antibodies that are supposed to attack foreign cells to prevent infections instead see plasma proteins as foreign bodies,
+          leading to a high risk of blood clotting.
+          It is believed tha t 2% of the population suffer from this disease.
+          The test is 98% accurate if a person actually has the disease.
+          The test is 74% accurate if a person does not have the disease.
+          There is a line from the Fox television show <em>House</em>
+          that is often used after a patient tests positive for lupus: ``It's never lupus." Do you think there is truth to this statement?
+          Use appropriate probabilities to support your answer.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="tree_exit_poll">
+      <title>Exit poll</title>
+      <statement>
+        <p>
+          Edison Research gathered exit poll results from several sources for the Wisconsin recall election of Scott Walker.
+          They found that 53% of the respondents voted in favor of Scott Walker.
+          Additionally,
+          they estimated that of those who did vote in favor for Scott Walker, 37% had a college degree,
+          while 44% of those who voted against Scott Walker had a college degree.
+          Suppose we randomly sampled a person who participated in the exit poll and found that he had a college degree.
+          What is the probability that he voted in favor of Scott Walker? \footfullcite{data:scott}
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

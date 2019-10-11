@@ -1,0 +1,1410 @@
+<section xml:id="basicsOfProbability">
+  <title>Defining probability</title>
+  <introduction>
+    <p>
+      What is the probability of rolling an even number on a die?
+      Of getting 5 heads in row when tossing a coin?
+      Of drawing a Heart or an Ace from a deck of cards?
+      The study of probability is fun and interesting in its own right,
+      but it also forms the foundation for statistical models and inferential procedures,
+      many of which we will investigate in subsequent chapters.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Describe the long-run relative frequency interpretation of probability and understand its relationship to the
+          <q>Law of Large Numbers</q>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Use Venn diagrams to represent events and their probabilities and to visualize the complement,
+          union, and intersection of events.
+        </p>
+      </li>
+      <li>
+        <p>
+          Use the General Addition Rule to find the probability that at least one of several events occurs.
+        </p>
+      </li>
+      <li>
+        <p>
+          Understand when events are disjoint
+          (mutually exclusive)
+          and how that simplifies the General Addition Rule.
+        </p>
+      </li>
+      <li>
+        <p>
+          Apply the Multiplication Rule for finding the joint probability of independent events.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Introductory examples</title>
+    <example xml:id="probOf1">
+      <statement>
+        <p>
+          A
+          <q>die</q>, the singular of dice,
+          is a cube with six faces numbered <c>1</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>5</c>,
+          and <c>6</c>.
+          What is the chance of getting <c>1</c> when rolling a die?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          If the die is fair,
+          then the chance of a <c>1</c> is as good as the chance of any other number.
+          Since there are six outcomes,
+          the chance must be 1-in-6 or, equivalently, <m>1/6</m>.
+        </p>
+      </answer>
+    </example>
+    <example xml:id="probOf1Or2">
+      <statement>
+        <p>
+          What is the chance of getting a <c>1</c> or <c>2</c> in the next roll?
+        </p>
+      </statement>
+      <answer>
+        <p>
+           <c>1</c> and <c>2</c> constitute two of the six equally likely possible outcomes,
+          so the chance of getting one of these two outcomes must be <m>2/6 = 1/3</m>.
+        </p>
+      </answer>
+    </example>
+    <example xml:id="probOf123456">
+      <statement>
+        <p>
+          What is the chance of getting either <c>1</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>5</c>,
+          or <c>6</c> on the next roll?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          100%. The outcome must be one of these numbers.
+        </p>
+      </answer>
+    </example>
+    <example xml:id="probNot2">
+      <statement>
+        <p>
+          What is the chance of not rolling a <c>2</c>?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Since the chance of rolling a <c>2</c> is <m>1/6</m> or <m>16.\bar{6}\%</m>,
+          the chance of not rolling a <c>2</c> must be <m>100\% - 16.\bar{6}\%=83.\bar{3}\%</m> or <m>5/6</m>.
+        </p>
+        <p>
+          Alternatively,
+          we could have noticed that not rolling a <c>2</c> is the same as getting a <c>1</c>, <c>3</c>, <c>4</c>, <c>5</c>,
+          or <c>6</c>,
+          which makes up five of the six equally likely outcomes and has probability <m>5/6</m>.
+        </p>
+      </answer>
+    </example>
+    <example xml:id="probOf2Ones">
+      <statement>
+        <p>
+          Consider rolling two dice.
+          If <m>1/6^{th}</m> of the time the first die is a <c>1</c> and
+          <m>1/6^{th}</m> of those times the second die is a <c>1</c>,
+          what is the chance of getting two <c>1</c> s?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          If <m>16.\bar{6}</m>% of the time the first die is a <c>1</c> and <m>1/6^{th}</m> of <em>those</em>
+          times the second die is also a <c>1</c>,
+          then the chance that both dice are <c>1</c> is <m>(1/6)\times (1/6)</m> or <m>1/36</m>.
+        </p>
+      </answer>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Probability</title>
+    <p>
+          <idx><h>random process</h></idx>
+    </p>
+    <p>
+      We use probability to build tools to describe and understand apparent randomness.
+      We often frame probability in terms of a
+      <term>random process</term>
+      giving rise to an <term>outcome</term>.
+    </p>
+    <tabular>
+      <row>
+        <cell>Roll a die</cell>
+        <cell><m>\rightarrow</m></cell>
+        <cell><c>1</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>5</c>, or <c>6</c></cell>
+      </row>
+      <row>
+        <cell>Flip a coin</cell>
+        <cell><m>\rightarrow</m></cell>
+        <cell><c>H</c> or <c>T</c></cell>
+      </row>
+    </tabular>
+    <p>
+      Rolling a die or flipping a coin is a seemingly random process and each gives rise to an outcome.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        The <term>probability</term> of an outcome is the proportion of times the outcome would occur if we observed the random process an infinite number of times.
+      </p>
+    </assemblage>
+    <p>
+      Probability is defined as a proportion,
+      and it always takes values between 0<nbsp/>and<nbsp/>1
+      (inclusively).
+      It may also be displayed as a percentage between 0% and 100%.
+    </p>
+    <p>
+      Probability can be illustrated by rolling a die many times.
+      Consider the event
+      <q>roll a 1</q>. The <term>relative frequency</term>
+      of an event is the proportion of times the event occurs out of the number of trials.
+      Let <m>\hat{p}_n</m> be the proportion of outcomes that are <c>1</c> after the first <m>n</m> rolls.
+      As the number of rolls increases, <m>\hat{p}_n</m>
+      (the relative frequency of rolls)
+      will converge to the probability of rolling a <c>1</c>,
+      <m>p = 1/6</m>.
+      <xref ref="dieProp">Figure</xref>
+      shows this convergence for 100,000 die rolls.
+      The tendency of <m>\hat{p}_n</m> to stabilize around <m>p</m>,
+      that<nbsp/>is,
+      the tendency of the relative frequency to stabilize around the true probability,
+      is described by the <term>Law of Large Numbers</term>.
+    </p>
+    <figure xml:id="dieProp">
+      <caption>The fraction of die rolls that are 1 at each stage in a simulation. The relative frequency tends to get closer to the probability <m>1/6 \approx 0.167</m> as the number of rolls increases.</caption>
+      <image width="80%" source="images/dieProp.png" />
+    </figure>
+    <assemblage>
+      <title></title>
+      <p>
+        As more observations are collected,
+        the observed proportion <m>\hat{p}_n</m> of occurrences with a particular outcome after <m>n</m> trials converges to the true probability <m>p</m> of that outcome.
+      </p>
+    </assemblage>
+    <p>
+      Occasionally the proportion will veer off from the probability and appear to defy the Law of Large Numbers,
+      as <m>\hat{p}_n</m> does many times in <xref ref="dieProp">Figure</xref>.
+      However, these deviations become smaller as the number of rolls increases.
+    </p>
+    <p>
+      Above we write <m>p</m> as the probability of rolling a <c>1</c>.
+      We can also write this probability as
+      <md>
+        <mrow>P(\text{rolling a \texttt{1}} )</mrow>
+      </md>
+    </p>
+    <p>
+      As we become more comfortable with this notation,
+      we will abbreviate it further.
+      For instance, if it is clear that the process is
+      <q>rolling a die</q>, we could abbreviate <m>P(</m>rolling a <c>1</c><m>)</m> as<nbsp/><m>P(</m><c>1</c><m>)</m>.
+    </p>
+    <exercise xml:id="randomProcessExercise">
+      <statement>
+        <p>
+          Random processes include rolling a die and flipping a coin. (a) Think of another random process. (b) Describe all the possible outcomes of that process.
+          For instance,
+          rolling a die is a random process with potential outcomes <c>1</c>, <c>2</c>, ...,<nbsp/><c>6</c>.<nbsp/>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      What we think of as random processes are not necessarily random,
+      but they may just be too difficult to understand exactly.
+      The fourth example in the footnote solution to Guided <xref ref="randomProcessExercise">Practice</xref>
+      suggests a roommate's behavior is a random process.
+      However, even if a roommate's behavior is not truly random,
+      modeling her behavior as a random process can still be useful.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        It can be helpful to model a process as random even if it is not truly random.
+      </p>
+    </assemblage>
+    <p>
+          <idx><h>random process</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Disjoint or mutually exclusive outcomes</title>
+    <p>
+          <idx><h>disjoint</h></idx>
+          <idx><h>mutually exclusive</h></idx>
+    </p>
+    <p>
+      Two outcomes are called <term>disjoint</term>
+      or <term>mutually exclusive</term>
+      if they cannot both happen in the same trial.
+      For instance, if we roll a die,
+      the outcomes <c>1</c> and <c>2</c> are disjoint since they cannot both occur on a single roll.
+      On the other hand,
+      the outcomes <c>1</c> and
+      <q>rolling an odd number</q>
+      are not disjoint since both occur if the outcome of the roll is a <c>1</c>.
+      The terms <em>disjoint</em> and
+      <em>mutually exclusive</em>
+      are equivalent and interchangeable.
+    </p>
+    <p>
+      Calculating the probability of disjoint outcomes is easy.
+      When rolling a die,
+      the outcomes <c>1</c> and <c>2</c> are disjoint,
+      and we compute the probability that one of these outcomes will occur by adding their separate probabilities:
+      <md>
+        <mrow>P(\text{\texttt{1} or \texttt{2}} ) = P(\text{\texttt{1}} )+P(\text{\texttt{2}} ) = 1/6 + 1/6 = 1/3</mrow>
+      </md>
+    </p>
+    <p>
+      What about the probability of rolling a <c>1</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>5</c>,
+      or <c>6</c>?
+      Here again, all of the outcomes are disjoint so we add the probabilities:
+      <md>
+        <mrow>\amp \amp P(\text{\texttt{1} or \texttt{2} or \texttt{3} or \texttt{4} or \texttt{5} or \texttt{6}} )</mrow>
+        <mrow>\amp \amp = P(\text{\texttt{1}} )+P(\text{\texttt{2}} )+P(\text{\texttt{3}} )+P(\text{\texttt{4}} )+P(\text{\texttt{5}} )+P(\text{\texttt{6}} )</mrow>
+        <mrow>\amp \amp = 1/6 + 1/6 + 1/6 + 1/6 + 1/6 + 1/6 = 1</mrow>
+      </md>.
+    </p>
+    <p>
+      The <term>Addition Rule</term> guarantees the accuracy of this approach when the outcomes are disjoint.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        If <m>A_1</m> and <m>A_2</m> represent two disjoint outcomes,
+        then the probability that one of them occurs is given by
+        <md>
+          <mrow>P(A_1\text{ or }  A_2) = P(A_1) + P(A_2)</mrow>
+        </md>
+      </p>
+      <p>
+        If there are many disjoint outcomes <m>A_1</m>, ..., <m>A_k</m>,
+        then the probability that one of these outcomes will occur is
+        <md>
+          <mrow>P(A_1) + P(A_2) + \cdots + P(A_k)</mrow>
+        </md>
+      </p>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          We are interested in the probability of rolling a <c>1</c>, <c>4</c>,
+          or <c>5</c>. (a) Explain why the outcomes <c>1</c>, <c>4</c>,
+          and <c>5</c> are disjoint. (b) Apply the Addition Rule for disjoint outcomes to determine <m>P(</m><c>1</c> or <c>4</c> or <c>5</c><m>)</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+          <idx><h>data</h><h>email</h></idx>
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          In the <c>email</c> data set in <xref ref="summarizingData">Chapter</xref>,
+          the <c>number</c> variable described whether no number (labeled <c>none</c>), only one or more small numbers (<c>small</c>), or whether at least one big number appeared in an email (<c>big</c>).
+          Of the 3,921 emails, 549 had no numbers, 2,827 had only one or more small numbers,
+          and 545 had at least one big number. (a) Are the outcomes <c>none</c>, <c>small</c>,
+          and <c>big</c> disjoint? (b) Determine the proportion of emails with value <c>small</c> and <c>big</c> separately. (c) Use the Addition Rule for disjoint outcomes to compute the probability a randomly selected email from the data set has a number in it,
+          small or big.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+          <idx><h>data</h><h>email</h></idx>
+    </p>
+    <p>
+          <idx><h>event</h></idx>
+    </p>
+    <p>
+      Statisticians rarely work with individual outcomes and instead consider <em>sets</em>
+          <idx><h>sets</h></idx>
+      or <em>collections</em>
+          <idx><h>collections</h></idx>
+      of outcomes.
+      Let <m>A</m> represent the event where a die roll results in <c>1</c> or <c>2</c> and <m>B</m><nbsp/>represent the event that the die roll is a <c>4</c> or a <c>6</c>.
+      We write <m>A</m> as the set of outcomes <m>\{</m><c>1</c>,<nbsp/><c>2</c><m>\}</m> and <m>B=\{</m><c>4</c>, <c>6</c><m>\}</m>.
+      These sets are commonly called <em>events</em>.
+          <idx><h>event|textbf</h></idx>
+      Because <m>A</m> and <m>B</m> have no elements in common,
+      they are disjoint events.
+      <m>A</m> and <m>B</m> are represented in <xref ref="disjointSets">Figure</xref>.
+    </p>
+    <figure xml:id="disjointSets">
+      <caption>Three events, <m>A</m>, <m>B</m>, and <m>D</m>, consist of outcomes from rolling a die. <m>A</m> and <m>B</m> are disjoint since they do not have any outcomes in common.</caption>
+      <image width="73%" source="images/disjointSets.png" />
+    </figure>
+    <p>
+      The Addition Rule applies to both disjoint outcomes and disjoint events.
+      The probability that one of the disjoint events <m>A</m> or <m>B</m> occurs is the sum of the separate probabilities:
+      <md>
+        <mrow>P(A\text{ or } B) = P(A) + P(B) = 1/3 + 1/3 = 2/3</mrow>
+      </md>
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          (a) Verify the probability of event <m>A</m>, <m>P(A)</m>,
+          is <m>1/3</m> using the Addition Rule. (b) Do the same for event <m>B</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exerExaminingDisjointSetsABD">
+      <statement>
+        <p>
+          (a) Using <xref ref="disjointSets">Figure</xref> as a reference,
+          what outcomes are represented by event <m>D</m>? (b) Are events <m>B</m> and <m>D</m> disjoint? (c) Are events <m>A</m> and <m>D</m> disjoint?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          In Guided <xref ref="exerExaminingDisjointSetsABD">Practice</xref>,
+          you confirmed <m>B</m> and <m>D</m> from <xref ref="disjointSets">Figure</xref> are disjoint.
+          Compute the probability that either event <m>B</m> or event <m>D</m> occurs.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+          <idx><h>event</h></idx>
+          <idx><h>disjoint</h></idx>
+          <idx><h>mutually exclusive</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Probabilities when events are not disjoint</title>
+    <p>
+      Let's consider calculations for two events that are not disjoint in the context of a regular deck of 52 cards,
+          <idx><h>deck of cards</h></idx>
+      represented in <xref ref="deckOfCards">Figure</xref>.
+      If you are unfamiliar with the cards in a regular deck,
+      please see the footnote.<fn>
+      The 52 cards are split into four <term>suits</term>:
+      <m>\clubsuit</m> (club), {<m>\diamondsuit</m>} (diamond), {<m>\heartsuit</m>} (heart),
+      <m>\spadesuit</m>
+      (spade).
+      Each suit has its 13 cards labeled: <c>2</c>, <c>3</c>, ..., <c>10</c>, <c>J</c> (jack), <c>Q</c> (queen), <c>K</c> (king),
+      and <c>A</c> (ace).
+      Thus, each card is a unique combination of a suit and a label,
+      e.g. {<c>4<m>\heartsuit</m></c>} and <c>J<m>\clubsuit</m></c>.
+      The 12 cards represented by the jacks, queens,
+      and kings are called \termsub{<c>face cards</c>}{face card}. The cards that are {<m>\diamondsuit</m>} or {<m>\heartsuit</m>} are typically colored {red} while the other two suits are typically colored black.
+      </fn>
+    </p>
+    <table xml:id="deckOfCards">
+      <caption>Representations of the 52 unique cards in a deck.</caption>
+      <tabular>
+        <row>
+          <cell><c>2<m>\clubsuit</m></c></cell>
+          <cell><c>3<m>\clubsuit</m></c></cell>
+          <cell><c>4<m>\clubsuit</m></c></cell>
+          <cell><c>5<m>\clubsuit</m></c></cell>
+          <cell><c>6<m>\clubsuit</m></c></cell>
+          <cell><c>7<m>\clubsuit</m></c></cell>
+          <cell><c>8<m>\clubsuit</m></c></cell>
+          <cell><c>9<m>\clubsuit</m></c></cell>
+          <cell><c>10<m>\clubsuit</m></c></cell>
+          <cell><c>J<m>\clubsuit</m></c></cell>
+          <cell><c>Q<m>\clubsuit</m></c></cell>
+          <cell><c>K<m>\clubsuit</m></c></cell>
+          <cell><c>A<m>\clubsuit</m></c></cell>
+        </row>
+        <row>
+          <cell>\color{redcards} <c>2<m>\diamondsuit</m></c></cell>
+          <cell>\color{redcards}<c>3<m>\diamondsuit</m></c></cell>
+          <cell>\color{redcards}<c>4<m>\diamondsuit</m></c></cell>
+          <cell>\color{redcards}<c>5<m>\diamondsuit</m></c></cell>
+          <cell>\color{redcards}<c>6<m>\diamondsuit</m></c></cell>
+          <cell>\color{redcards}<c>7<m>\diamondsuit</m></c></cell>
+          <cell>\color{redcards}<c>8<m>\diamondsuit</m></c></cell>
+          <cell>\color{redcards}<c>9<m>\diamondsuit</m></c></cell>
+          <cell>\color{redcards}<c>10<m>\diamondsuit</m></c></cell>
+          <cell>\color{redcards}<c>J<m>\diamondsuit</m></c></cell>
+          <cell>\color{redcards}<c>Q<m>\diamondsuit</m></c></cell>
+          <cell>\color{redcards}<c>K<m>\diamondsuit</m></c></cell>
+          <cell>\color{redcards}<c>A<m>\diamondsuit</m></c></cell>
+        </row>
+        <row>
+          <cell>\color{redcards}<c>2<m>\heartsuit</m></c></cell>
+          <cell>\color{redcards}<c>3<m>\heartsuit</m></c></cell>
+          <cell>\color{redcards}<c>4<m>\heartsuit</m></c></cell>
+          <cell>\color{redcards}<c>5<m>\heartsuit</m></c></cell>
+          <cell>\color{redcards}<c>6<m>\heartsuit</m></c></cell>
+          <cell>\color{redcards}<c>7<m>\heartsuit</m></c></cell>
+          <cell>\color{redcards}<c>8<m>\heartsuit</m></c></cell>
+          <cell>\color{redcards}<c>9<m>\heartsuit</m></c></cell>
+          <cell>\color{redcards}<c>10<m>\heartsuit</m></c></cell>
+          <cell>\color{redcards}<c>J<m>\heartsuit</m></c></cell>
+          <cell>\color{redcards}<c>Q<m>\heartsuit</m></c></cell>
+          <cell>\color{redcards}<c>K<m>\heartsuit</m></c></cell>
+          <cell>\color{redcards}<c>A<m>\heartsuit</m></c></cell>
+        </row>
+        <row>
+          <cell><c>2<m>\spadesuit</m></c></cell>
+          <cell><c>3<m>\spadesuit</m></c></cell>
+          <cell><c>4<m>\spadesuit</m></c></cell>
+          <cell><c>5<m>\spadesuit</m></c></cell>
+          <cell><c>6<m>\spadesuit</m></c></cell>
+          <cell><c>7<m>\spadesuit</m></c></cell>
+          <cell><c>8<m>\spadesuit</m></c></cell>
+          <cell><c>9<m>\spadesuit</m></c></cell>
+          <cell><c>10<m>\spadesuit</m></c></cell>
+          <cell><c>J<m>\spadesuit</m></c></cell>
+          <cell><c>Q<m>\spadesuit</m></c></cell>
+          <cell><c>K<m>\spadesuit</m></c></cell>
+          <cell><c>A<m>\spadesuit</m></c></cell>
+        </row>
+      </tabular>
+    </table>
+    <exercise>
+      <statement>
+        <p>
+          (a) What is the probability that a randomly selected card is a diamond? (b)<nbsp/>What is the probability that a randomly selected card is a face<nbsp/>card?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      <term>Venn diagrams</term> are useful when outcomes can be categorized as
+      <q>in</q>
+      or
+      <q>out</q>
+      for two or three variables, attributes, or random processes.
+      The Venn diagram in <xref ref="venn">Figure</xref>
+      uses a circle to represent diamonds and another to represent face cards.
+      If a card is both a diamond and a face card,
+      it falls into the intersection of the circles.
+      If it is a diamond but not a face card,
+      it will be in part of the left circle that is not in the right circle
+      (and so on).
+      The total number of cards that are diamonds is given by the total number of cards in the diamonds circle:
+      <m>10+3=13</m>.
+      The probabilities are also shown (e.g.
+      <m>10/52 = 0.1923</m>).
+    </p>
+    <figure xml:id="venn">
+      <caption>A Venn diagram for diamonds and face cards.</caption>
+      <image width="73%" source="images/venn.png" />
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          Using the Venn diagram, verify <m>P(</m>face card<m>) = 12/52=3/13</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Let <m>A</m> represent the event that a randomly selected card is a diamond and <m>B</m> represent the event that it is a face card.
+      How do we compute <m>P(A</m> or <m>B)</m>?
+      Events <m>A</m> and <m>B</m> are not disjoint <mdash/> the cards {<m>J\diamondsuit</m>}, {<m>Q\diamondsuit</m>}, and {<m>K\diamondsuit</m>} fall into both categories <mdash/> so we cannot use the Addition Rule for disjoint events.
+      Instead we use the Venn diagram.
+      We start by adding the probabilities of the two events:
+      <md>
+        <mrow>P(A) + P(B) = P({\color{redcards}\diamondsuit}) + P(\text{ face card } ) = 13/52 + 12/52</mrow>
+      </md>
+    </p>
+    <p>
+      However, the three cards that are in both events were counted twice,
+      once in each probability.
+      We must correct this double counting:
+      <md>
+        <mrow>P(A\text{ or }  B) \amp =\amp P({\color{redcards}\diamondsuit}) + P(\text{ face card } )</mrow>
+        <mrow>\amp =\amp  P({\color{redcards}\diamondsuit}) + P(\text{ face card } ) - P({\color{redcards}\diamondsuit}  \text{ and face card } )</mrow>
+        <mrow>\amp =\amp  13/52 + 12/52 - 3/52</mrow>
+        <mrow>\amp =\amp  22/52 = 11/26</mrow>
+      </md>
+    </p>
+    <p>
+      Equation<nbsp/><xref ref="diamondFace" /> is an example of the
+      <term>General Addition Rule</term>.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        If <m>A</m> and <m>B</m> are any two events,
+        disjoint or not, then the probability that A or B will occur is
+        <md>
+          <mrow>P(A\text{ or } B) = P(A) + P(B) - P(A\text{ and } B)</mrow>
+        </md>
+        where <m>P(A</m> and <m>B)</m> is the probability that both events occur.
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <p>
+        The symbol <m>\cap</m> means intersection and is equivalent to
+        <q>and</q>.
+      </p>
+      <p>
+        The symbol <m>\cup</m> means union and is equivalent to
+        <q>or</q>.
+      </p>
+      <p>
+        It is common to see the General Addition Rule written as
+        <md>
+          <mrow>P(A \cup B) = P(A) + P(B) - P(A \cap B)</mrow>
+        </md>
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <p>
+        When we write,
+        <q>or</q>
+        in statistics, we mean
+        <q>and/or</q>
+        unless we explicitly state otherwise.
+        Thus, <m>A</m> or <m>B</m> occurs means <m>A</m>, <m>B</m>,
+        or both <m>A</m> and <m>B</m> occur.
+        This is equivalent to at least one of <m>A</m> or <m>B</m> occurring.
+      </p>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          (a) If <m>A</m> and <m>B</m> are disjoint,
+          describe why this implies <m>P(A</m> and <m>B) = 0</m>. (b) Using part (a),
+          verify that the General Addition Rule simplifies to the simpler Addition Rule for disjoint events if <m>A</m> and <m>B</m> are disjoint.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+          <idx><h>data</h><h>email</h></idx>
+    </p>
+    <exercise xml:id="emailSpamNumberVennExer">
+      <statement>
+        <p>
+          In the <c>email</c> data set with 3,921 emails, 367 were spam, 2,827 contained some small numbers but no big numbers,
+          and 168 had both characteristics.
+          Create a Venn diagram for this setup.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          (a) Use your Venn diagram from Guided <xref ref="emailSpamNumberVennExer">Practice</xref>
+          to determine the probability a randomly drawn email from the <c>email</c> data set is spam and had small numbers
+          (but not big numbers). (b)<nbsp/>What is the probability that the email had either of these attributes?
+              <idx><h>data</h><h>email</h></idx>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>Complement of an event</title>
+    <p>
+      Rolling a die produces a value in the set <m>\{</m><c>1</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>5</c>, <c>6</c><m>\}</m>.
+      This set of all possible outcomes is called the <term>sample space</term>
+      (<m>S</m>) for rolling a die.
+      We often use the sample space to examine the scenario where an event does not occur.
+    </p>
+    <p>
+      Let <m>D=\{</m><c>2</c>, <c>3</c><m>\}</m> represent the event that the outcome of a die roll is <c>2</c> or <c>3</c>.
+      Then the <term>complement</term> represents all outcomes in our sample space that are not in <m>D</m>,
+      which is denoted by <m>D^c = \{</m><c>1</c>, <c>4</c>, <c>5</c>, <c>6</c><m>\}</m>.
+      That is, <m>D^c</m> is the set of all possible outcomes not already included in <m>D</m>.
+      <xref ref="complementOfD">Figure</xref>
+      shows the relationship between <m>D</m>,
+      <m>D^c</m>, and the sample space <m>S</m>.
+    </p>
+    <figure xml:id="complementOfD">
+      <caption>Event <m>D=\{</m><c>2</c>, <c>3</c><m>\}</m> and its complement, <m>D^c = \{</m><c>1</c>, <c>4</c>, <c>5</c>, <c>6</c><m>\}</m>. <m>S</m><nbsp/>represents the sample space, which is the set of all possible events.</caption>
+      <image width="50%" source="images/complementOfD.png" />
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          (a) Compute <m>P(D^c) = P(</m>rolling a <c>1</c>, <c>4</c>, <c>5</c>,
+          or <c>6</c><m>)</m>. (b) What is <m>P(D) + P(D^c)</m>?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Events <m>A=\{</m><c>1</c>, <c>2</c><m>\}</m> and <m>B=\{</m><c>4</c>, <c>6</c><m>\}</m> are shown in <xref ref="disjointSets">Figure</xref>
+          on <xref ref="disjointSets">page</xref>. (a) Write out what <m>A^c</m> and <m>B^c</m> represent. (b)<nbsp/>Compute <m>P(A^c)</m> and <m>P(B^c)</m>. (c)<nbsp/>Compute
+          <m>P(A)+P(A^c)</m> and <m>P(B)+P(B^c)</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      An event <m>A</m> together with its complement <m>A^c</m> comprise the entire sample space.
+      Because of this we can say that <m>P(A) + P(A^c) = 1</m>.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        The complement of event <m>A</m> is denoted <m>A^c</m>,
+        and <m>A^c</m> represents all outcomes not in<nbsp/><m>A</m>.
+        <m>A</m> and <m>A^c</m> are mathematically related:
+        <md>
+          <mrow>P(A) + P(A^c) = 1, \text{ i.e. }  P(A) = 1-P(A^c)</mrow>
+        </md>
+      </p>
+    </assemblage>
+    <p>
+      In simple examples,
+      computing <m>A</m> or <m>A^c</m> is feasible in a few steps.
+      However, using the complement can save a lot of time as problems grow in complexity.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          A die is rolled 10 times. (a)<nbsp/>What is the complement of getting at least one 6 in 10 rolls of the die? (b)<nbsp/>What is the complement of getting at most three 6's in 10 rolls of the die?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="probabilityIndependence">
+    <title>Independence</title>
+    <p>
+      Just as variables and observations can be independent,
+      random processes can be independent, too.
+      Two processes are <term>independent</term>
+      if knowing the outcome of one provides no useful information about the outcome of the other.
+      For instance,
+      flipping a coin and rolling a die are two independent processes <mdash/> knowing the coin was heads does not help determine the outcome of a die roll.
+      On the other hand, stock prices usually move up or down together,
+      so they are not independent.
+    </p>
+    <p>
+      <xref ref="probOf2Ones">Example</xref>
+      provides a basic example of two independent processes:
+      rolling two dice.
+      We want to determine the probability that both will be <c>1</c>.
+      Suppose one of the dice is red and the other white.
+      If the outcome of the red die is a <c>1</c>,
+      it provides no information about the outcome of the white die.
+      We first encountered this same question in <xref ref="probOf2Ones">Example</xref>
+      (<xref ref="probOf2Ones">page</xref>),
+      where we calculated the probability using the following reasoning:
+      <m>1/6^{th}</m> of the time the red die is a <c>1</c>,
+      and <m>1/6^{th}</m> of <em>those</em>
+      times the white die will also be <c>1</c>.
+      This is illustrated in <xref ref="indepForRollingTwo1s">Figure</xref>.
+      Because the rolls are independent,
+      the probabilities of the corresponding outcomes can be multiplied to get the final answer:
+      <m>(1/6)\times(1/6)=1/36</m>.
+      This can be generalized to many independent processes.
+    </p>
+    <figure xml:id="indepForRollingTwo1s">
+      <caption><m>1/6^{th}</m> of the time, the first roll is a <c>1</c>. Then <m>1/6^{th}</m> of <em>those</em> times, the second roll will also be a <c>1</c>.</caption>
+      \Figure{0.55}{indepForRollingTwo1s}
+    </figure>
+    <example xml:id="threeDice">
+      <statement>
+        <p>
+          What if there was also a blue die independent of the other two?
+          What is the probability of rolling the three dice and getting all <c>1</c> s?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The same logic applies from <xref ref="probOf2Ones">Example</xref>.
+          If <m>1/36^{th}</m> of the time the white and red dice are both <c>1</c>,
+          then <m>1/6^{th}</m> of <em>those</em>
+          times the blue die will also be <c>1</c>,
+          so multiply: {
+          <md>
+            <mrow>P(white=\text\texttt{1} and  red=\text\texttt{1} and  blue=\text\texttt{1}) \amp = P(white=\text\texttt{1})\times P(red=\text\texttt{1})\times P(blue=\text\texttt{1})</mrow>
+            <mrow>\amp = (1/6)\times (1/6)\times (1/6) = 1/216</mrow>
+          </md>
+        </p>
+      </answer>
+    </example>
+    <p>
+      <xref ref="probOf2Ones">Examples</xref>
+      and <xref ref="threeDice"></xref>
+      illustrate what is called the Multiplication Rule for independent processes.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+            <idx><h>Multiplication Rule</h></idx>
+        If <m>A</m> and <m>B</m> represent events from two different and independent processes, then the probability that both <m>A</m> and <m>B</m> occur can be calculated as the product of their separate probabilities:
+        <md>
+          <mrow>P(A \text{ and } B) = P(A) \times  P(B)</mrow>
+        </md>
+      </p>
+      <p>
+        Similarly, if there are <m>k</m> events <m>A_1</m>, ..., <m>A_k</m> from <m>k</m> independent processes,
+        then the probability they all occur is
+        <md>
+          <mrow>P(A_1) \times  P(A_2)\times  \cdots \times  P(A_k)</mrow>
+        </md>
+      </p>
+    </assemblage>
+    <exercise xml:id="ex2Handedness">
+      <statement>
+        <p>
+          About 9% of people are left-handed.
+          Suppose 2 people are selected at random from the U.S. population.
+          Because the sample size of 2 is very small relative to the population,
+          it is reasonable to assume these two people are independent. (a)<nbsp/>What is the probability that both are left-handed? (b)<nbsp/>What is the probability that both are right-handed?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="ex5Handedness">
+      <statement>
+        <p>
+          Suppose 5 people are selected at random.
+          <ol>
+            <li>
+              <title>(a)</title>
+              <p>
+                What is the probability that all are right-handed?
+              </p>
+            </li>
+            <li>
+              <title>(b)</title>
+              <p>
+                What is the probability that all are left-handed?
+              </p>
+            </li>
+            <li>
+              <title>(c)</title>
+              <p>
+                What is the probability that not all of the people are right-handed?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Suppose the variables <c>handedness</c> and <c>gender</c> are independent,
+      i.e. knowing someone's <c>gender</c> provides no useful information about their <c>handedness</c> and vice-versa.
+      Then we can compute whether a randomly selected person is right-handed and female<fn>
+      The actual proportion of the U.S. population that is <c>female</c> is about 50%, and so we use 0.5 for the probability of sampling a woman.
+      However, this probability does differ in other countries.
+      </fn> using the Multiplication Rule:
+      <md>
+        <mrow>P(\text{ right-handed and female } ) \amp =\amp  P(\text{ right-handed } ) \times  P(\text{ female } )</mrow>
+        <mrow>\amp =\amp  0.91 \times  0.50 = 0.455</mrow>
+      </md>
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Three people are selected at random.
+          <ol>
+            <li>
+              <title>(a)</title>
+              <p>
+                What is the probability that the first person is male and right-handed?
+              </p>
+            </li>
+            <li>
+              <title>(b)</title>
+              <p>
+                What is the probability that the first two people are male and right-handed?.
+              </p>
+            </li>
+            <li>
+              <title>(c)</title>
+              <p>
+                What is the probability that the third person is female and left-handed?
+              </p>
+            </li>
+            <li>
+              <title>(d)</title>
+              <p>
+                What is the probability that the first two people are male and right-handed and the third person is female and left-handed?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Sometimes we wonder if one outcome provides useful information about another outcome.
+      The question we are asking is,
+      are the occurrences of the two events independent?
+      We say that two events <m>A</m> and <m>B</m> are independent if they satisfy Equation<nbsp/><xref ref="eqForIndependentEvents" />.
+    </p>
+    <example>
+      <statement>
+        <p>
+          If we shuffle up a deck of cards and draw one,
+          is the event that the card is a heart independent of the event that the card is an ace?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          If we shuffle up a deck of cards and draw one,
+          is the event that the card is a heart independent of the event that the card is an ace?
+        </p>
+      </solution>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          When an outcome depends upon a chance process,
+          we can define the <term>probability</term>
+          of the outcome as the proportion of times it would occur if we repeated the process an infinite number of times.
+          Also, even when an outcome is not truly random,
+          modeling it with probability can be useful.
+        </p>
+      </li>
+      <li>
+        <p>
+          The <term>Law of Large Numbers</term>
+          states that the <term>relative frequency</term>,
+          or proportion of times an outcome occurs after <m>n</m> repetitions,
+          stabilizes around the true probability as <m>n</m> gets large.
+        </p>
+      </li>
+      <li>
+        <p>
+          The probability of an event is always between 0 and 1, inclusive.
+        </p>
+      </li>
+      <li>
+        <p>
+          The probability of an event and the probability of its
+          <term>complement</term> add up to 1.
+          Sometime we use <m>P(A) = 1- P(\text{ not } A)</m> when
+          <m>P(\text{ not } A)</m> is easier to calculate than <m>P(A)</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <m>A</m> and <m>B</m> are <term>disjoint</term>, i.e.
+          <term>mutually exclusive</term>,
+          if they cannot happen together.
+          In this case,
+          the events do not overlap and <m>P(A \text { and } B) = 0</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          In the <em>special case</em> where <m>A</m> and <m>B</m> are
+          <term>disjoint</term> events:
+          <m>P(A \text{ or } B) = P(A) + P(B)</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          When <m>A</m> and <m>B</m> are not disjoint,
+          adding <m>P(A)</m> and <m>P(B)</m> will overestimate
+          <m>P(A \text{ or } B)</m> because the overlap of <m>A</m> and <m>B</m> will be added twice.
+          Therefore, when <m>A</m> and <m>B</m> are not disjoint,
+          use the <term>General Addition Rule</term>:
+          <m>P(A \text{ or B } ) = P(A) + P(B) - P(A \text{ and } B)</m>.<fn>
+          Often written: <m>P(A \cup B) = P(A) + P(B) - P(A \cap B)</m>.
+          </fn>
+        </p>
+      </li>
+      <li>
+        <p>
+          To find the probability that <em>at least one</em>
+          of several events occurs,
+          use a special case of the rule of
+          <em>complements</em><idx><h>rule of complements|textbf</h></idx>
+          :
+            <idx><h>complement</h></idx>
+          <m>P(\text{ at least one } ) = 1- P(\text{ none } )</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          When only considering two events,
+          the probability that one <em>or</em>
+          the other happens is equal to the probability that <em>at least one</em>
+          of the two events happens.
+          When dealing with more than two events,
+          the General Addition Rule becomes very complicated.
+          Instead, to find the probability that <m>A</m> or <m>B</m> or <m>C</m> occurs,
+          find the probability that none of them occur and subtract that value from 1.
+        </p>
+      </li>
+      <li>
+        <p>
+          Two events are <term>independent</term>
+          when the occurrence of one does not change the likelihood of the other.
+        </p>
+      </li>
+      <li>
+        <p>
+          In the <em>special case</em> where <m>A</m> and <m>B</m> are <term>independent</term>:
+          <m>P(A \text{ and } B) = P(A)\times P(B)</m>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="tf_prob_definitions">
+      <title>True or false</title>
+      <statement>
+        <p>
+          Determine if the statements below are true or false,
+          and explain your reasoning.
+          <ol>
+            <li>
+              <p>
+                If a fair coin is tossed many times and the last eight tosses are all heads,
+                then the chance that the next toss will be heads is somewhat less than 50%.
+              </p>
+            </li>
+            <li>
+              <p>
+                Drawing a face card (jack, queen,
+                or king) and drawing a red card from a full deck of playing cards are mutually exclusive events.
+              </p>
+            </li>
+            <li>
+              <p>
+                Drawing a face card and drawing an ace from a full deck of playing cards are mutually exclusive events.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="roulette_wheel">
+      <title>Roulette wheel</title>
+      <statement>
+        <p>
+          The game of roulette involves spinning a wheel with 38 slots: 18 red, 18 black,
+          and 2 green.
+          A ball is spun onto the wheel and will eventually land in a slot,
+          where each slot has an equal chance of capturing the ball.
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                You watch a roulette wheel spin 3 consecutive times and the ball lands on a red slot each time.
+                What is the probability that the ball will land on a red slot on the next spin?
+              </p>
+            </li>
+            <li>
+              <p>
+                You watch a roulette wheel spin 300 consecutive times and the ball lands on a red slot each time.
+                What is the probability that the ball will land on a red slot on the next spin?
+              </p>
+            </li>
+            <li>
+              <p>
+                Are you equally confident of your answers to parts<nbsp/>(a) and<nbsp/>(b)?
+                Why or why not?
+              </p>
+            </li>
+          </ol>
+          \
+          <image width="73%" source="images/roulette_wheel.png" />
+          { Photo by H&#229;kan Dahlstr&#xf6;m
+          (MISSINGoiRedirect)
+          MISSINGoiRedirect}
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="four_games_one_winner">
+      <title>Four games, one winner</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> Below are four versions of the same game.
+          Your archnemesis gets to pick the version of the game,
+          and then you get to choose how many times to flip a coin: 10 times or 100 times.
+          Identify how many coin flips you should choose for each version of the game.
+          It costs $1 to play each game.
+          Explain your reasoning.
+          <ol>
+            <li>
+              <p>
+                If the proportion of heads is larger than 0.60, you win $1.
+              </p>
+            </li>
+            <li>
+              <p>
+                If the proportion of heads is larger than 0.40, you win $1.
+              </p>
+            </li>
+            <li>
+              <p>
+                If the proportion of heads is between 0.40 and 0.60, you win $1.
+              </p>
+            </li>
+            <li>
+              <p>
+                If the proportion of heads is smaller than 0.30, you win $1.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="backgammon">
+      <title>Backgammon</title>
+      <statement>
+        <p>
+          Backgammon is a board game for two players in which the playing pieces are moved according to the roll of two dice.
+          Players win by removing all of their pieces from the board,
+          so it is usually good to roll high numbers.
+          You are playing backgammon with a friend and you roll two 6s in your first roll and two 6s in your second roll.
+          Your friend rolls two 3s in his first roll and again in his second row.
+          Your friend claims that you are cheating,
+          because rolling double 6s twice in a row is very unlikely.
+          Using probability,
+          show that your rolls were just as likely as<nbsp/>his.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="coin_flips">
+      <title>Coin flips</title>
+      <statement>
+        <p>
+          If you flip a fair coin 10 times,
+          what is the probability of
+          <ol>
+            <li>
+              <p>
+                getting all tails?
+              </p>
+            </li>
+            <li>
+              <p>
+                getting all heads?
+              </p>
+            </li>
+            <li>
+              <p>
+                getting at least one tails?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="dice_rolls">
+      <title>Dice rolls</title>
+      <statement>
+        <p>
+          If you roll a pair of fair dice,
+          what is the probability of
+          <ol>
+            <li>
+              <p>
+                getting a sum of 1?
+              </p>
+            </li>
+            <li>
+              <p>
+                getting a sum of 5?
+              </p>
+            </li>
+            <li>
+              <p>
+                getting a sum of 12?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="swing_voters">
+      <title>Swing voters</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> A Pew Research survey asked 2,373 randomly sampled registered voters their political affiliation (Republican, Democrat,
+          or Independent) and whether or not they identify as swing voters. 35% of respondents identified as Independent, 23% identified as swing voters,
+          and 11% identified as both.\footfullcite{indepSwing}
+          <ol>
+            <li>
+              <p>
+                Are being Independent and being a swing voter disjoint,
+                i.e. mutually exclusive?
+              </p>
+            </li>
+            <li>
+              <p>
+                Draw a Venn diagram summarizing the variables and their associated probabilities.
+              </p>
+            </li>
+            <li>
+              <p>
+                What percent of voters are Independent but not swing voters?
+              </p>
+            </li>
+            <li>
+              <p>
+                What percent of voters are Independent or swing voters?
+              </p>
+            </li>
+            <li>
+              <p>
+                What percent of voters are neither Independent nor swing voters?
+              </p>
+            </li>
+            <li>
+              <p>
+                Is the event that someone is a swing voter independent of the event that someone is a political Independent?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="poverty_language">
+      <title>Poverty and language</title>
+      <statement>
+        <p>
+          The American Community Survey is an ongoing survey that provides data every year to give communities the current information they need to plan investments and services.
+          The 2010 American Community Survey estimates that 14.6% of Americans live below the poverty line, 20.7% speak a language other than English
+          (foreign language)
+          at home, and 4.2% fall into both categories. \footfullcite{poorLang}
+          <ol>
+            <li>
+              <p>
+                Are living below the poverty line and speaking a foreign language at home disjoint?
+              </p>
+            </li>
+            <li>
+              <p>
+                Draw a Venn diagram summarizing the variables and their associated probabilities.
+              </p>
+            </li>
+            <li>
+              <p>
+                What percent of Americans live below the poverty line and only speak English at home?
+              </p>
+            </li>
+            <li>
+              <p>
+                What percent of Americans live below the poverty line or speak a foreign language at home?
+              </p>
+            </li>
+            <li>
+              <p>
+                What percent of Americans live above the poverty line and only speak English at home?
+              </p>
+            </li>
+            <li>
+              <p>
+                Is the event that someone lives below the poverty line independent of the event that the person speaks a foreign language at home?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="disjoint_indep">
+      <title>Disjoint vs. independent</title>
+      <statement>
+        <p>
+          In parts<nbsp/>(a) and<nbsp/>(b),
+          identify whether the events are disjoint, independent,
+          or neither
+          (events cannot be both disjoint and independent).
+          <ol>
+            <li>
+              <p>
+                You and a randomly selected student from your class both earn A's in this course.
+              </p>
+            </li>
+            <li>
+              <p>
+                You and your class study partner both earn A's in this course.
+              </p>
+            </li>
+            <li>
+              <p>
+                If two events can occur at the same time, must they be dependent?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="guessing_on_exam">
+      <title>Guessing on an exam</title>
+      <statement>
+        <p>
+          In a multiple choice exam,
+          there are 5 questions and 4 choices for each question (a, b, c, d).
+          Nancy has not studied for the exam at all and decides to randomly guess the answers.
+          What is the probability that:
+          <ol>
+            <li>
+              <p>
+                the first question she gets right is the <m>5^{th}</m> question?
+              </p>
+            </li>
+            <li>
+              <p>
+                she gets all of the questions right?
+              </p>
+            </li>
+            <li>
+              <p>
+                she gets at least one question right?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="edu_attain_couples">
+      <title>Educational attainment of couples</title>
+      <statement>
+        <p>
+          The table below shows the distribution of education level attained by US residents by gender based on data collected in the 2010 American Community Survey. \footfullcite{eduSex}
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{2}{c}{<em>Gender</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Male</cell>
+            <cell>Female</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Less than 9th grade</cell>
+            <cell>0.07</cell>
+            <cell>0.13</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>9th to 12th grade, no diploma</cell>
+            <cell>0.10</cell>
+            <cell>0.09</cell>
+          </row>
+          <row>
+            <cell><em>Highest</em></cell>
+            <cell>HS graduate (or equivalent)</cell>
+            <cell>0.30</cell>
+            <cell>0.20</cell>
+          </row>
+          <row>
+            <cell><em>education</em></cell>
+            <cell>Some college, no degree</cell>
+            <cell>0.22</cell>
+            <cell>0.24</cell>
+          </row>
+          <row>
+            <cell><em>attained</em></cell>
+            <cell>Associate's degree</cell>
+            <cell>0.06</cell>
+            <cell>0.08</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Bachelor's degree</cell>
+            <cell>0.16</cell>
+            <cell>0.17</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Graduate or professional degree</cell>
+            <cell>0.09</cell>
+            <cell>0.09</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>1.00</cell>
+            <cell>1.00</cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              What is the probability that a randomly chosen man has at least a Bachelor's degree?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a randomly chosen woman has at least a Bachelor's degree?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the probability that a man and a woman getting married both have at least a Bachelor's degree?
+              Note any assumptions you must make to answer this question.
+            </p>
+          </li>
+          <li>
+            <p>
+              If you made an assumption in part<nbsp/>(c),
+              do you think it was reasonable?
+              If you didn't make an assumption,
+              double check your earlier answer and then return to this part.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="school_absences">
+      <title>School absences</title>
+      <statement>
+        <p>
+          Data collected at elementary schools in DeKalb County, GA suggest that each year roughly 25% of students miss exactly one day of school, 15% miss 2 days,
+          and 28% miss 3 or more days due to sickness. \footfullcite{Mizan:2011}
+          <ol>
+            <li>
+              <p>
+                What is the probability that a student chosen at random doesn't miss any days of school due to sickness this year?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the probability that a student chosen at random misses no more than one day?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the probability that a student chosen at random misses at least one day?
+              </p>
+            </li>
+            <li>
+              <p>
+                If a parent has two kids at a DeKalb County elementary school,
+                what is the probability that neither kid will miss any school?
+                Note any assumption you must make to answer this question.
+              </p>
+            </li>
+            <li>
+              <p>
+                If a parent has two kids at a DeKalb County elementary school,
+                what is the probability that both kids will miss some school,
+                i.e. at least one day?
+                Note any assumption you make.
+              </p>
+            </li>
+            <li>
+              <p>
+                If you made an assumption in part<nbsp/>(d) or<nbsp/>(e),
+                do you think it was reasonable?
+                If you didn't make any assumptions,
+                double check your earlier answers.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

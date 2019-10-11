@@ -1,0 +1,592 @@
+<section xml:id="binomialModel">
+  <title>Binomial distribution</title>
+  <introduction>
+    <p>
+          <idx><h>distribution</h><h>binomial</h></idx>
+    </p>
+    <p>
+      What is the probabilty that more than half of a random sample of 40 people would have blood type O+? If the probability of a defective part is 1%, how many defective items would we expect in a random shipment of 200 of those parts?
+      We can model these scenarios and answer these questions using the binomial distribution.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ul>
+      <li>
+        <p>
+          Determine if a scenario is binomial.
+        </p>
+      </li>
+      <li>
+        <p>
+          Calculate the probabilities of the possible values of a binomial random variable.
+        </p>
+      </li>
+      <li>
+        <p>
+          Calculate and interpret the mean
+          (expected value)
+          and standard deviation of the number of successes in <m>n</m> binomial trials.
+        </p>
+      </li>
+      <li>
+        <p>
+          Determine whether a binomial distribution can be modeled as approximately normal.
+          If so, use normal approximation to estimate cumulative binomial probabilities.
+        </p>
+      </li>
+    </ul>
+  </subsection>
+  <subsection>
+    <title>An example of a binomial distribution</title>
+    <p>
+      In Guided <xref ref="bloodTypeOPos">Practice</xref>,
+      we asked various probability questions regarding the number of people out of 4 with blood type O+. We verified that the scenario was binomial and that each problem could be solved using the binomial formula.
+      Instead of looking at it piecewise,
+      we could describe the entire <em>distribution</em>
+      of possible values and their corresponding probabilities.
+      Since there are 4 people,
+      there are several possible outcomes for the number who might have blood type O+: 0, 1, 2, 3, 4.
+      We can make a distribution table with these outcomes.
+      Recall that the probability of a randomly sampled person being blood type O+ is about<nbsp/>0.35.
+    </p>
+    <table xml:id="oPositive4">
+      <caption>Probability distribution for the number with blood type O+ in a random sample of 4 people. This is a binomial distribution. Correcting for rounding error, the probabilities add up to<nbsp/>1, as they must for any probability distribution.</caption>
+      <sidebyside>
+        <tabular>
+          <row>
+            <cell><m>x_i</m></cell>
+            <cell><m>P(x_i)</m></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>0</cell>
+            <cell><m>{4\choose 0}(\oposprob{})^0(\oposprobcomp{})^{4} = 0.179</m> \vspace{1mm}</cell>
+          </row>
+          <row>
+            <cell>1</cell>
+            <cell><m>{4\choose 1}(\oposprob{})^1(\oposprobcomp{})^{3} = 0.384</m>  \vspace{1mm}</cell>
+          </row>
+          <row>
+            <cell>2</cell>
+            <cell><m>{4\choose 2}(\oposprob{})^2(\oposprobcomp{})^{2} = 0.311</m>  \vspace{1mm}</cell>
+          </row>
+          <row>
+            <cell>3</cell>
+            <cell><m>{4\choose 3}(\oposprob{})^3(\oposprobcomp{})^{1} = 0.111</m>  \vspace{1mm}</cell>
+          </row>
+          <row>
+            <cell>4</cell>
+            <cell><m>{4\choose 4}(\oposprob{})^4(\oposprobcomp{})^{0} = 0.015</m>  \vspace{1mm}</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+        \Figure{0.95}{oPositive4}
+      </sidebyside>
+    </table>
+  </subsection>
+  <subsection>
+    <title>The mean and standard deviation of a binomial distribution</title>
+    <p>
+      Since this is a probability distribution we could find its mean and standard deviation using the formulas from <xref ref="probability">Chapter</xref>.
+      Those formulas require a lot of calculations,
+      so it is fortunate there's an easier way to compute the mean and standard deviation for a binomial random variable.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        For a binomial distribution with parameters <m>n</m> and <m>p</m>,
+        where <m>n</m> is the number of trials and <m>p</m> is the probability of a success,
+        the mean and standard deviation of the number of observed successes are
+        <md>
+          <mrow>\mu_{\scriptscriptstyle{X}} \amp = np \amp \sigma_{\scriptscriptstyle{X}} \amp = \sqrt{np(1-p)}</mrow>
+        </md>
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          If the probability that a person has blood type O+ is 0.35 and you have 40 randomly selected people,
+          about how many would you expect to have blood type O+? What is the standard deviation of the number of people who would have blood type O+ among the 40 people?\begin{answer} We are asked to determine the expected number
+          (the mean)
+          and the standard deviation,
+          both of which can be directly computed from the formulas above.
+          <md>
+            <mrow>\mu_{\scriptscriptstyle{X}}\amp =np = 40(\oposprob{}) = 14</mrow>
+            <mrow>\sigma_{\scriptscriptstyle{X}} \amp = \sqrt{np(1-p)} = \sqrt{40(\oposprob{})(\oposprobcomp{})} = 3.0</mrow>
+          </md>
+        </p>
+      </statement>
+    </example>
+    <p>
+      The exact distribution is shown in <xref ref="oPositive40">Figure</xref>.
+    </p>
+    <figure xml:id="oPositive40">
+      <caption>Distribution for the number of people with blood type O+ in a random sample of size 40, where <m>p=\oposprob</m>.  The distribution is binomial and is centered on<nbsp/>14 with a standard deviation of 3.</caption>
+      \Figure{0.7}{oPositive40}
+    </figure>
+  </subsection>
+  <subsection xml:id="exactbin">
+    <title>Normal approximation to the binomial distribution</title>
+    <p>
+          <idx><h>distribution</h><h>binomial!normal approximation</h></idx>
+    </p>
+    <p>
+      The binomial formula is cumbersome when the sample size (<m>n</m>) is large,
+      particularly when we consider a range of observations.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Find the probability that fewer than 12 out of 40 randomly selected people would have blood type O+, where probability of blood type O+ is 0.35.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          This is equivalent to asking,
+          what is the probability of observing
+          <m>X=0, 1, 2, ..., \text{ or }  11</m> with blood type O+ in a sample of size 40 when <m>p=0.35</m>?
+          We previously verified that this scenario is binomial.
+          We can compute each of the 12 probabilities using the binomial formula and add them together to find the answer:
+          <md>
+            <mrow>\amp P(X=0\text{ or } X=1\text{ or } \cdots\text{ or }  X=11)</mrow>
+            <mrow>\amp \qquad = P(X=0) + P(X=1) + \cdots + P(X=11)</mrow>
+            <mrow>\amp \qquad = {40\choose 0}(\oposprob{})^0(\oposprobcomp{})^{40} + {40\choose 1}(\oposprob{})^1(\oposprobcomp{})^{39} + \cdots + {40\choose 11}(\oposprob{})^{11}(\oposprobcomp{})^{29}</mrow>
+            <mrow>\amp \qquad = 0.21</mrow>
+          </md>
+        </p>
+        <p>
+          If the true proportion with blood type O+ in the population is <m>p = \oposprob{}</m>,
+          then the probability of observing fewer than 12 in a sample of <m>n = 40</m> is 0.21.
+        </p>
+      </answer>
+    </example>
+    <p>
+      The computations in <xref ref="exactbin">Example</xref> are tedious and long.
+      In general, we should avoid such work if an alternative method exists that is faster,
+      easier, and still accurate.
+      Recall that calculating probabilities of a range of values is much easier in the normal model.
+      In some cases we may use the normal distribution to estimate binomial probabilities.
+      While a normal approximation for the distribution in <xref ref="oPositive4">Figure</xref>
+      when the sample size was <m>n = 4</m> would not be appropriate,
+      it might not be too bad for the distribution in <xref ref="oPositive40">Figure</xref> where <m>n = 40</m>.
+      We might wonder,
+      when is it reasonable to use the normal model to approximate a binomial distribution?
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Here we consider the binomial model when the probability of a success is <m>p=0.10</m>.
+          <xref ref="fourBinomialModelsShowingApproxToNormal">Figure</xref>
+          shows four hollow histograms for simulated samples from the binomial distribution using four different sample sizes:
+          <m>n=10</m>, 30, 100, 300.
+          What happens to the shape of the distributions as the sample size increases?
+          How does the binomial distribution change as <m>n</m> gets larger?
+        </p>
+      </statement>
+    </exercise>
+    <figure xml:id="fourBinomialModelsShowingApproxToNormal">
+      <caption>Hollow histograms of samples from the binomial model when <m>p=0.10</m>. The sample sizes for the four plots are <m>n=10</m>, 30, 100, and 300, respectively.</caption>
+      \Figure{0.75}{fourBinomialModelsShowingApproxToNormal}
+    </figure>
+    <p>
+      The shape of the binomial distribution depends upon both <m>n</m> and <m>p</m>.
+      Here we introduce a rule of thumb for when normal approximation of a binomial distribution is reasonable.
+      We will use this rule of thumb in many applications going forward.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        The binomial distribution with probability of success <m>p</m> is nearly normal when the sample size <m>n</m> is sufficiently large that
+        <m>np\ge 10</m> and <m>n(1-p)\ge 10</m>.
+        The approximate normal distribution has parameters corresponding to the mean and standard deviation of the binomial distribution:
+        <md>
+          <mrow>\mu \amp = np \amp \amp \sigma= \sqrt{np(1-p)}</mrow>
+        </md>
+      </p>
+    </assemblage>
+    <p>
+      The normal approximation may be used when computing the range of many possible successes.
+      For instance,
+      we may apply the normal distribution to the setting described in <xref ref="oPositive40">Figure</xref>.
+    </p>
+    <example xml:id="approxBinomialForN40P35OPosExample">
+      <statement>
+        <p>
+          Use the normal approximation to estimate the probability of observing fewer than 12 with blood type O+ in a random sample of 40,
+          if the true proportion with blood type O+ in the population is <m>p=\oposprob{}</m>.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          First we verify that <m>np</m> and <m>n(1-p)</m> are at least 10 so that we can apply the normal approximation to the binomial model:
+          <md>
+            <mrow>np\amp  = 40(\oposprob{})=14\ge 10 \amp n(1-p)\amp  = 40(\oposprobcomp{}) = 26\ge 10</mrow>
+          </md>
+        </p>
+        <p>
+          With these conditions checked,
+          we may use the normal distribution to approximate the binomial distribution with the following mean and standard deviation:
+          <md>
+            <mrow>\mu \amp = np = 40(\oposprob{})=14</mrow>
+            <mrow>\sigma \amp = \sqrt{np(1-p)} = \sqrt{40(\oposprob{})(\oposprobcomp{})} = 3.0</mrow>
+          </md>
+        </p>
+        <p>
+          We want to find the probability of observing fewer than 12 with blood type O+ using this model.
+          We note that 12 is less than 1<nbsp/>standard deviation below the mean: \Figures{0.4}{bloodtypeOpos}{bloodtypeOpos40} Next,
+          we compute the Z-score as <m>Z=\frac{12 - 14}{3} = -0.67</m> to find the shaded area in the picture:
+          <m>P(Z \lt -0.67) = 0.25</m>.
+          This probability of 0.25 using the normal approximation is reasonably close to the true probability of 0.21 computed using the binomial distribution.
+        </p>
+      </answer>
+    </example>
+    <example xml:id="approxBinomialForN400P20SmokerExample">
+      <statement>
+        <p>
+          Use the normal approximation to estimate the probability of observing fewer than 120 people with blood type O+ in a random sample of 400,
+          if the true proportion with blood type O+ in the population is <m>p=\oposprob{}</m>.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We have previously verified that the binomial model is reasonable for this context.
+          Now we will verify that both <m>np</m> and <m>n(1-p)</m> are at least 10 so we can apply the normal approximation to the binomial model:
+          <md>
+            <mrow>np\amp =400(\oposprob{})=140\ge 10 \amp n(1-p)\amp =400(\oposprob{})=260\ge 10</mrow>
+          </md>
+        </p>
+        <p>
+          With these conditions checked,
+          we may use the normal approximation in place of the binomial distribution with the following mean and standard deviation:
+          <md>
+            <mrow>\mu \amp = np = 400(\oposprob{})=140</mrow>
+            <mrow>\sigma \amp = \sqrt{np(1-p)} = \sqrt{400(\oposprob{})(\oposprobcomp{})}= 9.5</mrow>
+          </md>
+        </p>
+        <p>
+          We want to find the probability of observing fewer than 120 with blood type O+ using this model.
+          We note that 120 is just over 2<nbsp/>standard deviations below the mean: \Figures{0.48}{bloodtypeOpos}{bloodtypeOpos400} Next,
+          we compute the Z-score as <m>Z=\frac{120 - 140}{9.5} = -2.1</m> to find the shaded area in the picture:
+          <m>P(Z \lt -2.1) = 0.0179</m>.
+          This probability of 0.0179 using the normal approximation is very close to the true probability of 0.0196 from the binomial distribution.
+        </p>
+      </answer>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Use normal approximation, if applicable,
+          to estimate the probability of getting greater than 15 sixes in 100 rolls of a fair die.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>Normal approximation breaks down on small intervals (special topic)</title>
+    <assemblage>
+      <title></title>
+      <p>
+        {The normal approximation to the binomial distribution tends to perform poorly when estimating the probability of a small range of counts,
+        even when the conditions are met.}
+      </p>
+    </assemblage>
+    <p>
+      We consider again our example where 35% of people are blood type O+. Suppose we want to find the probability that between 129 and 131 people,
+      inclusive,
+      have blood type O+ in a random sample of 400 people.
+      We want to compute the probability of observing 129, 130,
+      or 131 people with blood type O+ when <m>p=0.20</m> and <m>n=400</m>.
+      With such a large sample,
+      we might be tempted to apply the normal approximation and use the range 129 to 131.
+      However, we would find that the binomial solution and the normal approximation notably differ:
+      <md>
+        <mrow>\text{ Binomial: } \amp \ 0.0732 \amp \text{ Normal: } \amp \ 0.0483</mrow>
+      </md>
+    </p>
+    <p>
+      We can identify the cause of this discrepancy using <xref ref="normApproxToBinomFail">Figure</xref>,
+      which shows the areas representing the binomial probability (outlined) and normal approximation
+      (shaded).
+      Notice that the width of the area under the normal distribution is 0.5 units too slim on both sides of the interval.
+      The binomial distribution is a discrete distribution,
+      and the each bar is centered over an integer value.
+      Looking closely at <xref ref="normApproxToBinomFail">Figure</xref>,
+      we can see that the bar corresponding to 129 begins at 128.5 and ends at 129.5, the bar corresponding to 131 begins at 130.5 and ends at 131.5, etc.
+    </p>
+    <figure xml:id="normApproxToBinomFail">
+      <caption>A normal curve with the area between 129 and 131 shaded. The outlined area from 128.5 to 131.5 represents the exact binomial probability.</caption>
+      <image width="73%" source="images/normApproxToBinomFail-n400-p35.png" />
+    </figure>
+    <assemblage>
+      <title></title>
+      <p>
+        The normal approximation to the binomial distribution for intervals of values is usually improved if cutoff values for the lower end of a shaded region are reduced by 0.5 and the cutoff value for the upper end are increased by 0.5.
+        This correction is called the continuity correction and accounts for the fact that the binomial distribution is discrete.
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          Use the method described to find a more accurate estimate for the probability of observing 129, 130,
+          or 131 people with blood type O+ in 400 randomly selected people when <m>p=0.35</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Use the method described to find a more accurate estimate for the probability of observing 129, 130,
+          or 131 people with blood type O+ in 400 randomly selected people when <m>p=0.35</m>.
+        </p>
+      </solution>
+    </example>
+    <p>
+      It is always possible to apply the continuity correction when finding a normal approximation to the binomial distribution.
+      However, when <m>n</m> is very large or when the interval is wide,
+      the benefit of the modification is limited since the added area becomes negligible compared to the overall area being calculated.
+    </p>
+    <p>
+          <idx><h>distribution</h><h>binomial!normal approximation</h></idx>
+          <idx><h>distribution</h><h>binomial</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <p>
+      In the previous chapter,
+      we introduced the binomial formula to find the probability of exactly <m>x</m> successes in <m>n</m> trials for an event that has probability <m>p</m> of success.
+      Instead of looking at this scenario piecewise,
+      we can describe the entire <em>distribution</em>
+      of the number of successes and their corresponding probabilities.
+    </p>
+    <ul>
+      <li>
+        <p>
+          The distribution of the <em>number of successes</em>
+          in <m>n</m> independent trials gives rise to a
+          <term>binomial distribution</term>.
+          If X has a binomial distribution with parameters <m>n</m> and <m>p</m>,
+          then <m>P(X=x) = {n\choose x}p^x(1-p)^n-x</m>,
+          where <m>x=0,1,2,3\dots,n</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          To write out a binomial probability
+          <em>distribution table</em>,
+          list all possible values for <m>x</m>, the number of successes,
+          then use the binomial formula to find the probability of each of those values.
+        </p>
+      </li>
+      <li>
+        <p>
+          Because a binomial distribution can be thought of as the
+          <em>sum</em> of a bunch of 0s and 1s,
+          the <term>Central Limit Theorem</term> applies.
+          As <m>n</m> gets larger,
+          the shape of the binomial distribution becomes more normal.
+        </p>
+      </li>
+      <li>
+        <p>
+          We call the rule of thumb for when the binomial distribution can be well modeled with a normal distribution the
+          <term>success-failure</term> condition.
+          The success-failure condition is met when there are at least 10 successes and 10 failures,
+          or when <m>np\ge 10</m> and <m>n(1-p)\ge 10</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          If <em>X</em> follows a binomial distribution with parameters <m>n</m> and <m>p</m>, then:
+        </p>
+        <ul>
+          <li>
+            <p>
+              The mean is given by <m>\mu_{\scriptscriptstyle{X}} = np</m>. (<em>center</em>)
+            </p>
+          </li>
+          <li>
+            <p>
+              The standard deviation is given by <m>\sigma_{\scriptscriptstyle{X}} = \sqrt{np(1-p)}</m>. (<em>spread</em>)
+            </p>
+          </li>
+          <li>
+            <p>
+              When <m>np\ge 10</m> and <m>n(1-p)\ge 10</m>,
+              the binomial distribution is approximately normal. (<em>shape</em>)
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          It is often easier to use <em>normal approximation to the binomial distribution</em><idx><h>normal approximation</h><h>binomial distribution|textbf</h></idx> rather than evaluate the binomial formula many times.
+          These three properties of the binomial distribution are used when solving the following type of problem.
+          <em>Find the probability of getting more than / fewer than x yeses in <m>n</m> trials or in a sample of size <m>n</m></em>.
+          <ol>
+            <li>
+              <p>
+                Identify <m>n</m> and <m>p</m>.
+                Verify than <m>np\ge 10</m> and <m>n(1-p)\ge 10</m>,
+                which implies that normal approximation is reasonable.
+              </p>
+            </li>
+            <li>
+              <p>
+                Calculate the Z-score.
+                Use <m>\mu_{\scriptscriptstyle{X}} = np</m> and
+                <m>\sigma_{\scriptscriptstyle{X}} = \sqrt{np(1-p)}</m> to standardize the <m>x</m> value.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the appropriate area under the normal curve.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="underage_drinking_normal_approx">
+      <title>Underage drinking, Part II</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> We learned in <xref ref="underage_drinking_intro">Exercise</xref>
+          that about 70% of 18-20 year olds consumed alcoholic beverages in any given year.
+          We now consider a random sample of fifty 18-20 year olds.
+          <ol>
+            <li>
+              <p>
+                How many people would you expect to have consumed alcoholic beverages?
+                And with what standard deviation?
+              </p>
+            </li>
+            <li>
+              <p>
+                Would you be surprised if there were 45 or more people who have consumed alcoholic beverages?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the probability that 45 or more people in this sample have consumed alcoholic beverages?
+                How does this probability relate to your answer to part (b)?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="chicken_pox_normal_approx">
+      <title>Chickenpox, Part II</title>
+      <statement>
+        <p>
+          We learned in <xref ref="chicken_pox_intro">Exercise</xref>
+          that about 90% of American adults had chickenpox before adulthood.
+          We now consider a random sample of 120 American adults.
+          <ol>
+            <li>
+              <p>
+                How many people in this sample would you expect to have had chickenpox in their childhood?
+                And with what standard deviation?
+              </p>
+            </li>
+            <li>
+              <p>
+                Would you be surprised if there were 105 people who have had chickenpox in their childhood?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the probability that 105 or fewer people in this sample have had chickenpox in their childhood?
+                How does this probability relate to your answer to part (b)?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="dreidel">
+      <title>Game of dreidel</title>
+      <statement>
+        <p>
+          A dreidel is a four-sided spinning top with the Hebrew letters <em>nun</em>,
+          <em>gimel</em>, <em>hei</em>,
+          and <em>shin</em>, one on each side.
+          Each side is equally likely to come up in a single spin of the dreidel.
+          Suppose you spin a dreidel three times.
+          Calculate the probability of getting
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                at least one <em>nun</em>?
+              </p>
+            </li>
+            <li>
+              <p>
+                exactly 2 <em>nun</em>s?
+              </p>
+            </li>
+            <li>
+              <p>
+                exactly 1 <em>hei</em>?
+              </p>
+            </li>
+            <li>
+              <p>
+                at most 2 <em>gimel</em>s?
+              </p>
+            </li>
+          </ol>
+          <image width="90%" source="images/dreidel.png" />
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="sickle_cell_anemia">
+      <title>Sickle cell anemia</title>
+      <statement>
+        <p>
+          Sickle cell anemia is a genetic blood disorder where red blood cells lose their flexibility and assume an abnormal, rigid,
+          <q>sickle</q>
+          shape, which results in a risk of various complications.
+          If both parents are carriers of the disease,
+          then a child has a 25% chance of having the disease, 50% chance of being a carrier,
+          and 25% chance of neither having the disease nor being a carrier.
+          If two parents who are carriers of the disease have 3 children,
+          what is the probability that
+          <ol>
+            <li>
+              <p>
+                two will have the disease?
+              </p>
+            </li>
+            <li>
+              <p>
+                none will have the disease?
+              </p>
+            </li>
+            <li>
+              <p>
+                at least one will neither have the disease nor be a carrier?
+              </p>
+            </li>
+            <li>
+              <p>
+                the first child with the disease will the be <m>3^{rd}</m> child?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

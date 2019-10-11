@@ -1,0 +1,2147 @@
+<section xml:id="oneSampleMeansWithTDistribution">
+  <title>Inference for a mean with the <m>t</m>-distribution</title>
+  <introduction>
+    <p>
+      In this section,
+      we turn our attention to numerical variables and answer questions such as the following:
+      <ul>
+        <li>
+          <p>
+            How well can we estimate the mean income of people in a certain city, county,
+            or state?
+          </p>
+        </li>
+        <li>
+          <p>
+            What is the average mercury content in various types of fish?
+          </p>
+        </li>
+        <li>
+          <p>
+            Are people's run times getting faster or slower, on average?
+          </p>
+        </li>
+        <li>
+          <p>
+            How does the sample size affect the expected error in our estimates?
+          </p>
+        </li>
+        <li>
+          <p>
+            When is it reasonable to model the sample mean <m>\bar{x}</m> using a normal distribution,
+            and when will we need to use a new distribution,
+            known as the <m>t</m>-distribution?
+          </p>
+        </li>
+      </ul>
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Understand the relationship between a <m>t</m>-distribution and a normal distribution,
+          and explain why we use a <m>t</m>-distribution for inference on a mean.
+        </p>
+      </li>
+      <li>
+        <p>
+          State and verify whether or not the conditions for inference for a mean based on the <m>t</m>-distribution are met.
+          Understand when it is necessary to look at the distribution of the sample data.
+        </p>
+      </li>
+      <li>
+        <p>
+          Know the degrees of freedom associated with a one sample <m>t</m>-procedure.
+        </p>
+      </li>
+      <li>
+        <p>
+          Carry out a complete hypothesis test for a single mean.
+        </p>
+      </li>
+      <li>
+        <p>
+          Carry out a complete confidence interval procedure for a single mean.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find the minimum sample size needed to estimate a mean with C% confidence and a margin of error no greater than a certain value.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection xml:id="nearlyNormalPopWithKnownSD">
+    <title>Using a normal distribution for inference when <m>\sigma</m> is known</title>
+    <p>
+      In <xref ref="distributionofxbar">Section</xref>
+      we saw that the distribution of a sample mean is normal if the population is normal or if the sample size is at least 30.
+      In these problems,
+      we used the population mean and population standard deviation to find a Z-score.
+      However, in the case of inference,
+      these values will be unknown.
+      In rare circumstances we may know the standard deviation of a population,
+      even though we do not know its mean.
+      For example, in some industrial processes,
+      the mean may be known to shift over time,
+      while the standard deviation of the process remains the same.
+      In these cases,
+      we can use the normal model as the basis for our inference procedures.
+      We use <m>\bar{x}</m> as our point estimate for <m>\mu</m> and the <m>SD</m> formula for a sample mean calculated in <xref ref="distributionofxbar">Section</xref>:
+      <m>\sigma_{\bar{x}} =\frac{\sigma}{\sqrt{n}}</m>.
+      That leads to a confidence interval and a test statistic as follows:
+      <md>
+        <mrow>\text{ CI:  }  \bar{x} \amp \ \pm \ z^{\star}\frac{\sigma}{\sqrt{n}} \amp \amp Z = \frac{\bar{x} - \text{ null value } }{\frac{\sigma}{\sqrt{n}}}</mrow>
+      </md>
+    </p>
+    <p>
+      What happens if we do not know the population standard deviation <m>\sigma</m>,
+      as is usually the case?
+      The best we can do is use the sample standard deviation,
+      denoted by <m>s</m>, to estimate the population standard deviation.
+      <md>
+        <mrow>SE= \frac{s}{\sqrt{n}}</mrow>
+      </md>
+    </p>
+    <p>
+      However, when we do this we run into a problem:
+      when carrying out our inference procedures,
+      we will be trying to estimate <em>two</em> quantities:
+      both the mean and the standard deviation.
+      Looking at the <m>SD</m> and <m>SE</m> formulas,
+      we can make some important observations that will give us a hint as to what will happen when we use <m>s</m> instead of <m>\sigma</m>.
+      <ul>
+        <li>
+          <p>
+            For a given population, <m>\sigma</m> is a fixed number and does not vary.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>s</m>, the standard deviation of a sample,
+            will vary from one sample to the next and will not be exactly equal to <m>\sigma</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The larger the sample size <m>n</m>,
+            the better the estimate <m>s</m> will tend to be for <m>\sigma</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      For this reason,
+      the normal model still works well when the sample size is large.
+      For smaller sample sizes, we run into a problem:
+      our use of <m>s</m>, which is used when computing the standard error,
+      tends to add more variability to our test statistic.
+      It is this extra variability that leads us to a new distribution:
+      the \mbox{<m>t</m>-distribution} .
+    </p>
+  </subsection>
+  <subsection xml:id="introducingTheTDistribution">
+    <title>Introducing the <m>t</m>-distribution</title>
+    <p>
+          <idx><h>t-distribution@<m>t</m>-distribution</h></idx>
+    </p>
+    <p>
+      When we use the sample standard deviation <m>s</m> in place of the population standard deviation <m>\sigma</m> to standardize the sample mean,
+      we get an entirely new distribution - one that is similar to the normal distribution,
+      but has greater spread.
+      This distribution is known as the <m>t</m>-distribution.
+      A <m>t</m>-distribution,
+      shown as a solid line in <xref ref="tDistCompareToNormalDist">Figure</xref>,
+      has a bell shape.
+      However, its tails are thicker than the normal model's.
+      We can see that a greater proportion of the area under the <m>t</m>-distribution is beyond 2 standard units from 0 than under the normal distribution.
+      These extra thick tails are exactly the correction we need to resolve the problem of a poorly estimated standard deviation.
+    </p>
+    <figure xml:id="tDistCompareToNormalDist">
+      <caption>Comparison of a <m>t</m>-distribution (solid line) and a normal distribution (dotted line).</caption>
+      <image width="57%" source="images/tDistCompareToNormalDist.png" />
+    </figure>
+    <p>
+      The <m>t</m>-distribution,
+      always centered at zero, has a single parameter: degrees of freedom.
+      The <em>degrees of freedom (df)</em><idx><h>degrees of freedom (df)</h><h><m>t</m>-distribution|textbf</h></idx> describes the precise form of the bell-shaped <m>t</m>-distribution.
+      Several <m>t</m>-distributions are shown in <xref ref="tDistConvergeToNormalDist">Figure</xref>.
+      When there are more degrees of freedom,
+      the <m>t</m>-distribution looks more like the standard normal distribution.
+    </p>
+    <figure xml:id="tDistConvergeToNormalDist">
+      <caption>The larger the degrees of freedom, the more closely the <m>t</m>-distribution resembles the standard normal distribution.</caption>
+      <image width="83%" source="images/tDistConvergeToNormalDist.png" />
+    </figure>
+    <assemblage>
+      <title></title>
+      <p>
+        The degrees of freedom describes the shape of the <m>t</m>-distribution.
+        The larger the degrees of freedom,
+        the more closely the distribution resembles the standard normal<nbsp/>distribution.
+      </p>
+    </assemblage>
+    <p>
+      When the degrees of freedom is large, about 30 or more,
+      the <m>t</m>-distribution is nearly indistinguishable from the normal distribution.
+      In <xref ref="tDistSolutionToSEProblem">Section</xref>,
+      we will see how degrees of freedom relates to sample size.
+    </p>
+    <p>
+      We will find it useful to become familiar with the <m>t</m>-distribution,
+      because it plays a very similar role to the normal distribution during inference.
+      We use a <em><m>t</m>-table</em>,
+          <idx><h>t-table@<m>t</m>-table|textbf</h></idx>
+      partially shown in <xref ref="tTableSample_ch_inf_means">Figure</xref>,
+      in place of the normal probability table when the population standard deviation is unknown,
+      especially when the sample size is small.
+      A<nbsp/>larger table is presented in <xref ref="tDistributionTable">Appendix</xref>.
+    </p>
+    <table xml:id="tTableSample_ch_inf_means">
+      <caption>An abbreviated look at the <m>t</m>-table. Each row represents a different <m>t</m>-distribution. The columns describe the cutoffs for specific tail areas. The row with <m>df=18</m> has been <em>highlighted</em>.</caption>
+      <tabular>
+        <row>
+          <cell>one tail</cell>
+          <cell>\hspace{1.5mm}  0.100</cell>
+          <cell>\hspace{1.5mm} 0.050</cell>
+          <cell>\hspace{1.5mm} 0.025</cell>
+          <cell>\hspace{1.5mm} 0.010</cell>
+          <cell>\hspace{1.5mm} 0.005</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>{<m>df</m>}  1</cell>
+          <cell>{  3.078}</cell>
+          <cell>{  6.314}</cell>
+          <cell>{ 12.71}</cell>
+          <cell>{ 31.82}</cell>
+          <cell>{ 63.66}</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>{  1.886}</cell>
+          <cell>{  2.920}</cell>
+          <cell>{  4.303}</cell>
+          <cell>{  6.965}</cell>
+          <cell>{  9.925}</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>{  1.638}</cell>
+          <cell>{  2.353}</cell>
+          <cell>{  3.182}</cell>
+          <cell>{  4.541}</cell>
+          <cell>{  5.841}</cell>
+        </row>
+        <row>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>17</cell>
+          <cell>{  1.333}</cell>
+          <cell>{  1.740}</cell>
+          <cell>{  2.110}</cell>
+          <cell>{  2.567}</cell>
+          <cell>{  2.898}</cell>
+        </row>
+        <row>
+          <cell><em>18</em></cell>
+          <cell><em>  1.330</em></cell>
+          <cell><em>  1.734</em></cell>
+          <cell><em>  2.101</em></cell>
+          <cell><em>  2.552</em></cell>
+          <cell><em>  2.878</em></cell>
+        </row>
+        <row>
+          <cell>19</cell>
+          <cell>{  1.328}</cell>
+          <cell>{  1.729}</cell>
+          <cell>{  2.093}</cell>
+          <cell>{  2.539}</cell>
+          <cell>{  2.861}</cell>
+        </row>
+        <row>
+          <cell>20</cell>
+          <cell>{  1.325}</cell>
+          <cell>{  1.725}</cell>
+          <cell>{  2.086}</cell>
+          <cell>{  2.528}</cell>
+          <cell>{  2.845}</cell>
+        </row>
+        <row>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1000</cell>
+          <cell>{  1.282}</cell>
+          <cell>{  1.646}</cell>
+          <cell>{  1.962}</cell>
+          <cell>{  2.330}</cell>
+          <cell>{  2.581}</cell>
+        </row>
+        <row>
+          <cell><m>\infty</m></cell>
+          <cell>{  1.282}</cell>
+          <cell>{  1.645}</cell>
+          <cell>{  1.960}</cell>
+          <cell>{  2.326}</cell>
+          <cell>{  2.576}</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Confidence level C</cell>
+          <cell>{  80%}</cell>
+          <cell>{ 90%}</cell>
+          <cell>{ 95%}</cell>
+          <cell>{  98%}</cell>
+          <cell>{  99%}</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      Each row in the <m>t</m>-table represents a <m>t</m>-distribution with different degrees of freedom.
+      The columns correspond to tail probabilities.
+      For instance,
+      if we know we are working with the <m>t</m>-distribution with <m>df=18</m>,
+      we can examine row 18,
+      which is <em>highlighted</em> in <xref ref="tTableSample_ch_inf_means">Figure</xref>.
+      If we want the value in this row that identifies the cutoff for an upper tail of 10%, we can look in the column where
+      <em>one tail</em> is 0.100.
+      This cutoff is 1.33.
+      If we had wanted the cutoff for the lower 10%, we would use -1.33.
+      Just like the normal distribution,
+      all <m>t</m>-distributions are symmetric.
+    </p>
+    <example>
+      <statement>
+        <p>
+          What proportion of the <m>t</m>-distribution with 18 degrees of freedom falls below -2.10?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          What proportion of the <m>t</m>-distribution with 18 degrees of freedom falls below -2.10?
+        </p>
+      </solution>
+    </example>
+    <figure xml:id="tDistDF18LeftTail2Point10">
+      <caption>The <m>t</m>-distribution with 18 degrees of freedom. The area below -2.10 has been shaded.</caption>
+      <image width="53%" source="images/tDistDF18LeftTail2Point10.png" />
+    </figure>
+    <example>
+      <statement>
+        <p>
+          For the <m>t</m>-distribution with 18 degrees of freedom,
+          what percent of the curve is contained between -1.330 and +1.330?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          For the <m>t</m>-distribution with 18 degrees of freedom,
+          what percent of the curve is contained between -1.330 and +1.330?
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          For the <m>t</m>-distribution with 3 degrees of freedom,
+          as shown in the left panel of <xref ref="tDistDF3_and_20">Figure</xref>,
+          what should the value of <m>t^{\star}</m> be so that 95% of the area of the curve falls between -<m>t^{\star}</m> and +<m>t^{\star}</m>?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We can look at the column in the <m>t</m>-table that says 95% along the bottom row and trace it up to row <m>df = 3</m> to find that <m>t^{\star} = 3.182</m>.
+        </p>
+      </answer>
+    </example>
+    <example>
+      <statement>
+        <p>
+          A <m>t</m>-distribution with 20 degrees of freedom is shown in the right panel of <xref ref="tDistDF3_and_20">Figure</xref>.
+          Estimate the proportion of the distribution falling above 1.65.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We identify the row in the <m>t</m>-table using the degrees of freedom:
+          <m>df=20</m>.
+          Then we look for 1.65; it is not listed.
+          It falls between the first and second columns.
+          Since these values bound 1.65,
+          their tail areas will bound the tail area corresponding to 1.65.
+          We identify the one tail area of the first and second columns, 0.050 and 0.10,
+          and we conclude that between 5% and 10% of the distribution is more than 1.65 standard deviations above the mean.
+          If we like, we can identify the precise area using statistical software: 0.0573.
+        </p>
+      </answer>
+    </example>
+    <figure xml:id="tDistDF3_and_20">
+      <caption>Left: The <m>t</m>-distribution with 3 degrees of freedom, with the area farther than 3.182 units from 0 shaded.  Right: The <m>t</m>-distribution with 20 degrees of freedom, with the area above 1.65 shaded.</caption>
+      <image width="93%" source="images/tDistDF3_and_20.png" />
+    </figure>
+    <p>
+      When the desired degrees of freedom is not listed on the table,
+      choose a conservative value:
+      round the degrees of freedom down,
+      i.e. move <em>up</em> to the previous row listed.
+      Another option is to use a calculator or statistical software to get a precise answer.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Calculator: finding area under the <m>t</m>-distribution</title>
+    <p>
+      It is possible to find areas under a <m>t</m>-distribution on a calculator.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        Use <c>2ND</c> <c>VARS</c>, <c>tcdf</c> to find an area/proportion/probability between two <m>t</m>-scores or to the left or right of a <m>t</m>-score.
+        <ol>
+          <li>
+            <p>
+              Choose <c>2ND</c> <c>VARS</c> (i.e. <c>DISTR</c>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>6:tcdf</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Enter the <c>lower</c> (left) <m>t</m>-score and the <c>upper</c> (right) <m>t</m>-score.
+              <ul>
+                <li>
+                  <p>
+                    If finding just a lower tail area,
+                    set <c>lower</c> to <c>-100</c>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    For an upper tail area,
+                    set <c>upper</c> to <c>100</c>.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+          <li>
+            <p>
+              Enter the degrees of freedom after <c>df:</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Down arrow, choose <c>Paste</c>,
+              and hit <c>ENTER</c>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        TI-83: Do steps 1-2, then enter the lower bound,
+        upper bound, degrees of freedom,
+        e.g. <c>tcdf(2, 100, 5)</c>,
+        and hit <c>ENTER</c>.
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <ol>
+        <li>
+          <p>
+            Navigate to <c>STAT</c> (<c>MENU</c>,
+            then hit <c>2</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Select <c>DIST</c> (<c>F5</c>), then <c>t</c> (<c>F2</c>), and then <c>tcd</c> (<c>F2</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            If needed, set <c>Data</c> to <c>Variable</c> (<c>Var</c> option,
+            which is <c>F2</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Enter the <c>Lower</c> <m>t</m>-score and the <c>Upper</c> <m>t</m>-score.
+            Set the degrees of freedom (<c>df</c>).
+            <ul>
+              <li>
+                <p>
+                  If finding just a lower tail area,
+                  set <c>Lower</c> to <c>-100</c>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  For an upper tail area,
+                  set <c>Upper</c> to <c>100</c>.
+                </p>
+              </li>
+            </ul>
+          </p>
+        </li>
+        <li>
+          <p>
+            Hit <c>EXE</c>,
+            which will return the area probability (<c>p</c>) along with the <m>t</m>-scores for the lower and upper bounds.
+          </p>
+        </li>
+      </ol>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          Use a calculator to find the area to the right of <m>t=3</m> under the <m>t</m>-distribution with 35 degrees of freedom.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Without doing any calculations,
+          will the area to the right of <m>Z=3</m> under the standard normal curve be greater than,
+          less than,
+          or equal to the area to the right of <m>t=3</m> with 35 degrees of freedom?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+          <idx><h>t-distribution@<m>t</m>-distribution</h></idx>
+    </p>
+  </subsection>
+  <subsection xml:id="tDistSolutionToSEProblem">
+    <title>Checking conditions for inference on a mean using the <m>t</m>-distribution</title>
+    <p>
+      Using the <m>t</m>-distribution for inference on a mean requires two assumptions,
+      namely that the observations are independent and that the theoretical sampling distribution of the sample mean <m>\bar{x}</m> is nearly normal.
+      In practice,
+      we check whether these assumptions are reasonable by verifying that certain conditions are met.
+      <ul>
+        <li>
+          <title>Independent.</title>
+          <p>
+            Observations can be considered independent when the data are collected from a
+            <em>random process</em>,
+            such as tossing a coin, or from a <em>random sample</em>.
+            Without a random sample or process,
+            the standard error formula would not apply,
+            and it is unclear to what population the inference would apply.
+            Recall from <xref ref="ch_inference_for_props">Chapter</xref>
+            that when sampling without replacement from a finite population,
+            the observations can be considered independent when sampling less than 10% of the population.
+          </p>
+        </li>
+        <li>
+          <title>Nearly normal sampling distribution.</title>
+          <p>
+            We saw in <xref ref="distributionofxbar">Section</xref>
+            that the sampling distribution of a sample mean will be nearly normal when the sample is drawn from a nearly normal population or when the sample size is at least 30
+            (<m>n\ge 30</m>).
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      What should we do when the sample size is small and we are not sure whether the population distribution is nearly normal?
+      In this case,
+      the best we can do is look at the data for excessive skew.
+      If the data are very skewed or have obvious outliers,
+      this suggests that the sample did not come from a nearly normal population.
+      However, if the data do not show obvious skew or outliers,
+      then the idea of a nearly normal population is generally considered <em>reasonable</em>,
+      making the assumption of a nearly normal sampling distribution for <m>\bar{x}</m> reasonable as well.
+    </p>
+    <p>
+      Note that by looking at a small data set,
+      we cannot <em>prove</em> that the population distribution is nearly normal.
+      However, the data can suggest to us whether the population distribution being nearly normal is an unreasonable assumption.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        {If the sample is small and there is strong skew or extreme outliers in the data,
+        the population from which the sample was drawn may not be nearly normal. }
+      </p>
+    </assemblage>
+    <p>
+      Ideally, we use a graph of the data to check for strong skew or outliers.
+      When the full data set is not available,
+      summary statistics can also be used.
+    </p>
+    <p>
+      As the sample size goes up,
+      it becomes less necessary to check for skew in the data.
+      If the sample size is 30 or more,
+      it is no longer necessary that the population distribution be nearly normal.
+      When the sample size is large,
+      the Central Limit Theorem tells us that the sampling distribution of the sample mean will be nearly normal regardless of the distribution of the population.
+    </p>
+  </subsection>
+  <subsection xml:id="oneSampleTConfidenceIntervals">
+    <title>One sample <m>t</m>-interval for a mean</title>
+    <p>
+      Dolphins are at the top of the oceanic food chain,
+      which causes dangerous substances such as mercury to concentrate in their organs and muscles.
+      This is an important problem for both dolphins and other animals,
+      like humans, who eat them.
+    </p>
+    <figure xml:id="rissosDolphin">
+      <caption>A Risso's dolphin.\vspace{-1mm}
+      <ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/>-\vspace{-2mm}
+      { Photo by Mike Baird (MISSINGoiRedirect). MISSINGoiRedirect.\vspace{-10mm}}</caption>
+      <image width="70%" source="images/rissosDolphin.png" />
+      \addvspace{2mm}
+      \vspace{3mm}
+    </figure>
+    <p>
+      We would like to create a confidence interval to estimate the average mercury content in dolphin muscles.
+      We will use a sample of 19 Risso's dolphins from the Taiji area in Japan.
+      The data are summarized in <xref ref="summaryStatsOfHgInMuscleOfRissosDolphins">Figure</xref>.
+    </p>
+    <table xml:id="summaryStatsOfHgInMuscleOfRissosDolphins">
+      <caption>Summary of mercury content in the muscle of 19 Risso's dolphins from the Taiji area. Measurements are in <m>\mu</m>g/wet g (micrograms of mercury per wet gram of muscle).</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>n</m></cell>
+          <cell><m>\bar{x}</m></cell>
+          <cell><m>s</m></cell>
+          <cell>minimum</cell>
+          <cell>maximum</cell>
+        </row>
+        <row>
+          <cell>19</cell>
+          <cell>4.4</cell>
+          <cell>2.3</cell>
+          <cell>1.7</cell>
+          <cell>9.2</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      Because we are estimating a mean,
+      we would like to construct a <m>t</m>-interval,
+      but first we must check whether the conditions for using a <m>t</m>-interval are met.
+      We will start by assuming that the sample of 19 Risso's dolphins constitutes a random sample.
+      Next, we note that the sample size is small
+      (less than 30),
+      and we do not know whether the distribution of mercury content for all dolphins is nearly normal.
+      Therefore, we must look at the data.
+      Since we do not have all of the data to graph,
+      we look at the summary statistics provided in <xref ref="summaryStatsOfHgInMuscleOfRissosDolphins">Figure</xref>.
+      These summary statistics do not suggest any strong skew or outliers;
+      all observations are within 2.5 standard deviations of the mean.
+      Based on this evidence,
+      we believe it is reasonable that the population distribution of mercury content in dolphins could be nearly normal.
+    </p>
+    <p>
+      With both conditions met, we will construct a 95% confidence interval.
+      Recall that a confidence interval has the following form:
+      <md>
+        <mrow>\text{ point estimate }  \ \pm\  \text{ critical value } \times SE\text{ of estimate }</mrow>
+      </md>
+    </p>
+    <p>
+      The point estimate is the sample mean and the <m>SE</m> of the sample mean is given by <m>s/\sqrt{n}</m>.
+      What do we use for the critical value?
+      Since we are using the <m>t</m>-distribution,
+      we use a <m>t</m>-table to find the critical value.
+      We denote the critical value <m>t^{\star}</m>.
+      <ul>
+        <li>
+          <p>
+            For a 95% confidence interval,
+            we want to find the cutoff
+            <m>t^{\star}</m> such that 95% of the <m>t</m>-distribution is between -<m>t^{\star}</m> and <m>t^{\star}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Using the <m>t</m>-table on <xref ref="tTableSample_ch_inf_means">page</xref>,
+            we look at the row that corresponds to the degrees of freedom and the column that corresponds to the confidence level.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        If the sample has <m>n</m> observations and we are examining a single mean,
+        then we use the <m>t</m>-distribution with <m>df=n-1</m> degrees of freedom.
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          Calculate a 95% confidence interval for the average mercury content in dolphin muscles based on this sample.
+          Recall that <m>n=19</m>,
+          <m>\bar{x}=4.4</m> <m>\mu</m>g/wet g, and <m>s=2.3</m> <m>\mu</m>g/wet g.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          To find the critical value
+          <m>t^{\star}</m> we use the <m>t</m>-distribution with <m>n-1</m> degrees of freedom.
+          The sample size is 19, so <m>df=19-1=18</m> degrees of freedom.
+          Using the <m>t</m>-table with row <m>df=18</m> and column corresponding to a 95% confidence level,
+          we get <m>t^{\star}=2.10</m>.
+          The point estimate is the sample mean <m>\bar{x}</m> and the standard error of a sample mean is given by <m>\frac{s}{\sqrt{n}}</m>.
+          Now we have all the pieces we need to calculate a 95% confidence interval for the average mercury content in dolphin muscles.
+          <md>
+            <mrow>\text{ point estimate }  \ \amp \pm\  \text{ critical value }  \times SE \ \text{ of estimate }</mrow>
+            <mrow>\bar{x} \ \amp \pm\  t^{\star}\times \frac{s}{\sqrt{n}} \qquad df=n-1</mrow>
+            <mrow>4.4 \ \amp \pm\  2.10 \times  \frac{2.3}{\sqrt{19}}  df=18</mrow>
+            <mrow>= \amp \ (3.29 \text{ , }  5.51)</mrow>
+          </md>
+        </p>
+      </answer>
+    </example>
+    <example>
+      <statement>
+        <p>
+          How do we interpret this 95% confidence interval?
+          To what population is it applicable?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          How do we interpret this 95% confidence interval?
+          To what population is it applicable?
+        </p>
+      </solution>
+    </example>
+    <p>
+          <idx><h>data</h><h>dolphins and mercury</h></idx>
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        To carry out a complete confidence interval procedure to estimate a single \mbox{mean <m>\mu</m>,}
+      </p>
+      <p>
+        <em>Identify</em>: Identify the parameter and the confidence level, C%.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              The parameter will be an unknown population mean, e.g. the true mean
+              (or average)
+              mercury content in Risso's dolphins.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Choose</em>: Choose the appropriate interval procedure and identify it by name.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              Here we choose the <term>1-sample <m>t</m>-interval</term>.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Check</em>: Check conditions for the sampling distribution of <m>\bar{x}</m> to nearly normal.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              1. Data come from a random sample or random process.
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              2. The sample size <m>n\ge 30</m> or the population distribution is nearly normal.
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              If the sample size is less than 30 and the population distribution is unknown, check
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              for strong skew or outliers in the data.
+              If neither is found, the condition that the
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              population distribution is nearly normal is considered reasonable.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Calculate</em>: Calculate the confidence interval and record it in interval form.
+      </p>
+      <ul>
+        <li class="custom-list-style-type" label="">
+          <p>
+            <m>\text{ point estimate } \ \pm\ t^{\star} \times SE\ \text{ of estimate }</m>,
+            <m>df = n - 1</m>
+          </p>
+          <ul>
+            <li class="custom-list-style-type" label="">
+              <p>
+                point estimate: the sample mean <m>\bar{x}</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                <m>SE</m> of estimate: <m>\frac{s}{\sqrt{n}}</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                <m>t^{\star}</m>: use a <m>t</m>-table at row
+                <m>df = n-1</m> and confidence level C
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li class="custom-list-style-type" label="">
+          <p>
+            (<em><nbsp/> <nbsp/> <nbsp/></em>,
+            <em><nbsp/> <nbsp/> <nbsp/></em>)
+          </p>
+        </li>
+      </ul>
+      <p>
+        <em>Conclude</em>: Interpret the interval and,
+        if applicable, draw a conclusion in context.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              Here, we are C% confident that the true <em>mean</em>
+              of [...] is between <em><nbsp/> <nbsp/> <nbsp/></em>
+              and <em><nbsp/> <nbsp/> <nbsp/></em>.
+              A conclusion depends upon whether the interval is entirely above,
+              is entirely below, or contains the value of interest.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          The FDA's webpage provides some data on mercury content of fish.
+          Based on a sample of 15 croaker white fish (Pacific),
+          a sample mean and standard deviation were computed as 0.287 and 0.069 ppm
+          (parts per million),
+          respectively.
+          The 15 observations ranged from 0.18 to 0.41 ppm.
+          Construct an appropriate 95% confidence interval for the true average mercury content of croaker white fish (Pacific).
+          Is there evidence that the average mercury content is greater than 0.275 ppm?
+          Use the five step framework to organize your work.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The FDA's webpage provides some data on mercury content of fish.
+          Based on a sample of 15 croaker white fish (Pacific),
+          a sample mean and standard deviation were computed as 0.287 and 0.069 ppm
+          (parts per million),
+          respectively.
+          The 15 observations ranged from 0.18 to 0.41 ppm.
+          Construct an appropriate 95% confidence interval for the true average mercury content of croaker white fish (Pacific).
+          Is there evidence that the average mercury content is greater than 0.275 ppm?
+          Use the five step framework to organize your work.
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Based on the interval calculated in <xref ref="croakerWhiteFishPacificExerConditions">Example</xref> above,
+          can we say that 95% of croaker white fish (Pacific) have mercury content between 0.249 and 0.325 ppm?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          No.
+          The interval estimates the <em>average</em>
+          amount of mercury with 95% confidence.
+          It is not trying to capture 95% of the values.
+        </p>
+      </answer>
+    </example>
+  </subsection>
+  <subsection xml:id="x1SampTint">
+    <title>Calculator: the 1-sample <m>t</m>-interval</title>
+    <assemblage>
+      <title></title>
+      <p>
+        Use <c>STAT</c>, <c>TESTS</c>, <c>TInterval</c>.
+        <ol>
+          <li>
+            <p>
+              Choose <c>STAT</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Right arrow to <c>TESTS</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Down arrow and choose <c>8:TInterval</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>Data</c> if you have all the data or <c>Stats</c> if you have the mean and standard deviation.
+              <ul>
+                <li>
+                  <p>
+                    If you choose <c>Data</c>,
+                    let <c>List</c> be <c>L1</c> or the list in which you entered your data (don't forget to enter the data!) and let <c>Freq</c> be <c>1</c>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    If you choose <c>Stats</c>,
+                    enter the mean,
+                    <m>SD</m>, and sample size.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>C-Level</c> be the desired confidence level.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>Calculate</c> and hit <c>ENTER</c>,
+              which returns:
+              <tabular>
+                <row>
+                  <cell><c>(<em><nbsp/><nbsp/></em>,<em><nbsp/><nbsp/></em>)</c></cell>
+                  <cell>the confidence interval</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{\bar{x}}</m></cell>
+                  <cell>the sample mean</cell>
+                </row>
+                <row>
+                  <cell><c>Sx</c></cell>
+                  <cell>the sample <m>SD</m></cell>
+                </row>
+                <row>
+                  <cell><c>n</c></cell>
+                  <cell>the sample size</cell>
+                </row>
+              </tabular>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <ol>
+        <li>
+          <p>
+            Navigate to <c>STAT</c> (<c>MENU</c> button,
+            then hit the <c>2</c> button or select <c>STAT</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            If necessary, enter the data into a list.
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose the <c>INTR</c> option (<c>F3</c> button), <c>t</c> (<c>F2</c> button),
+            and <c>1-S</c> (<c>F1</c> button).
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose either the <c>Var</c> option (<c>F2</c>) or enter the data in using the <c>List</c> option.
+          </p>
+        </li>
+        <li>
+          <p>
+            Specify the interval details:
+            <ul>
+              <li>
+                <p>
+                  Confidence level of interest for <c>C-Level</c>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  If using the <c>Var</c> option,
+                  enter the summary statistics.
+                  If using <c>List</c>,
+                  specify the list and leave <c>Freq</c> value at <c>1</c>.
+                </p>
+              </li>
+            </ul>
+          </p>
+        </li>
+        <li>
+          <p>
+            Hit the <c>EXE</c> button,
+            which returns
+            <tabular>
+              <row>
+                <cell><c>Left</c>, <c>Right</c></cell>
+                <cell>ends of the confidence interval</cell>
+              </row>
+              <row>
+                <cell><m>\textttmath{\bar{x}}</m></cell>
+                <cell>sample mean</cell>
+              </row>
+              <row>
+                <cell><c>sx</c></cell>
+                <cell>sample standard deviation</cell>
+              </row>
+              <row>
+                <cell><c>n</c></cell>
+                <cell>sample size</cell>
+              </row>
+            </tabular>
+          </p>
+        </li>
+      </ol>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          Use a calculator to find a 95% confidence interval for the mean mercury content in croaker white fish (Pacific).
+          The sample size was 15, and the sample mean and standard deviation were computed as 0.287 and 0.069 ppm
+          (parts per million),
+          respectively.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="findingASampleSizeForACertainME">
+    <title>Choosing a sample size when estimating a mean</title>
+    <p>
+          <idx><h>margin of error</h></idx>
+      In <xref ref="moeproportion">Section</xref>, we looked at sample size considerations when estimating a proportion.
+      We take the same approach when estimating a mean.
+      Recall that the margin of error is measured as the distance between the point estimate and the upper or lower bound of the confidence interval.
+      We want to estimate a mean with a particular confidence level while putting an upper bound on the margin of error.
+      What is the smallest sample size that will satisfy these conditions?
+    </p>
+    <p>
+      For a one sample <m>t</m>-interval,
+      the margin of error, <m>ME</m>,
+      is given by <m>ME = t^{\star}\times\frac{s}{\sqrt{n}}</m>.
+      The challenge in this case is that we need to know <m>n</m> to find <m>t^{\star}</m>.
+      But <m>n</m> is precisely what we are attempting to solve for!
+      Fortunately,
+      in most cases we will have a reasonable estimate for the population standard deviation and the desired <m>n</m> will be large,
+      so we can use <m>ME = z^{\star}\times\frac{\sigma}{\sqrt{n}}</m>,
+      making it easier to solve for <m>n</m>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Blood pressure oscillates with the beating of the heart,
+          and the systolic pressure is defined as the peak pressure when a person is at rest.
+          The standard deviation of systolic blood pressure for people in the U.S. is about 25 mmHg
+          (millimeters of mercury).
+          How large of a sample is necessary to estimate the average systolic blood pressure of people in a particular town with a margin of error no greater than 4 mmHg using a 95% confidence level?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Blood pressure oscillates with the beating of the heart,
+          and the systolic pressure is defined as the peak pressure when a person is at rest.
+          The standard deviation of systolic blood pressure for people in the U.S. is about 25 mmHg
+          (millimeters of mercury).
+          How large of a sample is necessary to estimate the average systolic blood pressure of people in a particular town with a margin of error no greater than 4 mmHg using a 95% confidence level?
+        </p>
+      </solution>
+    </example>
+    <assemblage>
+      <title></title>
+      <p>
+        To estimate the minimum sample size required to achieve a margin of error less than or equal to <m>m</m>,
+        with C% confidence, we set up an inequality as follows:
+        <md>
+          <mrow>z^{\star}\frac{\sigma}{\sqrt{n}}\leq m</mrow>
+        </md>
+      </p>
+      <p>
+        <m>z^{\star}</m> depends on the desired confidence level and <m>\sigma</m> is the standard deviation associated with the population.
+        We solve for the sample size, <m>n</m>.
+      </p>
+    </assemblage>
+    <p>
+      Sample size computations are helpful in planning data collection,
+      and they require careful forethought.
+    </p>
+    <p>
+          <idx><h>margin of error</h></idx>
+    </p>
+  </subsection>
+  <subsection xml:id="oneSampleTTests">
+    <title>Hypothesis testing for a mean</title>
+    <p>
+      Is the typical U.S. runner getting faster or slower over time?
+      Technological advances in shoes,
+      training, and diet might suggest runners would be faster.
+      An opposing viewpoint might say that with the average body mass index on the rise,
+      people tend to run slower.
+      In fact, all of these components might be influencing run time.
+    </p>
+    <p>
+      We consider this question in the context of the Cherry Blossom Race,
+      which is a 10-mile race in Washington, DC each<nbsp/>spring.
+      The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.3 minutes (93 minutes and about 18 seconds).
+      We want to determine using data from 100 participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower,
+      versus the other possibility that there has been no change.
+      <xref ref="run17SampTimeHistogram">Figure</xref>
+      shows run times for 100 randomly selected participants.
+    </p>
+    <figure xml:id="run17SampTimeHistogram">
+      <caption>A histogram of <c>time</c> for the sample of 2017 Cherry Blossom Race participants.</caption>
+      <image width="65%" source="images/run17SampTimeHistogram.png" />
+    </figure>
+    <example>
+      <statement>
+        <p>
+          What are appropriate hypotheses for this context?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          What are appropriate hypotheses for this context?
+        </p>
+      </solution>
+    </example>
+    <p>
+      The data come from a random sample from a large population,
+      so the observations are independent.
+      Do we need to check for skew in the data?
+      No <mdash/> with a sample size of 100, well over 30,
+      the Central Limit Theorem tells us that the sampling distribution of <m>\bar{x}</m> will be nearly normal.
+    </p>
+    <p>
+      With independence satisfied and slight skew not a concern for this large of a sample,
+      we can proceed with performing a hypothesis test using the <m>t</m>-distribution.
+    </p>
+    <p>
+      The sample mean and sample standard deviation of the 100 runners from the 2017 Cherry Blossom Race are 97.3 and 17.0 minutes,
+      respectively.
+      We want to know whether the observed sample mean of 97.3 is far enough away from 93.3 to provide convincing evidence of a real difference,
+      or if it is within the realm of expected variation for a sample of size 100.
+    </p>
+    <p>
+      To answer this question we will find the test statistic and p-value for the hypothesis test.
+      Since we will be using a sample standard deviation in our calculation of the test statistic,
+      we will need to use a <m>t</m>-distribution,
+      just as we did with confidence intervals for a mean.
+      We call the test statistic a <m>T</m>-statistic.
+      It has the same general form as a Z-statistic.
+      <md>
+        <mrow>T = \frac{\text{ point estimate }  - \text{ null value } }{SE\text{ of estimate } }</mrow>
+      </md>
+    </p>
+    <p>
+      As we saw before, when carrying out inference on a single mean,
+      the degrees of freedom is given by <m>n-1</m>.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        The <term>T-statistic</term>
+        (or T-score)
+        is analogous to a Z-statistic
+        (or Z-score).
+        Both represent how many standard errors the observed value is from the null value.
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          Calculate the test statistic,
+          degrees of freedom, and p-value for this test.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Calculate the test statistic,
+          degrees of freedom, and p-value for this test.
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Does the data provide sufficient evidence that the average Cherry Blossom Run time in 2017 is different than in 2006?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Does the data provide sufficient evidence that the average Cherry Blossom Run time in 2017 is different than in 2006?
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Would you expect the hypothesized value of 93.3 to fall inside or outside of a 95% confidence interval?
+          What about a 99% confidence interval?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Because the hypothesized value of 93.3 was rejected by the two-sided <m>\alpha=0.05</m> test,
+          we would expect it to be outside the 95% confidence interval.
+          However, because the hypothesized value of 93.3 was not rejected by the two-sided <m>\alpha=0.01</m> test,
+          we would expect it to fall inside the (wider) 99% confidence interval.
+        </p>
+      </answer>
+    </example>
+    <assemblage>
+      <title></title>
+      <p>
+        To carry out a complete hypothesis test to test the claim that a single mean <m>\mu</m> is equal to a null value <m>\mu_0</m>,
+      </p>
+      <p>
+        <em>Identify</em>: Identify the hypotheses and the significance level,
+        <m>\alpha</m>.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              <m>H_0</m>: <m>\mu = \mu_0</m>
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              <m>H_A</m>: <m>\mu \ne \mu_0</m>; <m>H_A</m>:
+              <m>\mu > \mu_0</m>; or <m>H_A</m>: <m>\mu \lt \mu_0</m>
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Choose</em>: Choose the appropriate test procedure and identify it by name.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              Here we choose the <term>1-sample <m>t</m>-test</term>.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Check</em>: Check conditions for the sampling distribution of <m>\bar{x}</m> to be nearly normal.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              1. Data come from a random sample or random process.
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              2. The sample size <m>n\ge 30</m> or the population distribution is nearly normal.
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              If the sample size is less than 30 and the population distribution is unknown, check
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              for strong skew or outliers in the data.
+              If neither is found, then the condition that the
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              population is nearly normal is considered reasonable.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Calculate</em>: Calculate the <m>t</m>-statistic, <m>df</m>,
+        and p-value.
+      </p>
+      <ul>
+        <li class="custom-list-style-type" label="">
+          <p>
+            <m>T = \frac{\text{ point estimate } - \text{ null value } }{SE \text{ of estimate } }</m>,
+            <m>df=n-1</m>
+          </p>
+          <ul>
+            <li class="custom-list-style-type" label="">
+              <p>
+                point estimate: the sample mean <m>\bar{x}</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                <m>SE</m> of estimate: <m>\frac{s}{\sqrt{n}}</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                null value: <m>\mu_0</m>
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li class="custom-list-style-type" label="">
+          <p>
+            p-value = (based on the <m>t</m>-statistic, the <m>df</m>,
+            and the direction of <m>H_A</m>)
+          </p>
+        </li>
+      </ul>
+      <p>
+        <em>Conclude</em>: Compare the p-value to <m>\alpha</m>,
+        and draw a conclusion in context.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              If the p-value is <m>\lt \alpha</m>, reject <m>H_0</m>;
+              there is sufficient evidence that [<m>H_A</m> in context].
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              If the p-value is <m>> \alpha</m>, do not reject <m>H_0</m>;
+              there is not sufficient evidence that [<m>H_A</m> in context].
+            </p>
+          </li>
+        </ul>
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          Recall the example involving the mercury content in croaker white fish (Pacific).
+          Based on a sample of size 15,
+          a sample mean and standard deviation were computed as 0.287 and 0.069 ppm
+          (parts per million),
+          respectively.
+          Carry out an appropriate test to determine if 0.25 is a reasonable value for the average mercury content of croaker white fish (Pacific).
+          Use the five step method to organize your work.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Recall the example involving the mercury content in croaker white fish (Pacific).
+          Based on a sample of size 15,
+          a sample mean and standard deviation were computed as 0.287 and 0.069 ppm
+          (parts per million),
+          respectively.
+          Carry out an appropriate test to determine if 0.25 is a reasonable value for the average mercury content of croaker white fish (Pacific).
+          Use the five step method to organize your work.
+        </p>
+      </solution>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Recall that the 95% confidence interval for the average mercury content in croaker white fish was (0.249, 0.325).
+          Discuss whether the conclusion of the hypothesis test in the previous example is consistent or inconsistent with the conclusion of the confidence interval.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="x1SampTtest">
+    <title>Calculator: 1-sample <m>t</m>-test</title>
+    <assemblage>
+      <title></title>
+      <p>
+        Use <c>STAT</c>, <c>TESTS</c>, <c>T-Test</c>.
+        <ol>
+          <li>
+            <p>
+              Choose <c>STAT</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Right arrow to <c>TESTS</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Down arrow and choose <c>2:T-Test</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>Data</c> if you have all the data or <c>Stats</c> if you have the mean and standard deviation.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>\textttmath{\mu_0}</m> be the null or hypothesized value of <m>\mu</m>.
+              <ul>
+                <li>
+                  <p>
+                    If you choose <c>Data</c>,
+                    let <c>List</c> be <c>L1</c> or the list in which you entered your data (don't forget to enter the data!) and let <c>Freq</c> be <c>1</c>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    If you choose <c>Stats</c>,
+                    enter the mean,
+                    <m>SD</m>, and sample size.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <m>\textttmath{\ne}</m>, <m>\textttmath{\lt }</m>,
+              or <m>\textttmath{>}</m> to correspond to <m>H_A</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>Calculate</c> and hit <c>ENTER</c>,
+              which returns:
+              <tabular>
+                <row>
+                  <cell><c>t</c></cell>
+                  <cell>t statistic</cell>
+                  <cell><nbsp/><nbsp/></cell>
+                  <cell><c>Sx</c></cell>
+                  <cell>the sample standard deviation</cell>
+                </row>
+                <row>
+                  <cell><c>p</c></cell>
+                  <cell>p-value</cell>
+                  <cell></cell>
+                  <cell><c>n</c></cell>
+                  <cell>the sample size</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{\bar{x}}</m></cell>
+                  <cell>the sample mean</cell>
+                </row>
+              </tabular>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <ol>
+        <li>
+          <p>
+            Navigate to <c>STAT</c> (<c>MENU</c> button,
+            then hit the <c>2</c> button or select <c>STAT</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            If necessary, enter the data into a list.
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose the <c>TEST</c> option (<c>F3</c> button).
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose the <c>t</c> option (<c>F2</c> button).
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose the <c>1-S</c> option (<c>F1</c> button).
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose either the <c>Var</c> option (<c>F2</c>) or enter the data in using the <c>List</c> option.
+          </p>
+        </li>
+        <li>
+          <p>
+            Specify the test details:
+            <ul>
+              <li>
+                <p>
+                  Specify the sidedness of the test using the <c>F1</c>, <c>F2</c>,
+                  and <c>F3</c> keys.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Enter the null value,
+                  <m>\textttmath{\mu}</m><c>0</c>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  If using the <c>Var</c> option,
+                  enter the summary statistics.
+                  If using <c>List</c>,
+                  specify the list and leave <c>Freq</c> values at <c>1</c>.
+                </p>
+              </li>
+            </ul>
+          </p>
+        </li>
+        <li>
+          <p>
+            Hit the <c>EXE</c> button,
+            which returns
+            <tabular>
+              <row>
+                <cell></cell>
+                <cell>alternative hypothesis</cell>
+                <cell>\hspace{5mm}</cell>
+                <cell><m>\textttmath{\bar{x}}</m></cell>
+                <cell>sample mean</cell>
+              </row>
+              <row>
+                <cell><c>t</c></cell>
+                <cell>T statistic</cell>
+                <cell></cell>
+                <cell><c>sx</c></cell>
+                <cell>sample standard deviation</cell>
+              </row>
+              <row>
+                <cell><c>p</c></cell>
+                <cell>p-value</cell>
+                <cell></cell>
+                <cell><c>n</c></cell>
+                <cell>sample size</cell>
+              </row>
+            </tabular>
+          </p>
+        </li>
+      </ol>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          The average time for all runners who finished the Cherry Blossom Run in 2006 was 93.3 minutes.
+          In 2017, the average time for 100 randomly selected participants was 97.3, with a standard deviation of 17.0 minutes.
+          Use a calculator to find the <m>T</m>-statistic and p-value for the appropriate test to see if the average time for the participants in 2017 is different than it was in 2006.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          The <m>t</m>-distribution.
+          <ul>
+            <li>
+              <p>
+                When calculating a test statistic for a mean,
+                using the sample standard deviation in place of the population standard deviation gives rise to a new distribution called the <m>t</m>-distribution.
+              </p>
+            </li>
+            <li>
+              <p>
+                As the sample size and degrees of freedom increase,
+                <m>s</m> becomes a more stable estimate of <m>\sigma</m>,
+                and the corresponding <m>t</m>-distribution has smaller spread.
+              </p>
+            </li>
+            <li>
+              <p>
+                As the degrees of freedom go to <m>\infty</m>,
+                the <m>t</m>-distribution approaches the normal distribution.
+                This is why we can use the <m>t</m>-table at
+                <m>df=\infty</m> to find the value of <m>z^{\star}</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+      <li>
+        <p>
+          When carrying out inference for a single mean,
+          we use the <m>t</m>-distribution with <m>n-1</m> degrees of freedom.
+        </p>
+      </li>
+      <li>
+        <p>
+          When there is one sample and the parameter of interest is a single mean:
+          <ul>
+            <li>
+              <p>
+                Estimate <m>\mu</m> at the C% confidence level using a
+                <term>1-sample t-interval</term>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Test <m>H_0</m>:
+                <m>\mu=\mu_0</m> at the <m>\alpha</m> significance level using a
+                <term>1-sample t-test</term>.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+      <li>
+        <p>
+          The conditions for the one sample <m>t</m>-interval and <m>t</m>-test are the same.
+          <ul>
+            <li>
+              <title>1.</title>
+              <p>
+                The data come from a random sample or random process.
+              </p>
+            </li>
+            <li>
+              <title>2.</title>
+              <p>
+                The sample size <m>n\ge 30</m> or the population distribution is nearly normal.
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                If the sample size is less than 30 and the population distribution is unknown,
+                check for strong skew or outliers in the data.
+                If neither is found,
+                then the condition that the population distribution is nearly normal is considered reasonable.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+      <li>
+        <p>
+          When the conditions are met,
+          we calculate the confidence interval and the test statistic as we did in the previous chapter,
+          except that we use <m>t^{\star}</m> for the critical value and we use <m>T</m> for the test statistic.
+          <ul>
+            <li class="custom-list-style-type" label="">
+              <p>
+                Confidence interval:<nbsp/> <m>\text{ point estimate } \ \pm\ t^{\star} \times SE\ \text{ of estimate }</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                Test statistic:
+                <m>T = \frac{\text{ point estimate } - \text{ null value } }{SE \text{ of estimate } }</m>
+              </p>
+            </li>
+          </ul>
+        </p>
+        Here the point estimate is the sample mean: <m>\bar{x}</m>.
+      </li>
+      <li class="custom-list-style-type" label="">
+        <p>
+          The <m>SE</m> of estimate is the <m>SE</m> of the sample mean:
+          <m>\frac{s}{\sqrt{n}}</m>.
+        </p>
+      </li>
+      <li class="custom-list-style-type" label="">
+        <p>
+          The degrees of freedom is given by <m>df = n-1</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          To calculate the minimum sample size required to estimate a mean with C% confidence and a margin of error no greater than <m>m</m>,
+          we set up an inequality as follows:
+          <md>
+            <mrow>z^{\star}\frac{\sigma}{\sqrt{n}}\leq m</mrow>
+          </md>
+          <m>z^{\star}</m> depends on the desired confidence level and <m>\sigma</m> is the standard deviation associated with the population.
+          We solve for the sample size, <m>n</m>.
+          Always round the answer up to the next <em>integer</em>,
+          since <m>n</m> refers to a number of people or things.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="identify_critical_t">
+      <title>Identify the critical $t$</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> An independent random sample is selected from an approximately normal population with unknown standard deviation.
+          Find the degrees of freedom and the critical <m>t</m>-value (t<m>^\star</m>) for the given sample size and confidence level.
+          <ol>
+            <li>
+              <p>
+                <m>n = 6</m>, CL = 90
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n = 21</m>, CL = 98
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n = 29</m>, CL = 95
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n = 12</m>, CL = 99
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="t_distribution">
+      <title>$t$-distribution</title>
+      <statement>
+        <p>
+          The figure on the right shows three unimodal and symmetric curves:
+          the standard normal (z) distribution,
+          the <m>t</m>-distribution with 5 degrees of freedom,
+          and the <m>t</m>-distribution with 1 degree of freedom.
+          Determine which is which, and explain your reasoning.
+          <image width="40%" source="images/t_distribution.png" />
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="find_T_pval_1_2_sided">
+      <title>Find the p-value, Part I</title>
+      <statement>
+        <p>
+          An independent random sample is selected from an approximately normal population with an unknown standard deviation.
+          Find the p-value for the given sample size and test statistic.
+          Also determine if the null hypothesis would be rejected at <m>\alpha = 0.05</m>.
+          <ol>
+            <li>
+              <p>
+                <m>n = 11</m>, <m>T = 1.91</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n = 17</m>, <m>T = -3.45</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n = 7</m>, <m>T = 0.83</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n = 28</m>, <m>T = 2.13</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="find_T_pval_2_2_sided">
+      <title>Find the p-value, Part II</title>
+      <statement>
+        <p>
+          An independent random sample is selected from an approximately normal population with an unknown standard deviation.
+          Find the p-value for the given sample size and test statistic.
+          Also determine if the null hypothesis would be rejected at <m>\alpha = 0.01</m>.
+          <ol>
+            <li>
+              <p>
+                <m>n = 26</m>, <m>T = 2.485</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n = 18</m>, <m>T = 0.5</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="work_backwards_1">
+      <title>Working backwards, Part I</title>
+      <statement>
+        <p>
+          A 95% confidence interval for a population mean,
+          <m>\mu</m>, is given as (18.985, 21.015).
+          This confidence interval is based on a simple random sample of 36 observations.
+          Calculate the sample mean and standard deviation.
+          Assume that all conditions necessary for inference are satisfied.
+          Use the <m>t</m>-distribution in any calculations.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="work_backwards_2">
+      <title>Working backwards, Part II</title>
+      <statement>
+        <p>
+          A 90% confidence interval for a population mean is (65, 77).
+          The population distribution is approximately normal and the population standard deviation is unknown.
+          This confidence interval is based on a simple random sample of 25 observations.
+          Calculate the sample mean,
+          the margin of error, and the sample standard deviation.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="ny_sleep_habits_2_sided">
+      <title>Sleep habits of New Yorkers</title>
+      <statement>
+        <p>
+          New York is known as
+          <q>the city that never sleeps</q>. A random sample of 25 New Yorkers were asked how much sleep they get per night.
+          Statistical summaries of these data are shown below.
+          The point estimate suggests New Yorkers sleep less than 8<nbsp/>hours a night on average.
+          Is the result statistically significant?
+        </p>
+        <tabular>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>n</cell>
+            <cell><m>\bar{x}</m></cell>
+            <cell>s</cell>
+            <cell>min</cell>
+            <cell>max</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>25</cell>
+            <cell>7.73</cell>
+            <cell>0.77</cell>
+            <cell>6.17</cell>
+            <cell>9.78</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              Write the hypotheses in symbols and in words.
+            </p>
+          </li>
+          <li>
+            <p>
+              Check conditions, then calculate the test statistic, <m>T</m>,
+              and the associated degrees of freedom.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find and interpret the p-value in this context.
+              Drawing a picture may be helpful.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the conclusion of the hypothesis test?
+            </p>
+          </li>
+          <li>
+            <p>
+              If you were to construct a 90% confidence interval that corresponded to this hypothesis test,
+              would you expect 8 hours to be in the interval?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="adult_heights">
+      <title>Heights of adults</title>
+      <statement>
+        <p>
+          Researchers studying anthropometry collected body girth measurements and skeletal diameter measurements,
+          as well as age, weight,
+          height and gender, for 507 physically active individuals.
+          The histogram below shows the sample distribution of heights in centimeters. \footfullcite{Heinz:2003}
+        </p>
+        <sidebyside>
+          <image width="73%" source="images/adult_heights_hist.png" />
+          <tabular>
+            <row>
+              <cell>Min</cell>
+              <cell>147.2</cell>
+            </row>
+            <row>
+              <cell>Q1</cell>
+              <cell>163.8</cell>
+            </row>
+            <row>
+              <cell>Median</cell>
+              <cell>170.3</cell>
+            </row>
+            <row>
+              <cell>Mean</cell>
+              <cell>171.1</cell>
+            </row>
+            <row>
+              <cell>SD</cell>
+              <cell>9.4</cell>
+            </row>
+            <row>
+              <cell>Q3</cell>
+              <cell>177.8</cell>
+            </row>
+            <row>
+              <cell>Max</cell>
+              <cell>198.1</cell>
+            </row>
+          </tabular>
+        </sidebyside>
+        <ol>
+          <li>
+            <p>
+              What is the point estimate for the average height of active individuals?
+              What about the median?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the point estimate for the standard deviation of the heights of active individuals?
+              What about the IQR?
+            </p>
+          </li>
+          <li>
+            <p>
+              Is a person who is 1m 80cm (180 cm) tall considered unusually tall?
+              And is a person who is 1m 55cm (155cm) considered unusually short?
+              Explain your reasoning.
+            </p>
+          </li>
+          <li>
+            <p>
+              The researchers take another random sample of physically active individuals.
+              Would you expect the mean and the standard deviation of this new sample to be the ones given above?
+              Explain your reasoning.
+            </p>
+          </li>
+          <li>
+            <p>
+              The sample means obtained are point estimates for the mean height of all active individuals,
+              if the sample of individuals is equivalent to a simple random sample.
+              What measure do we use to quantify the variability of such an estimate?
+              Compute this quantity using the data from the original sample under the condition that the data are a simple random sample.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="find_mean_2_sided">
+      <title>Find the mean</title>
+      <statement>
+        <p>
+          You are given the following hypotheses:
+          <md>
+            <mrow>H_0\amp : \mu = 60</mrow>
+            <mrow>H_A\amp : \mu \neq 60</mrow>
+          </md>
+        </p>
+        <p>
+          We know that the sample standard deviation is 8 and the sample size is 20.
+          For what sample mean would the p-value be equal to 0.05?
+          Assume that all conditions necessary for inference are satisfied.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="critical_t_vs_z">
+      <title>$t^\star$ vs. $z^\star$</title>
+      <statement>
+        <p>
+          For a given confidence level,
+          <m>t^{\star}_{df}</m> is larger than <m>z^{\star}</m>.
+          Explain how <m>t^{*}_{df}</m> being slightly larger than <m>z^{*}</m> affects the width of the confidence interval.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="play_piano_one_sided">
+      <title>Play the piano</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> Georgianna claims that in a small city renowned for its music school,
+          the average child takes at least 5 years of piano lessons.
+          We have a random sample of 30 children from the city,
+          with a mean of 4.6 years of piano lessons and a standard deviation of 2.2 years.
+          <ol>
+            <li>
+              <p>
+                Use a hypothesis test to determine if there is sufficient evidence against Georgianna's claim.
+              </p>
+            </li>
+            <li>
+              <p>
+                Construct a 95% confidence interval for the number of years students in this city take piano lessons,
+                and interpret it in context of the data.
+              </p>
+            </li>
+            <li>
+              <p>
+                Do your results from the hypothesis test and the confidence interval agree?
+                Explain your reasoning.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="auto_exhaust_lead_exposure_2_sided">
+      <title>Auto exhaust and
+      lead exposure</title>
+      <statement>
+        <p>
+          Researchers interested in lead exposure due to car exhaust sampled the blood of 52 police officers subjected to constant inhalation of automobile exhaust fumes while working traffic enforcement in a primarily urban environment.
+          The blood samples of these officers had an average lead concentration of 124.32 <m>\mu</m>g/l and a SD of 37.74 <m>\mu</m>g/l;
+          a previous study of individuals from a nearby suburb,
+          with no history of exposure,
+          found an average blood level concentration of 35 <m>\mu</m>g/l.\footfullcite{Mortada:2000}
+          <ol>
+            <li>
+              <p>
+                Write down the hypotheses that would be appropriate for testing if the police officers appear to have been exposed to a different concentration of lead.
+              </p>
+            </li>
+            <li xml:id="auto_exhaust_lead_exposure_2_sided_cond">
+              <p>
+                Explicitly state and check all conditions necessary for inference on these data.
+              </p>
+            </li>
+            <li>
+              <p>
+                Regardless of your answers in part<nbsp/><xref ref="auto_exhaust_lead_exposure_2_sided_cond" />,
+                test the hypothesis that the downtown police officers have a higher lead exposure than the group in the previous study.
+                Interpret your results in context.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="car_insurance_savings">
+      <title>Car insurance savings</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> A market researcher wants to evaluate car insurance savings at a competing company.
+          Based on past studies he is assuming that the standard deviation of savings is $100.
+          He wants to collect data such that he can get a margin of error of no more than $10 at a 95% confidence level.
+          How large of a sample should he collect?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="sat_scores_CI">
+      <title>SAT scores</title>
+      <statement>
+        <p>
+          The standard deviation of SAT scores for students at a particular Ivy League college is 250 points.
+          Two statistics students, Raina and Luke,
+          want to estimate the average SAT score of students at this college as part of a class project.
+          They want their margin of error to be no more than 25 points.
+          <ol>
+            <li>
+              <p>
+                Raina wants to use a 90% confidence interval.
+                How large a sample should she collect?
+              </p>
+            </li>
+            <li>
+              <p>
+                Luke wants to use a 99% confidence interval.
+                Without calculating the actual sample size,
+                determine whether his sample should be larger or smaller than Raina's, and explain your reasoning.
+              </p>
+            </li>
+            <li>
+              <p>
+                Calculate the minimum required sample size for Luke.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

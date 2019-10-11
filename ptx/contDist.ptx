@@ -1,0 +1,450 @@
+<section xml:id="contDist">
+  <title>Continuous distributions</title>
+  <introduction>
+    <p>
+      So far we have looked only at cases where the random variable takes on integer values.
+      What happens when we consider random variables that produce a continuous numerical variable,
+      such as wait time for a bus?
+      In this section,
+      we introduce the concept of a continuous distribution.
+      In the next chapter,
+      you will encounter the most famous continuous distribution of all.<fn>
+      It's the normal distribution!
+      </fn>
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Understand the difference between a discrete random variable and a continuous random variable.
+        </p>
+      </li>
+      <li>
+        <p>
+          Recognize that when working with continuous probability distributions area represents probability and the total area under the curve must equal 1.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>From histograms to continuous distributions</title>
+    <p>
+          <idx><h>data</h><h>FCID</h></idx>
+          <idx><h>hollow histogram</h></idx>
+    </p>
+    <example xml:id="usHeights">
+      <statement>
+        <p>
+          <xref ref="fdicHistograms">Figure</xref>
+          shows a few different hollow histograms of the variable <c>height</c> for 3 million US adults from the mid-90's.
+          How does changing the number of bins allow you to make different interpretations of the data?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Adding more bins provides greater detail.
+          This sample is extremely large,
+          which is why much smaller bins still work well.
+          Usually we do not use so many bins with smaller sample sizes since small counts per bin mean the bin heights are very volatile.
+        </p>
+      </answer>
+    </example>
+    <figure xml:id="fdicHistograms">
+      <caption>Four hollow histograms of US adults heights with varying bin widths.</caption>
+      <image width="73%" source="images/fdicHistograms.png" />
+    </figure>
+    <example>
+      <statement>
+        <p>
+          What proportion of the sample is between 180 cm and 185 cm tall (about 5'11" to 6'1")?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          What proportion of the sample is between 180 cm and 185 cm tall (about 5'11" to 6'1")?
+        </p>
+      </solution>
+    </example>
+    <figure xml:id="usHeightsHist180185">
+      <caption>A histogram with bin sizes of 2.5 cm. The shaded region represents individuals with heights between 180 and 185 cm.</caption>
+      <image width="95%" source="images/usHeightsHist180185.png" />
+    </figure>
+    <p>
+      Examine the transition from a boxy hollow histogram in the top-left of <xref ref="fdicHistograms">Figure</xref>
+      to the much smoother plot in the lower-right.
+      In this last plot,
+      the bins are so slim that the hollow histogram is starting to resemble a smooth curve.
+      This suggests the population height as a <em>continuous</em>
+      numerical variable might best be explained by a curve that represents the outline of extremely slim bins.
+    </p>
+    <p>
+      This smooth curve represents a <term>probability density function</term>
+      (also called a <term>density</term>
+      or <term>distribution</term>),
+      and such a curve is shown in <xref ref="fdicHeightContDist">Figure</xref>
+      overlaid on a histogram of the sample.
+      A density has a special property:
+      the total area under the density's curve is 1.
+    </p>
+    <figure xml:id="fdicHeightContDist">
+      <caption>The continuous probability distribution of heights for US adults.</caption>
+      <image width="87%" source="images/fdicHeightContDist.png" />
+    </figure>
+    <p>
+          <idx><h>hollow histogram</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Probabilities from continuous distributions</title>
+    <p>
+      We computed the proportion of individuals with heights 180 to 185 cm in <xref ref="contDistProb">Example</xref> as a fraction:
+      <md>
+        <mrow>\frac{\text{ number of people between 180 and 185 } }{\text{ total sample size } }</mrow>
+      </md>
+    </p>
+    <p>
+      We found the number of people with heights between 180 and 185 cm by determining the fraction of the histogram's area in this region.
+      Similarly, we can use the area in the shaded region under the curve to find a probability (with the help of a computer):
+      <md>
+        <mrow>P(\text{\texttt{height} between 180 and 185} ) = \text{ area between 180 and 185 } = 0.1157</mrow>
+      </md>
+    </p>
+    <p>
+      The probability that a randomly selected person is between 180 and 185 cm is 0.1157.
+      This is very close to the estimate from <xref ref="contDistProb">Example</xref>: 0.1172.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Three US adults are randomly selected.
+          The probability a single adult is between 180 and 185 cm is 0.1157.
+          <ol>
+            <li>
+              <title>(a)</title>
+              <p>
+                What is the probability that all three are between 180 and 185 cm tall?
+              </p>
+            </li>
+            <li>
+              <title>(b)</title>
+              <p>
+                What is the probability that none are between 180 and 185 cm?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <example xml:id="probabilityOfExactly180cm">
+      <statement>
+        <p>
+          What is the probability that a randomly selected person is
+          <em>exactly</em> 180<nbsp/>cm?
+          Assume you can measure perfectly.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          This probability is zero.
+          A person might be close to 180 cm,
+          but not exactly 180 cm tall.
+          This also makes sense with the definition of probability as area;
+          there is no area captured between 180<nbsp/>cm and 180<nbsp/>cm.
+        </p>
+      </answer>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Suppose a person's height is rounded to the nearest centimeter.
+          Is there a chance that a random person's <em>measured</em>
+          height will be 180<nbsp/>cm?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+          <idx><h>data</h><h>FCID</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          Histograms use bins with a specific width to display the distribution of a variable.
+          When there is enough data and the data does not have gaps,
+          as the bin width gets smaller and smaller,
+          the histogram begins to resemble a smooth curve,
+          or a <term>continuous distribution</term>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Continuous distributions are often used to approximate relative frequencies and probabilities.
+          In a continuous distribution,
+          the <em>area under the curve</em>
+          corresponds to relative frequency or probability.
+          The total area under a continuous probability distribution must equal 1.
+        </p>
+      </li>
+      <li>
+        <p>
+          Because the area under the curve for a single point is zero,
+          the probability of any specific value is zero.
+          This implies that, for example,
+          <m>P(X \lt 5) = P(X \le 5)</m> for a continuous probability distribution.
+        </p>
+      </li>
+      <li>
+        <p>
+          Finding areas under curves is challenging;
+          it is common to use distribution tables,
+          calculators, or other technology to find such areas.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="cat_weights">
+      <title>Cat weights</title>
+      <statement>
+        <p>
+          The histogram shown below represents the weights
+          (in kg)
+          of 47 female and 97 male cats. \footfullcite{cats}
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                What fraction of these cats weigh less than 2.5 kg?
+              </p>
+            </li>
+            <li>
+              <p>
+                What fraction of these cats weigh between 2.5 and 2.75 kg?
+              </p>
+            </li>
+            <li>
+              <p>
+                What fraction of these cats weigh between 2.75 and 3.5 kg?
+              </p>
+            </li>
+          </ol>
+          \vspace{27mm}
+          <m>\:</m>
+          <image width="73%" source="images/cat_weights.png" />
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="income_gender">
+      <title>Income and gender</title>
+      <statement>
+        <p>
+          The relative frequency table below displays the distribution of annual total personal income (in 2009 inflation-adjusted dollars) for a representative sample of 96,420,486 Americans.
+          These data come from the American Community Survey for 2005-2009.
+          This sample is comprised of 59% males and 41% females. \footfullcite{acsIncome2005-2009}
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                Describe the distribution of total personal income.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the probability that a randomly chosen US resident makes less than $50,000 per year?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the probability that a randomly chosen US resident makes less than $50,000 per year and is female?
+                Note any assumptions you make.
+              </p>
+            </li>
+            <li>
+              <p>
+                The same data source indicates that 71.8% of females make less than $50,000 per year.
+                Use this value to determine whether or not the assumption you made in part (c) is valid.
+              </p>
+            </li>
+          </ol>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><em>Income</em></cell>
+              <cell><em>Total</em></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>$1 to $9,999 or loss</cell>
+              <cell>2.2%</cell>
+            </row>
+            <row>
+              <cell>$10,000 to $14,999</cell>
+              <cell>4.7%</cell>
+            </row>
+            <row>
+              <cell>$15,000 to $24,999</cell>
+              <cell>15.8%</cell>
+            </row>
+            <row>
+              <cell>$25,000 to $34,999</cell>
+              <cell>18.3%</cell>
+            </row>
+            <row>
+              <cell>$35,000 to $49,999</cell>
+              <cell>21.2%</cell>
+            </row>
+            <row>
+              <cell>$50,000 to $64,999</cell>
+              <cell>13.9%</cell>
+            </row>
+            <row>
+              <cell>$65,000 to $74,999</cell>
+              <cell>5.8%</cell>
+            </row>
+            <row>
+              <cell>$75,000 to $99,999</cell>
+              <cell>8.4%</cell>
+            </row>
+            <row>
+              <cell>$100,000 or more</cell>
+              <cell>9.7%</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+        </sidebyside>
+      </statement>
+    </exercise>
+    <p>
+      \addvspace{8mm} {{\titlerule[1mm]} \setupfont {\titlerule[1mm]} }
+    </p>
+    <p>
+      This chapter focused on understanding likelihood and chance variation,
+      first by solving individual probability questions and then by investigating probability distributions.
+    </p>
+    <p>
+      The main probability techniques covered in this chapter are as follows:
+      <ul>
+        <li>
+          <p>
+            The <term>General Multiplication Rule</term> for <em>and</em>
+            probabilities (intersection),
+            along with the special case when events are <term>independent</term>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The <term>General Addition Rule</term>
+            for <em>or</em> probabilities (union),
+            along with the special case when events are
+            <term>mutually exclusive</term>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The <term>Conditional Probability Rule</term>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Tree diagrams and <term>Bayes' Theorem</term>
+            to solve more complex conditional problems.
+          </p>
+        </li>
+        <li>
+          <p>
+            The <em>Binomial Formula</em>
+              <idx><h>binomial formula|textbf</h></idx>
+            for finding the probability of exactly <m>x</m> successes in <m>n</m> independent trials.
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Simulations</em>
+              <idx><h>simulation|textbf</h></idx>
+            and the use of random digits to estimate probabilities.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Fundamental to all of these problems is understanding when events are independent and when they are mutually exclusive.
+      Two events are <term>independent</term>
+      when the outcome of one does not affect the outcome of the other, i.e.
+      <m>P(A | B) = P(A)</m>.
+      Two events are <term>mutually exclusive</term>
+      when they cannot both happen together, i.e.
+      <m>P(A \text{ and } B) = 0</m>.
+    </p>
+    <p>
+      Moving from solving individual probability questions to studying probability distributions helps us better understand chance processes and quantify expected chance variation.
+      <ul>
+        <li>
+          <p>
+            For a <term>discrete probability distribution</term>,
+            the <term>sum</term> of the probabilities must equal 1.
+            For a <term>continuous probability distribution</term>,
+            the <term>area under the curve</term>
+            represents a probability and the total area under the curve must equal<nbsp/>1.
+          </p>
+        </li>
+        <li>
+          <p>
+            As with any distribution,
+            one can calculate the mean and standard deviation of a probability distribution.
+            In the context of a probability distribution,
+            the <term>mean</term> and <term>standard deviation</term>
+            describe the average and the typical deviation from the average,
+            respectively,
+            after many, many repetitions of the chance process.
+          </p>
+        </li>
+        <li>
+          <p>
+            A probability distribution can be summarized by its
+            <term>center</term> (mean, median),
+            <term>spread</term> (SD, IQR), and <term>shape</term>
+            (right skewed, left skewed, approximately symmetric).
+          </p>
+        </li>
+        <li>
+          <p>
+            Adding a constant to every value in a probability distribution adds that value to the mean,
+            but it does not affect the standard deviation.
+            When multiplying every value by a constant,
+            this multiplies the mean by the constant and it multiplies the standard deviation by the absolute value of the constant.
+          </p>
+        </li>
+        <li>
+          <p>
+            The mean of the sum of two random variables equals the sum of the means.
+            However, this is not true for standard deviations.
+            Instead, when finding the standard deviation of a sum or difference of random variables,
+            take the square root of the sum of each of the standard deviations squared.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      The study of probability is useful for measuring uncertainty and assessing risk.
+      In addition,
+      probability serves as the foundation for inference,
+      providing a framework for evaluating when an outcome falls outside of the range of what would be expected by chance alone.
+    </p>
+  </subsection>
+</section>

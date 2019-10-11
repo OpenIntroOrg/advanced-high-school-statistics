@@ -1,0 +1,1236 @@
+<section xml:id="dataBasics">
+  <title>Data basics</title>
+  <introduction>
+    <p>
+      You collect data on dozens of questions from all of the students at your school.
+      How would you organize all of this data?
+      Effective presentation and description of data is a first step in most analyses.
+      This section introduces one structure for organizing data as well as some terminology that will be used throughout this book.
+      We use loan data from Lending Club and county data from the US Census Bureau to motivate and illustrate this section's learning objectives.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Identify the individuals and the variables of a study.
+        </p>
+      </li>
+      <li>
+        <p>
+          Identify variables as categorical or numerical.
+          Identify numerical variables as discrete or continuous.
+        </p>
+      </li>
+      <li>
+        <p>
+          Understand what it means for two variables to be associated.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Observations, variables, and data matrices</title>
+    <p>
+          <idx><h>data</h><h>loan50</h></idx>
+    </p>
+    <p>
+      <xref ref="loan50DF">Figure</xref>
+      displays rows 1, 2, 3, and 50 of a data set for 50 randomly sampled loans offered through Lending Club,
+      which is a peer-to-peer lending company.
+      These observations will be referred to as the <c>loan50</c> data set.
+    </p>
+    <p>
+      Each row in the table represents a single loan.
+      The formal name for a row is a <term>case</term>
+      or <term>observational unit</term>.
+          <idx><h>unit of observation</h></idx>
+      The columns represent characteristics,
+      called <em>variables</em>,
+          <idx><h>variable|textbf</h></idx>
+      for each of the loans.
+      For example,
+      the first row represents a loan of $7,500 with an interest rate of 7.34%, where the borrower is based in Maryland (MD) and has an income of $70,000.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          What is the grade of the first loan in <xref ref="loan50DF">Figure</xref>?
+          And what is the home ownership status of the borrower for that first loan?
+          For these Guided Practice questions,
+          you can check your answer in the footnote.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In practice,
+      it is especially important to ask clarifying questions to ensure important aspects of the data are understood.
+      For instance,
+      it is always important to be sure we know what each variable means and the units of measurement.
+      Descriptions of the <c>loan50</c> variables are given in <xref ref="loan50Variables">Figure</xref>.
+    </p>
+    <table xml:id="loan50DF">
+      <caption>Four rows from the <c>loan50</c> data matrix.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>loan\usamount</c></cell>
+          <cell><c>interest\usrate</c></cell>
+          <cell><c>term</c></cell>
+          <cell><c>grade</c></cell>
+          <cell><c>state</c></cell>
+          <cell><c>total\usincome</c></cell>
+          <cell><c>homeownership</c></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>7500</cell>
+          <cell>7.34</cell>
+          <cell>36</cell>
+          <cell>A</cell>
+          <cell>MD</cell>
+          <cell>70000</cell>
+          <cell>rent</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>25000</cell>
+          <cell>9.43</cell>
+          <cell>60</cell>
+          <cell>B</cell>
+          <cell>OH</cell>
+          <cell>254000</cell>
+          <cell>mortgage</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>14500</cell>
+          <cell>6.08</cell>
+          <cell>36</cell>
+          <cell>A</cell>
+          <cell>MO</cell>
+          <cell>80000</cell>
+          <cell>mortgage</cell>
+        </row>
+        <row>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+        </row>
+        <row>
+          <cell>50</cell>
+          <cell>3000</cell>
+          <cell>7.96</cell>
+          <cell>36</cell>
+          <cell>A</cell>
+          <cell>CA</cell>
+          <cell>34000</cell>
+          <cell>rent</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+      }
+    </table>
+    <table xml:id="loan50Variables">
+      <caption>Variables and their descriptions for the <c>loan50</c> data set.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><em>variable</em></cell>
+          <cell><em>description</em></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><c>loan\usamount</c></cell>
+          <cell>Amount of the loan received,
+            in US dollars.</cell>
+        </row>
+        <row>
+          <cell><c>interest\usrate</c></cell>
+          <cell>Interest rate on the loan,
+            in an annual percentage.</cell>
+        </row>
+        <row>
+          <cell><c>term</c></cell>
+          <cell>The length of the loan, which is always set
+            as a whole number of months.</cell>
+        </row>
+        <row>
+          <cell><c>grade</c></cell>
+          <cell>Loan grade, which takes values A through G
+            and represents the quality of the loan and its likelihood
+            of being repaid.</cell>
+        </row>
+        <row>
+          <cell><c>state</c></cell>
+          <cell>US state where the borrower resides.</cell>
+        </row>
+        <row>
+          <cell><c>total\usincome</c></cell>
+          <cell>Borrower's total income,
+            including any second income, in US dollars.</cell>
+        </row>
+        <row>
+          <cell><c>homeownership</c></cell>
+          <cell>Indicates whether the
+            person owns, owns but has a mortgage, or rents.</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+          <idx><h>data</h><h>loan50</h></idx>
+    </p>
+    <p>
+      The data in <xref ref="loan50DF">Figure</xref>
+      represent a <term>data matrix</term>,
+      which is a convenient and common way to organize data,
+      especially if collecting data in a spreadsheet.
+      Each row of a data matrix corresponds to a unique case
+      (observational unit),
+      and each column corresponds to a variable.
+    </p>
+    <p>
+      When recording data,
+      use a data matrix unless you have a very good reason to use a different structure.
+      This structure allows new cases to be added as rows or new variables as new columns.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          The grades for assignments, quizzes,
+          and exams in a course are often recorded in a gradebook that takes the form of a data matrix.
+          How might you organize grade data using a data matrix?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+          <idx><h>data</h><h>county</h></idx>
+    </p>
+    <exercise xml:id="desc_county_as_data_matrix">
+      <statement>
+        <p>
+          We consider data for 3,142 counties in the United States,
+          which includes each county's name,
+          the state in which it is located, its population in 2017,
+          how its population changed from 2010 to 2017, poverty rate,
+          and six additional characteristics.
+          How might these data be organized in a data matrix?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The data described in Guided <xref ref="desc_county_as_data_matrix">Practice</xref>
+      represents the <c>county</c> data set,
+      which is shown as a data matrix in <xref ref="countyDF">Figure</xref>.
+      These data come from the US Census,
+      with much of the data coming from the US Census Bureau's American Community Survey (ACS).
+      Unlike the Decennial Census,
+      which takes place every 10 years and attempts to collect basic demographic data from every residents of the US, the ACS is an ongoing survey that is sent to approximately 3.5 million households per year.
+      As stated by the ACS website,
+      these data help communities ``plan for hospitals and schools,
+      support school lunch programs,
+      improve emergency services, build bridges,
+      and inform businesses looking to add jobs and expand to new markets,
+      and more."<fn>
+      MISSINGoiRedirect
+      </fn> A small subset of the variables from the ACS are summarized in <xref ref="countyVariables">Figure</xref>.
+    </p>
+    <table xml:id="countyDF">
+      <caption>Eleven rows from the <c>county</c> data set.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>name</c></cell>
+          <cell><c>state</c></cell>
+          <cell><c>pop</c></cell>
+          <cell><c>pop\uschange</c></cell>
+          <cell><c>poverty</c></cell>
+          <cell><c>homeownership</c></cell>
+          <cell><c>multi\usunit</c></cell>
+          <cell><c>unemp\usrate</c></cell>
+          <cell><c>metro</c></cell>
+          <cell><c>median\usedu</c></cell>
+          <cell><c>median\ushh\usincome</c></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>Autauga</cell>
+          <cell>Alabama</cell>
+          <cell>55504</cell>
+          <cell>1.48</cell>
+          <cell>13.7</cell>
+          <cell>77.5</cell>
+          <cell>7.2</cell>
+          <cell>3.86</cell>
+          <cell>yes</cell>
+          <cell>some\uscollege</cell>
+          <cell>55317</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>Baldwin</cell>
+          <cell>Alabama</cell>
+          <cell>212628</cell>
+          <cell>9.19</cell>
+          <cell>11.8</cell>
+          <cell>76.7</cell>
+          <cell>22.6</cell>
+          <cell>3.99</cell>
+          <cell>yes</cell>
+          <cell>some\uscollege</cell>
+          <cell>52562</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>Barbour</cell>
+          <cell>Alabama</cell>
+          <cell>25270</cell>
+          <cell>-6.22</cell>
+          <cell>27.2</cell>
+          <cell>68.0</cell>
+          <cell>11.1</cell>
+          <cell>5.90</cell>
+          <cell>no</cell>
+          <cell>hs\usdiploma</cell>
+          <cell>33368</cell>
+        </row>
+        <row>
+          <cell>4</cell>
+          <cell>Bibb</cell>
+          <cell>Alabama</cell>
+          <cell>22668</cell>
+          <cell>0.73</cell>
+          <cell>15.2</cell>
+          <cell>82.9</cell>
+          <cell>6.6</cell>
+          <cell>4.39</cell>
+          <cell>yes</cell>
+          <cell>hs\usdiploma</cell>
+          <cell>43404</cell>
+        </row>
+        <row>
+          <cell>5</cell>
+          <cell>Blount</cell>
+          <cell>Alabama</cell>
+          <cell>58013</cell>
+          <cell>0.68</cell>
+          <cell>15.6</cell>
+          <cell>82.0</cell>
+          <cell>3.7</cell>
+          <cell>4.02</cell>
+          <cell>yes</cell>
+          <cell>hs\usdiploma</cell>
+          <cell>47412</cell>
+        </row>
+        <row>
+          <cell>6</cell>
+          <cell>Bullock</cell>
+          <cell>Alabama</cell>
+          <cell>10309</cell>
+          <cell>-2.28</cell>
+          <cell>28.5</cell>
+          <cell>76.9</cell>
+          <cell>9.9</cell>
+          <cell>4.93</cell>
+          <cell>no</cell>
+          <cell>hs\usdiploma</cell>
+          <cell>29655</cell>
+        </row>
+        <row>
+          <cell>7</cell>
+          <cell>Butler</cell>
+          <cell>Alabama</cell>
+          <cell>19825</cell>
+          <cell>-2.69</cell>
+          <cell>24.4</cell>
+          <cell>69.0</cell>
+          <cell>13.7</cell>
+          <cell>5.49</cell>
+          <cell>no</cell>
+          <cell>hs\usdiploma</cell>
+          <cell>36326</cell>
+        </row>
+        <row>
+          <cell>8</cell>
+          <cell>Calhoun</cell>
+          <cell>Alabama</cell>
+          <cell>114728</cell>
+          <cell>-1.51</cell>
+          <cell>18.6</cell>
+          <cell>70.7</cell>
+          <cell>14.3</cell>
+          <cell>4.93</cell>
+          <cell>yes</cell>
+          <cell>some\uscollege</cell>
+          <cell>43686</cell>
+        </row>
+        <row>
+          <cell>9</cell>
+          <cell>Chambers</cell>
+          <cell>Alabama</cell>
+          <cell>33713</cell>
+          <cell>-1.20</cell>
+          <cell>18.8</cell>
+          <cell>71.4</cell>
+          <cell>8.7</cell>
+          <cell>4.08</cell>
+          <cell>no</cell>
+          <cell>hs\usdiploma</cell>
+          <cell>37342</cell>
+        </row>
+        <row>
+          <cell>10</cell>
+          <cell>Cherokee</cell>
+          <cell>Alabama</cell>
+          <cell>25857</cell>
+          <cell>-0.60</cell>
+          <cell>16.1</cell>
+          <cell>77.5</cell>
+          <cell>4.3</cell>
+          <cell>4.05</cell>
+          <cell>no</cell>
+          <cell>hs\usdiploma</cell>
+          <cell>40041</cell>
+        </row>
+        <row>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+        </row>
+        <row>
+          <cell>3142</cell>
+          <cell>Weston</cell>
+          <cell>Wyoming</cell>
+          <cell>6927</cell>
+          <cell>-2.93</cell>
+          <cell>14.4</cell>
+          <cell>77.9</cell>
+          <cell>6.5</cell>
+          <cell>3.98</cell>
+          <cell>no</cell>
+          <cell>some\uscollege</cell>
+          <cell>59605</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <table xml:id="countyVariables">
+      <caption>Variables and their descriptions for the <c>county</c> data set.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><em>variable</em></cell>
+          <cell><em>description</em></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><c>name</c></cell>
+          <cell>County name.</cell>
+        </row>
+        <row>
+          <cell><c>state</c></cell>
+          <cell>State where the county resides,
+            or the District of Columbia.</cell>
+        </row>
+        <row>
+          <cell><c>pop</c></cell>
+          <cell>Population in 2017.</cell>
+        </row>
+        <row>
+          <cell><c>pop\uschange</c></cell>
+          <cell>Percent change in the population from 2010 to 2017.
+            For example, the value <c>1.48</c> in the first row
+            means the population for this county
+            increased by 1.48% from 2010 to 2017.</cell>
+        </row>
+        <row>
+          <cell><c>poverty</c></cell>
+          <cell>Percent of the population in poverty.</cell>
+        </row>
+        <row>
+          <cell><c>homeownership</c></cell>
+          <cell>Percent of the population that lives in their own home
+            or lives with the owner, e.g. children living with parents
+            who own the home.</cell>
+        </row>
+        <row>
+          <cell><c>multi\usunit</c></cell>
+          <cell>Percent of living units that are in multi-unit structures,
+            e.g. apartments.</cell>
+        </row>
+        <row>
+          <cell><c>unemp\usrate</c></cell>
+          <cell>Unemployment rate as a percent.</cell>
+        </row>
+        <row>
+          <cell><c>metro</c></cell>
+          <cell>Whether the county contains a metropolitan area.</cell>
+        </row>
+        <row>
+          <cell><c>median\usedu</c></cell>
+          <cell>Median education level, which
+            can take a value among
+<c>below\ushs</c>,
+<c>hs\usdiploma</c>,
+<c>some\uscollege</c>,
+            and <c>bachelors</c>.</cell>
+        </row>
+        <row>
+          <cell><c>median\ushh\usincome</c></cell>
+          <cell>Median household income for the county, where a household's
+            income equals the total income of its occupants who are
+            15<nbsp/>years or older.</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+  </subsection>
+  <subsection xml:id="variableTypes">
+    <title>Types of variables</title>
+    <p>
+      Examine the <c>unemp\usrate</c>, <c>pop</c>, <c>state</c>,
+      and <c>median\usedu</c> variables in the <c>county</c> data set.
+      Each of these variables is inherently different from the other three,
+      yet some share certain characteristics.
+    </p>
+    <p>
+      First consider <c>unemp\usrate</c>,
+      which is said to be a <term>numerical</term>
+      variable since it can take a wide range of numerical values,
+      and it is sensible to add, subtract,
+      or take averages with those values.
+      On the other hand,
+      we would not classify a variable reporting telephone area codes as numerical since the average,
+      sum, and difference of area codes doesn't have any clear meaning.
+    </p>
+    <p>
+      The <c>pop</c> variable is also numerical,
+      although it seems to be a little different than <c>unemp\usrate</c>.
+      This variable of the population count can only take whole non-negative numbers (<c>0</c>, <c>1</c>, <c>2</c>, ...).
+      For<nbsp/>this reason,
+      the population variable is said to be <term>discrete</term>
+      since it can only take numerical values with jumps.
+      On the other hand,
+      the unemployment rate variable is said to be <term>continuous</term>.
+    </p>
+    <p>
+      The variable <c>state</c> can take up to 51 values after accounting for Washington, DC: <c>AL</c>, <c>AK</c>, ..., and <c>WY</c>.
+      Because the responses themselves are categories, <c>state</c> is called a
+      <term>categorical</term> variable,
+      and the possible values are called the variable's <term>levels</term>.
+    </p>
+    <p>
+      Finally, consider the <c>median\usedu</c> variable,
+      which describes the median education level of county residents and takes values <c>below\ushs</c>, <c>hs\usdiploma</c>, <c>some\uscollege</c>,
+      or <c>bachelors</c> in each county.
+      This variable seems to be a hybrid:
+      it is a categorical variable but the levels have a natural ordering.
+      A variable with these properties is called an
+      <term>ordinal</term> variable,
+      while a regular categorical variable without this type of special ordering is called a
+      <term>nominal</term> variable.
+      To simplify analyses,
+      any ordinal variable in this book will be treated as a nominal (unordered) categorical variable.
+    </p>
+    <figure xml:id="variables">
+      <caption>Breakdown of variables into their respective types.</caption>
+      \Figure{0.57}{variables}
+    </figure>
+    <example>
+      <statement>
+        <p>
+          Data were collected about students in a statistics course.
+          Three variables were recorded for each student:
+          number of siblings, student height,
+          and whether the student had previously taken a statistics course.
+          Classify each of the variables as continuous numerical,
+          discrete numerical, or categorical.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Data were collected about students in a statistics course.
+          Three variables were recorded for each student:
+          number of siblings, student height,
+          and whether the student had previously taken a statistics course.
+          Classify each of the variables as continuous numerical,
+          discrete numerical, or categorical.
+        </p>
+      </solution>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+              <idx><h>data</h><h>stroke</h></idx>
+          An experiment is evaluating the effectiveness of a new drug in treating migraines.
+          A <c>group</c> variable is used to indicate the experiment group for each patient:
+          treatment or control.
+          The \mbox{\texttt{num\us{}migraines}} variable represents the number of migraines the patient experienced during a 3-month period. \mbox{Classify} each variable as either numerical or categorical.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="variableRelations">
+    <title>Relationships between variables</title>
+    <p>
+      Many analyses are motivated by a researcher looking for a relationship between two or more variables.
+      A social scientist may like to answer some of the following questions:
+      <ol>
+        <li class="custom-list-style-type" label="(1)" xml:id="ownershipMultiUnitQuestion">
+          <p>
+            If homeownership is lower than the national average in one county,
+            will the percent of multi-unit structures in that county tend to be above or below the national average?
+          </p>
+        </li>
+        <li class="custom-list-style-type" label="(2)" xml:id="pop_change_v_median_hh_income_question">
+          <p>
+            \popchangevmedianhhincomequestion
+          </p>
+        </li>
+        <li class="custom-list-style-type" label="(3)" xml:id="isAverageIncomeAssociatedWithSmokingBans">
+          <p>
+            How useful a predictor is median education level for the median household income for US counties?
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      To answer these questions, data must be collected,
+      such as the <c>county</c> data set shown in <xref ref="countyDF">Figure</xref>.
+      Examining summary statistics
+          <idx><h>summary statistic</h></idx>
+      could provide insights for each of the three questions about counties.
+      Additionally, graphs can be used to visually explore the data.
+    </p>
+    <p>
+      Scatterplots
+          <idx><h>scatterplot</h></idx>
+      are one type of graph used to study the relationship between two numerical variables.
+      <xref ref="multiunitsVsOwnership">Figure</xref>
+      compares the variables <c>homeownership</c> and <c>multi\usunit</c>,
+      which is the percent of units in multi-unit structures (e.g. apartments, condos).
+      Each point on the plot represents a single county.
+      For instance,
+      the highlighted dot corresponds to County<nbsp/>413 in the <c>county</c> data set: Chattahoochee County, Georgia,
+      which has 39.4% of units in multi-unit structures and a homeownership rate of 31.3%. The scatterplot suggests a relationship between the two variables:
+      counties with a higher rate of multi-units tend to have lower homeownership rates.
+      We might brainstorm as to why this relationship exists and investigate the ideas to determine which are the most reasonable explanations.
+    </p>
+    <figure xml:id="multiunitsVsOwnership">
+      <caption>A scatterplot of homeownership versus the percent
+      of units that are in multi-unit structures for US counties.
+      The highlighted dot represents Chattahoochee County, Georgia,
+      which has a multi-unit rate of 39.4% and a homeownership rate
+      of 31.3%. Explore this scatterplot and dozens of other scatterplots using American Community Survey data on Tableau Public\tableauhref{tableau-scatterplotschoose}.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <p>
+      The multi-unit and homeownership rates are said to be associated because the plot shows a discernible pattern.
+      When two variables show some connection with one another,
+      they are called <term>associated</term> variables.
+      Associated variables can also be called <term>dependent</term>
+      variables and vice-versa.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Examine the variables in the <c>loan50</c> data set,
+          which are described in <xref ref="loan50Variables">Figure</xref>.
+          Create two questions about possible relationships between variables in <c>loan50</c> that are of interest to<nbsp/>you.
+        </p>
+      </statement>
+    </exercise>
+    <example>
+      <statement>
+        <p>
+          This example examines the relationship between a county's population change from 2010 to 2017 and median household income,
+          which is visualized as a scatterplot in <xref ref="pop_change_v_med_income">Figure</xref>.
+          Are these variables associated?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The larger the median household income for a county,
+          the higher the population growth observed for the county.
+          While this trend isn't true for every county,
+          the trend in the plot is evident.
+          Since there is some relationship between the variables,
+          they are associated.
+        </p>
+      </answer>
+    </example>
+    <p>
+      \end{example}
+    </p>
+    <figure xml:id="pop_change_v_med_income">
+      <caption>A scatterplot showing
+<c>pop\uschange</c>
+      against <c>median\ushh\usincome</c>.
+      Owsley County of Kentucky, is highlighted,
+      which lost 3.63% of its population from 2010 to 2017
+      and had median household income of $22,736.  Explore this scatterplot and dozens of other scatterplots using American Community Survey data on Tableau Public\tableauhref{tableau-scatterplotschoose}.</caption>
+      MISSINGoiRedirect
+    </figure>
+    <p>
+      Because there is a downward trend in <xref ref="multiunitsVsOwnership">Figure</xref>
+      <mdash/> counties with more units in multi-unit structures are associated with lower homeownership <mdash/> these variables are said to be
+      <em>negatively associated</em>.
+          <idx><h>negative association|textbf</h></idx>
+      A<nbsp/><term>positive association</term>
+      is shown in the relationship between the <c>median\ushh\usincome</c> and <c>pop\uschange</c> in <xref ref="pop_change_v_med_income">Figure</xref>,
+      where counties with higher median household income tend to have higher rates of population growth.
+    </p>
+    <p>
+      If two variables are not associated,
+      then they are said to be <term>independent</term>.
+      That is, two variables are independent if there is no evident relationship between the two.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        A pair of variables is either related in some way (associated) or not
+        (independent).
+        No pair of variables is both associated and independent.
+      </p>
+    </assemblage>
+    <p>
+          <idx><h>data</h><h>county</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          Researchers often summarize data in a table,
+          where the rows correspond to individuals or <term>cases</term>
+          and the columns correspond to the <em>variables</em>,
+            <idx><h>variable|textbf</h></idx>
+          the values of which are recorded for each individual.
+        </p>
+      </li>
+      <li>
+        <p>
+          Variables can be <term>numerical</term>
+          (measured on a numerical scale)
+          or <term>categorical</term>
+          (taking on levels, such as low/medium/high).
+          Numerical variables can be <term>continuous</term>,
+          where all values within a range are possible, or <term>discrete</term>,
+          where only specific values, usually integer values, are possible.
+        </p>
+      </li>
+      <li>
+        <p>
+          When there exists a relationship between two variables,
+          the variables are said to be <term>associated</term>
+          or <term>dependent</term>.
+          If the variables are not associated,
+          they are said to be <term>independent</term>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="study_components_airpoll">
+      <title>Air pollution and birth outcomes, study components</title>
+      <statement>
+        <p>
+          Researchers collected data to examine the relationship between air pollutants and preterm births in Southern California.
+          During the study air pollution levels were measured by air quality monitoring stations.
+          Specifically,
+          levels of carbon monoxide were recorded in parts per million,
+          nitrogen dioxide and ozone in parts per hundred million,
+          and coarse particulate matter (PM<m>_{10}</m>) in <m>\mu g/m^3</m>.
+          Length of gestation data were collected on 143,196 births between the years 1989 and 1993,
+          and air pollution exposure during gestation was calculated for each birth.
+          The analysis suggested that increased ambient PM<m>_{10}</m> and,
+          to a lesser degree, CO concentrations may be associated with the occurrence of preterm births.\footfullcite{Ritz+Yu+Chapa+Fruin:2000}
+          <ol>
+            <li>
+              <p>
+                Identify the main research question of the study.
+              </p>
+            </li>
+            <li>
+              <p>
+                Who are the subjects in this study,
+                and how many are included?
+              </p>
+            </li>
+            <li>
+              <p>
+                What are the variables in the study?
+                Identify each variable as numerical or categorical.
+                If numerical,
+                state whether the variable is discrete or continuous.
+                If categorical, state whether the variable is ordinal.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="study_components_buteyko">
+      <title>Buteyko method, study components</title>
+      <statement>
+        <p>
+          The Buteyko method is a shallow breathing technique developed by Konstantin Buteyko,
+          a Russian doctor, in 1952.
+          Anecdotal evidence suggests that the Buteyko method can reduce asthma symptoms and improve quality of life.
+          In a scientific study to determine the effectiveness of this method,
+          researchers recruited 600 asthma patients aged 18-69 who relied on medication for asthma treatment.
+          These patients were randomnly split into two research groups:
+          one practiced the Buteyko method and the other did not.
+          Patients were scored on quality of life, activity,
+          asthma symptoms, and medication reduction on a scale from 0 to 10.
+          On average, the participants in the Buteyko group experienced a significant reduction in asthma symptoms and an improvement in quality of life.\footfullcite{McDowan:2003}
+          <ol>
+            <li>
+              <p>
+                Identify the main research question of the study.
+              </p>
+            </li>
+            <li>
+              <p>
+                Who are the subjects in this study,
+                and how many are included?
+              </p>
+            </li>
+            <li>
+              <p>
+                What are the variables in the study?
+                Identify each variable as numerical or categorical.
+                If numerical,
+                state whether the variable is discrete or continuous.
+                If categorical, state whether the variable is ordinal.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="study_components_cheaters">
+      <title>Cheaters, study components</title>
+      <statement>
+        <p>
+          Researchers studying the relationship between honesty,
+          age and self-control conducted an experiment on 160 children between the ages of 5 and 15.
+          Participants reported their age, sex,
+          and whether they were an only child or not.
+          The researchers asked each child to toss a fair coin in private and to record the outcome
+          (white or black)
+          on a paper sheet,
+          and said they would only reward children who report white.\footfullcite{Bucciol:2011}
+          <ol>
+            <li>
+              <p>
+                Identify the main research question of the study.
+              </p>
+            </li>
+            <li>
+              <p>
+                Who are the subjects in this study,
+                and how many are included?
+              </p>
+            </li>
+            <li>
+              <p>
+                The study's findings can be summarized as follows: "Half the students were explicitly told not to cheat and the others were not given any explicit instructions.
+                In the no instruction group probability of cheating was found to be uniform across groups based on child's characteristics.
+                In the group that was explicitly told to not cheat,
+                girls were less likely to cheat,
+                and while rate of cheating didn't vary by age for boys,
+                it decreased with age for girls." How many variables were recorded for each subject in the study in order to conclude these findings?
+                State the variables and their types.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="study_components_stealers">
+      <title>Stealers, study components</title>
+      <statement>
+        <p>
+          In a study of the relationship between socio-economic class and unethical behavior, 129 University of California undergraduates at Berkeley were asked to identify themselves as having low or high social-class by comparing themselves to others with the most (least) money,
+          most (least) education, and most (least) respected jobs.
+          They were also presented with a jar of individually wrapped candies and informed that the candies were for children in a nearby laboratory,
+          but that they could take some if they wanted.
+          After completing some unrelated tasks,
+          participants reported the number of candies they had taken.\footfullcite{Piff:2012}
+          <ol>
+            <li>
+              <p>
+                Identify the main research question of the study.
+              </p>
+            </li>
+            <li>
+              <p>
+                Who are the subjects in this study,
+                and how many are included?
+              </p>
+            </li>
+            <li>
+              <p>
+                The study found that students who were identified as upper-class took more candy than others.
+                How many variables were recorded for each subject in the study in order to conclude these findings?
+                State the variables and their types.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="migraine_and_acupuncture_exp_resp">
+      <title>Migraine and acupuncture,
+      Part 2</title>
+      <statement>
+        <p>
+          <xref ref="migraine_and_acupuncture_intro">Exercise</xref>
+          introduced a study exploring whether acupuncture had any effect on migraines.
+          Researchers conducted a randomized controlled study where patients were randomly assigned to one of two groups:
+          treatment or control.
+          The patients in the treatment group received acupuncture that was specifically designed to treat migraines.
+          The patients in the control group received placebo acupuncture
+          (needle insertion at non-acupoint locations). 24 hours after patients received acupuncture,
+          they were asked if they were pain free.
+          What are the explanatory and response variables in this study?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="sinusitis_and_antibiotics_exp_resp">
+      <title>Sinusitis and antibiotics,
+      Part 2</title>
+      <statement>
+        <p>
+          <xref ref="sinusitis_and_antibiotics_intro">Exercise</xref>
+          introduced a study exploring the effect of antibiotic treatment for acute sinusitis.
+          Study participants either received either a 10-day course of an antibiotic (treatment) or a placebo similar in appearance and taste
+          (control).
+          At the end of the 10-day period,
+          patients were asked if they experienced improvement in symptoms.
+          What are the explanatory and response variables in this study?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="fisher_irises">
+      <title>Fisher's irises</title>
+      <statement>
+        <p>
+          Sir Ronald Aylmer Fisher was an English statistician, evolutionary biologist,
+          and geneticist who worked on a data set that contained sepal length and width,
+          and petal length and width from three species of iris flowers
+          (<em>setosa</em>, <em>versicolor</em> and <em>virginica</em>).
+          There were 50 flowers from each species in the data set. \footfullcite{Fisher:1936}
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                How many cases were included in the data?
+              </p>
+            </li>
+            <li>
+              <p>
+                How many numerical variables are included in the data?
+                Indicate what they are, and if they are continuous or discrete.
+              </p>
+            </li>
+            <li>
+              <p>
+                How many categorical variables are included in the data,
+                and what are they?
+                List the corresponding levels
+                (categories).
+              </p>
+            </li>
+          </ol>
+          \
+          <image width="73%" source="images/irisversicolor.png" />
+          \
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="smoking_habits_UK_datamatrix">
+      <title>Smoking habits of UK residents</title>
+      <statement>
+        <p>
+          A survey was conducted to study the smoking habits of UK residents.
+          Below is a data matrix displaying a portion of the data collected in this survey.
+          Note that
+          <q><m>\pounds</m></q>
+          stands for British Pounds Sterling,
+          <q>cig</q>
+          stands for cigarettes, and
+          <q>N/A</q>
+          refers to a missing component of the data. \footfullcite{data:smoking} {
+        </p>
+        <tabular>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>sex</cell>
+            <cell>age</cell>
+            <cell>marital</cell>
+            <cell>grossIncome</cell>
+            <cell>smoke</cell>
+            <cell>amtWeekends</cell>
+            <cell>amtWeekdays</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>1</cell>
+            <cell>Female</cell>
+            <cell>42</cell>
+            <cell>Single</cell>
+            <cell>Under <m>\pounds</m>2,600</cell>
+            <cell>Yes</cell>
+            <cell>12 cig/day</cell>
+            <cell>12 cig/day</cell>
+          </row>
+          <row>
+            <cell>2</cell>
+            <cell>Male</cell>
+            <cell>44</cell>
+            <cell>Single</cell>
+            <cell><m>\pounds</m>10,400 to <m>\pounds</m>15,600</cell>
+            <cell>No</cell>
+            <cell>N/A</cell>
+            <cell>N/A</cell>
+          </row>
+          <row>
+            <cell>3</cell>
+            <cell>Male</cell>
+            <cell>53</cell>
+            <cell>Married</cell>
+            <cell>Above <m>\pounds</m>36,400</cell>
+            <cell>Yes</cell>
+            <cell>6 cig/day</cell>
+            <cell>6 cig/day</cell>
+          </row>
+          <row>
+            <cell>\vdots</cell>
+            <cell>\vdots</cell>
+            <cell>\vdots</cell>
+            <cell>\vdots</cell>
+            <cell>\vdots</cell>
+            <cell>\vdots</cell>
+            <cell>\vdots</cell>
+            <cell>\vdots</cell>
+          </row>
+          <row>
+            <cell>1691</cell>
+            <cell>Male</cell>
+            <cell>40</cell>
+            <cell>Single</cell>
+            <cell><m>\pounds</m>2,600 to <m>\pounds</m>5,200</cell>
+            <cell>Yes</cell>
+            <cell>8 cig/day</cell>
+            <cell>8 cig/day</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              What does each row of the data matrix represent?
+            </p>
+          </li>
+          <li>
+            <p>
+              How many participants were included in the survey?
+            </p>
+          </li>
+          <li>
+            <p>
+              Indicate whether each variable in the study is numerical or categorical.
+              If numerical, identify as continuous or discrete.
+              If categorical, indicate if the variable is ordinal.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="US_Airports">
+      <title>US Airports</title>
+      <statement>
+        <p>
+          The visualization below shows the geographical distribution of airports in the contiguous United States and Washington, DC. This visualization was constructed based on a dataset where each observation is an airport.\footfullcite{data:usairports} <image width="90%" source="images/airports.png" />
+          <ol>
+            <li>
+              <p>
+                List the variables used in creating this visualization.
+              </p>
+            </li>
+            <li>
+              <p>
+                Indicate whether each variable in the study is numerical or categorical.
+                If numerical, identify as continuous or discrete.
+                If categorical, indicate if the variable is ordinal.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="unvotes">
+      <title>UN Votes</title>
+      <statement>
+        <p>
+          The visualization below shows voting patterns the United States, Canada,
+          and Mexico in the United Nations General Assembly on a variety of issues.
+          Specifically, for a given year between 1946 and 2015,
+          it displays the percentage of roll calls in which the country voted yes for each issue.
+          This visualization was constructed based on a dataset where each observation is a country/year pair.\footfullcite{data:unvotes} <image width="90%" source="images/unvotes.png" />
+          <ol>
+            <li>
+              <p>
+                List the variables used in creating this visualization.
+              </p>
+            </li>
+            <li>
+              <p>
+                Indicate whether each variable in the study is numerical or categorical.
+                If numerical, identify as continuous or discrete.
+                If categorical, indicate if the variable is ordinal.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

@@ -1,0 +1,509 @@
+<section xml:id="transformationForNonlinearData">
+  <title>Transformations for skewed data</title>
+  <introduction>
+    <p>
+      County population size among the counties in the US is very strongly right skewed.
+      Can we apply a transformation to make the distribution more symmetric?
+      How would such a transformation affect the scatterplot and residual plot when another variable is graphed against this variable?
+      In this section,
+      we will see the power of transformations for very skewed data.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          See how a log transformation can bring symmetry to an extremely skewed variable.
+        </p>
+      </li>
+      <li>
+        <p>
+          Recognize that data can often be transformed to produce a linear relationship,
+          and that this transformation often involves log of the <m>y</m>-values and sometimes log of the <m>x</m>-values.
+        </p>
+      </li>
+      <li>
+        <p>
+          Use residual plots to assess whether a linear model for transformed data is reasonable.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Introduction to transformations</title>
+    <example>
+      <statement>
+        <p>
+          Consider the histogram of county populations shown in <xref ref="county_pop_transformed_i">Figure</xref>,
+          which shows extreme skew.
+              <idx><h>skew</h><h>example: extreme</h></idx>
+          What isn't useful about this plot?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Nearly all of the data fall into the left-most bin,
+          and the extreme skew obscures many of the potentially interesting details in the data.
+        </p>
+      </answer>
+    </example>
+    <figure xml:id="county_pop_transformed">
+      <caption>\subref{county_pop_transformed_i} A histogram of
+      the populations of all US counties.
+      \subref{county_pop_transformed_log} A histogram of
+      log<m>_{10}</m>-transformed county populations.
+      For this plot, the x-value corresponds to the power
+      of 10, e.g.
+      <q>4</q>
+      on the x-axis corresponds to
+      <m>10^4 =</m> 10,000.</caption>
+      \Figures{0.48}
+      {county_pop_transformed}
+      {county_pop_transformed_i} }
+      \Figures{0.48}
+      {county_pop_transformed}
+      {county_pop_transformed_log} }
+    </figure>
+    <p>
+      There are some standard transformations that may be useful for strongly right skewed data where much of the data is positive but clustered near zero.
+      A <term>transformation</term> is a rescaling of the data using a function.
+      For instance,
+      a plot of the logarithm (base 10) of county populations results in the new histogram in <xref ref="county_pop_transformed_log">Figure</xref>.
+      This data is symmetric,
+      and any potential outliers appear much less extreme than in the original data set.
+      By reigning in the outliers and extreme skew,
+      transformations like this often make it easier to build statistical models against the data.
+    </p>
+    <p>
+      Transformations can also be applied to one or both variables in a scatterplot.
+      A scatterplot of the population change from 2010 to 2017 against the population in 2010 is shown in <xref ref="county_pop_change_v_pop_transform_i">Figure</xref>.
+      In this first scatterplot,
+      it's hard to decipher any interesting patterns because the population variable is so strongly skewed.
+      However, if we apply a log<m>_{10}</m> transformation to the population variable,
+      as shown in <xref ref="county_pop_change_v_pop_transform_log">Figure</xref>,
+      a positive association between the variables is revealed.
+      While fitting a line to predict population change (2010 to 2017) from population (in 2010) does not seem reasonable,
+      fitting a line to predict population from log<m>_{10}</m>(population) does seem reasonable.
+    </p>
+    <figure xml:id="county_pop_change_v_pop_transform_i">
+      <caption>\subref{county_pop_change_v_pop_transform_i}
+      Scatterplot of population change
+      against the population before the change.
+      \subref{county_pop_change_v_pop_transform_log}<nbsp/>A<nbsp/>scatterplot
+      of the same data but where the population
+      size has been log-transformed.</caption>
+      \Figures{0.48}
+      {county_pop_change_v_pop_transform}
+      {county_pop_change_v_pop_transform_i} }
+      \Figures{0.48}
+      {county_pop_change_v_pop_transform}
+      {county_pop_change_v_pop_transform_log} }
+    </figure>
+    <p>
+      Transformations other than the logarithm can be useful, too.
+      For instance,
+      the square root (<m>\sqrt{\text{ original observation } }</m>) and inverse (<m>\frac{1}{\text{ original observation } }</m>) are commonly used by data scientists.
+      Common goals in transforming data are to see the data structure differently,
+      reduce skew, assist in modeling,
+      or straighten a nonlinear relationship in a scatterplot.
+    </p>
+    <p>
+          <idx><h>data</h><h>county</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Transformations to achieve linearity</title>
+    <figure xml:id="pretransform">
+      <caption>Variable <m>y</m> is plotted against <m>x</m>. A nonlinear relationship is evident by the <m>\cup</m>-pattern shown in the residual plot.  The curvature is also visible in the original plot.</caption>
+      <image width="75%" source="images/NeedsTransform-PreTransform.png" />
+    </figure>
+    <example>
+      <statement>
+        <p>
+          Consider the scatterplot and residual plot in <xref ref="NeedsTransform-PreTransform">Figure</xref>.
+          The regression output is also provided.
+          Is the linear model <m>\hat{y} = -52.3564 + 2.7842 x</m> a good model for the data?
+        </p>
+        <p>
+           <c>The regression equation is</c>
+        </p>
+        <p>
+           <c>y = -52.3564 + 2.7842 x</c>
+        </p>
+        <p>
+           <c>Predictor       Coef   SE Coef         T          P</c>
+        </p>
+        <p>
+           <c>Constant    -52.3564    7.2757    -7.196      3e-08</c>
+        </p>
+        <p>
+           <c>x             2.7842    0.1768    15.752    &lt; 2e-16</c>
+        </p>
+        <p>
+           <c>S = 13.76<nbsp/>   R-Sq = 88.26%    R-Sq(adj) = 87.91%</c>
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We can note the <m>R^2</m> value is fairly large.
+          However, this alone does not mean that the model is good.
+          Another model might be much better.
+          When assessing the appropriateness of a linear model,
+          we should look at the residual plot.
+          The <m>\cup</m>-pattern in the residual plot tells us the original data is curved.
+          If we inspect the two plots,
+          we can see that for small and large values of <m>x</m> we systematically underestimate <m>y</m>,
+          whereas for middle values of <m>x</m>,
+          we systematically overestimate <m>y</m>.
+          The curved trend can also be seen in the original scatterplot.
+          Because of this, the linear model is not appropriate,
+          and it would not be appropriate to perform a <m>t</m>-test for the slope because the conditions for inference are not met.
+          However, we might be able to use a transformation to linearize the data.
+        </p>
+      </answer>
+    </example>
+    <p>
+      Regression analysis is easier to perform on linear data.
+      When data are nonlinear,
+      we sometimes <term>transform</term>
+      the data in a way that makes the resulting relationship linear.
+      The most common <term>transformation</term>
+      is log of the <m>y</m> values.
+      Sometimes we also apply a transformation to the <m>x</m> values.
+      We generally use the residuals as a way to evaluate whether the transformed data are more linear.
+      If so, we can say that a better model has been found.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Using the regression output for the transformed data,
+          write the new linear regression equation.
+        </p>
+        <p>
+           <c>The regression equation is</c>
+        </p>
+        <p>
+           <c>log(y) = 1.722540 + 0.052985 x</c>
+        </p>
+        <p>
+           <c>Predictor         Coef     SE Coef        T          P</c>
+        </p>
+        <p>
+           <c>Constant      1.722540    0.056731    30.36    &lt; 2e-16</c>
+        </p>
+        <p>
+           <c>x             0.052985    0.001378    38.45    &lt; 2e-16</c>
+        </p>
+        <p>
+           <c>S = 0.1073<nbsp/>   R-Sq = 97.82%    R-Sq(adj) = 97.75%</c>
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The linear regression equation can be written as:
+          <m>\widehat{\text{ log } (y)} = 1.723 +0.053 x</m>
+        </p>
+      </answer>
+    </example>
+    <figure xml:id="NeedsTransform-PostTransform">
+      <caption>A plot of <m>log  (y)</m> against <m>x</m>. The residuals don't show any evident patterns, which suggests the transformed data is well-fit by a linear model.</caption>
+      <image width="75%" source="images/NeedsTransform-PostTransform.png" />
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          Which of the following statements are true?
+          There may be more than one.
+          <ol type="a">
+            <li>
+              <p>
+                There is an apparent linear relationship between <m>x</m> and <m>y</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                There is an apparent linear relationship between <m>x</m> and <m>\widehat{\text{ log } (y)}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The model provided by Regression I (<m>\hat{y} = -52.3564 + 2.7842 x</m>) yields a better<nbsp/>fit.
+              </p>
+            </li>
+            <li>
+              <p>
+                The model provided by Regression II (<m>\widehat{\text{ log } (y)} = 1.723 +0.053 x</m>) yields a better<nbsp/>fit.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          A <term>transformation</term> is a rescaling of the data using a function.
+          When data are very skewed,
+          a log transformation often results in more symmetric data.
+        </p>
+      </li>
+      <li>
+        <p>
+          Regression analysis is easier to perform on linear data.
+          When data are nonlinear,
+          we sometimes <term>transform</term>
+          the data in a way that results in a linear relationship.
+          The most common transformation is log of the <m>y</m>-values.
+          Sometimes we also apply a transformation to the <m>x</m>-values.
+        </p>
+      </li>
+      <li>
+        <p>
+          To assess the model, we look at the <em>residual plot</em>
+          of the <em>transformed</em> data.
+          If the residual plot of the original data has a pattern,
+          but the residual plot of the transformed data has no pattern,
+          a linear model for the transformed data is reasonable,
+          and the transformed model provides a better fit than the simple linear model.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise>
+      <title>Used trucks</title>
+      <statement>
+        <p>
+          The scatterplot below shows the relationship between year and price
+          (in thousands of $)
+          of a random sample of 42 pickup trucks.
+          Also shown is a residuals plot for the linear model for predicting price from year.
+          MISSINGoiRedirect\oiRedirect{\includegraphics[height=tableau-usedtrucks]{extraTeX/icons/tableau}}
+          <ol>
+            <li>
+              <p>
+                Describe the relationship between these two variables and comment on whether a linear model is appropriate for modeling the relationship between year and price.
+              </p>
+            </li>
+            <li>
+              <p>
+                The scatterplot below shows the relationship between logged
+                (natural log)
+                price and year of these trucks,
+                as well as the residuals plot for modeling these data.
+                Comment on which model
+                (linear model from earlier or logged model presented here)
+                is a better fit for these data.
+                <image width="42%" source="images/pu_lin_scat_log.png" /> <image width="42%" source="images/pu_res_scat_log.png" />
+              </p>
+            </li>
+            <li>
+              <p>
+                The output for the logged model is given below.
+                Interpret the slope in context of the data.
+                <tabular>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell></cell>
+                    <cell>Estimate</cell>
+                    <cell>Std. Error</cell>
+                    <cell>t value</cell>
+                    <cell>Pr(<m>></m><m>|</m>t<m>|</m>)</cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell>(Intercept)</cell>
+                    <cell>-271.981</cell>
+                    <cell>25.042</cell>
+                    <cell>-10.861</cell>
+                    <cell>0.000</cell>
+                  </row>
+                  <row>
+                    <cell>Year</cell>
+                    <cell>0.137</cell>
+                    <cell>0.013</cell>
+                    <cell>10.937</cell>
+                    <cell>0.000</cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Income and hours worked</title>
+      <statement>
+        <p>
+          The scatterplot below shows the relationship between income and years worked for a random sample of 787 Americans.
+          Also shown is a residuals plot for the linear model for predicting income from hours worked.
+          The data come from the 2012 American Community Survey.\footfullcite{data:acs:2012}
+          <url href="\oiRedirectUrl{tableau_income_hours_worked}"><image width="42%" source="images/acs_lin_scat.png" /></url>
+          <image width="42%" source="images/acs_lin_res_scat.png" />
+          <ol>
+            <li>
+              <p>
+                Describe the relationship between these two variables and comment on whether a linear model is appropriate for modeling the relationship between year and price.
+              </p>
+            </li>
+            <li>
+              <p>
+                The scatterplot below shows the relationship between logged
+                (natural log)
+                income and hours worked,
+                as well as the residuals plot for modeling these data.
+                Comment on which model
+                (linear model from earlier or logged model presented here)
+                is a better fit for these data.
+                <image width="42%" source="images/acs_log_scat.png" /> <image width="42%" source="images/acs_log_res_scat.png" />
+              </p>
+            </li>
+            <li>
+              <p>
+                The output for the logged model is given below.
+                Interpret the slope in context of the data.
+                <tabular>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell></cell>
+                    <cell>Estimate</cell>
+                    <cell>Std. Error</cell>
+                    <cell>t value</cell>
+                    <cell>Pr(<m>></m><m>|</m>t<m>|</m>)</cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell>(Intercept)</cell>
+                    <cell>1.017</cell>
+                    <cell>0.113</cell>
+                    <cell>9.000</cell>
+                    <cell>0.000</cell>
+                  </row>
+                  <row>
+                    <cell>hrs_work</cell>
+                    <cell>0.058</cell>
+                    <cell>0.003</cell>
+                    <cell>21.086</cell>
+                    <cell>0.000</cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      \addvspace{8mm} {{\titlerule[1mm]} \setupfont {\titlerule[1mm]} }
+    </p>
+    <p>
+      This chapter focused on describing the linear association between two numerical variables and fitting a linear model.
+      <ul>
+        <li>
+          <p>
+            The <em>correlation coefficient</em>,
+              <idx><h>correlation|textbf</h></idx>
+            <m>r</m>, measures the strength and direction of the linear association between two variables.
+            However, <m>r</m> alone cannot tell us whether data follow a linear trend or whether a linear model is appropriate.
+          </p>
+        </li>
+        <li>
+          <p>
+            The <term>explained variance</term>, <m>R^2</m>,
+            measures the proportion of variation in the <m>y</m> values explained by a given model.
+            Like <m>r</m>,
+            <m>R^2</m> alone cannot tell us whether data follow a linear trend or whether a linear model is appropriate.
+          </p>
+        </li>
+        <li>
+          <p>
+            Every analysis should begin with <em>graphing</em>
+            the data using a <term>scatterplot</term>
+            in order to see the association and any deviations from the trend
+            (outliers or influential values).
+            A <em>residual plot</em> helps us better see patterns in the data.
+          </p>
+        </li>
+        <li>
+          <p>
+            When the data show a linear trend,
+            we fit a <em>least squares regression line</em> of the form:
+            <m>\hat{y} = a+bx</m>,
+            where <m>a</m> is the <m>y</m>-intercept and <m>b</m> is the slope.
+            It is important to be able to <em>calculate</em>
+            <m>a</m> and <m>b</m> using the summary statistics and to <em>interpret</em>
+            them in the context of the data.
+          </p>
+        </li>
+        <li>
+          <p>
+            A <em>residual</em>, <m>y-\hat{y}</m>,
+            measures the error for an <em>individual point</em>.
+            The <em>standard deviation of the residuals</em>,
+            <m>s</m>, measures the typical size of the residuals.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\hat{y} = a+bx</m> provides the best fit line for the <em>observed data</em>.
+            To estimate or hypothesize about the slope of the population regression line,
+            first confirm that the residual plot has no pattern and that a linear model is reasonable,
+            then use a <em><m>t</m>-interval for the slope</em><idx><h>t-interval for the slope@<m>t</m>-interval for the slope|textbf</h></idx> or a
+            <em><m>t</m>-test for the slope</em><idx><h>t-test for the slope@<m>t</m>-test for the slope|textbf</h></idx> with <m>n-2</m> degrees of freedom.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      In this chapter we focused on simple linear models with one explanatory variable.
+      More complex methods of prediction,
+      such as multiple regression
+      (more than one explanatory variable)
+      and nonlinear regression can be studied in a future course.
+    </p>
+  </subsection>
+</section>

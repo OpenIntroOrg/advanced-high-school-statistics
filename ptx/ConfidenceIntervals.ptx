@@ -1,0 +1,916 @@
+<section xml:id="ConfidenceIntervals">
+  <title>Confidence intervals</title>
+  <introduction>
+    <p>
+          <idx><h>confidence interval</h></idx>
+    </p>
+    <p>
+      The site MISSINGoiRedirect regularly forecasts support for each candidate in Congressional races,
+      i.e. races in the US House of Representatives and the US Senate.
+      In addition to point estimates,
+      they report confidence intervals.<fn>
+      See: MISSINGoiRedirect
+      </fn> What are confidence intervals,
+      and how do we interpret them?
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Explain the purpose and use of confidence intervals.
+        </p>
+      </li>
+      <li>
+        <p>
+          Construct 95% confidence intervals assuming the point estimate follows a normal distribution.
+        </p>
+      </li>
+      <li>
+        <p>
+          Calculate the critical value for a C% confidence interval when the point estimate follows a normal distribution.
+        </p>
+      </li>
+      <li>
+        <p>
+          Describe how sample size and confidence level affect the width of a confidence interval.
+        </p>
+      </li>
+      <li>
+        <p>
+          Interpret a confidence interval and the confidence level in context.
+        </p>
+      </li>
+      <li>
+        <p>
+          Draw conclusions with a specified confidence level about the values of unknown parameters.
+        </p>
+      </li>
+      <li>
+        <p>
+          Calculate and interpret the margin of error for a C% confidence interval.
+          Distinguish between margin of error and standard error.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Capturing the population parameter</title>
+    <p>
+      A point estimate provides a single plausible value for a parameter.
+      However, a point estimate isn't perfect and will have some
+      <em>standard error</em> associated with it.
+      When estimating a parameter,
+      it is better practice to provide a plausible
+      <em>range of values</em>
+      instead of supplying just the point estimate.
+    </p>
+    <p>
+      A plausible range of values for the population parameter is called a
+      <term>confidence interval</term>.
+      Using only a point estimate is like fishing in a murky lake with a spear,
+      and using a confidence interval is like fishing with a net.
+      We can throw a spear where we saw a fish,
+      but we will probably miss.
+      On the other hand, if we toss a net in that area,
+      we have a good chance of catching the fish.
+    </p>
+    <p>
+      If we report a point estimate,
+      we probably will not hit the exact population parameter.
+      On the other hand,
+      if we report a range of plausible values <mdash/> a confidence interval <mdash/> we have a good shot at capturing the parameter.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Constructing a 95% confidence interval</title>
+    <p>
+      A point estimate is our best guess for the value of the parameter,
+      so it makes sense to build the confidence interval around that value.
+      The standard error is a measure of the uncertainty associated with the point estimate.
+    </p>
+    <example>
+      <statement>
+        <p>
+          How many standard errors should we extend above and below the point estimate if we want to be 95% confident of capturing the true value?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          How many standard errors should we extend above and below the point estimate if we want to be 95% confident of capturing the true value?
+        </p>
+      </solution>
+    </example>
+    <assemblage>
+      <title></title>
+      <p>
+        When the sampling distribution of a point estimate can reasonably be modeled as normal,
+        a 95% confidence interval for the unknown parameter can be constructed as:
+        <md>
+          <mrow>\text{ point estimate } \ \pm\ 1.96 \times SE\text{ of estimate } \vspace{-2mm}</mrow>
+        </md>
+      </p>
+      <p>
+        We can be <em>95% confident</em>
+        that this interval captures the true value.
+      </p>
+    </assemblage>
+    <p>
+      In the next chapters we will determine when we can apply a normal model to a point estimate.
+      For now, we will assume that a normal model is reasonable.
+    </p>
+    <example>
+      <statement>
+        <p>
+          The point estimate from the smoking example was 15%. The standard error for this point estimate was calculated to be <m>SE = 0.04</m>.
+          Assuming that conditions for a normal model are met,
+          construct and interpret a 95% confidence interval.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The point estimate from the smoking example was 15%. The standard error for this point estimate was calculated to be <m>SE = 0.04</m>.
+          Assuming that conditions for a normal model are met,
+          construct and interpret a 95% confidence interval.
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Based on the confidence interval above,
+          is there evidence that a smaller proportion smoke in this county than in the state as a whole?
+          The proportion that smoke in the state is known to be 0.20.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Based on the confidence interval above,
+          is there evidence that a smaller proportion smoke in this county than in the state as a whole?
+          The proportion that smoke in the state is known to be 0.20.
+        </p>
+      </solution>
+    </example>
+    <p>
+      We can be 95% confident that a 95% confidence interval captures the true population parameter.
+      However, confidence intervals are imperfect.
+      About 1-in-20 (5%) properly constructed 95% confidence intervals will fail to capture the parameter of interest.
+      <xref ref="x95PercentConfidenceInterval">Figure</xref>
+      shows 25 confidence intervals for a proportion that were constructed from simulations where the true proportion was <m>p = 0.3</m>.
+      However, 1 of these 25 confidence intervals happened not to include the true value.
+    </p>
+    <figure xml:id="x95PercentConfidenceInterval">
+      <caption>Twenty-five samples of size <m>n=300</m> were simulated when <m>p = 0.30</m>. For each sample, a confidence interval was created to try to capture the true proportion <m>p</m>. However,<nbsp/>1<nbsp/>of these<nbsp/>25 intervals did not capture <m>p = 0.30</m>.</caption>
+      <image width="90%" source="images/95PercentConfidenceInterval.png" />
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          In <xref ref="x95PercentConfidenceInterval">Figure</xref>,
+          one interval does not capture the true proportion, <m>p = 0.3</m>.
+          Does this imply that there was a problem with the simulations?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="changingTheConfidenceLevelSection">
+    <title>Changing the confidence level</title>
+    <p>
+          <idx><h>confidence level</h></idx>
+    </p>
+    <p>
+      Suppose we want to construct a confidence interval with a confidence level somewhat greater than 95%: perhaps we would like a confidence level of 99%.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Other things being equal,
+          would a 99% confidence interval be wider or narrower than a 95% confidence interval?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Other things being equal,
+          would a 99% confidence interval be wider or narrower than a 95% confidence interval?
+        </p>
+      </solution>
+    </example>
+    <p>
+      The 95% confidence interval structure provides guidance in how to make intervals with new confidence levels.
+      Below is a general 95% confidence interval for a point estimate that comes from a nearly normal distribution:
+      <md>
+        <mrow>\text{ point estimate } \ \pm\ 1.96\times SE \text{ of estimate }</mrow>
+      </md>
+    </p>
+    <p>
+      There are three components to this interval: the point estimate,
+      <q>1.96</q>, and the standard error.
+      The choice of <m>1.96\times SE</m> was based on capturing 95% of the distribution since the estimate is within 1.96 standard deviations of the true value about 95% of the time.
+      The choice of 1.96 corresponds to a 95% confidence level.
+    </p>
+    <exercise xml:id="leadInForMakingA99PercentCIExercise">
+      <statement>
+        <p>
+          If <m>X</m> is a normally distributed random variable,
+          how often will <m>X</m> be within 2.58 standard deviations of the mean?
+        </p>
+      </statement>
+    </exercise>
+    <figure xml:id="choosingZForCI">
+      <caption>The area between -<m>z^{\star}</m> and <m>z^{\star}</m> increases as <m>|z^{\star}|</m> becomes larger. If the confidence level is 99%, we choose <m>z^{\star}</m> such that 99% of the normal curve is between -<m>z^{\star}</m> and <m>z^{\star}</m>, which corresponds to 0.5% in the lower tail and 0.5% in the upper tail: <m>z^{\star}=2.58</m>.</caption>
+      <image width="73%" source="images/choosingZForCI.png" />
+      <idx><h>confidence level</h></idx>
+    </figure>
+    <p>
+      To create a 99% confidence interval,
+      change 1.96 in the 95% confidence interval formula to be <m>2.58</m>.
+      Guided <xref ref="leadInForMakingA99PercentCIExercise">Practice</xref>
+      highlights that 99% of the time a normal random variable will be within 2.58 standard deviations of its mean.
+      Thus, the formula for a 99% confidence interval is
+      <md>
+        <mrow>\text{ point estimate } \ \pm\ 2.58\times SE \text{ of estimate }</mrow>
+      </md>
+    </p>
+    <p>
+      <xref ref="choosingZForCI">Figure</xref>
+      provides a picture of how to identify
+      <m>z^{\star}</m> based on a confidence level.
+    </p>
+    <p>
+      The <em>number</em> of standard errors we go above and below the point estimate is called the
+      <term>critical value</term>.
+      When the critical value is determined based on a normal model,
+      we call the critical value <m>z^{\star}</m>.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        If the point estimate follows a normal model with standard error <m>SE</m>,
+        then a confidence interval for the population parameter is
+        <md>
+          <mrow>\text{ point estimate } \ \pm\ z^{\star} \times SE \text{ of estimate }</mrow>
+        </md>
+        where <m>z^{\star}</m> depends on the confidence level selected.
+      </p>
+    </assemblage>
+    <p>
+      Finding the value of <m>z^{\star}</m> that corresponds to a particular confidence level is most easily accomplished by using a new table,
+      called the <m>t</m>-table.
+      For now, what is noteworthy about this table is that the bottom row corresponds to confidence levels.
+      The numbers inside the table are the critical values,
+      but which row should we use?
+      Later in this book,
+      we will see that a <m>t</m>-curve with infinite degrees of freedom corresponds to the normal curve.
+      For this reason, when finding <m>z^{\star}</m>,
+      we use the <m>t</m>-table at row <m>\infty</m>.
+    </p>
+    <table xml:id="tTableSample">
+      <caption>An abbreviated look at the <m>t</m>-table. The columns correspond to confidence levels. Row <m>\infty</m> corresponds to the normal curve.</caption>
+      <tabular>
+        <row>
+          <cell>one tail</cell>
+          <cell>\hspace{1.5mm}  0.100</cell>
+          <cell>\hspace{1.5mm} 0.050</cell>
+          <cell>\hspace{1.5mm} 0.025</cell>
+          <cell>\hspace{1.5mm} 0.010</cell>
+          <cell>\hspace{1.5mm} 0.005</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>{<m>df</m>}  1</cell>
+          <cell>{  3.078}</cell>
+          <cell>{  6.314}</cell>
+          <cell>{ 12.71}</cell>
+          <cell>{ 31.82}</cell>
+          <cell>{ 63.66}</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>{  1.886}</cell>
+          <cell>{  2.920}</cell>
+          <cell>{  4.303}</cell>
+          <cell>{  6.965}</cell>
+          <cell>{  9.925}</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>{  1.638}</cell>
+          <cell>{  2.353}</cell>
+          <cell>{  3.182}</cell>
+          <cell>{  4.541}</cell>
+          <cell>{  5.841}</cell>
+        </row>
+        <row>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1000</cell>
+          <cell>{  1.282}</cell>
+          <cell>{  1.646}</cell>
+          <cell>{  1.962}</cell>
+          <cell>{  2.330}</cell>
+          <cell>{  2.581}</cell>
+        </row>
+        <row>
+          <cell><m>\infty</m></cell>
+          <cell>{  1.282}</cell>
+          <cell>{  1.645}</cell>
+          <cell>{  1.960}</cell>
+          <cell>{  2.326}</cell>
+          <cell>{  2.576}</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Confidence level C</cell>
+          <cell>{  80%}</cell>
+          <cell>{ 90%}</cell>
+          <cell>{ 95%}</cell>
+          <cell>{  98%}</cell>
+          <cell>{  99%}</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <assemblage>
+      <p>
+        {Finding <m>{z}^{\star}</m> for a particular confidence level} We select
+        <m>z^{\star}</m> so that the area between -<m>z^{\star}</m> and
+        <m>z^{\star}</m> in the normal model corresponds to the confidence level.
+        Use a calculator or use the <m>t</m>-table at row <m>\infty</m> to find the critical value <m>z^{\star}</m>.
+      </p>
+    </assemblage>
+    <exercise xml:id="find90CIForRun10AgeExercise">
+      <statement>
+        <p>
+          Find the appropriate <m>z^{\star}</m> value for an 80% confidence interval.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The normal approximation is crucial to the precision of these confidence intervals.
+      The next two chapters provide detailed discussions about when a normal model can safely be applied to a variety of situations.
+      When a normal model is not a good fit,
+      we will use alternate distributions that better characterize the sampling distribution.
+    </p>
+  </subsection>
+  <subsection xml:id="marginOfErrorTermBox">
+    <title>Margin of error</title>
+    <p>
+      The confidence intervals we have encountered thus far have taken the form
+      <md>
+        <mrow>\text{ point estimate }  \ \pm \ z^*\times SE \text{ of estimate }</mrow>
+      </md>
+    </p>
+    <p>
+      Confidence intervals are also often reported as
+      <md>
+        <mrow>\text{ point estimate }  \ \pm \ \text{ margin of error }</mrow>
+      </md>
+    </p>
+    <p>
+      For example, instead of reporting an interval as
+      <m>0.09 \ \pm \ 1.645\times 0.028</m> or <m>(0.044, 0.136)</m>,
+      it could be reported as <m>0.09 \ \pm \ 0.046</m>.
+    </p>
+    <p>
+      The <term>margin of error</term> is the distance between the point estimate and the lower or upper bound of a confidence interval.
+      It is half of the total width of the interval.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        When the point estimate follows a normal distribution,
+        <me>
+          \text{ margin of error }  = z^{\star}\times SE \text{ of estimate }
+        </me>.
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          All other things being equal,
+          will the margin of error be bigger for a 68% confidence interval or a 95% confidence interval?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          All other things being equal,
+          will the margin of error be bigger for a 68% confidence interval or a 95% confidence interval?
+        </p>
+      </solution>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          What is the margin of error for the confidence interval: (0.035, 0.145)?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="interpretingCIs">
+    <title>Interpreting confidence intervals</title>
+    <p>
+          <idx><h>confidence interval</h><h>interpretation</h></idx>
+    </p>
+    <p>
+      A careful eye might have observed the somewhat awkward language used to describe confidence intervals.
+      Correct interpretation:
+    </p>
+    <blockquote>
+      We are C% confident that the population parameter is between <em><nbsp/> <nbsp/> <nbsp/></em> and <em><nbsp/> <nbsp/> <nbsp/></em>.
+    </blockquote>
+    <p>
+      <em>Incorrect</em> language might try to describe the confidence interval as capturing the population parameter with a certain probability.<fn>
+      To see that this interpretation is incorrect,
+      imagine taking two random samples and constructing two 95% confidence intervals for an unknown proportion.
+      If these intervals are disjoint,
+      can we say that there is a 95%+95%=190% chance that the first or the second interval captures the true value?
+      </fn> Applying the language of probability to a fixed interval or to a fixed parameter is one of the most common errors.
+    </p>
+    <p>
+      As we saw in <xref ref="x95PercentConfidenceInterval">Figure</xref>,
+      the 95% confidence interval <em>method</em>
+      has a 95% probability of producing an interval that will capture the population parameter.
+      A correct interpretation of the confidence <em>level</em>
+      is that such intervals will capture the population parameter that percent of the time
+      (assuming conditions are met and the probability model is true).
+      However, each individual interval either does or does not capture the population parameter.
+      A correct interpretation of an individual confidence interval cannot involve the vocabulary of probability.
+    </p>
+    <p>
+      Another especially important consideration of confidence intervals is that they
+      <em>only try to capture the population parameter</em>.
+      Our intervals say nothing about the confidence of capturing individual observations,
+      a proportion of the observations, or point estimates.
+      Confidence intervals only attempt to capture population parameters.
+    </p>
+    <p>
+          <idx><h>confidence interval</h><h>interpretation</h></idx>
+          <idx><h>confidence interval</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Confidence interval procedures: a five step process</title>
+    <p>
+      Use a confidence interval to <em>estimate</em>
+      a parameter with a particular <em>confidence level</em>, C.
+    </p>
+    <assemblage>
+      <title></title>
+      <ul>
+        <li>
+          <p>
+            <em>Identify</em>: Identify the parameter and the confidence level.
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Choose</em>: Choose the appropriate interval procedure and identify it by name.
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Check</em>: Check that the conditions for the interval procedure are met.
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Calculate</em>: Calculate the confidence interval and record it in interval form.
+            <md>
+              <mrow>\text{ CI:  point estimate } \ \pm\  \text{ critical value } \times SE \text{ of estimate }</mrow>
+            </md>
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Conclude</em>: Interpret the interval and, if applicable,
+            draw a conclusion based on whether the interval is entirely above,
+            is entirely below, or contains the value of interest.
+          </p>
+        </li>
+      </ul>
+    </assemblage>
+    <p>
+          <idx><h>confidence interval</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          A point estimate is not perfect;
+          there is almost always some error in the estimate.
+          It is often useful to supply a plausible
+          <em>range of values</em> for the parameter,
+          which we call a <term>confidence interval</term>.
+        </p>
+      </li>
+      <li>
+        <p>
+          A confidence interval is centered on the point estimate and extends a certain number of standard errors on either side of the estimate,
+          depending upon how <em>confident</em> one wants to be.
+          For a fixed sample size,
+          to be more confident of capturing the true value requires a wider interval.
+        </p>
+      </li>
+      <li>
+        <p>
+          When the sampling distribution of a point estimate can reasonably be modeled as <em>normal</em>,
+          such as with a <term>sample proportion</term>,
+          then the following are true:
+          <ul>
+            <li>
+              <p>
+                A 68% confidence interval is given by:
+                point estimate<nbsp/><m>\pm\ SE</m> of estimate.
+                We can be 68% confident this interval captures the true value.
+              </p>
+            </li>
+            <li>
+              <p>
+                A 95% confidence interval is given by:
+                point estimate<nbsp/><m>\pm\ 1.96 \times SE</m> of estimate.
+                We can be 95% confident this interval captures the true value.
+              </p>
+            </li>
+            <li>
+              <p>
+                A C% confidence interval is given by:
+                point estimate<nbsp/><m>\pm\ z^{\star} \times SE</m> of estimate.
+                We can be C% confident this interval captures the true value.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+      <li>
+        <p>
+          For a C% confidence interval described above,
+          we select <m>z^{\star}</m> such that the area between -<m>z^{\star}</m> and
+          <m>z^{\star}</m> under the standard normal curve is C%. Use the <m>t</m>-table at row <m>\infty</m> to find the critical value <m>z^{\star}</m>.<fn>
+          We explain the relationship between <m>z</m> and <m>t</m> in the next chapter.
+          </fn>
+        </p>
+      </li>
+      <li>
+        <p>
+          After interpreting the interval,
+          we can usually draw a conclusion, with C% confidence,
+          about whether a given value X is a reasonable value for the population parameter.
+          When drawing a conclusion based on a confidence interval,
+          there are three possibilities.
+        </p>
+        <ul>
+          <li>
+            <p>
+              We <em>have evidence</em> that the true [parameter]:
+            </p>
+            <ul>
+              <li class="custom-list-style-type" label="">
+                <p>
+                  ...is greater than X, because the entire interval is <em>above</em> X.
+                </p>
+              </li>
+              <li class="custom-list-style-type" label="">
+                <p>
+                  ...is less than X, because the entire interval is <em>below</em> X.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              We <em>do not have evidence</em>
+              that the true [parameter] is not X, because X is
+              <em>in</em> the interval.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          AP exam tip:  A full confidence interval procedure includes the following steps.
+          <ol>
+            <li>
+              <p>
+                <em>Identify</em>: Identify the parameter and the confidence level.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Choose</em>: Choose the appropriate interval procedure and identify it by name.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Check</em>: Check that the conditions for the interval procedure are met.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Calculate</em>: Calculate the confidence interval and record it in interval form.
+                <md>
+                  <mrow>\text{ CI:  point estimate } \ \pm\  \text{ critical value } \times SE \text{ of estimate }</mrow>
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Conclude</em>: Interpret the interval and, if applicable,
+                draw a conclusion based on whether the interval is entirely above,
+                is entirely below, or contains the value of interest.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ul>
+    <p>
+      Interpreting <em>confidence intervals</em><idx><h>confidence interval|textbf</h></idx> and
+      <em>confidence levels</em>
+          <idx><h>confidence level|textbf</h></idx>
+      <ul>
+        <li>
+          <p>
+            68% and 95% are examples of <em>confidence levels</em>.
+              <idx><h>confidence level|textbf</h></idx>
+          The confidence level tells us the
+            <em>capture rate</em> with repeated sampling.
+            For example,
+            a correct interpretation of a 95% confidence level is that if many samples of the same size were taken from the population,
+            about 95% of the resulting confidence intervals would capture the true population parameter
+            (assuming the conditions are met and the probability model is true).
+            Note that this is a <em>relative frequency interpretation</em>.
+          </p>
+        </li>
+        <li>
+          <p>
+            We cannot use the language of probability to interpret an
+            <em>individual</em> confidence interval,
+            once it has been calculated.
+            The confidence level tells us what percent of the intervals will capture the population parameter,
+            not the probability that a calculated interval captures the population parameter.
+            Each calculated interval either does or does not capture the population parameter.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      <em>Margin of error</em>
+          <idx><h>margin of error|textbf</h></idx>
+      <ul>
+        <li>
+          <p>
+            Confidence intervals are often reported as:
+            point estimate <m>\pm</m> margin of error.
+            The <term>margin of error</term> (<m>ME</m>) <m>=\text{ critical value } \times SE\ \text{ of estimate }</m>,
+            and it tells us, with a particular confidence,
+            how much we expect our point estimate to deviate from the true population value due to chance.
+          </p>
+        </li>
+        <li>
+          <p>
+            The margin of error depends on the
+            <em>confidence level</em>;
+            the standard error does not.
+            Other things being constant,
+            a higher confidence level leads to a larger margin of error.
+          </p>
+        </li>
+        <li>
+          <p>
+            For a fixed confidence level,
+            increasing the sample size decreases the margin of error.
+            This assumes a random sample.
+          </p>
+        </li>
+        <li>
+          <p>
+            The margin of error formula only applies if a sample is random.
+            Moreover, the margin of error measures only
+            <em>sampling error</em>;
+            it does not account for additional error introduced by response bias and non-response bias.
+            Even with a perfectly random sample,
+            the actual error in a poll is likely higher than the reported margin of error.<fn>
+            MISSINGoiRedirect
+            </fn>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="chronic_illness_intro">
+      <title>Chronic illness, Part I</title>
+      <statement>
+        <p>
+          In 2013, the Pew Research Foundation reported that
+          <q>45% of U.S. adults report that they live with one or more chronic conditions</q>. \footfullcite{data:pewdiagnosis:2013} However,
+          this value was based on a sample,
+          so it may not be a perfect estimate for the population parameter of interest on its own.
+          The study reported a standard error of about 1.2%, and a normal model may reasonably be used in this setting.
+          Create a 95% confidence interval for the proportion of U.S. adults who live with one or more chronic conditions.
+          Also interpret the confidence interval in the context of the study.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="twitter_users_intro">
+      <title>Twitter users and news, Part I</title>
+      <statement>
+        <p>
+          A poll conducted in 2013 found that 52% of U.S. adult Twitter users get at least some news on Twitter.\footfullcite{data:pewtwitternews:2013}. The standard error for this estimate was 2.4%, and a normal distribution may be used to model the sample proportion.
+          Construct a 99% confidence interval for the fraction of U.S. adult Twitter users who get some news on Twitter,
+          and interpret the confidence interval in context.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="chronic_illness_tf">
+      <title>Chronic illness, Part II</title>
+      <statement>
+        <p>
+          In 2013, the Pew Research Foundation reported that
+          <q>45% of U.S. adults report that they live with one or more chronic conditions</q>, and the standard error for this estimate is 1.2%. Identify each of the following statements as true or false.
+          Provide an explanation to justify each of your answers.
+          <ol>
+            <li>
+              <p>
+                We can say with certainty that the confidence interval from <xref ref="chronic_illness_intro">Exercise</xref>
+                contains the true percentage of U.S. adults who suffer from a chronic illness.
+              </p>
+            </li>
+            <li>
+              <p>
+                If we repeated this study 1,000 times and constructed a 95% confidence interval for each study,
+                then approximately 950 of those confidence intervals would contain the true fraction of U.S. adults who suffer from chronic illnesses.
+              </p>
+            </li>
+            <li>
+              <p>
+                The poll provides statistically significant evidence
+                (at the <m>\alpha = 0.05</m> level)
+                that the percentage of U.S. adults who suffer from chronic illnesses is below 50%.
+              </p>
+            </li>
+            <li>
+              <p>
+                Since the standard error is 1.2%, only 1.2% of people in the study communicated uncertainty about their answer.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="twitter_users_tf">
+      <title>Twitter users and news, Part II</title>
+      <statement>
+        <p>
+          A poll conducted in 2013 found that 52% of U.S. adult Twitter users get at least some news on Twitter,
+          and the standard error for this estimate was 2.4%. Identify each of the following statements as true or false.
+          Provide an explanation to justify each of your answers.
+          <ol>
+            <li>
+              <p>
+                The data provide statistically significant evidence that more than half of U.S. adult Twitter users get some news through Twitter.
+                Use a significance level of <m>\alpha = 0.01</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Since the standard error is 2.4%, we can conclude that 97.6% of all U.S. adult Twitter users were included in the study.
+              </p>
+            </li>
+            <li>
+              <p>
+                If we want to reduce the standard error of the estimate,
+                we should collect less data.
+              </p>
+            </li>
+            <li>
+              <p>
+                If we construct a 90% confidence interval for the percentage of U.S. adults Twitter users who get some news through Twitter,
+                this confidence interval will be wider than a corresponding 99% confidence interval.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="er_wait_intro_prop_ok">
+      <title>Waiting at an ER, Part I</title>
+      <statement>
+        <p>
+          A hospital administrator hoping to improve wait times decides to estimate the average emergency room waiting time at her hospital.
+          She collects a simple random sample of 64 patients and determines the time
+          (in minutes)
+          between when they checked in to the ER until they were first seen by a doctor.
+          A 95% confidence interval based on this sample is (128 minutes, 147 minutes),
+          which is based on the normal model for the mean.
+          Determine whether the following statements are true or false,
+          and explain your reasoning.
+          <ol>
+            <li>
+              <p>
+                We are 95% confident that the average waiting time of these 64 emergency room patients is between 128 and 147 minutes.
+              </p>
+            </li>
+            <li>
+              <p>
+                We are 95% confident that the average waiting time of all patients at this hospital's emergency room is between 128 and 147 minutes.
+              </p>
+            </li>
+            <li>
+              <p>
+                95% of random samples have a sample mean between 128 and 147 minutes.
+              </p>
+            </li>
+            <li>
+              <p>
+                A 99% confidence interval would be narrower than the 95% confidence interval since we need to be more sure of our estimate.
+              </p>
+            </li>
+            <li>
+              <p>
+                The margin of error is 9.5 and the sample mean is 137.5.
+              </p>
+            </li>
+            <li>
+              <p>
+                In order to decrease the margin of error of a 95% confidence interval to half of what it is now,
+                we would need to double the sample size.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="mental_health">
+      <title>Mental health</title>
+      <statement>
+        <p>
+          The General Social Survey asked the question: ``For how many days during the past 30 days was your mental health,
+          which includes stress, depression,
+          and problems with emotions,
+          not good?" Based on responses from 1,151 US residents,
+          the survey reported a 95% confidence interval of 3.40 to 4.24 days in 2010.
+          <ol>
+            <li>
+              <p>
+                Interpret this interval in context of the data.
+              </p>
+            </li>
+            <li>
+              <p>
+                What does
+                <q>95% confident</q>
+                mean?
+                Explain in the context of the application.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose the researchers think a 99% confidence level would be more appropriate for this interval.
+                Will this new interval be smaller or wider than the 95% confidence interval?
+              </p>
+            </li>
+            <li>
+              <p>
+                If a new survey were to be done with 500 Americans,
+                do you think the standard error of the estimate be larger,
+                smaller, or about the same.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

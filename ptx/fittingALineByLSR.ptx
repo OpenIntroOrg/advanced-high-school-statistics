@@ -1,0 +1,1718 @@
+<section xml:id="fittingALineByLSR">
+  <title>Fitting a line by least squares regression</title>
+  <introduction>
+    <p>
+          <idx><h>least squares regression</h></idx>
+    </p>
+    <p>
+      In this section, we answer the following questions:
+      <ul>
+        <li>
+          <p>
+            How well can we predict financial aid based on family income for a particular college?
+          </p>
+        </li>
+        <li>
+          <p>
+            How does one find, interpret,
+            and apply the least squares regression line?
+          </p>
+        </li>
+        <li>
+          <p>
+            How do we measure the fit of a model and compare different models to each other?
+          </p>
+        </li>
+        <li>
+          <p>
+            Why do models sometimes make predictions that are ridiculous or impossible?
+          </p>
+        </li>
+      </ul>
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          Calculate the slope and y-intercept of the least squares regression line using the relevant summary statistics.
+          Interpret these quantities in context.
+        </p>
+      </li>
+      <li>
+        <p>
+          Understand why the least squares regression line is called the least squares regression line.
+        </p>
+      </li>
+      <li>
+        <p>
+          Interpret the explained variance <m>R^2</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Understand the concept of extrapolation and why it is dangerous.
+        </p>
+      </li>
+      <li>
+        <p>
+          Identify outliers and influential points in a scatterplot.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>An objective measure for finding the best line</title>
+    <p>
+      Fitting linear models by eye is open to criticism since it is based on an individual preference.
+      In this section, we use <em>least squares regression</em>
+      as a more rigorous approach.
+    </p>
+    <p>
+      This section considers family income and gift aid data from a random sample of fifty students in the freshman class of Elmhurst College in Illinois.<fn>
+      These data were sampled from a table of data for all freshmen from the 2011 class at Elmhurst College that accompanied an article titled
+      <em>What Students Really Pay to Go to College</em>
+      published online by <em>The<nbsp/>Chronicle of Higher Education</em>: MISSINGoiRedirect
+      </fn> Gift aid is financial aid that does not need to be paid back,
+      as opposed to a loan.
+      A scatterplot of the data is shown in <xref ref="elmhurstScatterW2Lines">Figure</xref> along with two linear fits.
+      The lines follow a negative trend in the data;
+      students who have higher family incomes tended to have lower gift aid from the university.
+    </p>
+    <figure xml:id="elmhurstScatterW2Lines">
+      <caption>Gift aid and family income for a random sample of 50 freshman students from Elmhurst College. Two lines are fit to the data, the solid line being the <em>least squares line</em>.</caption>
+      <image width="70%" source="images/elmhurstScatterW2Lines.png" />
+    </figure>
+    <p>
+      We begin by thinking about what we mean by
+      <q>best</q>. Mathematically, we want a line that has small residuals.
+      Perhaps our criterion could minimize the sum of the residual magnitudes:
+      <md>
+        <mrow>|y_1 - \hat{y}_1| + |y_2-\hat{y}_2| + \dots + |y_n-\hat{y}_n|</mrow>
+      </md>
+      which we could accomplish with a computer program.
+      The resulting dashed line shown in <xref ref="elmhurstScatterW2Lines">Figure</xref>
+      demonstrates this fit can be quite reasonable.
+      However, a more common practice is to choose the line that minimizes the sum of the squared residuals:
+      <md>
+        <mrow>(y_1 - \hat{y}_1)^2 + (y_2-\hat{y}_2)^2+ \dots + (y_n-\hat{y}_n)^2</mrow>
+      </md>
+    </p>
+    <p>
+      The line that minimizes the sum of the squared residuals is represented as the solid line in <xref ref="elmhurstScatterW2Lines">Figure</xref>.
+      This is commonly called the <term>least squares line</term>.
+    </p>
+    <p>
+      Both lines seem reasonable,
+      so why do data scientists prefer the least squares regression line?
+      One reason is that it is easier to compute by hand and in most statistical software.
+      Another, and more compelling,
+      reason is that in many applications,
+      a residual twice as large as another residual is more than twice as bad.
+      For example,
+      being off by 4 is usually more than twice as bad as being off by 2.
+      Squaring the residuals accounts for this discrepancy.
+    </p>
+    <p>
+      In <xref ref="leastSquares">Figure</xref>,
+      we imagine the squared error about a line as actual squares.
+      The least squares regression line minimizes the sum of the
+      <em>areas</em> of these squared errors.
+      In the figure, the sum of the squared error is <m>4+1+1=6</m>.
+      There is no other line about which the sum of the squared error will be smaller.
+    </p>
+    <figure>
+      MISSINGoiRedirect
+      A visualization of least squares regression using Desmos.  Try out this and other interactive Desmos activities at MISSINGoiRedirect
+    </figure>
+  </subsection>
+  <subsection xml:id="findingTheLeastSquaresLineSection">
+    <title>Finding the least squares line</title>
+    <p>
+      For the Elmhurst College data,
+      we could fit a least squares regression line for predicting gift aid based on a student's family income and write the equation as:
+      <md>
+        <mrow>\widehat{\textit{aid}} = a  + b\times \textit{family\us{}income}</mrow>
+      </md>
+    </p>
+    <p>
+      Here <m>a</m> is the <m>y</m>-intercept of the least squares regression line and <m>b</m> is the slope of the least squares regression line.
+      <m>a</m> and <m>b</m> are both statistics that can be calculated from the data.
+      In the next section we will consider the corresponding parameters that they statistics attempt to estimate.
+    </p>
+    <p>
+      We can enter all of the data into a statistical software package and easily find the values of <m>a</m> and <m>b</m>.
+      However, we can also calculate these values by hand,
+      using only the summary statistics.
+      <ul>
+        <li>
+          <p>
+            The slope of the least squares line is given by
+            <md>
+              <mrow>b = r\frac{s_y}{s_x}</mrow>
+            </md>
+            where <m>r</m> is the correlation between the variables <m>x</m> and <m>y</m>,
+            and <m>s_x</m> and <m>s_y</m> are the sample standard deviations of <m>x</m>,
+            the explanatory variable, and <m>y</m>, the response variable.
+          </p>
+        </li>
+        <li>
+          <p>
+            The point of averages <m>(\bar{x}, \bar{y})</m> is always on the least squares line.
+            Plugging this point in for <m>x</m> and <m>y</m> in the least squares equation and solving for <m>a</m> gives
+            <md>
+              <mrow>\bar{y} \amp = a  + b\bar{x} \amp \amp a=\bar{y}-b\bar{x}</mrow>
+            </md>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        The least squares regression line for predicting <m>y</m> based on <m>x</m> can be written as:
+        <m>\hat{y}=a+bx</m>.
+        <md>
+          <mrow>b=r\frac{s_y}{s_x} \qquad \bar{y} = a + b\bar{x}</mrow>
+        </md>
+      </p>
+      <p>
+        We first find <m>b</m>, the slope,
+        and then we solve for <m>a</m>, the <m>y</m>-intercept.
+      </p>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          <xref ref="summaryStatsOfSATGPAData">Figure</xref>
+          shows the sample means for the family income and gift aid as $101,800 and $19,940, respectively.
+          Plot the point <m>(101.8, 19.94)</m> on <xref ref="elmhurstScatterW2Lines">Figure</xref>
+          to verify it falls on the least squares line
+          (the solid line).
+        </p>
+      </statement>
+    </exercise>
+    <table xml:id="summaryStatsOfSATGPAData">
+      <caption>Summary statistics for family income and gift aid.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\vspace{-4mm}</cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\vspace{0.4mm}</cell>
+          <cell><nbsp/><nbsp/>family income, in $1000s (
+            <q><m>x</m></q>
+            )</cell>
+          <cell><nbsp/><nbsp/>gift aid, in $1000s (
+            <q><m>y</m></q>
+            )</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\vspace{-3.9mm}</cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>mean</cell>
+          <cell><m>\bar{x} = 101.8</m></cell>
+          <cell><m>\bar{y} = 19.94</m></cell>
+        </row>
+        <row>
+          <cell>sd</cell>
+          <cell><m>s_x = 63.2</m></cell>
+          <cell><m>s_y = 5.46</m>\vspace{0.4mm}</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\vspace{-4mm}<nbsp/></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><m>r=-0.499</m></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <example>
+      <statement>
+        <p>
+          Using the summary statistics in <xref ref="summaryStatsOfSATGPAData">Figure</xref>,
+          find the equation of the least squares regression line for predicting gift aid based on family income.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          <md>
+            <mrow>b \amp = r\frac{s_y}{s_x} = (-0.499)\frac{5.46}{63.2} = -0.0431</mrow>
+            <mrow>a \amp  = \bar{y} - b\bar{x} = 19.94 - (-0.0431)(101.8) = 24.3</mrow>
+            <mrow>\hat{y}\amp =24.3 - 0.0431x \qquad\text{ or } \qquad \widehat{\textit{aid}} = 24.3 - 0.0431\times \textit{family\us{}income}</mrow>
+          </md>
+        </p>
+      </answer>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Say we wanted to predict a student's family income based on the amount of gift aid that they received.
+          Would this least squares regression line be the following?
+          <md>
+            <mrow>\textit{aid} = 24.3 - 0.0431\times \widehat{\textit{family\us{}income}}</mrow>
+          </md>
+        </p>
+      </statement>
+      <answer>
+        <p>
+          No.
+          The equation we found was for predicting aid,
+          not for predicting family income.
+          We would have to calculate a new regression line,
+          letting <m>y</m> be <m>\textit{family\us{}income}</m> and <m>x</m> be <m>\textit{aid}</m>.
+          This would give us:
+          <md>
+            <mrow>b \amp = r\frac{s_y}{s_x} = (-0.499)\frac{63.2}{5.46} = -5.776</mrow>
+            <mrow>a \amp  = \bar{y} - b\bar{x} = 19.94 - (-5.776)(101.8) = 607.9</mrow>
+            <mrow>\hat{y}\amp =607.3 - 5.776x \qquad\text{ or } \qquad \widehat{\textit{family\us{}income}} = 607.3 - 5.776\times \textit{aid}</mrow>
+          </md>
+        </p>
+      </answer>
+    </example>
+    <p>
+      We mentioned earlier that a computer is usually used to compute the least squares line.
+      A summary table based on computer output is shown in <xref ref="rOutputForIncomeAidLSRLine">Figure</xref>
+      for the Elmhurst College data.
+      The first column of numbers provides estimates for <m>{b}_0</m> and <m>{b}_1</m>,
+      respectively.
+      Compare these to the result from <xref ref="findingTheSlopeOfTheLSRLineForIncomeAndAid">Example</xref>.
+    </p>
+    <table xml:id="rOutputForIncomeAidLSRLine">
+      <caption>Summary of least squares fit for the Elmhurst College data. Compare the parameter estimates in the first column to the results of Guided <xref ref="findingTheSlopeOfTheLSRLineForIncomeAndAid">Practice</xref>.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\vspace{-3.7mm}</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Estimate</cell>
+          <cell>Std. Error</cell>
+          <cell>t value</cell>
+          <cell>Pr(<m>></m><m>|</m>t<m>|</m>)</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\vspace{-3.6mm}</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>(Intercept)</cell>
+          <cell>24.3193</cell>
+          <cell>1.2915</cell>
+          <cell>18.83</cell>
+          <cell>0.0000</cell>
+        </row>
+        <row>
+          <cell>family\usincome</cell>
+          <cell>-0.0431</cell>
+          <cell>0.0108</cell>
+          <cell>-3.98</cell>
+          <cell>0.0002</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <example>
+      <statement>
+        <p>
+          Examine the second, third,
+          and fourth columns in <xref ref="rOutputForIncomeAidLSRLine">Figure</xref>.
+          Can you guess what they represent?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We'll look at the second row,
+          which corresponds to the slope.
+          The first column, Estimate = -0.0431,
+          tells us our best estimate for the slope of the population regression line.
+          We call this point estimate <m>b</m>.
+          The second column, Std.
+          Error = 0.0108, is the standard error of this point estimate.
+          The third column, t value = -3.98,
+          is the <m>T</m> test statistic for the null hypothesis that the slope of the population regression line = 0.
+          The last column, Pr(<m>></m><m>|</m>t<m>|</m>) = 0.0002,
+          is the p-value for this two-sided <m>T</m>-test.
+          We will get into more of these details in <xref ref="inferenceForLinearRegression">Section</xref>.
+        </p>
+      </answer>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Suppose a high school senior is considering Elmhurst College.
+          Can she simply use the linear equation that we have found to calculate her financial aid from the university?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Suppose a high school senior is considering Elmhurst College.
+          Can she simply use the linear equation that we have found to calculate her financial aid from the university?
+        </p>
+      </solution>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Interpreting the coefficients of a regression line</title>
+    <p>
+          <idx><h>least squares regression</h><h>interpreting parameters</h></idx>
+    </p>
+    <p>
+      Interpreting the coefficients in a regression model is often one of the most important steps in the analysis.
+    </p>
+    <example>
+      <statement>
+        <p>
+          The slope for the Elmhurst College data for predicting gift aid based on family income was calculated as -0.0431.
+          Intepret this quantity in the context of the problem.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The slope for the Elmhurst College data for predicting gift aid based on family income was calculated as -0.0431.
+          Intepret this quantity in the context of the problem.
+        </p>
+      </solution>
+    </example>
+    <example>
+      <statement>
+        <p>
+          The <m>y</m>-intercept for the Elmhurst College data for predicting gift aid based on family income was calculated as 24.3.
+          Intepret this quantity in the context of the problem.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The <m>y</m>-intercept for the Elmhurst College data for predicting gift aid based on family income was calculated as 24.3.
+          Intepret this quantity in the context of the problem.
+        </p>
+      </solution>
+    </example>
+    <assemblage>
+      <title></title>
+      <ul>
+        <li>
+          <p>
+            The slope, <m>b</m>, describes the <em>average</em>
+            increase or decrease in the <m>y</m> variable if the explanatory variable <m>x</m> is one unit larger.
+          </p>
+        </li>
+        <li>
+          <p>
+            The y-intercept, <m>a</m>,
+            describes the predicted outcome of <m>y</m> if <m>x=0</m>.
+            The linear model must be valid all the way to <m>x=0</m> for this to make sense,
+            which in many applications is not the case.
+          </p>
+        </li>
+      </ul>
+    </assemblage>
+    <p>
+          <idx><h>least squares regression</h><h>interpreting parameters</h></idx>
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          In the previous chapter,
+          we encountered a data set that compared the price of new textbooks for UCLA courses at the UCLA Bookstore and on Amazon.
+          We fit a linear model for predicting price at UCLA Bookstore from price on Amazon and we get:
+          <md>
+            <mrow>\hat{y} = 1.86 + 1.03x</mrow>
+          </md>
+          where <m>x</m> is the price on Amazon and <m>y</m> is the price at the UCLA bookstore.
+          Interpret the coefficients in this model and discuss whether the interpretations make sense in this context.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Can we conclude that if Amazon raises the price of a textbook by 1 dollar,
+          the UCLA Bookstore will raise the price of the textbook by $1.03?
+        </p>
+      </statement>
+    </exercise>
+    <assemblage>
+      <title></title>
+      <ul>
+        <li>
+          <p>
+            The slope tells us only the <em>average</em>
+            change in <m>y</m> for each unit change in <m>x</m>;
+            it does not tell us how much <m>y</m> might change based on a change in <m>x</m> for any particular <em>individual</em>.
+            Moreover, in most cases, the slope cannot be interpreted in a causal way.
+          </p>
+        </li>
+        <li>
+          <p>
+            When a value of <m>x=0</m> doesn't make sense in an application,
+            then the interpretation of the <m>y</m>-intercept won't have any practical meaning.
+          </p>
+        </li>
+      </ul>
+    </assemblage>
+  </subsection>
+  <subsection>
+    <title>Extrapolation is treacherous</title>
+    <p>
+          <idx><h>least squares regression</h><h>extrapolation</h></idx>
+    </p>
+    <p>
+      When those blizzards hit the East Coast this winter,
+      it proved to my satisfaction that global warming was a fraud.
+      That snow was freezing cold.
+      But in an alarming trend, temperatures this spring have risen.
+      Consider this: On February <m>6^{th}</m> it was 10 degrees.
+      Today it hit almost 80.
+      At this rate, by August it will be 220 degrees.
+      So clearly folks the climate debate rages on.
+    </p>
+    <p>
+      Stephen Colbert
+    </p>
+    <p>
+      April 6th, 2010<fn>
+      MISSINGoiRedirect
+      </fn>
+    </p>
+    <p>
+      Linear models can be used to approximate the relationship between two variables.
+      However, these models have real limitations.
+      Linear regression is simply a modeling framework.
+      The truth is almost always much more complex than our simple line.
+      For example,
+      we do not know how the data outside of our limited window will behave.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Use the model <m>\widehat{\textit{aid}} = 24.3 - 0.0431\times \textit{family\us{}income}</m> to estimate the aid of another freshman student whose family had income of $1 million.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Recall that the units of family income are in $1000s,
+          so we want to calculate the aid for <m>\textit{family\us{}income}= 1000</m>:
+          <md>
+            <mrow>\widehat{\textit{aid}} \amp = 24.3 - 0.0431 \times \textit{family\us{}income}</mrow>
+            <mrow>\widehat{\textit{aid}}\amp =24.3 - 0.431(1000) = -18.8</mrow>
+          </md>
+        </p>
+        <p>
+          The model predicts this student will have -$18,800 in aid (!).
+          Elmhurst College cannot
+          (or at least does not)
+          require any students to pay extra on top of tuition to attend.
+        </p>
+      </answer>
+    </example>
+    <p>
+      Using a model to predict <m>y</m>-values for <m>x</m>-values outside the domain of the original data is called
+      <term>extrapolation</term>.
+      Generally, a linear model is only an approximation of the real relationship between two variables.
+      If we extrapolate,
+      we are making an unreliable bet that the approximate linear relationship will be valid in places where it has not been analyzed.
+    </p>
+    <p>
+          <idx><h>least squares regression</h><h>extrapolation</h></idx>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Using <m>R^2</m> to describe the strength of a fit</title>
+    <p>
+          <idx><h>least squares regression</h><h>R-squared (<m>R^2</m>)</h></idx>
+    </p>
+    <p>
+      We evaluated the strength of the linear relationship between two variables earlier using the correlation,
+      <m>r</m>.
+      However, it is more common to explain the fit of a model using <m>R^2</m>,
+      called <em>R-squared</em><idx><h>least squares regression</h><h>R-squared (<m>R^2</m>)|textbf</h></idx> or the
+      <term>explained variance</term>.
+      If provided with a linear model,
+      we might like to describe how closely the data cluster around the linear fit.
+    </p>
+    <figure xml:id="elmhurstScatterWLSROnly">
+      <caption>Gift aid and family income for a random sample of 50 freshman students from Elmhurst College, shown with the least squares regression line (<m>\hat{y}</m>) and the average line (<m>\bar{y}</m>).</caption>
+      <image width="70%" source="images/elmhurstScatterWAveLine.png" />
+    </figure>
+    <p>
+      We are interested in how well a model accounts for or explains the location of the <m>y</m> values.
+      The <m>R^2</m> of a linear model describes how much smaller the variance
+      (in the <m>y</m> direction)
+      about the regression line is than the variance about the horizontal line <m>\bar{y}</m>.
+      For example, consider the Elmhurst College data,
+      shown in <xref ref="elmhurstScatterWLSROnly">Figure</xref>.
+      The variance of the response variable,
+      aid received, is <m>s_{aid}^2=29.8</m>.
+      However, if we apply our least squares line,
+      then this model reduces our uncertainty in predicting aid using a student's family income.
+      The variability in the residuals describes how much variation remains after using the model:
+      <m>s_{_{RES}}^2 = 22.4</m>.
+      We could say that the reduction in the variance was:
+      <me>
+        \frac{s_{aid}^2 - s_{_{RES}}^2}{s_{aid}^2} = \frac{29.8 - 22.4}{29.8} = \frac{7.5}{29.8} = 0.25
+      </me>
+    </p>
+    <p>
+      If we used the simple standard deviation of the residuals,
+      this would be exactly <m>R^2</m>.
+      However, the standard way of computing the standard deviation of the residuals is slightly more sophisticated.<fn>
+      In computing the standard deviation of the residuals,
+      we divide by <m>n-2</m> rather than by <m>n-1</m> to account for the <m>n-2</m> degrees of freedom.
+      </fn> To avoid any trouble,
+      we can instead use a sum of squares method.
+      If we call the sum of the squared errors about the regression line <m>SSRes</m> and the sum of the squared errors about the mean <m>SSM</m>,
+      we can define <m>R^2</m> as follows:
+      <md>
+        <mrow>R^2=\frac{SSM - SSRes}{SSM} = 1-\frac{SSRes}{SSM}</mrow>
+      </md>
+    </p>
+    <figure>
+      MISSINGoiRedirect
+      \subref{rsq1} The regression line is equivalent to <m>\bar{y}</m>; <m>R^2 = 0</m>.
+      \subref{rsq2} The regression line passes through all of the points; <m>R^2=1</m>.  Try out this and other interactive Desmos activities at MISSINGoiRedirect
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          Using the formula for <m>R^2</m>,
+          confirm that in <xref ref="rSquared">Figure</xref> (a),
+          <m>R^2 = 0</m> and that in <xref ref="rSquared">Figure</xref> (b),
+          <m>R^2 = 1</m>.
+        </p>
+      </statement>
+    </exercise>
+    <assemblage>
+      <title></title>
+      <p>
+        <m>R^2</m> is always between 0 and 1, inclusive.
+        It tells us the proportion of variation in the <m>y</m> values that is explained by a regression model.
+        The higher the value of <m>R^2</m>, the better the model
+        <q>explains</q>
+        the response variable.
+      </p>
+    </assemblage>
+    <p>
+      The value of <m>R^2</m> is, in fact,
+      equal to <m>r^2</m>, where <m>r</m> is the correlation.
+      This means that <m>r = \pm \sqrt{R^2}</m>.
+      Use this fact to answer the next two practice problems.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          If a linear model has a very strong negative relationship with a correlation of -0.97,
+          how much of the variation in the response variable is explained by the linear model?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+          <idx><h>least squares regression</h><h>R-squared (<m>R^2</m>)</h></idx>
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          If a linear model has an <m>R^2</m> or explained variance of 0.94, what is the correlation?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="calclinreg">
+    <title>Calculator/Desmos: linear correlation and regression</title>
+    <assemblage>
+      <p>
+        {MISSINGVIDEOLINK TI-84: finding <m>{a}</m>, {<m>b</m>}, <m>R^2</m>,
+        and {<m>r</m>} for a linear model} Use <c>STAT</c>, <c>CALC</c>, <c>LinReg(a + bx)</c>.
+        <ol>
+          <li>
+            <p>
+              Choose <c>STAT</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Right arrow to <c>CALC</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Down arrow and choose <c>8:LinReg(a+bx)</c>.
+              <ul>
+                <li>
+                  <p>
+                    Caution: choosing <c>4:LinReg(ax+b)</c> will reverse <m>a</m> and <m>b</m>.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>Xlist</c> be <c>L1</c> and <c>Ylist</c> be <c>L2</c> (don't forget to enter the <m>x</m> and <m>y</m> values in L1 and <c>L2</c> before doing this calculation).
+            </p>
+          </li>
+          <li>
+            <p>
+              Leave <c>FreqList</c> blank.
+            </p>
+          </li>
+          <li>
+            <p>
+              Leave <c>Store RegEQ</c> blank.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose Calculate and hit <c>ENTER</c>,
+              which returns:
+              <tabular>
+                <row>
+                  <cell><c>a</c></cell>
+                  <cell><m>a</m>, the y-intercept of the best fit line</cell>
+                </row>
+                <row>
+                  <cell><c>b</c></cell>
+                  <cell><m>b</m>, the slope of the best fit line</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{r^2}</m></cell>
+                  <cell><m>R^2</m>, the explained variance</cell>
+                </row>
+                <row>
+                  <cell><c>r</c></cell>
+                  <cell><m>r</m>, the correlation coefficient</cell>
+                </row>
+              </tabular>
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        TI-83: Do steps 1-3, then enter the <m>x</m> list and <m>y</m> list separated by a comma,
+        e.g. <c>LinReg(a+bx) L1, L2</c>,
+        then hit <c>ENTER</c>.
+      </p>
+    </assemblage>
+    <assemblage>
+      <p>
+        {What to do if <m>r^2</m> and {<m>r</m>} do not show up on a TI-83/84} If <m>r^2</m> and <m>r</m> do now show up when doing <c>STAT</c>, <c>CALC</c>, <c>LinReg</c>, the
+        <em>diagnostics</em> must be turned on.
+        This only needs to be once and the diagnostics will remain on.
+        <ol>
+          <li>
+            <p>
+              Hit <c>2ND</c> <c>0</c> (i.e. <c>CATALOG</c>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Scroll down until the arrow points at <c>DiagnosticOn</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Hit <c>ENTER</c> and <c>ENTER</c> again.
+              The screen should now say:
+              <tabular>
+                <row>
+                  <cell><c>DiagnosticOn</c></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell></cell>
+                  <cell><c>Done</c></cell>
+                </row>
+              </tabular>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </assemblage>
+    <assemblage>
+      <p>
+        {What to do if a TI-83/84 returns: {ERR:}<nbsp/>{DIM MISMATCH}} This error means that the lists,
+        generally L1 and L2, do not have the same length.
+        <ol>
+          <li>
+            <p>
+              Choose <c>1:Quit</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>STAT</c>,<nbsp/><c>Edit</c> and make sure that the lists have the same number of entries.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </assemblage>
+    <assemblage>
+      <p>
+        {MISSINGVIDEOLINK Casio fx-9750GII: finding <m>{a}</m>, {<m>b</m>}, <m>R^2</m>,
+        and {<m>r</m>} for a linear model}
+        <ol>
+          <li>
+            <p>
+              Navigate to <c>STAT</c> (<c>MENU</c> button,
+              then hit the <c>2</c> button or select <c>STAT</c>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Enter the <m>x</m> and <m>y</m> data into 2 separate lists, e.g.
+              <m>x</m> values in <c>List 1</c> and <m>y</m> values in <c>List 2</c>.
+              Observation ordering should be the same in the two lists.
+              For example, if <m>(5, 4)</m> is the second observation,
+              then the second value in the <m>x</m> list should be 5 and the second value in the <m>y</m> list should be 4.
+            </p>
+          </li>
+          <li>
+            <p>
+              Navigate to <c>CALC</c> (<c>F2</c>) and then <c>SET</c> (<c>F6</c>) to set the regression context.
+              <ul>
+                <li>
+                  <p>
+                    To change the <c>2Var XList</c>,
+                    navigate to it,
+                    select <c>List</c> (<c>F1</c>), and enter the proper list number.
+                    Similarly, set <c>2Var YList</c> to the proper list.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+          <li>
+            <p>
+              Hit <c>EXIT</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Select <c>REG</c> (<c>F3</c>), <c>X</c> (<c>F1</c>), and <c>a+bx</c> (<c>F2</c>), which returns:
+              <tabular>
+                <row>
+                  <cell><c>a</c></cell>
+                  <cell><m>a</m>, the y-intercept of the best fit line</cell>
+                </row>
+                <row>
+                  <cell><c>b</c></cell>
+                  <cell><m>b</m>, the slope of the best fit line</cell>
+                </row>
+                <row>
+                  <cell><c>r</c></cell>
+                  <cell><m>r</m>, the correlation coefficient</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{r^2}</m></cell>
+                  <cell><m>R^2</m>, the explained variance</cell>
+                </row>
+                <row>
+                  <cell><c>MSe</c></cell>
+                  <cell>Mean squared error, which you can ignore</cell>
+                </row>
+              </tabular>
+              If you select <c>ax+b</c> (<c>F1</c>), the <c>a</c> and <c>b</c> meanings will be reversed.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </assemblage>
+    <exercise xml:id="subsetOfLoan50">
+      <statement>
+        <p>
+          The data set <c>loan50</c>,
+          introduced in Chapter 1, contains information on randomly sampled loans offered through Lending Club.
+          A subset of the data matrix is shown in <xref ref="data_for_regr_calc_exercise_loan50">Figure</xref>.
+          Use a calculator to find the equation of the least squares regression line for predicting loan amount from total income.
+        </p>
+      </statement>
+    </exercise>
+    <table xml:id="data_for_regr_calc_exercise_loan50">
+      <caption>Sample of data from <c>loan50</c>.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>total_income</cell>
+          <cell>loan_amount</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>59000</cell>
+          <cell>22000</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>60000</cell>
+          <cell>6000</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>75000</cell>
+          <cell>25000</cell>
+        </row>
+        <row>
+          <cell>4</cell>
+          <cell>75000</cell>
+          <cell>6000</cell>
+        </row>
+        <row>
+          <cell>5</cell>
+          <cell>254000</cell>
+          <cell>25000</cell>
+        </row>
+        <row>
+          <cell>6</cell>
+          <cell>67000</cell>
+          <cell>6400</cell>
+        </row>
+        <row>
+          <cell>7</cell>
+          <cell>28800</cell>
+          <cell>3000</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <example>
+      <statement>
+        <answer>
+          <p>
+            begin{answer}se the full <c>loan50</c> data set (MISSINGoiRedirectMISSINGoiRedirect
+          </p>
+        </answer>
+        <p>
+          \end{answer}
+        </p>
+      </statement>
+    </example>
+  </subsection>
+  <subsection xml:id="typesOfOutliersInLinearRegression">
+    <title>Types of outliers in linear regression</title>
+    <p>
+      Outliers in regression are observations that fall far from the
+      <q>cloud</q>
+      of points.
+      These points are especially important because they can have a strong influence on the least squares line.
+    </p>
+    <example xml:id="outlierPlotsExample">
+      <statement>
+        <p>
+          There are six plots shown in <xref ref="outlierPlots">Figure</xref>
+          along with the least squares line and residual plots.
+          For each scatterplot and residual plot pair,
+          identify any obvious outliers and note how they influence the least squares line.
+          Recall that an outlier is any point that doesn't appear to belong with the vast majority of the other points.
+        </p>
+      </statement>
+      <answer>
+        <ul>
+          <li>
+            <title>(1)</title>
+            <p>
+              There is one outlier far from the other points,
+              though it only appears to slightly influence the line.
+            </p>
+          </li>
+          <li>
+            <title>(2)</title>
+            <p>
+              There is one outlier on the right,
+              though it is quite close to the least squares line,
+              which suggests it wasn't very influential.
+            </p>
+          </li>
+          <li>
+            <title>(3)</title>
+            <p>
+              There is one point far away from the cloud,
+              and this outlier appears to pull the least squares line up on the right;
+              examine how the line around the primary cloud doesn't appear to fit very well.
+            </p>
+          </li>
+          <li>
+            <title>(4)</title>
+            <p>
+              There is a primary cloud and then a small secondary cloud of four outliers.
+              The secondary cloud appears to be influencing the line somewhat strongly,
+              making the least squares line fit poorly almost everywhere.
+              There might be an interesting explanation for the dual clouds,
+              which is something that could be investigated.
+            </p>
+          </li>
+          <li>
+            <title>(5)</title>
+            <p>
+              There is no obvious trend in the main cloud of points and the outlier on the right appears to largely control the slope of the least squares line.
+            </p>
+          </li>
+          <li>
+            <title>(6)</title>
+            <p>
+              There is one outlier far from the cloud, however,
+              it falls quite close to the least squares line and does not appear to be very influential.
+            </p>
+          </li>
+        </ul>
+      </answer>
+    </example>
+    <figure xml:id="outlierPlots">
+      <caption>Six plots, each with a least squares line and residual plot. All data sets have at least one outlier.</caption>
+      <image width="73%" source="images/outlierPlots.png" />
+    </figure>
+    <p>
+      Examine the residual plots in <xref ref="outlierPlots">Figure</xref>.
+      You will probably find that there is some trend in the main clouds of (3) and (4).
+      In these cases,
+      the outliers influenced the slope of the least squares lines.
+      In (5), data with no clear trend were assigned a line with a large trend simply due to one outlier (!).
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        Points that fall horizontally away from the center of the cloud tend to pull harder on the line,
+        so we call them points with <term>high leverage</term>.
+      </p>
+    </assemblage>
+    <p>
+      Points that fall horizontally far from the line are points of high leverage;
+      these points can strongly influence the slope of the least squares line.
+      If one of these high leverage points does appear to actually invoke its influence on the slope of the line <mdash/> as in cases (3), (4),
+      and (5) of <xref ref="outlierPlotsExample">Example</xref>
+      <mdash/> then we call it an <term>influential point</term>.
+      Usually we can say a point is influential if,
+      had we fitted the line without it,
+      the influential point would have been unusually far from the least squares line.
+    </p>
+    <p>
+      It is tempting to remove outliers.
+      Don't do this without a very good reason.
+      Models that ignore exceptional
+      (and interesting)
+      cases often perform poorly.
+      For instance,
+      if a financial firm ignored the largest market swings <mdash/> the
+      <q>outliers</q>
+      <mdash/> they would soon go bankrupt by making poorly thought-out investments.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        {If there are outliers in the data,
+        they should not be removed or ignored without a<nbsp/>good reason.
+        Whatever final model is fit to the data would not be very helpful if it ignores the most exceptional cases.}
+      </p>
+    </assemblage>
+  </subsection>
+  <subsection xml:id="categoricalPredictorsWithTwoLevels">
+    <title>Categorical predictors with two levels (special topic)</title>
+    <p>
+      Categorical variables are also useful in predicting outcomes.
+      Here we consider a categorical predictor with two levels
+      (recall that a <em>level</em> is the same as a <em>category</em>).
+      We'll consider eBay auctions for a video game,
+      <em>Mario Kart</em> for the Nintendo Wii,
+      where both the total price of the auction and the condition of the game were recorded.<fn>
+      These data were collected in Fall 2009 and may be found at MISSINGoiRedirect.
+      </fn> Here we want to predict total price based on game condition,
+      which takes values <c>used</c> and <c>new</c>.
+      A plot of the auction data is shown in <xref ref="marioKartNewUsed">Figure</xref>.
+    </p>
+    <figure xml:id="marioKartNewUsed">
+      <caption>Total auction prices for the game <em>Mario Kart</em>, divided into used (<m>x=0</m>) and new (<m>x=1</m>) condition games with the least squares regression line<nbsp/>shown.</caption>
+      <image width="49%" source="images/marioKartNewUsed.png" />
+    </figure>
+    <p>
+      To incorporate the game condition variable into a regression equation,
+      we must convert the categories into a numerical form.
+      We will do so using an <term>indicator variable</term>
+      called <c>cond\usnew</c>,
+      which takes value 1 when the game is new and 0 when the game is used.
+      Using this indicator variable,
+      the linear model may be written as
+      <md>
+        <mrow>\widehat{price} = \alpha + \beta \times \text{\texttt{cond\us{}new}}</mrow>
+      </md>
+    </p>
+    <p>
+      The fitted model is summarized in <xref ref="marioKartNewUsedRegrSummary">Figure</xref>,
+      and the model with its parameter estimates is given<nbsp/>as
+      <md>
+        <mrow>\widehat{price} = 42.87 + 10.90 \times \text{\texttt{cond\us{}new}}</mrow>
+      </md>
+    </p>
+    <p>
+      For categorical predictors with two levels,
+      the linearity assumption will always be satisfied.
+      However, we must evaluate whether the residuals in each group are approximately normal with equal variance.
+      Based on <xref ref="marioKartNewUsed">Figure</xref>,
+      both of these conditions are reasonably satisfied.
+    </p>
+    <table xml:id="marioKartNewUsedRegrSummary">
+      <caption>Least squares regression summary for the Mario Kart data.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\vspace{-3.7mm}</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Estimate</cell>
+          <cell>Std. Error</cell>
+          <cell>t value</cell>
+          <cell>Pr(<m>></m><m>|</m>t<m>|</m>)</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\vspace{-3.6mm}</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>(Intercept)</cell>
+          <cell>42.87</cell>
+          <cell>0.81</cell>
+          <cell>52.67</cell>
+          <cell>0.0000</cell>
+        </row>
+        <row>
+          <cell>cond\usnew</cell>
+          <cell>10.90</cell>
+          <cell>1.26</cell>
+          <cell>8.66</cell>
+          <cell>0.0000</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <example>
+      <statement>
+        <p>
+          Interpret the two parameters estimated in the model for the price of
+          <em>Mario Kart</em> in eBay auctions.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The intercept is the estimated price when <c>cond\usnew</c> takes value 0, i.e. when the game is in used condition.
+          That<nbsp/>is,
+          the average selling price of a used version of the game is $42.87.
+        </p>
+        <p>
+          The slope indicates that, on average,
+          new games sell for about $10.90 more than used games.
+        </p>
+      </answer>
+    </example>
+    <assemblage>
+      <title></title>
+      <p>
+        The estimated intercept is the value of the response variable for the first category (i.e. the category corresponding to an indicator value of 0).
+        The estimated slope is the average change in the response variable between the two categories.
+      </p>
+    </assemblage>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <ul>
+      <li>
+        <p>
+          We define the <em>best fit line</em>
+          as the line that minimizes the sum of the squared residuals (errors) about the line.
+          That<nbsp/>is,
+          we find the line that minimizes <m>(y_1 - \hat{y}_1)^2 + (y_2-\hat{y}_2)^2+ \dots + (y_n-\hat{y}_n)^2=\sum{(y_i - \hat{y}_i)^2}</m>.
+          We call this line the <term>least squares regression line</term>.
+        </p>
+      </li>
+      <li>
+        <p>
+          We write the least squares regression line in the form:
+          <m>\hat{y} = a  + bx</m>,
+          and we can calculate <m>a</m> and <m>b</m> based on the summary statistics as follows:
+          <md>
+            <mrow>b=r\frac{s_y}{s_x} \qquad \text{ and }  \qquad a=\bar{y} - b\bar{x}</mrow>
+          </md>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Interpreting</em> the <term>slope</term>
+          and <term>y-intercept</term> of a linear model
+          <ul>
+            <li>
+              <p>
+                The slope, <m>b</m>, describes the <em>average</em>
+                increase or decrease in the <m>y</m> variable if the explanatory variable <m>x</m> is one unit larger.
+              </p>
+            </li>
+            <li>
+              <p>
+                The y-intercept, <m>a</m>,
+                describes the average or predicted outcome of <m>y</m> if <m>x=0</m>.
+                The linear model must be valid all the way to <m>x=0</m> for this to make sense,
+                which in many applications is not the case.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+      <li>
+        <p>
+          Two important considerations about the regression line
+          <ul>
+            <li>
+              <p>
+                The regression line provides <em>estimates</em>
+                or <em>predictions</em>, not actual values.
+                It is important to know how large <m>s</m>,
+                the standard deviation of the residuals,
+                is in order to know about how much error to expect in these predictions.
+              </p>
+            </li>
+            <li>
+              <p>
+                The regression line estimates are only reasonable within the domain of the data.
+                Predicting <m>y</m> for <m>x</m> values that are outside the domain,
+                known as <term>extrapolation</term>,
+                is unreliable and may produce ridiculous results.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+      <li>
+        <p>
+          Using <m>R^2</m> to assess the fit of the model
+          <ul>
+            <li>
+              <p>
+                <m>R^2</m>, called <term>R-squared</term>
+                or the <term>explained variance</term>,
+                is a measure of how well the model explains or fits the data.
+                <m>R^2</m> is always between 0 and 1, inclusive,
+                or between 0% and 100%, inclusive.
+                The higher the value of <m>R^2</m>, the better the model
+                <q>fits</q>
+                the data.
+              </p>
+            </li>
+            <li>
+              <p>
+                The <m>R^2</m> for a linear model describes the
+                <em>proportion of variation</em>
+                in the <m>y</m> variable that is
+                <em>explained by</em> the regression line.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>R^2</m> applies to any type of model, not just a linear model,
+                and can be used to compare the fit among various models.
+              </p>
+            </li>
+            <li>
+              <p>
+                The correlation <m>r = - \sqrt{R^2}</m> or <m>r = \sqrt{R^2}</m>.
+                The value of <m>R^2</m> is always positive and cannot tell us the
+                <em>direction</em> of the association.
+                If finding <m>r</m> based on <m>R^2</m>,
+                make sure to use either the scatterplot or the slope of the regression line to determine the
+                <em>sign</em> of <m>r</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+      <li>
+        <p>
+          When a residual plot of the data appears as a random cloud of points,
+          a linear model is generally appropriate.
+          If a residual plot of the data has any type of pattern or curvature,
+          such as a <m>\cup</m>-shape, a linear model is not appropriate.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Outliers</em>
+            <idx><h>outlier|textbf</h></idx>
+          in regression are observations that fall far from the
+          <q>cloud</q>
+          of points.
+        </p>
+      </li>
+      <li>
+        <p>
+          An <term>influential point</term>
+          is a point that has a big effect or pull on the slope of the regression line.
+          Points that are outliers in the <m>x</m> direction will have more pull on the slope of the regression line and are more likely to be influential points.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="regression_units">
+      <title>Units of regression</title>
+      <statement>
+        <p>
+          Consider a regression predicting weight (kg) from height (cm) for a sample of adult males.
+          What are the units of the correlation coefficient,
+          the intercept, and the slope?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="which_higher_scatter">
+      <statement>
+        <p>
+          { <em>Which is higher ?</em>} Determine if I or II is higher or if they are equal.
+          Explain your reasoning.
+          For a regression line,
+          the uncertainty associated with the slope estimate,
+          <m>b_1</m>, is higher when
+          <ol>
+            <li>
+              <title>I.</title>
+              <p>
+                there is a lot of scatter around the regression line or
+              </p>
+            </li>
+            <li>
+              <title>II.</title>
+              <p>
+                there is very little scatter around the regression line
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="residual_apple_weight">
+      <title>Over-under, Part I</title>
+      <statement>
+        <p>
+          Suppose we fit a regression line to predict the shelf life of an apple based on its weight.
+          For a particular apple, we predict the shelf life to be 4.6 days.
+          The apple's residual is -0.6 days.
+          Did we over or under estimate the shelf-life of the apple?
+          Explain your reasoning.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="residual_sun_cancer">
+      <title>Over-under, Part II</title>
+      <statement>
+        <p>
+          Suppose we fit a regression line to predict the number of incidents of skin cancer per 1,000 people from the number of sunny days in a year.
+          For a particular year,
+          we predict the incidence of skin cancer to be 1.5 per 1,000 people,
+          and the residual for this year is 0.5.
+          Did we over or under estimate the incidence of skin cancer?
+          Explain your reasoning.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="tourism_spending_reg_conds">
+      <title>Tourism spending</title>
+      <statement>
+        <p>
+          The Association of Turkish Travel Agencies reports the number of foreign tourists visiting Turkey and tourist spending by year. \footfullcite{data:turkeyTourism} Three plots are provided:
+          scatterplot showing the relationship between these two variables along with the least squares fit,
+          residuals plot, and histogram of residuals.
+          <image width="32%" source="images/tourism_spending_count.png" /> <image width="32%" source="images/tourism_spending_count_residuals.png" /> <image width="32%" source="images/tourism_spending_count_residuals_hist.png" />
+          <ol>
+            <li>
+              <p>
+                Describe the relationship between number of tourists and spending.
+              </p>
+            </li>
+            <li>
+              <p>
+                What are the explanatory and response variables?
+              </p>
+            </li>
+            <li>
+              <p>
+                Why might we want to fit a regression line to these data?
+              </p>
+            </li>
+            <li>
+              <p>
+                Do the data meet the conditions required for fitting a least squares line?
+                In addition to the scatterplot,
+                use the residual plot and histogram to answer this question.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="starbucks_cals_carbos">
+      <title>Nutrition at Starbucks, Part I</title>
+      <statement>
+        <p>
+          The scatterplot below shows the relationship between the number of calories and amount of carbohydrates
+          (in grams)
+          Starbucks food menu items contain.\footfullcite{data:starbucksCals} Since Starbucks only lists the number of calories on the display items,
+          we are interested in predicting the amount of carbs a menu item has based on its calorie content.
+          <url href="\oiRedirectUrl{tableau-starbucks-p1}"><image width="32%" source="images/starbucks_cals_carbos.png" /> <image width="32%" source="images/starbucks_cals_carbos_residuals.png" /> <image width="32%" source="images/starbucks_cals_carbos_residuals_hist.png" /></url>
+          \oiRedirect{\includegraphics[height=tableau-starbucks-p1]{extraTeX/icons/tableau}}
+          <ol>
+            <li>
+              <p>
+                Describe the relationship between number of calories and amount of carbohydrates
+                (in grams)
+                that Starbucks food menu items contain.
+              </p>
+            </li>
+            <li>
+              <p>
+                In this scenario, what are the explanatory and response variables?
+              </p>
+            </li>
+            <li>
+              <p>
+                Why might we want to fit a regression line to these data?
+              </p>
+            </li>
+            <li>
+              <p>
+                Do these data meet the conditions required for fitting a least squares line?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="coast_starlight_reg">
+      <title>The Coast Starlight, Part II</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> <xref ref="coast_starlight_corr_units">Exercise</xref>
+          introduces data on the Coast Starlight Amtrak train that runs from Seattle to Los Angeles.
+          The mean travel time from one stop to the next on the Coast Starlight is 129 mins,
+          with a standard deviation of 113 minutes.
+          The mean distance traveled from one stop to the next is 108 miles with a standard deviation of 99 miles.
+          The correlation between travel time and distance is 0.636.
+          <ol>
+            <li>
+              <p>
+                Write the equation of the regression line for predicting travel time.
+              </p>
+            </li>
+            <li>
+              <p>
+                Interpret the slope and the intercept in this context.
+              </p>
+            </li>
+            <li>
+              <p>
+                Calculate <m>R^2</m> of the regression line for predicting travel time from distance traveled for the Coast Starlight,
+                and interpret <m>R^2</m> in the context of the application.
+              </p>
+            </li>
+            <li>
+              <p>
+                The distance between Santa Barbara and Los Angeles is 103 miles.
+                Use the model to estimate the time it takes for the Starlight to travel between these two cities.
+              </p>
+            </li>
+            <li>
+              <p>
+                It actually takes the Coast Starlight about 168 mins to travel from Santa Barbara to Los Angeles.
+                Calculate the residual and explain the meaning of this residual value.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose Amtrak is considering adding a stop to the Coast Starlight 500 miles away from Los Angeles.
+                Would it be appropriate to use this linear model to predict the travel time from Los Angeles to this point?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="body_measurements_shoulder_height_reg">
+      <title>Body measurements, Part III</title>
+      <statement>
+        <p>
+          <xref ref="body_measurements_shoulder_height_corr_units">Exercise</xref>
+          introduces data on shoulder girth and height of a group of individuals.
+          The mean shoulder girth is 107.20 cm with a standard deviation of 10.37 cm.
+          The mean height is 171.14 cm with a standard deviation of 9.41 cm.
+          The correlation between height and shoulder girth is 0.67.
+          <ol>
+            <li>
+              <p>
+                Write the equation of the regression line for predicting height.
+              </p>
+            </li>
+            <li>
+              <p>
+                Interpret the slope and the intercept in this context.
+              </p>
+            </li>
+            <li>
+              <p>
+                Calculate <m>R^2</m> of the regression line for predicting height from shoulder girth,
+                and interpret it in the context of the application.
+              </p>
+            </li>
+            <li>
+              <p>
+                A randomly selected student from your class has a shoulder girth of 100 cm.
+                Predict the height of this student using the model.
+              </p>
+            </li>
+            <li>
+              <p>
+                The student from part<nbsp/>(d) is 160 cm tall.
+                Calculate the residual, and explain what this residual means.
+              </p>
+            </li>
+            <li>
+              <p>
+                A one year old has a shoulder girth of 56 cm.
+                Would it be appropriate to use this linear model to predict the height of this child?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="murders_poverty_reg">
+      <title>Murders and poverty, Part I</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK<nbsp/> The following regression output is for predicting annual murders per million from percentage living in poverty in a random sample of 20 metropolitan areas.
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                Write out the linear model.
+              </p>
+            </li>
+            <li>
+              <p>
+                Interpret the intercept.
+              </p>
+            </li>
+            <li>
+              <p>
+                Interpret the slope.
+              </p>
+            </li>
+            <li>
+              <p>
+                Interpret <m>R^2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Calculate the correlation coefficient.
+              </p>
+            </li>
+          </ol>
+          <m>\:</m>
+          <image width="73%" source="images/murders_poverty.png" />
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="cat_body_heart_reg">
+      <title>Cats, Part I</title>
+      <statement>
+        <p>
+          The following regression output is for predicting the heart weight
+          (in g)
+          of cats from their body weight
+          (in kg).
+          The coefficients are estimated using a dataset of 144 domestic cats.
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                Write out the linear model.
+              </p>
+            </li>
+            <li>
+              <p>
+                Interpret the intercept.
+              </p>
+            </li>
+            <li>
+              <p>
+                Interpret the slope.
+              </p>
+            </li>
+            <li>
+              <p>
+                Interpret <m>R^2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Calculate the correlation coefficient.
+              </p>
+            </li>
+          </ol>
+          <m>\:</m>
+          <image width="73%" source="images/cat_body_heart.png" />
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="outliers_1">
+      <title>Outliers, Part I</title>
+      <statement>
+        <p>
+          Identify the outliers in the scatterplots shown below,
+          and determine what type of outliers they are.
+          Explain your reasoning.
+          <image width="32%" source="images/outliers_1_influential.png" /> <image width="32%" source="images/outliers_2_leverage.png" /> <image width="32%" source="images/outliers_3_outlier.png" />
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="outliers_2">
+      <title>Outliers, Part II</title>
+      <statement>
+        <p>
+          Identify the outliers in the scatterplots shown below and determine what type of outliers they are.
+          Explain your reasoning.
+          <image width="32%" source="images/outliers_1_influential.png" /> <image width="32%" source="images/outliers_2_influential.png" /> <image width="32%" source="images/outliers_3_outlier.png" />
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="urban_homeowners_outlier">
+      <title>Urban homeowners, Part I</title>
+      <statement>
+        <p>
+          The scatterplot below shows the percent of families who own their home vs. the percent of the population living in urban areas. \footfullcite{data:urbanOwner} There are 52 observations,
+          each corresponding to a state in the US. Puerto Rico and District of Columbia are also included.
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                Describe the relationship between the percent of families who own their home and the percent of the population living in urban areas.
+              </p>
+            </li>
+            <li>
+              <p>
+                The outlier at the bottom right corner is District of Columbia,
+                where 100% of the population is considered urban.
+                What type of an outlier is this observation?
+              </p>
+            </li>
+          </ol>
+          <m>\:</m>
+          <image width="95%" source="images/urban_homeowners_outlier.png" />  \vspace{-3mm}
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="crawling_babies_outlier">
+      <title>Crawling babies, Part II</title>
+      <statement>
+        <p>
+          <xref ref="crawling_babies_corr_units">Exercise</xref>
+          introduces data on the average monthly temperature during the month babies first try to crawl (about 6 months after birth) and the average first crawling age for babies born in a given month.
+          A scatterplot of these two variables reveals a potential outlying month when the average temperature is about 53^\circ F and average crawling age is about 28.5 weeks.
+          Does this point have high leverage?
+          Is it an influential point?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

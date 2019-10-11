@@ -1,0 +1,1938 @@
+<section xml:id="differenceOfTwoProportions">
+  <title>Difference of two proportions</title>
+  <introduction>
+    <p>
+      We often wish two compare to groups to each other.
+      In this section, we will answer the following questions:
+      <ul>
+        <li>
+          <p>
+            How much more effective is a blood thinner than a placebo for those who undergo CPR for a heart attack?
+          </p>
+        </li>
+        <li>
+          <p>
+            How different is the approval of the 2010 healthcare law under two different question phrasings?
+          </p>
+        </li>
+        <li>
+          <p>
+            Does the use of fish oils reduce heart attacks better than a placebo?
+          </p>
+        </li>
+      </ul>
+    </p>
+  </introduction>
+  <subsection>
+    <title>Learning objectives</title>
+    <ol>
+      <li>
+        <p>
+          State and verify whether or not the conditions for inference on the difference of two proportions using a normal distribution are met.
+        </p>
+      </li>
+      <li>
+        <p>
+          Recognize that the standard error calculation is different for the test and for the interval,
+          and explain why that is the case.
+        </p>
+      </li>
+      <li>
+        <p>
+          Know how to calculate the pooled proportion and when to use it.
+        </p>
+      </li>
+      <li>
+        <p>
+          Carry out a complete confidence interval procedure for the difference of two proportions.
+        </p>
+      </li>
+      <li>
+        <p>
+          Carry out a complete hypothesis test for the difference of two proportions.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Sampling distribution of the difference of two proportions</title>
+    <p>
+      In this section we want to compare two proportions to each other.
+      We can start by taking their difference.
+      If the difference is positive it tells us that the first one is larger.
+      If it is negative, it tells use that the second one is larger.
+      If the difference is zero, it tells us that they are equal.
+      When comparing two proportions, then,
+      the quantity that we want to estimate is really the difference:
+      <m>p_1-p_2</m>.
+      This tells us how far apart the two proportions are.
+    </p>
+    <p>
+      Before we find a test statistic and perform inference for the two proportion case,
+      we must investigate the sampling distribution of <m>\hat{p}_1-\hat{p}_2</m>,
+      which will become our point estimate.
+      We know that the sampling distribution should be centered on <m>p_1-p_2</m>.
+      The standard deviation of <m>\hat{p}_1-\hat{p}_2</m> can be computed as:
+      <md>
+        <mrow>SD_{\hat{p}_1 - \hat{p}_2} = \sqrt{(SD_{\hat{p}_1})^2 + (SD_{\hat{p}_2})^2} = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}</mrow>
+      </md>
+    </p>
+    <p>
+      Like with <m>\hat{p}</m>,
+      the difference of two sample proportions
+      <m>\hat{p}_1-\hat{p}_2</m> follows a normal distribution when certain conditions are met.
+      First, the sampling distribution for each sample proportion must be nearly normal,
+      and secondly,
+      the samples must be independent.
+      Under these two conditions,
+      the sampling distribution of
+      <m>\hat{p}_1 - \hat{p}_2</m> may be well approximated using the normal model.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Checking conditions for inference using a normal distribution</title>
+    <p>
+      When comparing two proportions,
+      we carry out inference on <m>p_1-p_2</m>.
+      The assumptions are that the observations are independent,
+      both between groups and within groups and that the sampling distribution of <m>\hat{p}_1-\hat{p}_2</m> is nearly normal.
+      We check whether these assumptions are reasonable by verifying the following conditions.
+      <ul>
+        <li>
+          <title>Independent.</title>
+          <p>
+            Observations between groups can be considered independent when the data are collected from two independent random samples or,
+            in the context of experiments,
+            from two randomly assigned treatments.
+            Randomly assigning subjects to treatments is equivalent to randomly assigning treatments to subjects.
+            When sampling without replacement from a finite population,
+            observations can be considered independent when sampling less than 10% of the population.
+          </p>
+        </li>
+        <li>
+          <title>Nearly normal sampling distribution.</title>
+          <p>
+            The sampling distribution of
+            <m>\hat{p}_1-\hat{p}_2</m> will be nearly normal when the success-failure condition is met for both groups.
+            In the two sample case, Instead of checking two inequalities,
+            there are four to check.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Confidence interval for the difference of two proportions</title>
+    <p>
+      We consider an experiment for patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.
+      These patients were randomly divided into a treatment group where they received a blood thinner or the control group where they did not receive a blood thinner.
+      The outcome variable of interest was whether the patients survived for at least 24 hours.
+      The results are shown in <xref ref="resultsForCPRStudyInSmallSampleSection">Figure</xref>.
+    </p>
+    <table xml:id="resultsForCPRStudyInSmallSampleSection">
+      <caption>Results for the CPR study.
+      Patients in the treatment group were given
+      a blood thinner, and patients in the control
+      group were not.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>Survived</cell>
+          <cell>Died</cell>
+          <cell></cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Treatment</cell>
+          <cell></cell>
+          <cell>14</cell>
+          <cell>26</cell>
+          <cell></cell>
+          <cell>40</cell>
+        </row>
+        <row>
+          <cell>Control</cell>
+          <cell></cell>
+          <cell>11</cell>
+          <cell>39</cell>
+          <cell></cell>
+          <cell>50</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell></cell>
+          <cell>25</cell>
+          <cell>65</cell>
+          <cell></cell>
+          <cell>90</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+          <idx><h>data</h><h>CPR and blood thinner</h></idx>
+    </p>
+    <p>
+      Here, the parameter of interest is a difference of population proportions,
+      specifically,
+      the difference in the proportion of similar patients that would survive for at least 24 hours if in the treatment group versus if in the control group.
+      Let:
+      <md>
+        <mrow>p_1:\amp  \text{ proportion that would survive in treatment group, and }</mrow>
+        <mrow>p_2:\amp  \text{ proportion that would survive in control group }</mrow>
+      </md>
+    </p>
+    <p>
+      Then the parameter of interest is <m>p_1 - p_2</m>.
+      In order to use a Z-interval to estimate this difference,
+      we must see if the point estimate,
+      <m>\hat{p}_{1} - \hat{p}_{2}</m>,
+      follows a normal distribution.
+      Because the patients were randomly assigned to one of the two groups and one heart attack patient is unlikely to influence the next that was in the study,
+      the observations are considered independent,
+      both within the samples and between the samples.
+      Next, the success-failure condition should be verified for each group.
+      We use the sample proportions along with the sample<nbsp/>sizes to check the condition.
+      <md>
+        <mrow>n_1\hat{p}_1\amp \ge 10 \amp  n_1(1-\hat{p}_1)\amp \ge 10 \amp  n_2\hat{p}_2\amp \ge 10 \amp  n_2(1-\hat{p}_2)\amp \ge 10</mrow>
+        <mrow>40 \times \frac{14}{40} \amp \ge 10 \amp 40 \times (1-\frac{14}{40}) \amp \ge 10 \amp 50 \times \frac{11}{50} \amp \ge 10 \amp 50 \times (1-\frac{11}{50}) \amp \ge 10</mrow>
+      </md>
+    </p>
+    <p>
+      Because all conditions are met,
+      the normal model can be used for the point estimate of the difference in survival rate.
+    </p>
+    <p>
+      The point estimate is:
+      <md>
+        <mrow>\hat{p}_{1} - \hat{p}_{2} = \frac{14}{40} - \frac{11}{50} = 0.35 - 0.22 = 0.13</mrow>
+      </md>
+    </p>
+    <p>
+      We compute the standard error for the difference of sample proportions in the same way that we compute the standard deviation for the difference of sample proportions <mdash/> the only difference is that we use the sample proportions in place of the population proportions:
+      <md>
+        <mrow>SE \amp = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}= \sqrt{\frac{0.35 (1 - 0.35)}{40} + \frac{0.22 (1 - 0.22)}{50}} = 0.095</mrow>
+      </md>
+    </p>
+    <p>
+      Let us estimate the true difference in survival rate with 90% confidence.
+      For a 90% confidence level, we use <m>z^{\star} = 1.645</m>.
+      The 90% confidence interval is calculated as:
+      <md>
+        <mrow>\text{ point estimate }  \ \pm\amp \ z^{\star} \times SE\ \text{ of estimate }</mrow>
+        <mrow>0.13 \ \pm\amp \ 1.65\times 0.095</mrow>
+        <mrow>(-0.027,\ \amp  0.287)</mrow>
+      </md>
+    </p>
+    <p>
+      We are 90% confident that the true difference in the survival rate
+      (treatment <m>-</m> control)
+      lies between -0.027 and 0.095.
+      That is, we are 90% confident that the treatment of blood thinners changes survival rate for patients like those in the study by -2.7% to +28.7% percentage points.
+      Because this interval contains both negative and positive values,
+      we do not have enough information to say with confidence whether blood thinners harm or help heart attack patients who have been admitted after they have undergone CPR.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        To carry out a complete confidence interval procedure to estimate the difference of two proportions <m>p_1-p_2</m>,
+      </p>
+      <p>
+        <em>Identify</em>: Identify the parameter and the confidence level, C%.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              The parameter will be a difference of proportions,
+              e.g. the true difference in the proportion of 17 and 18 year olds with a summer job
+              (proportion of 18 year olds <m>-</m> proportion of 17 year olds).
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Choose</em>: Identify the correct interval procedure and identify it by name.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              Here we choose the <term>2-proportion Z-interval</term>.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Check</em>: Check conditions for the sampling distribution of <m>\hat{p}_1-\hat{p}_2</m> to be nearly normal.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              1. Data come from 2 independent random samples or 2 randomly assigned \mbox{treatments.}
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              2. <m>n_1\hat{p}_1\geq10</m>,
+              <m>n_1(1-\hat{p}_1)\geq10</m>,
+              <m>n_2\hat{p}_2\geq10</m>, and <m>n_2(1-\hat{p}_2)\geq10</m>
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Calculate</em>: Calculate the confidence interval and record it in interval form.
+      </p>
+      <ul>
+        <li class="custom-list-style-type" label="">
+          <p>
+            <m>\text{ point estimate } \ \pm\ z^{\star} \times SE\ \text{ of estimate }</m>
+          </p>
+          <ul>
+            <li class="custom-list-style-type" label="">
+              <p>
+                point estimate:
+                the difference of sample proportions <m>\hat{p}_1 - \hat{p}_2</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                <m>SE</m> of estimate:
+                <m>\sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                <m>z^{\star}</m>:
+                use a <m>t</m>-table at row <m>\infty</m> and confidence level C
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li class="custom-list-style-type" label="">
+          <p>
+            (<em><nbsp/> <nbsp/> <nbsp/></em>,
+            <em><nbsp/> <nbsp/> <nbsp/></em>)
+          </p>
+        </li>
+      </ul>
+      <p>
+        <em>Conclude</em>: Interpret the interval and,
+        if applicable, draw a conclusion in context.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              We are C% confident that the true
+              <em>difference in the proportion</em>
+              of [...] is between <em><nbsp/> <nbsp/> <nbsp/></em>
+              and <em><nbsp/> <nbsp/> <nbsp/></em>.
+              If applicable,
+              draw a conclusion based on whether the interval is entirely above,
+              is entirely below, or contains the value 0.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          A remote control car company is considering a new manufacturer for wheel gears.
+          The new manufacturer would be more expensive but their higher quality gears are more reliable,
+          resulting in happier customers and fewer warranty claims.
+          However, management must be convinced that the more expensive gears are worth the conversion before they approve the switch.
+          The quality control engineer collects a sample of gears,
+          examining 1000 gears from each company and finds that 879 gears pass inspection from the current supplier and 958 pass inspection from the prospective supplier.
+          Using these data,
+          construct a 95% confidence interval for the difference in the proportion from each supplier that would pass inspection.
+          Use the five step framework described above to organize your work.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          A remote control car company is considering a new manufacturer for wheel gears.
+          The new manufacturer would be more expensive but their higher quality gears are more reliable,
+          resulting in happier customers and fewer warranty claims.
+          However, management must be convinced that the more expensive gears are worth the conversion before they approve the switch.
+          The quality control engineer collects a sample of gears,
+          examining 1000 gears from each company and finds that 879 gears pass inspection from the current supplier and 958 pass inspection from the prospective supplier.
+          Using these data,
+          construct a 95% confidence interval for the difference in the proportion from each supplier that would pass inspection.
+          Use the five step framework described above to organize your work.
+        </p>
+      </solution>
+    </example>
+  </subsection>
+  <subsection xml:id="x2propZint">
+    <title>Calculator: the 2-proportion Z-interval</title>
+    <p>
+      As with the 1-proportion Z-interval,
+      a calculator can be helpful for evaluating the final interval.
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        Use <c>STAT</c>, <c>TESTS</c>, <c>2-PropZInt</c>.
+        <ol>
+          <li>
+            <p>
+              Choose <c>STAT</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Right arrow to <c>TESTS</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Down arrow and choose <c>B:2-PropZInt</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>x1</c> be the
+              <em>number</em> of yeses
+              (must be an integer)
+              in sample 1 and let <c>n1</c> be the size of sample 1.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>x2</c> be the
+              <em>number</em> of yeses
+              (must be an integer)
+              in sample 2 and let <c>n2</c> be the size of sample 2.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>C-Level</c> be the desired confidence level.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>Calculate</c> and hit <c>ENTER</c>,
+              which returns:
+              <tabular>
+                <row>
+                  <cell><c>(<em><nbsp/><nbsp/></em>,<em><nbsp/><nbsp/></em>)</c></cell>
+                  <cell>the confidence interval</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{\hat{p}_1}</m></cell>
+                  <cell>sample 1 proportion</cell>
+                  <cell><nbsp/><nbsp/></cell>
+                  <cell><m>\textttmath{n_1}</m></cell>
+                  <cell>size of sample 1</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{\hat{p}_2}</m></cell>
+                  <cell>sample 2 proportion</cell>
+                  <cell></cell>
+                  <cell><m>\textttmath{n_2}</m></cell>
+                  <cell>size of sample 2</cell>
+                </row>
+              </tabular>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <ol>
+        <li>
+          <p>
+            Navigate to <c>STAT</c> (<c>MENU</c> button,
+            then hit the <c>2</c> button or select <c>STAT</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose the <c>INTR</c> option (<c>F4</c> button).
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose the <c>Z</c> option (<c>F1</c> button).
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose the <c>2-P</c> option (<c>F4</c> button).
+          </p>
+        </li>
+        <li>
+          <p>
+            Specify the interval details:
+            <ul>
+              <li>
+                <p>
+                  Confidence level of interest for <c>C-Level</c>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Enter the number of successes for each group, <c>x1</c> and <c>x2</c>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Enter the sample<nbsp/>size for each group, <c>n1</c> and <c>n2</c>.
+                </p>
+              </li>
+            </ul>
+          </p>
+        </li>
+        <li>
+          <p>
+            Hit the <c>EXE</c> button,
+            which returns
+            <tabular>
+              <row>
+                <cell><c>Left</c>, <c>Right</c></cell>
+                <cell>the ends of the confidence interval</cell>
+              </row>
+              <row>
+                <cell><m>\textttmath{\hat{p}1}</m>, <m>\textttmath{\hat{p}2}</m></cell>
+                <cell>the sample proportions</cell>
+              </row>
+              <row>
+                <cell><c>n1</c>, <c>n2</c></cell>
+                <cell>sample<nbsp/>sizes</cell>
+              </row>
+            </tabular>
+          </p>
+        </li>
+      </ol>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          {From <xref ref="RemoteControl">Example</xref>,
+          we have that a quality control engineer collects a sample of gears,
+          examining 1000 gears from each company and finds that 879 gears pass inspection from the current supplier and 958 pass inspection from the prospective supplier.
+          Use a calculator to find a 95% confidence interval for the difference
+          (current <m>-</m> prospective)
+          in the proportion that would pass inspection.}
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="pooledHTForProportionsSection">
+    <title>Hypothesis testing when <m>H_0</m>: <m>p_1 = p_2</m></title>
+    <p>
+      Here we use a new example to examine a special estimate of the standard error when the null hypothesis is that two population proportions equal each other, i.e.
+      <m>H_0</m>: <m>p_1 = p_2</m>.
+      We investigate whether the way a question is phrased can influence a person's response.
+      Pew Research Center conducted a survey with the following question:<fn>
+      MISSINGoiRedirect. sample<nbsp/>sizes for each polling group are approximate.
+      </fn>
+    </p>
+    <blockquote>
+      As you may know, by 2014 nearly all Americans will be required to have health insurance. [People who do not buy insurance will pay a penalty] while [People who cannot afford it will receive financial help from the government]. Do you approve or disapprove of this policy?
+    </blockquote>
+    <p>
+          <idx><h>data</h><h>health care</h></idx>
+      For each randomly sampled respondent,
+      the statements in brackets were randomized:
+      either they were kept in the original order given above,
+      or they were reversed.
+      Results are presented in <xref ref="pewPollResultsForRandomizedStatementOrdering">Figure</xref>
+    </p>
+    <table xml:id="pewPollResultsForRandomizedStatementOrdering">
+      <caption>Results for a Pew Research Center poll where the ordering of two statements in a question regarding healthcare were randomized.</caption>
+      <tabular>
+        {p{50mm}c p{13mm}p{14mm}p{16.5mm}c}
+        &amp;\ &amp; sample~size &amp; Approve law (%)  &amp; Disapprove law (%)  &amp; Other \\
+        \hline
+        <q>People who do not buy insurance will pay a penalty</q>
+        is given first (original order) \vspace{2.5mm}
+        &amp; &amp; 771  &amp; 47  &amp; 49  &amp; 3 \\
+        ``People who cannot afford it will receive financial help from the government" is given first (reversed order)
+        &amp; &amp; 732  &amp; 34  &amp; 63  &amp; 3 \\
+        \hline
+      </tabular>
+    </table>
+    <exercise>
+      <statement>
+        <p>
+          Is this study an experiment or an observational study?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The approval percents of 47% and 34% seem far apart.
+      However, could this difference be due to random chance?
+      We will answer this question using a hypothesis test.
+      To simplify things, let
+      <md>
+        <mrow>p_1\amp  \text{ : the proportion of respondents that would approve of policy with the original statement ordering, and }</mrow>
+        <mrow>p_2\amp  \text{ : the proportion of respondents that would approve of policy with the reversed statement ordering. }</mrow>
+      </md>
+    </p>
+    <example>
+      <statement>
+        <p>
+          Set up hypotheses to test whether the two statement orders produce the same response.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Set up hypotheses to test whether the two statement orders produce the same response.
+        </p>
+      </solution>
+    </example>
+    <p>
+      Now, we can note that:
+      <md>
+        <mrow>p_1=p_2 \amp \text{ is equivalent to }  p_1-p_2=0\text{ , and }</mrow>
+        <mrow>p_1\ne p_2 \amp \text{ is equivalent to }  p_1-p_2\ne 0</mrow>
+      </md>.
+    </p>
+    <p>
+      We can now see that the hypotheses are really about a difference of proportions:
+      <m>p_1-p_2</m>.
+      In the last section,
+      we used a 2-proportion Z-interval to estimate the parameter <m>p_1-p_2</m>;
+      here, we will use a 2-proportion Z-test to test the null hypothesis that
+      <m>p_1-p_2=0</m>, i.e. that <m>p_1=p_2</m>.
+    </p>
+    <p>
+      Recall that the test statistic Z has the form:
+      <md>
+        <mrow>Z = \frac{\text{ point estimate }  - \text{ null value } }{SE\ \text{ of estimate } }</mrow>
+      </md>
+    </p>
+    <p>
+      The parameter of interest is <m>p_1-p_2</m>,
+      so the point estimate will be the observed difference of sample proportions:
+      <m>\hat{p}_{1} - \hat{p}_{2} = 0.47 - 0.34 = 0.13</m>.
+    </p>
+    <p>
+      The null value depends on the null hypothesis.
+      The null hypothesis is that the approval rate would be the same for both statement orderings,
+      i.e. that the difference is 0, therefore, the null value is 0.
+      In this section we consider only the case where <m>H_0</m>:
+      <m>p_1=p_2</m>,
+      so the null value for the difference will always be 0.
+    </p>
+    <p>
+      The <m>SD</m> of a difference of sample proportions has the form:
+      <md>
+        <mrow>SD = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}</mrow>
+      </md>
+    </p>
+    <p>
+      However, in a hypothesis test,
+      the distribution of the point estimate is always examined assuming the null hypothesis is true,
+      i.e. in this case, <m>p_1 = p_2</m>.
+      Both the success-failure check and the standard error formula should reflect this equality in the null hypothesis.
+      We will use <m>p_c</m> to represent the common proportion that support healthcare law regardless of statement order:
+      <md>
+        <mrow>SD \amp = \sqrt{\frac{p_c(1-p_c)}{n_1} + \frac{p_c(1-p_c)}{n_2}}</mrow>
+        <mrow>\amp = \sqrt{p_c(1-p_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}</mrow>
+      </md>
+    </p>
+    <p>
+      We don't know the true proportion <m>p_c</m>,
+      but we can obtain a good estimate of it,
+      <m>\hat{p}_c</m>, by <em>pooling</em>
+      the results of both samples.
+      We find the total number of
+      <q>yeses</q>
+      or
+      <q>successes</q>
+      and divide that by the total number of cases.
+      This is equivalent to taking a weighted average of
+      <m>\hat{p}_1</m> and <m>\hat{p}_2</m>.
+      We call <m>\hat{p}_c</m> the <term>pooled sample proportion</term>,
+      and we use it to check the success-failure condition and to compute the standard error when the null hypothesis is that <m>p_1 = p_2</m>.
+      Here:
+      <me>
+        \hat{p}_c =  \frac{771(0.47) + 732(0.34)}{771+732}= 0.407
+      </me>
+    </p>
+    <assemblage>
+      <title></title>
+      <p>
+        When the null hypothesis is <m>p_1 = p_2</m>,
+        it is useful to find the pooled sample proportion:
+        <md>
+          <mrow>\hat{p}_c = \frac{\text{ number of ``successes'' } }{\text{ number of cases } } = \frac{\text{x} _1+\text{x} _2}{n_1+n_2}=\frac{n_1\hat{p}_1 + n_2\hat{p}_2}{n_1 + n_2}</mrow>
+        </md>
+      </p>
+      <p>
+        Here <m>\text{x} _1</m> represents the number of successes in sample 1.
+        If <m>\text{x} _1</m> is not given,
+        it can be computed as <m>n_1\times \hat{p}_1</m>.
+        Similarly, <m>\text{x} _2</m> represents the number of successes in sample<nbsp/>2 and can be computed as <m>n_2\times \hat{p}_2</m>.
+      </p>
+    </assemblage>
+    <assemblage>
+      <p>
+        {Use the pooled sample proportion when <m>H_0</m>:
+        <m>{p}_1 = {p}_2</m>} When the null hypothesis states that the proportions are equal,
+        we use the pooled sample proportion (<m>\hat{p}_c</m>) to check the success-failure condition and to estimate the standard error:
+        <md>
+          <mrow>SE =\sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}</mrow>
+        </md>
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          Verify that conditions for using the normal are met and find the <m>SE</m> of estimate for this hypothesis test.
+          Recall that the pooled proportion <m>\hat{p}_c=0.407</m>,
+          <m>n_1 = 771</m>, and <m>n_2=732</m>.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The data do come from two randomly assigned treatments,
+          where the treatments are the two different orderings of the question regarding healthcare.
+          Also, the success-failure condition
+          (minimums of 10)
+          easily holds for each group.
+          <md>
+            <mrow>771 \times 0.407 \amp \ge 10 \amp 771 \times (1-0.407) \amp \ge 10 \amp 732 \times 0.407 \amp \ge 10 \amp 732 \times (1-0.407) \amp \ge 10</mrow>
+          </md>
+        </p>
+        <p>
+          Here, we compute the <m>SE</m> for the difference of sample proportions as:
+          <me>
+            SE =\sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}=\sqrt{0.407(1-0.407)}\sqrt{\frac{1}{771} + \frac{1}{732}}=0.025
+          </me>
+        </p>
+      </answer>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Complete the hypothesis test using a significance level of 0.01.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Complete the hypothesis test using a significance level of 0.01.
+        </p>
+      </solution>
+    </example>
+    <assemblage>
+      <title></title>
+      <p>
+        To carry out a complete hypothesis test to test the claim that two proportions <m>p_1</m> and <m>p_2</m> are equal to each other,
+      </p>
+      <p>
+        <em>Identify</em>: Identify the hypotheses and the significance level,
+        <m>\alpha</m>.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              <m>H_0</m>: <m>p_1=p_2</m>
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              <m>H_A</m>: <m>p_1\ne p_2</m>; <m>H_A</m>:
+              <m>p_1>p_2</m>; or <m>H_A</m>: <m>p_1\lt p_2</m>
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Choose</em>: Identify the correct test procedure and identify it by name.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              Here we choose the <term>2-proportion Z-test</term>.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Check</em>: Check conditions for the sampling distribution of <m>\hat{p}_1-\hat{p}_2</m> to be nearly normal.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              1. Data come from 2 independent random samples or from 2 randomly
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              assigned treatments.
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              2. <m>n_1\hat{p}_c\geq 10</m>,
+              <m>n_1(1-\hat{p}_c)\geq 10</m>,
+              <m>n_2\hat{p}_c\geq 10</m>, and <m>n_2(1-\hat{p}_c)\geq 10</m>
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Calculate</em>: Calculate the Z-statistic and p-value.
+      </p>
+      <ul>
+        <li class="custom-list-style-type" label="">
+          <p>
+            <m>Z = \frac{\text{ point estimate } - \text{ null value } }{SE \text{ of estimate } }</m>
+          </p>
+          <ul>
+            <li class="custom-list-style-type" label="">
+              <p>
+                point estimate:
+                the difference of sample proportions <m>\hat{p}_1 - \hat{p}_2</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                <m>SE</m> of estimate:
+                <m>\sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}</m>,
+                where <m>\hat{p}</m> is the pooled proportion
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                null value: 0
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li class="custom-list-style-type" label="">
+          <p>
+            p-value = (based on the Z-statistic and the direction of <m>H_A</m>)
+          </p>
+        </li>
+      </ul>
+      <p>
+        <em>Conclude</em>: Compare the p-value to <m>\alpha</m>,
+        and draw a conclusion in context.
+        <ul>
+          <li class="custom-list-style-type" label="">
+            <p>
+              If the p-value is <m>\lt \alpha</m>, reject <m>H_0</m>;
+              there is sufficient evidence that [<m>H_A</m> in context].
+            </p>
+          </li>
+          <li class="custom-list-style-type" label="">
+            <p>
+              If the p-value is <m>> \alpha</m>, do not reject <m>H_0</m>;
+              there is not sufficient evidence that [<m>H_A</m> in context].
+            </p>
+          </li>
+        </ul>
+      </p>
+    </assemblage>
+    <example>
+      <statement>
+        <p>
+          A 5-year experiment was conducted to evaluate the effectiveness of fish oils on reducing heart attacks,
+          where each subject was randomized into one of two treatment groups.
+          We'll consider heart attack outcomes in these patients:
+        </p>
+        <tabular>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>heart\usattack</cell>
+            <cell>no\usevent</cell>
+            <cell>Total</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>fish\usoil</cell>
+            <cell>145</cell>
+            <cell>12788</cell>
+            <cell>12933</cell>
+          </row>
+          <row>
+            <cell>placebo</cell>
+            <cell>200</cell>
+            <cell>12738</cell>
+            <cell>12938</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+        <p>
+          Carry out a complete hypothesis test at the 10% significance level to test whether the use of fish oils is effective in reducing heart attacks.
+        </p>
+      </statement>
+      <answer>
+        <ul>
+          <li>
+            <title>\inferencestep{Identify}</title>
+            <p>
+              Define <m>p_1</m> and <m>p_2</m> as follows: <m>p_1</m>:
+              the true proportion that would suffer a heart attack if given fish oil <m>p_2</m>:
+              the true proportion that would suffer a heart attack if given placebo We will test the following hypotheses at the <m>\alpha=0.10</m> significance level.
+              <m>H_0</m>: <m>p_1=p_2</m> Fish oil and placebo are equally effective.
+              <m>H_A</m>: <m>p_1 \lt p_2</m> Fish oil is effective in reducing heart attacks.
+            </p>
+          </li>
+          <li>
+            <title>\inferencestep{Choose}</title>
+            <p>
+              Because we are testing whether two proportions equal each other,
+              we choose the \mbox{2-proportion Z-test.}
+            </p>
+          </li>
+          <li>
+            <title>\inferencestep{Check}</title>
+            <p>
+              We must verify that the difference of sample proportions can be modeled using a normal distribution.
+              First we note that there are two randomly assigned treatments.
+              Second, we calculate the pooled proportion as follows:
+              <me>
+                \hat{p}_c = \frac{\text{x} _1+\text{x} _2}{n_1+n_2}=\frac{145 + 200}{12933 + 12938}=0.0133
+              </me>
+              We can now verify: <m>12933(0.0133)\geq10</m>,
+              <m>12933(1-0.0133)\geq10</m>,
+              <m>12938(0.0133)\geq10</m>,
+              and <m>12938(1-0.0133)\geq10</m>,
+              so both conditions are met.
+            </p>
+          </li>
+          <li>
+            <title>\inferencestep{Calculate}</title>
+            <p>
+              We will calculate the Z-statistic and the p-value.
+              <md>
+                <mrow>Z = \frac{\text{ point estimate }  - \text{ null value } }{SE \text{ of estimate } }</mrow>
+              </md>
+              The point estimate is the difference of sample proportions:
+              <m>\hat{p}_1-\hat{p}_2 = 0.0112 - 0.0155 = -0.0043</m>.
+              The value hypothesized for the parameter in <m>H_0</m> is the null value:
+              null value = 0.
+              The pooled proportion, calculated above, is:
+              <m>\hat{p}_c = 0.0133</m>.
+              The <m>SE</m> of the difference of sample proportions,
+              assuming <m>H_0</m> is true, is:
+              <m>\sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}} = \sqrt{0.0133(1-0.0133)}\sqrt{\frac{1}{12933} + \frac{1}{12938}}=0.00142</m>.
+              <md>
+                <mrow>Z = \frac{-0.0043 - 0}{0.00142} = -3.0</mrow>
+              </md>
+              Because <m>H_A</m> uses a less than,
+              meaning that it is a lower-tail test,
+              the \mbox{p-value}  is the area to the <em>left</em>
+              of <m>Z=-3.0</m> under the standard normal curve.
+              This area can be found using a normal table or a calculator.
+              The area or p-value = <m>0.0013</m>.
+            </p>
+          </li>
+          <li>
+            <title>\inferencestep{Conclude}</title>
+            <p>
+              The p-value of 0.0013 is <m>\lt 0.10</m>, so we reject <m>H_0</m>;
+              there is sufficient evidence that fish oil is effective in reducing heart attacks.
+            </p>
+          </li>
+        </ul>
+      </answer>
+    </example>
+  </subsection>
+  <subsection xml:id="x2propZtest">
+    <title>Calculator: the 2-proportion Z-test</title>
+    <assemblage>
+      <title></title>
+      <p>
+        Use <c>STAT</c>, <c>TESTS</c>, <c>2-PropZTest</c>.
+        <ol>
+          <li>
+            <p>
+              Choose <c>STAT</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Right arrow to <c>TESTS</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Down arrow and choose <c>6:2-PropZTest</c>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>x1</c> be the
+              <em>number</em> of yeses
+              (must be an integer)
+              in sample 1 and let <c>n1</c> be the size of sample 1.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <c>x2</c> be the
+              <em>number</em> of yeses
+              (must be an integer)
+              in sample 2 and let <c>n2</c> be the size of sample 2.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <m>\textttmath{\ne}</m>, <m>\textttmath{\lt }</m>,
+              or <m>\textttmath{>}</m> to correspond to <m>H_A</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose <c>Calculate</c> and hit <c>ENTER</c>,
+              which returns:
+              <tabular>
+                <row>
+                  <cell><c>z</c></cell>
+                  <cell>Z-statistic</cell>
+                  <cell><nbsp/><nbsp/></cell>
+                  <cell><c>p</c></cell>
+                  <cell>p-value</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{\hat{p}_1}</m></cell>
+                  <cell>sample 1 proportion</cell>
+                  <cell></cell>
+                  <cell><m>\textttmath{\hat{p}}</m></cell>
+                  <cell>pooled sample proportion</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{\hat{p}_2}</m></cell>
+                  <cell>sample 2 proportion</cell>
+                </row>
+              </tabular>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </assemblage>
+    <assemblage>
+      <title></title>
+      <ol>
+        <li>
+          <p>
+            Navigate to <c>STAT</c> (<c>MENU</c> button,
+            then hit the <c>2</c> button or select <c>STAT</c>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose the <c>TEST</c> option (<c>F3</c> button).
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose the <c>Z</c> option (<c>F1</c> button).
+          </p>
+        </li>
+        <li>
+          <p>
+            Choose the <c>2-P</c> option (<c>F4</c> button).
+          </p>
+        </li>
+        <li>
+          <p>
+            Specify the test details:
+            <ul>
+              <li>
+                <p>
+                  Specify the sidedness of the test using the <c>F1</c>, <c>F2</c>,
+                  and <c>F3</c> keys.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Enter the number of successes for each group, <c>x1</c> and <c>x2</c>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Enter the sample<nbsp/>size for each group, <c>n1</c> and <c>n2</c>.
+                </p>
+              </li>
+            </ul>
+          </p>
+        </li>
+        <li>
+          <p>
+            Hit the <c>EXE</c> button,
+            which returns
+            <tabular>
+              <row>
+                <cell><c>z</c></cell>
+                <cell>Z-statistic</cell>
+                <cell>\hspace{3mm}</cell>
+                <cell><m>\textttmath{\hat{p}1}</m>, <m>\textttmath{\hat{p}2}</m></cell>
+                <cell>sample proportions</cell>
+              </row>
+              <row>
+                <cell><c>p</c></cell>
+                <cell>p-value</cell>
+                <cell></cell>
+                <cell><m>\textttmath{\hat{p}}</m></cell>
+                <cell>pooled proportion</cell>
+              </row>
+              <row>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell><c>n1</c>, <c>n2</c></cell>
+                <cell>sample<nbsp/>sizes</cell>
+              </row>
+            </tabular>
+          </p>
+        </li>
+      </ol>
+    </assemblage>
+    <exercise>
+      <statement>
+        <p>
+          {Use a calculator to find the test statistic, p-value,
+          and pooled proportion for a test with:
+        </p>
+        <p>
+          <m>H_A</m>: <m>p</m> for fish oil <m>\lt p</m> for placebo.
+        </p>
+        <tabular>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>heart\usattack</cell>
+            <cell>no\usevent</cell>
+            <cell>Total</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>fish\usoil</cell>
+            <cell>145</cell>
+            <cell>12788</cell>
+            <cell>12933</cell>
+          </row>
+          <row>
+            <cell>placebo</cell>
+            <cell>200</cell>
+            <cell>12738</cell>
+            <cell>12938</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>Section summary</title>
+    <p>
+      In the previous section, we looked at inference for a single proportion.
+      In this section, we <em>compared</em>
+      two groups to each other with respect to a proportion or a percent.
+    </p>
+    <ul>
+      <li>
+        <p>
+          We are interested in whether the true proportion of yeses is the same or different between two distinct groups.
+          Call these proportions <m>p_1</m> and <m>p_2</m>.
+          The difference,
+          <m>p_1-p_2</m> tells us whether <m>p_1</m> is greater than,
+          less than, or equal to <m>p_2</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          When <em>comparing</em> two proportions to each other,
+          the parameter of interest is the
+          <em>difference of proportions</em>,
+          <m>p_1-p_2</m>, and we use the difference of sample proportions,
+          <m>\hat{p}_1-\hat{p}_2</m>, as the
+          <em>point estimate</em>.
+        </p>
+      </li>
+      <li>
+        <p>
+          The sampling distribution of
+          <m>\hat{p}_1-\hat{p}_2</m> is nearly normal when the success-failure condition is met for <em>both</em>
+          groups and when the data is collected using 2 independent random samples or 2 randomly assigned treatments.
+          When the sampling distribution of <m>\hat{p}_1-\hat{p}_2</m> is nearly normal,
+          the standardized test statistic also follows a
+          <term>normal</term> distribution.
+        </p>
+      </li>
+      <li>
+        <p>
+          When the null hypothesis is that the two populations proportions are
+          <em>equal</em> to each other,
+          use the <term>pooled sample proportion</term>
+          <m>\hat{p}_c=\frac{\text{x} _1+\text{x} _2}{n_1+n_2}</m>,
+          i.e. the combined number of yeses over the combined sample<nbsp/>sizes,
+          when verifying the success-failure condition and when finding the <m>SE</m>.
+          For the confidence interval, do not use the pooled sample proportion;
+          use the separate values of
+          <m>\hat{p}_1</m> and <m>\hat{p}_2</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          When there are two samples or treatments and the parameter of interest is a difference of proportions,
+          e.g. the true difference in proportion of 17 and 18 year olds with a summer job (proportion of 18 year olds <m>-</m> proportion of 17 year olds):
+        </p>
+        <ul>
+          <li>
+            <p>
+              Estimate <m>p_1-p_2</m> at the C% confidence level using a
+              <term>2-proportion Z-interval</term>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Test <m>H_0</m>: <m>p_1-p_2=0</m> (i.e.
+              <m>p_1=p_2</m>) at the <m>\alpha</m> significance level using a
+              <term>2-proportion Z-test</term>.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          Verify the conditions for using a normal model:
+          <ul>
+            <li>
+              <title>1.</title>
+              <p>
+                Data come from 2 independent random samples or 2 randomly assigned treatments.
+              </p>
+            </li>
+            <li>
+              <title>2.</title>
+              <p>
+                CI: <m>n_1\hat{p}_1\ge 10</m>,
+                <m>n_1(1-\hat{p}_1)\ge 10</m>,
+                <m>n_2\hat{p}_2\ge 10</m>, and <m>n_2(1-\hat{p}_2)\ge 10</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                Test: <m>n_1\hat{p}_c\ge 10</m>,
+                <m>n_1(1-\hat{p}_c)\ge 10</m>,
+                <m>n_2\hat{p}_c\ge 10</m>, and <m>n_2(1-\hat{p}_c)\ge 10</m>
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+      <li>
+        <p>
+          When the conditions are met,
+          we calculate the confidence interval and the test statistic using the same structure as in the previous section.
+          <ul>
+            <li class="custom-list-style-type" label="">
+              <p>
+                Confidence interval:<nbsp/> <m>\text{ point estimate } \ \pm\ z^{\star} \times SE\ \text{ of estimate }</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type" label="">
+              <p>
+                Test statistic:
+                <m>Z = \frac{\text{ point estimate } - \text{ null value } }{SE \text{ of estimate } }</m>
+              </p>
+            </li>
+          </ul>
+        </p>
+        Here the point estimate is the difference of sample proportions <m>\hat{p}_1 - \hat{p}_2</m>.
+      </li>
+      <li class="custom-list-style-type" label="">
+        <p>
+          The <m>SE</m> of estimate is the <m>SE</m> of a difference of sample proportions.
+        </p>
+      </li>
+      <li class="custom-list-style-type" label="">
+        <p>
+          For a CI, use:
+          <m>SE = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}</m>.
+        </p>
+      </li>
+      <li class="custom-list-style-type" label="">
+        <p>
+          For a Test, use:
+          <m>SE = \sqrt{\hat{p}_c(1-\hat{p}_c)}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}</m>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      { \addvspace{8mm} {{\titlerule[1.0mm]} <em></em><em></em> }
+    </p>
+    <exercise xml:id="social_experiment_conditions">
+      <title>Social experiment, Part I</title>
+      <statement>
+        <p>
+          A ``social experiment" conducted by a TV program questioned what people do when they see a very obviously bruised woman getting picked on by her boyfriend.
+          On two different occasions at the same restaurant,
+          the same couple was depicted.
+          In one scenario the woman was dressed
+          <q>provocatively</q>
+          and in the other scenario the woman was dressed
+          <q>conservatively</q>. The table below shows how many restaurant diners were present under each scenario,
+          and whether or not they intervened.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{2}{c}{<em>Scenario</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Provocative</cell>
+            <cell>Conservative</cell>
+            <cell>Total</cell>
+          </row>
+          <row>
+            <cell>\multirow{2}{*}{<em>Intervene</em>}</cell>
+            <cell>Yes</cell>
+            <cell>5</cell>
+            <cell>15</cell>
+            <cell>20</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>No</cell>
+            <cell>15</cell>
+            <cell>10</cell>
+            <cell>25</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>20</cell>
+            <cell>25</cell>
+            <cell>45</cell>
+          </row>
+        </tabular>
+        <p>
+          Explain why the sampling distribution of the difference between the proportions of interventions under provocative and conservative scenarios does not follow an approximately normal distribution.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="heart_transplant_conditions">
+      <title>Heart transplant success</title>
+      <statement>
+        <p>
+          The Stanford University Heart Transplant Study was conducted to determine whether an experimental heart transplant program increased lifespan.
+          Each patient entering the program was officially designated a heart transplant candidate,
+          meaning that he was gravely ill and might benefit from a new heart.
+          Patients were randomly assigned into treatment and control groups.
+          Patients in the treatment group received a transplant,
+          and those in the control group did not.
+          The table below displays how many patients survived and died in each group. \footfullcite{Turnbull+Brown+Hu:1974}
+        </p>
+        <tabular>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>control</cell>
+            <cell>treatment</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>alive</cell>
+            <cell>4</cell>
+            <cell>24</cell>
+          </row>
+          <row>
+            <cell>dead</cell>
+            <cell>30</cell>
+            <cell>45</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+        <p>
+          Suppose we are interested in estimating the difference in survival rate between the control and treatment groups using a confidence interval.
+          Explain why we cannot construct such an interval using the normal approximation.
+          What might go wrong if we constructed the confidence interval despite this problem?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="gender_color_preference_CI_concept">
+      <title>Gender and color preference</title>
+      <statement>
+        <p>
+          A study asked 1,924 male and 3,666 female undergraduate college students their favorite color.
+          A 95% confidence interval for the difference between the proportions of males and females whose favorite color is black
+          <m>(p_{male} - p_{female})</m> was calculated to be (0.02, 0.06).
+          Based on this information,
+          determine if the following statements are true or false,
+          and explain your reasoning for each statement you identify as false. \footfullcite{Ellis:2001}
+          <ol>
+            <li>
+              <p>
+                We are 95% confident that the true proportion of males whose favorite color is black is 2% lower to 6% higher than the true proportion of females whose favorite color is black.
+              </p>
+            </li>
+            <li>
+              <p>
+                We are 95% confident that the true proportion of males whose favorite color is black is 2% to 6% higher than the true proportion of females whose favorite color is black.
+              </p>
+            </li>
+            <li>
+              <p>
+                95% of random samples will produce 95% confidence intervals that include the true difference between the population proportions of males and females whose favorite color is black.
+              </p>
+            </li>
+            <li>
+              <p>
+                We can conclude that there is a significant difference between the proportions of males and females whose favorite color is black and that the difference between the two sample proportions is too large to plausibly be due to chance.
+              </p>
+            </li>
+            <li>
+              <p>
+                The 95% confidence interval for
+                <m>(p_{female} - p_{male})</m> cannot be calculated with only the information given in this exercise.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="daily_show_edu_CI_concept">
+      <title>The Daily Show</title>
+      <statement>
+        <p>
+          A Pew Research foundation poll indicates that among 1,099 college graduates, 33% watch The Daily Show.
+          Meanwhile, 22% of the 1,110 people with a high school degree but no college degree in the poll watch The Daily Show.
+          A 95% confidence interval for <m>(p_\text{ college grad } - p_\text{ HS or less } )</m>,
+          where <m>p</m> is the proportion of those who watch The Daily Show,
+          is (0.07, 0.15).
+          Based on this information,
+          determine if the following statements are true or false,
+          and explain your reasoning if you identify the statement as false. \footfullcite{data:dailyShow}
+          <ol>
+            <li>
+              <p>
+                At the 5% significance level,
+                the data provide convincing evidence of a difference between the proportions of college graduates and those with a high school degree or less who watch The Daily Show.
+              </p>
+            </li>
+            <li>
+              <p>
+                We are 95% confident that 7% less to 15% more college graduates watch The Daily Show than those with a high school degree or less.
+              </p>
+            </li>
+            <li>
+              <p>
+                95% of random samples of 1,099 college graduates and 1,110 people with a high school degree or less will yield differences in sample proportions between 7% and 15%.
+              </p>
+            </li>
+            <li>
+              <p>
+                A 90% confidence interval for <m>(p_\text{ college grad } - p_\text{ HS or less } )</m> would be wider.
+              </p>
+            </li>
+            <li>
+              <p>
+                A 95% confidence interval for <m>(p_\text{ HS or less } - p_\text{ college grad } )</m> is (-0.15,-0.07).
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="national_health_plan_CI_replaced">
+      <title>National Health Plan,
+      Part III</title>
+      <statement>
+        <p>
+          <xref ref="national_health_plan_HT">Exercise</xref>
+          presents the results of a poll evaluating support for a generically branded
+          <q>National Health Plan</q>
+          in the United States. 79% of 347 Democrats and 55% of 617 Independents support a National Health Plan.
+          <ol>
+            <li>
+              <p>
+                Calculate a 95% confidence interval for the difference between the proportion of Democrats and Independents who support a National Health Plan <m>(p_{D} - p_{I})</m>,
+                and interpret it in this context.
+                We have already checked conditions for you.
+              </p>
+            </li>
+            <li>
+              <p>
+                True or false: If we had picked a random Democrat and a random Independent at the time of this poll,
+                it is more likely that the Democrat would support the National Health Plan than the Independent.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="sleep_OR_CA_CI">
+      <title>Sleep deprivation, CA vs. OR, Part I</title>
+      <statement>
+        <p>
+          According to a report on sleep deprivation by the Centers for Disease Control and Prevention,
+          the proportion of California residents who reported insufficient rest or sleep during each of the preceding 30 days is 8.0%, while this proportion is 8.8% for Oregon residents.
+          These data are based on simple random samples of 11,545 California and 4,691 Oregon residents.
+          Calculate a 95% confidence interval for the difference between the proportions of Californians and Oregonians who are sleep deprived and interpret it in context of the data.\footfullcite{data:sleepCAandOR}
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="offshore_drill_edu_dontknow_HT">
+      <title>Offshore drilling, Part I</title>
+      <statement>
+        <p>
+          A survey asked 827 randomly sampled registered voters in California
+          <q>Do you support?
+          Or do you oppose?
+          Drilling for oil and natural gas off the Coast of California?
+          Or do you not know enough to say?</q>
+          Below is the distribution of responses,
+          separated based on whether or not the respondent graduated from college. \footfullcite{data:prop19_and_offshoreDrill}
+        </p>
+        <sidebyside>
+          <ol>
+            <li>
+              <p>
+                What percent of college graduates and what percent of the non-college graduates in this sample do not know enough to have an opinion on drilling for oil and natural gas off the Coast of California?
+              </p>
+            </li>
+            <li>
+              <p>
+                Conduct a hypothesis test to determine if the data provide strong evidence that the proportion of college graduates who do not have an opinion on this issue is different than that of non-college graduates.
+              </p>
+            </li>
+          </ol>
+          <tabular>
+            <row>
+              <cell></cell>
+              <cell>\multicolumn{2}{c}{<em>College Grad</em>}</cell>
+            </row>
+            <row>
+              <cell></cell>
+              <cell>Yes</cell>
+              <cell>No</cell>
+            </row>
+            <row>
+              <cell>Support</cell>
+              <cell>154</cell>
+              <cell>132</cell>
+            </row>
+            <row>
+              <cell>Oppose</cell>
+              <cell>180</cell>
+              <cell>126</cell>
+            </row>
+            <row>
+              <cell>Do not know</cell>
+              <cell>104</cell>
+              <cell>131</cell>
+            </row>
+            <row>
+              <cell>Total</cell>
+              <cell>438</cell>
+              <cell>389</cell>
+            </row>
+          </tabular>
+        </sidebyside>
+      </statement>
+    </exercise>
+    <exercise xml:id="sleep_OR_CA_HT">
+      <title>Sleep deprivation, CA vs. OR, Part II</title>
+      <statement>
+        <p>
+          <xref ref="sleep_OR_CA_CI">Exercise</xref>
+          provides data on sleep deprivation rates of Californians and Oregonians.
+          The proportion of California residents who reported insufficient rest or sleep during each of the preceding 30 days is 8.0%, while this proportion is 8.8% for Oregon residents.
+          These data are based on simple random samples of 11,545 California and 4,691 Oregon residents.
+          <ol>
+            <li>
+              <p>
+                Conduct a hypothesis test to determine if these data provide strong evidence the rate of sleep deprivation is different for the two states. (Reminder: Check conditions)
+              </p>
+            </li>
+            <li>
+              <p>
+                It is possible the conclusion of the test in part (a) is incorrect.
+                If this is the case, what type of error was made?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="offshore_drill_edu_support_HT">
+      <title>Offshore drilling, Part II</title>
+      <statement>
+        <p>
+          Results of a poll evaluating support for drilling for oil and natural gas off the coast of California were introduced in <xref ref="offshore_drill_edu_dontknow_HT">Exercise</xref>.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell>\multicolumn{2}{c}{<em>College Grad</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Yes</cell>
+            <cell>No</cell>
+          </row>
+          <row>
+            <cell>Support</cell>
+            <cell>154</cell>
+            <cell>132</cell>
+          </row>
+          <row>
+            <cell>Oppose</cell>
+            <cell>180</cell>
+            <cell>126</cell>
+          </row>
+          <row>
+            <cell>Do not know</cell>
+            <cell>104</cell>
+            <cell>131</cell>
+          </row>
+          <row>
+            <cell>Total</cell>
+            <cell>438</cell>
+            <cell>389</cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              What percent of college graduates and what percent of the non-college graduates in this sample support drilling for oil and natural gas off the Coast of California?
+            </p>
+          </li>
+          <li>
+            <p>
+              Conduct a hypothesis test to determine if the data provide strong evidence that the proportion of college graduates who support off-shore drilling in California is different than that of non-college graduates.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="full_body_scan_HT_Error">
+      <title>Full body scan, Part I</title>
+      <statement>
+        <p>
+          A news article reports that ``Americans have differing views on two potentially inconvenient and invasive practices that airports could implement to uncover potential terrorist attacks." This news piece was based on a survey conducted among a random sample of 1,137 adults nationwide,
+          where one of the questions on the survey was ``Some airports are now using <sq>full-body</sq> digital x-ray machines to electronically screen passengers in airport security lines.
+          Do you think these new x-ray machines should or should not be used at airports?" Below is a summary of responses based on party affiliation. \footfullcite{news:fullBodyScan}
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{3}{c}{<em>Party Affiliation</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Republican</cell>
+            <cell>Democrat</cell>
+            <cell>Independent</cell>
+          </row>
+          <row>
+            <cell>\multirow{3}{*}{<em>Answer</em>}</cell>
+            <cell>Should</cell>
+            <cell>264</cell>
+            <cell>299</cell>
+            <cell>351</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Should not</cell>
+            <cell>38</cell>
+            <cell>55</cell>
+            <cell>77</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Don't know/No answer</cell>
+            <cell>16</cell>
+            <cell>15</cell>
+            <cell>22</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>318</cell>
+            <cell>369</cell>
+            <cell>450</cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              Conduct an appropriate hypothesis test evaluating whether there is a difference in the proportion of Republicans and Democrats who think the full- body scans should be applied in airports.
+              Assume that all relevant conditions are met.
+            </p>
+          </li>
+          <li>
+            <p>
+              The conclusion of the test in part (a) may be incorrect,
+              meaning a testing error was made.
+              If an error was made, was it a Type<nbsp/>1 or a Type<nbsp/>2 Error?
+              Explain.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="sleep_deprived_driver_HT">
+      <title>Sleep deprived transportation workers</title>
+      <statement>
+        <p>
+          The National Sleep Foundation conducted a survey on the sleep habits of randomly sampled transportation workers and a control sample of non-transportation workers.
+          The results of the survey are shown below. \footfullcite{data:sleepTransport}
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{4}{c}{<em>Transportation Professionals</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell>Truck</cell>
+            <cell>Train</cell>
+            <cell>Bus/Taxi/Limo</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell><em>Control</em></cell>
+            <cell>Pilots</cell>
+            <cell>Drivers</cell>
+            <cell>Operators</cell>
+            <cell>Drivers</cell>
+          </row>
+          <row>
+            <cell>Less than 6 hours of sleep</cell>
+            <cell>35</cell>
+            <cell>19</cell>
+            <cell>35</cell>
+            <cell>29</cell>
+            <cell>21</cell>
+          </row>
+          <row>
+            <cell>6 to 8 hours of sleep</cell>
+            <cell>193</cell>
+            <cell>132</cell>
+            <cell>117</cell>
+            <cell>119</cell>
+            <cell>131</cell>
+          </row>
+          <row>
+            <cell>More than 8 hours</cell>
+            <cell>64</cell>
+            <cell>51</cell>
+            <cell>51</cell>
+            <cell>32</cell>
+            <cell>58</cell>
+          </row>
+          <row>
+            <cell>Total</cell>
+            <cell>292</cell>
+            <cell>202</cell>
+            <cell>203</cell>
+            <cell>180</cell>
+            <cell>210</cell>
+          </row>
+        </tabular>
+        <p>
+          Conduct a hypothesis test to evaluate if these data provide evidence of a difference between the proportions of truck drivers and non-transportation workers
+          (the control group)
+          who get less than 6 hours of sleep per day,
+          i.e. are considered sleep deprived.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="prenatal_vitamin_autism_HT">
+      <title>Prenatal vitamins and Autism</title>
+      <statement>
+        <p>
+          Researchers studying the link between prenatal vitamin use and autism surveyed the mothers of a random sample of children aged 24 - 60 months with autism and conducted another separate random sample for children with typical development.
+          The table below shows the number of mothers in each group who did and did not use prenatal vitamins during the three months before pregnancy (periconceptional period).\footfullcite{Schmidt:2011}
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{2}{c}{<em>Autism</em>}</cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Autism</cell>
+            <cell>Typical development</cell>
+            <cell>Total</cell>
+          </row>
+          <row>
+            <cell><em>Periconceptional</em></cell>
+            <cell>No vitamin</cell>
+            <cell>111</cell>
+            <cell>70</cell>
+            <cell>181</cell>
+          </row>
+          <row>
+            <cell><em>prenatal vitamin</em></cell>
+            <cell>Vitamin</cell>
+            <cell>143</cell>
+            <cell>159</cell>
+            <cell>302</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>254</cell>
+            <cell>229</cell>
+            <cell>483</cell>
+          </row>
+        </tabular>
+        <ol>
+          <li>
+            <p>
+              State appropriate hypotheses to test for independence of use of prenatal vitamins during the three months before pregnancy and autism.
+            </p>
+          </li>
+          <li>
+            <p>
+              Complete the hypothesis test and state an appropriate conclusion.
+              (Reminder: Verify any necessary conditions for the test.)
+            </p>
+          </li>
+          <li>
+            <p>
+              A New York Times article reporting on this study was titled ``Prenatal Vitamins May Ward Off Autism". Do you find the title of this article to be appropriate?
+              Explain your answer.
+              Additionally,
+              propose an alternative title. \footfullcite{news:prenatalVitAutism}
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="hiv_africa_HT">
+      <title>HIV in sub-Saharan Africa</title>
+      <statement>
+        <p>
+          In July 2008 the US National Institutes of Health announced that it was stopping a clinical study early because of unexpected results.
+          The study population consisted of HIV-infected women in sub-Saharan Africa who had been given single dose Nevaripine (a treatment for HIV) while giving birth,
+          to prevent transmission of HIV to the infant.
+          The study was a randomized comparison of continued treatment of a woman
+          (after successful childbirth)
+          with Nevaripine vs Lopinavir,
+          a second drug used to treat HIV. 240 women participated in the study; 120 were randomized to each of the two treatments.
+          Twenty-four weeks after starting the study treatment,
+          each woman was tested to determine if the HIV infection was becoming worse
+          (an outcome called <em>virologic failure</em>).
+          Twenty-six of the 120 women treated with Nevaripine experienced virologic failure,
+          while 10 of the 120 women treated with the other drug experienced virologic failure.\footfullcite{Lockman:2007}
+          <ol>
+            <li>
+              <p>
+                Create a two-way table presenting the results of this study.
+              </p>
+            </li>
+            <li>
+              <p>
+                State appropriate hypotheses to test for difference in virologic failure rates between treatment groups.
+              </p>
+            </li>
+            <li>
+              <p>
+                Complete the hypothesis test and state an appropriate conclusion.
+                (Reminder: Verify any necessary conditions for the test.)
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="apple_doctor_HT_concept">
+      <title>An apple a day keeps the doctor
+      away</title>
+      <statement>
+        <p>
+          A physical education teacher at a high school wanting to increase awareness on issues of nutrition and health asked her students at the beginning of the semester whether they believed the expression
+          <q>an apple a day keeps the doctor away</q>, and 40% of the students responded yes.
+          Throughout the semester she started each class with a brief discussion of a study highlighting positive effects of eating more fruits and vegetables.
+          She conducted the same apple-a-day survey at the end of the semester,
+          and this time 60% of the students responded yes.
+          Can she used a two-proportion method from this section for this analysis?
+          Explain your reasoning.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>
