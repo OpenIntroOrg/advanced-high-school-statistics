@@ -40,6 +40,8 @@ Often, instead of the number of successes in $n$ trials, we are interested in th
 \subsection*{Learning objectives}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
+\item Understand the concept of a sampling distribution.
+
 \item Describe the center, spread, and shape of the sampling distribution of a sample proportion.
 
 \item Recognize the relationship between the distribution of a sample proportion and the corresponding binomial distribution. 
@@ -105,7 +107,7 @@ We see in Figure~\ref{oPositive40prop} that the distribution of proportion of pe
 
 \begin{examplewrap}
 \begin{nexample}{If the proportion of people in the county with blood type O+ is really 35\%, find and interpret the mean and standard deviation of the sample proportion for a random sample of size 400.}
-The mean of the sample proportion is the population proportion: 0.35. That is, if we took many, many samples and calculated $\hat{p}$, these values would average out to $p = 0.35$.
+The mean of the distribution of the sample proportion is the population proportion: 0.35. That is, the distribution of all possible values for the sample proportion is centered on 0.35.  In other words, if we took many, many samples and calculated $\hat{p}$, these values would average out to $0.35$.  
 
 The standard deviation of $\hat{p}$ is described by the standard deviation for the proportion:
 \begin{align*}
@@ -173,16 +175,15 @@ slightly versus what we would get using more advanced
 methods.\footnote{For example, we could use what's called the
   \term{finite population correction factor}:
   if the sample is of size $n$ and the population size is $N$,
-  then we can multiple the typical standard error formula by
+  then we can multiple the typical standard deviation formula by
   $\sqrt{\frac{N-n}{N-1}}$
   to obtain a smaller, more precise estimate of the
-  actual standard error.
-  When $n < 0.1 \times N$, this correction factor is
-  relatively small.}
+  actual standard deviation.
+  When $n < 0.1 \times N$, this correction factor is relatively close to 1.}
 
 
 An interesting question to answer is, \emph{what happens when
-$np < 10$ or $n(1-p) < 10$?} We can simulate drawing samples of different sizes where,
+$np < 10$ or $n(1-p) < 10$}? We can simulate drawing samples of different sizes where,
 say, the true proportion is $p = 0.25$.
 Here's a sample of size~10:
 \begin{center}
@@ -319,8 +320,7 @@ of 10 for $np$ and $n (1 - p)$ as our guideline
 within this~book.
 
 \begin{onebox}{Three important facts about the distribution of a sample proportion \pmb{$\hat{\MakeLowercase{p}}$}}
-Consider taking a simple random sample from a large population.
-\begin{enumerate}
+When the observations can be considered independent, such as from a random sample of less than 10\% of the population, the distribution of the sample proportion can be described as follows.\begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item CENTER:  The mean of a sample proportion is $p$.
 \item SPREAD:  The SD of a sample proportion is $\sqrt{\frac{p(1-p)}{n}}$.
@@ -336,7 +336,7 @@ Using these facts, we can now answer the question posed at the beginning of this
 
 \begin{examplewrap}
 \begin{nexample}{Find the probability that less than 30\% of a random sample of 400 people will be blood type O+ if the population proportion is 35\%.}
-In the previous section we verified that $np$ and $n(1-p)$ are at least 10. The mean of the sample proportion is 0.35 and the standard deviation for the sample proportion is given by $\sqrt{\frac{0.35(1-0.35)}{400}}=0.024$. We can find a Z-score and use our calculator to find the probability:
+In the previous section we verified that the observations can be treated as independent and that $np$ and $n(1-p)$ are at least 10. The mean of the sample proportion is 0.35 and the standard deviation for the sample proportion is given by $\sqrt{\frac{0.35(1-0.35)}{400}}=0.024$. We can find a Z-score and use normal approximation to estimate the probability:
 \begin{align*}
 Z &= \frac{\hat{p} - \mu_{\hat{p}}}{\sigma_{\hat{p}}} = \frac{0.30 - 0.35}{0.024} = -2.1 \\
 P(&Z < -2.1) = 0.0179
@@ -355,10 +355,10 @@ Notice that $120/400=0.30$. Using the binomial distribution to find the probabil
 
 
 \begin{exercisewrap}
-\begin{nexercise}Given a population that is 50\% male, what is the probability that a sample of size 200 would have greater than 55\% males?  Remember to verify that conditions for normal approximation are met.\footnotemark
+\begin{nexercise}Given a population that is 50\% male, what is the probability that a random sample of size 200 would have greater than 55\% males?  Remember to verify that conditions for normal approximation are met.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{First, verify the conditions: $np = 200(0.5) = 100 \ge 10$ and $n(1-p) = 200 (0.5) = 100 \ge 10$, so the normal approximation is reasonable. Next we find the mean and standard deviation of $\hat{p}$:
+\footnotetext{First, verify the conditions: There is a random sample, and the sample size is much smaller than the population size, so observations can be considered independent.  Also, $np = 200(0.5) = 100 \ge 10$ and $n(1-p) = 200 (0.5) = 100 \ge 10$, so the normal approximation is reasonable. Next we find the mean and standard deviation of $\hat{p}$:
 \begin{align*}
 \mu_{\hat{p}} &= p = 0.50
 	& \sigma_{\hat{p}} &= \sqrt{\frac{p(1-p)}{n}}
@@ -371,29 +371,36 @@ Z = \frac{\hat{p} - \mu_{\hat{p}}}{\sigma_{\hat{p}}} = \frac{0.55 - 0.5}{0.0354}
 \qquad \rightarrow \qquad
 P(Z > 1.412) = 0.07
 \end{align*}
-The probability of getting a sample proportion of 55\% or greater is about 0.07.}
+The probability of getting a sample proportion greater than 55\% is about 0.07.}
 
+
+\D{\newpage}
 %%
 \subsection*{Section summary}
 
 \noindent The binomial distribution shows the distribution of the number of successes in $n$ trials.  Often, we are interested in the \textit{proportion} of successes rather than the \textit{number} of successes.
 \begin{itemize}
-\item To convert from "number of yeses" to "proportion of yeses" we simply divide the number by $n$.  The sampling distribution of the sample proportion $\hat{p}$ is identical to the binomial distribution with a change of scale, i.e. different mean and different SD, but same shape.
+
+\item The symbol $\hat{p}$ denotes the sample proportion.  $\hat{p}$ for any particular sample is a number.  However, $\hat{p}$ can vary from sample to sample.  The distribution of all possible values of $\hat{p}$ for repeated samples of a fixed size from a certain population is called the \term{sampling distribution} of $\hat{p}$.
+
+\item The standard deviation of $\hat{p}$ describes the typical error or distance of the sample proportion from the population proportion.  It also tells us how much the sample proportion is likely to vary from one random sample to another.  
+
+\item The sampling distribution of the sample proportion $\hat{p}$ for a random sample of size $n$ is identical to the binomial distribution with parameters $n$ and $p$, but with a change of scale, i.e. different mean and different SD, but same shape.
 
 \item The same \term{success-failure condition} for the binomial distribution holds for a sample proportion $\hat{p}$.
 
-\item Three important facts about the sampling distribution of the sample proportion $\hat{p}$:
+\item Three important facts about the sampling distribution of the sample proportion $\hat{p}$, where the observations can be considered independent:
 \begin{itemize}\vspace{-1mm}
 \item The mean of a sample proportion is denoted by $\mu_{\hat{p}}$, and it is equal to $p$.  (\textit{center})
 \item The SD of a sample proportion is denoted by $\sigma_{\hat{p}}$, and it is equal to $\sqrt{\frac{p(1-p)}{n}}$.  (\textit{spread})
 \item When $np\ge 10$ and $n(1-p)\ge 10$, the distribution of the sample proportion will be approximately normal.   (\textit{shape})
 \end{itemize}
 
-\item We use these properties when solving the following type of \term{normal approximation} problem involving a sample proportion.  
-\emph{Find the probability of getting more / less than $x$\% yeses in a sample of size $n$}.
+\item We use these properties when solving the following type of \term{normal approximation} problems involving a sample proportion.  
+\emph{Find the probability of getting more / less than \_\_\% yeses in a sample of size $n$}.
 \begin{enumerate}\vspace{-1mm}
 \setlength{\itemsep}{0mm}
-\item Identify $n$ and $p$. Verify than $np\ge 10$ and $n(1-p)\ge 10$, which implies that normal approximation is reasonable. 
+\item Identify $n$ and $p$. Verify than observations can be treated as independent and that $np\ge 10$ and $n(1-p)\ge 10$, which implies that normal approximation is reasonable. 
 \item Calculate the Z-score.  Use $\mu_{\hat{p}} = p$ and $\sigma_{\hat{p}} = \sqrt{\frac{p(1-p)}{n}}$ to standardize the sample proportion.  
 \item Find the appropriate area under the normal curve.  \end{enumerate}
 
@@ -421,7 +428,6 @@ To answer this question we must visualize and understand what is called the \emp
 \subsection*{Learning objectives}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Understand the concept of a sampling distribution.
 
 \item Describe the center, spread, and shape of the sampling distribution of a sample mean.
 
@@ -432,7 +438,7 @@ To answer this question we must visualize and understand what is called the \emp
 
 \item Identify and explain the conditions for using normal approximation involving a sample mean.
 
-\item Verify that the conditions for normal approximation are met and carry out normal approximation involving a sample mean or sample sum.
+\item Check the appropriate conditions and, when met, carry out normal approximation involving a sample mean or sample sum.
 
 \end{enumerate}
 }
@@ -556,7 +562,6 @@ SD_{\bar{x}} = \sigma_{\bar{x}} = \frac{\sigma_{x}}{\sqrt{n}} = \frac{15.93}{\sq
 \end{eqnarray*}
 where $\sigma_{x}$ is the standard deviation of the individual observations. This is no coincidence. We can show mathematically that this equation is correct when the observations are independent  using the probability tools of Section~\ref{randomVariablesSection}.
 
-\D{\newpage}
 
 \begin{onebox}{Computing SD for the sample mean}
 Given $n$ independent observations from a population with standard deviation $\sigma$, the standard deviation of the sample mean is equal to \vspace{-1mm}
@@ -669,8 +674,7 @@ Since we should be skeptical of the independence of observations and the extreme
 At the beginning of this chapter, we used normal approximation for populations or for data that had an approximately normal distribution. When appropriate conditions are met, we can also use the normal approximation to estimate probabilities about a sample average. We must remember to verify that the conditions are met and use the mean $\mu_{\bar{x}}$ and standard deviation $\sigma_{\bar{x}}$ for the sampling distribution of the sample average.
 
 \begin{onebox}{Three important facts about the distribution of a sample mean \pmb{\MakeLowercase{$\bar{x}$}}}
-Consider taking a simple random sample from a large population.
-\begin{enumerate}
+When the observations can be considered independent, such as from a random sample of less than 10\% of the population, the distribution of the sample mean can be described as follows.\begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item The mean of a sample mean is denoted by $\mu_{\bar{x}}$, and it is equal to $\mu$.
 \item The SD of a sample mean is denoted by $\sigma_{\bar{x}}$, and it is equal to $\frac{\sigma}{\sqrt{n}}$.
@@ -742,7 +746,7 @@ When finding the probability that an \emph{average} or mean is greater or less t
 
 \item Consider taking a simple random sample from a population with a fixed mean and standard deviation.  The \term{Central Limit Theorem} ensures that regardless of the shape of the original population, as the sample size increases, the distribution of the sample average $\bar{x}$ becomes more normal.  
 
-\item Three important facts about the sampling distribution of the sample average $\bar{x}$:
+\item Three important facts about the sampling distribution of the sample average $\bar{x}$ where the observations can be treated as independent:
 \begin{itemize}\vspace{-1mm}
 \setlength{\itemsep}{0mm}
 \item The mean of a sample mean is denoted by $\mu_{\bar{x}}$, and it is equal to $\mu$. (\textit{center})
@@ -755,7 +759,7 @@ When finding the probability that an \emph{average} or mean is greater or less t
 \item[A:] \textit{Find the probability that a sample average will be greater/less than a certain value}.
 \begin{enumerate}\vspace{-1mm}
 \setlength{\itemsep}{0mm}
-\item Verify that the population is approximately normal or that $n \ge 30$.
+\item Verify that the observations can be treated as independent and that either the population is approximately normal or $n \ge 30$.
 \item Calculate the Z-score.  Use $\mu_{\bar{x}}=\mu$ and $\sigma_{\bar{x}}=\frac{\sigma}{\sqrt{n}}$ to standardize the sample average.  
 \item Find the appropriate area under the normal curve.  
 \end{enumerate}
@@ -776,27 +780,42 @@ When finding the probability that an \emph{average} or mean is greater or less t
 %______________________________________________
 \reviewchapterheader{}
 
-\noindent This chapter began by introducing the normal distribution.  A common thread that ran through this chapter is the use of the \term{normal approximation} in various contexts.  
-The key steps are included for each of the normal approximation scenarios below.
+\noindent This chapter began by introducing the idea of sampling distribution.  As with any distribution, we can summarize a sampling distribution with regard to its center, spread, and shape.  A common thread that ran through this chapter is the application of \term{normal approximation} (introduced in Section~\ref{normalDist}) to various sampling distributions.
+\\
+
+\noindent The key steps are included for each of the normal approximation scenarios below.  To verify that the observations can be considered independent verify that you have one of the following: a random process, a random sample with replacement, or a random sample without replacement of less than 10\% of the population.
 
 \begin{enumerate}
-\item Normal approximation for \textbf{data}:  
-\\- Verify that population is approximately normal.
-\\- Use the given mean $\mu$ and SD $\sigma$ to find the Z-score for the given $x$ value.
-\item Normal approximation for a \termsub{sample mean/sum}{sample mean}\index{sample sum|textbf}:  
-\\Verify that population is approximately normal or that $n\ge 30$.
-\\Use $\mu_{\bar{x}}=\mu$ and $\sigma_{\bar{x}}=\frac{\sigma}{\sqrt{n}}$ to find the Z-score for the given/calculated sample mean.
+
 \item Normal approximation for the \term{number of successes} (binomial):  
-\\- Verify that $np\ge 10$ and $n(1-p)\ge 10$.
+\\- Verify that observations can be treated as independent and that $np\ge 10$ and $n(1-p)\ge 10$.
 \\- Use $\mu_{\scriptscriptstyle{X}} = np$ and $\sigma_{\scriptscriptstyle{X}} = \sqrt{np(1-p)}$ to find the Z-score for the given number of successes.  
+
 \item Normal approximation for a \term{sample proportion}:  
-\\- Verify that $np\ge 10$ and $n(1-p)\ge 10$.
+\\- Verify that observations can be treated as independent and that $np\ge 10$ and $n(1-p)\ge 10$.
 \\- Use $\mu_{\hat{p}} = p$ and $\sigma_{\hat{p}} = \sqrt{\frac{p(1-p)}{n}}$ to find the Z-score for the given sample proportion.
-\item Normal approximation for the \term{sum of two independent random variables}:
-\\- Verify that each random variable is approximately normal.
-\\- Use $E(X+Y)=E(X)+E(Y)$ and $SD(X+Y)=\sqrt{(SD(X))^2+(SD(Y))^2}$ to find the Z-score for the given sum.
+
+\item Normal approximation for \textbf{data}:  (introduced in Section~\ref{normalDist})
+\\- Verify that observations can be treated as independent and that population is approximately normal.
+\\- Use the given mean $\mu$ and SD $\sigma$ to find the Z-score for the given $x$ value.
+
+\item Normal approximation for a \termsub{sample mean/sum}{sample mean}\index{sample sum|textbf}:  
+\\Verify that observations can be treated as independent and that population is approximately normal or that $n\ge 30$.
+\\Use $\mu_{\bar{x}}=\mu$ and $\sigma_{\bar{x}}=\frac{\sigma}{\sqrt{n}}$ to find the Z-score for the given/calculated sample mean.
+
+\item Normal approximation for the \term{sum or difference of two independent random variables}:
+\\- Verify that observations can be treated as independent and that each random variable is approximately normal.
+\\- Use $E(X+Y)=E(X)+E(Y)$ or $E(X-Y)=E(X)-E(Y)$ and $SD(X+Y)=SD(X-Y)=\sqrt{(SD(X))^2+(SD(Y))^2}$ to find the Z-score for the given sum or difference.
+
+\item Normal approximation for the \term{difference of sample proportions}:
+\\- Verify that observations can be treated as independent, within and between groups, and that $n_1p_1\ge 10$, $n_1(1-p_1)\ge 10$,  $n_2p_2\ge 10$, and $n_2(1-p_2)\ge 10$\\- Use $\mu_{\hat{p}_1-\hat{p}_2}=p_1-p_2$ and $\sigma_{\hat{p}_1-\hat{p}_2}=\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}$ to find the Z-score for the given difference of sample proportions.
+
+\item Normal approximation for the \term{difference of sample means}:\\
+- Verify that observations can be treated as independent, within and between groups, and that both populations are approximately normal or both sample sizes are at least 30.\\
+- Use $\mu_{\bar{x}_1-\bar{x}_2}=\mu_1-\mu_2$ and $\sigma_{\bar{x}_1-\bar{x}_2}=\sqrt{\frac{{\sigma_1}^2}{n_1}+\frac{{\sigma_2}^2}{n_2}}$ to find the Z-score for the given difference of sample means.
 \end{enumerate}
-Cases 1 and 2 apply to \term{numerical} variables, while cases 3 and 4 are for \term{categorical} yes/no variables.  Case 5 applies to both numerical and categorical variables.
+
+\noindent Cases 3, 4, and 7 apply to \term{numerical} variables, while cases 1, 2 and 6 are for \term{categorical} yes/no variables.  Case 5 applies to both numerical and categorical variables.
 \\
 \\Note that in the binomial case and in the case of proportions, we never look to see if the \emph{population} is normal.  That would not make sense because the ``population" is simply a bunch of no/yes, 0/1 values and could not possibly be normal.
 \\
