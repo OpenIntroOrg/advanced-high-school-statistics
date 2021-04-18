@@ -1371,13 +1371,13 @@ This allows us to answer questions such as the following:
 %%
 \subsection{Creating a test statistic for one-way tables}
 
-Data is collected from a random sample of 275 jurors in a small county. Jurors identified their racial group, as shown in Figure~\ref{juryRepresentationAndCityRepresentationForRace}, and we would like to determine if these jurors are racially representative of the population. If the jury is representative of the population, then the proportions in the sample should roughly reflect the population of eligible jurors, i.e. registered voters.
+Data is collected from a random sample of 275 jurors in a small county. Jurors identified their racial/ethnic group, as shown in Figure~\ref{juryRepresentationAndCityRepresentationForRace}, and we would like to determine if these jurors are representative of the population with respect to race/ethnicity. If the jury is representative of the population, then the proportions in the sample should roughly reflect the population of eligible jurors, i.e. registered voters.
 
 \begin{figure}[h]
 \centering
 \begin{tabular}{ll ccc c ll}
 \hline
-Race	 & \hspace{2mm} & White & Black & Hispanic & Other & \hspace{2mm} & Total \\
+Race/Ethnicity	 & \hspace{2mm} & White & Black & Hispanic & Other & \hspace{2mm} & Total \\
 \hline
 Representation in juries &	& 205 & 26 & 25 & 19 & & 275 \\
 Registered voters	 & 		& 0.72 & 0.07 & 0.12 & 0.09 & & 1.00 \\
@@ -1390,16 +1390,16 @@ Registered voters	 & 		& 0.72 & 0.07 & 0.12 & 0.09 & & 1.00 \\
 While the proportions in the juries do not precisely represent the population proportions, it is unclear whether these data provide convincing evidence that the sample is not representative. If the jurors really were randomly sampled from the registered voters, we might expect small differences due to chance. However, unusually large differences may provide convincing evidence that the juries were not representative.
 
 \begin{examplewrap}
-\begin{nexample}{Of the people in the city, 275 served on a jury. If the individuals are randomly selected to serve on a jury, about how many of the 275 people would we expect to be white? How many would we expect to be black?}
-About 72\% of the population is white, so we would expect about 72\% of the jurors to be white: $0.72\times 275 = 198$.
+\begin{nexample}{Of the people in the city, 275 served on a jury. If the individuals are randomly selected to serve on a jury, about how many of the 275 people would we expect to be White? How many would we expect to be Black?}
+About 72\% of the population is White, so we would expect about 72\% of the jurors to be White: $0.72\times 275 = 198$.
 
-Similarly, we would expect about 7\% of the jurors to be black, which would correspond to about $0.07\times 275 = 19.25$ black jurors.
+Similarly, we would expect about 7\% of the jurors to be Black, which would correspond to about $0.07\times 275 = 19.25$ Black jurors.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Twelve percent of the population is Hispanic and 9\% represent other races. How many of the 275 jurors would we expect to be Hispanic or from another race? Answers can be found in Figure~\ref{expectedJuryRepresentationIfNoBias}.
+Twelve percent of the population is Hispanic and 9\% represent other racial/ethnic groups. How many of the 275 jurors would we expect to be Hispanic or from another racial/ethnic group? Answers can be found in Figure~\ref{expectedJuryRepresentationIfNoBias}.
 \end{nexercise}
 \end{exercisewrap}
 
@@ -1407,7 +1407,7 @@ Twelve percent of the population is Hispanic and 9\% represent other races. How 
 \centering
 \begin{tabular}{ll ccc c ll}
 \hline
-Race	 & \hspace{2mm} & White & Black & Hispanic & Other & \hspace{2mm} & Total \\
+Race/Ethnicity	 & \hspace{2mm} & White & Black & Hispanic & Other & \hspace{2mm} & Total \\
 \hline
 Observed data			&	& 205 & 26	& 25 & 19	&	& 275 \\
 Expected counts	 &	& 198 & 19.25 & 33 & 24.75 & & 275 \\
@@ -1417,11 +1417,11 @@ Expected counts	 &	& 198 & 19.25 & 33 & 24.75 & & 275 \\
 \label{expectedJuryRepresentationIfNoBias}
 \end{figure}
 
-The sample proportion represented from each race among the 275 jurors was not a precise match for any ethnic group. While some sampling variation is expected, we would expect the sample proportions to be fairly similar to the population proportions if there is no bias on juries. We need to test whether the differences are strong enough to provide convincing evidence that the jurors are not a random sample. These ideas can be organized into hypotheses:
+The sample proportion represented from each race/ethnicity among the 275 jurors was not a precise match for any ethnic group. While some sampling variation is expected, we would expect the sample proportions to be fairly similar to the population proportions if there is no bias on juries. We need to test whether the differences are strong enough to provide convincing evidence that the jurors are not a random sample. These ideas can be organized into hypotheses:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[$H_0$:] The jurors are a random sample, i.e. there is no racial bias in who serves on a jury, and the observed counts reflect natural sampling fluctuation.
-\item[$H_A$:] The jurors are not randomly sampled, i.e. there is racial bias in juror selection.
+\item[$H_0$:] The jurors are a random sample, i.e. there is no racial/ethnic bias in who serves on a jury, and the observed counts reflect natural sampling fluctuation.
+\item[$H_A$:] The jurors are not randomly sampled, i.e. there is racial/ethnic bias in juror selection.
 \end{itemize}
 To evaluate these hypotheses, we quantify how different the observed counts are from the expected counts. Strong evidence for the alternative hypothesis would come in the form of unusually large deviations in the groups from what would be expected based on sampling variation alone.
 
@@ -1434,7 +1434,7 @@ In previous hypothesis tests, we constructed a test statistic of the following f
 $$ Z = \frac{\text{point estimate} - \text{null value}}{SE \text{ of point estimate}} $$
 This construction was based on (1) identifying the difference between a point estimate and an expected value if the null hypothesis was true, and (2) standardizing that difference using the standard error of the point estimate. These two ideas will help in the construction of an appropriate test statistic for count data.
 
-In this example we have four categories: white, black, hispanic, and other. Because we have four values rather than just one or two, we need a new tool to analyze the data. Our strategy will be to find a test statistic that measures the overall deviation between the observed and the expected counts. We first find the difference between the observed and expected counts for the four groups:
+In this example we have four categories: White, Black, Hispanic, and other. Because we have four values rather than just one or two, we need a new tool to analyze the data. Our strategy will be to find a test statistic that measures the overall deviation between the observed and the expected counts. We first find the difference between the observed and expected counts for the four groups:
 \begin{align*}
 &&\text{White} && \text{Black} && \text{Hispanic} && \text{Other} \\
 \text{observed - expected }&& 205-198 && 26-19.25
@@ -1478,7 +1478,7 @@ We can write an equation for $\chi^2$ using the observed counts and expected cou
 \end{align*}
 }The final number $\chi^2$ summarizes how strongly the observed counts tend to deviate from the null counts.
 
-In Section~\ref{pValueForAChiSquareTest}, we will see that if the null hypothesis is true, then $\chi^2$ follows a new distribution called a \emph{chi-square distribution}. Using this distribution, we will be able to obtain a p-value to evaluate whether there appears to be racial bias in the juries for the city we are considering.
+In Section~\ref{pValueForAChiSquareTest}, we will see that if the null hypothesis is true, then $\chi^2$ follows a new distribution called a \emph{chi-square distribution}. Using this distribution, we will be able to obtain a p-value to evaluate whether there appears to be racial/ethnic bias in the juries for the city we are considering.
 
 %%
 \subsection{The chi-square distribution and finding areas}
@@ -1644,21 +1644,21 @@ Figure~\ref{chiSquareAreaAbove9Point21WithDF3} shows a cutoff of 9.21 with a chi
 \label{pValueForAChiSquareTest}
 
 \index{data!racial make-up of jury|(}
-In Section~\ref{chiSquareTestStatistic}, we identified a new test statistic ($\chi^2$) within the context of assessing whether there was evidence of racial bias in how jurors were sampled. The null hypothesis represented the claim that jurors were randomly sampled and there was no racial bias. The alternative hypothesis was that there was racial bias in how the jurors were sampled.
+In Section~\ref{chiSquareTestStatistic}, we identified a new test statistic ($\chi^2$) within the context of assessing whether there was evidence of racial/ethnic bias in how jurors were sampled. The null hypothesis represented the claim that jurors were randomly sampled and there was no racial/ethnic bias. The alternative hypothesis was that there was racial/ethnic bias in how the jurors were sampled.
 
-We determined that a large $\chi^2$ value would suggest strong evidence favoring the alternative hypothesis: that there was racial bias. However, we could not quantify what the chance was of observing such a large test statistic ($\chi^2=5.89$) if the null hypothesis actually was true. This is where the chi-square distribution becomes useful. If the null hypothesis was true and there was no racial bias, then $\chi^2$ would follow a chi-square distribution, with three degrees of freedom in this case. Under certain conditions, the statistic $\chi^2$ follows a chi-square distribution with $k-1$ degrees of freedom, where $k$ is the number of bins or categories of the variable.
+We determined that a large $\chi^2$ value would suggest strong evidence favoring the alternative hypothesis: that there was racial/ethnic bias. However, we could not quantify what the chance was of observing such a large test statistic ($\chi^2=5.89$) if the null hypothesis actually was true. This is where the chi-square distribution becomes useful. If the null hypothesis was true and there was no racial/ethnic bias, then $\chi^2$ would follow a chi-square distribution, with three degrees of freedom in this case. Under certain conditions, the statistic $\chi^2$ follows a chi-square distribution with $k-1$ degrees of freedom, where $k$ is the number of bins or categories of the variable.
 
 \begin{examplewrap}
 \begin{nexample}{How many categories were there in the juror example? How many degrees of freedom should be associated with the chi-square distribution used for $\chi^2$?}
-In the jurors example, there were $k=4$ categories: white, black, Hispanic, and other. According to the rule above, the test statistic $\chi^2$ should then follow a chi-square distribution with $k-1 = 3$ degrees of freedom if $H_0$ is true.
+In the jurors example, there were $k=4$ categories: White, Black, Hispanic, and other. According to the rule above, the test statistic $\chi^2$ should then follow a chi-square distribution with $k-1 = 3$ degrees of freedom if $H_0$ is true.
 \end{nexample}
 \end{examplewrap}
 
 Just like we checked sample~size conditions to use the normal model in earlier sections, we must also check a sample~size condition to safely model $\chi^2$ with a chi-square distribution. Each expected count must be at least 5. In the juror example, the expected counts were 198, 19.25, 33, and 24.75, all easily above~5, so we can model the $\chi^2$ test statistic, using a chi-square distribution.
 
 \begin{examplewrap}
-\begin{nexample}{If the null hypothesis is true, the test statistic $\chi^2=5.89$ would be closely associated with a chi-square distribution with three degrees of freedom. Using this distribution and test statistic, identify the p-value and state whether or not there is evidence of racial bias in the juror selection.}
-The chi-square distribution and p-value are shown in Figure~\ref{jurorHTPValueShown}. Because larger chi-square values correspond to stronger evidence against the null hypothesis, we shade the upper tail to represent the p-value. Using a calculator, we look at the chi-square curve with 3 degrees of freedom and find the area to the right of $\chi^2=5.89$.  This area, which corresponds to the p-value, is equal to 0.117.  This p-value is larger than the default significance level of 0.05, so we reject the null hypothesis.  In other words, the data do not provide convincing evidence of racial bias in the juror selection.
+\begin{nexample}{If the null hypothesis is true, the test statistic $\chi^2=5.89$ would be closely associated with a chi-square distribution with three degrees of freedom. Using this distribution and test statistic, identify the p-value and state whether or not there is evidence of racial/ethnic bias in the juror selection.}
+The chi-square distribution and p-value are shown in Figure~\ref{jurorHTPValueShown}. Because larger chi-square values correspond to stronger evidence against the null hypothesis, we shade the upper tail to represent the p-value. Using a calculator, we look at the chi-square curve with 3 degrees of freedom and find the area to the right of $\chi^2=5.89$.  This area, which corresponds to the p-value, is equal to 0.117.  This p-value is larger than the default significance level of 0.05, so we reject the null hypothesis.  In other words, the data do not provide convincing evidence of racial/ethnic bias in the juror selection.
 \index{data!racial make-up of jury|)}
 \end{nexample}
 \end{examplewrap}
