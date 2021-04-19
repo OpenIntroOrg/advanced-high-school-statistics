@@ -1,11 +1,8 @@
 \begin{chapterpage}{Sampling distributions}
   \chaptertitle[30]{Sampling distributions}
   \label{ch_distributions}
-  \chaptersection{normalDist}
   \chaptersection{distributionphat}
-\chaptersection{diffofprops}
 \chaptersection{distributionofxbar}
-\chaptersection{diffofmeans}
 
 
 \end{chapterpage}
@@ -781,18 +778,18 @@ When finding the probability that an \emph{average} or mean is greater or less t
 %______________________________________________
 \reviewchapterheader{}
 
-\noindent This chapter began by introducing the idea of sampling distribution.  As with any distribution, we can summarize a sampling distribution with regard to its center, spread, and shape.  A common thread that ran through this chapter is the application of \term{normal approximation} (introduced in Section~\ref{normalDist}) to various sampling distributions.
+\noindent This chapter began by introducing the idea of sampling distribution.  As with any distribution, we can summarize a sampling distribution with regard to its center, spread, and shape.  A common thread that ran through this chapter is the application of \termni{normal approximation} (introduced in Section~\ref{normalDist}) to different sampling distributions.
 \\
 
 \noindent The key steps are included for each of the normal approximation scenarios below.  To verify that the observations can be considered independent verify that you have one of the following: a random process, a random sample with replacement, or a random sample without replacement of less than 10\% of the population.
 
 \begin{enumerate}
 
-\item Normal approximation for the \term{number of successes} (binomial):  
+\item Normal approximation for the \termni{number of successes} (binomial):  
 \\- Verify that observations can be treated as independent and that $np\ge 10$ and $n(1-p)\ge 10$.
 \\- Use $\mu_{\scriptscriptstyle{X}} = np$ and $\sigma_{\scriptscriptstyle{X}} = \sqrt{np(1-p)}$ to find the Z-score for the given number of successes.  
 
-\item Normal approximation for a \term{sample proportion}:  
+\item Normal approximation for a \termni{sample proportion}:  
 \\- Verify that observations can be treated as independent and that $np\ge 10$ and $n(1-p)\ge 10$.
 \\- Use $\mu_{\hat{p}} = p$ and $\sigma_{\hat{p}} = \sqrt{\frac{p(1-p)}{n}}$ to find the Z-score for the given sample proportion.
 
@@ -804,21 +801,18 @@ When finding the probability that an \emph{average} or mean is greater or less t
 \\Verify that observations can be treated as independent and that population is approximately normal or that $n\ge 30$.
 \\Use $\mu_{\bar{x}}=\mu$ and $\sigma_{\bar{x}}=\frac{\sigma}{\sqrt{n}}$ to find the Z-score for the given/calculated sample mean.
 
-\item Normal approximation for the \term{sum or difference of two independent random variables}:
+\item In Section \ref{normapproxsumrv}, we saw how to use normal approximation for the \term{sum or difference of two independent random variables}:
 \\- Verify that observations can be treated as independent and that each random variable is approximately normal.
 \\- Use $E(X+Y)=E(X)+E(Y)$ or $E(X-Y)=E(X)-E(Y)$ and $SD(X+Y)=SD(X-Y)=\sqrt{(SD(X))^2+(SD(Y))^2}$ to find the Z-score for the given sum or difference.
 
-\item Normal approximation for the \term{difference of sample proportions}:
-\\- Verify that observations can be treated as independent, within and between groups, and that $n_1p_1\ge 10$, $n_1(1-p_1)\ge 10$,  $n_2p_2\ge 10$, and $n_2(1-p_2)\ge 10$\\- Use $\mu_{\hat{p}_1-\hat{p}_2}=p_1-p_2$ and $\sigma_{\hat{p}_1-\hat{p}_2}=\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}$ to find the Z-score for the given difference of sample proportions.
-
-\item Normal approximation for the \term{difference of sample means}:\\
-- Verify that observations can be treated as independent, within and between groups, and that both populations are approximately normal or both sample sizes are at least 30.\\
-- Use $\mu_{\bar{x}_1-\bar{x}_2}=\mu_1-\mu_2$ and $\sigma_{\bar{x}_1-\bar{x}_2}=\sqrt{\frac{{\sigma_1}^2}{n_1}+\frac{{\sigma_2}^2}{n_2}}$ to find the Z-score for the given difference of sample means.
 \end{enumerate}
 
-\noindent Cases 3, 4, and 7 apply to \term{numerical} variables, while cases 1, 2 and 6 are for \term{categorical} yes/no variables.  Case 5 applies to both numerical and categorical variables.
+
+\noindent Cases 3 and 4 apply to \term{numerical} variables, while cases 1 and 2 are for \term{categorical} yes/no variables.  Case 5 applies to both numerical and categorical variables.
 \\
 \\Note that in the binomial case and in the case of proportions, we never look to see if the \emph{population} is normal.  That would not make sense because the ``population" is simply a bunch of no/yes, 0/1 values and could not possibly be normal.
 \\
 \\The \term{Central Limit Theorem} is the mathematical rule that ensures that when the sample size is sufficiently large, the sample mean/sum and sample proportion/count will be approximately normal.  
-
+\\
+\\
+\Add{In Section \ref{diffofprops} and Section \ref{differenceOfTwoMeans} we apply Case 5 to find the mean and standard deviation for the difference of sample proportions and the difference of sample means.}
