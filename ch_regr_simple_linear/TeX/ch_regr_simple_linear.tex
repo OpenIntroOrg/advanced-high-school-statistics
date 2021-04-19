@@ -1509,52 +1509,10 @@ So the 95\% confidence interval is given by:
 \end{nexample}
 \end{examplewrap}
 
+\index{t-interval@$t$-interval!for a slope|(}
 
 
 \D{\newpage}
-
-%%
-\subsection[Technology: the $t$-interval for the slope]{Technology: the linear regression \pmb{$t$}-interval for the slope}
-
-\noindent We usually rely on regression output from statistical software when constructing confidence intervals for the slope of a regression line.  However, it is also possible to use Desmos or a handheld calculator.\\
-
-\noindent Get started quickly with this Desmos \oiRedirect{desmos-linregCI}{LinReg Calculator}.
-\begin{center}
-\oiRedirect{desmos-linregCI}{\includegraphics[width=0.90\textwidth]{ch_regr_simple_linear/figures/desmosLinReg/desmosLinRegCI}}
-\end{center}
-
-
-\noindent Entering a lot of data into a handheld calculator is not practical;  we include TI  instructions here simply for completion.
-
-\begin{onebox}{\videohref{ti84_regression_t_confint} TI-84: T-interval for \pmb{$\beta$}}
-\label{LinRegint}
-Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTInt}.
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Choose \calctext{STAT}.
-\item Right arrow to \calctext{TESTS}.
-\item Down arrow and choose \calctext{G:} \calctext{LinRegTInt}.\vspace{-1.5mm}
-  \begin{itemize}
-  \item This test is not built into the TI-83.
-  \end{itemize}
-\item Let \calctext{Xlist} be \calctext{L1} and \calctext{Ylist} be \calctext{L2}. (Don't forget to enter the $x$ and $y$ values in \calctext{L1} and \calctext{L2} before doing this interval.)
-\item Let \calctext{Freq} be \calctext{1}.
-\item Enter the desired confidence level.
-\item Leave \calctext{RegEQ} blank.
-\item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\[1mm]
-\begin{tabular}{l l}
-\calctext{(\underline{\ \ },\underline{\ \ })} & the confidence interval \\
-\calctext{b} & $b$, the slope of best fit line of the sample data \\
-\calctext{df} &degrees of freedom associated with this confidence interval \\
-\calctext{s} & standard deviation of the residuals (not the same as $SE$ of the slope) \\
-\calctext{a} & $a$, the y-intercept of the best fit line of the sample data \\
-$\calctextmath{r^2}$ & $R^2$, the explained variance \\
-\calctext{r} & $r$, the correlation coefficient \\
-\end{tabular}
-\end{enumerate}
-\end{onebox}
-
-\index{t-interval@$t$-interval!for a slope|(}
 
 
 
@@ -1800,73 +1758,14 @@ In context, interpret the p-value from the previous example.\footnotemark
 \D{\newpage}
 
 %%
-\subsection[Technology: the $t$-test for the slope]{Technology: the \pmb{$t$}-test for the slope}
+\subsection[Technology: the $t$-test/interval for the slope]{Technology: the \pmb{$t$}-test/interval for the slope}
 
 \noindent We generally rely on regression output from statistical software programs to provide us with the necessary quantities: $b$ and $SE \text{ of } {b}$.  However we can also find the test statistic and p-value using Desmos or a handheld calculator.\\
 
 \noindent Get started quickly with this Desmos \oiRedirect{desmos-linregtest}{T-Test/Interval Calculator}.
-\begin{center}
-\oiRedirect{desmos-linregtest}{\includegraphics[width=0.95\textwidth]{ch_regr_simple_linear/figures/desmosLinReg/desmosLinRegTest}}
-\end{center}
-
-
-\noindent \\ 
 \\
-Entering a lot of data into a handheld calculator is not practical; we include TI instructions here simply for completion. 
-
-\begin{onebox}{\videohref{ti84_regression_t_test} TI-83/84: Linear regression T-test for \pmb{$\beta$}}
-\label{LinRegtest}
-Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Choose \calctext{STAT}.
-\item Right arrow to \calctext{TESTS}.
-\item Down arrow and choose \calctext{F:LinRegTTest}. (On TI-83 it is \calctext{E:LinRegTTest}).
-\item Let \calctext{Xlist} be \calctext{L1} and \calctext{Ylist} be \calctext{L2}. (Don't forget to enter the $x$ and $y$ values in \calctext{L1} and \calctext{L2} before doing this test.)
-\item Let \calctext{Freq} be \calctext{1}.
-\item Choose $\calctextmath{\ne}$, $\calctextmath{<}$, or $\calctextmath{>}$ to correspond to $H_A$.
-\item Leave \calctext{RegEQ} blank.
-\item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\[1mm]
-\begin{tabular}{ll l ll}
-\calctext{t} & t statistic &\quad&
-	\calctext{b} & $b$, slope of the line \\
-\calctext{p} & p-value &&
-	\calctext{s} & st.~dev.~of the residuals \\
-\calctext{df} & degrees of freedom for the test &&
-	$\calctextmath{r^2}$ & $R^2$, explained variance \\
-\calctext{a} & $a$, y-intercept of the line &&
-	\calctext{r} & $r$, correlation coefficient
-\end{tabular}
-\end{enumerate}
-\end{onebox} 
-
-\begin{onebox}{\videohref{casio_regression_t_test} Casio fx-9750GII: Linear regression T-test for \pmb{$\beta$}}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
-\item Enter your data into 2 lists.
-\item Select \calctext{TEST} (\calcbutton{F3}), \calctext{t} (\calcbutton{F2}), and \calctext{REG} (\calcbutton{F3}).
-\item If needed, update the sidedness of the test and the \calctext{XList} and \calctext{YList} lists. The \calctext{Freq} should be set to \calctext{1}.
-\item Hit \calcbutton{EXE}, which returns: \\[1mm]
-\begin{tabular}{ll l ll}
-\calctext{t} & t statistic &\quad&
-	\calctext{b} & $b$, slope of the line \\
-\calctext{p} & p-value &&
-	\calctext{s} & st.~dev.~of the residuals \\
-\calctext{df} & degrees of freedom for the test &&
-	\calctext{r} & $r$, correlation coefficient \\
-\calctext{a} & $a$, y-intercept of the line &&
-	$\calctextmath{r^2}$ & $R^2$, explained variance
-\end{tabular}
-\end{enumerate}
-\end{onebox} 
-
-\begin{examplewrap}
-\begin{nexample}
-{Why does the calculator test include the symbol $\rho$ when choosing the direction of the alternative hypothesis?}
-Recall the we used the letter $r$ to represent correlation.  The Greek letter $\rho=0$ represents the correlation for the entire population.  The slope $b=r\frac{s_y}{s_x}$.  If the slope of the population regression line is zero, the correlation for the population must also be zero.  For this reason, the $t$-test for $\beta=0$ is equivalent to a test for $\rho=0$.
-\end{nexample}
-\end{examplewrap}
+\\
+\Add{For instructions on carrying out the T-Test/Interval on the TI calculator, see the TI Calculator Guide.  For Casio instructions, see the Casio Guide.}
 
 \index{t-test@$t$-test!for a slope|)}
 
