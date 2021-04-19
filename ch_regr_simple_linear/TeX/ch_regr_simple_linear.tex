@@ -347,7 +347,7 @@ All four data sets have the exact same correlation of $r = 0.816$ as well as the
 
 \item A linear model for bivariate numerical data can be useful for prediction when the association between the variables follows a constant, linear trend.  Linear models should not be used if the trend between the variables is curved.  
 
-\item When we write a linear model, we use $\hat{y}$ to indicate that it is the model or the prediction.   The value $\hat{y}$ can be understood as a \term{prediction} for $y$ based on a given $x$, or as an \term{average} of the $y$ values for a given $x$.
+\item When we write a linear model, we use $\hat{y}$ to indicate that it is the model or the prediction.   The value $\hat{y}$ can be understood as a \term{prediction} for $y$ based on a given $x$, or as an \textbf{average} of the $y$ values for a given $x$.
 
 \item The \term{residual} is the \textbf{error} between the true value and the modeled value, computed as $y - \hat{y}$.  The order of the difference matters, and the sign of the residual will tell us if the model overpredicted or underpredicted a particular data point.
 
@@ -435,7 +435,7 @@ which we could accomplish with a computer program. The resulting dashed line sho
 (y_1 - \hat{y}_1)^2 + (y_2-\hat{y}_2)^2+ \dots + (y_n-\hat{y}_n)^2
 \label{sumOfSquaresForResiduals}
 \end{eqnarray*}
-The line that minimizes the sum of the squared residuals is represented as the solid line in Figure~\ref{elmhurstScatterW2Lines}. This is commonly called the \term{least squares line}. 
+The line that minimizes the sum of the squared residuals is represented as the solid line in Figure~\ref{elmhurstScatterW2Lines}. This is commonly called the \termni{least squares line}. 
 
 Both lines seem reasonable, so why do data scientists prefer the least squares regression line?  One reason is that it is easier to compute by hand and in most statistical software.  Another, and more compelling, reason is that in many applications, a residual twice as large as another residual is more than twice as bad. For example, being off by 4 is usually more than twice as bad as being off by 2. Squaring the residuals accounts for this discrepancy.
 
@@ -1054,7 +1054,7 @@ Can we apply a transformation to make the distribution more symmetric?  How woul
 \begin{examplewrap}
 \begin{nexample}{Consider the histogram of county populations
     shown in Figure~\ref{county_pop_transformed_i},
-    which shows extreme skew\index{skew!example: extreme}.
+    which shows extreme skew.
     What isn't useful about this plot?}
   Nearly all of the data fall into the left-most bin,
   and the extreme skew obscures many of the potentially
@@ -1346,6 +1346,8 @@ We note that the second assumption regarding nearly normal residuals is particul
 
 \subsection{Constructing a confidence interval for the slope of a regression line}
 
+\index{t-interval@$t$-interval!for a slope|(}
+
 We would like to construct a confidence interval for the slope of the regression line for predicting gift aid based on family income for \emph{all} freshmen at Elmhurst college.  
 
 
@@ -1425,7 +1427,7 @@ To carry out a complete confidence interval procedure to estimate the slope of t
 \end{itemize}
 \inferencestep{Choose} Choose the correct interval procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] To estimate the slope of a regression model we use a \termsub{$\pmb{t}$-interval for the slope}{t-interval for the slope@$t$-interval for the slope}.
+\item[] To estimate the slope of a regression model we use a \termsub{$\pmb{t}$-interval for the slope}{t-interval@$t$-interval!for a slope}.
 \end{itemize}
 \inferencestep{Check} Check conditions for using a $t$-interval for the slope.\vspace{-1mm}
 \begin{itemize}
@@ -1552,6 +1554,7 @@ $\calctextmath{r^2}$ & $R^2$, the explained variance \\
 \end{enumerate}
 \end{onebox}
 
+\index{t-interval@$t$-interval!for a slope|(}
 
 
 
@@ -1559,6 +1562,7 @@ $\calctextmath{r^2}$ & $R^2$, the explained variance \\
 \subsection{Midterm elections and unemployment}
 
 \index{data!midterm elections|(}
+\index{t-test@$t$-test!for a slope|(}
 
 Elections for members of the United States House of Representatives occur every two years, coinciding every four years with the U.S. Presidential election. The set of House elections occurring during the middle of a Presidential term are called \indexthis{midterm elections}{midterm election}. In America's two-party system, one political theory suggests the higher the unemployment rate, the worse the President's party will do in the midterm elections.
 
@@ -1707,7 +1711,7 @@ To carry out a complete hypothesis test for the claim that there is no linear re
 \end{itemize} 
 \inferencestep{Choose} Choose the correct test procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] To test hypotheses about the slope of a regression model we use a \termsub{$\pmb{t}$-test for the slope}{t-test for the slope@$t$-test for the slope}. 
+\item[] To test hypotheses about the slope of a regression model we use a \termsub{$\pmb{t}$-test for the slope}{t-test@$t$-test!for a slope}. 
 \end{itemize}
  \inferencestep{Check} Check conditions for using a $t$-test for the slope.\vspace{-1mm}
 \begin{itemize}
@@ -1864,7 +1868,7 @@ Recall the we used the letter $r$ to represent correlation.  The Greek letter $\
 \end{nexample}
 \end{examplewrap}
 
-
+\index{t-test@$t$-test!for a slope|)}
 
 %%
 \subsection{Which inference procedure to use for paired data?}
@@ -1935,8 +1939,8 @@ A teacher gives her class a pretest and a posttest.  Does this result in paired 
 
 \item When there is $(x, y)$ data and the parameter of interest is the slope of the population regression line, e.g. the slope of the population regression line relating air quality index to average rainfall per year for each city in the United States:
 \begin{itemize}
-\item Estimate $\beta$ at the C\% confidence level using a \termsub{$\pmb{t}$-interval for the slope}{t-interval for the slope@$t$-interval for the slope}.
-\item Test $H_0$: $\beta=0$ at the $\alpha$ significance level using a \termsub{$\pmb{t}$-test for the slope}{t-test for the slope@$t$-test for the slope}.
+\item Estimate $\beta$ at the C\% confidence level using a \termsub{$\pmb{t}$-interval for the slope}{t-interval@$t$-interval!for a slope}.
+\item Test $H_0$: $\beta=0$ at the $\alpha$ significance level using a \termsub{$\pmb{t}$-test for the slope}{t-test@$t$-test!for a slope}.
 \end{itemize}
 \item The conditions for the $t$-interval and $t$-test for the slope of a regression line are the same.
 \begin{itemize}
@@ -1959,7 +1963,7 @@ A teacher gives her class a pretest and a posttest.  Does this result in paired 
 \end{itemize}
 
 
-\item If the confidence interval for the slope of the population regression line estimates the true average increase in the $y$-variable for each unit increase in the $x$-variable.
+\item The confidence interval for the slope of the population regression line estimates the true average increase in the $y$-variable for each unit increase in the $x$-variable.
 
 \item The $t$-test for the slope and the paired $t$-test for a mean of differences both involve \emph{paired}, numerical data.  However, the $t$-test for the slope asks if the two variables have a linear \emph{relationship}, specifically if the \emph{slope} of the population regression line is different from 0.  The paired $t$-test for a mean of differences, on the other hand, asks if the two variables are in some way the \emph{same}, specifically if the \emph{mean} of the population differences is 0.  
 \end{itemize}
@@ -1974,17 +1978,17 @@ A teacher gives her class a pretest and a posttest.  Does this result in paired 
 
 \noindent This chapter focused on describing the linear association between two numerical variables and fitting a linear model.  
 \begin{itemize}
-\item The \termsub{correlation coefficient}{correlation}, $r$, measures the strength and direction of the linear association between two variables.  However, $r$ alone cannot tell us whether data follow a linear trend or whether a linear model is appropriate.
+\item The \termni{correlation coefficient}, $r$, measures the strength and direction of the linear association between two variables.  However, $r$ alone cannot tell us whether data follow a linear trend or whether a linear model is appropriate.
 
-\item The \term{explained variance}, $R^2$, measures the proportion of variation in the $y$ values explained by a given model.  Like $r$, $R^2$ alone cannot tell us whether data follow a linear trend or whether a linear model is appropriate.  
+\item The \termni{explained variance}, $R^2$, measures the proportion of variation in the $y$ values explained by a given model.  Like $r$, $R^2$ alone cannot tell us whether data follow a linear trend or whether a linear model is appropriate.  
 
-\item Every analysis should begin with \emph{graphing} the data using a \term{scatterplot} in order to see the association and any deviations from the trend (outliers or influential values).  A \textbf{residual plot} helps us better see patterns in the data.  
+\item Every analysis should begin with \emph{graphing} the data using a \termni{scatterplot} in order to see the association and any deviations from the trend (outliers or influential values).  A \termni{residual plot} helps us better see patterns in the data.  
 
-\item When the data show a linear trend, we fit a \textbf{least squares regression line} of the form: $\hat{y} = a+bx$, where $a$ is the $y$-intercept and $b$ is the slope.  It is important to be able to \emph{calculate} $a$ and $b$ using the summary statistics and to \emph{interpret} them in the context of the data.
+\item When the data show a linear trend, we fit a \termni{least squares regression line} of the form: $\hat{y} = a+bx$, where $a$ is the $y$-intercept and $b$ is the slope.  It is important to be able to \emph{calculate} $a$ and $b$ using the summary statistics and to \emph{interpret} them in the context of the data.
 
-\item A \textbf{residual}, $y-\hat{y}$, measures the error for an \emph{individual point}.  The \textbf{standard deviation of the residuals}, $s$, measures the typical size of the residuals.  
+\item A \termni{residual}, $y-\hat{y}$, measures the error for an \emph{individual point}.  The \termni{standard deviation of the residuals}, $s$, measures the typical size of the residuals.  
 
-\item $\hat{y} = a+bx$ provides the best fit line for the \emph{observed data}.  To estimate or hypothesize about the slope of the population regression line, first confirm that the residual plot has no pattern and that a linear model is reasonable, then use a \termsub{$\pmb{t}$-interval for the slope}{t-interval for the slope@$t$-interval for the slope} or a \termsub{$\pmb{t}$-test for the slope}{t-test for the slope@$t$-test for the slope} with $n-2$ degrees of freedom.
+\item $\hat{y} = a+bx$ provides the best fit line for the \emph{observed data}.  To estimate or hypothesize about the slope of the population regression line, first confirm that the residual plot has no pattern and that a linear model is reasonable, then use a $\pmb{t}$-interval for the slope or a $\pmb{t}$-test for the slope with $n-2$ degrees of freedom.
 \end{itemize}
 In this chapter we focused on simple linear models with one explanatory variable.  More complex methods of prediction, such as multiple regression (more than one explanatory variable) and nonlinear regression can be studied in a future course.
 

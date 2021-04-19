@@ -96,6 +96,7 @@ We can use a normal model for inference for a proportion when the sampling distr
 
 \index{data!supreme court|(}
 \index{point estimate!single proportion}
+\index{Z-interval!for a proportion|(}
 
 The Gallup organization began measuring the public's view of the Supreme Court's job performance in 2000, and has measured it every year since then with the question: ``Do you approve or disapprove of the way the Supreme Court is handling its job?".  In 2018, the Gallup poll randomly sampled 1,033 adults in the U.S. and found that 53\% of them approved.\footnote{\oiRedirect{textbook-gallup_supreme_court_approval_2018}{\scriptsize https://news.gallup.com/poll/237269/supreme-court-approval-highest-2009.aspx}}  We know that 53\% is just a point estimate.  What range of values are reasonable estimates for the percent of the population that approved of the job the Supreme Court is doing?  We can use the confidence interval procedure introduced in the previous chapter to answer this question, but first we must clearly identify the parameter we're trying to estimate and be sure that a Z-interval will be appropriate.  The following examples walk through the various steps for carrying out a confidence interval procedure using the Gallup poll data.
 
@@ -196,7 +197,7 @@ To carry out a complete confidence interval procedure to estimate a single propo
 \end{itemize}
 \inferencestep{Choose} Choose the correct interval procedure and identify it by name. \vspace{-1mm}
 \begin{itemize} 
-\item[] To estimate a single proportion we use a \term{1-proportion Z-interval}.
+\item[] To estimate a single proportion we use a \termsub{1-proportion Z-interval}{Z-interval!for a proportion}.
 \end{itemize}
 \inferencestep{Check} Check conditions for the sampling distribution of $\hat{p}$ to be nearly normal.  \vspace{-1mm}
 \begin{itemize}
@@ -318,6 +319,7 @@ Using a calculator, evaluate the confidence interval from Example~\ref{Intellige
 \end{exercisewrap}
 \footnotetext{Navigate to the 1-proportion Z-interval on the calculator.  To find \calctext{x}, the number of yes responses in the sample, we multiply the sample proportion by the sample~size.  Here $0.68\times 1033=702.44$.  We must round this to an integer, so we use \calctext{x} = 702.  Also, \calctext{n} =1033 and \calctext{C-Level} = 0.95.  The calculator output of (0.651, 0.708) matches our previously computed interval of (0.651, 0.709) with minor rounding difference.}
 
+\index{Z-interval!for a proportion|)}
 
 \D{\newpage}
 
@@ -419,6 +421,7 @@ A manager is about to oversee the mass production of a new tire model in her fac
 %%
 \subsection{Hypothesis testing for a proportion}
 \label{htForPropSection}
+\index{Z-test!for a proportion|(}
 
 While a confidence interval provides a range of reasonable values for an unknown parameter, a hypothesis test evaluates a specific claim. In a hypothesis test, we set up competing hypotheses and find degrees of evidence against the null hypothesis.
 
@@ -519,7 +522,7 @@ To carry out a complete hypothesis test to test the claim that a single proporti
 \end{itemize} 
 \inferencestep{Choose} Choose the correct test procedure and identify it by name.  \vspace{-1mm}
 \begin{itemize}
-\item[] To test hypotheses about a single proportion we use a \term{1-proportion Z-test}.
+\item[] To test hypotheses about a single proportion we use a \termsub{1-proportion Z-test}{Z-test!for a proportion}.
 \end{itemize}
  \inferencestep{Check} Check conditions for the sampling distribution of $\hat{p}$ to be nearly normal, assuming $H_0$: $p=p_0$ is true.\vspace{-1mm}
 \begin{itemize}
@@ -655,6 +658,7 @@ Using a calculator, find the test statistic and p-value for the earlier Example~
 \end{exercisewrap}
 \footnotetext{Navigate to the 1-proportion Z-test on the calculator.  Let $\calctextmath{p_0}$ = 0.5.  To find \calctext{x}, do $0.54\times 1019 = 550.26$. This needs to be an integer, so round to the closest integer.  Here \calctext{x} = 550.  Also, $\calctextmath{n}=1019$.  We are looking for evidence that greater than half oppose, so choose $\calctextmath{>p_0}$.  When we do \calctext{Calculate}, we get the test statistic: \calctext{Z = 2.64} and the p-value: \calctext{p = 0.006}. }
 
+\index{Z-test!for a proportion|)}
 
 \D{\newpage}
 
@@ -674,8 +678,8 @@ Using a calculator, find the test statistic and p-value for the earlier Example~
 \end{itemize}
 
 \item When there is one sample and the parameter of interest is a single proportion:\begin{itemize}
- \item Estimate $p$ at the C\% confidence level using a \term{1-proportion Z-interval}.
-\item Test $H_0$: $p=p_0$ at the $\alpha$ significance level using a \term{1-proportion Z-test}.
+ \item Estimate $p$ at the C\% confidence level using a \termsub{1-proportion Z-interval}{Z-interval!for a proportion}.
+\item Test $H_0$: $p=p_0$ at the $\alpha$ significance level using a \termsub{1-proportion Z-test}{Z-test!for a proportion}.
 \end{itemize}
 
 \item The one proportion Z-test and Z-interval require the sampling distribution of $\hat{p}$ to be nearly normal.  For this reason we must check that the following conditions are met.
@@ -778,6 +782,8 @@ When comparing two proportions, we carry out inference on $p_1-p_2$.  To model t
 
 %%
 \subsection[Confidence interval for $p_1 -p_2$]{Confidence interval for the difference of two proportions}
+\index{two-proportion Z-interval|see{Z-interval for a difference of proportions}}
+\index{Z-interval!for a difference of proportions|(}
 
 We consider an experiment for patients who underwent CPR for a heart attack and were subsequently admitted to a hospital. These patients were randomly divided into a treatment group where they received a blood thinner or the control group where they did not receive a blood thinner. The outcome variable of interest was whether the patients survived for at least 24 hours.
     The results are shown in  Figure~\ref{resultsForCPRStudyInSmallSampleSection}.
@@ -863,7 +869,7 @@ To carry out a complete confidence interval procedure to estimate the difference
 \end{itemize} \vspace{-1mm}
 \inferencestep{Choose} Identify the correct interval procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] To estimate a difference of proportions we choose the \term{2-proportion Z-interval}.
+\item[] To estimate a difference of proportions we choose the \termsub{2-proportion Z-interval}{Z-interval!for a difference of proportions}.
 \end{itemize}
  \inferencestep{Check} Check conditions for the sampling distribution of $\hat{p}_1-\hat{p}_2$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
@@ -982,12 +988,15 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion &&
 \end{exercisewrap}
 \footnotetext{Navigate to the 2-proportion Z-interval on the calculator.  Let \calctext{x1} = 879, \calctext{n1} = 1000, \calctext{x2} = 958, and \calctext{n2} = 1000.  \calctext{C-Level} is .95.  This should lead to an interval of (-0.1027, -0.0553), which matches what we found previously. }
 
+\index{Z-interval!for a difference of proportions|)}
 
 \D{\newpage}
 
 %%
 \subsection[Hypothesis testing when $H_0$: $p_1 = p_2$]{Hypothesis testing when \pmb{$H_0$: $p_1 = p_2$}}
 \label{pooledHTForProportionsSection}
+\index{two-proportion Z-test|see{Z-test for a difference of proportions}}
+\index{Z-test!for a difference of proportions|(}
 
 Here we use a new example to examine a special estimate of the standard error when the null hypothesis is that two population proportions equal each other, i.e. $H_0$: $p_1 = p_2$. We investigate 
 whether the way a question is phrased can influence a person's response. Pew Research Center conducted a survey with the following question:\footnote{\oiRedirect{textbook-health_care_bill_2012}{www.people-press.org/2012/03/26/public-remains-split-on-health-care-bill-opposed-to-mandate}. sample~sizes for each polling group are approximate.}
@@ -1125,7 +1134,7 @@ To carry out a complete hypothesis test to test the claim that two proportions $
 \end{itemize}
  \inferencestep{Choose} Choose the correct test procedure and identify it by name.\vspace{-1mm}
 \begin{itemize}
-\item[] To test hypotheses about a difference of proportions we use a \term{2-proportion Z-test}.  
+\item[] To test hypotheses about a difference of proportions we use a \termsub{2-proportion Z-test}{Z-test!for a difference of proportions}.  
 \end{itemize}
  \inferencestep{Check} Check conditions for the sampling distribution of $\hat{p}_1-\hat{p}_2$ to be nearly normal, assuming $H_0$: $p_1=p_2$ is true.\vspace{-1mm}
 \begin{itemize}
@@ -1283,6 +1292,7 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion
 \footnotetext{Correctly going through the calculator steps should lead to a solution with the test statistic \calctext{z} = -2.977 and the p-value \calctext{p} = 0.00145.  These two values match our calculated values from the previous example to within rounding error.  The pooled proportion is given as $\calctextmath{\hat{p}}$ = 0.0133.  Note: values for \calctext{x1} and \calctext{x2} were given in the table.  If, instead, proportions are given, find \calctext{x1} and \calctext{x2} by multiplying the proportions by the sample~sizes and rounding the result to an \emph{integer}.}
 
 
+\index{Z-test!for a difference of proportions|)}
 
 \D{\newpage}
 
@@ -1301,8 +1311,8 @@ $\calctextmath{\hat{p}_2}$ & sample 2 proportion
 \item When there are two samples or treatments and the parameter of interest is a difference of proportions, e.g. the true difference in proportion of 17 and 18 year olds with a summer job (proportion of 18 year olds $-$ proportion of 17 year olds): 
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item Estimate $p_1-p_2$ at the C\% confidence level using a \term{2-proportion Z-interval}.
-\item Test $H_0$: $p_1-p_2=0$ at the $\alpha$ significance level using a \term{2-proportion Z-test}.
+\item Estimate $p_1-p_2$ at the C\% confidence level using a \termsub{2-proportion Z-interval}{Z-interval!for a difference of proportions}.
+\item Test $H_0$: $p_1-p_2=0$ at the $\alpha$ significance level using a \termsub{2-proportion Z-test}{Z-test!for a difference of proportions}.
 \end{itemize}
 \item The two proportion Z-interval and Z-test require the sampling distribution of $\hat{p}_1-\hat{p}_2$ to be nearly normal.  For this reason we must check that the following conditions are met.   \vspace{-1mm}
 \begin{itemize}
@@ -1370,6 +1380,7 @@ This allows us to answer questions such as the following:
 
 %%
 \subsection{Creating a test statistic for one-way tables}
+\index{chi-square goodness of fit test@$\chi^2$ goodness of fit test|(}
 
 Data is collected from a random sample of 275 jurors in a small county. Jurors identified their racial/ethnic group, as shown in Figure~\ref{juryRepresentationAndCityRepresentationForRace}, and we would like to determine if these jurors are representative of the population with respect to race/ethnicity. If the jury is representative of the population, then the proportions in the sample should roughly reflect the population of eligible jurors, i.e. registered voters.
 
@@ -1891,7 +1902,7 @@ expected counts:&		& 170.9 &  142.4 & 113.9 & 99.6 & 92.6 & 92.6\\
 \end{exercisewrap}
 \footnotetext{Enter the observed counts into \calctext{L1} and the expected counts into  \calctext{L2}.    the \calctext{GOF} test.  Make sure that \calctext{Observed:} is \calctext{L1} and \calctext{Expected:} is \calctext{L2}.  Let \calctext{df:} be 5.  You should find that $\chi^2=17.36$ and $\text{p-value}=0.004$.}
 
-
+\index{chi-square goodness of fit test@$\chi^2$ goodness of fit test|)}
 \D{\newpage}
 
 %%
@@ -2108,6 +2119,7 @@ $$\text{Expected Count}_{\text{row }i,\text{ col }j} = \frac{(\text{row $i$ tota
 
 %%
 \subsection{The chi-square test for homogeneity in two-way tables}
+\index{chi-square test for homogeneity@$\chi^2$ test for homogeneity|(}
 
 The chi-square test statistic for a two-way table is found the same way it is found for a one-way table. For each table count, compute
 \begin{align*}
@@ -2292,11 +2304,13 @@ If an error was made in the test in the previous example, would it have been a T
 \end{exercisewrap}
 \footnotetext{In this test, the p-value was less than $\alpha$, so we rejected $H_0$.  If $H_0$ is in fact true, and we reject it, that would be committing a Type~I error.  We could not have made a Type~II error, because a Type~II error involves not rejecting~$H_0$.}
 
+\index{chi-square test for homogeneity@$\chi^2$ test for homogeneity|)}
 
 \D{\newpage}
 
 %%
 \subsection{The chi-square test for independence in two-way tables}
+\index{chi-square test for independence@$\chi^2$ test for independence|(}
 
 Often, instead of having separate random samples or treatments, we have just one sample and we want to look at the association between two variables.  When these two variables are categorical, we can arrange the responses in a two-way table.  
 
@@ -2476,6 +2490,7 @@ In context, interpret the p-value of the test in the previous example.\footnotem
 \end{exercisewrap}
 \footnotetext{The p-value in this test corresponds to the area to the right of $\chi^2 = 3.13$ under the chi-square curve with 2 degrees of freedom.  Assuming the probability model is true and assuming the null hypothesis is true, i.e. that gender and response really are independent, there is a 0.209 probability of getting a $\chi^2$-statistic as large or larger than 3.13.  Equivalently, it is the probability of our observed counts being this different from the expected counts, relative to the expected counts, if the null is true and the model holds.  Because the p-value is large, we do not reject the null.}
 
+\index{chi-square test for independence@$\chi^2$ test for independence|)}
 
 \D{\newpage}
 
@@ -2646,35 +2661,35 @@ Disapprove			    & 726.41    & 688.55 & 689.04  \\
 Choosing the correct procedure requires understanding the \textit{type of data} and the \textit{method of data collection}.    All of the inference procedures in Chapter~\thechapter~are for categorical variables.  Here we list the five tests encountered in this chapter and when to use them.  
 \begin{itemize}\vspace{-2mm}
 \setlength{\itemsep}{0mm}
-\item \term{1-proportion Z-test}
+\item \textbf{1-proportion Z-test}
 \begin{itemize}\vspace{-1mm}
 \setlength{\itemsep}{0mm}
 \item \emph{1 random sample}, a yes/no variable
 \item Compare the sample proportion to a fixed / hypothesized proportion.
 \end{itemize}
 
-\item \term{2-proportion Z-test}
+\item \textbf{2-proportion Z-test}
 \begin{itemize}\vspace{-2mm}
 \setlength{\itemsep}{0mm}
 \item \emph{2 independent random samples or randomly allocated treatments}
 \item Compare two populations or treatments to each other with respect to one yes/no variable; e.g. comparing the proportion over age 65 in two distinct populations.
 \end{itemize}
 
-\item \termsub{$\pmb{\chi^2}$ goodness of fit test}{chi-square goodness of fit test@$\chi^2$ goodness of fit test}
+\item \textbf{$\pmb{\chi^2}$ goodness of fit test}
 \begin{itemize}\vspace{-2mm}
 \setlength{\itemsep}{0mm}
 \item \emph{1 random sample}, a categorical variable (generally at least three categories)
 \item Compare the distribution of a categorical variable to a fixed or known population distribution; e.g. looking at distribution of color among M\&M's. 
 \end{itemize}
 
-\item \termsub{$\pmb{\chi^2}$ test for homogeneity}{chi-square test for homogeneity@$\chi^2$ test for homogeneity}: 
+\item \textbf{$\pmb{\chi^2}$ test for homogeneity}: 
 \begin{itemize}\vspace{-2mm}
 \setlength{\itemsep}{0mm}
 \item \emph{2 or more independent random samples or randomly allocated treatments} 
 \item Compare the distribution of a categorical variable across several populations or treatments; e.g. party affiliation over various years, or patient improvement compared over 3 treatments.
 \end{itemize}
 
-\item \termsub{$\pmb{\chi^2}$ test for independence}{chi-square test for independence@$\chi^2$ test for independence}
+\item \textbf{$\pmb{\chi^2}$ test for independence}
 \begin{itemize}\vspace{-2mm}
 \setlength{\itemsep}{0mm}
 \item \emph{1 random sample}, 2 categorical variables
