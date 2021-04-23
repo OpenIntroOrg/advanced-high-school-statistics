@@ -38,55 +38,54 @@ Calculate $R^2$ and interpret it in context.
 \end{parts}
 }{}
 
-% 32 - beer_blood_alcohol_inf_ap
+% 32 - mcu_box_office_us_predict_ahss
 
-\eoce{\qt{Beer and blood alcohol content\label{beer_blood_alcohol_inf_ap}} 
-Many people believe that gender, 
-weight, drinking habits, and many other factors are much more important 
-in predicting blood alcohol content (BAC) than simply considering the 
-number of drinks a person consumed. Here we examine data from sixteen 
-student volunteers at Ohio State University who each drank a randomly 
-assigned number of cans of beer. These students were different genders and they differed in weight and drinking habits. 
-Thirty minutes later, a police officer measured their blood alcohol 
-content (BAC) in grams of alcohol per deciliter of blood.
-\footfullcite{Malkevitc+Lesser:2008} The scatterplot and regression 
-table summarize the findings.
-
-\noindent\begin{minipage}[c]{0.4\textwidth}
-\begin{center}
-\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/beer_blood_alcohol_inf_ap/beer_blood_alcohol.pdf}
-\end{center}
-\end{minipage}
-\begin{minipage}[c]{0.6\textwidth}
-{\scriptsize
+\eoce{\qt{MCU, predict US theater sales\label{mcu_box_office_us_predict}} 
+The Marvel Comic Universe movies were an international movie sensation,
+containing 23 movies at the time of this writing.
+Here we consider a model predicting an MCU film's gross theater sales
+in the US based on the first weekend sales performance in the US.
+The data are presented below in both a scatterplot and the model in
+a~regression table.
+Scientific notation is used below, e.g. 42.5e6 corresponds to
+$42.5\times 10^6$.
 \begin{center}
 \begin{tabular}{rrrrr}
-    \hline
-            & Estimate  & Std. Error    & t value   & Pr($>$$|$t$|$) \\ 
-    \hline
-(Intercept) & -0.0127   & 0.0126        & -1.00     & 0.3320 \\ 
-beers       & 0.0180    & 0.0024        & 7.48      & 0.0000 \\ 
-    \hline
+  \hline
+  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+  (Intercept) & 42.5e6 & 26.6e6 & 1.60 & 0.1251 \\ 
+  opening\us{}weekend\us{}us & 2.4361 & 0.1739 & 14.01 & 0.0000 \\ 
+  \hline
 \end{tabular}
 \end{center}
-}
-\end{minipage}
+\begin{minipage}[c]{0.48\textwidth}
 \begin{parts}
-\item Describe the relationship between the number of cans of beer 
-and BAC.
-\item Write the equation of the regression line. Interpret the slope 
-and intercept in context.
-\item Do the data provide strong evidence that drinking more cans of 
-beer is associated with an increase in blood alcohol? State the null 
-and alternative hypotheses, report the p-value, and state your 
-conclusion.
-\item The correlation coefficient for number of cans of beer and BAC 
-is 0.89. Calculate $R^2$ and interpret it in context.
-\item Suppose we visit a bar, ask people how many drinks they have had, 
-and also take their BAC. Do you think the relationship between number 
-of drinks and BAC would be as strong as the relationship found in the 
-Ohio State study?
+\item
+  Describe the relationship between gross theater sales in the US and
+  first weekend sales in the~US.
+\item
+  Write the equation of the regression line. Interpret the slope
+  and intercept in~context.
+\item
+  Do the data provide strong evidence that higher opening weekend sale
+  is associated with higher gross theater sales? State the null and
+  alternative hypotheses, report the p-value, and state your conclusion.
+\item
+  The correlation coefficient for gross sales and first weekend sales
+  is~0.950.
+  Calculate $R^2$ and interpret it in~context.
+\item
+  Suppose we consider a set of all films ever released.
+  Do you think the relationship between opening weekend sales
+  and total sales would have as strong of a relationship as
+  what we see with the MCU~films?
 \end{parts}
+\vspace{3mm}
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}
+\hspace{0.1\textwidth}\includegraphics[width=0.9\textwidth]{ch_regr_simple_linear/figures/eoce/mcu_box_office_us_predict_ahss/mcu_box_office_us_predict} \\[3mm]
+\end{minipage}
 }{}
 
 % 33 - spouses_2_ap
