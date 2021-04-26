@@ -4,8 +4,9 @@
   \label{ch_regr_simple_linear}
   \chaptersection{fitting_line_to_data_section}
   \chaptersection{fittingALineByLSR}
-  \chaptersection{inferenceForLinearRegression}
    \chaptersection{transformationForNonlinearData}
+
+  \chaptersection{inferenceForLinearRegression}
 \end{chapterpage}
 \renewcommand{\chapterfolder}{ch_regr_simple_linear}
 \index{linear regression|textbf}
@@ -346,7 +347,7 @@ All four data sets have the exact same correlation of $r = 0.816$ as well as the
 
 \item A linear model for bivariate numerical data can be useful for prediction when the association between the variables follows a constant, linear trend.  Linear models should not be used if the trend between the variables is curved.  
 
-\item When we write a linear model, we use $\hat{y}$ to indicate that it is the model or the prediction.   The value $\hat{y}$ can be understood as a \term{prediction} for $y$ based on a given $x$, or as an \term{average} of the $y$ values for a given $x$.
+\item When we write a linear model, we use $\hat{y}$ to indicate that it is the model or the prediction.   The value $\hat{y}$ can be understood as a \term{prediction} for $y$ based on a given $x$, or as an \textbf{average} of the $y$ values for a given $x$.
 
 \item The \term{residual} is the \textbf{error} between the true value and the modeled value, computed as $y - \hat{y}$.  The order of the difference matters, and the sign of the residual will tell us if the model overpredicted or underpredicted a particular data point.
 
@@ -434,7 +435,7 @@ which we could accomplish with a computer program. The resulting dashed line sho
 (y_1 - \hat{y}_1)^2 + (y_2-\hat{y}_2)^2+ \dots + (y_n-\hat{y}_n)^2
 \label{sumOfSquaresForResiduals}
 \end{eqnarray*}
-The line that minimizes the sum of the squared residuals is represented as the solid line in Figure~\ref{elmhurstScatterW2Lines}. This is commonly called the \term{least squares line}. 
+The line that minimizes the sum of the squared residuals is represented as the solid line in Figure~\ref{elmhurstScatterW2Lines}. This is commonly called the \termni{least squares line}. 
 
 Both lines seem reasonable, so why do data scientists prefer the least squares regression line?  One reason is that it is easier to compute by hand and in most statistical software.  Another, and more compelling, reason is that in many applications, a residual twice as large as another residual is more than twice as bad. For example, being off by 4 is usually more than twice as bad as being off by 2. Squaring the residuals accounts for this discrepancy.
 
@@ -473,8 +474,9 @@ where $r$ is the correlation between the variables $x$ and $y$, and $s_x$ and $s
 \begin{align*}
 \bar{y} &= a  + b\bar{x}
 &&a=\bar{y}-b\bar{x}
-\label{interceptOfLSRLine}
 \end{align*}
+\label{interceptOfLSRLine}
+
 \end{itemize}
 
 
@@ -752,8 +754,15 @@ If a linear model has an $R^2$ or explained variance of 0.94, what is the correl
 \footnotetext{We take the square root of $R^2$ and get 0.97, but we must be careful, because $r$ could be 0.97 \emph{or} -0.97.  Without knowing the slope or seeing the scatterplot, we have no way of knowing if $r$ is positive or negative.}
 
 %%
-\subsection{Calculator/Desmos: linear correlation and regression}
+\subsection{Technology: linear correlation and regression}
 \label{calclinreg}
+
+\noindent Get started quickly with this Desmos \oiRedirect{desmos-linreg}{LinReg Calculator} (\small{available at \oiRedirect{openintro-ahss-desmos}{openintro.org/ahss/desmos}}).
+\begin{center}
+\oiRedirect{desmos-linreg}{\includegraphics[width=.95\textwidth]{ch_regr_simple_linear/figures/desmosLinReg/desmosLinReg}}
+\end{center}
+
+\noindent \\Calculator instructions
 
 \begin{onebox}{\videohref{ti84_calculating_regression_summary_statistics} TI-84: finding $\MakeLowercase{\pmb{a}}$, \MakeLowercase{\pmb{$b$}}, $\pmb{R^2}$, and \MakeLowercase{\pmb{$r$}} for a linear model}
 Use \calctext{STAT}, \calctext{CALC}, \calctext{LinReg(a + bx)}.
@@ -776,7 +785,7 @@ $\calctextmath{r^2}$ & $R^2$, the explained variance \\
 \calctext{r} & $r$, the correlation coefficient
 \end{tabular}
 \end{enumerate}
-TI-83: Do steps 1-3, then enter the $x$ list and $y$ list separated by a comma, e.g. \calctext{LinReg(a+bx) L1, L2}, then hit \calctext{ENTER}.\end{onebox} 
+TI-83: Do steps 1-3, then enter the $x$ list and $y$ list separated by a comma, e.g. \calctext{LinReg(a+bx) L1, L2}, then hit \calctext{ENTER}.\end{onebox}
 
 \begin{onebox}{What to do if \pmb{$r^2$} and \MakeLowercase{\pmb{$r$}} do not show up on a TI-83/84}
 If $r^2$ and $r$ do now show up when doing \calctext{STAT}, \calctext{CALC}, \calctext{LinReg}, the \emph{diagnostics} must be turned on.  This only needs to be once and the diagnostics will remain on.
@@ -825,14 +834,15 @@ If you select \calctext{ax+b} (\calcbutton{F1}), the \calctext{a} and \calctext{
 
 
 
+\newpage
 
 \begin{exercisewrap}
 \begin{nexercise}\label{subsetOfLoan50}%
 The data set \data{loan50}, introduced in Chapter 1, contains information on randomly sampled loans offered through Lending Club.  A subset of the data matrix is shown in
-Figure~\ref{data_for_regr_calc_exercise_loan50}.  Use a calculator to find the equation of the least squares regression line for predicting loan amount from total income.\footnotemark 
+Figure~\ref{data_for_regr_calc_exercise_loan50}.  Use a calculator to find the equation of the least squares regression line for predicting loan amount from total income based on this subset.\footnotemark 
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{$\calctext{a}=11121$ and $\calctext{b}=0.0043$, therefore $\hat{y}=11121 + 0.0043x$.}
+\footnotetext{$\calctext{a}=6497$ and $\calctext{b}=0.0774$, therefore $\hat{y}=6497 + 0.0774x$.}
 
 \begin{figure}[ht]
 \centering
@@ -854,18 +864,18 @@ Figure~\ref{data_for_regr_calc_exercise_loan50}.  Use a calculator to find the e
 \end{figure}
 
 
-\D{\newpage}
-
-\begin{examplewrap}
-\begin{nexample}
-{Use the full \data{loan50} data set (\oiRedirect{data}{\small{openintro.org/ahss/data}}) and this \oiRedirect{desmos-linregcalculator}{Desmos Calculator} \mbox{(\small{openintro.org/ahss/desmos})} to draw the scatterplot and find the equation of the least squares regression line for prediction loan amount ($y$) from total income ($x$).}
-\begin{center}
-\oiRedirect{desmos-loan50scatter}{
-\includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/loan50Desmos/loan50Desmos}}
-\end{center}
-\end{nexample}
-\end{examplewrap}
+\begin{exercisewrap}
+\begin{nexercise}
+Use the \oiRedirect{data-loan50}{loan50} data set and Screen 2 of this Desmos \oiRedirect{desmos-linreg2}{LinReg Calculator} to draw the scatterplot and find the equation of the least squares regression line for prediction loan amount ($y$) from total income ($x$).  Also draw the residual plot and find the standard error of the residuals.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
 \label{loan50Desmos}
+\footnotetext{
+Recall that data sets can be found at \oiRedirect{openintro-data}{openintro.org/data} and Desmos Calculators can be found at \oiRedirect{openintro-desmos}{openintro.org/ahss/desmos}.  This will first require a minor data cleaning step.  After downloading the loan50 data, notice the oddly formatted numbers under total$\_$income column.  This will confuse Desmos!  Highight the column, do Format, Cells, Number, and set decimal places to 0.  Finally, copy and paste the loan$\_$amount column to the right of total$\_$income.  Then you can copy the two columns into Desmos.\\
+\includegraphics[width=0.45\textwidth]{ch_regr_simple_linear/figures/loan50Desmos/loan50Desmos}\qquad 
+\includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/loan50Desmos/desmosResidual}
+}
+
 \D{\newpage}
 
 %%%%
@@ -1014,6 +1024,227 @@ b=r\frac{s_y}{s_x} \qquad \text{and} \qquad a=\bar{y} - b\bar{x}.
 
 
 
+%%________________________________
+
+
+\section{Transformations for skewed data}
+\label{transformationForNonlinearData}
+\sectionintro{
+\noindent%
+County population size among the counties in the US is very strongly right skewed.
+Can we apply a transformation to make the distribution more symmetric?  How would such a transformation affect the scatterplot and residual plot when another variable is graphed against this variable?  In this section, we will see the power of transformations for very skewed data.
+
+
+%%
+\subsection*{Learning objectives}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+
+\item See how a log transformation can bring symmetry to an extremely skewed variable.
+\item Recognize that data can often be transformed to produce a linear relationship, and that this transformation often involves log of the $y$-values and sometimes log of the $x$-values.
+
+\item Use residual plots to assess whether a linear model for transformed data is reasonable.
+\end{enumerate}
+}
+
+
+%%
+\subsection{Introduction to transformations}
+
+\begin{examplewrap}
+\begin{nexample}{Consider the histogram of county populations
+    shown in Figure~\ref{county_pop_transformed_i},
+    which shows extreme skew.
+    What isn't useful about this plot?}
+  Nearly all of the data fall into the left-most bin,
+  and the extreme skew obscures many of the potentially
+  interesting details in the data.
+\end{nexample}
+\end{examplewrap}
+
+
+
+
+
+There are some standard transformations that may be
+useful for strongly right skewed data where much of the
+data is positive but clustered near zero.
+A \term{transformation} is a rescaling of the data
+using a function.
+For instance, a plot of the logarithm (base 10) of
+county populations results in the new histogram in
+Figure~\ref{county_pop_transformed_log}.
+This data is symmetric, and any potential outliers
+appear much less extreme than in the original data set.
+By reigning in the outliers and extreme skew,
+transformations like this often make it easier to build
+statistical models against the data.
+
+Transformations can also be applied to one or both
+variables in a scatterplot.
+A scatterplot of the population change from 2010 to 2017
+against the population in 2010 is shown in Figure~\ref{county_pop_change_v_pop_transform_i}.
+In this first scatterplot, it's hard to decipher any
+interesting patterns because the population variable
+is so strongly skewed.
+However, if we apply a log$_{10}$ transformation to
+the population variable, as shown in
+Figure~\ref{county_pop_change_v_pop_transform_log},
+a positive association between the variables is revealed.
+While fitting a line to predict population change (2010 to 2017) from population (in 2010) does not seem reasonable, fitting a line to predict population from log$_{10}$(population) does seem reasonable.  
+
+
+\begin{figure}[ht]
+    \label{county_pop_transformed}
+  \centering
+  \subfigure[]{
+    \Figures{0.48}
+        {county_pop_transformed}
+        {county_pop_transformed_i}
+    \label{county_pop_transformed_i}
+  }
+  \subfigure[]{
+    \Figures{0.48}
+        {county_pop_transformed}
+        {county_pop_transformed_log}
+  \label{county_pop_transformed_log}
+  }
+  \caption{\subref{county_pop_transformed_i} A histogram of
+      the populations of all US counties.
+      \subref{county_pop_transformed_log} A histogram of
+      log$_{10}$-transformed county populations.
+      For this plot, the x-value corresponds to the power
+      of 10, e.g. ``4'' on the x-axis corresponds to
+      $10^4 =$ 10,000.}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \subfigure[]{
+    \Figures{0.48}
+        {county_pop_change_v_pop_transform}
+        {county_pop_change_v_pop_transform_i}
+    \label{county_pop_change_v_pop_transform_i}
+  }
+  \subfigure[]{
+    \Figures{0.48}
+        {county_pop_change_v_pop_transform}
+        {county_pop_change_v_pop_transform_log}
+    \label{county_pop_change_v_pop_transform_log}
+  }
+  \caption{\subref{county_pop_change_v_pop_transform_i}
+      Scatterplot of population change
+      against the population before the change.
+      \subref{county_pop_change_v_pop_transform_log}~A~scatterplot
+      of the same data but where the population
+      size has been log-transformed.}
+  \label{county_pop_change_v_pop_transform_main}
+\end{figure}
+
+Transformations other than the logarithm can be useful, too.
+For instance, the square root
+($\sqrt{\text{original observation}}$) and inverse
+($\frac{1}{\text{original observation}}$) are commonly used
+by data scientists.
+Common goals in transforming data are to see the data
+structure differently, reduce skew, assist in modeling,
+or straighten a nonlinear relationship in a scatterplot.
+
+\index{data!county|)}
+
+
+\D{\newpage}
+
+%%
+\subsection{Transformations to achieve linearity}
+
+\begin{figure}[ht]
+   \begin{center}
+   \includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/NeedsTransform/NeedsTransform-PreTransform}
+\label{pretransform}
+   \caption{Variable $y$ is plotted against $x$. A nonlinear relationship is evident by the $\cup$-pattern shown in the residual plot.  The curvature is also visible in the original plot.}
+   \label{NeedsTransform-PreTransform}
+\end{center}
+\end{figure}
+
+
+\begin{examplewrap}
+\begin{nexample}{Consider the scatterplot and residual plot in Figure~\ref{NeedsTransform-PreTransform}. The regression output is also provided.  Is the linear model $\hat{y} = -52.3564 + 2.7842 x$ a good model for the data?
+\\
+\\
+\texttt{The regression equation is} \\
+
+\texttt{y = -52.3564 + 2.7842 x} \\
+
+\texttt{Predictor \ \ \ \ \ \ Coef \ \ SE Coef \ \ \ \ \ \ \ \ T \ \ \ \ \ \ \ \ \ P} \\
+\texttt{Constant \ \ \ -52.3564 \ \ \ 7.2757 \ \ \ -7.196 \ \ \ \ \ 3e-08} \\
+\texttt{x \ \ \ \ \ \ \ \ \ \ \ \ 2.7842 \ \ \ 0.1768 \ \ \ 15.752 \ \ \ < 2e-16} \\
+
+\texttt{S = 13.76\ \ \ \ R-Sq = 88.26\% \ \ \ R-Sq(adj) = 87.91\%}
+}
+
+We can note the $R^2$ value is fairly large.  However, this alone does not mean that the model is good.  Another model might be much better.  When assessing the appropriateness of a linear model, we should look at the residual plot.  The $\cup$-pattern in the residual plot tells us the original data is curved. If we inspect the two plots, we can see that for small and large values of $x$ we systematically underestimate $y$, whereas for middle values of $x$, we systematically overestimate $y$.  The curved trend can also be seen in the original scatterplot.  Because of this, the linear model is not appropriate, and it would not be appropriate to perform a $t$-test for the slope because the conditions for inference are not met.  However, we might be able to use a transformation to linearize the data.
+\end{nexample}
+\end{examplewrap}
+
+Regression analysis is easier to perform on linear data.  When data are nonlinear, we sometimes \term{transform} the data in a way that makes the resulting relationship linear.  The most common \term{transformation} is log of the $y$ values. Sometimes we also apply a transformation to the $x$ values.  We generally use the residuals as a way to evaluate whether the transformed data are more linear. If so, we can say that a better model has been found.
+
+
+\begin{examplewrap}
+\begin{nexample}{Using the regression output for the transformed data, write the new linear regression equation.\\
+\\
+\texttt{The regression equation is} \\
+
+\texttt{log(y) = 1.722540 + 0.052985 x} \\
+
+\texttt{Predictor \ \ \ \ \ \ \ \ Coef \ \ \ \ SE Coef \ \ \ \ \ \ \ T \ \ \ \ \ \ \ \ \ P} \\
+\texttt{Constant \ \ \ \ \ 1.722540 \ \ \ 0.056731 \ \ \ 30.36 \ \ \ < 2e-16} \\
+\texttt{x \ \ \ \ \ \ \ \ \ \ \ \ 0.052985 \ \ \ 0.001378 \ \ \ 38.45 \ \ \ < 2e-16} \\
+
+
+\texttt{S = 0.1073\ \ \ \ R-Sq = 97.82\% \ \ \ R-Sq(adj) = 97.75\%}}
+The linear regression equation can be written as:  $\widehat{\text{log}(y)} = 1.723 +0.053 x$
+\end{nexample}
+\end{examplewrap}
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/NeedsTransform/NeedsTransform-PostTransform}
+   \caption{A plot of $\text{log}(y)$ against $x$. The residuals don't show any evident patterns, which suggests the transformed data is well-fit by a linear model.}
+   \label{NeedsTransform-PostTransform}
+\end{figure}
+
+
+\begin{exercisewrap}
+\begin{nexercise}Which of the following statements are true?  There may be more than one.\footnotemark 
+\begin{enumerate}[(a)]
+\item There is an apparent linear relationship between $x$ and $y$.
+\item There is an apparent linear relationship between $x$ and $\widehat{\text{log}(y)}$.
+\item The model provided by Regression I ($\hat{y} = -52.3564 + 2.7842 x$) yields a better~fit.
+\item The model provided by Regression II ($\widehat{\text{log}(y)} = 1.723 +0.053 x$) yields a better~fit.
+\end{enumerate}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Part~(a) is \emph{false} since there is a nonlinear (curved) trend in the data. Part~(b) is true. Since the transformed data shows a stronger linear trend, it is a better fit, i.e. Part~(c) is \emph{false}, and Part~(d) is true.}
+
+
+\D{\newpage}
+
+%%
+\subsection*{Section summary}
+\begin{itemize}
+\item A \term{transformation} is a rescaling of the data using a function.  When data are very skewed, a log transformation often results in more symmetric data.
+
+\item Regression analysis is easier to perform on linear data. When data are nonlinear, we sometimes \term{transform} the data in a way that results in a linear relationship. The most common transformation is log of the $y$-values. Sometimes we also apply a transformation to the $x$-values. 
+
+\item To assess the model, we look at the \textbf{residual plot} of the \emph{transformed} data.  If the residual plot of the original data has a pattern, but the residual plot of the transformed data has no pattern, a linear model for the transformed data is reasonable, and the transformed model provides a better fit than the simple linear model.
+
+\end{itemize}
+
+
+%%%%%%%%%%%Section Exercises
+{\input{ch_regr_simple_linear/TeX/transformations_for_skewed_data.tex}}
+
 
 
 %__________________
@@ -1044,7 +1275,7 @@ Here we encounter our last confidence interval and hypothesis test procedures, t
 
 \item Carry out a complete hypothesis test for the slope of the regression line.
 
-\item Distinguish between when to use the $t$-test for the slope of a regression line and when to use the matched pairs $t$-test for a mean of differences.
+\item Distinguish between when to use the $t$-test for the slope of a regression line and when to use the paired $t$-test for a mean of differences.
 \end{enumerate}
 }
 
@@ -1114,6 +1345,8 @@ We note that the second assumption regarding nearly normal residuals is particul
 \end{onebox} 
 
 \subsection{Constructing a confidence interval for the slope of a regression line}
+
+\index{t-interval@$t$-interval!for a slope|(}
 
 We would like to construct a confidence interval for the slope of the regression line for predicting gift aid based on family income for \emph{all} freshmen at Elmhurst college.  
 
@@ -1194,14 +1427,22 @@ To carry out a complete confidence interval procedure to estimate the slope of t
 \end{itemize}
 \inferencestep{Choose} Choose the correct interval procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we use choose the \termsub{$\pmb{t}$-interval for the slope}{t-interval for the slope@$t$-interval for the slope}.
+\item[] To estimate the slope of a regression model we use a \termsub{$\pmb{t}$-interval for the slope}{t-interval@$t$-interval!for a slope}.
 \end{itemize}
 \inferencestep{Check} Check conditions for using a $t$-interval for the slope.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1.  Data come from a random sample or randomized experiment.
-\item[] 2.  The residual plot shows no pattern implying that a linear model is reasonable. \item[] \quad \ More specifically, the residuals should be independent, nearly normal (or $n\ge 30$),
-\item [] \quad \  and have constant standard deviation.
+\item[]  1. Independence:  Data should come from a random sample or randomized experiment.  If 
+\item[] \ \quad sampling without replacement, check that the sample size is less than 10\% of the 
+\item[] \ \quad population size.
+\item[] 2.  Linearity:  Check that the scatterplot does not show a curved trend and that the 
+\item[] \ \quad residual plot shows no $\cup$-shape pattern.  
+\item[] 3.  Constant variability:  Use the residual plot to check that the standard deviation of the 
+\item[] \ \quad residuals is constant across all $x$-values.
+\item[] 4. Normality:  The population of residuals is nearly normal or the sample size is $\ge 30$.  If 
+\item[] \ \quad the sample size is less than 30 check for strong skew or outliers in the sample residuals.  
+\item[] \ \quad If neither is found, then the condition that the population of residuals is nearly normal 
+\item[] \ \quad is considered reasonable.  
 \end{itemize}
 \inferencestep{Calculate} Calculate the confidence interval and record it in interval form.
 \begin{itemize}
@@ -1222,8 +1463,8 @@ To carry out a complete confidence interval procedure to estimate the slope of t
 \begin{figure}%
    \centering
   \begin{tabular}{cc}
-   \includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/possumInference/possumScatter}
-   \includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/possumInference/possumResidual}
+   \includegraphics[width=0.45\textwidth]{ch_regr_simple_linear/figures/possumInference/possumScatter}
+   \includegraphics[width=0.45\textwidth]{ch_regr_simple_linear/figures/possumInference/possumResidual}
 \end{tabular}
    \caption{Left: Scatterplot of head length versus total length for 104 brushtail possums.   Right: Residual plot for the model shown in left panel.  }
 \label{possumInferencePlots}
@@ -1244,11 +1485,12 @@ The regression summary below shows statistical software output from fitting the 
 %\label{rOutputForPossum}
 \\
 \\
-Construct a 95\% confidence interval for the slope of the regression line.  Is there convincing evidence that there is a positive, linear relationship between head length and total length? Use the five step framework to organize your work.}
+Construct a 95\% confidence interval for the slope of the regression line.  Is there convincing evidence that there is a positive, linear relationship between head length and total length? %Use the five step framework to organize your work.
+}
 \begin{description}
 \item[\inferencestep{Identify}] The parameter of interest is the slope of the population regression line for predicting head length from body length.  We want to estimate this at the 95\% confidence level.  
 \item[\inferencestep{Choose}] Because the parameter to be estimated is the slope of a regression line, we will use the $t$-interval for the slope.
-\item[\inferencestep{Check}] These data come from a random sample.  The residual plot shows no pattern.  In general, the residuals have constant standard deviation and there are no outliers or influential points.  Also $n=104\ge 30$ so some skew in the residuals would be acceptable. A linear model is reasonable here.
+\item[\inferencestep{Check}] These data come from a random sample.  The residual plot shows no pattern so a linear model seems reasonable.  The residual plot also shows that the residuals have constant standard deviation.  Finally, $n=104\ge 30$ so we do not have to check for skew in the residuals.  All four conditions are met.
 \item[\inferencestep{Calculate}]  We will calculate the interval:
 $\text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}$
 
@@ -1267,42 +1509,10 @@ So the 95\% confidence interval is given by:
 \end{nexample}
 \end{examplewrap}
 
+\index{t-interval@$t$-interval!for a slope|(}
 
 
 \D{\newpage}
-
-%%
-\subsection[Calculator: the $t$-interval for the slope]{Calculator: the linear regression \pmb{$t$}-interval for the slope}
-We will rely on regression output from statistical software when constructing confidence intervals for the slope of a regression line.  We include calculator instructions here simply for completion.
-
-\begin{onebox}{\videohref{ti84_regression_t_confint} TI-84: T-interval for \pmb{$\beta$}}
-\label{LinRegint}
-Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTInt}.
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Choose \calctext{STAT}.
-\item Right arrow to \calctext{TESTS}.
-\item Down arrow and choose \calctext{G:} \calctext{LinRegTInt}.\vspace{-1.5mm}
-  \begin{itemize}
-  \item This test is not built into the TI-83.
-  \end{itemize}
-\item Let \calctext{Xlist} be \calctext{L1} and \calctext{Ylist} be \calctext{L2}. (Don't forget to enter the $x$ and $y$ values in \calctext{L1} and \calctext{L2} before doing this interval.)
-\item Let \calctext{Freq} be \calctext{1}.
-\item Enter the desired confidence level.
-\item Leave \calctext{RegEQ} blank.
-\item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\[1mm]
-\begin{tabular}{l l}
-\calctext{(\underline{\ \ },\underline{\ \ })} & the confidence interval \\
-\calctext{b} & $b$, the slope of best fit line of the sample data \\
-\calctext{df} &degrees of freedom associated with this confidence interval \\
-\calctext{s} & standard deviation of the residuals (not the same as $SE$ of the slope) \\
-\calctext{a} & $a$, the y-intercept of the best fit line of the sample data \\
-$\calctextmath{r^2}$ & $R^2$, the explained variance \\
-\calctext{r} & $r$, the correlation coefficient \\
-\end{tabular}
-\end{enumerate}
-\end{onebox}
-
 
 
 
@@ -1310,6 +1520,7 @@ $\calctextmath{r^2}$ & $R^2$, the explained variance \\
 \subsection{Midterm elections and unemployment}
 
 \index{data!midterm elections|(}
+\index{t-test@$t$-test!for a slope|(}
 
 Elections for members of the United States House of Representatives occur every two years, coinciding every four years with the U.S. Presidential election. The set of House elections occurring during the middle of a Presidential term are called \indexthis{midterm elections}{midterm election}. In America's two-party system, one political theory suggests the higher the unemployment rate, the worse the President's party will do in the midterm elections.
 
@@ -1427,7 +1638,7 @@ This value corresponds to the $T$-score reported in the regression output in the
 
 \begin{examplewrap}
 \begin{nexample}{In this example, the sample size $n=27$. Identify the degrees of freedom and p-value for the hypothesis test.}
-The degrees of freedom for this test is $n-2$, or $df = 27-2 = 25$. We could use a table or a calculator to find the probability of a value less than -1.07 under the $t$-distribution with 25 degrees of freedom.  However, the two-side p-value is given in Figure~\ref{midtermElectionUnemploymentRRegressionOutput}, next to the corresponding $t$-statistic.  Because we have a one-sided alternate hypothesis, we take half of this.  The p-value for the test is $\frac{0.2961}{2}=0.148$.  
+The degrees of freedom for this test is $n-2$, or $df = 27-2 = 25$. We could use a table or a calculator to find the probability of a value less than -1.07 under the $t$-distribution with 25 degrees of freedom.  However, the two-side p-value is given in Figure~\ref{midtermElectionUnemploymentRRegressionOutput}, next to the corresponding $t$-statistic.  Because we have a one-sided alternative hypothesis, we take half of this.  The p-value for the test is $\frac{0.2961}{2}=0.148$.  
 \index{data!midterm elections|)}
 \end{nexample}
 \end{examplewrap}
@@ -1458,14 +1669,22 @@ To carry out a complete hypothesis test for the claim that there is no linear re
 \end{itemize} 
 \inferencestep{Choose} Choose the correct test procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \termsub{$\pmb{t}$-test for the slope}{t-test for the slope@$t$-test for the slope}. 
+\item[] To test hypotheses about the slope of a regression model we use a \termsub{$\pmb{t}$-test for the slope}{t-test@$t$-test!for a slope}. 
 \end{itemize}
  \inferencestep{Check} Check conditions for using a $t$-test for the slope.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1.  Data come from a random sample or randomized experiment.
-\item[] 2.  The residual plot shows no pattern implying that a linear model is reasonable. \item[] \quad \ More specifically, the residuals should be independent, nearly normal (or $n\ge 30$),
-\item [] \quad \  and have constant standard deviation.
+\item[]  1. Independence:  Data should come from a random sample or randomized experiment.  If 
+\item[] \ \quad sampling without replacement, check that the sample size is less than 10\% of the 
+\item[] \ \quad population size.
+\item[] 2.  Linearity:  Check that the scatterplot does not show a curved trend and that the 
+\item[] \ \quad residual plot shows no $\cup$-shape pattern.  
+\item[] 3.  Constant variability:  Use the residual plot to check that the standard deviation of the 
+\item[] \ \quad residuals is constant across all $x$-values.
+\item[] 4. Normality:  The population of residuals is nearly normal or the sample size is $\ge 30$.  If 
+\item[] \ \quad the sample size is less than 30 check for strong skew or outliers in the sample residuals.  
+\item[] \ \quad If neither is found, then the condition that the population of residuals is nearly normal 
+\item[] \ \quad is considered reasonable.  
 \end{itemize}
  \inferencestep{Calculate}  Calculate the $t$-statistic, $df$, and p-value.
 \begin{itemize}
@@ -1486,7 +1705,7 @@ To carry out a complete hypothesis test for the claim that there is no linear re
 
 \begin{examplewrap}
 \begin{nexample}{
-The regression summary below shows statistical software output from fitting the least squares regression line for predicting gift aid based on family income for 50 freshman students at Elmhurst College.  The scatterplot and residual plot were shown in Figure~\ref{elmhurstInferencePlots}. 
+The regression summary below shows statistical software output from fitting the least squares regression line for predicting gift aid based on family income for 50 randomly selected freshman students at Elmhurst College.  The scatterplot and residual plot were shown in Figure~\ref{elmhurstInferencePlots}. 
 \\
 \\
 \texttt{Predictor \ \ \ \ \ \ \ Coef \ \ \ \ \ \ \ SE Coef \ \ T \ \ \ \ \ \ \ P} \\
@@ -1507,7 +1726,7 @@ $H_A$: $\beta < 0$. There is a negative linear relationship.
 \\
 Here, $\beta$ is the slope of the population regression line for predicting gift aid from family income at Elmhurst College.
 \item[\inferencestep{Choose}] Because the hypotheses are about the slope of a regression line, we choose the $t$-test for a slope.  
-\item[\inferencestep{Check}]  The data come from a random sample.  Also, the residual plot shows that the residuals have constant variance and no outliers or influential points (and $n=50\ge 30$).  The lack of any pattern in the residual plot indicates that a linear model is appropriate.
+\item[\inferencestep{Check}]  The data come from a random sample of less than 10\% of the total population of freshman students at Elmhurst College.  The lack of any pattern in the residual plot indicates that a linear model is reasonable. Also, the residual plot shows that the residuals have constant variance. Finally, $n=50\ge 30$ so we do not have to worry too much about any skew in the residuals.  All four conditions are met.
 \item[\inferencestep{Calculate}]  We will calculate the $t$-statistic, degrees of freedom, and the p-value.
 \begin{align*}
 T = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}
@@ -1525,78 +1744,30 @@ Because $H_A$ uses a less than sign ($<$), meaning that it is a lower-tail test,
 \end{description}
 
 
-
 \end{nexample}
 \end{examplewrap}
 \label{overallAidIncomeInformalAssessmentOfRegressionLineSlope}
 
-
-
+\begin{exercisewrap}
+\begin{exercise}
+In context, interpret the p-value from the previous example.\footnotemark
+\end{exercise}
+\end{exercisewrap}
+\footnotetext{Assuming that the probability model is true and assuming that the null hypothesis is true, i.e. there really is no linear relationship between family income and gift aid at Elmhurst College, there is only a 0.0001 chance of getting a test statistic this small or smaller ($H_A$ uses a $<$, so the p-value represents the area in the left tail).  Because this value is so small, we reject the null hypothesis. }
 
 \D{\newpage}
 
 %%
-\subsection[Calculator: the $t$-test for the slope]{Calculator: the \pmb{$t$}-test for the slope}
+\subsection[Technology: the $t$-test/interval for the slope]{Technology: the \pmb{$t$}-test/interval for the slope}
 
-When performing this type of inference, we generally make use of regression output that provides us with the necessary quantities: $b$ and $SE \text{ of } {b}$.  The calculator functions below require knowing all of the data and are, therefore, rarely used.  We describe them here for the sake of completion. 
+\noindent We generally rely on regression output from statistical software programs to provide us with the necessary quantities: $b$ and $SE \text{ of } {b}$.  However we can also find the test statistic, p-value, and confidence interval using Desmos or a handheld calculator.\\
 
-\begin{onebox}{\videohref{ti84_regression_t_test} TI-83/84: Linear regression T-test on \pmb{$\beta$}}
-\label{LinRegtest}
-Use \calctext{STAT}, \calctext{TESTS}, \calctext{LinRegTTest}.
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Choose \calctext{STAT}.
-\item Right arrow to \calctext{TESTS}.
-\item Down arrow and choose \calctext{F:LinRegTTest}. (On TI-83 it is \calctext{E:LinRegTTest}).
-\item Let \calctext{Xlist} be \calctext{L1} and \calctext{Ylist} be \calctext{L2}. (Don't forget to enter the $x$ and $y$ values in \calctext{L1} and \calctext{L2} before doing this test.)
-\item Let \calctext{Freq} be \calctext{1}.
-\item Choose $\calctextmath{\ne}$, $\calctextmath{<}$, or $\calctextmath{>}$ to correspond to $H_A$.
-\item Leave \calctext{RegEQ} blank.
-\item Choose \calctext{Calculate} and hit \calcbutton{ENTER}, which returns: \\[1mm]
-\begin{tabular}{ll l ll}
-\calctext{t} & t statistic &\quad&
-	\calctext{b} & $b$, slope of the line \\
-\calctext{p} & p-value &&
-	\calctext{s} & st.~dev.~of the residuals \\
-\calctext{df} & degrees of freedom for the test &&
-	$\calctextmath{r^2}$ & $R^2$, explained variance \\
-\calctext{a} & $a$, y-intercept of the line &&
-	\calctext{r} & $r$, correlation coefficient
-\end{tabular}
-\end{enumerate}
-\end{onebox} 
+\noindent Get started quickly with this Desmos \oiRedirect{desmos-linregtest}{T-Test/Interval Calculator} (\small{available at \oiRedirect{openintro-ahss-desmos}{openintro.org/ahss/desmos}}).
+\\
+\\
+\Add{For instructions on implementing the T-Test/Interval on the TI or Casio, see the Graphing Calculator Guides at \oiRedirect{ahss}{\small{openintro.org/ahss}}.}
 
-\begin{onebox}{\videohref{casio_regression_t_test} Casio fx-9750GII: Linear regression T-test on \pmb{$\beta$}}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
-\item Enter your data into 2 lists.
-\item Select \calctext{TEST} (\calcbutton{F3}), \calctext{t} (\calcbutton{F2}), and \calctext{REG} (\calcbutton{F3}).
-\item If needed, update the sidedness of the test and the \calctext{XList} and \calctext{YList} lists. The \calctext{Freq} should be set to \calctext{1}.
-\item Hit \calcbutton{EXE}, which returns: \\[1mm]
-\begin{tabular}{ll l ll}
-\calctext{t} & t statistic &\quad&
-	\calctext{b} & $b$, slope of the line \\
-\calctext{p} & p-value &&
-	\calctext{s} & st.~dev.~of the residuals \\
-\calctext{df} & degrees of freedom for the test &&
-	\calctext{r} & $r$, correlation coefficient \\
-\calctext{a} & $a$, y-intercept of the line &&
-	$\calctextmath{r^2}$ & $R^2$, explained variance
-\end{tabular}
-\end{enumerate}
-\end{onebox} 
-
-\begin{examplewrap}
-\begin{nexample}
-{Why does the calculator test include the symbol $\rho$ when choosing the direction of the alternate hypothesis?}
-Recall the we used the letter $r$ to represent correlation.  The Greek letter $\rho=0$ represents the correlation for the entire population.  The slope $b=r\frac{s_y}{s_x}$.  If the slope of the population regression line is zero, the correlation for the population must also be zero.  For this reason, the $t$-test for $\beta=0$ is equivalent to a test for $\rho=0$.
-\end{nexample}
-\end{examplewrap}
-
-
-
-\D{\newpage}
+\index{t-test@$t$-test!for a slope|)}
 
 %%
 \subsection{Which inference procedure to use for paired data?}
@@ -1628,22 +1799,22 @@ In Section~\ref{ciMeanOfDifferences}, we looked at a set of paired data involvin
 \item prices for textbooks for UCLA courses are \emph{higher} at the UCLA Bookstore than on Amazon
 \item there is a significant, positive linear relationship between UCLA Bookstore price and Amazon price?
 \end{enumerate}}
-In the first case, we are interested in whether the differences (UCLA Bookstore $-$ Amazon) are, on average, greater than 0, so we would do a matched pairs $t$-test for a mean of differences.  In the second case, we are interested in whether the slope is significantly greater than 0, so we would do a $t$-test for the slope of a regression line.  
+In the first case, we are interested in whether the differences (UCLA Bookstore $-$ Amazon) are, on average, greater than 0, so we would do a paired $t$-test for a mean of differences.  In the second case, we are interested in whether the slope is significantly greater than 0, so we would do a $t$-test for the slope of a regression line.  
 \end{nexample}
 \end{examplewrap}
 
-Likewise, a matched pairs $t$-interval for a mean of differences would provide an interval of reasonable values for mean of the differences for all UCLA textbooks, whereas a $t$-interval for the slope would provide an interval of reasonable values for the slope of the regression line for all UCLA textbooks.     
+Likewise, a paired $t$-interval for a mean of differences would provide an interval of reasonable values for mean of the differences for all UCLA textbooks, whereas a $t$-interval for the slope would provide an interval of reasonable values for the slope of the regression line for all UCLA textbooks.     
 
 
 \begin{onebox}{Inference for paired data}
-A matched pairs $t$-interval or $t$-test for a mean of differences only makes sense when we are asking whether, on average, one variable is \emph{greater} than another (think histogram of the differences).  A $t$-interval or $t$-test for the slope of a regression line makes sense when we are interested in the linear relationship between them (think scatterplot).  
+A paired $t$-interval or $t$-test for a mean of differences only makes sense when we are asking whether, on average, one variable is \emph{greater} than another (think histogram of the differences).  A $t$-interval or $t$-test for the slope of a regression line makes sense when we are interested in the linear relationship between them (think scatterplot).  
 \end{onebox}
 
 
 \begin{examplewrap}
 \begin{nexample}
-{Previously, we looked at the relationship betweeen body length and head length for bushtail possums.  We also looked at the relationship between gift aid and family income for freshmen at Elmhurst College.  Could we do a matched pairs $t$-test in either of these scenarios?}
-We have to ask ourselves, does it make sense to ask whether, on average, body length is greater than head length?  Similarly, does it make sense to ask whether, on average, gift aid is greater than family income?  These don't seem to be meaningful research questions; a matched pairs $t$-test for a mean of differences would not be useful here. 
+{Previously, we looked at the relationship betweeen body length and head length for bushtail possums.  We also looked at the relationship between gift aid and family income for freshmen at Elmhurst College.  Could we do a paired $t$-test in either of these scenarios?}
+We have to ask ourselves, does it make sense to ask whether, on average, body length is greater than head length?  Similarly, does it make sense to ask whether, on average, gift aid is greater than family income?  These don't seem to be meaningful research questions; a paired $t$-test for a mean of differences would not be useful here. 
 \end{nexample}
 \end{examplewrap}
 
@@ -1652,7 +1823,7 @@ We have to ask ourselves, does it make sense to ask whether, on average, body le
 A teacher gives her class a pretest and a posttest.  Does this result in paired data?  If so, which hypothesis test should she use?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Yes, there are two observations for each individual, so there is paired data.  The appropriate test depends upon the question she wants to ask.  If she is interested in whether, on average, students do better on the posttest than the pretest, should use a matched pairs $t$-test for a mean of differences.  If she is interested in whether pretest score is a significant linear predictor of posttest score, she should do a $t$-test for the slope.  In this situation, both tests could be useful, but which one should be used is dependent on the teacher's research question.}
+\footnotetext{Yes, there are two observations for each individual, so there is paired data.  The appropriate test depends upon the question she wants to ask.  If she is interested in whether, on average, students do better on the posttest than the pretest, should use a paired $t$-test for a mean of differences.  If she is interested in whether pretest score is a significant linear predictor of posttest score, she should do a $t$-test for the slope.  In this situation, both tests could be useful, but which one should be used is dependent on the teacher's research question.}
 
 
 \D{\newpage}
@@ -1667,14 +1838,17 @@ A teacher gives her class a pretest and a posttest.  Does this result in paired 
 
 \item When there is $(x, y)$ data and the parameter of interest is the slope of the population regression line, e.g. the slope of the population regression line relating air quality index to average rainfall per year for each city in the United States:
 \begin{itemize}
-\item Estimate $\beta$ at the C\% confidence level using a \termsub{$\pmb{t}$-interval for the slope}{t-interval for the slope@$t$-interval for the slope}.
-\item Test $H_0$: $\beta=0$ at the $\alpha$ significance level using a \termsub{$\pmb{t}$-test for the slope}{t-test for the slope@$t$-test for the slope}.
+\item Estimate $\beta$ at the C\% confidence level using a \termsub{$\pmb{t}$-interval for the slope}{t-interval@$t$-interval!for a slope}.
+\item Test $H_0$: $\beta=0$ at the $\alpha$ significance level using a \termsub{$\pmb{t}$-test for the slope}{t-test@$t$-test!for a slope}.
 \end{itemize}
 \item The conditions for the $t$-interval and $t$-test for the slope of a regression line are the same.
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[1.] Data come from a random sample or randomized experiment.
-\item[2.] The residual plot shows no pattern implying that a linear model is reasonable. \item[] More specifically, the residuals should be independent, nearly normal (or $n\ge 30$), and have constant standard deviation.
+\item[1.] Independence:  Data come from a random sample or randomized experiment.  If sampling without replacement, check that the sample size is less than 10\% of the population size.
+\item[2.] Linearity:  Check that the scatterplot does not show a curved trend and that the residual plot shows no $\cup$-shape pattern.  
+\item[3.] Constant variability:  Use the residual plot to check that the standard deviation of the residuals is constant across all $x$-values.
+\item[3.] Normality:  The population of residuals is nearly normal or the sample size is $\ge 30$.  If the sample size is less than 30 check for strong skew or outliers in the sample residuals.  If neither is found, then the condition that the population of residuals is nearly normal is considered reasonable.  
+
 \end{itemize}
 \item The confidence interval and test statistic are calculated as follows:   
 \begin{itemize}
@@ -1688,237 +1862,14 @@ A teacher gives her class a pretest and a posttest.  Does this result in paired 
 \end{itemize}
 
 
-\item If the confidence interval for the slope of the population regression line estimates the true average increase in the $y$-variable for each unit increase in the $x$-variable.
+\item The confidence interval for the slope of the population regression line estimates the true average increase in the $y$-variable for each unit increase in the $x$-variable.
 
-\item The $t$-test for the slope and the matched pairs $t$-test for a mean of differences both involve \emph{paired}, numerical data.  However, the $t$-test for the slope asks if the two variables have a linear \emph{relationship}, specifically if the \emph{slope} of the population regression line is different from 0.  The matched pairs $t$-test for a mean of differences, on the other hand, asks if the two variables are in some way the \emph{same}, specifically if the \emph{mean} of the population differences is 0.  
+\item The $t$-test for the slope and the paired $t$-test for a mean of differences both involve \emph{paired}, numerical data.  However, the $t$-test for the slope asks if the two variables have a linear \emph{relationship}, specifically if the \emph{slope} of the population regression line is different from 0.  The paired $t$-test for a mean of differences, on the other hand, asks if the two variables are in some way the \emph{same}, specifically if the \emph{mean} of the population differences is 0.  
 \end{itemize}
 
 %%%%%%%%%%%Section Exercises
-{\input{ch_regr_simple_linear/TeX/inference_for_linear_regression.tex}}
+{\input{ch_regr_simple_linear/TeX/inference_for_the_slope_of_a_regression_line.tex}}
 
-
-%%________________________________
-
-
-\section{Transformations for skewed data}
-\label{transformationForNonlinearData}
-\sectionintro{
-\noindent%
-County population size among the counties in the US is very strongly right skewed.
-Can we apply a transformation to make the distribution more symmetric?  How would such a transformation affect the scatterplot and residual plot when another variable is graphed against this variable?  In this section, we will see the power of transformations for very skewed data.
-
-
-%%
-\subsection*{Learning objectives}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-
-\item See how a log transformation can bring symmetry to an extremely skewed variable.
-\item Recognize that data can often be transformed to produce a linear relationship, and that this transformation often involves log of the $y$-values and sometimes log of the $x$-values.
-
-\item Use residual plots to assess whether a linear model for transformed data is reasonable.
-\end{enumerate}
-}
-
-
-%%
-\subsection{Introduction to transformations}
-
-\begin{examplewrap}
-\begin{nexample}{Consider the histogram of county populations
-    shown in Figure~\ref{county_pop_transformed_i},
-    which shows extreme skew\index{skew!example: extreme}.
-    What isn't useful about this plot?}
-  Nearly all of the data fall into the left-most bin,
-  and the extreme skew obscures many of the potentially
-  interesting details in the data.
-\end{nexample}
-\end{examplewrap}
-
-\begin{figure}[ht]
-    \label{county_pop_transformed}
-  \centering
-  \subfigure[]{
-    \Figures{0.48}
-        {county_pop_transformed}
-        {county_pop_transformed_i}
-    \label{county_pop_transformed_i}
-  }
-  \subfigure[]{
-    \Figures{0.48}
-        {county_pop_transformed}
-        {county_pop_transformed_log}
-  \label{county_pop_transformed_log}
-  }
-  \caption{\subref{county_pop_transformed_i} A histogram of
-      the populations of all US counties.
-      \subref{county_pop_transformed_log} A histogram of
-      log$_{10}$-transformed county populations.
-      For this plot, the x-value corresponds to the power
-      of 10, e.g. ``4'' on the x-axis corresponds to
-      $10^4 =$ 10,000.}
-\end{figure}
-
-
-
-
-
-There are some standard transformations that may be
-useful for strongly right skewed data where much of the
-data is positive but clustered near zero.
-A \term{transformation} is a rescaling of the data
-using a function.
-For instance, a plot of the logarithm (base 10) of
-county populations results in the new histogram in
-Figure~\ref{county_pop_transformed_log}.
-This data is symmetric, and any potential outliers
-appear much less extreme than in the original data set.
-By reigning in the outliers and extreme skew,
-transformations like this often make it easier to build
-statistical models against the data.
-
-Transformations can also be applied to one or both
-variables in a scatterplot.
-A scatterplot of the population change from 2010 to 2017
-against the population in 2010 is shown in Figure~\ref{county_pop_change_v_pop_transform_i}.
-In this first scatterplot, it's hard to decipher any
-interesting patterns because the population variable
-is so strongly skewed.
-However, if we apply a log$_{10}$ transformation to
-the population variable, as shown in
-Figure~\ref{county_pop_change_v_pop_transform_log},
-a positive association between the variables is revealed.
-While fitting a line to predict population change (2010 to 2017) from population (in 2010) does not seem reasonable, fitting a line to predict population from log$_{10}$(population) does seem reasonable.  
-
-\begin{figure}
-  \centering
-  \subfigure[]{
-    \Figures{0.48}
-        {county_pop_change_v_pop_transform}
-        {county_pop_change_v_pop_transform_i}
-    \label{county_pop_change_v_pop_transform_i}
-  }
-  \subfigure[]{
-    \Figures{0.48}
-        {county_pop_change_v_pop_transform}
-        {county_pop_change_v_pop_transform_log}
-    \label{county_pop_change_v_pop_transform_log}
-  }
-  \caption{\subref{county_pop_change_v_pop_transform_i}
-      Scatterplot of population change
-      against the population before the change.
-      \subref{county_pop_change_v_pop_transform_log}~A~scatterplot
-      of the same data but where the population
-      size has been log-transformed.}
-  \label{county_pop_change_v_pop_transform_main}
-\end{figure}
-
-Transformations other than the logarithm can be useful, too.
-For instance, the square root
-($\sqrt{\text{original observation}}$) and inverse
-($\frac{1}{\text{original observation}}$) are commonly used
-by data scientists.
-Common goals in transforming data are to see the data
-structure differently, reduce skew, assist in modeling,
-or straighten a nonlinear relationship in a scatterplot.
-
-\index{data!county|)}
-
-\D{\newpage}
-
-~
-
-\D{\newpage}
-
-%%
-\subsection{Transformations to achieve linearity}
-
-\begin{figure}[ht]
-   \begin{center}
-   \includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/NeedsTransform/NeedsTransform-PreTransform}
-\label{pretransform}
-   \caption{Variable $y$ is plotted against $x$. A nonlinear relationship is evident by the $\cup$-pattern shown in the residual plot.  The curvature is also visible in the original plot.}
-   \label{NeedsTransform-PreTransform}
-\end{center}
-\end{figure}
-
-
-\begin{examplewrap}
-\begin{nexample}{Consider the scatterplot and residual plot in Figure~\ref{NeedsTransform-PreTransform}. The regression output is also provided.  Is the linear model $\hat{y} = -52.3564 + 2.7842 x$ a good model for the data?
-\\
-\\
-\texttt{The regression equation is} \\
-
-\texttt{y = -52.3564 + 2.7842 x} \\
-
-\texttt{Predictor \ \ \ \ \ \ Coef \ \ SE Coef \ \ \ \ \ \ \ \ T \ \ \ \ \ \ \ \ \ P} \\
-\texttt{Constant \ \ \ -52.3564 \ \ \ 7.2757 \ \ \ -7.196 \ \ \ \ \ 3e-08} \\
-\texttt{x \ \ \ \ \ \ \ \ \ \ \ \ 2.7842 \ \ \ 0.1768 \ \ \ 15.752 \ \ \ < 2e-16} \\
-
-\texttt{S = 13.76\ \ \ \ R-Sq = 88.26\% \ \ \ R-Sq(adj) = 87.91\%}
-}
-
-We can note the $R^2$ value is fairly large.  However, this alone does not mean that the model is good.  Another model might be much better.  When assessing the appropriateness of a linear model, we should look at the residual plot.  The $\cup$-pattern in the residual plot tells us the original data is curved. If we inspect the two plots, we can see that for small and large values of $x$ we systematically underestimate $y$, whereas for middle values of $x$, we systematically overestimate $y$.  The curved trend can also be seen in the original scatterplot.  Because of this, the linear model is not appropriate, and it would not be appropriate to perform a $t$-test for the slope because the conditions for inference are not met.  However, we might be able to use a transformation to linearize the data.
-\end{nexample}
-\end{examplewrap}
-
-Regression analysis is easier to perform on linear data.  When data are nonlinear, we sometimes \term{transform} the data in a way that makes the resulting relationship linear.  The most common \term{transformation} is log of the $y$ values. Sometimes we also apply a transformation to the $x$ values.  We generally use the residuals as a way to evaluate whether the transformed data are more linear. If so, we can say that a better model has been found.
-
-
-\begin{examplewrap}
-\begin{nexample}{Using the regression output for the transformed data, write the new linear regression equation.\\
-\\
-\texttt{The regression equation is} \\
-
-\texttt{log(y) = 1.722540 + 0.052985 x} \\
-
-\texttt{Predictor \ \ \ \ \ \ \ \ Coef \ \ \ \ SE Coef \ \ \ \ \ \ \ T \ \ \ \ \ \ \ \ \ P} \\
-\texttt{Constant \ \ \ \ \ 1.722540 \ \ \ 0.056731 \ \ \ 30.36 \ \ \ < 2e-16} \\
-\texttt{x \ \ \ \ \ \ \ \ \ \ \ \ 0.052985 \ \ \ 0.001378 \ \ \ 38.45 \ \ \ < 2e-16} \\
-
-
-\texttt{S = 0.1073\ \ \ \ R-Sq = 97.82\% \ \ \ R-Sq(adj) = 97.75\%}}
-The linear regression equation can be written as:  $\widehat{\text{log}(y)} = 1.723 +0.053 x$
-\end{nexample}
-\end{examplewrap}
-
-\begin{figure}[h]
-   \centering
-   \includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/NeedsTransform/NeedsTransform-PostTransform}
-   \caption{A plot of $\text{log}(y)$ against $x$. The residuals don't show any evident patterns, which suggests the transformed data is well-fit by a linear model.}
-   \label{NeedsTransform-PostTransform}
-\end{figure}
-
-
-\begin{exercisewrap}
-\begin{nexercise}Which of the following statements are true?  There may be more than one.\footnotemark 
-\begin{enumerate}[(a)]
-\item There is an apparent linear relationship between $x$ and $y$.
-\item There is an apparent linear relationship between $x$ and $\widehat{\text{log}(y)}$.
-\item The model provided by Regression I ($\hat{y} = -52.3564 + 2.7842 x$) yields a better~fit.
-\item The model provided by Regression II ($\widehat{\text{log}(y)} = 1.723 +0.053 x$) yields a better~fit.
-\end{enumerate}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Part~(a) is \emph{false} since there is a nonlinear (curved) trend in the data. Part~(b) is true. Since the transformed data shows a stronger linear trend, it is a better fit, i.e. Part~(c) is \emph{false}, and Part~(d) is true.}
-
-
-\D{\newpage}
-
-%%
-\subsection*{Section summary}
-\begin{itemize}
-\item A \term{transformation} is a rescaling of the data using a function.  When data are very skewed, a log transformation often results in more symmetric data.
-
-\item Regression analysis is easier to perform on linear data. When data are nonlinear, we sometimes \term{transform} the data in a way that results in a linear relationship. The most common transformation is log of the $y$-values. Sometimes we also apply a transformation to the $x$-values. 
-
-\item To assess the model, we look at the \textbf{residual plot} of the \emph{transformed} data.  If the residual plot of the original data has a pattern, but the residual plot of the transformed data has no pattern, a linear model for the transformed data is reasonable, and the transformed model provides a better fit than the simple linear model.
-
-\end{itemize}
-
-
-%%%%%%%%%%%Section Exercises
-{\input{ch_regr_simple_linear/TeX/transformations_for_nonlinear_data.tex}}
 
 
 %_______________________
@@ -1926,17 +1877,17 @@ The linear regression equation can be written as:  $\widehat{\text{log}(y)} = 1.
 
 \noindent This chapter focused on describing the linear association between two numerical variables and fitting a linear model.  
 \begin{itemize}
-\item The \termsub{correlation coefficient}{correlation}, $r$, measures the strength and direction of the linear association between two variables.  However, $r$ alone cannot tell us whether data follow a linear trend or whether a linear model is appropriate.
+\item The \termni{correlation coefficient}, $r$, measures the strength and direction of the linear association between two variables.  However, $r$ alone cannot tell us whether data follow a linear trend or whether a linear model is appropriate.
 
-\item The \term{explained variance}, $R^2$, measures the proportion of variation in the $y$ values explained by a given model.  Like $r$, $R^2$ alone cannot tell us whether data follow a linear trend or whether a linear model is appropriate.  
+\item The \termni{explained variance}, $R^2$, measures the proportion of variation in the $y$ values explained by a given model.  Like $r$, $R^2$ alone cannot tell us whether data follow a linear trend or whether a linear model is appropriate.  
 
-\item Every analysis should begin with \emph{graphing} the data using a \term{scatterplot} in order to see the association and any deviations from the trend (outliers or influential values).  A \textbf{residual plot} helps us better see patterns in the data.  
+\item Every analysis should begin with \emph{graphing} the data using a \termni{scatterplot} in order to see the association and any deviations from the trend (outliers or influential values).  A \termni{residual plot} helps us better see patterns in the data.  
 
-\item When the data show a linear trend, we fit a \textbf{least squares regression line} of the form: $\hat{y} = a+bx$, where $a$ is the $y$-intercept and $b$ is the slope.  It is important to be able to \emph{calculate} $a$ and $b$ using the summary statistics and to \emph{interpret} them in the context of the data.
+\item When the data show a linear trend, we fit a \termni{least squares regression line} of the form: $\hat{y} = a+bx$, where $a$ is the $y$-intercept and $b$ is the slope.  It is important to be able to \emph{calculate} $a$ and $b$ using the summary statistics and to \emph{interpret} them in the context of the data.
 
-\item A \textbf{residual}, $y-\hat{y}$, measures the error for an \emph{individual point}.  The \textbf{standard deviation of the residuals}, $s$, measures the typical size of the residuals.  
+\item A \termni{residual}, $y-\hat{y}$, measures the error for an \emph{individual point}.  The \termni{standard deviation of the residuals}, $s$, measures the typical size of the residuals.  
 
-\item $\hat{y} = a+bx$ provides the best fit line for the \emph{observed data}.  To estimate or hypothesize about the slope of the population regression line, first confirm that the residual plot has no pattern and that a linear model is reasonable, then use a \termsub{$\pmb{t}$-interval for the slope}{t-interval for the slope@$t$-interval for the slope} or a \termsub{$\pmb{t}$-test for the slope}{t-test for the slope@$t$-test for the slope} with $n-2$ degrees of freedom.
+\item $\hat{y} = a+bx$ provides the best fit line for the \emph{observed data}.  To estimate or hypothesize about the slope of the population regression line, first confirm that the residual plot has no pattern and that a linear model is reasonable, then use a $\pmb{t}$-interval for the slope or a $\pmb{t}$-test for the slope with $n-2$ degrees of freedom.
 \end{itemize}
 In this chapter we focused on simple linear models with one explanatory variable.  More complex methods of prediction, such as multiple regression (more than one explanatory variable) and nonlinear regression can be studied in a future course.
 

@@ -13,7 +13,7 @@ h <- hist(
     col = COL[1],
     xlab = "",
     ylab = "",
-    main = "",yaxs="i",
+    main = "",
     axes = FALSE)
 axis(1)
 at <- pretty(par("yaxp")[1:2])

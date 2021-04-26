@@ -16,12 +16,12 @@ for(i in 1:N){
 
 # plot randomization distribution -----------------------------------
 pdf("randomization_avandia.pdf", 6, 4)
-par(mar = c(4,2.7,.3,0), las = 1 , mgp = c(2.7, 0.9, 0), 
+par(mar = c(4,2.7,0,0), las = 1 , mgp = c(2.7, 0.9, 0), 
     cex.lab = 1.5, cex.axis = 1.5)
 histPlot(rand_dist, main="", 
          xlab = "Simulated rosiglitazone cardiovascular events", ylab="", 
-         col = COL[1], axes = FALSE,yaxs="i")
+         col = COL[1], axes = FALSE)
 axis(1, at = seq(2250, 2550, 100))
-axis(2, at = (0:5)*N/20, labels = c(0, NA, 2, NA, 4,NA)/20)
+axis(2, at = (0:4)*N/20, labels = c(0, NA, 2, NA, 4)/20)
 abline(h = 0)
 dev.off()

@@ -74,7 +74,7 @@ We would consider 45\% to be a
 rating we might see if we collected responses from the
 entire population.  This entire-population response proportion is
 generally referred to as the \term{parameter}
-of interest\index{parameter of interest},
+of interest,
 and when the parameter is a proportion,
 we denote it with the letter $p$. We typically estimate the parameter by collecting
 information from a sample of the population;
@@ -434,7 +434,7 @@ item In a random sample, increasing the sample size $n$ will make the standard e
 
 
 %%%%%%Section exercises
-{\input{ch_foundations_for_inf/TeX/variability_in_estimates.tex}}
+{\input{ch_foundations_for_inf/TeX/estimating_unknown_parameters.tex}}
 
 
 
@@ -489,6 +489,7 @@ If we report a point estimate, we probably will not hit the exact population par
 \D{\newpage}
 
 %%
+
 \subsection{Constructing a 95\% confidence interval}
 
 A point estimate is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error is a measure of the uncertainty associated with the point estimate.  
@@ -503,9 +504,10 @@ First, we observe that the area under the standard normal curve between -1.96 an
 When the sampling distribution of a point estimate can reasonably be modeled as normal, a 95\% confidence interval for the unknown parameter can be constructed as: \vspace{-2mm}
 \begin{align}
 \text{point estimate}\ \pm\ 1.96 \times SE\text{ of estimate}\vspace{-2mm}
-\label{95PercentConfidenceIntervalFormula}
 \end{align}
 We can be \textbf{95\% confident} that this interval captures the true value.\end{onebox}
+\label{95PercentConfidenceIntervalFormula}
+
 
 In the next chapters we will determine when we can apply a normal model to a point estimate. For now, we will assume that a normal model is reasonable. 
 
@@ -836,9 +838,9 @@ Her sample complication rate is $\hat{p} = 0.063$, which is 0.037 lower than the
 
 
 %%
-\subsection{Setting up the null and alternate hypothesis}
+\subsection{Setting up the null and alternative hypothesis}
 
-We can set up two competing hypotheses about the consultant's true complication rate. The first is call the \term{null hypothesis} and represents either a skeptical perspective or a perspective of no difference. The second is called the \term{alternative hypothesis} (or alternate hypothesis) and represents a new perspective such as the possibility that there has been a change or that there is a treatment effect in an experiment.
+We can set up two competing hypotheses about the consultant's true complication rate. The first is call the \term{null hypothesis} and represents either a skeptical perspective or a perspective of no difference. The second is called the \term{alternative hypothesis} (or alternative hypothesis) and represents a new perspective such as the possibility that there has been a change or that there is a treatment effect in an experiment.
 
 \begin{onebox}{Null and alternative hypotheses}
 The \term{null hypothesis} is abbreviated $H_0$. It represents a skeptical perspective and is often a claim of no change or no difference. \vspace{3mm}
@@ -893,7 +895,7 @@ According to the 2010 US Census, 7.6\% of residents in the state of Alaska were 
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{$H_0$: $p=0.076$; The proportion of residents under 5 years old in Alaska is \emph{unchanged} from 2010.\\ $H_A$: $p \neq 0.076$; The proportion of residents under 5 years old in Alaska has changed from 2010. Note that it could have increased or decreased.\quad
-\oiRedirect{textbook-census-alaska}{\url{https://factfinder.census.gov/faces/nav/jsf/pages/community_facts.xhtml}}}
+\oiRedirect{textbook-census-alaska}{\href{https://data.census.gov}\url{https://data.census.gov}}}
 
 When the alternative claim uses a $\neq$, we call the test a \term{two-sided} test, because either extreme provides evidence against $H_0$. When the alternative claim uses a $<$ or a $>$, we call it a \term{one-sided} test.
 
@@ -959,7 +961,7 @@ We find and interpret the \term{p-value}\index{hypothesis testing!p-value|textbf
 
 When working with proportions, we can also say that the p-value is the probability of getting a sample proportion as far from or farther from the null proportion in the direction of $H_A$ if the null hypothesis is true and the normal model holds.
 
-When the p-value is small, i.e. less than a previously set threshold, we say the results are \term{statistically significant}. This means the data provide such strong evidence against $H_0$ that we reject the null hypothesis in favor of the alternative hypothesis. The threshold is called the \term{significance level}\index{hypothesis testing!significance level}\index{significance level} and is represented by $\alpha$ (the Greek letter \emph{alpha}\label{alphadiscussion}).  The significance level is typically set to $\alpha = 0.05$, but can vary depending on the field or the application. %Using a significance level of $\alpha = 0.05$ in the discrimination study, we can say that the data did not provide statistically significant evidence against the null hypothesis, because the p-value of 0.1754 was larger than the $\alpha$ of 0.05.
+When the p-value is small, i.e. less than a previously set threshold, we say the results are \termni{statistically significant}. This means the data provide such strong evidence against $H_0$ that we reject the null hypothesis in favor of the alternative hypothesis. The threshold is called the \term{significance level}\index{hypothesis testing!significance level}\index{significance level} and is represented by $\alpha$ (the Greek letter \emph{alpha}\label{alphadiscussion}).  The significance level is typically set to $\alpha = 0.05$, but can vary depending on the field or the application. %Using a significance level of $\alpha = 0.05$ in the discrimination study, we can say that the data did not provide statistically significant evidence against the null hypothesis, because the p-value of 0.1754 was larger than the $\alpha$ of 0.05.
 
 \begin{onebox}{Statistical significance}
 If the p-value is less than the significance level $\alpha$ (usually 0.05), we say that the result is \term{statistically significant}\index{hypothesis testing!statistically significant|textbf}. We reject $H_0$, and we have strong evidence favoring~$H_A$. \\[2mm]
@@ -1304,7 +1306,7 @@ Finally, we caution that there may be no inference tools helpful when considerin
 %%
 \subsection{Statistical significance versus practical significance}
 
-When the sample size becomes larger, point estimates become more precise and any real differences in the mean and null value become easier to detect and recognize. Even a very small difference would likely be detected if we took a large enough sample. Sometimes researchers will take such large samples that even the slightest difference is detected. While we still say that difference is \term{statistically significant}, it might not be \term{practically significant}.
+When the sample size becomes larger, point estimates become more precise and any real differences in the mean and null value become easier to detect and recognize. Even a very small difference would likely be detected if we took a large enough sample. Sometimes researchers will take such large samples that even the slightest difference is detected. While we still say that difference is \termni{statistically significant}, it might not be \term{practically significant}.
 
 Statistically significant differences are sometimes so minor that they are not practically relevant. This is especially important to research: if we conduct a study, we want to focus on finding a meaningful result. We don't want to spend lots of money finding results that hold no practical value.
 
@@ -1333,10 +1335,10 @@ Depending upon the veracity of the hypotheses tested, the latter can be upwards 
 \subsection*{Section summary}
 \noindent The inference procedures in this book require \emph{two conditions} to be met.
 \begin{itemize}
-\item The first is that some type of \term{random sampling} or \term{random assignment} must be involved.  If this is not the case, the point statistic may be biased and may not follow the intended distribution.  Moreover, without a random sample or random assignment, there is no way to accurately measure the standard error.  (When sampling without replacement, the sample size should be less than 10\% of the population size in order for the standard error formula to apply.  In sample surveys, this condition is generally met.)
-\item The second condition focuses on \term{sample size} and \term{skew} to determine whether the point estimate follows the intended distribution.  
+\item The first is that some type of \termni{random sampling} or \termni{random assignment} must be involved.  If this is not the case, the point statistic may be biased and may not follow the intended distribution.  Moreover, without a random sample or random assignment, there is no way to accurately measure the standard error.  (When sampling without replacement, the sample size should be less than 10\% of the population size in order for the standard error formula to apply.  In sample surveys, this condition is generally met.)
+\item The second condition focuses on \termni{sample size} and \termni{skew} to determine whether the point estimate follows the intended distribution.  
 \end{itemize}
-Understanding what the term \term{statistically significant} does and does not mean.
+Understanding what the term \termni{statistically significant} does and does not mean.
 \begin{itemize}
 \item \emph{A small percent of the time ($\alpha$), a significant result will not be a real result.} If many tests are run, a small percent of them will produce significant results due to chance alone.\footnote{Similarly, if many confidence intervals are constructed, a small percent (100 - C\%) of them will fail to capture a true value due to chance alone.  A value outside the confidence interval is not an \emph{impossible} value.}
 
@@ -1348,7 +1350,7 @@ Understanding what the term \term{statistically significant} does and does not m
 %______________________________________________
 \reviewchapterheader{}
 
-\noindent Statistical inference is the practice of making decisions from data in the context of uncertainty.  In this chapter, we introduced two frameworks for inference:  \termsub{confidence intervals}{confidence interval} and \termsub{hypothesis tests}{hypothesis test}.   
+\noindent Statistical inference is the practice of making decisions from data in the context of uncertainty.  In this chapter, we introduced two frameworks for inference:  \termni{confidence intervals} and \termni{hypothesis tests}.   
 \begin{itemize}
 \item Confidence intervals are used for \textit{estimating} unknown population parameters by providing an \textit{interval of reasonable values} for the unknown parameter with a certain level of confidence.
 \item Hypothesis tests are used to assess how reasonable a \textit{particular} value is for an unknown population parameter by providing \textit{degrees of evidence} against that value.

@@ -30,7 +30,7 @@ hist(cia_factbook$infant_mortality_rate,
      main = "",
      xlab = "Infant Mortality (per 1000 Live Births)",
      ylab = "Fraction of Countries",
-     col = COL[1], axes = FALSE, ylim = c(0,five_perc*8),yaxs="i")
+     col = COL[1], axes = FALSE, ylim = c(0,five_perc*8))
 axis(1)
 axis(2, at = seq(0, 8 * five_perc, 2 * five_perc),
      labels = seq(0, 0.4, 0.1))

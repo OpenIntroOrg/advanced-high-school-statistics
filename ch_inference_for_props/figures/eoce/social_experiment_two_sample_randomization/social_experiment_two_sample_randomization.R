@@ -26,7 +26,7 @@ sum((d) <= pHatObs) / N
 
 pdf("social_experiment_two_sample_randomization.pdf", height = 3, width = 6)
 
-par(mar=c(4,2,.2,0), las=1, mgp=c(2.8,0.55,0))
+par(mar=c(4,2,0,0), las=1, mgp=c(2.8,0.55,0))
 
 temp1 <- sort(unique(d))
 temp2 <- diff(temp1[1:2])/2
@@ -34,7 +34,7 @@ br    <- seq(temp1[1]-temp2/2, tail(temp1,1)+temp2/2, temp2)
 
 histPlot(d, breaks = br, col=COL[7,4], 
          main="", xlab=expression(hat(p)[pr_sim] - hat(p)[con_sim]*"    "), 
-         ylab="", axes=FALSE,yaxs="i")
+         ylab="", axes=FALSE)
 axis(1, seq(-0.4, 0.4, 0.2))
 axis(2, at=(0:4)*N/20, labels=c(0, NA, 2, NA, 4)/20)
 abline(h = 0)
@@ -47,7 +47,7 @@ dev.off()
 
 pdf("social_experiment_two_sample_randomization_soln.pdf", height = 3, width = 6)
 
-par(mar=c(4,2,.2,0), las=1, mgp=c(2.8,0.55,0))
+par(mar=c(4,2,0,0), las=1, mgp=c(2.8,0.55,0))
 
 temp1 <- sort(unique(d))
 temp2 <- diff(temp1[1:2])/2
@@ -55,7 +55,7 @@ br    <- seq(temp1[1]-temp2/2, tail(temp1,1)+temp2/2, temp2)
 
 histPlot(d, breaks = br, col=COL[7,4], 
          main="", xlab=expression(hat(p)[pr_sim] - hat(p)[con_sim]*"    "), 
-         ylab="", axes=FALSE,yaxs="i")
+         ylab="", axes=FALSE)
 axis(1, seq(-0.4, 0.4, 0.2))
 axis(2, at=(0:4)*N/20, labels=c(0, NA, 2, NA, 4)/20)
 abline(h = 0)

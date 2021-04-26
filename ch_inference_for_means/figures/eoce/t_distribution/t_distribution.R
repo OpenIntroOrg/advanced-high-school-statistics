@@ -1,8 +1,8 @@
 # plot --------------------------------------------------------------
 pdf('t_distribution.pdf', 4.3, 2.3)
 
-par(mar=c(2, 0, .3, 0), mgp=c(5, 0.6, 0))
-plot(c(-4.2, 4.2), c(0, dnorm(0)), type='n', axes=FALSE, xlab = "", ylab = "",yaxs="i")
+par(mar=c(2, 0, 0, 0), mgp=c(5, 0.6, 0))
+plot(c(-4.2, 4.2), c(0, dnorm(0)), type='n', axes=FALSE, xlab = "", ylab = "")
 axis(1)
 abline(h=0)
 

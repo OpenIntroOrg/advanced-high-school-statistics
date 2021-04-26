@@ -281,6 +281,9 @@ As the sample size goes up, it becomes less necessary to check for skew in the d
 \subsection[One sample $t$-interval for a mean]{One sample \pmb{$t$}-interval for a mean}
 \label{oneSampleTConfidenceIntervals}
 
+\index{t-interval@$t$-interval!for a mean|(}
+\index{one-sample $t$-interval|see{$t$-interval for a mean}}
+
 Dolphins are at the top of the oceanic food chain, which causes dangerous substances such as mercury to concentrate in their organs and muscles. This is an important problem for both dolphins and other animals, like humans, who eat them.
 \setlength{\captionwidth}{86mm}
 
@@ -364,13 +367,14 @@ To carry out a complete confidence interval procedure to estimate a single \mbox
 \end{itemize}
 \inferencestep{Choose} Choose the appropriate interval procedure and identify it by name.\vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{1-sample $t$-interval}.
+\item[] To estimate a single mean we use a \termsub{1-sample \pmb{$t$}-interval}{t-interval@$t$-interval!for a mean}.
 \end{itemize}
-\inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}$ to nearly normal.\vspace{-1mm}
+\inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from a random sample or random process.
-\item[] 2. The sample size $n\ge 30$ or the population distribution is nearly normal.
+\item[] 1. Independence:  Data come from a random sample or random process.  When sampling 
+\item[] \quad \ without replacement, check that sample size is less than 10\% of the population size.
+\item[] 2. Large sample or normal population:  $n\ge 30$ or the population distr. is nearly normal.
 \item[] \quad \ If the sample size is less than 30 and the population distribution is unknown, check 
 \item[] \quad \ for strong skew or outliers in the data.  If neither is found, the condition that the 
 \item[] \quad \ population distribution is nearly normal is considered reasonable.  
@@ -398,7 +402,7 @@ To carry out a complete confidence interval procedure to estimate a single \mbox
 \begin{description}
 \item[\inferencestep{Identify}] The parameter of interest is the true mean mercury content in croaker white fish (Pacific).  We want to estimate this at the 95\% confidence level.  
 \item[\inferencestep{Choose}] Because the parameter to be estimated is a single mean, we will use a 1-sample $t$-interval.
-\item[\inferencestep{Check}] We will assume that the sample constitutes a random sample of croaker white fish (Pacific). The sample size $n$ is small, but there are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not too great. Therefore we think it is reasonable that the population distribution of mercury content in croaker white fish (Pacific) could be nearly normal.  
+\item[\inferencestep{Check}] We must check that the sampling distribution of the mean can be modeled using a normal distribution.  We will assume that the sample constitutes a random sample of less than 10\% of all croaker white fish (Pacific) and that independence is reasonable. The sample size $n$ is small, but there are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not too great. Therefore we think it is reasonable that the population distribution of mercury content in croaker white fish (Pacific) could be nearly normal.  
 \item[\inferencestep{Calculate}]  We will calculate the interval:
 \begin{align*}
 \text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}
@@ -489,7 +493,7 @@ Use a calculator to find a 95\% confidence interval for the mean mercury content
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Choose \calctext{TInterval} or equivalent.  We do not have all the data, so choose \calctext{Stats} on a TI or \calctext{Var} on a Casio.  Enter $\calctextmath{\bar{x}}$ and $\calctextmath{Sx}$.  Note:  $\calctextmath{Sx}$ is the sample standard deviation (\calctext{0.069}), not the $SE$.  Let $\calctext{n}=15$ and \calctext{C-Level} = 0.95.  This should give the interval $(0.249,\ 0.325)$.}
-
+\index{t-interval@$t$-interval!for a mean|)}.
 
 \D{\newpage}
 
@@ -540,6 +544,9 @@ Sample size computations are helpful in planning data collection, and they requi
 %%
 \subsection{Hypothesis testing for a mean}
 \label{oneSampleTTests}
+\index{t-test@$t$-test!for a mean|(}
+\index{one-sample $t$-test|see{$t$-test for a mean}}
+
 \newcommand{\cherryblossomn}{100}
 \newcommand{\cherryblossommean}{97.3}
 \newcommand{\cherryblossomnull}{93.3}
@@ -633,14 +640,15 @@ To carry out a complete hypothesis test to test the claim that a single mean $\m
 \end{itemize} 
 \inferencestep{Choose} Choose the appropriate test procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{1-sample $t$-test}.
+\item[] To test hypotheses about a single mean we use a \termsub{1-sample \pmb{$t$}-test}{t-test@$t$-test!for a mean}.
 \end{itemize}
  \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from a random sample or random process.
-\item[] 2. The sample size $n\ge 30$ or the population distribution is nearly normal.
-\item[] \quad \ If the sample size is less than 30 and the population distribution is unknown, check 
+\item[] 1.  Independence:  Data come from a random sample or random process.  When sampling 
+\item[] \quad \ without replacement, check that sample size is less than 10\% of the population size.
+\item[] 2. Large sample or normal population:  $n\ge 30$ or the population distr. is nearly normal.
+\item[] \quad \ - If the sample size is less than 30 and the population distribution is unknown, check 
 \item[] \quad \ for strong skew or outliers in the data.  If neither is found, then the condition that the 
 \item[] \quad \ population is nearly normal is considered reasonable.  
 \end{itemize}
@@ -671,7 +679,7 @@ $H_0$: $\mu=0.25$   \\
 $H_A$: $\mu \ne 0.25$ \quad The mean mercury content is not 0.25 ppm.\\
  
 \item[\inferencestep{Choose}] Because we are hypothesizing about a single mean we choose the \mbox{1-sample $t$-test.}
-\item[\inferencestep{Check}]  The conditions were checked previously, namely -- the data come from a random sample, and because $n$ is less than 30, we verified that there is no strong skew or outliers in the data, so the assumption that the population distribution of mercury is nearly normally distributed is reasonable.  
+\item[\inferencestep{Check}]  The conditions were checked previously, namely -- the data come from a random sample of less than 10\% of the population of all croaker white fish (Pacific), and because $n$ is less than 30, we verified that there is no strong skew or outliers in the data, so the assumption that the population distribution of mercury is nearly normally distributed is reasonable.  
 \item[ \inferencestep{Calculate} ]  We will calculate the $t$-statistic and the p-value.
 \begin{align*}
 T = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}
@@ -770,7 +778,7 @@ The average time for all runners who finished the Cherry Blossom Run in 2006 was
 \end{exercisewrap}
 \footnotetext{Choose \calctext{T-Test} or equivalent.  Let $\calctextmath{\mu_0}$ be \cherryblossomnull{}. $\calctextmath{\bar{x}}$ is \cherryblossommean{}, $\calctextmath{S_x}$ is \cherryblossomsd{}, and $\calctext{n} = \cherryblossomn{}$.  Choose $\calctextmath{\neq}$ to correspond to $H_A$. We get $\calctextmath{t} =2.353$ and the p-value \calctext{p} = 0.021.}
 
-
+\index{t-test@$t$-test!for a mean|)}.
 
 \D{\newpage}
 
@@ -791,15 +799,15 @@ The average time for all runners who finished the Cherry Blossom Run in 2006 was
 
 \item When there is one sample and the parameter of interest is a single mean:
 \begin{itemize}
-\item Estimate $\mu$ at the C\% confidence level using a \term{1-sample t-interval}.
-\item Test $H_0$: $\mu=\mu_0$ at the $\alpha$ significance level using a \term{1-sample t-test}. 
+\item Estimate $\mu$ at the C\% confidence level using a \termsub{1-sample \pmb{$t$}-interval}{t-interval@$t$-interval!for a mean}.
+\item Test $H_0$: $\mu=\mu_0$ at the $\alpha$ significance level using a \termsub{1-sample \pmb{$t$}-test}{t-test@$t$-test!for a mean}. 
 \end{itemize}
 
-\item The conditions for the one sample $t$-interval and $t$-test are the same.  
+\item The one sample $t$-interval and $t$-test require that the sampling distribution of $\bar{x}$ be nearly normal.  For this reason we must check that the following conditions are met.
 \begin{itemize}
-\item[1.] The data come from a random sample or random process.
-\item[2.]  The sample size $n\ge 30$ or the population distribution is nearly normal.
-\item[]  If the sample size is less than 30 and the population distribution is unknown, check for strong skew or outliers in the data.  If neither is found, then the condition that the population distribution is nearly normal is considered reasonable.
+\item[1.] Independence:  The data come from a random sample or random process.  When sampling without replacement, check that the sample size is less than 10\% of the population size.
+\item[2.]  Large sample or normal population: $n\ge 30$ or population distribution is nearly normal. 
+- If the sample size is less than 30 and the population distribution is unknown, check for strong skew or outliers in the data.  If neither is found, then the condition that the population distribution is nearly normal is considered reasonable.
 \end{itemize}
 
 \item When the conditions are met, we calculate the confidence interval and the test statistic as we did in the previous chapter, except that we use $t^{\star}$ for the critical value and we use $T$ for the test statistic.
@@ -823,11 +831,11 @@ $z^{\star}$ depends on the desired confidence level and $\sigma$ is the standard
 
 
 %%%%%Section exercises
-{\input{ch_inference_for_means/TeX/one-sample_means_with_the_t-distribution.tex}}
+{\input{ch_inference_for_means/TeX/inference_for_a_mean_with_the_t-distribution.tex}}
 
 
 %_______________________________________
-\section[Inference for paired data]{Inference for paired data }
+\section[Inference with paired data]{Inference with paired data }
 
 \label{pairedData}
 
@@ -851,11 +859,11 @@ When we have two observations on each person or each case, we can answer questio
 \setlength{\itemsep}{0mm}
 \item Distinguish between paired and unpaired data.  
 
-\item Recognize that inference procedures for paired data use the same one-sample $t$-procedures as in the previous section, and that these procedures are applied to the \emph{differences} of the paired observations.
+\item Recognize that inference procedures with paired data use the same one-sample $t$-procedures as in the previous section, and that these procedures are applied to the \emph{differences} of the paired observations.
 
-\item Carry out a complete hypothesis test for paired differences.
+\item Carry out a complete hypothesis test with paired differences.
 
-\item Carry out a complete confidence interval procedure for paired differences.
+\item Carry out a complete confidence interval procedure with paired differences.
 
 \end{enumerate}
 }
@@ -951,7 +959,7 @@ is a common and useful way to analyze paired data.
 \caption{Histogram of the difference in price for
     each book sampled.
     These data are very strongly skewed.
-    \index{skew!example: very strong}. Explore this data set on Tableau Public\tableauhref{tableau-hist-textbookdiff-summ}.}
+   Explore this data set on Tableau Public\tableauhref{tableau-hist-textbookdiff-summ}.}
 \label{diffInTextbookPricesF18}
 \end{figure}
 
@@ -966,7 +974,11 @@ What does this difference tell us about the price for this textbook on Amazon ve
 
 
 %%
-\subsection{Hypothesis tests for paired data}
+\subsection{Hypothesis tests for a mean of paired differences}
+
+\index{t-test@$t$-test!for a mean of differences|(}
+\index{paired $t$-test|(}
+\index{paired $t$-test|seealso{$t$-test for a mean of differences}}
 
 To analyze a paired data set,
 we simply analyze the differences.
@@ -1065,7 +1077,6 @@ on Amazon?}No. The fact that Amazon is, on average, less expensive, does not imp
   the UCLA Bookstore quite compelling at that time.
 
 \index{data!textbooks|)}
-\index{paired data|)}
 
 
 
@@ -1073,7 +1084,7 @@ on Amazon?}No. The fact that Amazon is, on average, less expensive, does not imp
 
 
 
-\begin{onebox}{Hypothesis test for paired data}
+\begin{onebox}{Hypothesis test for a mean of paired differences}
 To carry out a complete hypothesis test to test the claim that a mean of differences $\mu_{\text{\emph{diff}}}$ is equal to 0,
 \\
 \\
@@ -1085,14 +1096,16 @@ To carry out a complete hypothesis test to test the claim that a mean of differe
 \end{itemize} 
 \inferencestep{Choose} Choose the appropriate test procedure and identify it by name.  \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{matched pairs  $t$-test}.
+\item[] To test hypotheses about a mean of paired differences we use a \termsub{paired \pmb{$t$}-test}{paired $t$-test}.
 \end{itemize}
  \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. There is paired data from a random sample or from a matched pairs experiment.
-\item[] 2. $n_{\text{\emph{diff}}}\ge 30$ or the population of differences is nearly normal.
- \item[] \quad \  If the number of differences is less than 30 and the distribution of the population 
+\item[] 1. Independence:  Data come from one random sample (with paired data) or from a 
+\item[] \ \quad randomized matched pairs experiment.  When sampling without replacement, check 
+\item[] \ \quad that the sample size is less than 10\% of the population size.
+\item[] 2. Large sample or normal population:  $n_{\text{\emph{diff}}}\ge 30$ or population of diffs is nearly normal.
+ \item[] \quad \  - If the number of differences is less than 30 and the distribution of the population 
  \item[] \quad \ of differences is unknown, check for strong skew or outliers in the sample differences.
 \item[] \quad \ If neither is found, then the condition that the population of differences is nearly normal 
 \item[] \quad \ is considered reasonable.  
@@ -1134,10 +1147,9 @@ $H_A$: $\mu_{\text{\emph{diff}}} > 100$. Student scores improve by more than 100
 \\
 Here,  ${\text{\emph{diff}}}$ = ${\text{SAT score after course - SAT score before course}}$.
 
-\item[\inferencestep{Choose}] Because we have paired data and the parameter to be estimated is a mean of differences, we will use a matched pairs $t$-test.
+\item[\inferencestep{Choose}] Because we have paired data and the parameter to be estimated is a mean of differences, we will use a paired $t$-test.
 
-\item[\inferencestep{Check}] We have a random sample with paired observations and the number of differences is \\
-$n_{\text{\emph{diff}}}=30\ge 30$, so we can proceed with the matched pairs $t$-test.  
+\item[\inferencestep{Check}] We have a random sample of students and have paired data on them.  We will assume that this sample of size 30 represents less than 10\% of the total population of such students.  Finally, the number of differences is $n_{\text{\emph{diff}}}=30\ge 30$, so we can proceed with the paired $t$-test.  
  
 \item[\inferencestep{Calculate}]  We will calculate the test statistic, $df$, and p-value.
 \begin{align*}
@@ -1175,12 +1187,11 @@ Because we found evidence to support the company's claim, does this mean that a 
 \end{exercisewrap}
 \footnotetext{No.  First, this is an observational study, so we cannot make a causal conclusion.  Maybe SAT test takers tend to improve their score over time even if they don't take this SAT class.  Secondly, students' scores improved by more than 100 points \emph{on average}.  That does not imply that each student improved by more than 100 points.  With a sample standard deviation of 82.2 and a mean of 135.9, some students did worse after the SAT class.  This can be verified by Figure~\ref{satImprovementHTDataHistogramrepeat}.}
 
-
 \D{\newpage}
 
 %%
-\subsection[Calculator: the matched pairs $t$-test]{Calculator: the matched pairs \pmb{$t$}-test}
-The matched pairs $t$-test is a one sample $t$-test. Instead of using the data or the summary statistics from a sample, make sure to use the data of \emph{differences} or the summary statistics for the \emph{differences}.
+\subsection[Calculator: the paired $t$-test]{Calculator: the paired \pmb{$t$}-test}
+The paired $t$-test is a one-sample $t$-test. Instead of using the data or the summary statistics from a sample, make sure to use the data of \emph{differences} or the summary statistics for the \emph{differences}.
 \label{matchedpairsttest}
 
 \begin{onebox}{TI-83/84: matched pairs T-test}
@@ -1214,9 +1225,12 @@ $\calctextmath{\bar{x}}$ & the sample mean of the differences \\
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Compute the paired differences of the observations.
-\item Using the computed differences, follow the instructions for a 1-sample $t$-test
+\item Using the computed differences, follow the instructions for a 1-sample $t$-test.
 \end{enumerate}
 \end{onebox}
+
+\index{t-test@$t$-test!for a mean of differences|)}
+\index{paired $t$-test|)}
 
 \D{~}
 
@@ -1224,8 +1238,11 @@ $\calctextmath{\bar{x}}$ & the sample mean of the differences \\
 %%
 \subsection{Confidence intervals for the mean of a difference}
 \label{ciMeanOfDifferences}
+\index{t-interval@$t$-interval!for a mean of differences|(}
+\index{paired $t$-interval|(}
+\index{paired $t$-interval|seealso{$t$-interval for a mean of differences}}
 
-In the previous examples, we carried out a matched pairs $t$-test, where the null hypothesis was that the true average of the paired differences is zero. Sometimes we want to estimate the true average of paired differences with a confidence interval, and we use a \termsub{matched pairs $t$-interval}{confidence interval!matched pairs}. Consider again the table summarizing data on: UCLA Bookstore price $-$ Amazon price, for each of the 68 books sampled.
+In the previous examples, we carried out a paired $t$-test, where the null hypothesis was that the true average of the paired differences is zero. Sometimes we want to estimate the true average of paired differences with a confidence interval, and we use a \textbf{paired $t$-interval}. Consider again the table summarizing data on: UCLA Bookstore price $-$ Amazon price, for each of the 68 books sampled.
 
 \begin{figure}[hh]
 \centering
@@ -1253,20 +1270,17 @@ We construct a 95\% confidence interval for the average price difference between
 \end{align*}
 We are 95\% confident that the UCLA bookstore is, on average, between \$0.33 and \$6.83 more expensive than Amazon for UCLA course books. This interval does not contain zero, so it is consistent with the earlier hypothesis test that \emph{rejected} the null hypothesis that the average difference was 0. Because our interval is entirely above 0, we have evidence that the true average difference is greater than zero. Unlike the hypothesis test, the confidence interval gives us a good idea of how much more expensive the UCLA bookstore might be, on average.
 
-\index{data!textbooks|)}
-\index{paired data|)}
 
 \begin{examplewrap}
 \begin{nexample}
 {Based on the interval, can we say that 95\% of the books cost between \$0.33 and \$6.83 more at the UCLA Bookstore than on Amazon? }No.  This interval is attempting to estimate the \emph{average} difference with 95\% confidence.  It is not attempting to capture 95\% of the values.  A quick look at Figure~\ref{diffInTextbookPricesF18} shows that much less than 95\% of the differences fall between \$0.32 and \$6.84.
 
-\index{data!SAT prep company|)}
 
 \end{nexample}
 \end{examplewrap}
 
 
-\begin{onebox}{Constructing a confidence interval for paired data}
+\begin{onebox}{Constructing a confidence interval for a mean of paired differences}
 To carry out a complete confidence interval procedure to estimate a mean of differences $\mu_{\text{\emph{diff}}}$,
 \\
 \\
@@ -1276,14 +1290,16 @@ To carry out a complete confidence interval procedure to estimate a mean of diff
 \end{itemize}
 \inferencestep{Choose} Choose the appropriate interval procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{matched pairs $t$-interval}.
+\item[] To estimate the mean of paired differences we use a \termsub{paired \pmb{$t$}-interval}{paired $t$-interval}.
 \end{itemize}
 \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. There is paired data from a random sample or from a matched pairs experiment.
-\item[] 2. $n_{\text{\emph{diff}}}\ge 30$ or the population of differences is nearly normal.
- \item[] \quad \  If the number of differences is less than 30 and the distribution of the population 
+\item[] 1. Independence:  Data come from one random sample (with paired data) or from a 
+\item[] \ \quad randomized matched pairs experiment.  When sampling without replacement, check 
+\item[] \ \quad that the sample size is less than 10\% of the population size.
+\item[] 2. Large sample or normal population:  $n_{\text{\emph{diff}}}\ge 30$ or population of diffs is nearly normal.
+ \item[] \quad \  - If the number of differences is less than 30 and the distribution of the population 
  \item[] \quad \ of differences is unknown, check for strong skew or outliers in the sample differences.
 \item[] \quad \ If neither is found, then the condition that the population of differences is nearly normal 
 \item[] \quad \ is considered reasonable.  
@@ -1303,6 +1319,8 @@ To carry out a complete confidence interval procedure to estimate a mean of diff
 \item[] We are C\%  confident that the true \emph{mean of the differences in} [...] is between \underline{\ \ \ \ \ } and  \underline{\ \ \ \ \ }. If applicable, draw a conclusion based on whether the interval is entirely above, is entirely below, or contains the value 0. 
 \end{itemize}\end{onebox}
 
+\index{data!SAT prep company|)}
+
 \begin{examplewrap}
 \begin{nexample}
 {An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, so we have a difference in scores for each student. We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$ as a sample to evaluate the company's claim. The distribution of the differences, shown in Figure~\ref{satImprovementHTDataHistogram3}, has a mean of 135.9 and a standard deviation of 82.2. Construct a confidence interval to estimate the true average increase in SAT after taking the company's course.  Is there evidence at the 95\% confidence level that students score an average of more than 100 points higher after the class?  Use the five step framework to organize your work.  
@@ -1310,10 +1328,9 @@ To carry out a complete confidence interval procedure to estimate a mean of diff
 \begin{description}
 \item[\inferencestep{Identify}] The parameter we want to estimate is $\mu_{\text{\emph{diff}}}$, the true change in SAT score after taking the company's course.  Here,  ${\text{\emph{diff}}}$ = ${\text{SAT score after course} - \text{SAT score before course}}$.  We will estimate this parameter at the 95\% confidence level.
 
-\item[\inferencestep{Choose}] Because we have paired data and the parameter to be estimated is a mean of differences, we will use a matched pairs $t$-interval.
+\item[\inferencestep{Choose}] Because we have paired data and the parameter to be estimated is a mean of differences, we will use a paired $t$-interval.
 
-\item[\inferencestep{Check}] We have a random sample with paired observations and the number of differences is \\
-$n_{\text{\emph{diff}}}=30\ge 30$, so we can proceed with the matched pairs $t$-interval.  
+\item[\inferencestep{Check}] We have a random sample of students with paired observations on them.  We will assume that these 30 students represent less than 10\% of the total number of such students.  Finally, the number of differences is $n_{\text{\emph{diff}}}=30\ge 30$, so we can proceed with the paired $t$-interval.  
  
 \item[\inferencestep{Calculate}]  We will calculate the confidence interval as follows.
 \begin{align*}
@@ -1327,7 +1344,7 @@ We find $t^{\star}$ for the one sample case using the $t$-table at row $df = n -
 
 The 95\% confidence interval is given by:
 \begin{align*}
-135.9 \ \pm\  &2.045\times  \frac{82.2}{\sqrt{30}}  \qquad df = 15\\
+135.9 \ \pm\  &2.045\times  \frac{82.2}{\sqrt{30}}  \qquad df = 29\\
 135.9 \ \pm\  &2.045\times 15.0 \\
 =(10&5.2,\ 166.6)
 \end{align*}
@@ -1357,7 +1374,7 @@ Based on the interval (105.2, 166.6), calculated previously, can we say that 95\
 
 
 %%
-\subsection[Calculator: the matched pairs $t$-interval]{Calculator: the matched pairs \pmb{$t$}-interval}
+\subsection[Calculator: the paired $t$-interval]{Calculator: the paired \pmb{$t$}-interval}
 \label{matchedpairstint}
 
 
@@ -1409,6 +1426,9 @@ $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\h
 \end{exercisewrap}
 \footnotetext{Choose \calctext{TInterval} or equivalent.  We do not have all the data, so choose \calctext{Stats} on a TI or \calctext{Var} on a Casio.  Enter $\calctextmath{\bar{x}}$ = 3.58 and $\calctextmath{Sx}$ = 13.42.  Let $\calctext{n}=68$ and \calctext{C-Level} = 0.95.  This should give the interval $(0.332,\ 6.828$).  The intervals are equivalent when rounded to two decimal places.}
 
+\index{paired data|)}
+\index{t-interval@$t$-interval!for a mean of differences|)}
+\index{paired $t$-interval|)}
 
 \D{\newpage}
 
@@ -1421,20 +1441,20 @@ $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\h
 \item We use the notation $\bar{x}_{\text{\emph{diff}}}$ to represent the mean of the sample differences.  Likewise, $s_{\text{\emph{diff}}}$ is the standard deviation of the sample differences, and $n_{\text{\emph{diff}}}$ is the number of sample differences.
 
 
-\item To carry out inference on paired data, we first find all of the sample differences.  Then, we perform a one-sample procedure on the \emph{differences}.  For this reason, the confidence interval and hypothesis test for paired data use the same $t$-procedures as the one-sample methods, where the degrees of freedom is given by $n_{\text{\emph{diff}}}-1$.
+\item To carry out inference with paired data, we first find all of the sample differences.  Then, we perform a one-sample procedure on the \emph{differences}.  For this reason, the confidence interval and hypothesis test with paired data use the one-sample $t$-procedures, where the degrees of freedom is given by $n_{\text{\emph{diff}}}-1$.
 
 
 \item When there is paired data and the parameter of interest is a mean of the differences:  
 \begin{itemize}
-\item Estimate $\mu_{\text{\emph{diff}}}$ at the C\% confidence level using a \term{matched pairs $t$-interval}.
-\item Test $H_0$: $\mu_{\text{\emph{diff}}}=0$ at the $\alpha$ significance level using a \term{matched pairs $t$-test}. 
+\item Estimate $\mu_{\text{\emph{diff}}}$ at the C\% confidence level using a \termsub{paired \pmb{$t$}-interval}{paired $t$-interval}.
+\item Test $H_0$: $\mu_{\text{\emph{diff}}}=0$ at the $\alpha$ significance level using a \termsub{paired \pmb{$t$}-test}{paired $t$-test}. 
 \end{itemize}
 
-\item The conditions for the matched pairs $t$-interval and $t$-test are the same.  
+\item The paired $t$-interval and $t$-test require the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.  For this reason, we must check that the following conditions are met.
 \begin{itemize}
-\item[1.]  There is paired data from a random sample or a matched pairs experiment.
-\item[2.]  $n_{\text{\emph{diff}}}\ge 30$ or the population of differences is nearly normal.
- \item[] If the number of differences is less than 30 and it is not known that the population of differences is nearly normal, we argue that the population of differences could be nearly normal if there is no strong skew or outliers in the sample differences.
+\item[1.]  Independence:  Data should come from one random sample (with paired observations) or from a randomized matched pairs experiment.  If sampling without replacement, check that the sample size is less than 10\% of the population size.
+\item[2.]  Large sample or normal population:  $n_{\text{\emph{diff}}}\ge 30$ or  population of differences nearly normal.
+- If the number of differences is less than 30 and it is not known that the population of differences is nearly normal, we argue that the population of differences could be nearly normal if there is no strong skew or outliers in the sample differences.
 \end{itemize}
 
 
@@ -1453,7 +1473,7 @@ Here the point estimate is the mean of sample differences: $\bar{x}_{\text{\emph
 
 
 %%%%%Section exercises
-{\input{ch_inference_for_means/TeX/paired_data.tex}}
+{\input{ch_inference_for_means/TeX/inference_for_paired_data.tex}}
 
 %________________________________
 \section[Inference for the difference of two means]{Inference for the difference of two means}
@@ -1511,7 +1531,7 @@ Finally, we are interested in the shape of the sampling distribution of  $\bar{x
 When comparing two means, we carry out inference on a difference of means, $\mu_1-\mu_2$.  We will use the $t$-distribution just as we did when carrying out inference on a single mean.  The assumptions are that the observations are independent, both between groups and within groups and that the sampling distribution of $\bar{x}_1-\bar{x}_2$ is nearly normal.  We check whether these assumptions are reasonable by verifying the following conditions.
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Independent.] Observations can be considered independent when the data are collected from two independent random samples or, in the context of experiments, from two randomly assigned treatments.  Randomly assigning subjects to treatments is equivalent to randomly assigning treatments to subjects.  
+\item[Independent.] Observations can be considered independent when the data are collected from two independent random samples or from a randomized experiment with two treatments.  Randomly assigning subjects to treatments is equivalent to randomly assigning treatments to subjects.  
 \item[Nearly normal sampling distribution.] The sampling distribution of $\bar{x}_1-\bar{x}_2$ will be nearly normal when the sampling distribution of $\bar{x}_1$ and of $\bar{x}_2$ are nearly normal, that is when both population distributions are nearly normal or both sample sizes are at least 30.  
 \end{description}
 
@@ -1522,6 +1542,11 @@ As before, if the sample sizes are small and the population distributions are no
 
 %%
 \subsection{Confidence intervals for a difference of means}
+
+\index{t-interval@$t$-interval!for a difference of means|(}
+\index{two-sample $t$-interval|see{$t$-interval for a difference of means}}
+
+
 
 \newcommand{\johnn}{63}
 \newcommand{\jennifern}{64}
@@ -1588,7 +1613,7 @@ Use statistical software or a calculator to compute the degrees of freedom for t
 
 \begin{examplewrap}
 \begin{nexample}{Verify that conditions are met for a two-sample $t$-test.  Then, construct the 95\% confidence interval for the difference of means.}
-We noted previously that this is an experiment and that the two treatments (name Jennifer and name John) were randomly assigned.  Also, both sample sizes are well over 30, so the distribution of $\bar{x}_1-\bar{x}_2$ is nearly normal.  Using a calculator, we find that $df= 114.4$.  Since 114 is not on the $t$-table, we round the degrees of freedom down to 100.\footnotemark  \ Using a $t$-table at row $df=100$ with 95\% confidence, we get a $t^{\star}$ = 1.984. We calculate the confidence interval as follows. 
+We noted previously that this is an experiment and that the two treatments (name Jennifer and name John) were randomly assigned.  Also, both sample sizes are well over 30, so the distribution of $\bar{x}_1-\bar{x}_2$ is nearly normal.  Using a calculator, we find that $df= 118.1$.  Since 118.1 is not on the $t$-table, we round the degrees of freedom down to 100.\footnotemark  \ Using a $t$-table at row $df=100$ with 95\% confidence, we get a $t^{\star}$ = 1.984. We calculate the confidence interval as follows. 
 \begin{align*}
 \text{point estimate } &\pm \ t^{\star}\times SE \text{ of estimate}\\
 3730\ &\pm \ 1.984\times \johnjenniferSE{}\\
@@ -1597,7 +1622,7 @@ We noted previously that this is an experiment and that the two treatments (name
 \end{align*}
 \end{nexample}
 \end{examplewrap}
-\footnotetext{Using technology, we get a more precise interval, based on 114.4 $df$: (1495, 6055).}
+\footnotetext{Using technology, we get a more precise interval, based on 118.1 $df$: (1461, 5999).}
 
 Based on this interval, we are 95\% confident that the true difference in mean salary that these faculty would offer John versus Jennifer is between \$1,495 and \$6,055.  That is, we are 95\% confident that the mean salary these faculty would offer John for a lab manager position is between \$1,446 and \$6,014 \emph{more} than the mean salary they would offer Jennifer for the position.
 
@@ -1619,14 +1644,17 @@ To carry out a complete confidence interval procedure to estimate the difference
 \end{itemize}
  \inferencestep{Choose} Choose the appropriate interval procedure and identify it by name.  \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{2-sample $t$-interval}.
+\item[] To estimate the difference of means we use a \termsub{2-sample \pmb{$t$}-interval}{t-interval@$t$-interval!for a difference of means}.
 \end{itemize}
  \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_1-\bar{x}_2$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from 2 independent random samples or 2 randomly assigned treatments. 
-\item[] 2. $n_1\ge 30$ and $n_2\ge 30$ or both population distributions are nearly normal.
-\item[] \quad \ If the sample sizes are less than 30 and the population distributions are unknown, 
+\item[] 1. Independence:  Data come from 2 independent random samples or from a randomized 
+\item[] \ \quad experiment with 2 treatments.  When sampling without replacement, check that the  
+\item[] \ \quad sample size is less than 10\% of the population size for each sample.
+\item[] 2. Large samples or normal populations:  $n_1\ge 30$ and $n_2\ge 30$ or both population 
+\item[] \ \quad distributions are nearly normal.
+\item[] \quad \ - If the sample sizes are less than 30 and the population distributions are unknown, 
 \item[] \quad \ check for strong skew or outliers in either data set.  If neither is found, the condition 
 \item[] \quad \ that both population distributions are nearly normal is considered reasonable.  
 \end{itemize}
@@ -1668,7 +1696,7 @@ B		& 30		& 74.1		& 20		& 32		& 100 \\
 
 \item[\inferencestep{Choose}] Because we are comparing two means, we will use a 2-sample $t$-interval.
 
-\item[\inferencestep{Check}] The data was collected from an experiment with two randomly assigned treatments, Version A and Version B of test.   Both groups sizes are 30, so the condition that they are at least 30 is met.   
+\item[\inferencestep{Check}] The data was collected from a randomized experiment with two treatments:  Version A and Version B of test.   The 10\% condition does not need to be checked here since we are not sampling from a population.  There were 30 students in each group, so the condition that both group sizes are at least 30 is met.   
 \item[\inferencestep{Calculate}]  We will calculate the confidence interval as follows.
 \begin{align*}
 \text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}
@@ -1681,11 +1709,11 @@ In order to find the critical value $t^{\star}$, we must first find the degrees 
 
 The 95\% confidence interval is given by:
 \begin{align*}
-(79.4 - 74.1) \ \pm\  &2.009\times \sqrt{\frac{14^2}{30} + \frac{20^2}{30}}   \qquad df = 45.97\\
+(79.4 - 74.1) \ \pm\  &2.009\times \sqrt{\frac{14^2}{30} + \frac{20^2}{30}}   \qquad df = 51.9\\
 5.3 \ \pm\  &2.009\times 4.46 \\
 =(-3&.66,\ 14.26)
 \end{align*}
-\item[\inferencestep{Conclude}]  We are 95\% confident that the true difference in average score between Version A and Version B is between -2.5 and 13.1 points. Because the interval contains both positive and negative values, the data do not convincingly show that one exam version is more difficult than the other, and the teacher should not be convinced that she should add points to the Version B exam scores.
+\item[\inferencestep{Conclude}]  We are 95\% confident that the true difference in average score between Version A and Version B is between -3.66 and 14.26 points. Because the interval contains both positive and negative values, the data do not convincingly show that one exam version is more difficult than the other, and the teacher should not be convinced that she should add points to the Version B exam scores.
 
 \end{description}
 \end{nexample}
@@ -1771,11 +1799,16 @@ B		& 30		& 74.1		& 20		& 32		& 100 \\
 
 
 
+\index{t-interval@$t$-interval!for a difference of means|)}
+
 %%
 \subsection{Hypothesis testing for the difference of two means}
 %Do not include the test with pooled standard deviations are grouped but mention it as one method that is discussed in other books. The reason: this is a poor test. If the sd's are remotely similar then the result will be basically the same as the sd's are not assumed to be the same. It is a big assumption that can cause problems with almost no benefits.
 
 \index{data!baby\_smoke|(}
+\index{t-test@$t$-test!for a difference of means|(}
+\index{two-sample $t$-test|see{$t$-test for a difference of means}}
+
 
 Four cases from a data set called \data{ncbirths}, which represents mothers and their newborns in North Carolina, are shown in Figure~\ref{babySmokeDF}. We are particularly interested in two variables: \var{weight} and \var{smoke}. The \var{weight} variable represents the weights of the newborns and the \var{smoke} variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke? The smoking group includes a random sample of 50 cases and the nonsmoking group contains a random sample of 100 cases, represented in Figure~\ref{babySmokePlotOfTwoGroupsToExamineSkew}.
 
@@ -1799,7 +1832,7 @@ Four cases from a data set called \data{ncbirths}, which represents mothers and 
 \begin{figure}[hhh]
 \centering
 \includegraphics[width=0.63\textwidth]{ch_inference_for_means/figures/babySmokePlotOfTwoGroupsToExamineSkew/babySmokePlotOfTwoGroupsToExamineSkew}
-\caption{The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke. The distributions exhibit moderate-to-strong and strong~skew, respectively.\index{skew!example: strong}}
+\caption{The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke. The distributions exhibit moderate-to-strong and strong~skew, respectively.}
 \label{babySmokePlotOfTwoGroupsToExamineSkew}
 \end{figure}
 
@@ -1842,8 +1875,8 @@ samp. size & 50 & 100 \\
 (a)~The point estimate is the difference of sample means: $\bar{x}_{1} - \bar{x}_{2} = 6.78-7.18=-0.40$ pounds. \\
 (b)~The standard error for a difference of sample means is calculated analogously to the standard deviation for a difference of sample means.
 \begin{eqnarray*}
-SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s_1^2}{n_1}}
-	= \sqrt{\frac{1.43^2}{100} + \frac{1.60^2}{50}}
+SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
+	= \sqrt{\frac{1.43^2}{50} + \frac{1.60^2}{100}}
 	= 0.26 \text{ pounds}
 \end{eqnarray*}
 \end{nexample}
@@ -1854,7 +1887,7 @@ SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s_1^2}{n_1}}
 \begin{nexample}{Compute the test statistic. } \label{babySmokeHTForWeightComputePValueAndEvalHT}
 We have already found the point estimate and the $SE$ of estimate.  The null hypothesis is that the two means are equal, or that their difference equals 0.  The null value for the difference, therefore is~0.  We now have everything we need to compute the test statistic.
 \begin{eqnarray*}
-T = \frac{\text{point estimate} - \text{null value}}{SE \text{ of estimate}} = \frac{\ 0.40 - 0\ }{0.26} = 1.54
+T = \frac{\text{point estimate} - \text{null value}}{SE \text{ of estimate}} = \frac{\ -0.40 - 0\ }{0.26} = -1.54
 \end{eqnarray*}
 \end{nexample}
 \end{examplewrap}
@@ -1866,7 +1899,7 @@ To depict the p-value, we draw the distribution of the point estimate as though 
 \begin{center}
 \includegraphics[width=0.6\textwidth]{ch_inference_for_means/figures/distOfDiffOfSampleMeansForBWOfBabySmokeData/distOfDiffOfSampleMeansForBWOfBabySmokeData}
 \end{center}
-We saw previously that the degrees of freedom can be found using software or using the smaller of $n_1-1$ and $n_2-1$.  If we use $50-1=49$ degrees of freedom, we find that the area in the upper tail is 0.065.  The p-value is twice this, or $2\times 0.065= 0.130$.  See Section~\ref{2SampTtest} for a shortcut to compute the degrees of freedom and p-value on a calculator.
+We saw previously that the degrees of freedom can be found using software or using the smaller of $n_1-1$ and $n_2-1$.  If we use $50-1=49$ degrees of freedom, we find that the area in the lower tail is 0.065.  The p-value is twice this, or $2\times 0.065= 0.130$.  See Section~\ref{2SampTtest} for a shortcut to compute the degrees of freedom and p-value on a calculator.
 \end{nexample}
 \end{examplewrap}
 
@@ -1921,14 +1954,17 @@ To carry out a complete hypothesis test to test the claim that two means $\mu_1$
 \end{itemize}
  \inferencestep{Choose} Choose the appropriate test procedure and identify it by name. \vspace{-1mm}
 \begin{itemize}
-\item[] Here we choose the \term{2-sample $t$-test}.
+\item[] To test hypotheses about the difference of means we use a \termsub{2-sample \pmb{$t$}-test}{t-test@$t$-test!for a difference of means}.
 \end{itemize}
  \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_1-\bar{x}_2$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[] 1. Data come from 2 independent random samples or 2 randomly assigned treatments. 
-\item[] 2. $n_1\ge 30$ and $n_2\ge 30$ or both population distributions are nearly normal.
-\item[] \quad \ If the sample sizes are less than 30 and the population distributions are unknown, 
+\item[] 1. Independence:  Data come from 2 independent random samples or from a randomized 
+\item[] \ \quad experiment with 2 treatments.  When sampling without replacement, check that the  
+\item[] \ \quad sample size is less than 10\% of the population size for each sample.
+\item[] 2. Large samples or normal populations:  $n_1\ge 30$ and $n_2\ge 30$ or both population 
+\item[] \ \quad distributions are nearly normal.
+\item[] \quad \ - If the sample sizes are less than 30 and the population distributions are unknown, 
 \item[] \quad \ check for excessive skew or outliers in either data set.  If neither is found, the condition 
 \item[] \quad \ that both population distributions are nearly normal is considered reasonable.  
 \end{itemize}
@@ -1977,7 +2013,7 @@ $H_0$: $\mu_{1} - \mu_{2} = 0$. The stem cells do not improve heart pumping func
 $H_A$: $\mu_{1} - \mu_{2} > 0$. The stem cells do improve heart pumping function.
 
 \item[\inferencestep{Choose}] Because we are hypothesizing about a difference of means we choose the \mbox{2-sample $t$-test.}
-\item[\inferencestep{Check}]  The data come from an experiment with two randomly assigned treatments.  The group sizes are small, but the data show no excessive skew or outliers, so the assumption that the population distributions are normal is reasonable.
+\item[\inferencestep{Check}]  The data come from a randomized experiment with two treatment groups: ESC and control.  Because this is an experiment, we do not need to check the 10\% condition.  The group sizes are small, but the data show no excessive skew or outliers, so the assumption that the population distributions are nearly normal is reasonable.
 \item[ \inferencestep{Calculate} ]  We will calculate the $t$-statistic and the p-value.
 \begin{align*}
 T = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}
@@ -2082,6 +2118,7 @@ control		& 9		& -4.33		& 2.76  	 \\
 \footnotetext{Choose \calctext{2-SampTTest} or equivalent.  Because we have the summary statistics rather than all of the data, choose \calctext{Stats}.  Let $\calctextmath{\bar{x}1}$=3.50, $\calctextmath{Sx1}$=5.17, $\calctextmath{n1}$=9, $\calctextmath{\bar{x}2}$=-4.33, $\calctextmath{Sx2}=2.76$, and $\calctextmath{n2}=9$.  We get $\calctextmath{t}=4.01$, and the p-value $\calctext{p} = 8.4\times 10^-4=0.00084$.  The degrees of freedom for the test is $\calctext{df}=12.2$.}
 
 
+\index{t-test@$t$-test!for a difference of means|)}
 
 
 
@@ -2096,15 +2133,15 @@ control		& 9		& -4.33		& 2.76  	 \\
 \item When there are two samples or treatments and the parameter of interest is a difference of means:  
 \begin{itemize}\vspace{-1mm}
 \setlength{\itemsep}{0mm}
-\item Estimate $\mu_1-\mu_2$ at the C\% confidence level using a \term{2-sample t-interval}.
-\item Test $H_0$: $\mu_1-\mu_2=0$ (i.e. $\mu_1=\mu_2$) at the $\alpha$ significance level using a \term{2-sample t-test} .
+\item Estimate $\mu_1-\mu_2$ at the C\% confidence level using a \termsub{2-sample \pmb{$t$}-interval}{t-interval@$t$-interval!for a difference of means}.
+\item Test $H_0$: $\mu_1-\mu_2=0$ at the $\alpha$ significance level using a \termsub{2-sample \pmb{$t$}-test}{t-test@$t$-test!for a difference of means}.
 \end{itemize}
 
-\item The conditions for the two sample $t$-interval and $t$-test are the same.  
+\item The 2-sample $t$-test and $t$-interval require the sampling distribution of $\bar{x}_1-\bar{x}_2$ to be nearly normal.  For this reason we must check that the following conditions are met.
 \begin{itemize}
-\item[1.] The data come from 2 independent random samples or 2 randomly assigned treatments.
-\item[2.] $n_1\ge 30$ and $n_2\ge 30$ or both population distributions are nearly normal.
-\item[]  If the sample sizes are less than 30 and it is not known that both population distributions are nearly normal, check for excessive skew or outliers in the data.  If neither exists, the condition that both population distributions could be nearly normal is considered reasonable.
+\item[1.] Independence:  The data should come from 2 independent random samples or from a randomized experiment with 2 treatments.  When sampling without replacement, check that the sample size is less than 10\% of the population size for each sample.
+\item[2.] Large samples or normal populations:  $n_1\ge 30$ and $n_2\ge 30$ or both population distributions are nearly normal. \\
+- If the sample sizes are less than 30 and it is not known that both population distributions are nearly normal, check for excessive skew or outliers in the data.  If neither exists, the condition that both population distributions could be nearly normal is considered reasonable.
 \end{itemize}
 
 
@@ -2123,7 +2160,7 @@ Here the point estimate is the difference of sample means: $\bar{x}_1-\bar{x}_2$
 \end{itemize}
 
 %%%%%Section exercises
-{\input{ch_inference_for_means/TeX/difference_of_two_means.tex}}
+{\input{ch_inference_for_means/TeX/inference_for_the_difference_of_two_means.tex}}
 
 %______________________________________________
 \reviewchapterheader{}
@@ -2134,10 +2171,10 @@ Here the point estimate is the difference of sample means: $\bar{x}_1-\bar{x}_2$
 \item 1-proportion $z$-test/interval
 \item 2-proportion $z$-test/interval
 \item 1-sample $t$-test/interval
-\item matched pairs $t$-test/interval
+\item paired $t$-test/interval
 \item 2-sample $t$-test/interval 
 \end{itemize}
-The above inferential procedures all involve a \term{point estimate}, a \term{standard error} of the estimate, and an assumption about the \term{shape of the sampling distribution} of the point estimate.
+The above inferential procedures all involve a \textbf{point estimate}, a \textbf{standard error} of the estimate, and an assumption about the \textbf{shape of the sampling distribution} of the point estimate.
 \\
 \\
 From Chapter~\ref{inferenceForCategoricalData}, the $\chi^2$ tests and their uses are as follows:\vspace{-1mm}

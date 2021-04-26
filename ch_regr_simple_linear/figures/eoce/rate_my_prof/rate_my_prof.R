@@ -56,12 +56,12 @@ dev.off()
 
 pdf("rate_my_prof_residuals_hist.pdf", height = 5, width = 5)
 
-par(mar = c(3.9, 3, .2, 0), cex.lab = 1.5, cex.axis = 1.5)
+par(mar = c(3.9, 3, 0, 0), cex.lab = 1.5, cex.axis = 1.5)
 
 hist(m_eval_beauty$residuals, 
      xlab = "Residuals", ylab = "", main = "",
      col = COL[1],
-     xlim = c(-2,2),yaxs="i")
+     xlim = c(-2,2))
 
 dev.off()
 

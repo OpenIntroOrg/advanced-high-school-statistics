@@ -56,7 +56,7 @@ par(mar = c(3.5, 2.5, 0.5, 0.5), las = 1, mgp = c(2.5, 0.7, 0),
 hist(m_carb_cals$residuals,
      col = COL[1], 
      xlab = "Residuals", ylab = "", main = "", 
-     axes = FALSE, xlim = c(-40,40),yaxs="i")
+     axes = FALSE, xlim = c(-40,40))
 axis(1, at = seq(-40, 40, 20))
 axis(2)
 

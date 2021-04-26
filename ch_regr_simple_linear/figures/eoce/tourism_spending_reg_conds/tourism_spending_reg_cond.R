@@ -57,7 +57,7 @@ par(mar = c(3.5, 2.5, 0.5, 0.5), las = 1, mgp = c(2.5, 0.7, 0),
 hist(m_spending_count$residuals,
      col = COL[1], 
      xlab = "Residuals", ylab = "", main = "", 
-     axes = FALSE, ylim = c(0,20),yaxs="i")
+     axes = FALSE, ylim = c(0,20))
 axis(1, at = seq(-1500, 1500, 750))
 axis(2, c(0, 10, 20))
 

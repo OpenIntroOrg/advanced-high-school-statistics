@@ -9,7 +9,7 @@ pdf("pennies_ages_pop.pdf", height = 3, width = 5.8)
 par(mar=c(2,2,0.5,0.5), las=1, mgp=c(2.5,0.7,0), 
     cex.lab = 1.5, cex.axis = 1.5)
 histPlot(penniesAges$age, col = COL[1], xlab = "Penny ages", 
-         ylab = "", axes = FALSE, yaxs="i")
+         ylab = "", axes = FALSE)
 axis(1)
 dev.off()
 
@@ -27,7 +27,7 @@ myPDF("pennies_ages_sampling_n5.pdf", 3, 2.4,
       mar=c(3.5,0.5,0.5,0.5), las=1, mgp=c(2.1,0.4,0))
 histPlot(xbar5, col = COL[1], 
          xlab = expression(bar(x)[" n = 5"]), ylab = "", 
-         axes = FALSE, yaxs="i")
+         axes = FALSE)
 axis(1)
 dev.off()
 
@@ -45,7 +45,7 @@ myPDF("pennies_ages_sampling_n30.pdf", 3, 2.4,
       mar=c(3.5,0.5,0.5,0.5), las=1, mgp=c(2.1,0.4,0))
 histPlot(xbar30, col = COL[1], 
          xlab = expression(bar(x)[" n = 30"]), ylab = "", 
-         axes = FALSE, yaxs="i")
+         axes = FALSE)
 axis(1)
 dev.off()
 
@@ -63,6 +63,6 @@ myPDF("pennies_ages_sampling_n100.pdf", 3, 2.4,
       mar=c(3.5,0.5,0.5,0.5), las=1, mgp=c(2.1,0.4,0))
 histPlot(xbar100, col = COL[1], 
          xlab = expression(bar(x)[" n = 100"]), ylab = "", 
-         axes = FALSE, yaxs="i")
+         axes = FALSE)
 axis(1)
 dev.off()
