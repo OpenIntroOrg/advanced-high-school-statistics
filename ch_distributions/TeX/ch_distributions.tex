@@ -496,58 +496,6 @@ Figure~\ref{normalQuantileExerAdditional} shows normal probability plots for two
 
 
 
-%%
-%%
-\subsection{Normal approximation for sums of random variables}
-\label{normapproxsumrv}
-
-We have seen that many distributions are approximately normal. The sum and the difference of normally distributed variables is also normal. While we cannot prove this here, the usefulness of it is seen in the following example.
-
-\begin{examplewrap}
-\begin{nexample}{Three friends are playing a cooperative video game in which they have to complete a puzzle as fast as possible. Assume that the individual times of the 3 friends are independent of each other. The individual times of the friends in similar puzzles are approximately normally distributed with the following means and standard deviations. 
-\begin{center}
-\begin{tabular}{lrr}
-& Mean &  SD \\
-Friend 1 	& 5.6 & 0.11  \\
-Friend 2 	& 5.8  & 0.13 \\
-Friend 3 	& 6.1  & 0.12  
-\end{tabular}
-\end{center}
-To advance to the next level of the game, the friends' total time must not exceed 17.1 minutes. What is the probability that they will advance to the next level?}
-Because each friend's time is approximately normally distributed, \emph{the sum of their times is also approximately normally distributed}. We will do a normal approximation, but first we need to find the mean and standard deviation of the \emph{sum}. We learned how to do this in Section~\ref{randomVariablesSection}.
-
-Let the three friends be labeled $X$, $Y$, $Z$. We want $P(X + Y + Z < 17.1)$. The mean and standard deviation of the sum of $X$, $Y$, and $Z$ is given by:
-\begin{align*}
-\mu_{sum} &= E(X+Y+Z)
-	& \sigma_{sum}&= \sqrt{(SD_X)^2+(SD_Y)^2 + (SD_Z)^2} \\
-&= E(X) + E(Y) + E(Z)
-	& &= \sqrt{(0.11)^2+(0.13)^2+(0.12)^2}\\
-&=5.6+5.8+6.1
-	& &= 0.208 \\
-&=17.5
-\end{align*}
-Now we can find the Z-score. 
-\begin{align*}
-Z &= \frac{x_{sum}-\mu_{sum}}{\sigma_{sum}} \\
-&=\frac{17.1-17.5}{0.208} \\
-&=-1.92
-\end{align*}
-Finally, we want the probability that the sum is less than 17.5, so we shade the area to the left of $Z = -1.92$. Using the normal table or a calculator, we get
-\begin{align*}
-P(Z < -1.92) = 0.027
-\end{align*}
-There is a 2.7\% chance that the friends will advance to the next level.
-\end{nexample}
-\end{examplewrap}
-
-\begin{exercisewrap}
-\begin{nexercise}
-What is the probability that Friend 2 will complete the puzzle with a faster time than Friend 1?  Hint:  find $P(Y < X)$, or $P(Y - X < 0)$.\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{First find the mean and standard deviation of $Y - X$. The mean of $Y - X$ is $\mu_{Y-X} = 5.8 - 5.6 =  0.2$. The standard deviation is  $SD_{Y-X}=\sqrt{(0.13)^2+(0.11)^2}=0.170$. Then $Z=\frac{0-0.2}{0.170}=-1.18$ and $P(Z < -1.18)= .119$. There is an 11.9\% chance that Friend 2 will complete the puzzle with a faster time than Friend 1.}
-
-
 \D{\newpage}
 
 %%
