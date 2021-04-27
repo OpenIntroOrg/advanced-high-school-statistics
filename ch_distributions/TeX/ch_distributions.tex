@@ -372,140 +372,15 @@ The probability of getting a sample proportion greater than 55\% is about 0.07.}
 
 
 \D{\newpage}
-%%
-\subsection*{Section summary}
-
-\noindent The binomial distribution shows the distribution of the number of successes in $n$ trials.  Often, we are interested in the \textit{proportion} of successes rather than the \textit{number} of successes.
-\begin{itemize}
-
-\item The symbol $\hat{p}$ denotes the sample proportion.  $\hat{p}$ for any particular sample is a number.  However, $\hat{p}$ can vary from sample to sample.  The distribution of all possible values of $\hat{p}$ for repeated samples of a fixed size from a certain population is called the \term{sampling distribution} of $\hat{p}$.
-
-
-\begin{exercisewrap}
-\begin{nexercise}
-Use the Z table to confirm that about 68\%, 95\%, and 99.7\% of observations fall within 1, 2, and 3, standard deviations of the mean in the normal distribution, respectively. For instance, first find the area that falls between $Z=-1$ and $Z=1$, which should have an area of about 0.68. Similarly there should be an area of about 0.95 between $Z=-2$ and $Z=2$.\footnotemark\end{nexercise}
-\end{exercisewrap}
-\footnotetext{First draw the pictures. To find the area between $Z=-1$ and $Z=1$, use the normal probability table to determine the areas below $Z=-1$ and above $Z=1$. Next verify the area between $Z=-1$ and $Z=1$ is about 0.68. Repeat this for $Z=-2$ to $Z=2$ and also for $Z=-3$ to $Z=3$.}
-
-It is possible for a normal random variable to fall 4,~5, or~even more standard deviations from the mean. However, these occurrences are very rare if the data are nearly normal. The probability of being further than 4 standard deviations from the mean is about 1-in-15,000. For 5 and 6 standard deviations, it is about 1-in-2 million and 1-in-500 million, respectively.
-
-\begin{exercisewrap}
-\begin{nexercise}
-SAT scores closely follow the normal model with mean $\mu = 1100$ and standard deviation $\sigma = 200$. (a) About what percent of test takers score 700 to 1500? (b) What percent score between 1100 and 1500?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{(a) 700 and 1500 represent two standard deviations above and below the mean, which means about 95\% of test takers will score between 700 and 1500. (b)~Since the normal model is symmetric, then half of the test takers from part~(a) ($\frac{95\%}{2} = 47.5\%$ of all test takers) will score 700 to 1500 while 47.5\% score between 1100 and 1500.}
-
-
-\D{\newpage}
-
-%%
-\subsection{Evaluating the normal approximation}
-\label{assessingNormal}
-
-It is important to remember normality is always an approximation. Testing the appropriateness of the normal assumption is a key step in many data analyses.
-
-%\index{normal probability plot|(}
-
-The distribution of heights of US males is well approximated by the normal model. We are interested in proceeding under the assumption that the data are normally distributed, but first we must check to see if this is reasonable.
-
-There are two visual methods for checking the assumption of normality that can be implemented and interpreted quickly. The first is a simple histogram with the best fitting normal curve overlaid on the plot, as shown in the left panel of Figure~\ref{fcidMHeights}. The sample mean $\bar{x}$ and standard deviation $s$ are used as the parameters of the best fitting normal curve. The closer this curve fits the histogram, the more reasonable the normal model assumption. Another more common method is examining a \term{normal probability plot},\footnote{Also commonly called a \term{quantile-quantile plot}.} shown in the right panel of Figure~\ref{fcidMHeights}. The closer the points are to a perfect straight line, the more confident we can be that the data follow the normal model.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.78\textwidth]{ch_distributions/figures/fcidMHeights/fcidMHeights}
-\caption{A sample of 100 male heights. The observations are rounded to the nearest whole inch, explaining why the points appear to jump in increments in the normal probability plot.}
-\label{fcidMHeights}
-\end{figure}
-
-
-Three data sets of 40, 100, and 400 samples were simulated from a normal distribution, and the histograms and normal probability plots of the data sets are shown in Figure~\ref{normalExamples}. These will provide a benchmark for what to look for in plots of real data. \label{normalExamplesExample}
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{ch_distributions/figures/normalExamples/normalExamples}
-\caption{Histograms and normal probability plots for three simulated normal data sets; $n=40$ (left), $n=100$ (middle), $n=400$ (right).}
-\label{normalExamples}
-\end{figure}
-
-The left panels show the histogram (top) and normal probability plot (bottom) for the simulated data set with 40 observations. The data set is too small to really see clear structure in the histogram. The normal probability plot also reflects this, where there are some deviations from the line. However, these deviations are not strong.
-
-The middle panels show diagnostic plots for the data set with 100 simulated observations. The histogram shows more normality and the normal probability plot shows a better fit. While there is one observation that deviates noticeably from the line, it is not particularly extreme.
-
-The data set with 400 observations has a histogram that greatly resembles the normal distribution, while the normal probability plot is nearly a perfect straight line. Again in the normal probability plot there is one observation (the largest) that deviates slightly from the line. If that observation had deviated 3 times further from the line, it would be of much greater concern in a real data set. Apparent outliers can occur in normally distributed data but they are rare.
-
-Notice the histograms look more normal as the sample size increases, and the normal probability plot becomes straighter and more stable.
-
-
-\begin{examplewrap}
-\begin{nexample}{Consider all NBA players from the 2018-2019 season presented in Figure~\ref{nbaNormal}.\footnotemark\,  Based on the graphs, are NBA player heights normally distributed? }
-We first create a histogram and normal probability plot of the NBA player heights. The histogram in the left panel is slightly left skewed, which contrasts with the symmetric normal distribution. The points in the normal probability plot do not appear to closely follow a straight line but show what appears to be a ``wave''. We can compare these characteristics to the sample of 400 normally distributed observations in Example~\ref{normalExamplesExample} and see that they represent much stronger deviations from the normal model. NBA player heights do not appear to come from a normal distribution.
-\end{nexample}
-\end{examplewrap}
-\footnotetext{These data were collected from \oiRedirect{textbook-nba_com}{www.nba.com}.}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{ch_distributions/figures/nbaNormal/nbaNormal}
-\caption{Histogram and normal probability plot for the NBA heights from the 2018-2019 season.}
-\label{nbaNormal}
-\end{figure}
-
-\begin{examplewrap}
-\begin{nexample}{Consider the poker winnings of an individual over 50 days.  A histogram and normal probability plot of these data are shown in Figure~\ref{pokerNormal}. Based on the graphs, can we approximate poker winnings by a normal distribution?} 
-The data are very strongly right skewed\index{skew!example: very strong} in the histogram, which corresponds to the very strong deviations on the upper right component of the normal probability plot. If we compare these results to the sample of 40 normal observations in Example~\ref{normalExamplesExample}, it is apparent that these data show very strong deviations from the normal model.
-\end{nexample}
-\end{examplewrap}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{ch_distributions/figures/pokerNormal/pokerNormal}
-\caption{A histogram of poker data with the best fitting normal plot and a normal probability plot.}
-\label{pokerNormal}
-\end{figure}
-
-\D{\newpage}
-
-\begin{exercisewrap}
-\begin{nexercise}\label{normalQuantileExercise}%
-Determine which data sets represented in Figure~\ref{normalQuantileExer} plausibly come from a nearly normal distribution. Are you confident in all of your conclusions? There are 100 (top left), 50 (top right), 500 (bottom left), and 15 points (bottom right) in the four plots.\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Answers may vary a little. The top-left plot shows some deviations in the smallest values in the data set; specifically, the left tail of the data set has some outliers we should be wary of. The top-right and bottom-left plots do not show any obvious or extreme deviations from the lines for their respective sample sizes, so a normal model would be reasonable for these data sets. The bottom-right plot has a consistent curvature that suggests it is not from the normal distribution. If we examine just the vertical coordinates of these observations, we see that there is a lot of data between -20 and 0, and then about five observations scattered between 0 and 70. This describes a distribution that has a strong right skew.}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.75\textwidth]{ch_distributions/figures/normalQuantileExer/normalQuantileExer}
-\caption{Four normal probability plots for Guided Practice~\ref{normalQuantileExercise}.}
-\label{normalQuantileExer}
-\end{figure}
-
-\begin{exercisewrap}
-\begin{nexercise} \label{normalQuantileExerciseAdditional}
-Figure~\ref{normalQuantileExerAdditional} shows normal probability plots for two distributions that are skewed. One distribution is skewed to the low end (left skewed) and the other to the high end (right skewed). Which is which?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Examine where the points fall along the vertical axis. In the first plot, most points are near the low end with fewer observations scattered along the high end; this describes a distribution that is skewed to the high end. The second plot shows the opposite features, and this distribution is skewed to the low end.}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.75\textwidth]{ch_distributions/figures/normalQuantileExer/normalQuantileExerAdditional}
-\caption{Normal probability plots for Guided Practice~\ref{normalQuantileExerciseAdditional}.}
-\label{normalQuantileExerAdditional}
-\end{figure}
-
-
-
-\D{\newpage}
 
 %%
 \subsection*{Section summary}
 
 \begin{itemize}
 \item A \term{Z-score} represents the number of standard deviations a value in a data set is above or below the mean.  To calculate a \mbox{Z-score} use: $Z = \frac{x-\text{mean}}{SD}$.  
-=======
+
 \item The standard deviation of $\hat{p}$ describes the typical error or distance of the sample proportion from the population proportion.  It also tells us how much the sample proportion is likely to vary from one random sample to another.  
->>>>>>> AHSS3
+
 
 \item The sampling distribution of the sample proportion $\hat{p}$ for a random sample of size $n$ is identical to the binomial distribution with parameters $n$ and $p$, but with a change of scale, i.e. different mean and different SD, but same shape.
 
@@ -683,8 +558,6 @@ In the sample of 100 runners, the standard deviation of the sample mean is equal
 SD_{\bar{x}} = \sigma_{\bar{x}} = \frac{\sigma_{x}}{\sqrt{n}} = \frac{15.93}{\sqrt{100}} = 1.59
 \end{eqnarray*}
 where $\sigma_{x}$ is the standard deviation of the individual observations. This is no coincidence. We can show mathematically that this equation is correct when the observations are independent  using the probability tools of Section~\ref{randomVariablesSection}.
-
-\Comment{make this fit on one page - in AHSS2 you noticed there was a big white space here}
 
 \begin{onebox}{Computing SD for the sample mean}
 Given $n$ independent observations from a population with standard deviation $\sigma$, the standard deviation of the sample mean is equal to \vspace{-1mm}
