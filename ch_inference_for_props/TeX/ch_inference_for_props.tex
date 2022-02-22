@@ -2430,48 +2430,49 @@ When there is one sample and we are looking for association or dependence betwee
 \end{itemize}\end{onebox}
 
 
-%\Comment{stole chapter exercise number 45 - not sure about footnote cite}
 
 \begin{examplewrap}
-\begin{nexample}{A 2011 survey asked 806 randomly sampled adult Facebook users about their Facebook privacy settings. One of the questions on the survey was, ``Do you know how to adjust your Facebook privacy settings to control what people can and cannot see?" The responses are cross-tabulated based on gender. 
+\begin{nexample}{A 2021 Pew Research poll asked a random sample of U.S. residents their generation and whether they have personally taken action to help address climate change within the last year.  The data are shown below.
 \label{facebookprivacy}
 \begin{center}
 \begin{tabular}{l l c c ll}
-								&			& \multicolumn{2}{c}{\textit{Gender}}	& &\hspace{10mm}\ 		\\
+								&			& \multicolumn{2}{c}{\textit{Response}}	& &\hspace{10mm}\ 		\\
 \cline{3-4}
-								&			& Male		& Female		& Total	\\
+								&			& Took action		& Didn't take caction		& Total	\\
 \cline{2-5}
-								& Yes		& 288		& 378		& 666	\\
-\textit{Response}					& No			& 61			& 62 			& 123	\\
-								& Not sure	& 10			& 7 			& 17	\\
+								& Gen Z		& \ \ 292		& \ \ \ 620		&  \ \ \ 912	\\
+\textit{Generation}					& Millenial			& \ \ 885			& \ 2,275 			& \ 3,160	\\
+								& Gen X			& \ \ 809			& \ 2,709 			& \ 3,518	\\
+								& Boomer \& older	& 1,276			& \ 4,798 			& \ 6,074	\\
 \cline{2-5}
-								& Total		& 359		& 447		& 806
+								& Total		& 3,262		& 10,402		& 13,664
 \end{tabular}
 \end{center}
-Carry out an appropriate test at the 0.10 significance level to see if there is an association between gender and knowing how to adjust Facebook privacy settings to control what people can and cannot see.}
+We can see that the percent in the sample from each generation that took action vary:  32\% for Gen Z, 28\% for Millenial, 23\% for Gen X, and 21\% for Boomer \& older.  However, could this be due to random variation based on who happened to end up in the sample?  Carry out an appropriate test at the 0.05 significance level to see if there is an association between generation and taking action to help address climate change.}
 \begin{description}
-\item[\inferencestep{Identify}] We will test the following hypotheses at the $\alpha=0.10$ significance level.  
-\newline $H_0$: Gender and knowing how to adjust Facebook privacy settings are \mbox{independent.}
-\newline $H_A$: Gender and knowing how to adjust Facebook privacy settings are \mbox{dependent.}
-\item[\inferencestep{Choose}] Two variables were recorded on the respondents: gender and response to the question regarding privacy settings.  We want to know if these variables are associated / dependent, so we will carry out a chi-square test for independence.  
-\item[\inferencestep{Check}] According to the problem, there was one random sample taken.  We note that the population of Facebook users is much larger than 10 times the sample size of 806, so independence is reasonable.  All values in the table of expected counts are $\ge$ 5.
+\item[\inferencestep{Identify}] We will test the following hypotheses at the $\alpha=0.05$ significance level.  
+\newline $H_0$: Generation and taking action to help address climate change are \mbox{independent.}
+\newline $H_A$: Generation and taking action to help address climate change are \mbox{dependent.}
+\item[\inferencestep{Choose}] Two variables were recorded on the respondents: generation and whether or not they have taken action to help address climate change within the last year.  We want to know if these variables are associated / dependent, so we will carry out a chi-square test for independence.  
+\item[\inferencestep{Check}] According to the problem, there was one random sample taken.  We note that the population of U.S. residents is much larger than 10 times the sample size of 13,664.  Also, all values in the table of expected counts are $\ge$ 5.
 Table of expected counts:
 \begin{center}
 \begin{tabular}{l l c c l}
-								&			& \multicolumn{2}{c}{\textit{Gender}}	&\hspace{17mm}\ 		\\
+								&			& \multicolumn{2}{c}{\textit{Response}}	&\hspace{17mm}\ 		\\
 \cline{3-4}
-								&			& Male		& Female	\\
+								&			& Took action		& Didn't take action	\\
 \cline{2-4}
-								& Yes		& 296.64		& 369.36	\\
-\textit{Response}					& No			& 54.785		& 68.215	\\
-								& Not sure	& 7.572		& 9.428	\\
+								& Gen Z			& \ \ 217.72		& \ \ 694.28	\\
+\textit{Generation}					& Millenial		& \ \ 754.39		& 2405.60	\\
+								& Gen X			& \ \ 839.85		& 2678.10	\\
+								& Boomer \& older	& 1450.00		& 4624.00	\\
 \cline{2-4}
 \end{tabular}
 \end{center}
 
-\item[\inferencestep{Calculate}]  Using technology, we get $\chi^2 = 3.13$.  The degrees of freedom for this test is given by: $df = (\# \text{ of rows} - 1) \times (\# \text{ of columns} - 1) = 2\times 1 = 2$
-\newline  The p-value is the area under the chi-square curve with 2 degrees of freedom to the right of $\chi^2=3.13$.  Thus, the p-value = 0.209.
-\item[\inferencestep{Conclude}]  Because the p-value = 0.209 $ > \alpha$, we do not reject $H_0$. We do not have sufficient evidence that gender and knowing how to adjust Facebook privacy settings are dependent.
+\item[\inferencestep{Calculate}]  Using technology, we get $\chi^2 = 91.9$.  The degrees of freedom for this test is given by: $df = (\# \text{ of rows} - 1) \times (\# \text{ of columns} - 1) = 3\times 1 = 3$.
+\newline  The p-value is the area under the chi-square curve with 3 degrees of freedom to the right of $\chi^2=91.9$.  Thus, the p-value = 8.46x$10^{-20}$ $\approx$ 0.
+\item[\inferencestep{Conclude}]  Because the p-value $\approx$ 0 $ < \alpha$, we reject $H_0$. We have sufficient evidence that generation and taking action to help address climate change are dependent.
 \end{description}
 \end{nexample}
 \end{examplewrap}
@@ -2481,7 +2482,7 @@ Table of expected counts:
 In context, interpret the p-value of the test in the previous example.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The p-value in this test corresponds to the area to the right of $\chi^2 = 3.13$ under the chi-square curve with 2 degrees of freedom.  Assuming the probability model is true and assuming the null hypothesis is true, i.e. that gender and response really are independent, there is a 0.209 probability of getting a $\chi^2$-statistic as large or larger than 3.13.  Equivalently, it is the probability of our observed counts being this different from the expected counts, relative to the expected counts, if the null is true and the model holds.  Because the p-value is large, we do not reject the null.}
+\footnotetext{The p-value in this test corresponds to the area to the right of $\chi^2 = 91.9$ under the chi-square curve with 3 degrees of freedom.  Assuming the probability model is true and assuming the null hypothesis is true, i.e. that generation and response really are independent, there is close to a 0\% probability of getting a $\chi^2$-statistic as large or larger than 91.9.  Equivalently, it is the probability of our observed counts being this different from the expected counts, relative to the expected counts, if the null is true and the model holds.  Because the p-value is so small, we reject the null hypothesis.}
 
 \index{chi-square test for independence@$\chi^2$ test for independence|)}
 
