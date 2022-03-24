@@ -25,7 +25,7 @@ rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = COL[5,9], bor
 AxisInDollars(1, seq(-50, 300, 50))
 AxisInDollars(2, seq(0, 300, 50))
 par(las = 0)
-mtext("Amazon Bookstore Price", 2, line = 3)
+mtext("Amazon Price", 2, line = 3)
 dev.off()
 
 

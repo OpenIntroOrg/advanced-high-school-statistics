@@ -1274,7 +1274,7 @@ Here we encounter our last confidence interval and hypothesis test procedures, t
 
 \item Carry out a complete hypothesis test for the slope of the regression line.
 
-\item Distinguish between when to use the $t$-test for the slope of a regression line and when to use the paired $t$-test for a mean of differences.
+\item Distinguish between when to use the $t$-test for the slope of a regression line and when to use the 1-sample $t$-test for a mean of differences.
 \end{enumerate}
 }
 
@@ -1779,7 +1779,7 @@ In Section~\ref{ciMeanOfDifferences}, we looked at a set of paired data involvin
 \includegraphics[width=0.55\textwidth]{ch_inference_for_means/figures/textbooksF18/diffInTextbookPricesF18}
 \includegraphics[width=0.45\textwidth]{ch_regr_simple_linear/figures/textbooks_scatter/textbooks_scatter}
 \end{tabular}
-\caption{Left: histogram of the difference (UCLA Bookstore - Amazon) in price for
+\caption{Left: histogram of the difference (UCLA Bookstore price - Amazon price) for
     each book sampled.  Right: scatterplot of Amazon Price versus UCLA Bookstore price.}
 \label{textbooksHistogramScatter}
 \end{figure}
@@ -1787,7 +1787,7 @@ In Section~\ref{ciMeanOfDifferences}, we looked at a set of paired data involvin
 
 \begin{examplewrap}
 \begin{nexample}
-{What additional information does the scatterplot provide about the price of textbooks at UCLA Bookstore and on Amazon?}With a scatterplot, we see the \emph{relationship} between the variables.  We can see when UCLA Bookstore price is larger, whether Amazon price tends to be larger.  We can consider the strength of the correlation and we can plot the linear regression equation.  
+{What additional information does the scatterplot provide about the price of textbooks at UCLA Bookstore and on Amazon?}With a scatterplot, we see the \emph{relationship} between the variables.  We can see that when UCLA Bookstore price is larger, Amazon price also tends to be larger.  We can consider the strength of the correlation and we can draw the linear regression equation for predicting Amazon price from UCLA Bookstore price.  
 \end{nexample}
 \end{examplewrap}
 
@@ -1798,22 +1798,22 @@ In Section~\ref{ciMeanOfDifferences}, we looked at a set of paired data involvin
 \item prices for textbooks for UCLA courses are \emph{higher} at the UCLA Bookstore than on Amazon
 \item there is a significant, positive linear relationship between UCLA Bookstore price and Amazon price?
 \end{enumerate}}
-In the first case, we are interested in whether the differences (UCLA Bookstore $-$ Amazon) are, on average, greater than 0, so we would do a paired $t$-test for a mean of differences.  In the second case, we are interested in whether the slope is significantly greater than 0, so we would do a $t$-test for the slope of a regression line.  
+In the first case, we are interested in whether the differences (UCLA Bookstore $-$ Amazon) for all UCLA textbooks are, on average, greater than 0, so we would do a 1-sample $t$-test for a mean of differences.  In the second case, we are interested in whether the slope of the regression line for predicting Amazon price from UCLA Bookstore price is significantly greater than 0, so we would do a $t$-test for the slope of a regression line.  
 \end{nexample}
 \end{examplewrap}
 
-Likewise, a paired $t$-interval for a mean of differences would provide an interval of reasonable values for mean of the differences for all UCLA textbooks, whereas a $t$-interval for the slope would provide an interval of reasonable values for the slope of the regression line for all UCLA textbooks.     
+Likewise, a 1-sample $t$-interval for a mean of differences would provide an interval of reasonable values for the mean of differences in textbook price between UCLA Bookstore and Amazon (for all UCLA textbooks), while a $t$-interval for the slope would provide an interval of reasonable values for the slope of the regression line for predicting Amazon price from UCLA Bookstore price (for all UCLA textbooks). 
 
 
 \begin{onebox}{Inference for paired data}
-A paired $t$-interval or $t$-test for a mean of differences only makes sense when we are asking whether, on average, one variable is \emph{greater} than another (think histogram of the differences).  A $t$-interval or $t$-test for the slope of a regression line makes sense when we are interested in the linear relationship between them (think scatterplot).  
+A 1-sample $t$-interval or $t$-test for a mean of differences only makes sense when we are asking whether, on average, one variable is \emph{greater} than, \emph{less} than or \emph{different} from another (think histogram of the differences).  A $t$-interval or $t$-test for the slope of a regression line makes sense when we are interested in the linear relationship between them (think scatterplot).  
 \end{onebox}
 
 
 \begin{examplewrap}
 \begin{nexample}
-{Previously, we looked at the relationship betweeen body length and head length for bushtail possums.  We also looked at the relationship between gift aid and family income for freshmen at Elmhurst College.  Could we do a paired $t$-test in either of these scenarios?}
-We have to ask ourselves, does it make sense to ask whether, on average, body length is greater than head length?  Similarly, does it make sense to ask whether, on average, gift aid is greater than family income?  These don't seem to be meaningful research questions; a paired $t$-test for a mean of differences would not be useful here. 
+{Previously, we looked at the relationship betweeen body length and head length for bushtail possums.  We also looked at the relationship between gift aid and family income for freshmen at Elmhurst College.  Could we do a 1-sample $t$-test in either of these scenarios?}
+We have to ask ourselves, does it make sense to ask whether, on average, body length is greater than head length?  Similarly, does it make sense to ask whether, on average, gift aid is greater than family income?  These don't seem to be meaningful research questions; a 1-sample $t$-test for a mean of differences would not be useful here. 
 \end{nexample}
 \end{examplewrap}
 
@@ -1822,7 +1822,7 @@ We have to ask ourselves, does it make sense to ask whether, on average, body le
 A teacher gives her class a pretest and a posttest.  Does this result in paired data?  If so, which hypothesis test should she use?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Yes, there are two observations for each individual, so there is paired data.  The appropriate test depends upon the question she wants to ask.  If she is interested in whether, on average, students do better on the posttest than the pretest, should use a paired $t$-test for a mean of differences.  If she is interested in whether pretest score is a significant linear predictor of posttest score, she should do a $t$-test for the slope.  In this situation, both tests could be useful, but which one should be used is dependent on the teacher's research question.}
+\footnotetext{Yes, there are two observations for each individual, so there is paired data.  The appropriate test depends upon the question she wants to ask.  If she is interested in whether, on average, students do better on the posttest than the pretest, should use a 1-sample $t$-test for a mean of differences.  If she is interested in whether pretest score is a significant linear predictor of posttest score, she should do a $t$-test for the slope.  In this situation, both tests could be useful, but which one should be used is dependent on the teacher's research question.}
 
 
 \D{\newpage}
@@ -1863,7 +1863,7 @@ A teacher gives her class a pretest and a posttest.  Does this result in paired 
 
 \item The confidence interval for the slope of the population regression line estimates the true average increase in the $y$-variable for each unit increase in the $x$-variable.
 
-\item The $t$-test for the slope and the paired $t$-test for a mean of differences both involve \emph{paired}, numerical data.  However, the $t$-test for the slope asks if the two variables have a linear \emph{relationship}, specifically if the \emph{slope} of the population regression line is different from 0.  The paired $t$-test for a mean of differences, on the other hand, asks if the two variables are in some way the \emph{same}, specifically if the \emph{mean} of the population differences is 0.  
+\item The $t$-test for the slope and the 1-sample $t$-test for a mean of differences both involve \emph{paired}, numerical data.  However, the $t$-test for the slope asks if the two variables have a linear \emph{relationship}, specifically if the \emph{slope} of the population regression line is different from 0.  The 1-sample $t$-test for a mean of differences, on the other hand, asks if the two variables are, on average, \emph{different}, specifically if the \emph{mean} of the population differences is not equal to 0.  
 \end{itemize}
 
 %%%%%%%%%%%Section Exercises
