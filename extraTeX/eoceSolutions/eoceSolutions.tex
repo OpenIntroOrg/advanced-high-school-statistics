@@ -721,10 +721,10 @@ every student gets a~C.
 (e)~Valid. Probabilities are between 0 and 1, and they sum to~1.
 (f)~Invalid. There is a negative probability.}
 
-% 57 - tree_hiv_swaziland
+% 57 - tree_hiv_eswatini
 
 \eocesol{0.8247. \\
-\includegraphics[width=60mm]{ch_probability/figures/eoce/tree_hiv_swaziland/tree_hiv_swaziland.pdf}}
+\includegraphics[width=60mm]{ch_probability/figures/eoce/tree_hiv_eswatini/tree_hiv_eswatini.pdf}}
 
 % 59 - cost_of_breakfast
 
@@ -774,94 +774,157 @@ proportion of smokers in the university as a whole.}
 (b)~Since the success-failure condition is met the sampling distribution of $\hat{p} \sim N(\mu = 0.08, \sigma = 0.0192)$. $P(\hat{p} < 0.06) = P(Z < -1.04) = 0.1492$.
 (c)~As expected, the two answers are the same.}
 
-% 7 - ages_pennies_1
+% 7 - CLT_prop
 
-\eocesol{(a)~The distribution is unimodal and strongly right skewed with a median between 5 and 10 years old. Ages range from 0 to slightly over 50 years old, and the middle 50\% of the distribution is roughly between 5 and 15 years old. There are potential outliers on the higher end.
-(b)~When the sample size is small, the sampling distribution is right skewed, just like the population distribution. As the sample size increases, the sampling distribution gets more unimodal, symmetric, and approaches normality. The variability also decreases. This is consistent with the Central Limit Theorem.}
+\eocesol{The sampling distribution is the distribution
+of sample proportions from samples of the same
+size randomly sampled from the same population.
+As the same size increases, the shape of the
+sampling distribution (when $p = 0.1$) will
+go from being right-skewed to being more symmetric
+and resembling the normal distribution.
+With larger sample sizes, the spread of the
+sampling distribution gets smaller.
+Regardless of the sample size, the center
+of the sampling distribution is equal to the
+true mean of that population,
+provided the sampling isn't biased.}
 
-% 9 - housing_prices
+% 9 - ages_pennies_2
 
-\eocesol{(a)~Right skewed. There is a long tail on the higher end of the distribution but 
-a much shorter tail on the lower end.
-(b)~Less than, as the median would be less than the mean in a right skewed 
-distribution.
-(c)~We should not.
-(d)~Even though the population distribution is not normal, the conditions for 
-inference are reasonably satisfied, with the possible exception of skew. If the 
-skew isn't very strong (we should ask to see the data), then we can use the 
-Central Limit Theorem to estimate this probability. For now, we'll assume the 
-skew isn't very strong, though the description suggests it is at least moderate 
-to strong. Use $N(1.3, SD_{\bar{x}} = 0.3/\sqrt{60})$: $Z=2.58$ $\to$ 0.0049.
-(e)~It would decrease it by a factor of $1/\sqrt{2}$.}
-
-% 11 - identify_dist_symm_pop
-
-\eocesol{The centers are the same in each plot, and each data set is from a nearly normal 
-distribution, though the histograms may not look very normal since each 
-represents only 100 data points. The only way to tell which plot corresponds to 
-which scenario is to examine the variability of each distribution. Plot B is the 
-most variable, followed by Plot A, then Plot C. This means Plot B will 
-correspond to the original data, Plot A to the sample means with size 5, and 
-Plot C to the sample means with size 25.}
-
-% 13 - penny_weights
-
-\eocesol{(a)~$Z=-3.33$ $\to$ 0.0004.
-(b)~The population SD is known and the data are nearly normal, so the sample 
-mean will be nearly normal with distribution $N(\mu, \sigma/\sqrt{n})$, i.e. 
-$N(2.5, 0.0095)$.
-(c)~$Z=-10.54$ $\to$ $\approx0$.
-(d)~See below:
+\eocesol{As $n$ increases the standard deviation of the sampling distribution decreases but the mean stays the same.
 \begin{center}
-\includegraphics[width=0.48\textwidth]{ch_distributions/figures/eoce/penny_weights/penny_weights_sketch.pdf}
+$n = 5 \ \rightarrow \ \mu_{\bar{x}} = 10.44, \quad \sigma_{\bar{x}} = \frac{9.2}{\sqrt{5}} = 4.11$ \\
+$n = 30 \ \rightarrow \ \mu_{\bar{x}} = 10.44, \quad \sigma_{\bar{x}} = \frac{9.2}{\sqrt{30}} = 1.68$ \\
+$n = 100 \ \rightarrow \ \mu_{\bar{x}} = 10.44, \quad \sigma_{\bar{x}} = \frac{9.2}{\sqrt{100}} = 0.92$ \\
 \end{center}
+The centers of the sampling distributions shown in part~(b) appear to be 
+around 10. It is difficult to estimate the standard deviation for 
+the sampling distribution when $n = 5$ from the histogram (since the 
+distribution is somewhat skewed). If 1.68 is a plausible estimate for the 
+standard deviation of the sampling distribution when $n = 30$, then using 
+the 68-95-99.7\% Rule, we would expect the values to range roughly between 
+$10.44 \pm 3* 1.68 = (5.4, 15.48)$, which seems to be the case. Similarly, when 
+$n = 100$, we would expect the values to range roughly between 
+$10.44 \pm 3* 0.92 = (7.68, 13.2)$, which also seems to be the case.}
+
+% 11 - stats_final_scores
+
+\eocesol{(a)~The distribution of scores on this final exam is likely left skewed since 
+the median is greater than the mean.
+(b)~Since the distribution is probably left skewed, the median would be more 
+than the mean, and a majority of observations would be be above the mean.
+(c)~The shape of the precise distribution is unknown, so we cannot.
+(d)~Even though the population distribution is not normal, if the conditions 
+for inference are satisfied we may be able to use the Central Limit Theorem to 
+estimate this probability. Independence: Students are sampled randomly and 40 
+students are likely less than 10\% of all students who take this introductory 
+statistics course, so the observations can be assumed to be independent. 
+Normality: The data are skewed but a sample size of 40 might be large enough.
+P(\bar{X} > 75) = 0.0008.
+(e)~Halving the sample size would increase the standard of error by a factor 
+of $\sqrt{2}$, i.e. the new standard error will be $\sqrt{2}$ times the old 
+standard error.}
+
+% 13 - identify_dist_ls_pop
+
+\eocesol{The centers are the same in each plot. Plots A and C are nearly normal while 
+plot B is left skewed. Plot B is the distribution of a single random sample of 
+500 values from this population since it mimics the population distribution The 
+only way to tell which plot corresponds to which scenario is to examine the 
+variability of each distribution. Plot C is more variable, hence corresponds to 
+the smaller sample size.}
+
+% 15 - cflbs
+
+\eocesol{(a)~0.0668.
+(b)~Independence: The light bulbs are selected randomly and 15 light bulbs are 
+less than 10\% of all CFLBs, therefore we can assume the that the lifespan of 
+one light bulb is independent of another. Normality: The population distribution 
+is nearly normal.
+(c)~$\approx$ 0.
+(d)~$\:$\\
+\includegraphics[width=40mm]{ch_distributions/figures/eoce/cflbs/cflbs_sketch.pdf}
 (e)~We could not estimate (a) without a nearly normal population distribution. 
 We also could not estimate (c) since the sample size is not sufficient to yield 
 a nearly normal sampling distribution if the population distribution is not 
 nearly normal.}
 
-% 15 - songs_on_ipod
+% 17 - spray_paint_2
 
-\eocesol{(a)~We cannot use the normal model for this calculation, but we can use the 
-histogram. About 500 songs are shown to be longer than 5 minutes, so the 
-probability is about $500/3000 = 0.167$.
-(b)~Two different answers are reasonable. $^{Option~1}$Since the population 
-distribution is only slightly skewed to the right, even a small sample size will 
-yield a nearly normal sampling distribution. We also know that the songs are 
-sampled randomly and the sample size is less than 10\% of the population, so the 
-length of one song in the sample is independent of another.  We are looking for 
-the probability that the total length of 15 songs is more than 60 minutes, which 
-means that the average song should last at least $60/15 = 4$ minutes. Using 
-$SD_{\bar{x}}=1.63/\sqrt{15}$, $Z=1.31$ $\to$ 0.0951. $^{Option~2}$Since the 
-population distribution is not normal, a small sample size may not be sufficient 
-to yield a nearly normal sampling distribution. Therefore, we cannot estimate 
-the probability using the tools we have learned so far.
-(c)~We can now be confident that the conditions are satisfied. 
-$Z = 0.92$ $\to$ 0.1788.}
+\eocesol{(a)~0.2514.
+(b)~27 square feet per can.
+(c)~We are looking for the probability that the total of 20 cans cover more 
+than 540 square feet. This means that one can on average should cover 
+$\frac{540}{20} = 27$ square feet. To find this we need to find the distribution 
+of $\bar{X}$ using CLT, but first we must check that the conditions hold.
+Independence: We are not told that this is a random sample but it may be a 
+safe assumption that the amount of paint in a can of spray paint is determined 
+by a random process. 20 cans certainly make up less than 10\% of all cans of 
+spray paint. Therefore, the area the sampled cans of spray paint cover are 
+independent.
+Normality: The population distribution is nearly normal.
+$P(\bar{X} > 27) = 0.0014$
+(d)~We could not calculate (a) without a nearly normal population 
+distribution. Without this and a small sample size of $n = 20$, the sampling 
+distribution will not be nearly normal. Therefore we could not calculate (c) 
+either.}
 
-% 17 - wireless_routers
+% 19 - betting_on_dinner_2
 
-\eocesol{(a)~$SD_{\bar{x}}=\frac{25}{\sqrt{75}}=2.89$.
-(b)~$Z=1.73$, which indicates that the two values are not unusually distant from each other when accounting for the uncertainty in John's point estimate.}
+\eocesol{\begin{align*}
+&E(X_1 + \cdots + X_{5})  = \$6 \times 5 = \$30 \\
+&SD(X_1 + \cdots + X_{5}) = \sqrt{2^2 \times 5} = \$4.47\\
+Z = \frac{28 - 30}{4.47} \approx -0.45
+P(X < \$28) \approx P(Z< -0.45) = 0.3264.
+\end{align*}}
 
-% 19 - university_admissions
+% 21 - sat_scores
 
-\eocesol{Want to find the probability that there will be 1,787 or more enrollees. 
-Using the normal approximation, with $\mu = np = 2,500 \times 0.7 = 1750$ and 
-$\sigma = \sqrt{np(1-p)} = \sqrt{2,500 \times 0.7 \times 0.3} \approx 23$, 
-$Z = 1.61$, and $P(Z > 1.61) = 0.0537$. With a 0.5 correction: 0.0559.}
+\eocesol{This can be calculated as
+$P(X > 1500~|~X > 1350)
+  = P(X > 1500) / P(X > 1350)$,
+which yields $0.0228 / 0.1056$,
+or 21.6\% of students.}
 
-% 21 - overweight_baggage
+% 23 - survey_response_rate
 
-\eocesol{$Z = 1.56$, $P(Z > 1.56) = 0.0594$, i.e. 6\%.}
+\eocesol{Approximately 0.}
 
-% 23 - overweight_baggage_2
+% 25 - chocolate_chip_cookies
 
-\eocesol{This is the same as checking that the average bag weight of the 10 bags is greater than 46 lbs. $SD_{\bar{x}}=\frac{3.2}{\sqrt{10}}=1.012$; $z= \frac{46-45}{1.012}=0.988$; $P(z > 0.988)=0.162=16.2\%$.}
+\eocesol{(a)~ $SD\left(\bar{x}_{sample\ of\ 22}\right) = \frac{SD_{obs}}{\sqrt{n}} = \frac{4.37}{\sqrt{22}} \approx 0.93$ chocolate chips.
+(b)~ $Z = \frac{14.77 - 20}{0.93} = -5.62$, and the lower tail for this Z-score is about 0.
+(c)~ It would be wise to be skeptical here, since observing an average of 14.77 chocolate chips per cookie would be extremely unusual if the true average was 20.}
 
-% 25 - young_hispanics_2019
+% 27 - poverty_us_2019
 
-\eocesol{First we need to check that the necessary conditions are met. There are $100 \times 0.360 = 36.0$ expected successes and $100 \times (1 - 0.360) = 64.0$ expected failures, therefore the success-failure condition is met. Calculate using either (1) the normal approximation to the binomial distribution or (2) the sampling distribution of $\hat{p}$. (1) The binomial distribution can be approximated by $N(\mu = 0.360, \sigma = 4.8)$. $P(X \ge 35) = P(Z > -0.208) = 0.5823$. (2) The sampling distribution of $\hat{p} \sim N(\mu = 0.360, \sigma = 0.048)$. $P(\hat{p} > 0.35) = P(Z > -0.208) = 0.5823$.}
+\eocesol{First, we note that the expected number of successes and failures (192 and 808)
+are both well over 10, so normal approximation to the binomial and to the distribution
+of the sample proportion is reasonable.
+(a)~ The mean and standard deviation of the binomial distribution:
+  \begin{align*}
+  \mu_{X} &= 0.192 \times 1000 = 192 \\
+  \sigma_{X} &= \sqrt{1000 \times 0.192 (1 - 0.192)} = 12.46
+  \end{align*}
+  The Z-score of $x = 200$ is
+  \begin{align*}
+  Z = \frac{200 - 192}{12.46} = 0.642
+  \end{align*}
+  We want the upper tail, which is about 0.2604
+(b)~The mean and standard deviation of the distribution of the sample proportion:
+  \begin{align*}
+  \mu_{\hat{p}} &= 0.192 \\
+  \sigma_{\hat{p}} &= \sqrt{\frac{0.192 (1 - 0.192)}{1000}} = 0.01246
+  \end{align*}
+  The value $x = 200$ corresponds to a sample proportion of $200 / 1000 = 0.2$,
+  so the Z-score is
+  \begin{align*}
+  Z = \frac{0.2 - 0.192}{0.01246} = 0.642
+  \end{align*}
+  We want the upper tail, which is about 0.2604.
+(c)~They are the same, and they should be,
+  because we're just rescaling the data by the sample size.}
 
 
 
@@ -968,33 +1031,7 @@ deviation by the square root of the sample size. To cut the SE (or margin of
 error) in half, we would need to sample $2^2 = 4$ times the number of people in 
 the initial sample.}
 
-% 11 - identify_hypotheses_prop_and_mean_1
-
-\eocesol{(a)~$H_0: p = 0.5$
-    (Neither a majority nor minority of students' grades improved)
-  $H_A: p \neq 0.5$
-    (Either a majority or a minority of students' grades improved) \\
-(b)~$H_0: \mu = 15$
-    (The average amount of company time each employee spends not 
-    working is 15 minutes for March Madness.)
-  $H_A: \mu \neq 15$
-    (The average amount of company time each employee spends not 
-    working is different than 15 minutes for March Madness.)}
-
-% 13 - online_communication_prop_ht_errors
-
-\eocesol{(1)~The hypotheses should be about the
-    population proportion ($p$), not the sample proportion.
-(2)~The null hypothesis should have an equal sign.
-(3)~The alternative hypothesis should have a not-equals
-    sign, and
-(4)~it should reference the null value, $p_0 = 0.6$,
-    not the observed sample proportion.
-The correct way to set up these hypotheses is:
-$H_0: p = 0.6$ and
-$H_A: p \neq 0.6$.}
-
-% 15 - cyberbullying_prop_ci_ht
+% 11 - cyberbullying_prop_ci_ht
 
 \eocesol{(a)~This claim is reasonable, since the entire interval
     lies above 50\%.
@@ -1008,83 +1045,72 @@ $H_A: p \neq 0.6$.}
     and we would reject the researcher's conjecture based
     on a 90\% confidence level as well.}
 
-% 17 - minimum_wage_prop_1
+% 13 - identify_hypotheses_prop_and_mean_1
 
-\eocesol{(i)~Set up hypotheses. $H_0$: $p = 0.5$, $H_A$: $p \neq 0.5$.
-  We will use a significance level of $\alpha = 0.05$.
-(ii)~Check conditions: simple random sample gets us independence,
-  and the success-failure conditions is satisfied since
-  $0.42 \times 1000 = 420$ and $(1 - 0.42) \times 1000 = 580$
-  are both at least~10.
-(iii)~Next, we calculate:
-  $SE = \sqrt{0.5 (1 - 0.5) / 1000} = 0.016$.
-  $Z = \frac{0.42 - 0.5}{0.016} = -5$,
-  which has a one-tail area of about 0.0000003,
-  so the p-value is twice this one-tail area at
-  0.0000006.
-(iv)~Make a conclusion:
-  Because the p-value is less than $\alpha = 0.05$,
-  we reject the null hypothesis and conclude that the
-  fraction of US adults who believe raising the minimum
-  wage will help the economy is not 50\%.
-  Because the observed value is less than 50\% and we
-  have rejected the null hypothesis, we can conclude
-  that this belief is held by fewer than 50\% of US adults.
-(For reference, the survey also explores support for
-changing the minimum wage, which is a different
-question than if it will help the economy.)}
+\eocesol{(a)~$H_0: p = 0.5$
+    (Neither a majority nor minority of students' grades improved)
+  $H_A: p \neq 0.5$
+    (Either a majority or a minority of students' grades improved) \\
+(b)~$H_0: \mu = 15$
+    (The average amount of company time each employee spends not 
+    working is 15 minutes for March Madness.)
+  $H_A: \mu \neq 15$
+    (The average amount of company time each employee spends not 
+    working is different than 15 minutes for March Madness.)}
 
-% 19 - backwards_prop_1
+% 15 - online_communication_prop_ht_errors
 
-\eocesol{If the p-value is 0.05, this means the test statistic would be
-either $Z = -1.96$ or $Z = 1.96$.
-We'll show the calculations for $Z = 1.96$.
-Standard error:
-$SE = \sqrt{0.3 (1 - 0.3) / 90} = 0.048$.
-Finally, set up the test statistic formula and solve
-for $\hat{p}$:
-$1.96 = \frac{\hat{p} - 0.3}{0.048}
-  \to \hat{p} = 0.394$
-Alternatively, if $Z = -1.96$ was used: $\hat{p} = 0.206$.}
+\eocesol{(1)~The hypotheses should be about the
+    population proportion ($p$), not the sample proportion.
+(2)~The null hypothesis should have an equal sign.
+(3)~The alternative hypothesis should have a not-equals
+    sign, and
+(4)~it should reference the null value, $p_0 = 0.6$,
+    not the observed sample proportion.
+The correct way to set up these hypotheses is:
+$H_0: p = 0.6$ and
+$H_A: p \neq 0.6$.}
 
-% 21 - errors_fibromyalgia
+% 17 - unemployment_relationship
 
-\eocesol{(a)~$H_0$: Anti-depressants do not affect the symptoms
-    of Fibromyalgia.
-    $H_A$: Anti-depressants do affect the symptoms of
-    Fibromyalgia (either helping or harming).
-(b)~Concluding that anti-depressants either help or worsen
-    Fibromyalgia symptoms when they actually do neither.
-(c)~Concluding that anti-depressants do not affect
-    Fibromyalgia symptoms when they actually do.}
+\eocesol{(a)~$H_0: p_{unemp} = p_{underemp}$: The proportions of unemployed and 
+underemployed people who are having relationship problems are equal.
+$H_A: p_{unemp} \ne p{underemp}$: The proportions of unemployed and 
+underemployed people who are having relationship problems are different.
+(b)~If in fact the two population proportions are equal, the probability of 
+observing at least a 2\% difference between the sample proportions is 
+approximately 0.35. Since this is a high probability we fail to reject the null 
+hypothesis. The data do not provide convincing evidence that the proportion of 
+of unemployed and underemployed people who are having relationship problems are 
+different.}
 
-% 23 - chronic_illness_tf
+% 19 - prop_which_higher_found_inf
 
-\eocesol{(a)~False. Confidence intervals provide a range of plausible values, and 
-sometimes the truth is missed. A 95\% confidence interval ``misses'' about 5\% 
-of the time.
-(b)~True. Notice that the description focuses on the true population value.
-(c)~True. If we examine the 95\% confidence interval computed in Exercise~\ref{chronic_illness_tf}, we can see that 50\% is not included in this interval. This 
-means that in a hypothesis test, we would reject the null hypothesis that the 
-proportion is~0.5.
-(d)~False. The standard error describes the uncertainty in the overall estimate 
-from natural fluctuations due to randomness, not the uncertainty corresponding 
-to individuals' responses.}
+\eocesol{(a)~Scenario I is higher.
+    Recall that a sample mean based on less data tends
+    to be less accurate and have larger standard errors.
+(b)~Scenario I is higher.
+    The higher the confidence level, the higher the
+    corresponding margin of error.
+(c)~They are equal.
+    The sample size does not affect the calculation
+    of the p-value for a given Z-score.
+(d)~Scenario I is higher.
+    If the null hypothesis is harder to reject
+    (lower $\alpha$), then we are more likely to make
+    a Type~2 Error when the alternative hypothesis is true.}
 
-% 25 - relax_after_work
+% 21 - twitter_users_tf
 
-\eocesol{(a)~We are 95\% confident that Americans spend an average
-    of 1.38 to 1.92 hours per day relaxing or pursuing
-    activities they enjoy.
-(b)~Their confidence level must be higher as the width
-    of the confidence interval increases as the confidence
-    level increases.
-(c)~The new margin of error will be smaller,
-    since as the sample size increases,
-    the standard error decreases,
-    which will decrease the margin of error.}
+\eocesol{(a)~False. 50\% is included in the 99\% confidence interval, hence a null
+hypothesis of $p = 0.50$ would not be rejected at this level.
+(b)~False. The standard error measures the variability of the sample proportion,
+and is unrelated to the proportion of the population included in the study.
+(c)~False. We need to increase the sample size to decrease the standard error.
+(d)~False. As the confidence level decreases so does the margin of error,
+and hence the width of the confidence interval.}
 
-% 27 - errors_food_safety
+% 23 - errors_food_safety
 
 \eocesol{(a)~$H_0$: The restaurant meets food safety and sanitation regulations.
 $H_A$: The restaurant does not meet food safety and sanitation regulations.
@@ -1102,27 +1128,7 @@ deemed safe by the inspector is actually not.
 (f)~Strong evidence. Diners would rather a restaurant that meet the regulations get
 shut down than a restaurant that doesn't meet the regulations not get shut down.}
 
-% 29 - unemployment_relationship
-
-\eocesol{(a)~$H_0: p_{unemp} = p_{underemp}$: The proportions of unemployed and 
-underemployed people who are having relationship problems are equal.
-$H_A: p_{unemp} \ne p{underemp}$: The proportions of unemployed and 
-underemployed people who are having relationship problems are different.
-(b)~If in fact the two population proportions are equal, the probability of 
-observing at least a 2\% difference between the sample proportions is 
-approximately 0.35. Since this is a high probability we fail to reject the null 
-hypothesis. The data do not provide convincing evidence that the proportion of 
-of unemployed and underemployed people who are having relationship problems are 
-different.}
-
-% 31 - nutrition_labels_for_ffi
-
-\eocesol{Because 130 is inside the confidence interval,
-we do not have convincing evidence that the true
-average is any different than what the nutrition
-label suggests.}
-
-% 33 - prac_stat_sig
+% 25 - prac_stat_sig
 
 \eocesol{True. If the sample size gets ever larger, then the
 standard error will become ever smaller.
@@ -1131,56 +1137,6 @@ the standard error is tiny, we can find statistically
 significant yet very small differences between the
 null value and point estimate (assuming they are not
 exactly equal).}
-
-% 35 - gender_pay_gap_medicine
-
-\eocesol{(a)~In effect, we're checking whether
-    men are paid more than women (or vice-versa),
-    and we'd expect these outcomes with either
-    chance under the null hypothesis:
-    \begin{align*}
-    &H_0: p = 0.5
-    &&H_A: p \neq 0.5
-    \end{align*}
-    We'll use $p$ to represent the fraction of cases
-    where men are paid more than women. \\
-(b)~Below is the completion of the hypothesis test.
-  \begin{itemize}
-  \item
-    There isn't a good way to check independence here
-    since the jobs are not a simple random sample.
-    However, independence doesn't seem unreasonable,
-    since the individuals in each job are different from
-    each other.
-    The success-failure condition is met since we check
-    it using the null proportion:
-    $p_0 n = (1 - p_0) n = 10.5$ is greater than 10.
-  \item
-    We can compute the sample proportion, $SE$, and
-    test statistic:
-    \begin{align*}
-    \hat{p} &= 19 / 21 = 0.905 \\
-    SE &= \sqrt{\frac{0.5 \times (1 - 0.5)}{21}} = 0.109 \\
-    Z &= \frac{0.905 - 0.5}{0.109} = 3.72
-    \end{align*}
-    The test statistic $Z$ corresponds to an upper tail
-    area of about 0.0001, so the p-value is 2 times this
-    value: 0.0002.
-  \item
-    Because the p-value is smaller than 0.05, we reject
-    the notion that all these gender pay disparities are
-    due to chance.
-    Because we observe that men are paid more in a higher proportion
-    of cases and we have rejected $H_0$, we can conclude that
-    men are being paid higher amounts in ways not explainable
-    by chance alone.
-  \end{itemize}
-  If you're curious for more info around this topic,
-  including a discussion about adjusting for additional
-  factors that affect pay,
-  please see the following video by Healthcare Triage:
-  \oiRedirect{textbook-yt_healthcare_triage_gender_pay_gap}
-      {youtu.be/aVhgKSULNQA}.}
 
 
 
@@ -2009,16 +1965,16 @@ important to consider that these data are observed sequentially,
 which means there may be a hidden structure not evident in the 
 current plots but that is important to consider.}
 
-% 23 - coast_starlight_reg
+% 23 - coast_starlight_reg_ahss
 
 \eocesol{(a)~First calculate the slope: 
-$b_1 = R\times s_y/s_x = 0.636 \times 113 / 99 = 0.726$. 
+$b = r\times s_y/s_x = 0.636 \times 113 / 99 = 0.726$. 
 Next, make use of the fact that the regression line passes through 
-the point $(\bar{x},\bar{y})$: $\bar{y} = b_0 + b_1 \times \bar{x}$. 
-Plug in $\bar{x}$, $\bar{y}$, and $b_1$, and solve for $b_0$: 51. 
+the point $(\bar{x},\bar{y})$: $\bar{y} = a + b \times \bar{x}$. 
+Plug in $\bar{x}$, $\bar{y}$, and $b$, and solve for $a$: 51. 
 Solution: $\widehat{travel~time} = 51 + 0.726 \times distance$.
-(b)~$b_1$: For each additional mile in distance, the model predicts 
-an additional 0.726 minutes in travel time. $b_0$: When the distance 
+(b)~$b$: For each additional mile in distance, the model predicts 
+an additional 0.726 minutes in travel time. $a$: When the distance 
 traveled is 0 miles, the travel time is expected to be 51 minutes. It 
 does not make sense to have a travel distance of 0 miles in this 
 context. Here, the $y$-intercept serves only to adjust the height of 
@@ -2077,10 +2033,10 @@ the analysis would greatly affect the slope of the regression line.}
 % 31 - pickup
 
 \eocesol{(a)~The relationship is positive, linear, and moderate.  Due to the clear non-constant variance in the residuals, a linear model is not appropriate for modeling the relationship between hours worked and income.
-(b)~Neither are a particularly: For the logged model, the scatter plot and residual plot show more constant variance in the residuals. However, the scatterplot with the logged model looks to have a bit of curvature.
+(b)~Neither are a particularly: For the logged model, the scatterplot and residual plot show more constant variance in the residuals. However, the scatterplot with the logged model looks to have a bit of curvature.
 (c)~For each hour increase hours works we would expect the income to increase on average by a factor of $e^{0.058} \approx 1.06 $, i.e. by 6\%.}
 
-% 33 - body_measurements_weight_height_inf
+% 33 - body_measurements_weight_height_inf_ahss
 
 \eocesol{(a)~The relationship is positive, moderate-to-strong, and linear. 
 There are a few outliers but no points that appear to be influential. \\
@@ -2093,11 +2049,11 @@ Intercept: People who are 0 centimeters tall are expected to weigh -
 intercept serves only to adjust the height of the line and is 
 meaningless by itself. \\
 (c)~$H_0$: The true slope coefficient of height is zero 
-($\beta_1 = 0$). \\
+($\beta = 0$). \\
 $H_A$: The true slope coefficient of height is 
-different than zero ($\beta_1 \neq 0$). \\
+different than zero ($\beta \neq 0$). \\
 The p-value for the two-sided alternative hypothesis
-($\beta_1 \ne 0$) is incredibly small, so we reject $H_0$.
+($\beta \ne 0$) is incredibly small, so we reject $H_0$.
 The data provide convincing evidence that height and 
 weight are positively correlated.
 The true slope parameter is indeed greater than~0. \\
@@ -2122,9 +2078,9 @@ $r = \sqrt{0.09} = 0.30$. \\
 regression model is not very reliable. \\
 (f)~No, we should avoid extrapolating.}
 
-% 37 - murders_poverty_inf
+% 37 - murders_poverty_inf_ahss
 
-\eocesol{(a)~$H_0: \beta_1 = 0; H_A: \beta_1 \ne 0$
+\eocesol{(a)~$H_0: \beta = 0; H_A: \beta \ne 0$
 (b)~The p-value for this test is approximately 0, therefore we reject 
 $H_0$. The data provide convincing evidence that poverty percentage 
 is a significant predictor of murder rate.
