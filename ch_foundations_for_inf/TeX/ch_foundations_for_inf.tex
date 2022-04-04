@@ -797,6 +797,11 @@ In this section, we will set up a framework for answering questions such as this
 
 \item Interpret Type~I, Type~II Error, and power in the context of hypothesis testing.
 
+\item Distinguish between statistically significant and practically significant, and recognize the role that sample size plays here.
+
+\item Understand the two general conditions for when the confidence interval and hypothesis testing procedures apply and explain why these conditions are necessary.
+
+
 \end{enumerate}
 }
 
@@ -1179,6 +1184,51 @@ The Type~II Error rate $\beta$ and the magnitude of the error for a point estima
 \index{hypothesis testing|)}
 
 
+
+
+%%
+\subsection{Statistical significance versus practical significance}
+
+When the sample size becomes larger, point estimates become more precise and any real differences in the mean and null value become easier to detect and recognize. Even a very small difference would likely be detected if we took a large enough sample. Sometimes researchers will take such large samples that even the slightest difference is detected. While we still say that difference is \termni{statistically significant}, it might not be \term{practically significant}.
+
+Statistically significant differences are sometimes so minor that they are not practically relevant. This is especially important to research: if we conduct a study, we want to focus on finding a meaningful result. We don't want to spend lots of money finding results that hold no practical value.
+
+The role of a data scientist in conducting a study often includes planning the size of the study. The data scientist might first consult experts or scientific literature to learn what would be the smallest meaningful difference from the null value. She also would obtain some reasonable estimate for the standard deviation. With these important pieces of information, she would choose a sufficiently large sample size so that the power for the meaningful difference is perhaps 80\% or 90\%. While larger sample sizes may still be used, she might advise against using them in some cases, especially in sensitive areas of research.
+
+\subsection{Statistical significance versus a real difference}
+
+When a result is statistically significant at the $\alpha=0.05$ level, we have evidence that the result is real.
+However, when there is no difference or effect, we can expect that 5\% of the time the test conclusion will lead to a Type~I Error and incorrectly reject the null hypothesis.
+Therefore we must beware of what is called p-hacking, in which researchers may test many, many hypotheses and then publish the ones that come out statistically significant.
+As we noted, we can expect 5\% of the results to be significant when the null hypothesis is true and there really is no difference or effect.\footnote{
+The problem is even greater than p-hacking.  In what has been called the ``reproducibility crisis", researchers have failed to reproduce a large proportion of results that were found significant and were published in scientific journals.
+This problem highlights the importance of research that
+reproduces earlier work rather than taking the word of
+a single study.
+
+Also keep in mind that the probability that a difference will be found to be significant given that there is no real difference is not the same as the probability that a difference is not real, given that it was found significant.
+Depending upon the veracity of the hypotheses tested, the latter can be upwards of 80\%, leading some to assert that ``most published research is false". 
+\oiRedirect{textbook-trouble-at-the-lab}{\url{https://www.economist.com/briefing/2013/10/18/trouble-at-the-lab}}
+}
+
+\subsection{When to retreat}
+\label{whenToRetreat}
+
+We must point out that statistical tools rely on conditions. When the conditions are not met, these tools are unreliable and drawing conclusions from them is treacherous. The conditions for these tools typically come in two forms.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item \textbf{The individual observations must be independent.} A random sample from less than 10\% of the population ensures the observations are independent. In experiments, we generally require that subjects are randomized into groups. If independence fails, then advanced techniques must be used, and in some such cases, inference may not be possible.
+\item \textbf{Other conditions focus on sample size and skew.} For example, in Chapter ~\ref{ch_distributions} we looked at the success-failure condition and sample size condition for when $\hat{p}$ and $\bar{x}$ will follow a nearly normal distribution.
+
+\end{itemize}
+Verification of conditions for statistical tools is always necessary. When conditions are not satisfied for a given statistical technique, it is necessary to investigate new methods that are appropriate for the data. 
+
+Finally, we caution that there may be no inference tools helpful when considering data that include unknown biases, such as convenience samples. For this reason, there are books, courses, and researchers devoted to the techniques of sampling and experimental design. See Sections~\ref{overviewOfDataCollectionPrinciples}-\ref{experimentsSection} for basic principles of data collection.
+
+
+
+
+
 \D{\newpage}
 
 %%
@@ -1234,91 +1284,22 @@ The \term{p-value} is the probability of getting a test statistic as extreme or 
 
 
 \end{itemize}
+
+
+\item A small percent of the time ($\alpha$), a significant result will not be a real result.  If many tests are run, a small percent of them will produce significant results due to chance alone.\footnote{Similarly, if many confidence intervals are constructed, a small percent (100 - C\%) of them will fail to capture a true value due to chance alone.  A value outside the confidence interval is not an \emph{impossible} value.}
+
+\item With a very large sample, a significant result may point to a result that is real but \emph{not practically significant}. That is, the difference detected may be so small as to be unimportant or meaningless.  
+
+\item The inference procedures in this book all require two broad conditions to be met.  The first is that some type of \emph{random sampling} or \emph{random assignment} must be involved.  The second condition focuses on sample size and skew to determine whether the point estimate follows the intended distribution.  
 \end{itemize}
+
 
 
 %%%%%%Section exercises
 {\input{ch_foundations_for_inf/TeX/hypothesis_testing.tex}}
 
-%______________________________________
-\section{Does it make sense?}
-\sectionintro{
-\noindent%
-It is the responsibility of the data scientist to know when the use of these inference procedures is appropriate and to correctly interpret the results.
-In~this section, we look at considerations around the misuse or misinterpretation of these procedures.
 
 
-%%
-\subsection*{Learning objectives}
-\begin{enumerate}
-\item Understand the two general conditions for when the confidence interval and hypothesis testing procedures apply.  Explain why these conditions are necessary.
-
-\item Distinguish between statistically significant and practically significant.  What role does sample size play here?
-
-\item Recognize that not all statistically significant results correspond to real differences, due to Type~I Errors.  What role does the significance level $\alpha$ play here?
-\end{enumerate}
-}
-
-%%
-\subsection{When to retreat}
-\label{whenToRetreat}
-
-
-
-Statistical tools rely on conditions. When the conditions are not met, these tools are unreliable and drawing conclusions from them is treacherous. The conditions for these tools typically come in two forms.
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item \textbf{The individual observations must be independent.} A random sample from less than 10\% of the population ensures the observations are independent. In experiments, we generally require that subjects are randomized into groups. If independence fails, then advanced techniques must be used, and in some such cases, inference may not be possible.
-\item \textbf{Other conditions focus on sample size and skew.} For example, if the sample size is too small, the skew too strong, or extreme outliers are present, then a normal model for the sample mean will fail.
-\end{itemize}
-Verification of conditions for statistical tools is always necessary. Whenever conditions are not satisfied for a statistical technique, there are three options. The first is to learn new methods that are appropriate for the data. The second route is to consult a data scientist.\footnote{If you work at a university, then there may be campus consulting services to assist you. Alternatively, there are many private consulting firms that are also available for hire.} The third route is to ignore the failure of conditions. This last option effectively invalidates any analysis and may discredit novel and interesting findings.
-
-Finally, we caution that there may be no inference tools helpful when considering data that include unknown biases, such as convenience samples. For this reason, there are books, courses, and researchers devoted to the techniques of sampling and experimental design. See Sections~\ref{overviewOfDataCollectionPrinciples}-\ref{experimentsSection} for basic principles of data collection.
-
-
-\D{\newpage}
-
-%%
-\subsection{Statistical significance versus practical significance}
-
-When the sample size becomes larger, point estimates become more precise and any real differences in the mean and null value become easier to detect and recognize. Even a very small difference would likely be detected if we took a large enough sample. Sometimes researchers will take such large samples that even the slightest difference is detected. While we still say that difference is \termni{statistically significant}, it might not be \term{practically significant}.
-
-Statistically significant differences are sometimes so minor that they are not practically relevant. This is especially important to research: if we conduct a study, we want to focus on finding a meaningful result. We don't want to spend lots of money finding results that hold no practical value.
-
-The role of a data scientist in conducting a study often includes planning the size of the study. The data scientist might first consult experts or scientific literature to learn what would be the smallest meaningful difference from the null value. She also would obtain some reasonable estimate for the standard deviation. With these important pieces of information, she would choose a sufficiently large sample size so that the power for the meaningful difference is perhaps 80\% or 90\%. While larger sample sizes may still be used, she might advise against using them in some cases, especially in sensitive areas of research.
-
-\subsection{Statistical significance versus a real difference}
-
-When a result is statistically significant at the $\alpha=0.05$ level, we have evidence that the result is real.
-However, when there is no difference or effect, we can expect that 5\% of the time the test conclusion will lead to a Type~I Error and incorrectly reject the null hypothesis.
-Therefore we must beware of what is called p-hacking, in which researchers may test many, many hypotheses and then publish the ones that come out statistically significant.
-As we noted, we can expect 5\% of the results to be significant when the null hypothesis is true and there really is no difference or effect.\footnote{
-The problem is even greater than p-hacking.  In what has been called the ``reproducibility crisis", researchers have failed to reproduce a large proportion of results that were found significant and were published in scientific journals.
-This problem highlights the importance of research that
-reproduces earlier work rather than taking the word of
-a single study.
-
-Also keep in mind that the probability that a difference will be found to be significant given that there is no real difference is not the same as the probability that a difference is not real, given that it was found significant.
-Depending upon the veracity of the hypotheses tested, the latter can be upwards of 80\%, leading some to assert that ``most published research is false". \\
-\oiRedirect{textbook-trouble-at-the-lab}{\url{https://www.economist.com/briefing/2013/10/18/trouble-at-the-lab}}
-}
-
-
-\D{\newpage}
-
-%%
-\subsection*{Section summary}
-\noindent The inference procedures in this book require \emph{two conditions} to be met.
-\begin{itemize}
-\item The first is that some type of \termni{random sampling} or \termni{random assignment} must be involved.  If this is not the case, the point statistic may be biased and may not follow the intended distribution.  Moreover, without a random sample or random assignment, there is no way to accurately measure the standard error.  (When sampling without replacement, the sample size should be less than 10\% of the population size in order for the standard error formula to apply.  In sample surveys, this condition is generally met.)
-\item The second condition focuses on \termni{sample size} and \termni{skew} to determine whether the point estimate follows the intended distribution.  
-\end{itemize}
-Understanding what the term \termni{statistically significant} does and does not mean.
-\begin{itemize}
-\item \emph{A small percent of the time ($\alpha$), a significant result will not be a real result.} If many tests are run, a small percent of them will produce significant results due to chance alone.\footnote{Similarly, if many confidence intervals are constructed, a small percent (100 - C\%) of them will fail to capture a true value due to chance alone.  A value outside the confidence interval is not an \emph{impossible} value.}
-
-\item \emph{With a very large sample, a significant result may point to a result that is real but unimportant}. With a larger sample, the power of a test increases and it becomes easier to detect a small difference.  If an extremely large sample is used, the result may be statistically significant, but not be \emph{practically significant}.  That is, the difference detected may be so small as to be unimportant or meaningless.  
-\end{itemize}
 
 
 \newpage
