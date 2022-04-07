@@ -254,16 +254,16 @@ TI-83: Do steps 1-2, then enter the lower bound, upper bound, degrees of freedom
 \subsection[Checking conditions for inference on a mean using the $t$-distribution]{Checking conditions for inference on a mean using the \pmb{$t$}-distribution}
 \label{tDistSolutionToSEProblem}
 
-Using the $t$-distribution for inference on a mean requires two assumptions, namely that the observations are independent and that the theoretical sampling distribution of the sample mean $\bar{x}$ is nearly normal.  In practice, we check whether these assumptions are reasonable by verifying that certain conditions are met.  
+Using the $t$-distribution for inference on a mean requires that the theoretical \textbf{sampling distribution for the sample mean $\bar{x}$ is nearly normal}.  In practice, we check whether this assumption is reasonable by verifying that certain conditions are met.  
 
 
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Independent.] Observations can be considered independent when the data are collected from a \emph{random process}, such as tossing a coin, or from a \emph{random sample}.    Without a random sample or process, the standard error formula would not apply, and it is unclear to what population the inference would apply.  Recall from Chapter~\ref{ch_inference_for_props} that when sampling without replacement from a finite population, the observations can be considered independent when sampling less than 10\% of the population.  
-\item[Nearly normal sampling distribution.] We saw in Section~\ref{distributionofxbar} that the sampling distribution of a sample mean will be nearly normal when the sample is drawn from a nearly normal population or when the sample size is at least 30 ($n\ge 30$).     
+\item[Independence.] Observations can be considered independent when the data are collected from a \emph{random process}, such as tossing a coin, or from a \emph{random sample}.    Without a random sample or process, the standard error formula would not apply, and it is unclear to what population the inference would apply.  Recall that when sampling without replacement from a finite population, the observations can be considered independent when sampling less than 10\% of the population.  
+\item[Sample size / nearly normal population.] We saw in Section~\ref{distributionofxbar} that in order for the sampling distribution for a sample mean to be nearly normal, we also need the sample to be drawn from a nearly normal population or we need the sample size to be at least 30 ($n\ge 30$).     
 \end{description}
 
-What should we do when the sample size is small and we are not sure whether the population distribution is nearly normal?  In this case, the best we can do is look at the data for excessive skew.  If the data are very skewed or have obvious outliers, this suggests that the sample did not come from a nearly normal population.  However, if the data do not show obvious skew or outliers, then the idea of a nearly normal population is generally considered \emph{reasonable}, making the assumption of a nearly normal sampling distribution for $\bar{x}$ reasonable as well.
+What should we do when the sample size is small and we are not sure whether the population distribution is nearly normal?  In this case, the best we can do is look at the data for excessive skew.  If the data are very skewed or have obvious outliers, this suggests that the sample did not come from a nearly normal population.  However, if the data do not show obvious skew or outliers, then the idea of a nearly normal population is generally considered \emph{reasonable}.  
 
 Note that by looking at a small data set, we cannot \emph{prove} that the population distribution is nearly normal.  However, the data can suggest to us whether the population distribution being nearly normal is an unreasonable assumption.  
 
@@ -273,7 +273,7 @@ Note that by looking at a small data set, we cannot \emph{prove} that the popula
 
 Ideally, we use a graph of the data to check for strong skew or outliers.  When the full data set is not available, summary statistics can also be used. 
 
-As the sample size goes up, it becomes less necessary to check for skew in the data.  If the sample size is 30 or more, it is no longer necessary that the population distribution be nearly normal.  When the sample size is large, the Central Limit Theorem tells us that the sampling distribution of the sample mean will be nearly normal regardless of the distribution of the population.
+For larger samples, it is less necessary to check for skew in the data.  If the sample size is 30 or more, it is no longer necessary that the population distribution be nearly normal.  When the sample size is large, the Central Limit Theorem tells us that the sampling distribution for the sample mean will be nearly normal regardless of the distribution of the population.
 
 
 
@@ -369,7 +369,7 @@ To carry out a complete confidence interval procedure to estimate a single \mbox
 \begin{itemize}
 \item[] To estimate a single mean we use a \termsub{1-sample \pmb{$t$}-interval}{t-interval@$t$-interval!for a mean}.
 \end{itemize}
-\inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}$ to be nearly normal.\vspace{-1mm}
+\inferencestep{Check} Check conditions for the sampling distribution for $\bar{x}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[] 1. Independence:  Data come from a random sample or random process.  When sampling 
@@ -402,7 +402,7 @@ To carry out a complete confidence interval procedure to estimate a single \mbox
 \begin{description}
 \item[\inferencestep{Identify}] The parameter of interest is the true mean mercury content in croaker white fish (Pacific).  We want to estimate this at the 95\% confidence level.  
 \item[\inferencestep{Choose}] Because the parameter to be estimated is a single mean, we will use a 1-sample $t$-interval.
-\item[\inferencestep{Check}] We must check that the sampling distribution of the mean can be modeled using a normal distribution.  We will assume that the sample constitutes a random sample of less than 10\% of all croaker white fish (Pacific) and that independence is reasonable. The sample size $n$ is small, but there are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not too great. Therefore we think it is reasonable that the population distribution of mercury content in croaker white fish (Pacific) could be nearly normal.  
+\item[\inferencestep{Check}] We must check that the sampling distribution for the mean can be modeled using a normal distribution.  We will assume that the sample constitutes a random sample of less than 10\% of all croaker white fish (Pacific) and that independence is reasonable. The sample size $n$ is small, but there are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not too great. Therefore we think it is reasonable that the population distribution of mercury content in croaker white fish (Pacific) could be nearly normal.  
 \item[\inferencestep{Calculate}]  We will calculate the interval:
 \begin{align*}
 \text{point estimate}\ \pm\ t^{\star} \times SE\ \text{of estimate}
@@ -579,7 +579,7 @@ $H_0$: $\mu = \cherryblossomnull{}$ minutes. \mbox{The average run time of all p
 \end{nexample}
 \end{examplewrap}
 
-The data come from a random sample from a large population, so the observations are independent. Do we need to check for skew in the data? No -- with a sample size of \cherryblossomn{}, well over 30, the Central Limit Theorem tells us that the sampling distribution of $\bar{x}$ will be nearly normal.
+The data come from a random sample from a large population, so the observations are independent. Do we need to check for skew in the data? No -- with a sample size of \cherryblossomn{}, well over 30, the Central Limit Theorem tells us that the sampling distribution for $\bar{x}$ will be nearly normal.
 
 With independence satisfied and slight skew not a concern for this large of a sample, we can proceed with performing a hypothesis test using the $t$-distribution.
 
@@ -642,7 +642,7 @@ To carry out a complete hypothesis test to test the claim that a single mean $\m
 \begin{itemize}
 \item[] To test hypotheses about a single mean we use a \termsub{1-sample \pmb{$t$}-test}{t-test@$t$-test!for a mean}.
 \end{itemize}
- \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}$ to be nearly normal.\vspace{-1mm}
+ \inferencestep{Check} Check conditions for the sampling distribution for $\bar{x}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[] 1.  Independence:  Data come from a random sample or random process.  When sampling 
@@ -803,7 +803,7 @@ The average time for all runners who finished the Cherry Blossom Run in 2006 was
 \item Test $H_0$: $\mu=\mu_0$ at the $\alpha$ significance level using a \termsub{1-sample \pmb{$t$}-test}{t-test@$t$-test!for a mean}. 
 \end{itemize}
 
-\item The one-sample $t$-interval and $t$-test require that the sampling distribution of $\bar{x}$ be nearly normal.  For this reason we must check that the following conditions are met.
+\item The one-sample $t$-interval and $t$-test require that the sampling distribution for $\bar{x}$ be nearly normal.  For this reason we must check that the following conditions are met.
 \begin{itemize}
 \item[1.] Independence:  The data come from a random sample or random process.  When sampling without replacement, check that the sample size is less than 10\% of the population size.
 \item[2.]  Large sample or normal population: $n\ge 30$ or population distribution is nearly normal. 
@@ -1098,7 +1098,7 @@ To carry out a complete hypothesis test to test the claim that a mean of differe
 \begin{itemize}
 \item[] To test hypotheses about a mean of differences we use a \termsub{1-sample \pmb{$t$}-test}{t-test@$t$-test!for a mean of differences} with paired data.
 \end{itemize}
- \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.\vspace{-1mm}
+ \inferencestep{Check} Check conditions for the sampling distribution for $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[] 1. Independence:  Data come from one random sample (with paired data) or from a 
@@ -1291,7 +1291,7 @@ To carry out a complete confidence interval procedure to estimate a mean of diff
 \begin{itemize}
 \item[] To estimate a mean of differences we use a \termsub{1-sample \pmb{$t$}-interval}{t-interval@$t$-interval!for a mean of differences} with paired data.
 \end{itemize}
-\inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.\vspace{-1mm}
+\inferencestep{Check} Check conditions for the sampling distribution for $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[] 1. Independence:  Data come from one random sample (with paired data) or from a 
@@ -1451,7 +1451,7 @@ $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\h
 \item Test $H_0$: $\mu_{\text{\emph{diff}}}=0$ at the $\alpha$ significance level using a \termsub{1-sample \pmb{$t$}-test}{t-test@$t$-test!for a mean of differences} with paired data. 
 \end{itemize}
 
-\item The one-sample $t$-interval and $t$-test with paired data require the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.  For this reason, we must check that the following conditions are met.
+\item The one-sample $t$-interval and $t$-test with paired data require the sampling distribution for $\bar{x}_{\text{\emph{diff}}}$ to be nearly normal.  For this reason, we must check that the following conditions are met.
 \begin{itemize}
 \item[1.]  Independence:  Data should come from one random sample (with paired observations) or from a randomized matched pairs experiment.  If sampling without replacement, check that the sample size is less than 10\% of the population size.
 \item[2.]  Large sample or normal population:  $n_{\text{\emph{diff}}}\ge 30$ or  population of differences nearly normal.
@@ -1511,32 +1511,34 @@ Often times we wish to compare two groups to each other to answer questions such
 }
 
 
-\D{\newpage}
+%\D{\newpage}
 
 %%
-\subsection{Sampling distribution for the difference of two means}
+\subsection{Sampling distribution for the difference of two means (review)}
 \label{differenceOfTwoMeans}
-Previously we explored the sampling distribution for the difference of two proportions.  Here we consider the sampling distribution for the difference of two means.  We are interested in the distribution of $\bar{x}_1-\bar{x}_2$.  We know that it is centered on $\mu_1-\mu_2$.  The standard deviation for the difference can be found as follows.
-
+In this section we are interested in comparing the means of two independent groups. We want to estimate how far apart $\mu_1$ and $\mu_2$ are and test whether their difference is zero or not.  Before we perform inference for the difference of means, we must review the sampling distribution for $\bar{x}_1-\bar{x}_2$, which will become our point estimate for $\mu_1 - \mu_2$.  We know from Section~\ref{distributionofdifference} that when the independence condition is satisfied, the sampling distribution for $\bar{x}_1-\bar{x}_2$ is centered on $\mu_1-\mu_2$ and has standard deviation:
 \begin{align*}
-SD_{\bar{x}_{1} - \bar{x}_{2}}
-    &= \sqrt{\left(SD_{\bar{x}_{1}}\right)^2 +\left(SD_{\bar{x}_{2}}\right)^2 } \\
-    &= \sqrt{\left(\frac{\sigma_{1}}{\sqrt{n_1}}\right)^2 + \left(\frac{\sigma_{2}}{\sqrt{n_2}}\right)^2 } \\
-	&= \sqrt{\frac{\sigma_{1}^2}{n_{1}} + \frac{\sigma_{2}^2}{n_{2}}} \\
+\sigma_{\bar{x}_{1} - \bar{x}_{2}}= \sqrt{\frac{\sigma_{1}^2}{n_{1}} + \frac{\sigma_{2}^2}{n_{2}}} \\
 \end{align*}
 
-Finally, we are interested in the shape of the sampling distribution of  $\bar{x}_1-\bar{x}_2$.  It will be nearly normal when the sampling distribution of each of $\bar{x}_1$ and $\bar{x}_2$ are nearly normal.
+When the individual population standard deviations are unknown, we estimate the standard deviation of $\bar{x}_1-\bar{x}_2$ using the Standard Error, abbreviated SE.  The SE of $\bar{x}_1-\bar{x}_2$ is found as follows:
+\begin{align*}
+SE_{\bar{x}_{1} - \bar{x}_{2}}= \sqrt{\frac{s_{1}^2}{n_{1}} + \frac{s_{2}^2}{n_{2}}} \\
+\end{align*}
+
+The difference of two sample means $\bar{x}_1-\bar{x}_2$ follows a nearly normal distribution when certain conditions are met.  First, the sampling distribution for each sample mean must be nearly normal, and second, the observations must be independent, both within and between groups. Under these two conditions, the sampling distribution for $\bar{x}_1 - \bar{x}_2$ may be well approximated using the normal model.
+
+
 
 %%%
 \subsection{Checking conditions for inference on a difference of means}
-When comparing two means, we carry out inference on a difference of means, $\mu_1-\mu_2$.  We will use the $t$-distribution just as we did when carrying out inference on a single mean.  The assumptions are that the observations are independent, both between groups and within groups and that the sampling distribution of $\bar{x}_1-\bar{x}_2$ is nearly normal.  We check whether these assumptions are reasonable by verifying the following conditions.
+When comparing two means, we carry out inference on a difference of means, $\mu_1-\mu_2$.  We will use the $t$-distribution just as we did when carrying out inference on a single mean.  In order to use the $t$-distribution, we need the \textbf{sampling distribution for $\bar{x}_1-\bar{x}_2$ to be nearly normal}.  We check whether this assumption is reasonable by verifying the following conditions.
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Independent.] Observations can be considered independent when the data are collected from two independent random samples or from a randomized experiment with two treatments.  Randomly assigning subjects to treatments is equivalent to randomly assigning treatments to subjects.  
-\item[Nearly normal sampling distribution.] The sampling distribution of $\bar{x}_1-\bar{x}_2$ will be nearly normal when the sampling distribution of $\bar{x}_1$ and of $\bar{x}_2$ are nearly normal, that is when both population distributions are nearly normal or both sample sizes are at least 30.  
-\end{description}
+\item[Independence.] Observations can be considered independent when the data are collected from two independent random samples or from a randomized experiment with two treatments.  Randomly assigning subjects to treatments is equivalent to randomly assigning treatments to subjects.  When sampling without replacement, the observations can be considered independent when the sample size is less than 10\% of the population size for both samples.
+\item[Sample size / nearly normal population.] Both population distributions should be nearly normal or both sample sizes should be at least 30.  As before, if the sample sizes are small and the population distributions are not known to be nearly normal, we look at the data for excessive skew or outliers.  If we do not find excessive skew or outliers in either group, we consider the assumption that the populations are nearly normal to be reasonable.
 
-As before, if the sample sizes are small and the population distributions are not known to be nearly normal, we look at the data for excessive skew or outliers.  If we do no find excessive skew or outliers in either group, we consider the assumption that the populations are nearly normal to be reasonable.
+\end{description}
 
 
 \D{\newpage}
@@ -1597,7 +1599,7 @@ The average salary offered to John was \$3,730 higher than the average salary of
 \begin{align*}
 SE = \sqrt{\frac{s_{1}^2}{n_{1}} + \frac{s_{2}^2}{n_{2}}} = \sqrt{\frac{(\johnsd{})^2}{\johnn{}} + \frac{(\jennifersd{})^2}{\jennifern{}}} = \johnjenniferSE{}
 \end{align*}
-The typical error in our estimate of $\mu_1-\mu_2$, the real difference in mean salary that the faculty would offer John versus Jennifer, is \$\johnjenniferSE{}.
+Using samples of size $n_1=63$ and $n_2=64$, the typical error when using $\bar{x}_1-\bar{x}_2$ to estimate $\mu_1-\mu_2$, the real difference in mean salary that the faculty would offer John versus Jennifer, is \$\johnjenniferSE{}.
 \end{nexample}
 \end{examplewrap}
 
@@ -1647,7 +1649,7 @@ To carry out a complete confidence interval procedure to estimate the difference
 \begin{itemize}
 \item[] To estimate the difference of means we use a \termsub{2-sample \pmb{$t$}-interval}{t-interval@$t$-interval!for a difference of means}.
 \end{itemize}
- \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_1-\bar{x}_2$ to be nearly normal.\vspace{-1mm}
+ \inferencestep{Check} Check conditions for the sampling distribution for $\bar{x}_1-\bar{x}_2$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[] 1. Independence:  Data come from 2 independent random samples or from a randomized 
@@ -1957,7 +1959,7 @@ To carry out a complete hypothesis test to test the claim that two means $\mu_1$
 \begin{itemize}
 \item[] To test hypotheses about the difference of means we use a \termsub{2-sample \pmb{$t$}-test}{t-test@$t$-test!for a difference of means}.
 \end{itemize}
- \inferencestep{Check} Check conditions for the sampling distribution of $\bar{x}_1-\bar{x}_2$ to be nearly normal.\vspace{-1mm}
+ \inferencestep{Check} Check conditions for the sampling distribution for $\bar{x}_1-\bar{x}_2$ to be nearly normal.\vspace{-1mm}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[] 1. Independence:  Data come from 2 independent random samples or from a randomized 
@@ -2138,7 +2140,7 @@ control		& 9		& -4.33		& 2.76  	 \\
 \item Test $H_0$: $\mu_1-\mu_2=0$ at the $\alpha$ significance level using a \termsub{2-sample \pmb{$t$}-test}{t-test@$t$-test!for a difference of means}.
 \end{itemize}
 
-\item The 2-sample $t$-test and $t$-interval require the sampling distribution of $\bar{x}_1-\bar{x}_2$ to be nearly normal.  For this reason we must check that the following conditions are met.
+\item The 2-sample $t$-test and $t$-interval require the sampling distribution for $\bar{x}_1-\bar{x}_2$ to be nearly normal.  For this reason we must check that the following conditions are met.
 \begin{itemize}
 \item[1.] Independence:  The data should come from 2 independent random samples or from a randomized experiment with 2 treatments.  When sampling without replacement, check that the sample size is less than 10\% of the population size for each sample.
 \item[2.] Large samples or normal populations:  $n_1\ge 30$ and $n_2\ge 30$ or both population distributions are nearly normal. \\
