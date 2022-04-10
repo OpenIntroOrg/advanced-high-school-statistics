@@ -13,8 +13,8 @@
 
 \chapterintro{At the end of the previous chapter, we explored the Geometric Distribution and the Binomial Distribution.  In this chapter, we consider what is called the \emph{\hiddenterm{sampling distribution}}, which is a term for describing the distribution of a statistic. For example, if we take a survey of a random sample of a population and compute the proportion of ``yes'' responses to a particular question, then it's helpful to consider the distribution of all possible sample proportions.  
 
-We explore sampling distributions for two common statistics: sample proportion and sample mean.  We then consider the distributions of a difference of sample proportions and a difference of sample means.
-In each case, the goal is the same -- to describe the center, spread, and shape of the sampling distribution and determine when normal approximation to the sampling distribution is reasonable.}
+We explore sampling distributions for two common statistics: the sample proportion and the sample mean.  We then consider the distributions of a difference of sample proportions and a difference of sample means.
+In each case, the goal is the same -- to describe the center, spread, and shape of the sampling distribution and determine when the normal approximation to the sampling distribution is reasonable.}
 
 
 
@@ -784,7 +784,7 @@ When finding the probability that an \emph{average} or mean is greater or less t
 
 \sectionintro{
 \noindent%
-In this section, we consider the case where instead of having one random sample from a population of interest, we have two independent random samples and we are interested in how far the sample values might be from one another.  We describe the sampling distribution for the difference of sample proportions and the difference of sample means and we find the probability that the difference would be greater than or less than a certain amount.
+In this section, we consider the case where instead of having one random sample from a population of interest, we have two independent random samples and we are interested in how far the sample values might be from one another.  We describe the sampling distribution for the difference of sample proportions and the difference of sample means, and we find the probability that the difference would be greater than or less than a certain amount.
 
 %%
 \subsection*{Learning objectives}
@@ -795,7 +795,7 @@ In this section, we consider the case where instead of having one random sample 
 
 \item Describe the center, spread, and shape of the sampling distribution for a difference of sample means.
 
-\item Verify appropriate conditions and, if met, carry out normal approximation using a difference of sample proportions or a difference of sample means.  
+\item Verify appropriate conditions and, if met, carry out the normal approximation using a difference of sample proportions or a difference of sample means.  
 
 \end{enumerate}
 }
@@ -804,27 +804,49 @@ In this section, we consider the case where instead of having one random sample 
 %%
 \subsection[Mean and SD for the difference of two random variables (review)]{Mean and SD for the difference of two random variables (review)}
 \label{reviewdiffrv}
-In Section~\ref{randomVariablesSection}, we saw how to find the mean and standard deviation of the difference of two random variables $X$ and $Y$.  We found that:
-$$E(X - Y) = E(X) - E(Y)$$
 
-\noindent and that when X and Y are \emph{independent}: 
-  $$SD(X - Y) =  \sqrt{(SD(X))^2 + (SD(Y))^2}$$
+In Section~\ref{randomVariablesSection}, we saw how to find the
+mean and standard deviation of the difference of two random
+variables $X$ and $Y$.
+We found that:
+\begin{align*}
+E(X - Y) = E(X) - E(Y)
+\end{align*}
+That is, if we have the mean of each random variable,
+$\mu_X$ and $\mu_Y$, then if the mean of the difference of the
+random variables is simply the differences of the individual means.
+This should seem very straightforward.
+
+The situation is a little more complex when looking at the
+variability of the difference of $X$ and $Y$.
+Here we're going to require a condition be met, specifically that
+$X$ and $Y$ are independent random variables.
+When that independence condition is met, then the following formula
+for the standard deviation of the difference, $X - Y$, holds:
+\begin{align*}
+SD(X - Y) =  \sqrt{(SD(X))^2 + (SD(Y))^2}
+\end{align*}
+
+These two formulas from probability play an important role in
+applications where we look at the difference in two sample
+proportions ($\hat{p}_1 - \hat{p}_2$) or the difference in
+sample means ($\bar{x}_1 - \bar{x}_2$).
+
 
 \subsection{Difference of sample proportions}
+\label{distributionofdifference_diff_samp_props}
+
 In Section~\ref{distributionphat} we considered a county where the proportion of people with blood type O+ is known to be 35\%, and we described the distribution of the sample statistic $\hat{p}$ from a random sample of size $n$ from this population.
 
 Let us now consider two counties.  In County 1, it is known that 35\% of people have blood type O+.  In County 2, it is known that 30\% of people have blood type O+.  If we take a random sample of size 50 from County 1 and a random sample of size 50 from County 2, what is the probability that we will get a \emph{higher} proportion with blood type O+ in the County 2 sample?
 
-We know that the expected proportion with blood type O+ is lower in County 2.  However, due to random variability, there is still some chance that the sample from County 2 will have a higher proportion with blood type O+.  First, we need to find the mean (expected value) and the standard deviation for the difference of sample proportions $\hat{p}_1 - \hat{p}_2$.  Based on the properties for the mean and standard deviation of $X - Y$ just described in Section~\ref{reviewdiffrv}, we can show that:
-
-$$E(\hat{p}_1 - \hat{p}_2) = E(\hat{p}_1) - E(\hat{p}_2) = p_1 - p_2$$
-
-\noindent and that when the samples are independent:
-
-$$SD(\hat{p}_1 - \hat{p}_2) =  \sqrt{(SD(\hat{p}_1))^2 + (SD(\hat{p}_2))^2}=  \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}.$$
-
-
-That is, given two independent random samples, the distribution of all possible values of $\hat{p}_1 - \hat{p}_2$ is centered on the true difference $p_1-p_2$ and the typical distance or error of $\hat{p}_1 - \hat{p}_2$ from $p_1-p_2$ is given by $\sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}$.  Using $\mu$ for mean and $\sigma$ for SD, we summarize this as follows.
+We know that the expected proportion with blood type O+ is lower in County 2.  However, due to random variability, there is still some chance that the sample from County 2 will have a higher proportion with blood type O+.  First, we need to find the mean (expected value) and the standard deviation for the difference of sample proportions $\hat{p}_1 - \hat{p}_2$. For this, we use the two formulas from Section~\ref{reviewdiffrv} in the context of the difference of sample proportions by substituting $X = \hat{p}_1$ and $Y = \hat{p}_2$:
+\begin{align*}
+E(\hat{p}_1 - \hat{p}_2) &= E(\hat{p}_1) - E(\hat{p}_2) = p_1 - p_2 \\
+SD(\hat{p}_1 - \hat{p}_2) &=  \sqrt{(SD(\hat{p}_1))^2 + (SD(\hat{p}_2))^2}=  \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}.
+\end{align*}
+That is, given two independent random samples, the distribution of all possible values of $\hat{p}_1 - \hat{p}_2$ is centered on the true difference $p_1-p_2$ and the typical distance or error of $\hat{p}_1 - \hat{p}_2$ from $p_1-p_2$ is given by $\sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}$.
+Using $\mu$ for mean and $\sigma$ for SD, we summarize this as follows.
 
 \begin{onebox}{Mean and standard deviation of a difference of sample proportions}
 The mean and standard deviation of the difference of sample proportions describe the center and spread of the distribution of all possible differences $\hat{p}_1-\hat{p}_2$.  Given population proportions $p_1$ and $p_2$ and random samples of size $n_1$ and $n_2$ where the \emph{independence} condition is satisfied, we have the following.
@@ -840,7 +862,10 @@ Having described the center and spread of the distribution of the difference of 
 
 \begin{examplewrap}
 \begin{nexample}{
-We can now return to the question previously posed.  In County 1, it is known that 35\% of people have blood type O+.  In County 2, it is known that 30\% of people have blood type O+.  If we take a random sample of size 50 from County 1 and a random sample of size 50 from County 2, what is the probability that we will get a \emph{higher} proportion with blood type O+ in the County 2 sample?}We want to find $P(\hat{p}_1<\hat{p}_2)$.  This is equivalent to $P(\hat{p}_1-\hat{p}_2<0)$. 
+  Let's return to the blood type example.
+  In County 1, it is known that 35\% of people have blood type O+.  In County 2, it is known that 30\% of people have blood type O+.  If we take a random sample of size 50 from County 1 and a random sample of size 50 from County 2, what is the probability that we will get a \emph{higher} proportion with blood type O+ in the County 2 sample?}
+
+We want to find $P(\hat{p}_1<\hat{p}_2)$.  This is equivalent to $P(\hat{p}_1-\hat{p}_2<0)$. 
 
 Let us first determine whether the independence condition is satisfied and whether normal approximation will be appropriate.  We have two random samples, and the samples are independent of each other as they are from distinct populations.  It is reasonable to assume that each sample size is less than 10\% of the county population size.  We now check the success-failure condition for each group.   
 \begin{align*}
@@ -849,21 +874,22 @@ n_1 p_1 = 50 \times 0.35 = 17.5\ge 10 &&
 n_2 p_2 = 50 \times 0.30 = 15.0\ge 10 &&
     n_2 (1 - p_2) = 50 \times (1-0.30) = 35.0\ge 10
 \end{align*}
-The independence condition is satisfied and the success-failure condition is met for both groups so the distribution of $\hat{p}_1-\hat{p}_2$ can be said to be nearly normal.  
+The independence condition is satisfied and the success-failure condition is met for both groups, so the distribution of $\hat{p}_1-\hat{p}_2$ can be said to be nearly normal.  
 
 We now find the mean and the standard deviation of $\hat{p}_1-\hat{p}_2$.  
-
-$$\mu_{\hat{p}_1-\hat{p}_2} = p_1-p_2 = 0.35 - 0.30 = 0.05$$
-$$ \sigma_{\hat{p}_1-\hat{p}_2}=  \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}=    =\sqrt{\frac{0.35(1-0.35)}{50} + \frac{0.30(1-0.30)}{50}} = 0.0935$$
-
+\begin{align*}
+\mu_{\hat{p}_1-\hat{p}_2} &= p_1-p_2 = 0.35 - 0.30 = 0.05 \\
+\sigma_{\hat{p}_1-\hat{p}_2}
+  &= \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
+  =\sqrt{\frac{0.35(1-0.35)}{50} + \frac{0.30(1-0.30)}{50}}
+  = 0.0935
+\end{align*}
 Recall, we want to find $P(\hat{p}_1-\hat{p}_2<0)$.  We use the calculated mean and standard deviation of $\hat{p}_1-\hat{p}_2$ to find a Z-score for the value of interest, which is 0.
 \begin{align*}
 Z &= \frac{x - \mu}{\sigma} = \frac{0 - 0.05}{0.0935}=-0.535
 \end{align*}
 
-Using technology to find the area to the left of -0.535 under the standard normal curve, we have:
-
-$P(\hat{p}_1-\hat{p}_2) \approx P(Z < -0.535) = 0.296$.  Even though County 2 has a lower proportion of people with blood type O+, with these small sample sizes, there is still a 29.6\% chance that the sample from County 2 ends up with a higher proportion with blood type O+  than the sample from County 1.
+Using technology to find the area to the left of -0.535 under the standard normal curve, we obtain $P(\hat{p}_1-\hat{p}_2) \approx P(Z < -0.535) = 0.296$.  Even though County 2 has a lower proportion of people with blood type O+, with these small sample sizes, there is still a 29.6\% chance that the sample from County 2 ends up with a higher proportion with blood type O+  than the sample from County 1.
 \end{nexample}
 \end{examplewrap}
 
@@ -872,48 +898,87 @@ $P(\hat{p}_1-\hat{p}_2) \approx P(Z < -0.535) = 0.296$.  Even though County 2 ha
 \subsection{Difference of sample means}
 In Section~\ref{distributionofxbar} we started with all of the data from the 2017 Cherry Blossom Run, and we considered what the sampling distribution for a mean would look like for random samples of size $n$.
 
-The population mean for all the runners is 94.52 minutes and the population standard deviation is 8.97 minutes.  Imagine taking two independent random samples of size 50 from this population.  We know that the sampling distribution for the mean of each sample would have the same center and spread, but what about the sampling distribution for the difference?  What is the likelihood that the sample means from these two independent random samples would differ by more than 3 minutes?  
+The population mean for all the runners is 94.52 minutes and the population standard deviation is 8.97 minutes.
+Imagine taking two independent random samples of size 50 from this population.
+We know that the sampling distribution for the mean would have the same center and spread in each sample, but what about the sampling distribution for the difference of the sample means?
+What is the likelihood that the sample means from these two independent random samples would differ by more than 3 minutes?
 
-To answer this, let's first consider the probability that the mean of sample 1 is more than 3 minutes greater than the mean of sample 2.  That is, we want to find P($\bar{x}_1 - \bar{x}_2 > 3$).  In order for the sample means to differ by more than 3 minutes, it is also possible that the mean of sample 2 is more than 3 greater than the mean of sample 1.  So we also need to find P($\bar{x}_2 - \bar{x}_1 > 3$), which is equivalent to P($\bar{x}_1 - \bar{x}_2 <- 3)$.  We now see that we are interested in the upper and lower tail of the distribution of $\bar{x}_1 - \bar{x}_2$.  Because of symmetry, we can find one tail and then double it.
+To answer this, we consider two scenarios.
+First, consider the possibility that the mean of sample 1
+is more than 3 minutes greater than the mean of sample 2.
+That is, we want to find P($\bar{x}_1 - \bar{x}_2 > 3$).
+Second, it is also possible that the mean of sample 2 is more than
+3 minutes greater than the mean of sample 1, so we also need to
+find P($\bar{x}_2 - \bar{x}_1 > 3$), which we could also write as
+P($\bar{x}_1 - \bar{x}_2 < -3)$.
+We now see that we are interested in the upper and lower tail of
+the distribution of $\bar{x}_1 - \bar{x}_2$.
+As we will soon see, the distribution of $\bar{x}_1 - \bar{x}_2$
+follows a normal distribution when certain conditions are met,
+and in those cases we can find one tail and then double it thanks
+to the symmetry of the normal distribution.
 
-First, we need to find the mean (expected value) and the standard deviation for the difference of sample means $\bar{x}_1 - \bar{x}_2$.  Based on the properties for the mean and standard deviation of $X - Y$ described in Section~\ref{reviewdiffrv}, we can show that:
-
-$$E(\bar{x}_1 - \bar{x}_2) = E(\bar{x}_1) - E(\bar{x}_2) = \mu_1 - \mu_2$$
-
- \noindent and when the samples are \emph{independent}:
-
-$$SD(\bar{x}_1 - \bar{x}_2) =  \sqrt{(SD(\bar{x}_1))^2 + (SD(\bar{x}_2))^2}=  \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}.$$
-
- That is, given two independent random samples, the distribution of all possible values of $\bar{x}_1 - \bar{x}_2$ is centered on the true difference $\mu_1-\mu_2$ and the typical distance or error of $\bar{x}_1 - \bar{x}_2$ from $\mu_1-\mu_2$ is given by $\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$.  Using $\mu$ for mean and $\sigma$ for SD, we summarize this as follows.  
+Let's find the mean (expected value) and the standard deviation for the difference of sample means, $\bar{x}_1 - \bar{x}_2$. We again use the formulas discussed in Section~\ref{reviewdiffrv} for the difference in two independent random normal variables, $X - Y$, but this time we substitute in $X = \bar{x}_1$ and $Y = \bar{x}_2$:
+\begin{align*}
+E(\bar{x}_1 - \bar{x}_2)
+  &= E(\bar{x}_1) - E(\bar{x}_2) = \mu_1 - \mu_2 \\
+SD(\bar{x}_1 - \bar{x}_2)
+  &= \sqrt{(SD(\bar{x}_1))^2 + (SD(\bar{x}_2))^2}
+  =  \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}.
+\end{align*}
+That is, given two independent random samples, the distribution of all possible values of $\bar{x}_1 - \bar{x}_2$ is centered on the true difference $\mu_1-\mu_2$ and the typical distance or error of $\bar{x}_1 - \bar{x}_2$ from $\mu_1-\mu_2$ is given by $\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$.
+%Using $\mu$ for mean and $\sigma$ for SD, we summarize this as follows.  
 
 \begin{onebox}{Mean and standard deviation of a difference of sample means}
-The mean and standard deviation of the difference of sample means describe the center and spread of the distribution of all possible differences $\bar{x}_1-\bar{x}_2$.  Given population means $\mu_1$ and $\mu_2$ and two random samples of size $n_1$ and $n_2$, where the \emph{independence} condition is satisfied, we have the following. 
+The mean and standard deviation of the difference of sample means describe the center and spread of the distribution of all possible differences $\bar{x}_1-\bar{x}_2$.
+Given population means $\mu_1$ and $\mu_2$, individual population
+standard deviations $\sigma_1$ and $\sigma_2$, and two random samples
+of size $n_1$ and $n_2$, then if the \emph{independence} condition
+is satisfied, we have the following:
 \begin{align*}
 \mu_{\bar{x}_1 - \bar{x}_2} &= \mu_1 - \mu_2
 	& \sigma_{\bar{x}_1 - \bar{x}_2}&=  \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}
-	\vspace{1mm}
-\end{align*}\end{onebox}
+\vspace{1mm}
+\end{align*}
+\end{onebox}
 
-As we noted previously, when looking at the sum or difference of random variables, if each variable is nearly normal, then the sum and difference are also nearly normal.
+Recall that in Section~\ref{distributionofdifference_diff_samp_props},
+we also noted that the sum or difference of random variables will also
+nearly normal, if each variable is itself nearly normal and the two
+random variables are also independent of each other.
+We will frequently use this principle to determine when the difference
+of sample means can be modeled using a normal distribution.
 
 \begin{examplewrap}
 \begin{nexample}{
-We can now return to the question previously posed. We have that the population mean for all the runners in the 2017 Cherry Blossom Run is 94.52 minutes and the population standard deviation is 8.97 minutes.  If we take two independent random samples of size 50, what is the probability that the sample means from these two samples will differ by more than 3 minutes?}We want to find $P(\bar{x}_1 - \bar{x}_2> 3) + P(\bar{x}_1 - \bar{x}_2< -3)=2\times P(\bar{x}_1 - \bar{x}_2 > 3)$.  
+  Let's return to the Cherry Blossom Run application.
+  We have that the population mean for all the runners in the 2017 Cherry Blossom Run is 94.52 minutes and the population standard deviation is 8.97 minutes.  If we take two independent random samples of 50 runners, what is the probability that the sample means from these two samples will differ by more than 3 minutes?}
 
-Let us first determine whether the independence condition is satisfied and whether normal approximation will be appropriate.  We have two random samples, and the samples are distinct and independent of each other.  The sample sizes are each less than 10\% of total population of runners.  Also, because the sample sizes $n_1$ and $n_2$ are both 50, and $50 \ge 30$, we don't need the distribution of all run times to be nearly normal.  With these conditions met, we have shown that the distribution of $\bar{x}_1-\bar{x}_2$ is nearly normal.  We now find the mean and the standard deviation of $\bar{x}_1-\bar{x}_2$.  
+We want to find
+$P(\bar{x}_1 - \bar{x}_2> 3) + P(\bar{x}_1 - \bar{x}_2< -3)$.
+% = 2\times P(\bar{x}_1 - \bar{x}_2 > 3)$.  
 
-$$\mu_{\bar{x}_1-\bar{x}_2} = \mu_1-\mu_2 = 94.52-94.52 = 0$$
-$$ \sigma_{\bar{x}_1-\bar{x}_2}=  \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}=    \sqrt{\frac{8.97^2}{50} + \frac{8.97^2}{50}}= 1.79$$
+Let us first determine whether the independence condition is satisfied and whether normal approximation will be appropriate.  We have two random samples, and the samples are distinct and independent of each other.  The sample sizes are each less than 10\% of total population of runners.  Also, because the sample sizes $n_1$ and $n_2$ are both 50, and $50 \ge 30$, we don't need the distribution of all run times to be nearly normal.  With these conditions met, we have shown that the distribution of $\bar{x}_1-\bar{x}_2$ is nearly normal.
 
-
-To find $P(\bar{x}_1-\bar{x}_2>3)$, we use the calculated mean and standard deviation of $\bar{x}_1-\bar{x}_2$ to first find a Z-score for the value of interest, which is 3.
-
+Next, we find the mean and the standard deviation of $\bar{x}_1-\bar{x}_2$:
+\begin{align*}
+\mu_{\bar{x}_1-\bar{x}_2} &= \mu_1-\mu_2 = 94.52-94.52 = 0 \\
+\sigma_{\bar{x}_1-\bar{x}_2}
+  &= \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}
+  = \sqrt{\frac{8.97^2}{50} + \frac{8.97^2}{50}}= 1.79
+\end{align*}
+To find $P(\bar{x}_1-\bar{x}_2>3)$, we use the calculated mean and standard deviation of $\bar{x}_1-\bar{x}_2$ to first find a Z-score for the difference of interest, which is 3.
 \begin{align*}
 Z = \frac{x - \mu}{\sigma} = \frac{3 - 0}{1.79}=1.676
 \end{align*}
 Using technology, to find the area to the right of 1.676 under the standard normal curve, we have:
 
-$P(\bar{x}_1-\bar{x}_2>3)\approx P(Z > 1.676) = 0.047$.  We then double this, because we want the area in the upper and lower tail.   Even though the samples are from the same population of runners, there is still a $2\times 0.047 = 0.094$, or a 9.4\%, probability that the sample means will differ by more than 3 minutes.  
+$P(\bar{x}_1-\bar{x}_2>3)\approx P(Z > 1.676) = 0.047$.
+Because the normal distribution of interest is centered at zero,
+the $P(\bar{x}_1 - \bar{x}_2< -3)$ tail area will have the same size.
+So to get the total of the two tail areas, we double 0.047.
+Even though the samples are from the same population of runners,
+there is still a $2\times 0.047 = 0.094$ probability, or a 9.4\% chance, that the sample means will differ by more than 3~minutes.
 \end{nexample}
 \end{examplewrap}
 
@@ -922,28 +987,33 @@ $P(\bar{x}_1-\bar{x}_2>3)\approx P(Z > 1.676) = 0.047$.  We then double this, be
 \subsection*{Section summary}
 
 \begin{itemize}
-\item When two random variables each have a nearly normal distribution, the distribution of their difference also has a nearly normal distribution.
+\item When two random variables each follow a nearly normal distribution, the distribution of their difference also follows a nearly normal distribution.
 
-\item Both $\hat{p}_1-\hat{p}_2$ and $\bar{x}_1-\bar{x}_2$ are statistics that can take on different values from random sample to random sample.  As such, they have \emph{sampling distributions} that can be described by their center, spread, and shape.
+\item
+  Both $\hat{p}_1-\hat{p}_2$ and $\bar{x}_1-\bar{x}_2$ are
+  statistics that can take on different values from one random
+  sample to the next.
+  As such, they have \emph{sampling distributions} that can be
+  described by their center, spread, and shape.
 
 \item Three important facts about the sampling distribution for the difference of sample proportions $\hat{p}_1-\hat{p}_2$ where the observations can be treated as independent:
 \begin{itemize}\vspace{-1mm}
-\setlength{\itemsep}{0mm}
-\item The mean of the difference of sample proportions is denoted by $\mu_{\hat{p}_1-\hat{p}_2}$, and it is equal to $p_1-p_2$. (\textit{center})
-\item The SD of the difference of sample proportions is denoted by $\sigma_{\hat{p}_1-\hat{p}_2}$, and it is equal to $\sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}$.  (\textit{spread})
-\item When both groups meet the success-failure condition, the difference of sample proportions closely follows a normal distribution.   (\textit{shape})
+  \setlength{\itemsep}{0mm}
+  \item \textit{Center:} The mean of the difference of sample proportions, denoted by $\mu_{\hat{p}_1-\hat{p}_2}$, is equal to~$p_1-p_2$.
+  \item \textit{Spread:} The SD of the difference of sample proportions, denoted by $\sigma_{\hat{p}_1-\hat{p}_2}$, is equal to $\sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}$.
+  \item \textit{Shape:} When both groups meet the success-failure condition, the difference of sample proportions can be modeled using a normal distribution.
 \end{itemize}
 
 
 \item Three important facts about the sampling distribution for the difference of sample means $\bar{x}_1-\bar{x}_2$ where the observations can be treated as independent:
 \begin{itemize}\vspace{-1mm}
-\setlength{\itemsep}{0mm}
-\item The mean of the difference of sample means is denoted by $\mu_{\bar{x}_1-\bar{x}_2}$, and it is equal to $\mu_1-\mu_2$. (\textit{center})
-\item The SD of the difference of sample means is denoted by $\sigma_{\bar{x}_1-\bar{x}_2}$, and it is equal to $ \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$.  (\textit{spread})
-\item When both populations are nearly normal or when $n_1\ge 30$ and $n_2\ge 30$, the difference of sample means closely follows a normal distribution.   (\textit{shape})
+  \setlength{\itemsep}{0mm}
+  \item \textit{Center:} The mean of the difference of sample means, denoted by $\mu_{\bar{x}_1-\bar{x}_2}$, is equal to $\mu_1-\mu_2$.
+  \item \textit{Spread:} The SD of the difference of sample means, denoted by $\sigma_{\bar{x}_1-\bar{x}_2}$, is equal to $ \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$.
+  \item \textit{Shape:} When both populations are nearly normal or when $n_1\ge 30$ and $n_2\ge 30$, the difference of sample means can be modeled using a normal distribution.
 \end{itemize}
 
-\item When the difference of sample proportions $\hat{p}_1-\hat{p}_2 $ or the difference of sample means $\bar{x}_1-\bar{x}_2$ follow a nearly normal distribution, we can find the probability that the difference is greater than or less than a certain amount by finding a Z-score and using normal approximation.  
+\item When the difference of sample proportions $\hat{p}_1-\hat{p}_2 $ or the difference of sample means $\bar{x}_1-\bar{x}_2$ follow a nearly normal distribution, we can find the probability that the difference is greater than or less than a certain amount by finding a Z-score and using the normal approximation.  
 
 \end{itemize}
 
@@ -952,37 +1022,38 @@ $P(\bar{x}_1-\bar{x}_2>3)\approx P(Z > 1.676) = 0.047$.  We then double this, be
 
 %______________________________________________
 \reviewchapterheader{}
+\newcommand{\chdistvertparagraphspace}{3mm}
 
-\noindent This chapter began by introducing the idea of a \textbf{sampling distribution}.  As with any distribution, we can summarize a sampling distribution with regard to its center, spread, and shape.  A common thread that ran through this chapter is the application of \termni{normal approximation} (introduced in Section~\ref{normalDist}) to different sampling distributions.
-\\
-
-\noindent The key steps are included for each of the normal approximation scenarios below.  To verify that observations can be considered independent, verify that you have one of the following: a random process, a random sample with replacement, or a random sample without replacement of less than 10\% of the population.  When working with two groups, 2 independent random samples with replacement, 2 independent samples without replacement of less than 10\% of their populations, or an experiment with 2 randomly assigned treatments will satisfy the independence condition.  For completion and comparison purposes, we include cases introduced in earlier chapters as well.
+\noindent This chapter began by introducing the idea of a \textbf{sampling distribution}.  As with any distribution, we can summarize a sampling distribution with regard to its center, spread, and shape.  A common thread that ran through this chapter is the application of \termni{normal approximation} (introduced in Section~\ref{normalDist}) to different sampling distributions.\\[\chdistvertparagraphspace]
+The key steps are included for each of the normal approximation scenarios below.  To verify that observations can be considered independent, verify that you have one of the following: a random process, a random sample with replacement, or a random sample without replacement of less than 10\% of the population.
+To satisfy the independence condition when working with two groups, we require 2~independent random samples with replacement, 2~independent samples without replacement of less than 10\% of their populations, or an experiment with 2~randomly assigned treatments.
+For completion and comparison purposes, we include cases introduced in earlier chapters as well in the overview below.
 
 \begin{enumerate}
 
 \item Normal approximation for numerical \textbf{data}:  (introduced in Section~\ref{normalDist})
 \begin{itemize}
 \item Verify that observations can be treated as independent and that population is approximately normal.
-\item Use a normal model with mean: $\mu$ and SD: $\sigma$.
+\item Use a normal model with mean $\mu$ and SD $\sigma$.
 \end{itemize}
 
 \item Normal approximation for a \textbf{sample proportion} or \textbf{sample count} (with categorical data):  
 \begin{itemize}
 \item Verify that observations can be treated as independent and that $np\ge 10$ and $n(1-p)\ge 10$.
-\item Use a normal model with mean: $\mu_{\hat{p}} = p$ and SD: $\sigma_{\hat{p}} = \sqrt{\frac{p(1-p)}{n}}$.
+\item Use a normal model with mean $\mu_{\hat{p}} = p$ and SD $\sigma_{\hat{p}} = \sqrt{\frac{p(1-p)}{n}}$.
 \end{itemize}
 
 
 \item Normal approximation for a \textbf{sample mean} or \textbf{sample sum} (with numerical data): 
 \begin{itemize} 
 \item Verify that observations can be treated as independent and that population is approximately normal or that $n\ge 30$.
-\item Use a normal model with mean: $\mu_{\bar{x}}=\mu$ and SD: $\sigma_{\bar{x}}=\frac{\sigma}{\sqrt{n}}$.
+\item Use a normal model with mean $\mu_{\bar{x}}=\mu$ and SD $\sigma_{\bar{x}}=\frac{\sigma}{\sqrt{n}}$.
 \end{itemize}
 
 \item  Normal approximation for a \textbf{difference of sample proportions}:
 \begin{itemize}
 \item Verify that observations can be treated as independent and that  \\$n_1p_1\ge 10$, $n_1(1-p_1)\ge 10$, $n_2(1-p_2)\ge 10$, and $n_2(1-p_2)\ge 10$.
-\item Use a normal model with mean: $\mu_{\hat{p}_1-\hat{p}_2} = p_1-p_2$ and SD: $\sigma_{\hat{p}_1-\hat{p}_2}=  \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}$.
+\item Use a normal model with mean $\mu_{\hat{p}_1-\hat{p}_2} = p_1-p_2$ and SD $\sigma_{\hat{p}_1-\hat{p}_2}=  \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}$.
 \end{itemize}
 
 
@@ -995,8 +1066,6 @@ $P(\bar{x}_1-\bar{x}_2>3)\approx P(Z > 1.676) = 0.047$.  We then double this, be
 \end{enumerate}
 
 
-\noindent Cases 1, 3 and 5 are for \textbf{numerical} variables, while cases 2 and 4 are for \textbf{categorical} yes/no variables.  
-\\
-\\Note that in the case of proportions and counts we never look to see if the \emph{population} is normal.  That would not make sense because a yes/no variable cannot have a normal distribution.  
-\\
-\\The \textbf{Central Limit Theorem} is the mathematical rule that ensures that when the sample size is sufficiently large, the sample mean/sum and sample proportion/count will be approximately normal.  
+\noindent Cases 1, 3 and 5 are for \textbf{numerical} variables, while cases 2 and 4 are for \textbf{categorical} yes/no variables.\\[\chdistvertparagraphspace]
+In the case of proportions and counts, we never look to see if the \emph{population} is normal.  That would not make sense because a yes/no variable cannot have a normal distribution.\\[\chdistvertparagraphspace]
+The \textbf{Central Limit Theorem} is the mathematical rule that ensures that when the sample size is sufficiently large, the sample mean/sum and sample proportion/count will be approximately normal.  

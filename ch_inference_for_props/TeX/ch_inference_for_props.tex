@@ -740,18 +740,12 @@ In this section, we will answer the following questions:
 \subsection*{Learning objectives}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item State and verify whether or not the conditions for inference on the difference of two proportions using a normal distribution are met.
-
 \item
-    Recognize that the standard error calculation is different for the test and for the interval, and explain why that is the case.
-
+    State and verify whether or not the conditions for inference on the difference of two proportions using a normal distribution are met.
+\item Recognize that the standard error calculation is different for the test and for the interval, and explain why that is the case.
 \item Know how to calculate the pooled proportion and when to use it.
-
 \item Carry out a complete confidence interval procedure for the difference of two proportions.
-\item 
-Carry out a complete hypothesis test for the difference of two  proportions.
-
-
+\item Carry out a complete hypothesis test for the difference of two  proportions.
 \end{enumerate}
 }
 
@@ -759,29 +753,51 @@ Carry out a complete hypothesis test for the difference of two  proportions.
 \subsection{Sampling distribution for the difference of two proportions (review)}
 \label{diffofprops}
 
-In this section we want to compare proportions from two independent groups.  When comparing two proportions, the quantity that we want to estimate is the difference: $p_1-p_2$.  This difference tells us how far apart the two population proportions are.  
+In this section we want to compare proportions from two
+independent groups.
+When comparing two proportions, the quantity that we generally want
+to estimate is the difference $p_1-p_2$, which tells us how far apart
+the two population proportions are.  
 
-Before we perform inference for the two proportion case, we must review the sampling distribution for $\hat{p}_1-\hat{p}_2$, which will become our point estimate.  We know from Section~\ref{distributionofdifference} that when the independence condition is satisfied, the sampling distribution for $\hat{p}_1-\hat{p}_2$ is centered on $p_1-p_2$ and the standard deviation is given by:
+Before we perform inference for the two proportion case,
+we must review the sampling distribution for $\hat{p}_1-\hat{p}_2$,
+which will represent our point estimate.
+We know from Section~\ref{distributionofdifference} that when the independence condition is satisfied, the sampling distribution for $\hat{p}_1-\hat{p}_2$ is centered on $p_1-p_2$ and the standard deviation is given by:
 \begin{align*}
 \sigma_{\hat{p}_1 - \hat{p}_2}= \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}.
 \end{align*}
-
-When the individual population proportions are unknown, we estimate the standard deviation of $\hat{p}_1-\hat{p}_2$ using the Standard Error, abbreviated SE.  The SE of $\hat{p}_1-\hat{p}_2$ is found as follows:
+When the individual population proportions are unknown, we estimate the standard deviation of $\hat{p}_1-\hat{p}_2$ using the Standard Error, abbreviated SE.  The SE of $\hat{p}_1-\hat{p}_2$ is found by substituting in our best estimates of $p_1$ and $p_2$ using the sample values:
 \begin{align*}
 SE_{\hat{p}_1 - \hat{p}_2}= \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}.
 \end{align*}
 
-The difference of two sample proportions $\hat{p}_1-\hat{p}_2$ follows a nearly normal distribution when certain conditions are met.  First, the sampling distribution for each sample proportion must be nearly normal, and second, the observations must be independent, both within and between groups. Under these two conditions, the sampling distribution for $\hat{p}_1 - \hat{p}_2$ may be well approximated using the normal model.
+The difference of two sample proportions $\hat{p}_1-\hat{p}_2$ follows a nearly normal distribution when two conditions are met.
+First, the sampling distribution for each sample proportion must be nearly normal.
+Second, the observations must be independent, both within and between groups.
+We cover these conditions in greater detail next.
+%When these two conditions are met, the sampling distribution for $\hat{p}_1 - \hat{p}_2$ may be modeled using the normal model.
 
 
 \D{\newpage}
 
 \subsection{Checking conditions for inference using a normal distribution}
-When comparing two proportions, we carry out inference on $p_1-p_2$.  To model the test statistic with a normal distribution, we need \textbf{the sampling distribution for $\hat{p}_1-\hat{p}_2$ to be nearly normal}.  This assumption is considered reasonable if the independence assumption is reasonable and if the success-failure condition is met.
+When comparing two proportions, we carry out inference on $p_1-p_2$.  To model the test statistic with a normal distribution, we need \textbf{the sampling distribution for $\hat{p}_1-\hat{p}_2$ to be nearly normal}, and this assumption is reasonable when two conditions are met:
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Independence.] Observations can be considered independent when the data are collected from two independent random samples or from an experiment with two randomly assigned treatments.  Randomly assigning subjects to treatments is equivalent to randomly assigning treatments to subjects.  When sampling without replacement, the observations can be considered independent when the sample sizes is less than 10\% of the population size for both samples.
-\item[Success-failure condition.] In the two-sample case, the number of successes and failures should be at least 10 for both groups, thus there are four inequalities to check.
+\item[Independence.]
+  The observations across the two samples are independent.
+  This condition is generally satisfied by checking whether
+  the data are collected from two independent random samples
+  or from an experiment with two randomly assigned treatments.
+  Randomly assigning subjects to treatments is equivalent to
+  randomly assigning treatments to subjects.
+  When sampling without replacement, the observations can be
+  considered independent when the sample sizes is less than
+  10\% of the population size for both samples.
+\item[Success-failure condition.]
+  In the two-sample case, the number of successes and failures
+  should be at least 10 for both groups, so there are four
+  inequalities to check.
 \end{description}
 
 

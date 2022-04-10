@@ -259,8 +259,21 @@ Using the $t$-distribution for inference on a mean requires that the theoretical
 
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Independence.] Observations can be considered independent when the data are collected from a \emph{random process}, such as tossing a coin, or from a \emph{random sample}.    Without a random sample or process, the standard error formula would not apply, and it is unclear to what population the inference would apply.  Recall that when sampling without replacement from a finite population, the observations can be considered independent when sampling less than 10\% of the population.  
-\item[Sample size / nearly normal population.] We saw in Section~\ref{distributionofxbar} that in order for the sampling distribution for a sample mean to be nearly normal, we also need the sample to be drawn from a nearly normal population or we need the sample size to be at least 30 ($n\ge 30$).     
+\item[Independence.]
+  Observations can be considered independent when the data are
+  collected from a \emph{random process}, such as rolling a die,
+  or from a \emph{random sample}.
+  Without a random sample or process, the standard error formula
+  would not apply, and it is unclear to what population the
+  inference would apply.
+  Recall that when sampling without replacement from a finite
+  population, the observations can be considered independent when
+  sampling less than 10\% of the population.  
+\item[Sample size / nearly normal population.]
+  We saw in Section~\ref{distributionofxbar} that in order for
+  the sampling distribution for a sample mean to be nearly normal,
+  we also need the sample to be drawn from a nearly normal population
+  or we need the sample size to be at least 30 ($n\ge 30$).     
 \end{description}
 
 What should we do when the sample size is small and we are not sure whether the population distribution is nearly normal?  In this case, the best we can do is look at the data for excessive skew.  If the data are very skewed or have obvious outliers, this suggests that the sample did not come from a nearly normal population.  However, if the data do not show obvious skew or outliers, then the idea of a nearly normal population is generally considered \emph{reasonable}.  
@@ -1516,14 +1529,19 @@ Often times we wish to compare two groups to each other to answer questions such
 %%
 \subsection{Sampling distribution for the difference of two means (review)}
 \label{differenceOfTwoMeans}
-In this section we are interested in comparing the means of two independent groups. We want to estimate how far apart $\mu_1$ and $\mu_2$ are and test whether their difference is zero or not.  Before we perform inference for the difference of means, we must review the sampling distribution for $\bar{x}_1-\bar{x}_2$, which will become our point estimate for $\mu_1 - \mu_2$.  We know from Section~\ref{distributionofdifference} that when the independence condition is satisfied, the sampling distribution for $\bar{x}_1-\bar{x}_2$ is centered on $\mu_1-\mu_2$ and has standard deviation:
+In this section we are interested in comparing the means of two independent groups.
+We want to estimate how far apart $\mu_1$ and $\mu_2$ are and test whether their difference is zero or not.
+Before we perform inference for the difference of means, let's review the sampling distribution for $\bar{x}_1-\bar{x}_2$, which will be used as the point estimate for $\mu_1 - \mu_2$.
+We know from Section~\ref{distributionofdifference} that when the
+independence condition is satisfied, the sampling distribution for
+$\bar{x}_1-\bar{x}_2$ is centered on $\mu_1-\mu_2$ and has standard
+deviation of
 \begin{align*}
-\sigma_{\bar{x}_{1} - \bar{x}_{2}}= \sqrt{\frac{\sigma_{1}^2}{n_{1}} + \frac{\sigma_{2}^2}{n_{2}}} \\
+\sigma_{\bar{x}_{1} - \bar{x}_{2}}= \sqrt{\frac{\sigma_{1}^2}{n_{1}} + \frac{\sigma_{2}^2}{n_{2}}}
 \end{align*}
-
-When the individual population standard deviations are unknown, we estimate the standard deviation of $\bar{x}_1-\bar{x}_2$ using the Standard Error, abbreviated SE.  The SE of $\bar{x}_1-\bar{x}_2$ is found as follows:
+When the individual population standard deviations are unknown, we estimate the standard deviation of $\bar{x}_1-\bar{x}_2$ using the Standard Error, abbreviated $SE$, by plugging in the sample standard deviations as our best guesses of the population standard deviations:
 \begin{align*}
-SE_{\bar{x}_{1} - \bar{x}_{2}}= \sqrt{\frac{s_{1}^2}{n_{1}} + \frac{s_{2}^2}{n_{2}}} \\
+SE_{\bar{x}_{1} - \bar{x}_{2}}= \sqrt{\frac{s_{1}^2}{n_{1}} + \frac{s_{2}^2}{n_{2}}}
 \end{align*}
 
 The difference of two sample means $\bar{x}_1-\bar{x}_2$ follows a nearly normal distribution when certain conditions are met.  First, the sampling distribution for each sample mean must be nearly normal, and second, the observations must be independent, both within and between groups. Under these two conditions, the sampling distribution for $\bar{x}_1 - \bar{x}_2$ may be well approximated using the normal model.
@@ -1535,13 +1553,25 @@ The difference of two sample means $\bar{x}_1-\bar{x}_2$ follows a nearly normal
 When comparing two means, we carry out inference on a difference of means, $\mu_1-\mu_2$.  We will use the $t$-distribution just as we did when carrying out inference on a single mean.  In order to use the $t$-distribution, we need the \textbf{sampling distribution for $\bar{x}_1-\bar{x}_2$ to be nearly normal}.  We check whether this assumption is reasonable by verifying the following conditions.
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Independence.] Observations can be considered independent when the data are collected from two independent random samples or from a randomized experiment with two treatments.  Randomly assigning subjects to treatments is equivalent to randomly assigning treatments to subjects.  When sampling without replacement, the observations can be considered independent when the sample size is less than 10\% of the population size for both samples.
-\item[Sample size / nearly normal population.] Both population distributions should be nearly normal or both sample sizes should be at least 30.  As before, if the sample sizes are small and the population distributions are not known to be nearly normal, we look at the data for excessive skew or outliers.  If we do not find excessive skew or outliers in either group, we consider the assumption that the populations are nearly normal to be reasonable.
-
+\item[Independence.]
+  Observations can be considered independent when the data are
+  collected from two independent random samples or from a
+  randomized experiment with two treatments.
+  Randomly assigning subjects to treatments is equivalent
+  to randomly assigning treatments to subjects.
+  When sampling without replacement, the observations can be
+  considered independent when the sample size is less than 10\%
+  of the population size for both samples.
+\item[Sample size / nearly normal population.]
+  Each population distribution should be nearly normal
+  or each sample size should be at least 30.
+  As before, if the sample sizes are small and the population
+  distributions are not known to be nearly normal,
+  we look at the data for excessive skew or outliers.
+  If we do not find excessive skew or outliers in either group,
+  the assumption that the populations are nearly normal to be
+  reasonable is typically considered reasonable.
 \end{description}
-
-
-\D{\newpage}
 
 %%
 \subsection{Confidence intervals for a difference of means}
