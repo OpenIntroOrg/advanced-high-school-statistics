@@ -166,41 +166,32 @@ the probability that:
 \end{parts}
 }{}
 
-% 11 - edu_attain_couples
+% 11 - edu_attain_parent_teen
 
-\eoce{\qt{Educational attainment of couples\label{edu_attain_couples}} The table 
-below shows the distribution of education level attained by US residents by 
-gender based on data collected in the 2010 American Community Survey.
-\footfullcite{eduSex}
-\begin{center}
-\begin{tabular}{l p{7cm} c c }
-&                                       & \multicolumn{2}{c}{\textit{Gender}} \\
-\cline{3-4}
-&                                                   & Male  & Female \\
-\cline{2-4}
-& Less than 9th grade                               & 0.07  & 0.13 \\
-& 9th to 12th grade, no diploma                     & 0.10  & 0.09 \\
-\textit{Highest}    & HS graduate (or equivalent)   & 0.30  & 0.20 \\
-\textit{education}  & Some college, no degree       & 0.22  & 0.24 \\ 
-\textit{attained}   & Associate's degree            & 0.06  & 0.08 \\
-& Bachelor's degree                                 & 0.16  & 0.17 \\
-& Graduate or professional degree                   & 0.09  & 0.09 \\
-\cline{2-4} 
-& Total                                             & 1.00  & 1.00
+\eoce{\qt{Educational attainment\label{edu_attain_parent_teen}} The \data{family\_\hspace{0.3mm}college} data set contains a sample of 792 cases with two variables, \var{teen} and \var{parents}, and is summarized below.\footnote{A simulated data set based on real population summaries at \oiRedirect{textbook-student_parent_college_2001}{nces.ed.gov/pubs2001/2001126.pdf}.} The \var{teen} variable is either \resp{college} or \resp{not}, where the \var{college} label means the teen went to college immediately after high school. The~\var{parents} variable takes the value \resp{degree} if at least one parent of the teenager completed a college degree.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{ll rr r rr}
+  && \multicolumn{2}{c}{\var{parents}} & \hspace{1cm} &  \\
+  \cline{3-4}
+	&& \resp{degree} & \resp{not} & Total  \\
+  \cline{2-5}
+	& \resp{college}     & 231 & 214 & 445 \\
+\raisebox{1.5ex}[0pt]{\var{teen}}	& \resp{not} \hspace{0.5cm} & 49 & 298 & 347   \\
+  \cline{2-5}
+	& Total & 280 & 512 & 792 \\
 \end{tabular}
-\end{center}
-\begin{parts}
-\item What is the probability that a randomly chosen man has at least a 
-Bachelor's degree?
-\item What is the probability that a randomly chosen woman has at least a 
-Bachelor's degree?
-\item What is the probability that a man and a woman getting married both have at 
-least a Bachelor's degree? Note any assumptions you must make to answer this 
-question.
-\item If you made an assumption in part~(c), do you think it was reasonable? If 
-you didn't make an assumption, double check your earlier answer and then return 
-to this part.
-\end{parts}
+\caption{Contingency table summarizing the \data{family\_\hspace{0.3mm}college} data set.}
+\label{contTableOfParStCollege}
+\end{table}
+		
+	\begin{parts}
+		\item For a randomly selected case, what is the probability that a parent completed a college degree?
+		\item For a randomly selected case, what is the probability that the teen went to college immediately after high school?
+		\item For a randomly selected case, what is the probability that a parent completed a college degree \emph{and} teen went to college immediately after high school?  
+		\item Is P(a parent completed college degree \emph{and} teen went to college immediately after high school) = P(parent completed college degree) x P(teen went to college immediately after high school)?  Explain why this is or is not the case.
+	\end{parts}
 }{}
 
 % 12 - school_absences
