@@ -100,7 +100,7 @@ When we use the sample standard deviation $s$ in place of the population standar
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.58\textwidth]{ch_inference_for_means/figures/tDistCompareToNormalDist/tDistCompareToNormalDist}
+\includegraphics[width=0.55\textwidth]{ch_inference_for_means/figures/tDistCompareToNormalDist/tDistCompareToNormalDist}
 \caption{Comparison of a $t$-distribution (solid line) and a normal distribution (dotted line).}
 \label{tDistCompareToNormalDist}
 \end{figure}
@@ -109,7 +109,7 @@ The $t$-distribution, always centered at zero, has a single parameter: degrees o
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.83\textwidth]{ch_inference_for_means/figures/tDistConvergeToNormalDist/tDistConvergeToNormalDist}
+\includegraphics[width=0.72\textwidth]{ch_inference_for_means/figures/tDistConvergeToNormalDist/tDistConvergeToNormalDist}
 \caption{The larger the degrees of freedom, the more closely the $t$-distribution resembles the standard normal distribution.}
 \label{tDistConvergeToNormalDist}
 \end{figure}
@@ -330,6 +330,8 @@ $n$ & $\bar{x}$ & $s$ & minimum & maximum \\
 
 Because we are estimating a mean, we would like to construct a $t$-interval, but first we must check whether the conditions for using a $t$-interval are met.  We will start by assuming that the sample of 19 Risso's dolphins constitutes a random sample.  Next, we note that the sample size is small (less than 30), and we do not know whether the distribution of mercury content for all dolphins is nearly normal.  Therefore, we must look at the data.  Since we do not have all of the data to graph, we look at the summary statistics provided in Figure~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}. These summary statistics do not suggest any strong skew or outliers; all observations are within 2.5 standard deviations of the mean. Based on this evidence, we believe it is reasonable that the population distribution of mercury content in dolphins could be nearly normal.  
 
+\D{\newpage}
+
 With both conditions met, we will construct a 95\% confidence interval.  Recall that a confidence interval has the following form:
 \begin{eqnarray*}
 \text{point estimate} \ \pm\  \text{critical value}\times SE\text{ of estimate}
@@ -408,9 +410,15 @@ To carry out a complete confidence interval procedure to estimate a single \mbox
 \end{itemize}\end{onebox}
 
 \begin{examplewrap}
-\begin{nexample}
-{The FDA's webpage provides some data on mercury content of fish.\footnotemark\, Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. Construct an appropriate 95\% confidence interval for the true average mercury content of croaker white fish (Pacific). Is there evidence that the average mercury content is greater than 0.275 ppm?  Use the five step framework to organize your work.  
-}
+\begin{nexample}{The FDA's webpage provides some data on mercury content of fish.
+    Based on a sample of 15 croaker white fish (Pacific), a sample mean and
+    standard deviation were computed as 0.287 and 0.069 ppm (parts per million),
+    respectively.
+    The 15 observations ranged from 0.18 to 0.41 ppm.
+    Construct an appropriate 95\% confidence interval for the true average
+    mercury content of croaker white fish (Pacific).
+    Is there evidence that the average mercury content is greater than 0.275 ppm?
+    Use the five step framework to organize your work.}
 \label{croakerWhiteFishPacificExerConditions}
 \begin{description}
 \item[\inferencestep{Identify}] The parameter of interest is the true mean mercury content in croaker white fish (Pacific).  We want to estimate this at the 95\% confidence level.  
@@ -436,7 +444,6 @@ So the 95\% confidence interval is given by:
 \end{description}
 \end{nexample}
 \end{examplewrap}
-\footnotetext{\oiRedirect{textbook-fda_mercury_in_fish_2010}{www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm}} 
 
 
 \begin{examplewrap}
@@ -791,7 +798,7 @@ The average time for all runners who finished the Cherry Blossom Run in 2006 was
 \end{exercisewrap}
 \footnotetext{Choose \calctext{T-Test} or equivalent.  Let $\calctextmath{\mu_0}$ be \cherryblossomnull{}. $\calctextmath{\bar{x}}$ is \cherryblossommean{}, $\calctextmath{S_x}$ is \cherryblossomsd{}, and $\calctext{n} = \cherryblossomn{}$.  Choose $\calctextmath{\neq}$ to correspond to $H_A$. We get $\calctextmath{t} =2.353$ and the p-value \calctext{p} = 0.021.}
 
-\index{t-test@$t$-test!for a mean|)}.
+\index{t-test@$t$-test!for a mean|)}
 
 \D{\newpage}
 
@@ -1139,25 +1146,26 @@ To carry out a complete hypothesis test to test the claim that a mean of differe
 \item[] If the p-value is $> \alpha$, do not reject $H_0$; there is not sufficient evidence that [$H_A$ in context].
 \end{itemize}\end{onebox}
 
-
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{ch_inference_for_means/figures/satImprovementHTDataHistogram/satImprovementHTDataHistogram}
-\caption{SAT score after course - SAT score before course. }
-\label{satImprovementHTDataHistogramrepeat}
-\end{figure}
-
 \begin{examplewrap}
-\begin{nexample}
-{An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, so we have a difference in scores for each student. We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$ as a sample to evaluate the company's claim. The distribution of the differences, shown in Figure~\ref{satImprovementHTDataHistogramrepeat}, has a mean of 135.9 and a standard deviation of 82.2. Do these data provide convincing evidence to back up the company's claim?  Use the five step framework to organize your work.  
-}
+\begin{nexample}{An SAT preparation company claims that its students' scores
+    improve by over 100 points on average after their course.
+    A~consumer group would like to evaluate this claim, and they collect data
+    on a random sample of 30 students who took the class.
+    Each of these students took the SAT before and after taking the company's
+    course, so we have a difference in scores for each student.
+    We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$.
+    The distribution of the differences has a mean of 135.9, a standard
+    deviation of 82.2, and is shown below.
+    Do the data provide convincing evidence to back up the company's claim?
+    Use the five step framework to organize your work.
+    \begin{center}
+    \includegraphics[width=0.38\textwidth]{ch_inference_for_means/figures/satImprovementHTDataHistogram/satImprovementHTDataHistogram}
+    \end{center}}\label{sat_prep_company_intro_example}
 \begin{description}
 \item[\inferencestep{Identify}] We will test the following hypotheses at the $\alpha=0.05$ level:\\
 $H_0$: $\mu_{\text{\emph{diff}}} = 100$. Student scores improve by 100 points, on average.   \\
 $H_A$: $\mu_{\text{\emph{diff}}} > 100$. Student scores improve by more than 100 points, on average.
-\\
-\\
+\\[2mm]
 Here,  ${\text{\emph{diff}}}$ = ${\text{SAT score after course - SAT score before course}}$.
 
 \item[\inferencestep{Choose}] Because we have paired data and the parameter to be estimated is a mean of differences, we will use a 1-sample $t$-test with paired data.
@@ -1168,18 +1176,12 @@ Here,  ${\text{\emph{diff}}}$ = ${\text{SAT score after course - SAT score befor
 \begin{align*}
 T = \frac{\text{point estimate } - \text{ null value}}{SE \text{ of estimate}}
 \end{align*}
-
-The point estimate is the sample mean of differences:  $\bar{x}_{\text{\emph{diff}}}  = 135.9$ 
-\\
-\\
-The $SE$ of the sample mean of differences is:  $\frac{s_{\text{\emph{diff}}} }{\sqrt{n_{\text{\emph{diff}}} }} = \frac{82.2}{\sqrt{30}} = 15.0$
-\\
-\\
-Since this is a one-sample $t$-test, the degrees of freedom is $n_{\text{\emph{diff}}}-1$.
+The point estimate is the sample mean of differences:  $\bar{x}_{\text{\emph{diff}}}  = 135.9$\\[1mm]
+The $SE$ of the sample mean of differences is:  $\frac{s_{\text{\emph{diff}}} }{\sqrt{n_{\text{\emph{diff}}} }} = \frac{82.2}{\sqrt{30}} = 15.0$ \\[1mm]
+Because this is a one-sample $t$-test, the degrees of freedom is $n_{\text{\emph{diff}}}-1$.
 \begin{align*}
 T = \frac{135.9-100}{\frac{82.2}{\sqrt{30}}} = \frac{135.9-100}{15.0}=2.4 \qquad df=30-1=29
 \end{align*}
-
 The p-value is the area to the right of 2.4 under the $t$-distribution with 29 degrees of freedom.  The p-value = 0.012.
 
 \item[\inferencestep{Conclude}]  p-value $=0.012<\alpha$ so we reject the null hypothesis. The data provide convincing evidence to support the company's claim that students' scores improve by more than 100 points, on average, following the class.
@@ -1195,7 +1197,15 @@ The p-value is the area to the right of 2.4 under the $t$-distribution with 29 d
 Because we found evidence to support the company's claim, does this mean that a student will score more than 100 points higher on the SAT if they take the class than if they do not take the class?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{No.  First, this is an observational study, so we cannot make a causal conclusion.  Maybe SAT test takers tend to improve their score over time even if they don't take this SAT class.  Secondly, students' scores improved by more than 100 points \emph{on average}.  That does not imply that each student improved by more than 100 points.  With a sample standard deviation of 82.2 and a mean of 135.9, some students did worse after the SAT class.  This can be verified by Figure~\ref{satImprovementHTDataHistogramrepeat}.}
+\footnotetext{No.
+    First, this is an observational study, so we cannot make a causal conclusion.
+    Maybe SAT test takers tend to improve their score over time even if they don't
+    take this SAT class.
+    Second, the test considers the average.
+    It does not imply that each student improved.
+    With a sample standard deviation of 82.2 and a mean of 135.9,
+    some students did worse after the SAT class, as shown in the histogram
+    in Example~\ref{sat_prep_company_intro_example}.}
 
 \index{data!SAT prep company|)}
 
@@ -1369,7 +1379,7 @@ The 95\% confidence interval is given by:
 \begin{figure}
 \centering
 \includegraphics[width=0.45\textwidth]{ch_inference_for_means/figures/satImprovementHTDataHistogram/satImprovementHTDataHistogram}
-\caption{SAT score after course - SAT score before course. }
+\caption{SAT score after course minus the SAT score before course. }
 \label{satImprovementHTDataHistogram3}
 \end{figure}
 
@@ -1524,7 +1534,7 @@ Often times we wish to compare two groups to each other to answer questions such
 }
 
 
-%\D{\newpage}
+\D{\newpage}
 
 %%
 \subsection{Sampling distribution for the difference of two means (review)}
@@ -1572,6 +1582,9 @@ When comparing two means, we carry out inference on a difference of means, $\mu_
   the assumption that the populations are nearly normal to be
   reasonable is typically considered reasonable.
 \end{description}
+
+
+\D{\newpage}
 
 %%
 \subsection{Confidence intervals for a difference of means}
@@ -1633,8 +1646,6 @@ Using samples of size $n_1=63$ and $n_2=64$, the typical error when using $\bar{
 \end{nexample}
 \end{examplewrap}
 
-\D{\newpage}
-
 We see that the difference of sample means of \$3,730 is more than 3 $SE$ above 0, which makes us think that the difference being 0 is unreasonable.  We would like to construct a 95\% confidence interval for the theoretical difference in mean salary that would be offered to John versus Jennifer.  For this, we need the degrees of freedom associated with a two-sample $t$-interval.  
 
 For the one-sample $t$-procedure, the degrees of freedom is given by the simple expression $n-1$, where $n$ is the sample size.  For the two-sample $t$-procedures, however, there is a complex formula for calculating the degrees of freedom, which is based on the two sample sizes and the two sample standard deviations.  In practice, we find the degrees of freedom using software or a calculator (see Section~\ref{2SampTint}).  If this is not possible, the alternative is to use the smaller of $n_1-1$ and $n_2-1$.
@@ -1659,7 +1670,7 @@ We noted previously that this is an experiment and that the two treatments (name
 
 Based on this interval, we are 95\% confident that the true difference in mean salary that these faculty would offer John versus Jennifer is between \$1,495 and \$6,055.  That is, we are 95\% confident that the mean salary these faculty would offer John for a lab manager position is between \$1,446 and \$6,014 \emph{more} than the mean salary they would offer Jennifer for the position.
 
-The results of these studies and others like it are alarming and disturbing.\footnote{A similar study sent out identical resumes with different names to investigate the importance of perceived race.  Resumes with a name commonly perceived to be for a White person (e.g. Emily) were 50\% more likely to receive a callback than the same resume with a name commonly perceived to be for a Black person (e.g. Lakisha).  \oiRedirect{textbook-emily-lakisha}{https://www.nber.org/papers/w9873}}   One aspect that makes this bias so difficult to address is that the experiment, as well-designed as it was, cannot send us much signal about \emph{which} faculty are
+The results of these studies and others like it are alarming and disturbing.\footnote{A similar study sent out identical resumes with different names to investigate the importance of perceived race.  Resumes with a name commonly perceived to be for a White person (e.g. Emily) were 50\% more likely to receive a callback than the same resume with a name commonly perceived to be for a Black person (e.g. Lakisha). More information is given in Appendix~\ref{data_appendix} -- see the \data{resume} data set.}   One aspect that makes this bias so difficult to address is that the experiment, as well-designed as it was, cannot send us much signal about \emph{which} faculty are
 discriminating.  Each faculty member received only one of the resumes.  A faculty member that offered ``Jennifer" a very low salary may have also offered ``John" a very low salary.  
 
 We might imagine an experiment in which each faculty received both resumes, so that we could compare how much they would offer a Jennifer versus a John.  However, the matched pairs scenario is clearly not possible in this case, because what makes the experiment work is that the resumes are \emph{exactly the same} except for the name. An employer would notice something fishy if they received two identical resumes.  It is only possible to say that overall, the faculty were willing to offer John more money for the lab manager position than Jennifer.  Finding proof of bias for individual cases is a persistent challenge in enforcing anti-discrimination laws.
