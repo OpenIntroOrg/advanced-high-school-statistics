@@ -196,6 +196,8 @@ Sometimes two variables is one too many: only one variable may be of interest. I
 
 \setlength{\captionwidth}{\mycaptionwidth}
 
+\D{\newpage}
+
 Rather than look at the data as a list of numbers, which makes the distribution difficult to discern, we will organize it into a table called a \term{stem-and-leaf plot} shown in Figure~\ref{stemandleafemail50}. In a stem-and-leaf plot, each number is broken into two parts. The first part is called the \term{stem} and consists of the beginning digit(s). The second part is called the \term{leaf} and consists of the final digit(s). The stems are written in a column in ascending order, and the leaves that match up with those stems are written on the corresponding row. Figure~\ref{stemandleafemail50} shows a stem-and-leaf plot of the number of characters in 50 emails. The stem represents the ten thousands place and the leaf represents the thousands place. For example, \texttt{1 $|$ 2} corresponds to 12 thousand. When making a stem-and-leaf plot, remember to include a legend that describes what the stem and what the leaf represent. Without this, there is no way of knowing if 1 $|$ 2  represents 1.2, 12, 120, 1200, etc.
 
 \begin{figure}[h]
@@ -244,6 +246,8 @@ When there are too many numbers on one row or there are only a few stems, we \em
 \label{splitstemandleaf50email}
 \end{figure}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 What is the smallest number in the \data{email50} data set? What is the largest?\footnotemark
@@ -252,8 +256,6 @@ What is the smallest number in the \data{email50} data set? What is the largest?
 \footnotetext{The smallest number is less than 1 thousand, and the largest is 64 thousand. That is a big range!}
 
 %\Add{Many emails are short, but some are very long. An investigation of the data would reveal that most of the long emails use the HTML format, which means most of the characters in those emails are used to format the email rather than provide text.} % Omitting since it doesn't have any clear connection to the surrounding text.
-
-\D{\newpage}
 
 Another simple graph for univariate numerical data is a dot plot. A~\term{dot plot} uses dots to show the \term{frequency}, or number of occurrences, of the values in a data set. The higher the stack of dots, the greater the number occurrences there are of the corresponding value. An example using the same data set, number of characters from 50 emails, is shown in Figure~\ref{emailCharactersDotPlotStacked}.
 
@@ -295,6 +297,8 @@ Examination of data for possible outliers serves many useful purposes, including
 \item Providing insight into interesting properties of the data.\vspace{0.5mm}
 \end{enumerate}\end{onebox}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 The observation 64 thousand, a suspected outlier, was found to be an accurate observation. What would such an observation suggest about the nature of character counts in emails?\footnotemark
@@ -331,10 +335,12 @@ Count & 19 & 12 & 6 & 2 & 3 & 5 & $\cdots$ & 0 & 1 \\
 
 \begin{figure}[bth]
    \centering
-    \oiRedirect{tableau-histogramschoose}{\includegraphics[width=0.82\textwidth]{ch_summarizing_data/figures/email50NumCharHist/email50NumCharHist}}
+    \oiRedirect{tableau-histogramschoose}{\includegraphics[width=0.8\textwidth]{ch_summarizing_data/figures/email50NumCharHist/email50NumCharHist}}
    \caption{A histogram of \var{num\_\hspace{0.3mm}char}. This histogram uses bins or class intervals of width 5.  Explore this histogram and dozens of histograms using American Community Survey data on Tableau Public~\tableauhref{tableau-histogramschoose}.}
    \label{email50NumCharHist}
 \end{figure}
+
+\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -406,13 +412,13 @@ To answer this question, we do a subtraction. $\approx$39 had fewer than 15-20 t
 \end{nexample}
 \end{examplewrap}
 
+\D{\newpage}
+
 \begin{examplewrap}
 \begin{nexample}{Approximately 25 of the emails had fewer than how many characters?}
 This time we are given a cumulative frequency, so we start at 25 on the vertical axis and trace it across to see which bin it hits. It hits the 5-10 thousand bin, so 25 of the emails had fewer than a value somewhere between 5 and 10 thousand characters.
 \end{nexample}
 \end{examplewrap}
-
-\D{\newpage}
 
 Knowing that 25 of the emails had fewer than a value between 5 and 10 thousand characters is useful information, but it is even more useful if we know what percent of the total 25 represents. Knowing that there were 50 total emails tells us that $25 / 50 = 0.5 = 50\%$ of the emails had fewer than a value between 5 and 10 thousand characters. When we want to know what fraction or percent of the data meet a certain criteria, we use relative frequency instead of frequency. \termsub{Relative frequency}{relative frequency} is a fancy term for percent or proportion. It tells us how large a number is relative to the total.
 
@@ -452,14 +458,14 @@ Take a look at the dot plot in Figure~\ref{emailCharactersDotPlotStacked}. Can y
 \end{exercisewrap}
 \footnotetext{The skew is visible in all three plots. However, it is not easily visible in the cumulative frequency histogram.}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 Would you expect the distribution of number of pets per household to be right skewed, left skewed, or approximately symmetric?  Explain.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{We suspect most households would have 0, 1, or 2 pets but that a smaller number of households will have 3, 4, 5, or more pets, so there will be greater density over the small numbers, suggesting the distribution will have a long right tail and be right skewed.}
-
-\D{\newpage}
 
 In addition to looking at whether a distribution is skewed or symmetric, histograms, stem-and-leaf plots, and dot plots can be used to identify modes. A \term{mode} is represented by a prominent peak in the distribution.\footnote{Another definition of mode, which is not typically used in statistics, is the value with the most occurrences. It is common to have \emph{no} observations with the same value in a data set, which makes this other definition useless for many real data sets.} There is only one prominent peak in the histogram of \var{num\_\hspace{0.3mm}char}.
 
@@ -482,11 +488,13 @@ Height measurements of young students and adult teachers at a K-3 elementary sch
 \begin{onebox}{Looking for modes}
 Looking for modes isn't about finding a clear and correct answer about the number of modes in a distribution, which is why \emph{prominent} is not rigorously defined in this book. The important part of this examination is to better understand your data and how it might be structured.\end{onebox}
 
+
+\D{\newpage}
+
 \subsection{Descriptive versus inferential statistics}
 
 Finally, we note that the graphical summaries of this section and the numerical summaries of the next section fall into the realm of \term{descriptive statistics}.  Descriptive statistics is about describing or summarizing data; it does not attribute properties of the data to a larger population.  \termsub{Inferential statistics}{inferential statistics}, on the other hand, uses samples to generalize or to infer something about a larger population.  We will have to wait until Chapter~5 to enter the exciting world of inferential statistics.
 
-\D{\newpage}
 
 %%
 \subsection*{Section summary}
@@ -599,6 +607,8 @@ Example~\ref{wtdMeanOfIncome} used what is called a \term{weighted mean}\index{m
 \begin{center}
 \oiRedirect{stat_extra_weighted_mean}{www.openintro.org/go?id=stat\_extra\_weighted\_mean}
 \end{center}
+
+\D{\newpage}
 
 The median provides another measure of center. The \term{median} splits an ordered data set in half. There are 50 character counts in the \data{email50} data set (an even number) so the data are perfectly split into two groups of~25. We take the median in this case to be the average of the two middle observations: $(\text{6,768} + \text{7,012}) / 2 = \text{6,890}$. When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in this case that observation is the median (no average needed).
 
@@ -2065,6 +2075,8 @@ To find an area under the normal curve using a calculator, first identify a lowe
 \end{examplewrap}
 \footnotetext{normalcdf gives the result without drawing the graph. To draw the graph, do 2nd VARS, DRAW, 1:ShadeNorm. However, beware of errors caused by other plots that might interfere with this plot.}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 Find the area under the normal curve to right of $Z=2$.~\footnotemark
@@ -2112,7 +2124,7 @@ TI-83: Do steps 1-2, then enter the percentile as a decimal, e.g.~\mbox{\calctex
 \footnotetext{If 20\% of the area is the right, then 80\% of the area is to the left. Letting area be 0.80, we get $Z = 0.841$.}
 
 
-\B{\newpage}
+\D{\newpage}
 
 %%
 \subsection*{Section summary}
@@ -3207,6 +3219,8 @@ model was true, and under this condition,
 we expect the difference to be near zero with some random
 fluctuation, where \emph{near} is pretty generous in this
 case since the sample sizes are so small in this study.
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{Given the results of the simulation shown in Figure~\ref{malaria_rand_dot_plot}, about how often would you expect to observe a result as large as \malariaIRDiffPerc{} if $H_0$ were true?} 

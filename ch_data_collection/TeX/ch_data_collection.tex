@@ -75,7 +75,7 @@ This chapter focuses on collecting data. We'll discuss basic properties of data,
 \subsection{Case study}
 Section~\ref{basicExampleOfStentsAndStrokes} introduces a classic challenge in statistics: evaluating the efficacy of a medical treatment. Terms in this section, and indeed much of this chapter, will all be revisited later in the text. The plan for now is simply to get a sense of the role statistics can play in practice.
 
-In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke.\footnote{Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011. Stenting versus Aggressive Medical Therapy for Intracranial Arterial Stenosis. New England Journal of Medicine 365:993-1003. \oiRedirect{textbook-nejm_stent_study}{www.nejm.org/doi/full/10.1056/NEJMoa1105335}. NY Times article reporting on the study: \oiRedirect{textbook-nytimes_stent_study}{www.nytimes.com/2011/09/08/health/research/08stent.html}.} Stents are devices put inside blood vessels that assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
+In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke. (As you read the main text of this book, you can refer to the original data sources and in many cases access the corresponding data sets via the Data Appendix, i.e.~Appendix~\ref{appendix_data}, starting on page~\pageref{appendix_data}.) Stents are devices put inside blood vessels that assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
 \begin{quote}
 Does the use of stents reduce the risk of stroke?
 \end{quote}
@@ -144,9 +144,9 @@ We can compute summary statistics from the table. A \term{summary statistic} is 
 \end{itemize}
 These two summary statistics are useful in looking for differences in the groups, and we are in for a surprise: an additional 8\% of patients in the treatment group had a stroke! This is important for two reasons. First, it is contrary to what doctors expected, which was that stents would \emph{reduce} the rate of strokes. Second, it leads to a statistical question: do the data show a ``real'' difference between the groups?
 
-This second question is subtle. Suppose you flip a coin 100 times. While the chance a coin lands heads in any given coin flip is 50\%, we probably won't observe exactly 50 heads. This type of fluctuation is part of almost any type of data generating process. It is possible that the 8\% difference in the stent study is due to this natural variation. However, the larger the difference we observe (for a particular sample size), the less believable it is that the difference is due to chance. So what we are really asking is whether the difference is \term{statistically significant}, that is, whether the difference so large that we should reject the notion that it was due to chance. 
-
 \D{\newpage}
+
+This second question is subtle. Suppose you flip a coin 100 times. While the chance a coin lands heads in any given coin flip is 50\%, we probably won't observe exactly 50 heads. This type of fluctuation is part of almost any type of data generating process. It is possible that the 8\% difference in the stent study is due to this natural variation. However, the larger the difference we observe (for a particular sample size), the less believable it is that the difference is due to chance. So what we are really asking is whether the difference is \term{statistically significant}, that is, whether the difference so large that we should reject the notion that it was due to chance. 
 
 While we don't yet have the statistical tools to fully address this question on our own, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.
 
@@ -925,11 +925,12 @@ In general, association does not imply causation, and causation can only be infe
 \end{onebox}
 
 
-\D{\newpage}
+%\D{\newpage}
 
 %%
 \subsection*{Section summary}
 \begin{itemize}
+\setlength{\itemsep}{0.5mm}
 \item The \term{population} is the entire group that the researchers are interested in.  Because it is usually too costly to gather the data for the entire population, researchers will collect data from a \term{sample}, representing a subset of the population.
 
 \item A \term{parameter} is a true quantity for the entire population, while a \term{statistic} is what is calculated from the sample.  A parameter is about a population and a statistic is about a sample.  Remember: \textit{p goes with p and s goes with s}.  
@@ -1010,6 +1011,9 @@ Suppose an observational study tracked sunscreen use and skin cancer, and it was
 \footnotetext{No. See the paragraph following the exercise for an explanation.}
 
 Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer. One important piece of information that is absent is sun exposure. Sun exposure is what is called a \term{confounding variable} (also called a \term{lurking variable}, \term{confounding factor}, or a \term{confounder}).
+
+\D{\newpage}
+
 \begin{center}
 \includegraphics[width=0.57\textwidth]{ch_data_collection/figures/variables/sunCausesCancer}
 \end{center}
@@ -1115,6 +1119,8 @@ A common downfall is a \term{convenience sample}\index{sample!convenience sample
 \label{surveySample}
 \end{figure}
 
+\D{\newpage}
+
 Similarly, a \term{volunteer sample} is one in which people's responses are solicited and those who choose to participate, respond. This is a problem because those who choose to participate may tend to have different opinions than the rest of the population, resulting in a biased sample.
 
 \begin{exercisewrap}
@@ -1164,7 +1170,6 @@ Almost all statistical methods for observational data rely on a sample being ran
 
 The idea of a simple random sample was introduced in the last section. Here we provide a more technical treatment of this method and introduce four new random sampling methods: systematic, stratified, cluster, and multistage.\footnote{Multistage sampling is not part of the AP syllabus.} Figure~\ref{simple_systematic} provides a graphical representation of simple versus systematic sampling while Figure~\ref{stratified_cluster_multistage} provides a graphical representation of stratified, cluster, and multistage sampling.
 
-
 \begin{figure}[p]
 \centering
 \Figures{0.9}{samplingMethodsFigure}{simple_systematic}
@@ -1194,7 +1199,7 @@ Answers can vary. If we take a sample of size 3, then it is possible that we cou
 
 Sometimes there is a variable that is known to be associated with the quantity we want to estimate. In this case, a stratified random sample might be selected. \termsub{Stratified sampling}{sample!stratified sampling} is a divide-and-conquer sampling strategy. The population is divided into groups called \term{strata}\index{sample!strata|textbf}. The strata are chosen so that similar cases are grouped together and a sampling method, usually simple random sampling, is employed to select a certain number or a certain proportion of the whole within each stratum. In the baseball salary example, the 30 teams could represent the strata; some teams have a lot more money (we're looking at you, Yankees).
 
-\begin{figure}
+\begin{figure}[p]
 \centering
 \Figures{0.85}{samplingMethodsFigure}{stratified_cluster_multistage}
 \caption{Examples of stratified, cluster, and multistage sampling. In the top panel, stratified sampling was used: cases were grouped into strata, and then simple random sampling was employed within each stratum. In the middle panel, cluster sampling was used, where data were binned into nine cluster and three clusters were randomly selected. In the bottom panel, multistage sampling was used. Data were binned into the nine clusters, three of the cluster were randomly selected, and then six cases were randomly sampled in each of the three selected clusters.}
