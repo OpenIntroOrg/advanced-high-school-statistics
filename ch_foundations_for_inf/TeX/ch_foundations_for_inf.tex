@@ -59,7 +59,6 @@ broader population?  Why is a larger sample generally preferable to a smaller sa
 }
 
 
-\D{\newpage}
 
 %%
 \subsection{Point estimates}
@@ -132,8 +131,6 @@ $\bar{x} = 11,160$ is our best estimate for $\mu$.
 %Why do we want a point estimate to be both accurate and precise?
 %}
 
-
-\D{\newpage}
 
 %%
 \subsection{Understanding the variability of a point estimate}
@@ -223,8 +220,6 @@ sum(sampled\_entries == "support") / \pewsolarpollsize{}}
 \end{figure}
 % \setlength\textwidth{\officialtextwidth}
 
-\D{\newpage}
-
 One simulation isn't enough to get a great sense of the
 distribution of estimates we might expect in the simulation,
 so we should run more simulations.
@@ -310,8 +305,6 @@ Remember though, that this is only true for \emph{random} samples.
 Additionally, a~bigger sample cannot correct for response bias or other types of bias that may be present.
 
 
-\D{\newpage}
-
 %%
 \subsection{Introducing the standard error}
 
@@ -322,7 +315,17 @@ SD_{\hat{p}}&=\sqrt{\frac{p(1-p)}{n}} = \sqrt{\frac{(.088)(1-0.88)}{n}}= 0.01
 If we now look at the sampling distribution, we see that the typical distance sample proportions are from the true value of 0.88 is about 0.01.
 
 \begin{examplewrap}
-\begin{nexample}{Consider a random sample of size 80 from a population.  We find that 15\% of the sample support a controversial new ballot measure.  How far is our estimate likely to be from the true percent that support the measure?}  We would like to calculate the standard deviation of $\hat{p}$, but we run into a serious problem: $p$ is \emph{unknown}. In fact, when doing inference, $p$ must be unknown, otherwise it is illogical to try to estimate it. We cannot calculate the $SD$, but we can estimate it using, you might have guessed, the sample proportion $\hat{p}$.
+\begin{nexample}{Consider a random sample of size 80 from a county population.
+    We find that 15\% of the sample support a controversial new ballot measure
+    at the state level.
+    How far is our estimate likely to be from the true percent that support
+    the measure?}
+We would like to calculate the standard deviation of $\hat{p}$,
+but we run into a serious problem: $p$ is \emph{unknown}.
+In fact, when doing inference, $p$ must be unknown, otherwise it is illogical
+to try to estimate it.
+We cannot calculate the $SD$, but we can estimate it using, you might have
+guessed, the sample proportion $\hat{p}$.
 \end{nexample}
 \end{examplewrap}
  
@@ -349,8 +352,6 @@ The larger the sample size, the smaller our standard error. This is consistent w
 \end{nexample}
 \end{examplewrap}
 
-
-\D{\newpage}
 
 %%
 \subsection{Basic properties of point estimates}
@@ -486,8 +487,6 @@ A plausible range of values for the population parameter is called a \term{confi
 If we report a point estimate, we probably will not hit the exact population parameter. On the other hand, if we report a range of plausible values -- a confidence interval -- we have a good shot at capturing the parameter.
 
 
-\D{\newpage}
-
 %%
 
 \subsection{Constructing a 95\% confidence interval}
@@ -512,18 +511,35 @@ We can be \textbf{95\% confident} that this interval captures the true value.\en
 In the next chapters we will determine when we can apply a normal model to a point estimate. For now, we will assume that a normal model is reasonable. 
 
 \begin{examplewrap}
-\begin{nexample}{The point estimate from the smoking example was 15\%. The standard error for this point estimate was calculated to be $SE = 0.04$. Assuming that conditions for a normal model are met, construct and interpret a 95\% confidence interval.  }
+\begin{nexample}{The point estimate of the support for a ballot measure
+    from Section~\ref{pointEstimates} was 15\% from a sample size of~80.
+    The standard error for this point estimate was calculated to be $SE = 0.04$.
+    Assuming that conditions for a normal model are met,
+    construct and interpret a 95\% confidence interval.  }
 \begin{align*}
 \text{point estimate}\ &\pm \ 1.96\times SE \text{ of estimate} \\
 0.15\  &\pm \ 1.96\times 0.04\\
 (0.071&6\text{, } 0.2284)
 \end{align*}
-We are 95\% confident that the true percent of smokers in this population is between 7.16\% and 22.84\%.
+We are 95\% confident that the true percent of support in this population
+for the ballot measure is between 7.16\% and 22.84\%.
 \end{nexample}
 \end{examplewrap}
 
 \begin{examplewrap}
-\begin{nexample}{Based on the confidence interval above, is there evidence that a smaller proportion smoke in this county than in the state as a whole? The proportion that smoke in the state is known to be 0.20.}While the point estimate of 0.15 is lower than 0.20, this deviation is likely due to random chance. Because the confidence interval \emph{includes} the value 0.20, 0.20 is a reasonable value for the proportion of smokers in the county. Therefore, based on this confidence interval, we do not have evidence that a smaller proportion smoke in the county than in the state.
+\begin{nexample}{Suppose the level of support at the state level for the
+    ballot measure has been precisely estimated at 0.20 (20\%).
+    Based on the confidence interval above,
+    is there evidence that a smaller proportion support the ballot measure
+    in the specific county we're looking at relative to the state as a whole?}
+While the point estimate of 0.15 is lower than 0.20, it appears this deviation
+may be due to random chance.
+Because the confidence interval \emph{includes} the value 0.20,
+the value of 0.20 is a reasonable value for the proportion of the county
+population that support the ballot measure.
+Therefore, based on this confidence interval, we do not have evidence that
+a smaller proportion support the ballot measure in this county than in the
+state as a whole.
 \end{nexample}
 \end{examplewrap}
 
@@ -562,8 +578,6 @@ The 95\% confidence interval structure provides guidance in how to make interval
 \end{eqnarray}
 There are three components to this interval: the point estimate, ``1.96'', and the standard error. The choice of $1.96\times SE$ was based on capturing 95\% of the distribution since the estimate is within 1.96 standard deviations of the true value about 95\% of the time. The choice of 1.96 corresponds to a 95\% confidence level. 
 
-\D{\newpage}
-
 \begin{exercisewrap}
 \begin{nexercise} \label{leadInForMakingA99PercentCIExercise}
 If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?\footnotemark
@@ -600,8 +614,6 @@ If the point estimate follows a normal model with standard error $SE$, then a co
 where $z^{\star}$ depends on the confidence level selected.\end{onebox}
 
 Finding the value of $z^{\star}$ that corresponds to a particular confidence level is most easily accomplished by using a new table, called the $t$-table. For now, what is noteworthy about this table is that the bottom row corresponds to confidence levels. The numbers inside the table are the critical values, but which row should we use? Later in this book, we will see that a $t$-curve with infinite degrees of freedom corresponds to the normal curve. For this reason, when finding $z^{\star}$, we use the $t$-table at row $\infty$.
-
-\D{\newpage}
 
 \begin{figure}[hht]
 \centering
@@ -656,8 +668,6 @@ Numerically, the margin of error corresponds to the distance between the point e
 When the point estimate follows a normal distribution, 
 $$ \text{margin of error} = z^{\star}\times SE \text{ of estimate}.$$
 \end{onebox}
-
-\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{All other things being equal, will the margin of error be bigger for a 68\% confidence interval or a 95\% confidence interval?}
@@ -893,8 +903,6 @@ When the alternative claim uses a $\neq$, we call the test a \term{two-sided} te
 \begin{onebox}{One-sided and two-sided tests}
 If the researchers are only interested in showing an increase or a decrease, but not both, use a one-sided test. If the researchers would be interested in any difference from the null value -- an increase or decrease -- then the test should be two-sided.\vspace{0.5mm}\end{onebox}
 
-\D{\newpage}
-
 \begin{examplewrap}
 \begin{nexample}{For the example of the consultant's complication rate, we knew that her sample complication rate was 0.063, which was lower than the US complication rate of 0.10. Why did we conduct a two-sided hypothesis test for this setting?}
 The setting was framed in the context of the consultant being helpful, but what if the consultant actually performed worse than the US complication rate? Would we care? More than ever! Since we care about a finding in either direction, we should run a two-sided~test.
@@ -967,8 +975,6 @@ Because the p-value is 0.1754, which is larger than the significance level 0.05,
 \end{exercisewrap}
 \footnotetext{The data do not provide evidence that the consultant's complication rate is significantly lower or higher than the US complication rate of 10\%.}
 
-\D{\newpage}
-
 \begin{examplewrap}
 \begin{nexample}{In the previous exercise, we did not reject $H_0$. This means that we did not disprove the null claim. Is this equivalent to proving the null claim is~true?}
 No. We did not prove that the consultant's complication rate is \emph{exactly} equal to 10\%. Recall that the test of hypothesis starts by \emph{assuming the null claim is true}. That~is, the test proceeds as an argument by contradiction. \emph{If the null claim is true}, there is a 0.1754 chance of seeing sample data as divergent from 10\% as we saw in our sample. Because 0.1754 is large, it is within the realm of chance error, and we cannot say the null hypothesis is unreasonable.\footnotemark
@@ -1012,8 +1018,6 @@ Sometimes it's a good idea to deviate from the standard. We'll discuss when to c
 Statistical inference is the practice of making decisions and conclusions from data in the context of uncertainty. Just as a confidence interval may occasionally fail to capture the true value of the parameter, a test of hypothesis may occasionally lead us to an incorrect conclusion. While a given data set may not always lead us to a correct conclusion, statistical inference gives us tools to control and evaluate how often these errors occur.
 
 
-\D{\newpage}
-
 %%
 \subsection{Calculating the p-value by simulation (special topic)}
 \label{calcPValueUsingSimulationSubSection}
@@ -1044,8 +1048,6 @@ However, this is not our p-value! Remember that we are conducting a two-sided te
 \label{MedConsNullSim}
 \end{figure}
 
-
-\D{\newpage}
 
 %%
 \subsection{Hypothesis testing: a five step process}
@@ -1141,8 +1143,6 @@ These examples provide an important lesson: if we reduce how often we make one t
 %Hypothesis testing is built around rejecting or failing to reject the null hypothesis. That is, we do not reject $H_0$ unless the data provide strong evidence against it. But what precisely does \emph{strong evidence} mean? As a general rule of thumb, for those cases where the null hypothesis is actually true, we do not want to incorrectly reject $H_0$ more than 5\% of the time. This corresponds to our default significance level of $\alpha = 0.05$, which we use as a comparison with the p-value. In the next section, we discuss the appropriateness of different significance levels.
 
 
-\D{\newpage}
-
 %%
 \subsection{Choosing a significance level}
 \label{significanceLevel}
@@ -1228,7 +1228,6 @@ Finally, we caution that there may be no inference tools helpful when considerin
 
 
 
-
 \D{\newpage}
 
 %%
@@ -1263,9 +1262,6 @@ The \term{p-value} is the probability of getting a test statistic as extreme or 
 \item When the  p-value $< \alpha$, we say the results are \term{statistically significant} at the $\alpha$ level and we have evidence of a real difference or change.  The observed difference is beyond what would have been expected from chance variation alone.  This leads us to reject $H_0$ and gives us evidence for $H_A$.
 \item When the  p-value $> \alpha$, we say the results are not statistically significant at the $\alpha$ level and we do not have evidence of a real difference or change.  The observed difference was within the realm of expected chance variation.  This leads us to not reject $H_0$ and does not give us evidence for $H_A$.
 \end{itemize}
-
-\D{\newpage}
-
 
 \item \termsub{Decision errors}{decision errors}.  In a hypothesis test, there are two types of decision errors that could be made.  These are called Type~I and Type~II Errors. \vspace{-1mm}
 \begin{itemize}
