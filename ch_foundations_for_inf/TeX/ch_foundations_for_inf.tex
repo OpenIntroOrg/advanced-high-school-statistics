@@ -80,6 +80,8 @@ information from a sample of the population;
 we compute the observed proportion in the sample and we denote this sample proportion as $\hat{p}$.  Unless we collect responses from every individual in the sample,
 $p$ remains unknown, and we use $\hat{p}$ as our point estimate for~$p$.
 
+\D{\newpage}
+
 The difference we observe from the poll versus
 the parameter is called the \term{error} in the estimate.  Generally, the error consists of two aspects:
 sampling error and bias.
@@ -98,7 +100,7 @@ support by wording the question as,
 We try to minimize bias through thoughtful data
 collection procedures, but bias can creep into our estimates without us even be aware.
 
-  \termsub{Sampling error}{sampling error} is uncertainty in a point estimate that happens naturally from one sample to the next. Much of statistics, including much of this book, is focused on understanding and quantifying sampling error.  Remember though, that sampling error does not account for the possible effects of leading questions or other types of response bias.  When we measure sampling error, we are measuring the expected variability in a point estimate that arises from randomly sampling only a subset of the population.
+\termsub{Sampling error}{sampling error} is uncertainty in a point estimate that happens naturally from one sample to the next. Much of statistics, including much of this book, is focused on understanding and quantifying sampling error.  Remember though, that sampling error does not account for the possible effects of leading questions or other types of response bias.  When we measure sampling error, we are measuring the expected variability in a point estimate that arises from randomly sampling only a subset of the population.
 
 
 \begin{examplewrap}
@@ -131,6 +133,8 @@ $\bar{x} = 11,160$ is our best estimate for $\mu$.
 %Why do we want a point estimate to be both accurate and precise?
 %}
 
+
+\D{\newpage}
 
 %%
 \subsection{Understanding the variability of a point estimate}
@@ -190,7 +194,7 @@ In this simulation, the sample gave a point estimate of
 $\hat{p}_1 = 0.894$. We~know the population proportion
 for the simulation was $p = \pewsolarparprop{}$, so we know
 the estimate had an error of
-$0.894 - \pewsolarparprop{} = \text{+0.014}$.\D{\vspace{10mm}\\\ }
+$0.894 - \pewsolarparprop{} = \text{+0.014}$.
 
 
 %\setlength\textwidth{\officialtextwidth-10mm}
@@ -234,6 +238,9 @@ in Figure~\ref{sampling_10k_prop_88p}. This
 distribution of sample proportions is called a
 \term{sampling distribution}.
 We can characterize this sampling distribution as follows:
+
+\D{\newpage}
+
 \begin{description}
 \setlength{\itemsep}{0mm}
 \item[Center.]
@@ -305,6 +312,8 @@ Remember though, that this is only true for \emph{random} samples.
 Additionally, a~bigger sample cannot correct for response bias or other types of bias that may be present.
 
 
+\D{\newpage}
+
 %%
 \subsection{Introducing the standard error}
 
@@ -353,6 +362,8 @@ The larger the sample size, the smaller our standard error. This is consistent w
 \end{examplewrap}
 
 
+\D{\newpage}
+
 %%
 \subsection{Basic properties of point estimates}
 
@@ -362,20 +373,20 @@ Remember that the standard error only measures sampling error.  It does not acco
 
 When our sampling method produces estimates in an unbiased way, the sampling distribution will be \emph{centered} on the true value and we call the method \term{accurate}.  When the sampling method  produces estimates that have \emph{low variability}, the sampling distribution will have a low standard error, and we call the method \term{precise}.
 
-\begin{figure}[h]
-   \centering
-\oiRedirect{desmos-foursamplingdistributions}{
-   \includegraphics[width=0.59\textwidth]{ch_foundations_for_inf/figures/fourSamplingDistributions/fourSamplingDistributions}}
-   \caption{Four sampling distributions shown, with parameter identified. Explore these distributions through a Desmos activity at \oiRedirect{openintro-ahss-desmos}{\small{openintro.org/ahss/desmos}}.}
-   \label{fourSamplingDistributions}
-\end{figure}
-
 \begin{examplewrap}
 \begin{nexample}
 {Using Figure~\ref{fourSamplingDistributions}, which of the distributions were produced by methods that are biased?  That are accurate?  Order the distributions from most precise to least precise (that is, from lowest variability to highest variability).}
 Distributions (b) and (d) are centered on the parameter (the true value), so those methods are accurate.  The methods that produced distributions (a) and (c) are biased, because those distributions are not centered on the parameter.  From most precise to least precise, we have (a), (b), (c), (d).
 \end{nexample}
 \end{examplewrap}
+
+\begin{figure}[h]
+   \centering
+\oiRedirect{desmos-foursamplingdistributions}{
+   \includegraphics[width=0.5\textwidth]{ch_foundations_for_inf/figures/fourSamplingDistributions/fourSamplingDistributions}}
+   \caption{Four sampling distributions shown, with parameter identified. Explore these distributions through a Desmos activity at \oiRedirect{openintro-ahss-desmos}{\small{openintro.org/ahss/desmos}}.}
+   \label{fourSamplingDistributions}
+\end{figure}
 
 \begin{examplewrap}
 \begin{nexample}
@@ -487,8 +498,9 @@ A plausible range of values for the population parameter is called a \term{confi
 If we report a point estimate, we probably will not hit the exact population parameter. On the other hand, if we report a range of plausible values -- a confidence interval -- we have a good shot at capturing the parameter.
 
 
-%%
+\D{\newpage}
 
+%%
 \subsection{Constructing a 95\% confidence interval}
 
 A point estimate is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error is a measure of the uncertainty associated with the point estimate.  
@@ -543,6 +555,8 @@ state as a whole.
 \end{nexample}
 \end{examplewrap}
 
+\D{\newpage}
+
 We can be 95\% confident that a 95\% confidence interval captures the true population parameter. However, confidence intervals are imperfect. About 1-in-20 (5\%) properly constructed 95\% confidence intervals will fail to capture the parameter of interest. Figure~\ref{95PercentConfidenceInterval} shows 25 confidence intervals for a proportion that were constructed from simulations where the true proportion was $p = 0.3$. However, 1 of these 25 confidence intervals happened not to include the true value.
 
 \begin{figure}[h]
@@ -558,6 +572,9 @@ In Figure~\ref{95PercentConfidenceInterval}, one interval does not capture the t
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{No. Just as some observations occur more than 1.96 standard deviations from the mean, some point estimates will be more than 1.96 standard errors from the parameter. A confidence interval only provides a plausible range of values for a parameter. While we might say other values are implausible based on the data, this does not mean they are impossible.}
+
+
+\D{\newpage}
 
 %%
 \subsection{Changing the confidence level}
@@ -588,12 +605,13 @@ If $X$ is a normally distributed random variable, how often will $X$ be within 2
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{ch_foundations_for_inf/figures/choosingZForCI/choosingZForCI}
+\includegraphics[width=0.98\textwidth]{ch_foundations_for_inf/figures/choosingZForCI/choosingZForCI}
 \caption{The area between -$z^{\star}$ and $z^{\star}$ increases as $|z^{\star}|$ becomes larger. If the confidence level is 99\%, we choose $z^{\star}$ such that 99\% of the normal curve is between -$z^{\star}$ and $z^{\star}$, which corresponds to 0.5\% in the lower tail and 0.5\% in the upper tail: $z^{\star}=2.58$.}
 \label{choosingZForCI}
 \index{confidence level|)}
 \end{figure}
 
+\D{\newpage}
 
 To create a 99\% confidence interval, change 1.96 in the 95\% confidence interval formula to be $2.58$. Guided Practice~\ref{leadInForMakingA99PercentCIExercise} highlights that 99\% of the time a normal random variable will be within 2.58 standard deviations of its mean. Thus, the formula for a 99\% confidence interval is
 \begin{eqnarray}
@@ -647,6 +665,8 @@ Find the appropriate $z^{\star}$ value for an 80\% confidence interval.\footnote
 
 The normal approximation is crucial to the precision of these confidence intervals. The next two chapters provide detailed discussions about when a normal model can safely be applied to a variety of situations. When a normal model is not a good fit, we will use alternate distributions that better characterize the sampling distribution.
 
+\D{\newpage}
+
 %%
 \subsection{Margin of error}
 
@@ -680,6 +700,9 @@ A 95\% confidence interval is wider than a 68\% confidence interval and has a la
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The margin of error is \emph{half} of the total width of the interval. The margin of error for this interval is $\frac{0.145 - 0.035}{2}=0.055$.}
+
+
+\D{\newpage}
 
 %%
 \subsection{Interpreting confidence intervals}
@@ -903,6 +926,8 @@ When the alternative claim uses a $\neq$, we call the test a \term{two-sided} te
 \begin{onebox}{One-sided and two-sided tests}
 If the researchers are only interested in showing an increase or a decrease, but not both, use a one-sided test. If the researchers would be interested in any difference from the null value -- an increase or decrease -- then the test should be two-sided.\vspace{0.5mm}\end{onebox}
 
+\D{\newpage}
+
 \begin{examplewrap}
 \begin{nexample}{For the example of the consultant's complication rate, we knew that her sample complication rate was 0.063, which was lower than the US complication rate of 0.10. Why did we conduct a two-sided hypothesis test for this setting?}
 The setting was framed in the context of the consultant being helpful, but what if the consultant actually performed worse than the US complication rate? Would we care? More than ever! Since we care about a finding in either direction, we should run a two-sided~test.
@@ -930,7 +955,7 @@ The consultant's complication rate for her 142 clients was 0.063 ($0.063 \times 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.7\textwidth]{ch_foundations_for_inf/figures/MedicalConsultant/MedConsNullNormal}
+\includegraphics[width=0.6\textwidth]{ch_foundations_for_inf/figures/MedicalConsultant/MedConsNullNormal}
 \caption{The shaded area represents the p-value. We observed $\hat{p} = 0.063$, so any observations smaller than this are at least as extreme relative to the null value, $p_0 = 0.1$, and so the lower tail is shaded. However, since this is a two-sided test, values above 0.137 are also at least as extreme as 0.063 (relative to 0.1), and so they also contribute to the p-value. The tail areas together total of about 0.1754 when calculated using a simulation technique in Section~\ref{calcPValueUsingSimulationSubSection}.}
 \label{MedConsNullNormal}
 \end{figure}
@@ -1018,6 +1043,8 @@ Sometimes it's a good idea to deviate from the standard. We'll discuss when to c
 Statistical inference is the practice of making decisions and conclusions from data in the context of uncertainty. Just as a confidence interval may occasionally fail to capture the true value of the parameter, a test of hypothesis may occasionally lead us to an incorrect conclusion. While a given data set may not always lead us to a correct conclusion, statistical inference gives us tools to control and evaluate how often these errors occur.
 
 
+\D{\newpage}
+
 %%
 \subsection{Calculating the p-value by simulation (special topic)}
 \label{calcPValueUsingSimulationSubSection}
@@ -1048,6 +1075,8 @@ However, this is not our p-value! Remember that we are conducting a two-sided te
 \label{MedConsNullSim}
 \end{figure}
 
+
+\D{\newpage}
 
 %%
 \subsection{Hypothesis testing: a five step process}
@@ -1143,6 +1172,8 @@ These examples provide an important lesson: if we reduce how often we make one t
 %Hypothesis testing is built around rejecting or failing to reject the null hypothesis. That is, we do not reject $H_0$ unless the data provide strong evidence against it. But what precisely does \emph{strong evidence} mean? As a general rule of thumb, for those cases where the null hypothesis is actually true, we do not want to incorrectly reject $H_0$ more than 5\% of the time. This corresponds to our default significance level of $\alpha = 0.05$, which we use as a comparison with the p-value. In the next section, we discuss the appropriateness of different significance levels.
 
 
+\D{\newpage}
+
 %%
 \subsection{Choosing a significance level}
 \label{significanceLevel}
@@ -1184,7 +1215,7 @@ The Type~II Error rate $\beta$ and the magnitude of the error for a point estima
 \index{hypothesis testing|)}
 
 
-
+\D{\newpage}
 
 %%
 \subsection{Statistical significance versus practical significance}
