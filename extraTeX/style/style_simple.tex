@@ -79,6 +79,7 @@
 \fancyheadoffset[RO,LE]{0.9in}
 
 
+
 % Tablet Version
 %\setlength\paperheight{8.82in}\setlength\textheight{8.25in}\setlength\paperwidth{5.7in}\setlength\textwidth{5.45in}\setlength\voffset{-23.5mm}\setlength\hoffset{-27mm}\setlength\oddsidemargin{5mm}\setlength\evensidemargin{5mm}\setlength{\marginparsep}{5mm}\setlength{\marginparwidth}{35mm}\fancyheadoffset[RO,LE]{0.2in}
 
@@ -92,9 +93,9 @@
 \newcommand{\hspaceB}[1]{}
 \newcommand{\textB}[1]{}
 \newcommand{\textC}[1]{}
-\newcommand{\D}[1]{#1}
-
 \newcommand{\B}[1]{#1}
+
+\newcommand{\D}[1]{#1}
 
 
 
@@ -176,8 +177,9 @@
 % 6.1 Helpful Editing Commands
 \newcommand\Add[1]{\marginpar[{\Huge\color{oiR}$\bullet$}]{\Huge\color{oiR}$\bullet$}{\color{oiB}#1}}
 \newcommand\Cut[1]{\marginpar[{\Huge\color{oiR}$\bullet$}]{\Huge\color{oiR}$\bullet$}{\color{oiGC}#1}}
-%\newcommand\Comment[1]{\marginpar[{\Huge\color{oiR}$\bullet$}]{\Huge\color{oiR}$\bullet$} {\color{oiG}{[#1]}}}
+\newcommand\Comment[1]{\marginpar[{\Huge\color{oiR}$\bullet$}]{\Huge\color{oiR}$\bullet$} {\color{oiG}{[#1]}}}
 \newcommand{\note}[1]{\Comment{#1}}
+\newcommand{\commentall}[1]{}
 % 6.2 Special Symbols
 \newcommand{\degree}{\ensuremath{^\circ}}
 \newcommand{\R}{\textbf{\textsf{R}}}
@@ -205,15 +207,16 @@
 \setlength{\parindent}{0.3in}
 % 6.6 Hyperreferences
 \newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
-\newcommand{\oiRedirect}[2]{\href{http://www.openintro.org/redirect.php?go=#1&referrer=\referrer}{#2}}
+%\newcommand{\oiRedirect}[2]{\href{http://www.openintro.org/redirect.php?go=#1&referrer=\referrer}{#2}}
+\newcommand{\oiRedirectUrl}[1]{http://www.openintro.org/redirect.php?go=#1&referrer=ahss3_pdf}
+\newcommand{\oiRedirect}[2]{\href{\oiRedirectUrl{#1}}{#2}}
 \newcommand{\videoicon}[1][4.5mm]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}~}
 \newcommand{\CalculatorVideos}[1]{}%{\begin{tipBox}{\tipBoxTitle[\videoicon]{Calculator videos}
 %Videos covering #1 using TI and Casio graphing calculators are available at \mbox{\oiRedirect{textbook-openintro_videos}{openintro.org/videos}}.}
 %\end{tipBox}}
 \newcommand{\videohref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}}
-\newcommand{\slideshref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides.png}}}}
 \newcommand{\tableauhref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/tableau}}}}
-
+\newcommand{\slideshref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides.png}}}}
 \newcommand{\videomarginhref}[2][4mm]{\oiRedirect{#2}{\raisebox{-3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}}
 \newcommand{\sectionvideohref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}}
 \newcommand{\sectionslideshref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides.png}}}}
@@ -225,7 +228,6 @@
 
 
 %-------------------------------------------------------------
-
 % 7 Inference steps
 
 \newcommand{\inferencestep}[1]{\textbf{#1}:}
@@ -243,10 +245,13 @@
 \newlength{\mycaptionwidth}
 \setlength{\mycaptionwidth}{0.825\textwidth}
 \setlength{\captionwidth}{\mycaptionwidth}
-\newcommand{\Figure}[2]{\includegraphics[width=#1\textwidth]{\chapterfolder/figures/#2/#2}}
-\newcommand{\Figures}[3]{\includegraphics[width=#1\textwidth]{\chapterfolder/figures/#2/#3}}
-\newcommand{\Figuress}[3]{\includegraphics[width=#1]{\chapterfolder/figures/#2/#3}}
+\newcommand{\Figure}[3][]{\pdftooltip{\includegraphics[width=#2\textwidth]{\chapterfolder/figures/#3/#3}}{#1}}
+\newcommand{\Figures}[4][]{\pdftooltip{\includegraphics[width=#2\textwidth]{\chapterfolder/figures/#3/#4}}{#1}}
+\newcommand{\Figuress}[4][]{\pdftooltip{\includegraphics[width=#2]{\chapterfolder/figures/#3/#4}}{#1}}
 \newcommand{\chapterfolder}{}
+
+
+%\newcommand{\chapterfolder}{}
 
 
 
@@ -311,9 +316,10 @@
     {\end{gpewrapper}}
 % 9.2.3 Example Title
 \newcommand{\exampletitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
-\selectfont{\MakeUppercase{Example~#1 Start}}} \\[1mm]}
+\selectfont{\MakeUppercase{Example~#1}}} \\[1mm]}
 \newcommand{\exercisetitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
-\selectfont{\MakeUppercase{Guided Practice~#1 Start}}} \\[1mm]}
+\selectfont{\MakeUppercase{Guided Practice~#1}}} \\[1mm]}
+
 % 9.2.4 NEW Example and Guided Practice Environment
 \newcommand{\exspace}{\stdvspace{}}
 \newenvironment{nexample}[1]{\addvspace{6mm}
@@ -487,4 +493,8 @@ Example problem: #1
 %% exercise tags
  \newcommand{\tabspecial}[2]{\oiRedirect{#1}{#2\tableauhref{#1}}}
 \newcommand{\videosolution}[1]{\videohref{#1}\ \ }
+
+
+
+
 
