@@ -88,7 +88,7 @@ A \term{scatterplot} provides a case-by-case view of data that illustrates the r
 
 \begin{figure}[h]
    \centering
-   \Figure{0.8}{email50LinesCharacters}
+   \Figure   [A scatterplot is shown with "Number of Characters (in thousands)" along the horizontal axis (range from 0 to 70) and "Number of Lines" along the vertical axis (range from 0 to 1200). There is a strong, positive linear assocation between the two variables, with a higher concentration of dots for small values of both variables.]{0.8}{email50LinesCharacters}
    \caption{A scatterplot of \var{line\_\hspace{0.3mm}breaks} versus \var{num\_\hspace{0.3mm}char} for the \data{email50} data.}
    \label{email50LinesCharacters}
 \end{figure}
@@ -133,8 +133,8 @@ The association between two variables can be \termsub{positive}{positive associa
 
 \begin{figure}[h]
   \centering
-\oiRedirect{tableau-scatterplotschoose}{
-  \Figure{0.8}{medianHHIncomePoverty}}
+
+  \Figure[A scatterplot of a few thousand points is shown with "Poverty Rate" along the horizontal axis (range from 0\% to 55\%) and "Median Household Income" along the vertical axis (range from \$0 to \$130,000). A curved trend line is overlaid on the points starting higher on the left and decreasing as it moves right, but it starts flattening the further right it goes. Below 10\% poverty rate, points range from about \$40,000 to \$130,000. Between 10\% to 20\%, the range is lower at about \$25,000 to close to \$100,000. For 20\% to 30\%, the points ranges from about \$22,000 to just over \$60,000. For 30\% to 50\%, the trend is mostly flat with values ranging from about \$20,000 to \$50,000.]{0.8}{medianHHIncomePoverty}
   \caption{A scatterplot of the median household income
       against the poverty rate for the
       \data{county} data set.
@@ -261,7 +261,9 @@ Another simple graph for univariate numerical data is a dot plot. A~\term{dot pl
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.825\textwidth]{ch_summarizing_data/figures/emailCharactersDotPlot/emailCharactersDotPlotStackedRounded}
+  \Figure
+    [A dot plot is shown for the variable ``Number of Characters (in thousands)". There is a horizontal axis ranging from about 0 to 70, and then several points are shown horizontally above the axis, scattered over the range. There is a higher density of points between 0 and 20, with a moderate density of points from 20 to 30, and then a few more observations at about 42, 43, and 63.]
+{0.825}{emailCharactersDotPlot}{emailCharactersDotPlotStackedRounded}
    \caption{A dot plot of \var{num\_\hspace{0.3mm}char} for the \data{email50} data set.}
    \label{emailCharactersDotPlotStacked}
 \end{figure}
@@ -335,7 +337,9 @@ Count & 19 & 12 & 6 & 2 & 3 & 5 & $\cdots$ & 0 & 1 \\
 
 \begin{figure}[bth]
    \centering
-    \oiRedirect{tableau-histogramschoose}{\includegraphics[width=0.8\textwidth]{ch_summarizing_data/figures/email50NumCharHist/email50NumCharHist}}
+   \Figure  
+    [A histogram with a horizontal axis of ``Number of Characters (in thousands)" and a vertical axis showing the frequency of occurrence of different bins of Number of Characters. The first bin is from 0-5 with a frequency (count) of 19 observations, 5-10 has a frequency of 12, 10-15 has 6, 15-20 has 2, 20-25 has 3, 25-30 has 5, and then the 40-45 and 60-65 bins each have a frequency of 1.]
+{0.8}{email50NumCharHist}
    \caption{A histogram of \var{num\_\hspace{0.3mm}char}. This histogram uses bins or class intervals of width 5.  Explore this histogram and dozens of histograms using American Community Survey data on Tableau Public~\tableauhref{tableau-histogramschoose}.}
    \label{email50NumCharHist}
 \end{figure}
@@ -395,7 +399,9 @@ Frequency &  \raisebox{1.5ex}[0pt]{19} & \raisebox{1.5ex}[0pt]{31} & \raisebox{1
 \begin{figure}[h]
    \centering
 \oiRedirect{tableau-histograms}{
-   \Figures{0.8}{email50NumCharHist}{email50NumCharCumulativeFreqHist}}
+   \Figures
+    [A cumulative frequency histogram with a horizontal axis of ``Number of Characters (in thousands)" and a vertical axis showing the cumulative frequency up to including each bin. The first bin is from 0-5 with a cumulative frequency (count) of 19 observations, 5-10 has a cumulative frequency of 31, 10-15 has a cumulative frequency of 37.  Finally, bin 60-65 has a cumulative frequency of 50, which is the total count.]
+{0.8}{email50NumCharHist}{email50NumCharCumulativeFreqHist}}
    \caption{A cumulative frequency histogram of \var{num\_\hspace{0.3mm}char}. This histogram uses bins or class intervals of width 5.  Compare frequency, relative frequency, cumulative frequency, and cumulative relative frequency histograms on Tableau Public~\tableauhref{tableau-histograms}.}
    \label{email50NumCharCumulativeFreqHist}
 \end{figure}
@@ -473,7 +479,9 @@ Figure~\ref{singleBiMultiModalPlots} shows histograms that have one, two, or thr
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=\textwidth]{ch_summarizing_data/figures/singleBiMultiModalPlots/singleBiMultiModalPlots}
+  \Figure
+    [Three histograms are shown. The first histogram shows bins of width 2 between 0 to 18 (this is along the horizontal axis), and the frequencies are 3, 16, 16, 7, 11, 6, 4, 1, and 1. The second histogram, representing a different data set, shows bins of width 2 with values ranging from 0 to 20, where the bin counts in order are 2, 9, 5, 2, 2, 2, 2, 10, 19, and 9. The third histogram, representing yet another data set, shows bins of width 2 with values ranging from 0 to 22, where the bin counts in order are 10, 8, 4, 3, 1, 20, 15, 3, 15, 18, and 5.]
+    {}{singleBiMultiModalPlots}
    \caption{Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal.}
    \label{singleBiMultiModalPlots}
 \end{figure}
@@ -621,7 +629,8 @@ Graphically, we can think of the mean as the balancing point. The median is the 
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.8\textwidth]{ch_summarizing_data/figures/email50NumCharHist/email50NumCharHistWMeanMedian}
+   \Figure [A histogram with a horizontal axis of ``Number of Characters (in thousands)" and a vertical axis showing the frequency of occurrence of different bins of Number of Characters is presented again, this time with median and mean labeled.  The first bin is from 0-5 with a frequency (count) of 19 observations, 5-10 has a frequency of 12, 10-15 has 6, 15-20 has 2, 20-25 has 3, 25-30 has 5, and then the 40-45 and 60-65 bins each have a frequency of 1.  The median is indicated with a yellow line at approximately 7 and the mean is indicated with a red line at approximately 11.  The graph is right skewed, with the mean greater than the median.]
+{0.8}{email50NumCharHist}{email50NumCharHistWMeanMedian}
    \caption{A histogram of \var{num\_\hspace{0.3mm}char} with its mean and median shown.}
    \label{email50NumCharHistWMeanMedian}
 \end{figure}
@@ -720,7 +729,9 @@ In the next section, we encounter a bell-shaped distribution known as the \emph{
 
 \begin{figure}[h]
 \centering
-\Figures{}{emailCharactersDotPlot}
+\Figures
+    [A dot plot of 50 observations is shown with values ranging from about 0 to 65. Shading is shown to represent the regions within 1, 2, and 3 standard deviations. Only 1 point is not within the 3 standard deviations.]
+{}{emailCharactersDotPlot}
     {emailCharactersDotPlotStackedRoundedWithSD}
 \caption{In the \var{num\_\hspace{0.3mm}char} data, 40 of the 50 emails (80\%) are within 1~standard deviation of the mean, and 47 of the 50 emails (9
 4\%) are within 2 standard deviations. The empirical rule does not hold well for skewed data, as shown in this example.}
@@ -729,7 +740,9 @@ In the next section, we encounter a bell-shaped distribution known as the \emph{
 
 \begin{figure}
 \centering
-\Figure{0.7}{severalDiffDistWithSdOf1}
+\Figure
+    [Three histograms are shown (upper, middle, lower). Each distribution also shows shading -- dark gray between -1 to 1, lighter gray between -2 and 2, and light gray between -3 and 3, and then very light gray further out. The upper plot shows only two bins with non-zero values and of equal height at -1 and 1. middle plot shows a bell-shaped curve, where most of the higher bin values are between -1 and 1, middling heights are between -2 to -1 and 1 to 2, and the data trails off in each direction with ever-smaller values further out. The lower histogram shows no data below about -1.6, a quick increase to a peak at about -0.7 and then a slow decline of values to about half the max height at 1 and further trails off to ever smaller values to a horizontal location of 3 and beyond.]
+{0.7}{severalDiffDistWithSdOf1}
 \caption{Three very different population distributions with the same mean $\mu=0$ and standard deviation $\sigma=1$.}
 \label{severalDiffDistWithSdOf1}
 \end{figure}
@@ -752,7 +765,8 @@ When describing any distribution, comment on the three important characteristics
 \begin{examplewrap}
 \begin{nexample}{In the data's context (the number of characters in emails), describe the distribution of the \var{num\_\hspace{0.3mm}char} variable shown in the histogram below.
   \begin{center}
-   \Figure{0.65}{email50NumCharHist}
+   \Figure[The histogram for ``Number of Characters (in thousands)" is presented again.  The horizontal axis has ``Number of Characters (in thousands)" and the vertical axis shows the frequency of occurrence of different bins of Number of Characters. The first bin is from 0-5 with a frequency (count) of 19 observations, 5-10 has a frequency of 12, 10-15 has 6, 15-20 has 2, 20-25 has 3, 25-30 has 5, and then the 40-45 and 60-65 bins each have a frequency of 1.]
+{0.65}{email50NumCharHist}
   \end{center}}
 The distribution of email character counts is unimodal and very strongly skewed to the right. Many of the counts fall near the mean at 11,600, and most fall within one standard deviation (13,130) of the mean. There is one exceptionally long email with about 65,000 characters.
 
@@ -885,7 +899,8 @@ A \term{box plot} summarizes a data set using five summary statistics while also
 
 \begin{figure}[h]
    \centering
-     \oiRedirect{tableau-boxplotschoose}{ \includegraphics[width=0.9\mycaptionwidth]{ch_summarizing_data/figures/boxPlotLayoutNumVar/boxPlotLayoutNumVar}}
+ \Figure[A labeled, vertical box plot for the number of characters (in thousands) in 50 emails.  The range, in thousands, is from 0 to approximately 65.  In thousands, lower whisker is at 0, first quartile at 3, median at 7, third quartile at 16, upper whisker at 30, with three outliers shown as dots at 42, 43, and 65.]
+{0.9}{boxPlotLayoutNumVar}{boxPlotLayoutNumVar}
 \caption{A labeled box plot for the number of characters in 50 emails. The median (6,890) splits the data into the bottom 50\% and the top 50\%.  Explore dozens of boxplots with histograms using American Community Survey data on Tableau Public~\tableauhref{tableau-boxplotschoose}.}
   % \caption{A vertical dot plot next to a labeled box plot for the number of characters in 50 emails. The median (6,890), splits the data into the bottom 50\% and the top 50\%, marked in the dot plot by horizontal dashes and open circles, respectively.}
    \label{boxPlotLayoutNumVar}
@@ -988,7 +1003,8 @@ There are no numbers less than -41, so there are no outliers on the low end. The
 \noindent Get started quickly with this Desmos \oiRedirect{desmos-1varstats}{1-VarStats Calculator} (\small{available at \oiRedirect{openintro-ahss-desmos}{openintro.org/ahss/desmos}}).
 
 \begin{center} 
-\oiRedirect{desmos-1varstats}{ \includegraphics[width=0.95\textwidth]{ch_summarizing_data/figures/desmos1VarStats/desmos1VarStats}}
+\Figure[An image of a Desmos calculator showing some of the 1-variable statistics commands with histogram and box plot below the histogram.]
+{0.95}{desmos1VarStats}
 \end{center}
 
 \noindent \\Calculator instructions
@@ -1109,7 +1125,8 @@ Find the summary statistics and make a box plot of the data.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The summary statistics should be $\calctextmath{\bar{x}} = 9.1$, $\calctextmath{Sx} = 7.48$, $\calctextmath{Q1} = 3$, etc. Using a TI, the boxplot looks like this: 
-\includegraphics[width=0.3\textwidth]{ch_summarizing_data/figures/TI83_box_plot_A/TI83_box_plot_A}
+\Figure[A TI calculator image showing a box plot with min = 1, first quartile = 2, median = 5, third quartile = 14.5, and max = 19.  The box plot is slightly right skewed.]
+{0.3}{TI83_box_plot_A}
 }
 
 \begin{exercisewrap}
@@ -1118,7 +1135,8 @@ Find the summary statistics and make a box plot of the data.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Remember, the Desmos Calculators and Activities in this book can be found at \oiRedirect{openintro-desmos}{openintro.org/ahss/desmos}.  Down the \data{email50} CSV file and open it.  Copy and paste the num$\_$char column into the Desmos calculator, replacing the data currently in x1.  Adjust window as needed and you should get the following:\\
-\includegraphics[width=0.5\textwidth]{ch_summarizing_data/figures/email50Desmos/email50Desmos}
+\Figure [A screenshot from a Desmos calculator showing the summary statistics of the ``Number of Characters (in thousands) variable" on the left and, on the right, a histogram of the data with a box plot below it.  The graphs show that the data are right skewed.]
+{.5}{email50Desmos}
 }
 
 
@@ -1155,7 +1173,8 @@ How are the \indexthis{sample statistics}{sample statistic} of the \data{num\_\h
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{ch_summarizing_data/figures/emailCharactersDotPlot/email50NumCharDotPlotRobustEx}
+ \Figure [Three dot plots are shown in the same plot. The largest observation from the original data set (discussed in previous dot plots) at about 64 thousand is removed in the second dot plan and is moved to 150 thousand in the third dot plot.]
+{}{emailCharactersDotPlot}{email50NumCharDotPlotRobustEx}
 \caption{Dot plots of the original character count data and two modified data sets.}
 \label{email50NumCharDotPlotRobustEx}
 \end{figure}
@@ -1245,7 +1264,8 @@ Using the examples as a guide, we can solve this temperature-conversion problem.
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.9\textwidth]{ch_summarizing_data/figures/CToF_ConversionFigure/CToF_ConversionFigure}
+\Figure[Two histograms are shown, graphing 500 temperatures in Celsius on the left, and the same 500 temperatures in Fahrenheit on the right.  This illustrates how converting from Celsius to Fahrenheit involves a shift and a stretch.  The graph in Celsius has a mean of 27 degrees C and a standard deviation of 3 degrees C.  The graph in Fahrenheit has a mean of 80.6 degrees F and a standard deviation of 5.4 degrees F.]
+{0.9}{CToF_ConversionFigure}
    \caption{500 temperatures shown in both Celsius and \mbox{Fahrenheit.}}
    \label{CToF_ConversionFigure}
 \end{figure}
@@ -1373,8 +1393,8 @@ placed into one plotting window and drawn on the same scale.
 
 \begin{figure}
   \centering
-\oiRedirect{tableau-medianincome-gainnogain-all}{
-  \Figure{1.00}{countyIncomeSplitByPopGain}}
+ \Figure[There are two figures shown: a side-by-side box plot on the left, and a two overlaid hollow histograms on the right. These two plots describe the same data for the "county" data set: a numerical variable for median household income and a categorical variable with levels of "gain" and "no gain" for the population change in the county. First, the side-by-side box plots shown as the left plot are described. This plot shows two box plots side-by-side, enclosed in the same general plot so they are close and so easier to compare. The left box plot represents "gain", and the right plot represents "no gain". The vertical axis runs from about \$20,000 to about \$130,000. Starting at the lower levels, the "no gain" lower whisker is at about \$20,000, while the "gain" lower whisker starts at about \$25,000. Each whisker runs upwards to the box, where the "no gain" box is reached first at about \$40,000 and the "gain" box at about \$47,000. The median line in each box is shown, where the "no gain" median is shown to at about \$45,000, even lower than the start of the "gain" box". The "gain" box's median is at about \$53,000 and is above the top of the "no gain box" at about \$52,000. The left "gain" box finally ends at about \$62,000. Above each box is the upper whisker. The upper whisker in the "gain" box plot extends far above that of the "no gain" box, reaching about \$87,000 vs \$70,000. Each box plot has many individual observations shown above the upper whisker. The largest outlier for "gain" is about \$130,000, and the largest outlier for "no gain" is about \$112,000. Next, moving onto the right plot of the two hollow histograms for the "gain" (in blue) and "no gain" (in red) categories. The hollow histograms are overlaid, making it easier to compare their shapes more directly. The histograms share a horizontal axis that runs from about \$20,000 up to about \$130,000. In each case, the histograms do not show the bins explicitly and instead only show the top portion of each histogram (hence the term "hollow histogram"), meaning each hollow histogram is described by a line outlining the top of each bin in each histogram. It is these lines that will be described. Starting at the left of the histograms, the "no gain" histogram line rises up slightly at \$20,000 before the "gain" histogram line starts rising starting at about \$25,000. The "no gain" line then ascends rapidly starting at about \$30,000, followed by the "gain" line ascending rapidly at about \$40,000, which is also about where the "no gain" category reaches a peak and holds steady until about \$50,000, which is also where the "gain" line has now peaked. It is at this \$50,000 point that the "no gain" line falls rapidly from what had been a relatively steady peak between about \$35,000 to \$50,000, with the "gain" group also much more slowly starting to descend at about \$50,000. At close to \$70,000, the "no gain" group is nearly touching the horizontal axis, while the "gain" group has only descended about 70\% of the way. The "no gain" group hovers close to horizontal axis until appearing indistinguishable from the horizontal axis a bit above \$90,000. On the other hand, the "gain" group shows a slow but steady decline from about 30\% of its peak at \$70,000 down to close to the horizontal axis at \$100,000. The "gain" category bumps up just a tiny amount between \$100,000 and \$130,000 before becoming indistinguishable from the horizontal axis.]
+{1.00}{countyIncomeSplitByPopGain}
   \caption{Side-by-side box plot (left panel)
       and hollow histograms (right panel) for
       \var{med\us{}hh\us{}income},
@@ -1505,13 +1525,15 @@ Figure~\ref{countyMedIncomeMap}?\footnotemark{}
   \centering
 \oiRedirect{tableau-intensitymapsall}{
   \subfigure[]{
-    \Figures{1.00}
+    \Figures[An intensity map of the United States is shown for poverty, where each county is colored a shade representing a value between 2\% and over 25\% for the poverty rate. See Example~\ref{map_example_poverty_and_unemployment} for an additional summary of this graph.]
+{1.00}
         {countyIntensityMaps}
         {countyPovertyMap}
     \label{countyPovertyMap}
   }
   \subfigure[]{
-    \Figures{1.00}
+    \Figures[An intensity map of the United States is shown for unemployment rate, where each county is colored a shade representing a value between 2\% and over 7\% for the unemployment rate. See Example~\ref{map_example_poverty_and_unemployment} for an additional summary of this graph.]
+{1.00}
         {countyIntensityMaps}
         {countyUnemploymentRateMap}
     \label{countyUnemploymentRateMap}
@@ -1527,13 +1549,15 @@ Figure~\ref{countyMedIncomeMap}?\footnotemark{}
   \centering
 \oiRedirect{tableau-intensitymapsall}{
   \subfigure[]{
-    \Figures{1.00}
+    \Figures[An intensity map of the United States is shown for homeownership rate, where each county is colored a shade representing a value between below 55\% and over 91\% for the homeownership rate. The data look mostly random but may be slightly lower in the west, especially along the California coast, and shading representing slightly higher values in the upper midwest as well as in Florida.]
+{1.00}
         {countyIntensityMaps}
         {countyHomeownershipMap}
     \label{countyHomeownershipMap}
   }
   \subfigure[]{
-    \Figures{1.00}
+  \Figures[An intensity map of the United States is shown for median household income, where each county is colored a shade representing a value between below \$19,000 and over \$75,000. The shading appears quite random in any particular region. However, some metro areas in California and near New York City and Boston appear to have higher median household incomes. The Mississippi Delta leading down into Louisiana and Mississippi show evidently lower median household income values.]
+{1.00}
         {countyIntensityMaps}
         {countyMedIncomeMap}
     \label{countyMedIncomeMap}
@@ -1646,7 +1670,8 @@ Among all the distributions we see in practice, one is overwhelmingly the most c
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.6\textwidth]{ch_distributions/figures/simpleNormal/simpleNormal}
+  \Figure[A bell-shaped curve that is symmetric about its center is shown. This is the normal distribution. From the left, the curve starts low, grad lifting off the horizontal axis before more steeply rising, before it starts to rise more slowly and flattens at its peak. From the peak, it starts to decrease slowly and then more steeply, before gradually flattening out as it approaches the horizontal axis. This is the bell-shaped normal distribution, an it is the shape of many distributions we will encounter throughout this book. In general, going forward, this bell-shaped distribution shape should be remembered whenever the normal distribution is discussed.]
+{0.6}{simpleNormal}
 \caption{A normal curve.}
 \label{simpleNormal}
 \end{figure}
@@ -1659,14 +1684,16 @@ Figure~\ref{twoSampleNormals} shows the normal distribution with mean $0$ and st
 
 \begin{figure}[hht]
 \centering
-\includegraphics[width=0.95\textwidth]{ch_distributions/figures/twoSampleNormals/twoSampleNormals}
+  \Figure[Two normal distributions are shown. The first has a center of 0 and a standard deviation of 1, where the two tails of the normal distribution curve are essentially indistinguishable from a height of 0 for values less than -3 or larger than positive 3. The second normal distribution is centered at 19 and has a standard deviation of 4, where the height of the distribution is indistinguishable from 0 when it is more than 3 standard deviations from the mean.]
+{0.95}{twoSampleNormals}
 \caption{Both curves represent the normal distribution.  However, they differ in their center and spread. }
 \label{twoSampleNormals}
 \end{figure}
 
 \begin{figure}[hht]
 \centering
-\includegraphics[width=0.67\textwidth]{ch_distributions/figures/twoSampleNormalsStacked/twoSampleNormalsStacked}
+  \Figure[Two normal distributions are shown on the same plot. The first has a mean of 0 and a standard deviation of 1. The second has a mean of 19 and a standard deviation of 4. One important property visible in the plot is, because distributions are required to have an area of 1, the normal distribution with a standard deviation of 1 appears much narrower and but also much taller than the second distribution that has a standard deviation of 4.]
+{0.67}{twoSampleNormalsStacked}
 \caption{The normal distributions shown in Figure~\ref{twoSampleNormals} but plotted together and on the same scale.}
 \label{twoSampleNormalsStacked}
 \end{figure}
@@ -1747,7 +1774,8 @@ We use the area/percent that we find from the normal curve as our \emph{estimate
 
 \begin{figure}[h]
   \centering
-  \Figure{0.52}{satActNormals}
+  \Figure[Ann's and Tom's scores shown against the SAT and ACT distributions, which are each shown as normal distributions. The SAT distribution has a mean of 1100 and a standard deviation of 200, while the ACT distribution has a mean of 21 and standard deviation of 6. Ann's score is 1300 for the SAT, and Tom's score is 24 for the ACT. Based on their positioning in their respective plots, it is evident that Ann has a higher relative value for her SAT distribution than Tom has for his ACT score.]
+{0.52}{satActNormals}
   \caption{Ann's and Tom's scores shown with the distributions
       of SAT and ACT scores.}
   \label{satActNormals}
@@ -1770,7 +1798,8 @@ This is the same as Ann's \term{percentile}.  We previously determined that a sc
 
 \begin{figure}[h]
   \centering
-  \Figure{0.45}{satBelow1300}
+  \Figure[A standard normal distribution is shown.  The mean is 0 and the standard deviation is 1.   The distribution is shaded to the left of the value 1.  Approximately 84\% of the graph is shaded. ]
+{0.45}{satBelow1300}
   \caption{The area to the left of the Z-score represents the
       percentile of the observation.}
   \label{satBelow1300}
@@ -1837,7 +1866,8 @@ Combined SAT scores are approximated well by a normal model with mean \satmean{}
 \begin{nexample}{What is the probability that a randomly selected SAT taker scores at least 1190 on the SAT?}\label{satAbove1190Exam}
 The probability that a randomly selected SAT taker scores at least 1190 on the SAT is equivalent to the proportion of all SAT takers that score at least 1190 on the SAT. First, always draw and label a picture of the normal distribution. (Drawings need not be exact to be useful.) We are interested in the probability that a randomly selected score will be above 1190, so we shade this upper tail:
 \begin{center}
-\includegraphics[height=0.9in]{ch_distributions/figures/satAbove1190/satAbove1190}
+  \Figure[A normal distribution with a mean of 1100 and standard deviation of 200 has the area below the distribution shaded for horizontal values larger than 1300.]
+{0.4}{satAbove1190}
 \end{center}
 The picture shows the mean and the values at 2 standard deviations above and below the mean. The simplest way to find the shaded area under the curve makes use of the Z-score of the cutoff value. With $\mu=\satmean{}$, $\sigma=\satsd{}$, and the cutoff value $x=1190$, the Z-score is computed as
 \begin{eqnarray*}
@@ -1867,7 +1897,8 @@ If the probability that a randomly selected score is at least 1190 is 0.3264, wh
 \begin{nexample}{Edward earned a 1030 on his SAT. What is his percentile?} \label{edwardSatBelow1030}
 First, a picture is needed. Edward's percentile is the proportion of people who do not get as high as a 1030. These are the scores to the left of 1030.
 \begin{center}
-\includegraphics[height=22mm]{ch_distributions/figures/satBelow1030/satBelow1030}
+\Figure[A normal distribution with mean 1100 and standard deviation 200 is shaded from the left up to a vertical line at 1030.]
+{0.3}{satBelow1030}
 \end{center}
 Identifying the mean $\mu=1100$, the standard deviation $\sigma=200$, and the cutoff for the tail area $x=1030$ makes it easy to compute the Z-score:
 \begin{eqnarray*}
@@ -1883,7 +1914,7 @@ Use the results of Example~\ref{edwardSatBelow1030} to compute the proportion of
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{If Edward did better than 36\% of SAT takers, then about 64\% must have done better than him. \\
-\includegraphics[width=0.35\textwidth]{ch_distributions/figures/satBelow1030/satAbove1030}}
+\Figure{.35}{satBelow1030}{satAbove1030}}
 
 
 
@@ -1895,7 +1926,8 @@ The last several problems have focused on finding the probability or percentile 
 \begin{nexample}{Carlos believes he can get into his preferred college if he scores at least in the 80th percentile on the SAT. What score should he aim for?}
 Here, we are given a percentile rather than a Z-score, so we work backwards. As always, first draw the picture.
 \begin{center}
-\includegraphics[height=22mm]{ch_distributions/figures/sat80thPercentile/sat80thPercentile}
+\Figure[A normal distribution with mean 1100 and standard deviation 200 is shaded from the left up to a vertical line which makes the shaded area equal to 80\%.]
+{.3}{sat80thPercentile}
 \end{center}
 We want to find the observation that corresponds to the 80th percentile. First, we find the Z-score associated with the 80th percentile. Using technology, we find that $P(Z < 0.84) = 0.80$. In any normal distribution, a value with a Z-score of 0.84 will be at the 80th percentile. Once we have the Z-score, we work backwards to find x.
 \begin{align*}
@@ -1931,7 +1963,8 @@ especially when trying to make a quick estimate without a calculator or Z-table.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.72\textwidth]{ch_distributions/figures/6895997/6895997}
+\Figure[A normal distribution is shown. The central region, from one standard deviation below the mean to one standard deviation above the mean, is shaded blue and is labeled with a value of 68\%. The region further out to two standard deviations below the mean to two standard deviations above the mean is shaded green (besides the portion shaded blue) and is labeled with a value of 95\%. The region further out to three standard deviations below the mean to three standard deviations above the mean is shaded yellow (besides the portions shaded green or blue) and is labeled with a value of 99.7\%. Those percentages -- 68\%, 95\%, and 99.7\% -- represent the portions of the area below a normal distribution within 1, 2, and 3 standard deviations of the mean.]
+{0.72}{6895997}
 \caption{Probabilities for falling within 1, 2, and 3 standard deviations of the mean in a normal distribution.}
 \label{6895997}
 \end{figure}
@@ -2013,7 +2046,8 @@ Figure~\ref{normalQuantileExerAdditional} shows normal probability plots for two
 (visit~\oiRedirect{openintro-ahss-desmos}{openintro.org/ahss/desmos}).
 
 \begin{center}
-\oiRedirect{desmos-normal}{\includegraphics[width=0.95\textwidth]{ch_summarizing_data/figures/desmosNormal/desmosNormal}}
+\Figure[A Desmos calculator screen.  On the left, it shows the commands mean, stdev, length and stats used on a small data set.  On the right is a histogram with a box plot below it of that data set.]
+{0.95}{desmosNormal}
 \end{center}
 
 \D{\newpage}
@@ -2071,7 +2105,8 @@ Use a calculator or software to confirm that about 68\%, 95\%, and 99.7\% of obs
 \begin{examplewrap}
 \begin{nexample}{Use a calculator to determine what percentile corresponds to a Z-score of 1.5 for a normal distribution.\footnotemark}
 
-\includegraphics[width=0.4\textwidth]{ch_distributions/figures/zscoreleftof1point5/zscoreleftof1point5}\vspace{-2mm}
+\Figure[A standard normal distribution shaded from the left up to a Z-score of 1.5.]
+{0.4}{zscoreleftof1point5}\vspace{-2mm}
 
 To find an area under the normal curve using a calculator, first identify a lower bound and an upper bound. We want all of the area to the left of 1.5, so the lower bound should be -$\infty$. However, the area under the curve is negligible when $Z$ is smaller than -5, so we will use -5 as the lower bound. Using a lower bound of -5 and an upper bound of 1.5, we get $P(Z < 1.5) = 0.933$.
 \end{nexample}
@@ -2315,7 +2350,8 @@ showing the proportion of observations that are in each level
 
 \begin{figure}[bht]
   \centering
-  \Figure{0.82}{loan_homeownership_bar_plot}
+  \Figure[Two bar plots, which are described as the left bar plot and the right bar plot. The left bar plot has Homeownership on the horizontal axis and Frequency (count) on the Vertical axis. Each level of homeownership has its own "bar" (which looks like a tall rectangle resting on the horizontal axis) with a height corresponding the frequency of that bar in the data set. For example, the "Rent" bar extends from the horizontal axis up to a frequency of about 3900. The "Mortgage" bar extends from the horizontal axis up to about 4700, and the bar for "Own" extends up to at about 1300. Moving to the next plot, the right bar plot, it looks very similar to the left bar plot except that it reports the proportion of cases on the vertical axes instead of the frequency (count). The values in this bar plot are: about 0.39 for Rent, about 0.47 for Mortgage, and about 0.13 for Own.]
+{0.82}{loan_homeownership_bar_plot}
   \caption{Two bar~charts of \var{number}.
       The left panel shows the counts, and the right panel
       shows the proportions in each group.}
@@ -2593,31 +2629,35 @@ we can conclude that the two variables are associated.
 \newcommand{\loanapptypehomesegbarplotwidth}{0.46\textwidth}
 \begin{figure}[h]
   \centering
-\oiRedirect{tableau-bargraphs2V}{
+
   \subfigure[]{
-    \Figuress{\loanapptypehomesegbarplotwidth}
+    \Figuress[A stacked bar plot with Homeownership on the horizontal axis and Frequency (count) on the Vertical axis, where "app\_type" is used to break each bar into two categories: "joint" application type and "individual" application type. The first bar is for "Rent" and extends up to about 3900 total for the two application types together. This "Rent" bar is also broken into two categories, blue for "individual" and yellow for "joint". The bottom portion of the bar, running up to about 3500, is blue to represent the "joint" applications where the application had a "rent" value for homeownership, and the rest (about vertical height representing about 400) of the bar is yellow to represent the "individual" applications. The second bar is for "Mortgage" at about 4700 total, the bottom 3900 of which are shown as blue for individual applications and the top of which is yellow for "joint" applications and appears to have a height of about 800. The third bar is for "Own" at about 1300, of which about 1100 is for the individual (blue) application type and about 200 of which is joint (yellow) application type. Again, each homeownership bar is broken into a lower (blue) and upper portion (yellow) portion to express the breakdown of a homeownership level into the application types, allowing us to express a breakdown along two categorical variables in a single plot.]
+{\loanapptypehomesegbarplotwidth}
         {loan_app_type_home_seg_bar}
         {loan_app_type_home_seg_bar}
     \label{loan_app_type_home_seg_bar}
   }
   \subfigure[]{
-    \Figuress{\loanapptypehomesegbarplotwidth}
+    \Figuress[A side-by-side bar plot is shown. In this side-by-side plot, instead of having the blue and yellow portions of a single bar for a homeownership level, such as rent, the bar has been slimmed down and the blue and yellow portions are now side-by-side, each resting on the horizontal axis. Reading across, we see a blue and yellow bar side-by-side and touching. These are shown over a homeownership category of "rent". The first of these two bars is blue for "individual" application type (having a height of about 3500) and the second is yellow for the "joint" application type (having a height of about 400). After this first group of two bars, there is a small horizontal gap before the next pair of bars that represent the mortgage homeownership category. Here again, there is first a blue bar for individual application type, where this blue bar stretches up to a value of about 3900, and next to it is a yellow bar for the joint application type, which stretches up to about 800. After this second pair of bars, there is a little more space as we move right along the plot before we reach the "own" homeownership category, which shows another pair of bars: blue (with a bar reaching a frequency or count of about 1100) and yellow (with a bar reaching a value of about 200).]
+{\loanapptypehomesegbarplotwidth}
         {loan_app_type_home_seg_bar}
         {loan_app_type_home_sbs_bar}
     \label{loan_app_type_home_sbs_bar}
   }
   \subfigure[]{
-    \Figuress{\loanapptypehomesegbarplotwidth}
+    \Figuress[The third plot is a standardized version of the stacked bar plot, where each bar has been standardized to add up to 1. This bar plot shows the homeownership variable and its three levels -- from left to right: rent, mortgage, and own -- as their own bars, where each bar runs from the horizontal axis at 0 up to a value of 1. This standardization where all total bars span the same vertical distance allows for an easier comparison of the proportional breakdown of the coloring in each stacked bar. The coloring breakdown of each bar represents the application type: individual (blue) and joint (yellow). For the first bar, rent, the blue runs up to about 0.9 on the vertical, and the yellow portion of the bar runs from 0.9 to 1.0. In the second bar, mortgage, the blue runs from horizontal axis up to about 0.8, and the yellow portion of the bar runs from 0.8 to 1.0. The third bar, own, has its blue portion run from the horizontal axis up to about 0.87, and the yellow portion runs from 0.87 to 1.0.]
+{\loanapptypehomesegbarplotwidth}
         {loan_app_type_home_seg_bar}
         {loan_app_type_home_seg_bar_standardized}
     \label{loan_app_type_home_seg_bar_standardized}
   }
   \subfigure[]{
-    \Figuress{\loanapptypehomesegbarplotwidth}
+    \Figuress[The last plot is a standardized version of the side-by-side bar plot, where each pair of bars has been standardized to add up to 1. This allows us to compare the proportion of individual (blue bar) to proportion of joint (yellow bar) within each of the three types of homeownership levels (rent, mortgage, own).]
+{\loanapptypehomesegbarplotwidth}
         {loan_app_type_home_seg_bar}
         {loan_app_type_home_sbs_bar_standardized}
     \label{loan_app_type_home_sbs_bar_standardized}
-  }}
+  }
 %  \subtable{
 %    \footnotesize
 %    \begin{tabular}{l  ccc  r}
@@ -2753,13 +2793,15 @@ to represent the number of cases in each category.
 \begin{figure}[h]
   \centering
   \subfigure[]{
-    \Figures{0.36}
+    \Figures[A one-variable mosaic plot is shown for the homeownership variable, which has levels rent, mortgage, and own. A one-variable mosaic plot can first be pictured as a square that has partitions running vertically, breaking that square up into three pieces, one piece per level. The portion of the square assigned to each piece is proportional to the number of cases for each level. In this particular mosaic plot, we see a "rent" piece on the left portion of the square that has been colored green -- this tall rectangle represents about 40\% of the square. Now considering the middle tall rectangle, which is blue and has been labeled as "mortgage", its width is close to half of the total width of the square. The rightmost tall rectangle is red and is labeled "own", and it appears to represent a little more than 10\% of the total width of the rectangle.]
+{0.36}
         {loan_app_type_home_mosaic_plot}
         {loan_home_mosaic}
     \label{loan_home_mosaic}
   }
   \subfigure[]{
-    \Figures{0.44}
+    \Figures[A two-variable mosaic plot is shown, partitioned with vertical slices first for the homeownership variable in the same way as a one-variable mosaic plot, and then each of the tall rectangle from that one-variable mosaic plot has been sliced horizontally to represent the application types individual (shown as the upper portion of each tall rectangle) and joint (shown as the lower portion of each tall rectangle). Taking the first tall rectangle on the left of the mosaic plot, which is green and labeled as "rent", it is divided into a small "joint" rectangle at the bottom of the "rent" rectangle and a much larger upper portion that represents the "individual" application types of the rent homeownership cases. This same partitioning is repeated for the tall middle rectangle representing the blue mortgage homeownership cases, where a small portion of those applications are broken off into a smaller rectangle on the bottom for "joint" and a larger rectangle for the cases that are "individual". Similarly, the rightmost tall rectangle that is red and represents "own" has been divided into a lower rectangle for "joint" and an upper portion for "individual" application types. The benefit of this plot is that we can now get a sense of the proportional makeup of each homeownership category by looking at the relative widths of the three different colored tall rectangles, and we can also look at where each of these tall rectangles is broken into joint and individual applications. In this case, the tall rectangle for rent is broken lower than the mortgage and own levels, indicating it has fewer of the "joint" application types (which if you recall, was the lower sub-divided rectangles). The "own" category also has its horizontal break a bit lower than the "mortgage" rectangle's break, implying the mortgage category has the highest proportion of joint applications of the rent, mortgage, and own homeownership categories.]
+{0.44}
         {loan_app_type_home_mosaic_plot}
         {loan_app_type_home_mosaic}
     \label{loan_app_type_home_mosaic}
@@ -2813,7 +2855,8 @@ the variables under consideration.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.5}
+  \Figures[A two-variable mosaic plot that has been first divided vertically using the mortgage application type (individual on the left and joint on the right), and then each of those rectangles subdivided horizontally ("own" in red on the bottom, "mortgage" in blue in the middle, and "rent" in green on the top). The "individual" category as the left main rectangle spans about 85\% of the square, while the right main rectangle for "joint" spans about 15\% of the square. The homeownership breakdown within each of the main rectangles shows "own" represents roughly the same proportion in each, running up about 10\% of the way up from the bottom. The next subdivided portion of each rectangle is "mortgage", and here we see that the left "individual" rectangle has only about 45\% of its rectangle as "mortgage" while it represents about 60\%  in the right "joint" rectangle. The "rent" subdivided portions at the top of each rectangle represents about 40\% of the left "individual" rectangle and about 25\% of the "joint" rectangle.]
+{0.5}
       {loan_app_type_home_mosaic_plot}
       {loan_app_type_home_mosaic_rev}
   \caption{Mosaic plot where loans are grouped by
@@ -2848,8 +2891,8 @@ for their ease in comparing groups.
 
 \begin{figure}[h]
   \centering
-\oiRedirect{tableau-bargraphs1V}{
-  \Figure{}{loan_homeownership_pie_chart}}
+ \Figure[There are two plots, each providing a visualization of the homeownership variable. The left plot is a pie chart, which is a circle that has three lines drawn from the center of the circle to its edge, dividing the circle into "slices". The lower left slice is large, representing close to 50\% of the total circle, it is colored blue, and it is labeled "mortgage". The upper slice is also quite large, representing almost 40\% of the circle, is colored green, and it is labeled "rent". The lower right slice is much smaller, representing about 15\% of the circle, it is colored red, and it is labeled "own". Next, moving to the right plot, is shown a bar plot. This bar plot has homeownership categories along the horizontal axis and frequency along the vertical axis. The leftmost bar is green, is labeled "rent", and has a frequency of about 3900. The middle bar is blue, is labeled "mortgage", and has a frequency of about 4700. The rightmost bar is red, is labeled "own", and has a frequency of about 1300.]
+{}{loan_homeownership_pie_chart}
   \caption{A pie chart and bar~chart of \var{homeownership}.  Compare multiple ways of summarizing a single categorical variable on Tableau Public~\tableauhref{tableau-bargraphs1V}.}
   \label{loan_homeownership_pie_chart}
 \end{figure}
@@ -3204,7 +3247,8 @@ the infection rates (control rate minus treatment rate).
 
 \begin{figure}[ht]
   \centering
-  \Figure{0.74}{malaria_rand_dot_plot}
+  \Figure[A stacked dot plot is shown. The horizontal axis represents "difference in infection rates" and has a range of -0.6 to 0.8. There are six stacks of dots shown in the plot, with 3 points shown at -0.55, 20-25 points shown at -0.32, 30-35 points shown at -0.08, 25-30 points shown at 0.18, 10-12 points shown at 0.41, and 2 points shown at 0.64.]
+{0.74}{malaria_rand_dot_plot}
   \caption{A stacked dot plot of differences from
       100 simulations produced under the independence model,
       $H_0$, where in these simulations infections are
