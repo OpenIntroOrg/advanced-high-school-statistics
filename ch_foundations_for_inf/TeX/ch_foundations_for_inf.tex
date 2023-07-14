@@ -218,7 +218,7 @@ sum(sampled\_entries == "support") / \pewsolarpollsize{}}
     \term{code comment},
     which is used to describe in regular language what the
     code is doing. We've provided software labs in \R{} at
-    \oiRedirect{openintroorg_labs}{openintro.org/stat/labs}
+    \oiRedirect{ahss}{openintro.org/book/ahss}
     for anyone interested in learning more.}
 \label{solarPollSimulationCodeR}
 \end{figure}
@@ -273,7 +273,8 @@ that the histogram resembles a normal distribution.
 
 \begin{figure}[h]
    \centering
-   \Figure{0.85}{sampling_10k_prop_88p}
+   \Figure[A histogram is shown for 10,000 sample proportions where each sample is taken from a population where the population proportion is \pewsolarparprop{} and the sample size is $n = \pewsolarpollsize{}$. The distribution is bell-shaped (appears nearly normal), is centered at 0.88 and has a standard deviation of about 0.01.]
+{0.8}{sampling_10k_prop_88p}
    \caption{A histogram of 10,000 sample proportions sampled from a population where the population
        proportion is \pewsolarparprop{} and the sample size is
        $n = \pewsolarpollsize{}$.}
@@ -382,8 +383,8 @@ Distributions (b) and (d) are centered on the parameter (the true value), so tho
 
 \begin{figure}[h]
    \centering
-\oiRedirect{desmos-foursamplingdistributions}{
-   \includegraphics[width=0.5\textwidth]{ch_foundations_for_inf/figures/fourSamplingDistributions/fourSamplingDistributions}}
+\Figure[Four sampling distributions are shown in different colors and labeled a, b, c, and d.  Distributions b and d are accurate, centered on the labeled parameter.  Distribution b is narrower than distribution d, making it more precise.  Distributions a and c are biased and are not centered on the labeled parameter.  Distribution a is narrower than distribution c, making it more precise.]
+{0.5}{fourSamplingDistributions}
    \caption{Four sampling distributions shown, with parameter identified. Explore these distributions through a Desmos activity at \oiRedirect{openintro-ahss-desmos}{\small{openintro.org/ahss/desmos}}.}
    \label{fourSamplingDistributions}
 \end{figure}
@@ -561,7 +562,8 @@ We can be 95\% confident that a 95\% confidence interval captures the true popul
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{ch_foundations_for_inf/figures/95PercentConfidenceInterval/95PercentConfidenceInterval}
+  \Figure[Twenty-five point estimates and confidence intervals for a proportion from a simulation in which the true proportion p = 0.3 are shown.  The point estimates vary around the true population proportion of 0.3, but most of their confidence intervals overlap the value p equals 0.3. Only one of the 25 intervals does not have a confidence interval that overlaps the population proportion, and this interval has been highlighted in red. We might say that this confidence interval did not "capture" the parameter p equals 0.3.]
+{.9}{95PercentConfidenceInterval}
 \caption{Twenty-five samples of size $n=300$ were simulated when $p = 0.30$. For each sample, a confidence interval was created to try to capture the true proportion $p$. However,~1~of these~25 intervals did not capture $p = 0.30$.}
 \label{95PercentConfidenceInterval}
 \end{figure}
@@ -605,7 +607,8 @@ If $X$ is a normally distributed random variable, how often will $X$ be within 2
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.98\textwidth]{ch_foundations_for_inf/figures/choosingZForCI/choosingZForCI}
+\Figure[A standard normal distribution is shown.  The area from -1.96 to 1.96 is shaded and labeled as capturing 95\% of the area.  The area from -2.58 to 2.58 is shaded a different color and labeled as capturing 99\% of the area.]
+{0.98}{choosingZForCI}
 \caption{The area between -$z^{\star}$ and $z^{\star}$ increases as $|z^{\star}|$ becomes larger. If the confidence level is 99\%, we choose $z^{\star}$ such that 99\% of the normal curve is between -$z^{\star}$ and $z^{\star}$, which corresponds to 0.5\% in the lower tail and 0.5\% in the upper tail: $z^{\star}=2.58$.}
 \label{choosingZForCI}
 \index{confidence level|)}
@@ -954,14 +957,16 @@ The consultant's complication rate for her 142 clients was 0.063 ($0.063 \times 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.6\textwidth]{ch_foundations_for_inf/figures/MedicalConsultant/MedConsNullNormal}
+\Figure[A normal distribution with mean 0.1 and standard deviation 0.03 is shown.  This distribution represents the distribution of sample proportions under the null hypothesis that the true proportion is 0.1.  The two tail areas, to the left of 0.063 and the the right of 0.137 are shaded.  This shaded area represents the p-value for this test.]
+{0.6}{MedConsNullNormal}
 \caption{The shaded area represents the p-value. We observed $\hat{p} = 0.063$, so any observations smaller than this are at least as extreme relative to the null value, $p_0 = 0.1$, and so the lower tail is shaded. However, since this is a two-sided test, values above 0.137 are also at least as extreme as 0.063 (relative to 0.1), and so they also contribute to the p-value. The tail areas together total of about 0.1754 when calculated using a simulation technique in Section~\ref{calcPValueUsingSimulationSubSection}.}
 \label{MedConsNullNormal}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{ch_foundations_for_inf/figures/sidedness/sidedness_example_figures}
+\Figure[Three normal distributions are shown.  In the first, the left tail is shaded corresponding to an alternate hypothesis of p < null value.  In the second, the right tail is shaded, corresponding to an alternate hypothesis of p > null value.  In the third, both tails are shaded, corresponding to a two-sided alternate hypothesis of p \ne null value.]
+{1}{sidedness_example_figures}
 \caption{When the alternative hypothesis takes the form $p <$ null value, the p-value is represented by the lower tail. When it takes the form $p >$ null value, the p-value is represented by the upper tail. When using $p \neq$ null value, then the p-value is represented by both tails.}
 \label{sidedness_example_figures}
 \end{figure}
@@ -1069,7 +1074,8 @@ However, this is not our p-value! Remember that we are conducting a two-sided te
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\textwidth]{ch_foundations_for_inf/figures/MedicalConsultant/MedConsNullSim}
+\Figure[A histogram with mean 0.10 and standard deviation of 0.05 is shown.  It is a graph of the sample proportions from a simulation run 10,000 times with samples of size 142 from a population with p = 0.1.  A normal approximation is overlaid and fits the histogram quite well.  The area to the left of 0.0877 and to the right of 0.1754 are shaded, corresponding to the p-value for the test with a two-sided alternate hypothesis.]
+{0.8}{MedConsNullSim}
 \caption{The null distribution for $\hat{p}$, created from 10,000 simulated studies. The left tail contains 8.77\% of the simulations. For a two-sided test, we double the tail area to get the p-value. This doubling accounts for the observations we might have observed in the upper tail, which are also at least as extreme (relative to 0.10) as what we observed, $\hat{p} = 0.063$.}
 \label{MedConsNullSim}
 \end{figure}
