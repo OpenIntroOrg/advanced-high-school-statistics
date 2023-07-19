@@ -56,9 +56,14 @@ If we know the number of stocks purchased, we can determine the cost based on th
 
 \begin{figure}[h]
   \centering
-  \Figure{0.5}{perfLinearModel}
-  \caption{Total cost of a trade against number of shares purchased.}
-  \label{perfLinearModel}
+   \Figure[A scatterplot with a straight line fit to the data are shown for the date December 28th, 2018. The horizontal axis is "Number of Target Corporation Stocks to Purchase" and the vertical axis is "Total Cost of the Shares Purchase". Twelve data points are shown that all fall exactly on a straight line with an equation of y equals 5 plus 64.96 times x. Because the cost is computed using a linear formula, this explains why the linear fit is perfect.]{0.5}{perfLinearModel}
+   \caption{Requests from twelve separate buyers were
+       simultaneously placed with a trading company to purchase
+       Target Corporation stock
+       (ticker \texttt{TGT}, December 28th, 2018),
+       and the total cost of the shares were reported.
+       Because the cost is computed using a linear formula,
+       the linear fit is perfect.}  \label{perfLinearModel}
 \end{figure}
 
 \D{\newpage}
@@ -71,7 +76,7 @@ In each of these examples, we can consider how to draw a ``best fit line".   For
 
 \begin{figure}[h]
    \centering
-   \Figure{0.99}{imperfLinearModel}
+   \Figure[Three scatterplots are shown. The first has data ranging from -50 to positive 50 on both the horizontal and vertical axes. The data start in the upper left corner of the plot and then move steadily down to the right corner. The second plot has the horizontal axis running from 500 to about 2,000 and the vertical axis from about 0 to 25,000. At the left side of the plot, the data are in the lower half of the plot, and the points generally are steadily higher as we move right, where most points near the right end of the plot are in the upper region of the plot. A upwards trending line has been fit to these points. The last plot runs from about -10 to positive 50 on the horizontal axis and about -200 to positive 400 on the vertical axis. The points are scattered broadly across the range, with only the slightest downward trend evident in the data. A trend line has been fit to this data, though it is nearly flat.] {.99}{imperfLinearModel}
    \caption{Three data sets where a linear model may be useful even though the data do not all fall exactly on the line.}
    \label{imperfLinearModel}
 \end{figure}
@@ -80,7 +85,7 @@ We will also see examples in this chapter where fitting a straight line to the d
 
 \begin{figure}[h]
    \centering
-   \Figure{0.75}{notGoodAtAllForALinearModel}
+   \Figure[A linear model is not useful in a nonlinear set of data shown in this plot. The data are from an introductory physics experiment, where a ball is shot at many angles of inclination between 0 degrees and 90 degrees (represented by the horizontal axis), and the measured horizontal distance traveled by the ball before it hits the ground is shown in meters. The first point, at an angle of inclination of 0 hits the ground at 0 meters traveled. As the angle is increased, the ball travels further before it hits the ground until reaching a peak at 45 degrees angle of inclination, at which point it decreases again until we reach an angle of 90 degrees, at which point the ball again does not travel any horizontal distance before it hits the ground. For the data shown, the best fitting straight line is shown and is flat. This is a good example of why a straight line fit to data where there is curvature is often not useful.] {0.75}{notGoodAtAllForALinearModel}
    \caption{A linear model is not useful in this nonlinear case. These data are from an introductory physics experiment.}
    \label{notGoodAtAllForALinearModel}
 \end{figure}
@@ -100,7 +105,7 @@ Figure~\ref{scattHeadLTotalL} shows a scatterplot for the head length and total 
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/possumPic/possumPic}
+ %%  \Figure[A common brushtail possum of Australia is shown. It has a brown fur coat with some gray sprinkled in along with a face and ears that somewhat resemble a house cat. The possum also has a big bushy tail.] {.5}{possumPic}
    \caption{The common brushtail possum of Australia.\vspace{-1mm}\\
 ------------------------------------\vspace{-2mm}\\
 {\footnotesize Photo by Peter Firminger on Flickr: \oiRedirect{textbook-flickr_com_wollombi_58499575}{http://flic.kr/p/6aPTn} \oiRedirect{textbook-CC_BY_2}{CC~BY~2.0~license}.}}
@@ -109,7 +114,7 @@ Figure~\ref{scattHeadLTotalL} shows a scatterplot for the head length and total 
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.8\textwidth]{ch_regr_simple_linear/figures/scattHeadLTotalL/scattHeadLTotalL}
+  \Figure[A scatterplot showing head length against total length for 104 brushtail possums, where the horizontal axis for total length runs from 75 centimeters to about 97 centimeters (2.5 to 3.3 feet) and the vertical axis for head length runs from about 82 millimeters up to about 104 millimeters (3 to 4 inches). For possums with a total length between 75 to 80 centimeters, there are three points shown, each with head lengths of about 85 millimeters. For possums with total length from 80 to 85 centimeters, most head lengths range from about 85 millimeters to 95 millimeters. For possums with total lengths from 85 to 90 centimeters, head lengths mostly lie between 90 millimeters and 97 millimeters. For possums with total lengths larger than 90 centimeters, the head lengths are mostly between 93 millimeters and 100 millimeters. The trend is evidently upward and approximately linear. A point representing a possum with head length 94.1mm and total length 89cm is highlighted (although not relevant for any other purpose than giving an example or reminder for how a point is read in a scatterplot).] {0.8}{scattHeadLTotalL}
 
    \caption{A scatterplot showing head length against total length for 104 brushtail possums. A point representing a possum with head length 94.1~mm and total length 89~cm is highlighted.}
    \label{scattHeadLTotalL}
@@ -151,7 +156,7 @@ The value $\hat{y}$ may be viewed as an average: the equation predicts that poss
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.7\textwidth]{ch_regr_simple_linear/figures/scattHeadLTotalLLine/scattHeadLTotalLLine}
+  \Figure[The same scatterplot showing head length against total length for 104 brushtail possums is shown. A linear trend line has been added with an equation of y-hat equals 41 plus 0.59 times x, which shows the clear upward trajectory of the data. Additionally, three points are highlighted. The first is labeled with an ``X" and is at approximately (77, 85) and lies about 1 unit below the trend line. A second point labeled with a ``plus sign" is at about (85, 98) and appears to be about 7 units above the trend line. The last point highlighted is a ``triangle" and is located at about (95, 93) and is about 3 units below the trend line.] {0.7}{scattHeadLTotalLLine}
    \caption{A reasonable linear model was fit to represent the relationship between head length and total length.}
    \label{scattHeadLTotalLLine}
 \end{figure}
@@ -225,9 +230,8 @@ To estimate this graphically, we use the residual plot.  The approximate 68, 95 
 \begin{figure}[h]
    \centering
   \begin{tabular}{cc}
-   \includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/scattHeadLTotalLLine/scattHeadLTotalLLine}%
-   \includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/scattHeadLTotalLResidualPlot/scattHeadLTotalLResidualPlot}
-\end{tabular}
+ \Figure[The same scatterplot showing head length against total length for 104 brushtail possums is shown. A linear trend line has been added with an equation of y-hat equals 41 plus 0.59 times x, which shows the clear upward trajectory of the data. Additionally, three points are highlighted. The first is labeled with an ``X" and is at approximately (77, 85) and lies about 1 unit below the trend line. A second point labeled with a ``plus sign" is at about (85, 98) and appears to be about 7 units above the trend line. The last point highlighted is a ``triangle" and is located at about (95, 93) and is about 3 units below the trend line.] {.5}{scattHeadLTotalLLine}%
+  \Figure[A residual plot for the trend line fit to the brushtail possum data is shown. Here, the horizontal axis is the same -- representing "total length", it spans 75 to 97 -- while the vertical axis represents "Residuals" and spans from about -7 to positive 8. There is on evident trend in the residuals. Three points are specifically highlighted to reflect the three points discussed in the last figure. The first is labeled with an "X" with a total length of 77 and a residual of about -1. The second is labeled with a "plus sign" and has a total length of 85 and a residual of about 7. The last point highlighted is a "triangle" with a total length of about 95 and a residual of about -3. Note that the location of the residuals above and below the trend line reflects exactly with whether the residual is positive or negative, respectively.] {0.5}{scattHeadLTotalLResidualPlot}\end{tabular}
    \caption{Left: Scatterplot of head length versus total length for 104 brushtail possums.  Three particular points have been highlighted.  Right: Residual plot for the model shown in left panel.  }
    \label{scattHeadLTotalLResidualPlotReproduced}
 \end{figure}
@@ -253,7 +257,7 @@ The last plot shows very little upwards trend, and the residuals also show no ob
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/sampleLinesAndResPlots/sampleLinesAndResPlots}
+   \Figure[Sample data with their best fitting lines (top row of three plots) and their corresponding residual plots (bottom row of three plots). The upper left plot shows a scatterplot where the data trend downwards steadily with a straight line fit to the data, which appears to fit well everywhere. The bottom left plot is the residual plot of this first scatterplot, and it likewise shows no pattern in the residuals when looking left to right. The upper middle plot shows data with a downward trend, but the data's trend is more steep on the right side of the plot, so the overall shape of the data is that it trends downward and curves downward. A straight, downward-trending line has also been fit to this data, but it doesn't fit as well. The data are below this downward trending line initially, but it is above the line in the middle, and finally on the right it is once again below the linear trend line. The residual plot for this scatterplot is shown in the lower middle plot, and the curvature in the residuals is more evident than what was visible in the scatterplot: the residuals have negative values on the left and trend upwards until peaking with positive residuals in the middle, and then trending back down and having negative residual values again on the right. The last scatterplot in the upper right shows data with very little trend, but a slightly-upward trending straight line has been fit to the data. The corresponding residual plot, shown as the bottom right plot, also shows data with no evident trend or pattern, where observations appear relatively randomly scattered above and below 0 (in the vertical).] {}{sampleLinesAndResPlots}
    \caption{Sample data with their best fitting lines (top row) and their corresponding residual plots (bottom row).}
    \label{sampleLinesAndResPlots}
 \end{figure}
@@ -270,7 +274,7 @@ When a linear relationship exists between two variables, we can quantify the str
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.8\textwidth]{ch_regr_simple_linear/figures/posNegCorPlots/posNegCorPlots}
+   \Figure[Eight scatterplots are shown, each with their correlation noted. Each scatterplot appears to represent about 50 points. The first has a correlation of R equals 0.33, and there is a slight upward trend evident in the data -- if a trend line were drawn for this data, much of the data would fall relatively far from the line. The second plot has a correlation of R equals 0.69, and a clearer upward trend is evident, but it is still pretty volatile with many points deviating far from where the trend line would be. The third plot has a correlation of 0.98, and the data show a very clear upward trend, where if a trend line were drawn, the data would be (relatively) quite close to this line. The fourth plot shows a correlation of R equals 1.00, and here the points appear exactly on a line with an upward trajectory. The fifth plot shows data with a correlation of R equals 0.08, where no trend is visually evident in the data. The sixth plot has a correlation of R equals -0.64, and a downward trend is evident in the data, but the individual observations would in many cases be pretty distant from any trend line fit to the data (on a relative basis). The seventh plot has a correlation of R equals -0.92 and shows data with a clear downward trend, where the data would deviate just a modest amount from a trend line fit to the data. The last plot shows a correlation of R equals -1, where the observations would fit exactly on a line trending downwards.] {0.8}{posNegCorPlots}
    \caption{Sample scatterplots and their correlations. The first row shows variables with a positive relationship, represented by the trend up and to the right. The second row shows variables with a negative trend, where a large value in one variable is associated with a low value in the other.}
    \label{posNegCorPlots}
 \end{figure}
@@ -304,7 +308,7 @@ Correlation is intended to quantify the strength of a linear trend. Nonlinear tr
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.96\textwidth]{ch_regr_simple_linear/figures/posNegCorPlots/corForNonLinearPlots}
+   \Figures[Three scatterplots are shown. In each case, there is a strong relationship between the variables. However, because the relationship is nonlinear, the correlation is relatively weak. The first plot shows data that trends upwards on the left before peaking and then trending downward on the right -- the correlation of the data in this plot is R equals -0.23. The second plot shows data with a sharp downward trend on the left before reaching a trough and rising then sharply upward before reaching a peak and then trending sharply downwards again -- the correlation of the data in this plot is R equals 0.31. The third plots shows data that without a trend on the far left, followed by a steep drop, a trough, and then a steep rise to a peak, and then another drop and then finally a slight increase at the end -- the correlation of the data in this plot is R equals 0.50.] {0.96}{posNegCorPlots}{corForNonLinearPlots}
    \caption{Sample scatterplots and their correlations. In each case, there is a strong relationship between the variables. However, the correlation is not very strong, and the relationship is not linear.}
    \label{corForNonLinearPlots}
 \end{figure}
@@ -329,7 +333,7 @@ All four data sets have the exact same correlation of $r = 0.816$ as well as the
 \begin{figure}[h]
    \centering
 \oiRedirect{desmos-anscombe}{
-   \includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/anscombe/anscombeDesmos}}
+   \Figures [Four very different looking scatter plots are shown.  All are graphed on the same scale, with the y axis ranging from 0 to 15 and the x axis ranging from 0 to 20.  The first scatter plot shows points scattered in a football or oval shape, with a moderate, positive, linear association.  In the second scatter plot the points are curved.  In the third scatter plot, the points are collinear with positive slope, except for one outlier.  In the fourth scatter plot, the points are all arranged in a vertical line, except for one outlier point in the upper, right.  All four graphs have the least squares regression line drawn in, and though the scatter plots are very different, the least squares regression line is exactly the same for all four graphs.] {}{anscombe}{anscombeDesmos}}
    \caption{Four scatterplots from Desmos with best fit line drawn in.}
    \label{anscombe}
 \end{figure}
@@ -424,7 +428,7 @@ incomes tended to have lower gift aid from the university.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.7\textwidth]{ch_regr_simple_linear/figures/elmhurstPlots/elmhurstScatterW2Lines}
+ \Figures [A scatterplot is shown for a random sample of 50 freshman students from Elmhurst College. The horizontal axis is for ``family income" and has values ranging from \$0 to about \$300,000. The vertical axis is for ``gift aid" and has values ranging from \$0 to about \$35,000. Two lines are fit to the data, which show a downward trend, representing a slight downward trend in the data. One of those lines is a solid line representing what is called the ``least squares line". About 10 observations are shown where family income is between \$0 and \$50,000, and gift aid for these values is roughly between \$17,000 and \$28,000. About 20 observations are shown where family income is between \$50,000 and \$100,000, and gift aid for these values is roughly between \$10,000 and \$33,000. About 10 observations are shown where family income is between \$100,000 and \$150,000, and gift aid for these values is roughly between \$9,000 and \$25,000. Three observations are shown where family income is between \$150,000 and \$200,000, and gift aid for these values of \$25,000, \$12,000, and \$13,000. Six more observations are shown where family income is larger than \$200,000, and gift aid for these values range from about \$7,000 to \$22,000, \$12,000, and \$13,000. The data in this graph will be frequently discussed throughout this section and referred to as the ``Elmhurst data".] {0.7}{elmhurstPlots}{elmhurstScatterW2Lines}
 \caption{Gift aid and family income for a random sample of 50 freshman students from Elmhurst College. Two lines are fit to the data, the solid line being the \emph{least squares line}.}
 \label{elmhurstScatterW2Lines}
 \end{figure}
@@ -449,7 +453,7 @@ In Figure~\ref{leastSquares}, we imagine the squared error about a line as actua
 \begin{figure}[h]
 \centering
 \oiRedirect{desmos-leastsquares}{
-\includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/leastSquares/leastSquares}}
+\Figure [A scatter plot is shown with just three points (1, 1), (3,5) and (5,3).  The least squares regression line is drawn in.  For each of the three poinst, a vertical line from the point to the regression line is drawn, indicating the residual.  To show the squared residuals, an actual square is drawn with each vertical residual line being a side of the square. ] {0.75}{leastSquares}}
 \caption{A visualization of least squares regression using Desmos.  Try out this and other interactive Desmos activities at \oiRedirect{openintro-ahss-desmos}{\small{openintro.org/ahss/desmos}}.}
 \label{leastSquares}
 \end{figure}
@@ -688,7 +692,8 @@ We evaluated the strength of the linear relationship between two variables earli
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.7\textwidth]{ch_regr_simple_linear/figures/elmhurstPlots/elmhurstScatterWAveLine}
+  \Figures[A scatterplot of the Elmhurst data is shown for gift aid and family income with the least squares regression line overlaid against the data, which has a slight downward trend.  The horizontal line y = y average is also shown as a dotted line.]
+{.7}{elmhurstPlots}{elmhurstScatterWAveLine}
 \caption{Gift aid and family income for a random sample of 50 freshman students from Elmhurst College, shown with the least squares regression line ($\hat{y}$) and the average line ($\bar{y}$).}
 \label{elmhurstScatterWLSROnly}
 \end{figure}
@@ -712,19 +717,18 @@ R^2=\frac{SSM - SSRes}{SSM} = 1-\frac{SSRes}{SSM}
 
 \begin{figure}[ht]
   \centering
-\oiRedirect{desmos-rsquared}{
   \subfigure[]{
-    \Figures{0.4}
+    \Figures[A scatter plot with just three points is shown, where the regression line is the horizontal line y = y average, corresponding to an R^2 of 0.] {0.4}
         {rSquared}
         {rsq1}
     \label{rsq1}
   }\hspace{5mm}
   \subfigure[]{
-    \Figures{0.4}
+    \Figures[ A scatter plot with just three points shown that are collinear.  The regression line passes through the three points and R^2 = 1.] {0.4}
         {rSquared}
         {rsq2}
   \label{rsq2}
-  }}
+  }
   \caption{\subref{rsq1} The regression line is equivalent to $\bar{y}$; $R^2 = 0$.
       \subref{rsq2} The regression line passes through all of the points; $R^2=1$.  Try out this and other interactive Desmos activities at \oiRedirect{openintro-ahss-desmos}{\small{openintro.org/ahss/desmos}}.}
     \label{rSquared}
@@ -764,7 +768,7 @@ If a linear model has an $R^2$ or explained variance of 0.94, what is the correl
 
 \noindent Get started quickly with this Desmos \oiRedirect{desmos-linreg}{LinReg Calculator} ({\small available at \oiRedirect{openintro-ahss-desmos}{openintro.org/ahss/desmos}}).
 \begin{center}
-\oiRedirect{desmos-linreg}{\includegraphics[width=.95\textwidth]{ch_regr_simple_linear/figures/desmosLinReg/desmosLinReg}}
+\Figure [A Desmos calculator screen is shown.  On the left, three x, y coordinates are in a table and a linear model is calculated.  On the right is the graph of the points with the regression line drawn in.] {0.95}{desmosLinReg}
 \end{center}
 
 \noindent \\Calculator instructions
@@ -894,7 +898,7 @@ Outliers in regression are observations that fall far from the ``cloud'' of poin
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/outlierPlots/outlierPlots}
+  \Figure[Six scatterplots, each with a least squares line and residual plot. All data sets have at least one outlier. (1) A clear positive upward trend is evident in the points with a regression line overlaying these points, but one point is shown deviating substantially from the line about one-third of the way from the left side of the plot and far below the other points. (2) A slight downward trend is evident in the points on the left half of the plot with a regression line overlaying these points and extending to a single point on the far right of the plot that is also very close to the regression line. (3) A positive upward trend is evident for points shown on the left two-thirds of the plot with a regression line overlaying these points, but a single point is shown on the far right and lying substantially above the line. This one point appears to be "pulling" the regression line up on the right, making the line fit the rest of the data less well. (4) Most of the data is shown in the left two-thirds of the plot with a clear downward, linear trend. A cluster of 4 points is shown on the far right but deviating notably above the trend of the other points. The regression line fit to the data shows it largely "trying" to fit the bulk of the data on the left but being "pulled" upward on the right towards the cluster of points deviating from the linear trend. (5) A large cluster of points is shown on the far bottom-left, and there is no apparent trend in this large cluster. A single point is shown on the far upper-right. A regression line is fit to the data with a line extending from the cluster on the bottom-left and trending upwards near the single point on the upper right. (6) A clear downward trend is evident in the points on the right two-thirds of the plot with a regression line overlaying these points and extending to a single point on the far left of the plot that is also very close to the regression line.] {}{outlierPlots}
 \caption{Six plots, each with a least squares line and residual plot. All data sets have at least one outlier.}
 \label{outlierPlots}
 \end{figure}
@@ -924,7 +928,7 @@ Here we want to predict total price based on game condition, which takes values 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.49\textwidth]{ch_regr_simple_linear/figures/marioKartNewUsed/marioKartNewUsed}
+  \Figure[A scatterplot is shown for total auction prices for the video game "Mario Kart", broken down by condition on the horizontal axis. The prices are divided into "used" and "new" condition groups. All used games are shown with an x-value of 0 on the left, and all new games are shown with an x-value of 1 on the right of the plot. The used games on the left show a lower average price of about \$43, and new games on the right show a higher average price of about \$54. The least squares regression line is also shown for this scatterplot, which shows an upward trend and has a formula of "price equals 42.87 plus 10.90 times cond-subscript-new.] {0.49}{marioKartNewUsed}
 \caption{Total auction prices for the game \emph{Mario Kart}, divided into used ($x=0$) and new ($x=1$) condition games with the least squares regression line~shown.}
 \label{marioKartNewUsed}
 \end{figure}
@@ -1093,13 +1097,13 @@ While fitting a line to predict population change (2010 to 2017) from population
     \label{county_pop_transformed}
   \centering
   \subfigure[]{
-    \Figures{0.48}
+    \Figures[A histogram with a horizontal axis of Population with possible data ranging from 0 to about 10 million. The first bar representing 0 to 400,000 shows a frequency (bar height) of about 3000, the second bar for 400,000 to 800,000 shows about frequency of about 100. All other bars are sufficiently small that they are virtually indistinguishable from 0.] {0.48}
         {county_pop_transformed}
         {county_pop_transformed_i}
     \label{county_pop_transformed_i}
   }
   \subfigure[]{
-    \Figures{0.48}
+    \Figures[A histogram is shown where the horizontal axis represents log-base-10 of the population. The horizontal axis runs from about 2 to 7, and frequency (bin/box height) peaks at a little over 1000. The data show an approximate bell shape, peaking in the middle between 4 to 4.5, then showing lower frequencies the further out from 4-4.5 with frequencies being close to zero outside of 2.5 to 6.5.] {0.48}
         {county_pop_transformed}
         {county_pop_transformed_log}
   \label{county_pop_transformed_log}
@@ -1116,13 +1120,13 @@ While fitting a line to predict population change (2010 to 2017) from population
 \begin{figure}[p]
   \centering
   \subfigure[]{
-    \Figures{0.48}
+    \Figures[A scatterplot of the population on the horizontal axis (ranging from 0 to 10 million) and population change as a percent on the vertical axis (ranging from -35\% to positive 40\%). The data is particularly concentrated on the left of the graph below 1 million, where the data with populations below 1 million have populations changes that are mostly clustered between about -10\% and positive 15\%. There are a relatively small number of observations with population greater than 1 million, and these all have population changes between roughly -3\% and positive 10\%. There is no discernible trend in the data.] {0.48}
         {county_pop_change_v_pop_transform}
         {county_pop_change_v_pop_transform_i}
     \label{county_pop_change_v_pop_transform_i}
   }
   \subfigure[]{
-    \Figures{0.48}
+    \Figures[A scatterplot of the log-base-10 of the population on the horizontal axis (ranging from 2 to 7) and population change as a percent on the vertical axis (-35\% to positive 40\%). The data well distributed between about 3 and 6 on the horizontal axis and shows a cloud of points with a slight upward trend. Between 3 and 4 on the horizontal, nearly all points take values between -10\% and positive 10\%. Between 4 and 5 on the horizontal, nearly all points take vertical values between -8\% and positive 15\%. Between 5 and 6 on the horizontal, nearly all points take vertical values between -5\% and positive 18\%.] {0.48}
         {county_pop_change_v_pop_transform}
         {county_pop_change_v_pop_transform_log}
     \label{county_pop_change_v_pop_transform_log}
@@ -1155,7 +1159,7 @@ or straighten a nonlinear relationship in a scatterplot.
 
 \begin{figure}[ht]
    \begin{center}
-   \includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/NeedsTransform/NeedsTransform-PreTransform}
+  \Figures [A scatter plot of y versus x is shown.  There is a positive association that appears curved.  Below is a residual plot, with the residuals for the model plotted versus x.  There is a U-pattern in the residual plot. ] {0.75}{NeedsTransform}{NeedsTransform-PreTransform}
 \label{pretransform}
    \caption{Variable $y$ is plotted against $x$. A nonlinear relationship is evident by the $\cup$-pattern shown in the residual plot.  The curvature is also visible in the original plot.}
    \label{NeedsTransform-PreTransform}
@@ -1204,7 +1208,7 @@ The linear regression equation can be written as:  $\widehat{\text{log}(y)} = 1.
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/NeedsTransform/NeedsTransform-PostTransform}
+  \Figures [A scatter plot of log(y) versus x is shown.  The assocation is fairly strong, positive and linear.  Below this graph is a residual plot, which plots the residuals for the model versus x.  There are no apparent patterns in the residual plot. ] {0.75}{NeedsTransform}{NeedsTransform-PostTransform}
    \caption{A plot of $\text{log}(y)$ against $x$. The residuals don't show any evident patterns, which suggests the transformed data is well-fit by a linear model.}
    \label{NeedsTransform-PostTransform}
 \end{figure}
@@ -1323,7 +1327,7 @@ When this assumption is found to be unreasonable, it is usually because of outli
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/whatCanGoWrongWithLinearModel/whatCanGoWrongWithLinearModel}
+  \Figure[Four scatterplots are shown, each with their own residual plot. These four examples show when methods in this chapter are insufficient to apply to the data. In the first set, a scatterplot with arch-shaped data is shown with a straight line fit to the data, which poorly fits the curved nature of the data; this is meant to highlight an example where "linearity" fails. In the second set, a set of data with a line fit is shown, where the data tightly pack around the line, except one point in particular that is far from the line and represents the case where there are "extreme outliers" in the data. The third set shows a case where a straight line fits the data, but the variability around the line changes, where observations tend to be quite close to the line on the left, but when looking further right, the observations tend to be increasingly far from the line, indicating "changing variability" in the residuals over different regions of the plot. The fourth set provides another case of what is called "time series" data, which is a context where "successive observations are correlated".] {}{whatCanGoWrongWithLinearModel}
 \caption{Four examples showing when the inference methods in this chapter are insufficient to apply to the data. In the left panel, a straight line does not fit the data. In the second panel, there are outliers; two points on the left are relatively distant from the rest of the data, and one of these points is very far away from the line. In the third panel, the variability of the data around the line increases with larger values of $x$. In the last panel, a time series data set is shown, where successive observations are highly correlated.}
 \label{whatCanGoWrongWithLinearModel}
 \end{figure}
@@ -1359,8 +1363,8 @@ The scatterplot seems to show a linear trend, which matches the fact that there 
 \begin{figure}%
    \centering
   \begin{tabular}{cc}
-   \includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/elmhurstInference/elmhurstScatter}
-   \includegraphics[width=0.5\textwidth]{ch_regr_simple_linear/figures/elmhurstInference/elmhurstResidual}
+   \Figures [A scatterplot of the Elmhurst data is shown for gift aid and family income with the least squares regression line overlaid against the data, which has a slight downward trend.  ] {0.5}{elmhurstInference}{elmhurstScatter}
+   \Figures [A residual plot is shown graphing the residuals versus family income.  The residuals range from -12 to positive 12 and show no pattern. ] {0.5}{elmhurstInference}{elmhurstResidual}
 \end{tabular}
    \caption{Left: Scatterplot of gift aid versus family income for 50 freshmen at Elmhurst college.  Right: Residual plot for the model shown in left panel.  }
 \label{elmhurstInferencePlots}
@@ -1458,8 +1462,8 @@ To carry out a complete confidence interval procedure to estimate the slope of t
 \begin{figure}%
    \centering
   \begin{tabular}{cc}
-   \includegraphics[width=0.45\textwidth]{ch_regr_simple_linear/figures/possumInference/possumScatter}
-   \includegraphics[width=0.45\textwidth]{ch_regr_simple_linear/figures/possumInference/possumResidual}
+   \Figures [A scatterplot showing head length against total length for 104 brushtail possums is shown again. A linear trend line has been added with an equation of y-hat equals 41 plus 0.59 times x, which shows the clear upward trajectory of the data.] {0.45}{possumInference}{possumScatter}
+    \Figures [A residual plot for the trend line fit to the brushtail possum data is shown again. Here, the horizontal axis is the same -- representing "total length", it spans 75 to 97 -- while the vertical axis represents "Residuals" and spans from about -7 to positive 8.] {0.45}{possumInference}{possumResidual}
 \end{tabular}
    \caption{Left: Scatterplot of head length versus total length for 104 brushtail possums.   Right: Residual plot for the model shown in left panel.  }
 \label{possumInferencePlots}
@@ -1530,8 +1534,8 @@ Examining the data, there are no clear deviations from linearity, the constant v
 
 \begin{figure}[h]
 \centering
-\oiRedirect{tableau-scatter-changeinseats-unemployment}{\includegraphics[width=.9\textwidth]{ch_regr_simple_linear/figures/unemploymentAndChangeInHouse/unemploymentAndChangeInHouse}}
-\caption{The percent change in House seats for the President's party in each election from 1898 to 2018 plotted against the unemployment rate. The two points for the Great Depression have been removed, and a least squares regression line has been fit to the data.  Explore this data set on Tableau Public\tableauhref{tableau-scatter-changeinseats-unemployment}.}
+  \Figure[A scatterplot is shown for the percent change in House seats for the President's party in each midterm election from 1898 to 2018 plotted against the unemployment rate. The two points for the Great Depression have been removed, and a least squares regression line has been fit to the data with a slightly downward trend. The horizontal axis is for "Unemployment Rate" with values ranging from about 3\% to 12\%. The vertical axis is for "Percent Change in Seats of the President's Party in the House of Representatives" with values ranging from about -30\% to positive 10\%. The bulk of the observations have Unemployment Rate between 3\% and 8\%, and these have the percent change in seats ranging from about -27\% to positive 4\% without any discernible trend. There are four observations with unemployment rate above 8\%, and these have the percent change in seats ranging from -25\% to -9\%. Each point in the scatterplot is also labeled as "Democrat" in blue or "Republican" in red, though this doesn't reveal any additional pattern.] {0.9}{unemploymentAndChangeInHouse}
+\caption{The percent change in House seats for the President's party in each midterm election from 1898 to 2018 plotted against the unemployment rate. The two points for the Great Depression have been removed, and a least squares regression line has been fit to the data.  Explore this data set on Tableau Public\tableauhref{tableau-scatter-changeinseats-unemployment}.}
 \label{unemploymentAndChangeInHouse}
 \end{figure}
 
@@ -1571,7 +1575,9 @@ The residual plot shown in Figure~\ref{unemploymentAndChangeInHouseResiduals} sh
 
 \begin{figure}[h]
 \centering
-\oiRedirect{tableau-residuals-changeinsets-unemployment}{\includegraphics[width=.9\textwidth]{ch_regr_simple_linear/figures/unemploymentAndChangeInHouse/unemploymentAndChangeInHouseResiduals}}
+\oiRedirect{tableau-residuals-changeinsets-unemployment}{
+\Figures[ The residuals for the linear regression model predicting the percent change in House seats for the President's party in each midterm election from 1898 to 2018 based on Percent Unemployment are plotted versus Percent Unemployment.  The residuals range from about -15\% to positive 15\%.  The residual plot shows no pattern. ] {0.9}{unemploymentAndChangeInHouse}{unemploymentAndChangeInHouseResiduals}
+}
 \caption{The residual plot shows no pattern that would indicate that a linear model is inappropriate.  Explore this data set on Tableau Public\tableauhref{tableau-residuals-changeinsets-unemployment}.}
 \label{unemploymentAndChangeInHouseResiduals}
 \end{figure}
@@ -1626,7 +1632,7 @@ This value corresponds to the $T$-score reported in the regression output in the
 
 \begin{figure}
 \centering
-\includegraphics[width=0.82\textwidth]{ch_regr_simple_linear/figures/oneSidedTailForMidtermUnemploymentHT/oneSidedTailForMidtermUnemploymentHT}
+\Figure [A normal distribution is shown, with mean 0 and standard deviation 0.87.  The area to the left of -0.8897 is shaded and appears to be about 15\% of the total area.] {0.82}{oneSidedTailForMidtermUnemploymentHT}
 \caption{The distribution shown here is the sampling distribution for $b$, if the null hypothesis was true. The shaded tail represents the p-value for the hypothesis test evaluating whether there is convincing evidence that higher unemployment corresponds to a greater loss of House seats for the President's party during a midterm election.}
 \label{oneSidedTailForMidtermUnemploymentHT}
 \end{figure}
@@ -1771,10 +1777,13 @@ In Section~\ref{ciMeanOfDifferences}, we looked at a set of paired data involvin
 
 \begin{figure}[h]
 \centering
-\begin{tabular}{cc}
-\includegraphics[width=0.55\textwidth]{ch_inference_for_means/figures/textbooksF18/diffInTextbookPricesF18}
-\includegraphics[width=0.45\textwidth]{ch_regr_simple_linear/figures/textbooks_scatter/textbooks_scatter}
-\end{tabular}
+  \subfigure[]{
+\Figures [A histogram of UCLA Bookstore price minus Amazon Price is shown. The differences range from -20 dollars to positive 80 dollars.  The distribution is right skewed.] {0.55}{textbooksF18}{diffInTextbookPricesF18}
+}
+  \subfigure[]{
+\Figure [A scatter plot of Amazon Price versus UCLA Bookstore price is shown. The prices for both Amazon and UCLA Bookstore range from 0 to about 250 dollars.  The association is linear, positive, and strong.] {0.45}{textbooks_scatter}
+}
+
 \caption{Left: histogram of the difference (UCLA Bookstore price - Amazon price) for
     each book sampled.  Right: scatterplot of Amazon Price versus UCLA Bookstore price.}
 \label{textbooksHistogramScatter}
