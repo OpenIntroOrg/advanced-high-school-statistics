@@ -42,11 +42,19 @@ content from one page to the next, e.g. as a \ref{...} gets filled in.
 Learning LaTeX
 --------------
 
-If you are not familiar with LaTeX but would like to learn how to use it,
-check out
+If you are not familiar with LaTeX but would like to learn how to use it, check out the slides from two LaTeX mini-courses at
 
-http://scc.stat.ucla.edu/mini-courses/materials-from-past-mini-courses/spring-2010-mini-course-materials/
+[https://github.com/OpenIntroOrg/mini-course-materials](https://github.com/OpenIntroOrg/mini-course-materials)
 
-Two of the authors of these guides are the same people involved with OpenIntro.
-For a more authoritative review, the book "Guide to LaTeX" is an excellent
-resource.
+
+PDFs:
+
+[Basics of LaTeX](https://github.com/OpenIntroOrg/mini-course-materials/raw/master/LaTeX_Basics/basicsOfLatex.pdf)
+
+[Math and BibTeX](https://github.com/OpenIntroOrg/mini-course-materials/raw/master/LaTeX_Math_and_BibTeX/bibtexMathInLatex.pdf)
+
+For a more authoritative review, the book "Guide to LaTeX" is an excellent resource.
+
+Also, see the branches of [this repo](https://github.com/statkclee/mini-course-materials) by Kwangchun Lee for Korean translations of these mini-course materials.
+
+
