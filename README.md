@@ -1,7 +1,7 @@
 Project Organization
 --------------------
 
-- Each chapter's content is in one of the eight chapter folders that start
+- Each chapter's content is in one of the five chapter folders that start
 with "ch_". Within each folder, there is a "figures" folder and a "TeX" folder.
 The TeX folder contains the text files that are used to typeset the
 chapters in the textbook.
@@ -42,11 +42,15 @@ content from one page to the next, e.g. as a \ref{...} gets filled in.
 Learning LaTeX
 --------------
 
-If you are not familiar with LaTeX but would like to learn how to use it,
-check out
 
-http://scc.stat.ucla.edu/mini-courses/materials-from-past-mini-courses/spring-2010-mini-course-materials/
+If you are not familiar with LaTeX but would like to learn how to use it, check out the slides from two LaTeX mini-courses at
 
-Two of the authors of these guides are the same people involved with OpenIntro.
-For a more authoritative review, the book "Guide to LaTeX" is an excellent
-resource.
+https://github.com/OpenIntroOrg/mini-course-materials
+
+PDFs:
+
+[Basics of LaTeX](https://github.com/OpenIntroOrg/mini-course-materials/raw/master/LaTeX_Basics/basicsOfLatex.pdf)
+
+[Math and BibTeX](https://github.com/OpenIntroOrg/mini-course-materials/raw/master/LaTeX_Math_and_BibTeX/bibtexMathInLatex.pdf)
+
+For a more authoritative review, the book "Guide to LaTeX" is an excellent resource.
