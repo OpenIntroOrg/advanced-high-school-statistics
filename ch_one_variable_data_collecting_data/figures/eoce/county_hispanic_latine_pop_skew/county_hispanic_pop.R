@@ -1,0 +1,44 @@
+# load openintro package for colors ---------------------------------
+library(openintro)
+
+# load mapproj package for map functions ----------------------------
+library(mapproj)
+
+# load data ---------------------------------------------------------
+data(county_complete)
+county23 = read.csv("https://www.dropbox.com/scl/fi/26nlqmfwuizg4vx9c2p7g/ACS2023wide_final.csv?rlkey=yt7l9xt0dulny0ho7i6lsxyq6&st=sm621q4x&dl=1")
+
+# histogram of hispanic % -------------------------------------------
+pdf("county_hispanic_pop_hist.pdf", 7.5, 4)
+
+par(mar = c(3.8, 3.5, 0.5, 0.5), las = 1, mgp = c(2.5, 0.7, 0), 
+    cex.lab = 1.5, cex.axis = 1.5)
+histPlot(county23$RACE.ETHNICITY...Hispanic.or.Latino..percent., breaks = 25, 
+         xlab = "Hispanic/Latine %", ylab = "", 
+         col = COL[1])
+
+dev.off()
+
+# log of histogram of hispanic % ------------------------------------
+pdf("county_hispanic_pop_log_hist.pdf", 7.5, 4)
+
+par(mar = c(3.8, 3.5, 0.5, 0.5), las = 1, mgp = c(2.5, 0.7, 0), 
+    cex.lab = 1.5, cex.axis = 1.5)
+histPlot(log(county_complete$hispanic_2010), breaks = 25, 
+         xlab = "log(% Hispanic/Latine)", ylab = "", 
+         col = COL[1])
+
+dev.off()
+
+# source custom code for county maps --------------------------------
+source("countyMap.R")
+
+# map of travel to work time ----------------------------------------
+
+pdf("county_hispanic_pop_map.pdf", 7.5, 4)
+
+val <- county_complete$hispanic_2010
+val[val >= 40] <- 40
+countyMap(val, county_complete$FIPS, "bg", gtlt=">")
+
+dev.off()

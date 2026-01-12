@@ -88,7 +88,7 @@
 
 %-------------------------------------------------------------
 % 2 Special Commands for Editions
-\newcommand{\referrer}{AHSS3_pdf}
+\newcommand{\referrer}{AHSS4_pdf}
 \newcommand{\vspaceB}[1]{}
 \newcommand{\hspaceB}[1]{}
 \newcommand{\textB}[1]{}
@@ -207,7 +207,7 @@
 % 6.6 Hyperreferences
 \newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
 %\newcommand{\oiRedirect}[2]{\href{http://www.openintro.org/redirect.php?go=#1&referrer=\referrer}{#2}}
-\newcommand{\oiRedirectUrl}[1]{http://www.openintro.org/redirect.php?go=#1&referrer=ahss3_pdf}
+\newcommand{\oiRedirectUrl}[1]{http://www.openintro.org/redirect.php?go=#1&referrer=ahss4_pdf}
 \newcommand{\oiRedirect}[2]{\href{\oiRedirectUrl{#1}}{#2}}
 \newcommand{\videoicon}[1][4.5mm]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}~}
 \newcommand{\CalculatorVideos}[1]{}%{\begin{tipBox}{\tipBoxTitle[\videoicon]{Calculator videos}
@@ -243,13 +243,11 @@
 % 8.3 Caption Width
 \newlength{\mycaptionwidth}
 \setlength{\mycaptionwidth}{0.825\textwidth}
-\captionsetup{width=\mycaptionwidth}
+\setlength{\captionwidth}{\mycaptionwidth}
 \newcommand{\Figure}[3][]{\includegraphics[width=#2\textwidth]{\chapterfolder/figures/#3/#3}}
 \newcommand{\Figures}[4][]{\includegraphics[width=#2\textwidth]{\chapterfolder/figures/#3/#4}}
 \newcommand{\Figuress}[4][]{\includegraphics[width=#2]{\chapterfolder/figures/#3/#4}}
-
-%??? different from OS4?
-%\newcommand{\FigureFullPath}[3][]{\includegraphics[width=#2\textwidth]{#3}}
+\newcommand{\FigureFullPath}[3][]{\includegraphics[width=#2\textwidth]{#3}}
 
 \newcommand{\chapterfolder}{}
 
@@ -484,6 +482,8 @@
 \end{minipage}
 
 \addvspace{4mm}}
+
+
 
 %% exercise tags
  \newcommand{\tabspecial}[2]{\oiRedirect{#1}{#2\tableauhref{#1}}}

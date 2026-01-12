@@ -1,158 +1,159 @@
-\section{$\pmb{t}$-Probability Table}
+\section[$t$-Distribution Critical Values Table]{$\pmb{t}$-Distribution Critical Values Table}
 \label{tDistributionTable}
-
-A \termsub{$\pmb{t}$-probability table}
-    {t-probability table@$t$-probability table}
-may be used to
-find tail areas of a $t$-distribution using a T-score,
-or vice-versa.
-Such a table lists T-scores and the corresponding percentiles.
-A partial
-\termsub{$\pmb{t}$-table}{t-table@$t$-table}
-is shown in Figure~\ref{tTableSample},
-and the complete table starts on page~\pageref{tTableFirstPage}.
-Each row in the $t$-table represents a $t$-distribution with
-different degrees of freedom.
-The columns correspond to tail probabilities.
-For instance, if we know we are working with the
-$t$-distribution with $df=18$, we can examine row 18,
-which is highlighted in Figure~\ref{tTableSample}.
-If we want the value in this row that identifies the T-score
-(cutoff) for an upper tail of 10\%, we can look in the column
-where \emph{one tail} is 0.100.
-This cutoff is 1.33.
-If we had wanted the cutoff for the lower 10\%, we would
-use -1.33.
-Just like the normal distribution,
-all $t$-distributions are symmetric.
-
-\begin{figure}[hht]
-\centering
-\begin{tabular}{r | rrr rr}
-one tail & \hspace{1.5mm}  0.100 & \hspace{1.5mm} 0.050 & \hspace{1.5mm} 0.025 & \hspace{1.5mm} 0.010 & \hspace{1.5mm} 0.005  \\
-two tails & 0.200 & 0.100 & 0.050 & 0.020 & 0.010 \\
-\hline
-{$df$} \hfill 1  &  {\normalsize  3.08} & {\normalsize  6.31} & {\normalsize 12.71} & {\normalsize 31.82} & {\normalsize 63.66}  \\ 
-2  &  {\normalsize  1.89} & {\normalsize  2.92} & {\normalsize  4.30} & {\normalsize  6.96} & {\normalsize  9.92}  \\ 
-3  &  {\normalsize  1.64} & {\normalsize  2.35} & {\normalsize  3.18} & {\normalsize  4.54} & {\normalsize  5.84}  \\ 
-$\vdots$ & $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ & \\
-17  &  {\normalsize  1.33} & {\normalsize  1.74} & {\normalsize  2.11} & {\normalsize  2.57} & {\normalsize  2.90}  \\ 
-\highlightO{18}  &  \highlightO{\normalsize  1.33} & \highlightO{\normalsize  1.73} & \highlightO{\normalsize  2.10} & \highlightO{\normalsize  2.55} & \highlightO{\normalsize  2.88}  \\ 
-19  &  {\normalsize  1.33} & {\normalsize  1.73} & {\normalsize  2.09} & {\normalsize  2.54} & {\normalsize  2.86}  \\ 
-20  &  {\normalsize  1.33} & {\normalsize  1.72} & {\normalsize  2.09} & {\normalsize  2.53} & {\normalsize  2.85}  \\ 
-$\vdots$ & $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ & \\
-400  &  {\normalsize  1.28} & {\normalsize  1.65} & {\normalsize  1.97} & {\normalsize  2.34} & {\normalsize  2.59}  \\ 
-500  &  {\normalsize  1.28} & {\normalsize  1.65} & {\normalsize  1.96} & {\normalsize  2.33} & {\normalsize  2.59}  \\ 
-$\infty$  &  {\normalsize  1.28} & {\normalsize  1.64} & {\normalsize  1.96} & {\normalsize  2.33} & {\normalsize  2.58}  \\ 
-\end{tabular}
-\caption{An abbreviated look at the $t$-table.
-    Each row represents a different $t$-distribution.
-    The columns describe the cutoffs for specific tail areas.
-    The row with $df=18$ has been \highlightO{highlighted}.}
-\label{tTableSample}
-\end{figure}
-
-\begin{examplewrap}
-\begin{nexample}{What proportion of the $t$-distribution with
-    18 degrees of freedom falls below -2.10?}
-  Just like a normal probability problem, we first draw the
-  picture and shade the area below -2.10:
-  \begin{center}
-  \includegraphics[width=0.5\textwidth]{ch_inference_for_means/figures/tDistDF18LeftTail2Point10/tDistDF18LeftTail2Point10}
-  \end{center}
-  To find this area, we first identify the appropriate row:
-  $df = 18$.
-  Then we identify the column containing the absolute value
-  of -2.10;
-  it~is the third column.
-  Because we are looking for just one tail, we examine the
-  top line of the table, which shows that a one tail area
-  for a value in the third row corresponds to 0.025.
-  That is, 2.5\% of the distribution falls below -2.10.
-
-  In the next example we encounter a case where the exact
-  T-score is not listed in the table.
-\end{nexample}
-\end{examplewrap}
-
-\begin{examplewrap}
-\begin{nexample}{A $t$-distribution with 20 degrees of freedom
-    is shown in the left panel of
-    Figure~\ref{tDistAppendixTwoEx}.
-    Estimate the proportion of the distribution falling
-    above~1.65.}
-  We identify the row in the $t$-table using the degrees
-  of freedom: $df=20$.
-  Then we look for 1.65; it is not listed.
-  It falls between the first and second columns.
-  Since these values bound 1.65, their tail areas will
-  bound the tail area corresponding to 1.65.
-  We identify the one tail area of the first and
-  second columns, 0.050 and 0.10, and we conclude that
-  between 5\% and 10\% of the distribution is more than
-  1.65 standard deviations above the mean.
-  If we like, we can identify the precise area using
-  statistical software: 0.0573.
-\end{nexample}
-\end{examplewrap}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.85\textwidth]{ch_inference_for_means/figures/tDistAppendixTwoEx/tDistAppendixTwoEx}
-\caption{Left: The $t$-distribution with 20 degrees of freedom,
-    with the area above 1.65 shaded.
-    Right: The $t$-distribution with 475 degrees of freedom,
-    with the area further than 2 units from 0 shaded.}
-\label{tDistAppendixTwoEx}
-\end{figure}
-
-\begin{examplewrap}
-\begin{nexample}{A $t$-distribution with 475 degrees of freedom
-    is shown in the right panel of
-    Figure~\ref{tDistAppendixTwoEx}.
-    Estimate the proportion of the distribution falling more
-    than 2 units from the mean (above or below).}
-  As before, first identify the appropriate row: $df=475$.
-  This row does not exist!
-  When this happens, we use the next smaller row, which in
-  this case is $df = 400$.
-  Next, find the columns that capture 2.00;
-  because $1.97 < 3 < 2.34$, we use the third and fourth columns.
-  Finally, we find bounds for the tail areas by looking at
-  the two tail values: 0.02 and 0.05.
-  We use the two tail values because we are looking for two
-  symmetric tails in the $t$-distribution.
-\end{nexample}
-\end{examplewrap}
-
-\begin{exercisewrap}
-\begin{nexercise}
-What proportion of the $t$-distribution with 19 degrees of freedom falls above -1.79 units?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{We find the shaded area \emph{above} -1.79 (we leave the picture to you). The small left tail is between 0.025 and 0.05, so the larger upper region must have an area between 0.95 and 0.975.}
-
-\begin{examplewrap}
-\begin{nexample}{Find the value of $t_{18}^{\star}$
-    using the $t$-table, where $t_{18}^{\star}$
-    is the cutoff for the $t$-distribution with
-    18 degrees of freedom where 95\% of the distribution
-    lies between -$t_{18}^{\star}$ and +$t_{18}^{\star}$.}
-  For a 95\% confidence interval, we want to find
-  the cutoff $t^{\star}_{18}$ such that 95\% of the
-  $t$-distribution is between -$t^{\star}_{18}$
-  and $t^{\star}_{18}$;
-  this is the same as where the two tails have a total
-  area of 0.05.
-  We look in the $t$-table on page~\pageref{tTableSample},
-  find the column with area totaling 0.05 in the two tails
-  (third column), and then the row with 18 degrees of
-  freedom: $t^{\star}_{18} = 2.10$.
-\end{nexample}
-\end{examplewrap}
-
-
-\newpage
+%
+%A \termsub{$\pmb{t}$-probability table}
+%    {t-probability table@$t$-probability table}
+%may be used to
+%find tail areas of a $t$-distribution using a T-score,
+%or vice-versa.
+%Such a table lists T-scores and the corresponding percentiles.
+%A partial
+%\termsub{$\pmb{t}$-table}{t-table@$t$-table}
+%is shown in Figure~\ref{tTableSample},
+%and the complete table starts on page~\pageref{tTableFirstPage}.
+%Each row in the $t$-table represents a $t$-distribution with
+%different degrees of freedom.
+%The columns correspond to tail probabilities.
+%For instance, if we know we are working with the
+%$t$-distribution with $df=18$, we can examine row 18,
+%which is highlighted in Figure~\ref{tTableSample}.
+%If we want the value in this row that identifies the T-score
+%(cutoff) for an upper tail of 10\%, we can look in the column
+%where \emph{one tail} is 0.100.
+%This cutoff is 1.33.
+%If we had wanted the cutoff for the lower 10\%, we would
+%use -1.33.
+%Just like the normal distribution,
+%all $t$-distributions are symmetric.
+%
+%\begin{figure}[hht]
+%\centering
+%\begin{tabular}{r | rrr rr}
+%one tail & \hspace{1.5mm}  0.100 & \hspace{1.5mm} 0.050 & \hspace{1.5mm} 0.025 & \hspace{1.5mm} 0.010 & \hspace{1.5mm} 0.005  \\
+%\hline
+%{$df$} \hfill 1  &  {\normalsize  3.08} & {\normalsize  6.31} & {\normalsize 12.71} & {\normalsize 31.82} & {\normalsize 63.66}  \\ 
+%2  &  {\normalsize  1.89} & {\normalsize  2.92} & {\normalsize  4.30} & {\normalsize  6.96} & {\normalsize  9.92}  \\ 
+%3  &  {\normalsize  1.64} & {\normalsize  2.35} & {\normalsize  3.18} & {\normalsize  4.54} & {\normalsize  5.84}  \\ 
+%$\vdots$ & $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ & \\
+%17  &  {\normalsize  1.33} & {\normalsize  1.74} & {\normalsize  2.11} & {\normalsize  2.57} & {\normalsize  2.90}  \\ 
+%\highlightO{18}  &  \highlightO{\normalsize  1.33} & \highlightO{\normalsize  1.73} & \highlightO{\normalsize  2.10} & \highlightO{\normalsize  2.55} & \highlightO{\normalsize  2.88}  \\ 
+%19  &  {\normalsize  1.33} & {\normalsize  1.73} & {\normalsize  2.09} & {\normalsize  2.54} & {\normalsize  2.86}  \\ 
+%20  &  {\normalsize  1.33} & {\normalsize  1.72} & {\normalsize  2.09} & {\normalsize  2.53} & {\normalsize  2.85}  \\ 
+%$\vdots$ & $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ & \\
+%400  &  {\normalsize  1.28} & {\normalsize  1.65} & {\normalsize  1.97} & {\normalsize  2.34} & {\normalsize  2.59}  \\ 
+%500  &  {\normalsize  1.28} & {\normalsize  1.65} & {\normalsize  1.96} & {\normalsize  2.33} & {\normalsize  2.59}  \\ 
+%$\infty$  &  {\normalsize  1.28} & {\normalsize  1.64} & {\normalsize  1.96} & {\normalsize  2.33} & {\normalsize  2.58}  \\ 
+%\hline
+%Confidence level C  &  {\normalsize  80\%} & {\normalsize 90\%} & {\normalsize 95\%} & {\normalsize  98\%} & {\normalsize  99\%}  \\
+%\hline
+%\end{tabular}
+%\caption{An abbreviated look at the $t$-table.
+%    Each row represents a different $t$-distribution.
+%    The columns describe the cutoffs for specific tail areas.
+%    The row with $df=18$ has been \highlightO{highlighted}.}
+%\label{tTableSample}
+%\end{figure}
+%
+%\begin{examplewrap}
+%\begin{nexample}{What proportion of the $t$-distribution with
+%    18 degrees of freedom falls below -2.10?}
+%  Just like a normal probability problem, we first draw the
+%  picture and shade the area below -2.10:
+%  \begin{center}
+%  \includegraphics[width=0.3\textwidth]{ch_inference_for_means/figures/tDistDF18LeftTail2Point10/tDistDF18LeftTail2Point10}
+%  \end{center}
+%  To find this area, we first identify the appropriate row:
+%  $df = 18$.
+%  Then we identify the column containing the absolute value
+%  of -2.10;
+%  it~is the third column.
+%  Because we are looking for just one tail, we examine the
+%  top line of the table, which shows that a one tail area
+%  for a value in the third row corresponds to 0.025.
+%  That is, 2.5\% of the distribution falls below -2.10.
+%
+%  In the next example we encounter a case where the exact T-score is not listed in the table.
+%\end{nexample}
+%\end{examplewrap}
+%
+%\begin{examplewrap}
+%\begin{nexample}{A $t$-distribution with 20 degrees of freedom
+%    is shown in the left panel of
+%    Figure~\ref{tDistAppendixTwoEx}.
+%    Estimate the proportion of the distribution falling
+%    above~1.65.}
+%  We identify the row in the $t$-table using the degrees
+%  of freedom: $df=20$.
+%  Then we look for 1.65; it is not listed.
+%  It falls between the first and second columns.
+%  Since these values bound 1.65, their tail areas will
+%  bound the tail area corresponding to 1.65.
+%  We identify the one tail area of the first and
+%  second columns, 0.050 and 0.10, and we conclude that
+%  between 5\% and 10\% of the distribution is more than
+%  1.65 standard deviations above the mean.
+%  If we like, we can identify the precise area using
+%  statistical software: 0.0573.
+%\end{nexample}
+%\end{examplewrap}
+%
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=0.85\textwidth]{ch_inference_for_means/figures/tDistAppendixTwoEx/tDistAppendixTwoEx}
+%\caption{Left: The $t$-distribution with 20 degrees of freedom,
+%    with the area above 1.65 shaded.
+%    Right: The $t$-distribution with 475 degrees of freedom,
+%    with the area further than 2 units from 0 shaded.}
+%\label{tDistAppendixTwoEx}
+%\end{figure}
+%
+%\begin{examplewrap}
+%\begin{nexample}{A $t$-distribution with 475 degrees of freedom
+%    is shown in the right panel of
+%    Figure~\ref{tDistAppendixTwoEx}.
+%    Estimate the proportion of the distribution falling more
+%    than 2 units from the mean (above or below).}
+%  As before, first identify the appropriate row: $df=475$.
+%  This row does not exist!
+%  When this happens, we use the next smaller row, which in
+%  this case is $df = 400$.
+%  Next, find the columns that capture 2.00;
+%  because $1.97 < 3 < 2.34$, we use the third and fourth columns.
+%  Finally, we find bounds for the tail areas by looking at
+%  the two tail values: 0.02 and 0.05.
+%  We use the two tail values because we are looking for two
+%  symmetric tails in the $t$-distribution.
+%\end{nexample}
+%\end{examplewrap}
+%
+%\begin{exercisewrap}
+%\begin{nexercise}
+%What proportion of the $t$-distribution with 19 degrees of freedom falls above -1.79 units?\footnotemark{}
+%\end{nexercise}
+%\end{exercisewrap}
+%\footnotetext{We find the shaded area \emph{above} -1.79 (we leave the picture to you). The small left tail is between 0.025 and 0.05, so the larger upper region must have an area between 0.95 and 0.975.}
+%
+%\begin{examplewrap}
+%\begin{nexample}{Find the value of $t_{18}^{\star}$
+%    using the $t$-table, where $t_{18}^{\star}$
+%    is the cutoff for the $t$-distribution with
+%    18 degrees of freedom where 95\% of the distribution
+%    lies between -$t_{18}^{\star}$ and +$t_{18}^{\star}$.}
+%  For a 95\% confidence interval, we want to find
+%  the cutoff $t^{\star}_{18}$ such that 95\% of the
+%  $t$-distribution is between -$t^{\star}_{18}$
+%  and $t^{\star}_{18}$;
+%  this is the same as where the two tails have a total
+%  area of 0.05.
+%  We look in the $t$-table on page~\pageref{tTableSample},
+%  find the column with area totaling 0.05 in the two tails
+%  (third column), and then the row with 18 degrees of
+%  freedom: $t^{\star}_{18} = 2.10$.
+%\end{nexample}
+%\end{examplewrap}
+%
+%
+%\newpage
 
 \begin{center}
 \includegraphics[width=\textwidth]
@@ -163,7 +164,6 @@ What proportion of the $t$-distribution with 19 degrees of freedom falls above -
 \begin{tabular}{r | rrr rr}
 \hline
 one tail & \hspace{1.5mm}  0.100 & \hspace{1.5mm} 0.050 & \hspace{1.5mm} 0.025 & \hspace{1.5mm} 0.010 & \hspace{1.5mm} 0.005  \\
-two tails & 0.200 & 0.100 & 0.050 & 0.020 & 0.010 \\
 \hline
 {df} \hfill 1  &  {\normalsize  3.08} & {\normalsize  6.31} & {\normalsize 12.71} & {\normalsize 31.82} & {\normalsize 63.66}  \\ 
 2  &  {\normalsize  1.89} & {\normalsize  2.92} & {\normalsize  4.30} & {\normalsize  6.96} & {\normalsize  9.92}  \\ 
@@ -203,6 +203,9 @@ two tails & 0.200 & 0.100 & 0.050 & 0.020 & 0.010 \\
 29  &  {\normalsize  1.31} & {\normalsize  1.70} & {\normalsize  2.05} & {\normalsize  2.46} & {\normalsize  2.76}  \\ 
 30  &  {\normalsize  1.31} & {\normalsize  1.70} & {\normalsize  2.04} & {\normalsize  2.46} & {\normalsize  2.75}  \\ 
 \hline
+\hline
+Confidence level C  &  {\normalsize  80\%} & {\normalsize 90\%} & {\normalsize 95\%} & {\normalsize  98\%} & {\normalsize  99\%}  \\
+\hline
 \end{tabular}
 \label{tTableFirstPage}
 \end{center}
@@ -219,7 +222,6 @@ two tails & 0.200 & 0.100 & 0.050 & 0.020 & 0.010 \\
 \begin{tabular}{r | rrr rr}
 \hline
 one tail & \hspace{1.5mm}  0.100 & \hspace{1.5mm} 0.050 & \hspace{1.5mm} 0.025 & \hspace{1.5mm} 0.010 & \hspace{1.5mm} 0.005  \\
-two tails & 0.200 & 0.100 & 0.050 & 0.020 & 0.010 \\
 \hline
 {df} \hfill 31  &  {\normalsize  1.31} & {\normalsize  1.70} & {\normalsize  2.04} & {\normalsize  2.45} & {\normalsize  2.74}  \\ 
 32  &  {\normalsize  1.31} & {\normalsize  1.69} & {\normalsize  2.04} & {\normalsize  2.45} & {\normalsize  2.74}  \\ 
@@ -273,6 +275,8 @@ two tails & 0.200 & 0.100 & 0.050 & 0.020 & 0.010 \\
 \hline
 \hline
 $\infty$  &  {\normalsize  1.28} & {\normalsize  1.65} & {\normalsize  1.96} & {\normalsize  2.33} & {\normalsize  2.58}  \\ 
+\hline
+Confidence level C  &  {\normalsize  80\%} & {\normalsize 90\%} & {\normalsize 95\%} & {\normalsize  98\%} & {\normalsize  99\%}  \\
 \hline
 \end{tabular}
 \end{center}

@@ -1,6 +1,6 @@
 \reviewexercisesheader{}
 
-% 57 - grade_dists
+% 51 - grade_dists
 
 \eoce{\qt{Grade distributions\label{grade_dists}} Each row in the table below is 
 a proposed grade distribution for a class. Identify each as a valid or invalid 
@@ -21,7 +21,7 @@ probability distribution, and explain your reasoning.
 \end{center}
 }{}
 
-% 58 - health_coverage_freqs
+% 52 - health_coverage_freqs
 
 \eoce{\qt{Health coverage, frequencies\label{health_coverage_freqs}} The 
 Behavioral Risk Factor Surveillance System (BRFSS) is an annual telephone survey 
@@ -49,7 +49,7 @@ respondent has excellent health or doesn't have health coverage?
 \end{parts}
 }{}
 
-% 59 - tree_hiv_eswatini
+% 53 - tree_hiv_eswatini
 
 \eoce{\qt{HIV in Eswatini\label{tree_hiv_eswatini}} Eswatini (formerly named in English as Swaziland) has the highest 
 HIV prevalence in the world: 25.9\% of this country's population is infected with 
@@ -60,7 +60,7 @@ individual from Eswatini has tested positive, what is the probability that he
 carries HIV?
 }{}
 
-% 60 - tree_twins
+% 54 - tree_twins
 
 \eoce{\qt{Twins\label{tree_twins}} About 30\% of human twins are identical, and 
 the rest are fraternal. Identical twins are necessarily the same sex -- half are 
@@ -70,56 +70,77 @@ have just become a parent of twins and are told they are both girls. Given this
 information, what is the probability that they are identical?
 }{}
 
-% 61 - cost_of_breakfast
+% 55 - disjoint_indep
 
-\eoce{\qt{Cost of breakfast\label{cost_of_breakfast}} Sally gets a cup of coffee 
-and a muffin every day for breakfast from one of the many coffee shops in her 
-neighborhood. She picks a coffee shop each morning at random and independently of 
-previous days. The average price of a cup of coffee is \$1.40 with a standard 
-deviation of 30\textcent{} (\$0.30), the average price of a muffin is \$2.50 with a 
-standard deviation of 15\textcent{}, and the two prices are independent of each 
-other.
+\eoce{\qt{Disjoint vs. independent\label{disjoint_indep}} In parts~(a) and~(b), 
+identify whether the events are disjoint, independent, or neither (events cannot 
+be both disjoint and independent).
 \begin{parts}
-\item What is the mean and standard deviation of the amount she spends on 
-breakfast daily?
-\item What is the mean and standard deviation of the amount she spends on 
-breakfast weekly (7~days)?
+\item You and a randomly selected student from your class both earn A's in this 
+course. 
+\item You and your class study partner both earn A's in this course.
+\item If two events can occur at the same time, must they be dependent?
 \end{parts}
 }{}
 
-\D{\newpage}
+% 56 - guessing_on_exam
 
-% 62 - scoop_ice_cream
+\eoce{\qt{Guessing on an exam\label{guessing_on_exam}} In a multiple choice exam, 
+there are 5 questions and 4 choices for each question (a, b, c, d). Nancy has not 
+studied for the exam at all and decides to randomly guess the answers. What is 
+the probability that:
+\begin{parts}
+\item the first question she gets right is the $5^{th}$ question?
+\item she gets all of the questions right?
+\item she gets at least one question right?
+\end{parts}
+}{}
 
-\eoce{\qt{Scooping ice cream\label{scoop_ice_cream}} Ice cream usually comes in 1.5 
-quart boxes (48 fluid ounces), and ice cream scoops hold about 2 ounces. 
-However, there is some variability in the amount of ice cream in a box as well as 
-the amount of ice cream scooped out. We represent the amount of ice cream in the 
-box as $X$ and the amount scooped out as $Y$. Suppose these random variables have 
-the following means, standard deviations, and variances:
-\begin{center}
-\begin{tabular}{l ccc}
-\hline
-    & mean & SD & variance \\
-\hline
-$X$ & 48       & 1      & 1     \\
-$Y$ & 2    & 0.25   & 0.0625    \\
-\hline
+% 57 - edu_attain_parent_teen
+
+\eoce{\qt{Educational attainment\label{edu_attain_parent_teen}} The \data{family\_\hspace{0.3mm}college} data set contains a sample of 792 cases with two variables, \var{teen} and \var{parents}, and is summarized below.\footnote{A simulated data set based on real population summaries at \oiRedirect{textbook-student_parent_college_2001}{nces.ed.gov/pubs2001/2001126.pdf}.} The \var{teen} variable is either \resp{college} or \resp{not}, where the \var{college} label means the teen went to college immediately after high school. The~\var{parents} variable takes the value \resp{degree} if at least one parent of the teenager completed a college degree.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{ll rr r rr}
+  && \multicolumn{2}{c}{\var{parents}} & \hspace{1cm} &  \\
+  \cline{3-4}
+	&& \resp{degree} & \resp{not} & Total  \\
+  \cline{2-5}
+	& \resp{college}     & 231 & 214 & 445 \\
+\raisebox{1.5ex}[0pt]{\var{teen}}	& \resp{not} \hspace{0.5cm} & 49 & 298 & 347   \\
+  \cline{2-5}
+	& Total & 280 & 512 & 792 \\
 \end{tabular}
-\end{center}
+\caption{Contingency table summarizing the \data{family\_\hspace{0.3mm}college} data set.}
+\label{contTableOfParStCollege}
+\end{table}
+		
+	\begin{parts}
+		\item For a randomly selected case, what is the probability that a parent completed a college degree?
+		\item For a randomly selected case, what is the probability that the teen went to college immediately after high school?
+		\item For a randomly selected case, what is the probability that a parent completed a college degree \emph{and} teen went to college immediately after high school?  
+		\item Is P(a parent completed college degree \emph{and} teen went to college immediately after high school) = P(parent completed college degree) x P(teen went to college immediately after high school)?  Explain why this is or is not the case.
+	\end{parts}
+}{}
+
+% 58 - speeding_i5_intro
+
+\eoce{\qt{Speeding on the I-5, Part I\label{speeding_i5_intro}} The distribution of 
+passenger vehicle speeds traveling on the Interstate 5 Freeway (I-5) in 
+California is nearly normal with a mean of 72.6 miles/hour and a standard 
+deviation of 4.78 miles/hour.\footfullcite{Johnson+Murray:2010}
 \begin{parts}
-\item An entire box of ice cream, plus 3 scoops from a second box is served at a 
-party. How much ice cream do you expect to have been served at this party? What 
-is the standard deviation of the amount of ice cream served?
-\item How much ice cream would you expect to be left in the box after scooping 
-out one scoop of ice cream? That is, find the expected value of $X-Y$. What is 
-the standard deviation of the amount left in the box?
-\item Using the context of this exercise, explain why we add variances when we 
-subtract one random variable from another.
+\item What percent of passenger vehicles travel slower than 80 miles/hour?
+\item What percent of passenger vehicles travel between 60 and 80 miles/hour?
+\item How fast do the fastest 5\% of passenger vehicles travel?
+\item The speed limit on this stretch of the I-5 is 70 miles/hour. 
+Approximate what percentage of the passenger vehicles travel above the speed 
+limit on this stretch of the I-5.
 \end{parts}
 }{}
 
-% 63 - college_smokers
+% 59 - college_smokers
 
 \eoce{\qt{College smokers\label{college_smokers}} At a university, 13\% of 
 students smoke.
@@ -133,24 +154,7 @@ smokers among these 27 students?
 \end{parts}
 }{}
 
-% 64 - speeding_i5_geometric
-
-\eoce{\qt{Speeding on the I-5, Part II\label{speeding_i5_geometric}} 
-Exercise~\ref{speeding_i5_intro} states that the distribution of speeds of 
-cars traveling on the Interstate 5 Freeway (I-5) in California is nearly 
-normal with a mean of 72.6 miles/hour and a standard deviation of 4.78 
-miles/hour. The speed limit on this stretch of the I-5 is 70 miles/hour.
-\begin{parts}
-\item A highway patrol officer is hidden on the side of the freeway. What is 
-the probability that 5~cars pass and none are speeding? Assume that the 
-speeds of the cars are independent of each other.
-\item On average, how many cars would the highway patrol officer expect to 
-watch until the first car that is speeding? What is the standard deviation of 
-the number of cars he would expect to watch?
-\end{parts}
-}{}
-
-% 65 - roulette_winnings
+% 60 - roulette_winnings
 
 \eoce{\qt{Roulette winnings\label{roulette_winnings}} In the game of roulette, a 
 wheel is spun and you place bets on where it will stop. One popular bet is 
@@ -160,7 +164,7 @@ you bet. Suppose you play 3 times, each time with a \$1 bet. Let Y represent
 the total amount won or lost. Write a probability model for Y.
 }{}
 
-% 66 - mc_quiz
+% 61 - mc_quiz
 
 \eoce{\qt{Multiple choice quiz\label{mc_quiz}} In a multiple choice quiz there are 
 5 questions and 4 choices for each question (a, b, c, d). Robin has not 
@@ -171,4 +175,74 @@ is the probability that
 \item she gets exactly 3 or exactly 4 questions right?
 \item she gets the majority of the questions right?
 \end{parts}
+}{}
+
+% 62 - birth_weight
+
+\eoce{\qt{Birth weight\label{birth_weight}}
+In a large study of birth weight of newborns, the weights of 23,419 newborn boys were recorded. The distribution of weights was approximately normal with a mean of 7.44 lbs (3376 grams) and a standard deviation of 1.33 lbs (603 grams). The government classifies a newborn as having low birth weight if the weight is less than 5.5 pounds.\footnote{\oiRedirect{textbook-birthweight_for_Scottish_singleton_births}{www.biomedcentral.com/1471-2393/8/5}}
+\begin{parts}
+\item What percent of these newborns had a low birth weight?
+\item Approximately what percent of these babies weighed greater than 10 pounds?
+\item Approximately \emph{how many} of these newborns weighed greater than 10 pounds?
+\item How much would a newborn have to weigh in order to be at the 90th percentile among this group?
+\end{parts}
+}{}
+
+% 63 - auto_insurance_premiums
+
+\eoce{\qt{Auto insurance premiums\label{auto_insurance_premiums}} Suppose a 
+newspaper article states that the distribution of auto insurance premiums for 
+residents of California is approximately normal with a mean of \$1,650. The 
+article also states that 25\% of California residents pay more than \$1,800. 
+\begin{parts}
+\item What is the Z-score that corresponds to the top 25\% (or the $75^{th}$ 
+percentile) of the standard normal distribution?
+\item What is the mean insurance cost? What is the cutoff for the 75th 
+percentile?
+\item Identify the standard deviation of insurance premiums in California.
+\end{parts}
+}{}
+
+% 64 - heights_10_yrs
+
+\eoce{\qt{Heights of 10 year olds, Part I\label{heights_10_yrs}}
+Heights of 10 year olds, regardless of gender, closely follow
+a normal distribution with mean 55 inches and standard deviation
+6~inches.
+\begin{parts}
+\item
+    What is the probability that a randomly chosen 10 year old
+    is shorter than 48 inches?
+\item
+    What is the probability that a randomly chosen 10 year old
+    is between 60 and 65 inches?
+\item
+    If the tallest 10\% of the class is considered
+    ``very tall'',
+    what is the height cutoff for ``very tall"?
+\end{parts}
+}{}
+
+% 65 - student_outfits
+
+\eoce{\qt{Student outfits\label{student_outfits}} \videosolution{ahss_eoce_sol-student_outfits} In a classroom with 24 
+students, 7 students are wearing jeans, 4 are wearing shorts, 8 are wearing 
+skirts, and the rest are wearing leggings. If we randomly select 3 students 
+without replacement, what is the probability that one of the selected students is 
+wearing leggings and the other two are wearing jeans? Note that these are 
+mutually exclusive clothing options.
+}{}
+
+% 66 - find_sd_cholesterol
+
+\eoce{\qt{Find the SD\label{find_sd_cholesterol}}
+Cholesterol levels for women aged 20 to 34 follow an
+approximately normal distribution with mean 185 milligrams
+per deciliter (mg/dl).
+Women with cholesterol levels above 220 mg/dl are considered
+to have high cholesterol and about 18.5\% of women fall into
+this category.
+What is the standard deviation of the 
+distribution of cholesterol levels for women aged 20 to~34?
 }{}

@@ -1,0 +1,1403 @@
+\begin{chapterpage}{Regression Analysis}
+  \chaptertitle{Regression Analysis}
+  \label{ch_regression_analysis}
+\chaptersection{assocationNumericalData}
+  \chaptersection{fitting_line_to_data_section}
+  \chaptersection{fittingALineByLSR}
+\end{chapterpage}
+\renewcommand{\chapterfolder}{ch_regression_analysis}
+\index{two-variable data|textbf}
+
+\chapterintro{Linear regression is a very powerful
+  statistical technique.
+  Many people have some familiarity with regression just from
+  reading the news, where graphs with straight lines are overlaid
+  on scatterplots.
+  Linear models can be used to see trends and to make predictions.}
+
+
+
+
+\section{Summarizing bivariate numerical data}
+\label{assocationNumericalData}
+
+%%%% update section intro - fix redundancies
+\sectionintro{
+\noindent%
+In this section, we explore scatterplots and describe the relationship between two numerical variables.  We use the \data{loan50} data set and a new data set on US counties, called \data{county\_2023}.  We also introduce a new bivariate summary called the \emph{correlation coefficient}.  }
+
+\subsection*{Learning objectives}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Use scatterplots to depict the relationship between two numerical variables. 
+
+\item Describe the characteristics of a scatterplot.
+
+\item Justify a claim using scatterplots depicting the distribution of two numerical variables.
+
+\item Interpret the correlation for a linear relationship.
+
+
+\end{enumerate}
+
+
+\subsection{Scatterplots for paired data}
+\label{scatterPlots}
+
+
+% library(openintro); ind <- c(1:5, 50); d <- loan50$interest_rate; (m <- round(mean(d), 2)); d[ind]; (dev <- d - m)[ind]; (dev2 <- dev^2)[ind]; (s2 <- sum(dev2) / 49); (s <- sqrt(s2)); var(d); sd(d); median(d); IQR(d); quantile(d, c(0.25, 0.75))
+
+
+
+
+\indexthis{Scatterplots}{scatterplot} are one type of graph
+used to study the relationship between two numerical variables. A \term{scatterplot}  is a 2-dimensional graph where each case is plotted as a point.  In a practical sense, it provides a case-by-case view of data that illustrates the relationship between two numerical variables.  Consider the \data{loan50} data set introduced earlier in the book.  
+Figure~\ref{loan50DF2} displays rows 1, 2, 3, and 50 of the data set
+for 50 randomly sampled loans offered through Lending Club.
+
+\begin{figure}[h]
+\centering
+{\small
+\begin{tabular}{ccc ccc cc} %c}
+  \hline
+   & \var{loan\us{}amount}
+   & \var{interest\us{}rate}
+   & \var{term} & \var{grade} & \var{state}
+   & \var{total\us{}income}
+   & \var{homeownership} \\
+  \hline
+  1 & 7500 & 7.34 & 36 & A & MD & 70000 & rent \\
+  2 & 25000 & 9.43 & 60 & B & OH & 254000 & mortgage \\
+  3 & 14500 & 6.08 & 36 & A & MO & 80000 & mortgage \\
+  $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$
+      & $\vdots$ & $\vdots$ \\
+  50 & 3000 & 7.96 & 36 & A & CA & 34000 & rent \\
+   \hline
+\end{tabular}
+}
+\caption{Four rows from the \data{loan50} data matrix.}
+\label{loan50DF2}
+\end{figure}
+% Dropped: state, verified_income
+% library(openintro); vars <- c("loan_amount", "interest_rate", "term", "grade", "total_income", "home_ownership", "loan_status"); library(xtable); data(loan50); loan50[c(1,2,3,50), vars]; xtable(loan50[c(1,2,3,50), vars])
+
+
+A scatterplot is shown in Figure~\ref{loan50_amt_vs_income},
+showing the total income of a borrower
+(\var{total\us{}income}) and the amount they borrowed
+(\var{loan\us{}amount}) for the \data{loan50} data set.
+In any scatterplot, each point represents a single case.  For this example, each point represents a single loan.
+Since there are \loanN{} loans in \data{loan50},
+there are \loanN{} points in Figure~\ref{loan50_amt_vs_income}.
+
+\begin{figure}[h]
+  \centering
+  \Figure
+    [A scatterplot is shown with "Total Income" along the horizontal axis (range from \$0 to \$325,000) and "Loan Amount" along the vertical axis (range from \$0 to \$40,000). The points lie in a range from \$2,000 to \$33,000 in loan amount when total income is smaller than \$150,000 (representing most of the points). The range of loan amounts is higher when total income is greater than \$175,000, with the range of observations being about \$15,000 to \$40,000.]
+    {0.8}{loan50_amt_vs_income}
+  \caption{A scatterplot of \var{loan\us{}amount}
+      versus \var{total\us{}income} for the
+      \data{loan50} data set.}
+  \label{loan50_amt_vs_income}
+\end{figure}
+
+Looking at Figure~\ref{loan50_amt_vs_income},
+we see that there are many borrowers with an income below
+\$100,000 on the left side of the graph,
+while there are only a few borrowers with income above~\$250,000.  We can also see the range of loan amounts by looking at the vertical axis.  While it is more difficult to discern the exact distributions of each of these variables, what we can easily observe from the scatterplot is the \emph{relationship} or association between the variables.
+
+
+\begin{exercisewrap}
+\begin{nexercise}
+Examine the variables in the \data{loan50} data set summarized in 
+Figure~\ref{loan50DF2},
+Create two questions about possible relationships
+between variables in \data{loan50} that are of interest
+to~you.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Two example questions:
+  (1)~What is the relationship between loan amount and
+      interest rate?
+  (2)~If someone's income is above the average, will their
+      interest rate tend to be above or below the average?}
+
+
+
+
+\begin{examplewrap}
+\begin{nexample}{A scatterplot requires \term{bivariate}, or \term{paired data}. What does paired data mean?}
+We say observations are \emph{paired} when the two observations correspond to the same case or individual. In unpaired data, there is no such correspondence. In our example the two observations correspond to a particular loan.
+\end{nexample}
+\end{examplewrap}
+
+The variable that is suspected to be the response variable (or dependent variable) is plotted on the vertical (y)~axis and the variable that is suspected to be the explanatory variable is plotted on the horizontal (x)~axis. In this example, we suspect the loan amount is dependent on total income, not the reverse.
+
+\begin{onebox}{Drawing scatterplots}
+(1)~Decide which variable should go on each axis, and draw and label the two axes. \\
+(2)~Note the range of each variable, and add tick marks and scales to each~axis. \\
+(3)~Plot the dots as you would on an ($x, y$) coordinate plane.\end{onebox}
+
+\begin{exercisewrap}
+\begin{nexercise}
+Why are scatterplots useful?  What do they show us that a list of ($x$, $y$) data points does not?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Answers may vary.
+  Scatterplots are helpful in quickly spotting associations
+  between variables.}
+
+\newpage
+\subsection{Describing the relationship between two numerical variables}
+\index{data!county\_2023|(}
+Many analyses are motivated by a researcher looking
+for a relationship between two or more variables.  We will investigate relationships between variables using a new data set, the \data{county\_2023} data set.  
+These data come from the US Census Bureau's 2023 American
+Community Survey (ACS). 
+
+Unlike the Decennial Census, which takes place every 10 years and attempts to collect basic demographic data from every resident of the US, the ACS is an ongoing survey that is sent to approximately 3.5 million households per year. As stated on the ACS website, these data help communities ``plan for hospitals and schools, support school lunch programs, improve emergency services, build bridges, and inform businesses looking to add jobs and expand to new markets, and more."\footnote{\oiRedirect{textbook-acs}{\url{https://www.census.gov/programs-surveys/acs/about.html}}} A social scientist may like to answer some of the
+following questions:
+\newcommand{\popchangevmedianhhincomequestion}[0]{
+    % Note that this question is used to introduce the
+    %explanatory / response variable topic.
+    Does a higher than average increase in county population
+    tend to correspond to counties with higher or lower median
+    household incomes?}%
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item[(1)]
+   How strongly associated are median household income and share of adults with a bachelor's degree?
+\item[(2)]
+    Is the relationship between median household income and poverty rate for the counties linear or nonlinear?
+\item[(3)]
+    How useful a predictor is share of adults with a bachelor's degree for mean travel time to work?
+\end{enumerate}
+
+When describing a scatterplot or describing the association between two numerical variables, it is helpful to discuss \emph{form}, \emph{strength}, and \emph{direction}.  Form can be described as \term{linear}, where the points follow a trend that changes at an approximately constant rate, or \term{nonlinear}, where the points follow a trend that is curved rather than constant.  We describe the strength of the association as weak, moderate, or strong, depending on how closely the points follow the general pattern.
+
+When two variables show some connection with one another,
+they are said to be associated.  The direction of association between two variables can be \termsub{positive}{positive association} or \termsub{negative}{negative association}, or there can be no association. Positive association means that larger values of the first variable are associated with larger values of the second variable. 
+
+\begin{examplewrap}
+\begin{nexample}
+{What would it mean for two variables to have a \emph{negative} association? What about \emph{no} association?}Negative association implies that larger values of the first variable are associated with smaller values of the second variable. No association implies that the values of the second variable tend to be independent of differences in the first variable.
+\end{nexample}
+\end{examplewrap}  
+
+Figure~\ref{medianHHIncomeBachelors} shows the association between the percent with a bachelor's degree among those 25 years and older and median household income for each of the 3,144 US counties.
+Each point on the plot represents a single county.
+For instance, the highlighted dot corresponds to
+County~1456 in the \data{county\_2023} data set:
+Oktibbeha County, Mississippi, which has 45.8\% of
+those ages 25 and older with a bachelor's degree and a median household income of \$43,482.  
+
+The scatterplot in Figure~\ref{medianHHIncomeBachelors} shows a roughly linear, constant trend, with a moderate association.  It also shows a positive relationship between the
+two variables: counties with a higher median household income tend to have higher percent of those age 25 and older with a bachelor's degree.  In this case, it is a choice which variable to put on the horizontal axis.  It is true that households with higher income tend to be more able to afford college, but it is also true that those with a college degree tend to earn higher incomes.
+
+Oktibbeha County, Mississippi, identified in Figure~\ref{medianHHIncomeBachelors} does not quite follow the trend.  This county has a lower than average household income, but a higher than average percent of bachelor's degrees among those 25 years and older.  One possible factor is the presence of Mississippi State University (MSU) in Oktibbeha County and its adjoining county, which attracts and graduates many students in the area.
+\begin{figure}[h]
+  \centering 
+
+ \Figure
+    [Scatterplot of thousands of counties with median household income in each county shown on the horizontal axis and bachelor's degree rate shown on the vertical axis. The points show a positive association. One point is annotated at the location (\$43,482, 45.8.\%).]
+    {0.79}{medianHHIncomeBachelors}
+  \caption{A scatterplot of percent with a bachelor's degree among those 25 years and older versus median household income for the \data{county\_2023} data set.
+      The highlighted dot represents Oktibbeha County, Mississippi,
+      which has median household income of \$43,482 and 45.8\% of those age 25 and older with a bachelor's degree.}
+  \label{medianHHIncomeBachelors}
+\end{figure}
+
+
+
+\newpage
+\begin{examplewrap}
+\begin{nexample}{Figure~\ref{medianHHIncomePoverty}
+    shows a scatterplot of median household income
+    versus the poverty rate for the 3,144 counties in the US.  Each point represents one county.
+    Describe the relationship between these two variables. }
+  The relationship between median household income
+    and poverty rate is nonlinear,
+  as highlighted by the dashed line.
+  This is different from the scatterplot in Figure~\ref{medianHHIncomeBachelors}, which did not show much, if any,
+  curvature in the trend.  The association seems fairly strong as the points follow the curved trend pretty closely. There is also a negative association here, as higher rates of poverty tend to be associated with lower median household income.  
+\end{nexample}
+\end{examplewrap}
+
+
+\begin{figure}[h]
+  \centering
+
+  \Figure[A scatterplot of a few thousand points is shown with "Poverty Rate" along the horizontal axis (range from 0\% to 60\%) and "Median Household Income" along the vertical axis (range from \$0 to \$150,000). A curved trend line is overlaid on the points starting higher on the left and decreasing as it moves right, but it starts flattening the further right it goes.]{0.8}{medianHHIncomePoverty23}
+  \caption{A scatterplot of the median household income
+      against the poverty rate for the
+      \data{county\_2023} data set.
+      A statistical model has also been fit to the data
+      and is shown as a dashed line. }
+  \label{medianHHIncomePoverty}
+\end{figure}
+
+
+
+\begin{examplewrap}
+\begin{nexample}{Figure~\ref{meanTravelTimeBachelors} shows a scatterplot of mean travel time to work versus percent with a bachelor's degree among those 25 years and older for counties in the US.  The mean travel time to work across all counties is shown as a dashed line.  Based on the scatterplot, how much help does knowing the percent with a bachelor's degree in a county provide for predicting that county's mean travel time to work?}
+There seems to be almost no association between mean travel time to work and the percent with a bachelor's degree.  Therefore, knowing the percent with a bachelor's degree in a county offers almost no help in trying to predict that county's mean travel time to work.  For example, the mean travel time to work among those counties with a low percent with a bachelor's degree seems to be about the same as the mean travel time to work among those counties with a high percent with a bachelor's degree.  On the other hand, in Figure~\ref{medianHHIncomePoverty}, we see a fairly strong negative association between median household income and poverty rate.  If a county has a low poverty rate, we would tend to predict a higher median household income, whereas if a county has a high poverty rate, we would tend to predict a lower median income.
+\end{nexample}
+\end{examplewrap}
+
+\begin{figure}[h]
+  \centering
+ \Figure
+    [Scatterplot of thousands of counties with mean travel time to work in each county shown on the horizontal axis and median individual income shown on the vertical axis. The points show little to no assocation.]
+    {0.79}{meanTravelTimeBachelors}
+  \caption{A scatterplot of mean travel time to work versus the percent with a bachelor's degree among those 25 years for the \data{county\_2023} data set.}
+  \label{meanTravelTimeBachelors}
+\end{figure}
+
+
+
+
+
+%When two variables show some connection with one another,
+%they are called \term{associated} variables.
+%Associated variables can also be called \term{dependent}
+%variables and vice-versa.
+%When the variables increase together,
+%as they do in Figure~\ref{loan_amount_vs_income},
+%they are said to be \term{positively associated}.
+%When the trend in the scatterplot goes down to the right,
+%then they are described as \term{negatively correlated}.
+
+%While we may find it interesting to consider the relationship
+%between two variables such as those in the scatterplot,
+%the relationship between those variables can be more complex.
+%For example, interest rates on loans tend to be chosen based
+%on the riskiness of the loan, i.e. how likely it is to be
+%paid back, and that is likely to depend on a variety of
+%details, such as what the loan is for, the person's
+%creditworthiness, whether their income is verified, etc.
+%We will begin exploring some of these more complex relationships
+%in graphs in Chapter~\ref{ch_summarizing_data} and beyond.
+%\Comment{Revise if we don't add these more rich plots...}
+
+%\begin{example}{Figure~\ref{interest_rate_vs_loan_amount}
+%    features a scatterplot of interest rate against loan amount.
+%    Are these variables associated?}
+%  There isn't an evident trend in the data,
+%  so we would say these two variables are not associated.
+%\end{example}
+
+%\begin{figure}
+%  \centering
+%
+%  \Figure
+%    [Scatterplot of thousands of counties with the median household income along the horizontal axis (data ranging from \$0 to \$120,000) and population change over 7 years (data ranging from about -15\% to 25\%). There is a cloud of points centered around (\$45,000, -1\%), and the points show a slight trend upwards while also becoming more sparse and volatile for observations corresponding to higher median incomes. One point is annotated at the location (\$22,736, -3.63\%).]
+%    {0.9}{pop_change_v_med_income}
+%
+%  \caption{A scatterplot showing
+%      \var{pop\us{}change}
+%      against \var{median\us{}hh\us{}income}.
+%      Owsley County of Kentucky, is highlighted,
+%      which lost 3.63\% of its population from 2010 to 2017
+%      and had median household income of \$22,736.  }
+%  \label{pop_change_v_med_income}
+%\end{figure}
+%
+%Because there is a downward trend in
+%Figure~\ref{multiunitsVsOwnership} --
+%counties with more units in multi-unit structures
+%are associated with lower homeownership --
+%these variables are said to be
+%\termsub{negatively associated}{negative association}.
+%A~\term{positive association} is shown in the relationship
+%between the
+%\var{median\us{}hh\us{}income}
+%and \var{pop\us{}change}
+%in Figure~\ref{pop_change_v_med_income},
+%where counties with higher median household income tend
+%to have higher rates of population growth.
+%
+
+
+
+
+\begin{exercisewrap}
+\begin{nexercise}
+Describe two variables that would have a horseshoe-shaped
+association in a scatterplot ($\cap$ or $\cup$).\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Consider the case
+  where your vertical axis represents something ``good'' and
+  your horizontal axis represents something that is only good
+  in moderation.
+  Health and water consumption fit this description: we require
+  some water to survive, but consume too much and it becomes
+  toxic and can kill a person. If health was represented on the vertical axis and water consumption on the horizontal axis, then we would create a $\cap$~shape.}
+
+
+
+\newpage
+\begin{exercisewrap}
+\begin{nexercise}
+Consider the dot plots in Figure~\ref{countycompare}.  Do these graphs tell us anything about the association between unemployment rates in the two states?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{No, to see association we require a scatterplot. Moreover, these data are not paired in any way, so the discussion of association does not make sense here.}
+
+\begin{figure}[h]
+\centering
+ \Figures
+    [Dot plots for unemployment rate, rounded to the nearest percent, for counties in Florida.]
+    {0.5}{countycompare}{countycompareFL}\\
+ \Figures
+    [Dot plots for unemployment rate, rounded to the nearest percent, for counties in                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         California.]
+    {0.5}{countycompare}{countycompareCA}
+  \caption{Dot plots for unemployment rate, rounded to the nearest percent, for counties in Florida and counties in California from the \data{county\_2023} data set.}
+  \label{countycompare}
+\end{figure}
+
+Describing association between two numerical variables is different than comparing distributions. When comparing distributions, we ask questions such as, ``Which distribution has a greater average?'' and ``How do the shapes of the distribution differ?'' The number of individuals in each data set need not be the same.  When we look at association, we are interested in form, direction, and strength of the association between the variables. This requires data sets of equal length that are essentially paired (e.g. unemployment rate and poverty rate measured for each county or loan amount and corresponding interest rate for the loan).
+
+\begin{onebox}{Comparing distributions versus looking at association}
+We compare two distributions with respect to center, spread, and shape.  To compare the distributions visually, we use comparative graphs, such as two histograms, two dot plots, parallel box plots, or a back-to-back stem-and-leaf. When describing association between two variables, we comment on type, strength, and direction of the association. To see association visually, we require a scatterplot.\end{onebox}
+
+
+
+
+\index{data!county\_2023|)}
+
+\newpage
+%%%%%
+\subsection{Describing linear relationships with correlation}
+\index{correlation|(}
+
+
+When a linear relationship exists between two variables, we can quantify the strength and direction of the linear relation with the \term{correlation coefficient}, or just \term{correlation} for short.  Figure~\ref{posNegCorPlots} shows eight plots and their corresponding correlations. 
+
+\begin{figure}[h]
+   \centering
+   \Figure[Eight scatterplots are shown, each with their correlation noted. Each scatterplot appears to represent about 50 points. The first has a correlation of R equals 0.33, and there is a slight upward trend evident in the data -- if a trend line were drawn for this data, much of the data would fall relatively far from the line. The second plot has a correlation of R equals 0.69, and a clearer upward trend is evident, but it is still pretty volatile with many points deviating far from where the trend line would be. The third plot has a correlation of 0.98, and the data show a very clear upward trend, where if a trend line were drawn, the data would be (relatively) quite close to this line. The fourth plot shows a correlation of R equals 1.00, and here the points appear exactly on a line with an upward trajectory. The fifth plot shows data with a correlation of R equals 0.08, where no trend is visually evident in the data. The sixth plot has a correlation of R equals -0.64, and a downward trend is evident in the data, but the individual observations would in many cases be pretty distant from any trend line fit to the data (on a relative basis). The seventh plot has a correlation of R equals -0.92 and shows data with a clear downward trend, where the data would deviate just a modest amount from a trend line fit to the data. The last plot shows a correlation of R equals -1, where the observations would fit exactly on a line trending downwards.] {0.8}{posNegCorPlots}
+   \caption{Sample scatterplots and their correlations. The first row shows variables with a positive relationship, represented by the trend up and to the right. The second row shows variables with a negative trend, where a large value in one variable is associated with a low value in the other.}
+   \label{posNegCorPlots}
+\end{figure}
+
+Only when the relationship is perfectly linear is the correlation coefficient either $-1$ or 1. If~the linear relationship is strong and positive, the correlation coefficient will be near +1. If it is strong and negative, it will be near $-1$. If~there is no apparent linear relationship between the variables, then the correlation coefficient will be near zero.
+
+
+\begin{onebox}{The correlation coefficient measures the strength of a linear relationship}
+The \term{correlation coefficient}, which always takes values between -1 and 1, describes the direction and strength of the linear relationship between two numerical variables. The strength can be strong, moderate, or~weak.\end{onebox}
+
+
+We compute the correlation using a formula, just as we did with the sample mean and standard deviation. Formally, we can compute the correlation for observations $(x_1, y_1)$, $(x_2, y_2)$, ..., $(x_n, y_n)$ using the formula
+\begin{align*}
+r =\frac{1}{n-1}\sum{\Big(\frac{x_i-\bar{x}}{s_x}\Big)\Big(\frac{y_i-\bar{y}}{s_y}\Big)}
+\end{align*} 
+where $\bar{x}$, $\bar{y}$, $s_x$, and $s_y$ are the sample means and standard deviations for each variable.  This formula is rather complex, and we generally perform the calculations on a computer or calculator. We can note, though, that the computation involves taking, for each point, the product of the Z-scores that correspond to the $x$ and $y$ values. 
+
+
+\begin{examplewrap}
+\begin{nexample}
+{Take a look at Figure~\ref{meanTravelTimeBachelors} on page~\pageref{meanTravelTimeBachelors}.  How would the correlation coefficient between Mean Travel Time to Work and Percent with a Bachelor's degree change if travel time was recorded in hours rather than seconds? }Here, changing the units of $y$ corresponds to dividing all the $y$ values by a certain number.  This would change the mean and the standard deviation of $y$, but it would not change the correlation coefficient.  To see this, imagine dividing every number on the vertical axis by 60.  The units of $y$ are now in hours rather than minutes, but the graph has remained exactly the same.  The units of $y$ have changed, by the relative distance of the $y$ values about the mean are the same; that is, the Z-scores corresponding to the $y$~values have remained the same.
+\end{nexample}
+\end{examplewrap}
+
+\begin{onebox}{Changing units of \pmb{$x$} and \pmb{$y$} does not affect the correlation coefficient}
+The correlation coefficient, $r$, between two variables is not dependent upon the units in which the variables are recorded.  The correlation coefficient itself has no units. \end{onebox}
+
+
+
+The correlation coefficient is intended to quantify the strength of a linear trend. Nonlinear trends, even when strong, sometimes produce correlations coefficients that do not reflect the strength of the relationship; see three such examples in Figure~\ref{corForNonLinearPlots}.
+
+\begin{figure}[h]
+   \centering
+   \Figures[Three scatterplots are shown. In each case, there is a strong relationship between the variables. However, because the relationship is nonlinear, the correlation coefficient is relatively weak. The first plot shows data that trends upwards on the left before peaking and then trending downward on the right -- the correlation coefficient of the data in this plot is R equals -0.23. The second plot shows data with a sharp downward trend on the left before reaching a trough and rising then sharply upward before reaching a peak and then trending sharply downwards again -- the correlation coefficient of the data in this plot is R equals 0.31. The third plots shows data that without a trend on the far left, followed by a steep drop, a trough, and then a steep rise to a peak, and then another drop and then finally a slight increase at the end -- the correlation coefficient of the data in this plot is R equals 0.50.] {0.9}{posNegCorPlots}{corForNonLinearPlots}
+   \caption{Sample scatterplots and their correlation coefficients. In each case, there is a strong relationship between the variables. However, the correlation is not very strong, and the relationship is not linear.}
+   \label{corForNonLinearPlots}
+\end{figure}
+
+%\begin{exercisewrap}
+%\begin{nexercise}
+%It appears no straight line would fit any of the datasets represented in Figure~\ref{corForNonLinearPlots}. Try drawing nonlinear curves on each plot. Once you create a curve for each, describe what is important in your fit.\footnotemark 
+%\index{correlation|)}
+%\end{nexercise}
+%\end{exercisewrap}
+%\footnotetext{We'll leave it to you to draw the lines. In general, the lines you draw should be close to most points and reflect overall trends in the data.}
+%%
+%
+\D{\newpage}
+
+\begin{examplewrap}
+\begin{nexample}{Consider the four scatterplots in Figure~\ref{anscombe}.  In which scatterplot is the correlation between $x$ and $y$ the strongest?}
+All four data sets have the exact same correlation coefficient of $r = 0.816$ as well as the same equation for the best fit line!  This group of four graphs, known as Anscombe's Quartet, remind us that knowing the value of the correlation coefficient does not tell us what the corresponding scatterplot looks like.  It is always important to first graph the data.  
+\end{nexample}
+\end{examplewrap}
+
+\begin{figure}[h]
+   \centering
+\oiRedirect{desmos-anscombe}{
+   \Figures [Four very different looking scatterplots are shown.  All are graphed on the same scale, with the y axis ranging from 0 to 15 and the x axis ranging from 0 to 20.  The first scatterplot shows points scattered in a football or oval shape, with a moderate, positive, linear association.  In the second scatterplot the points are curved.  In the third scatterplot, the points are collinear with positive slope, except for one outlier.  In the fourth scatterplot, the points are all arranged in a vertical line, except for one outlier point in the upper, right.  All four graphs have the least squares regression line drawn in, and though the scatterplots are very different, the least squares regression line is exactly the same for all four graphs.] {.9}{anscombe}{anscombeDesmos}}
+   \caption{Four scatterplots with best fit line drawn in, made in Desmos.  Investigate Anscombe's Quartet at: \oiRedirect{desmos-anscombe}{\small{desmos.com/calculator/paknt6oneh}}}
+   \label{anscombe}
+\end{figure}
+
+
+%%%fix
+\newpage
+\subsection*{Section summary}
+\begin{itemize}
+
+\item A bivariate quantitative data set consists of observations of ordered pairs fromtwo quantitative variables, collected from the same individuals in a sample orpopulation, and can be used to construct a scatterplot.
+
+\item A \termni{scatterplot} shows the relationship between two quantitative variables foreach observation, one corresponding to the value on the $x$-axis and onecorresponding to the value on the $y$-axis. The explanatory variable is placed onthe $x$-axis and is the variable whose values are used to explain or predict thecorresponding values for the response variable, which is placed on the $y$-axis.
+
+\item A description of the \emph{association} shown in a scatterplot includes form, direction,strength, and unusual features.
+\begin{itemize}
+\item[-] The form of the association shown in a scatterplot, if any, can be described aslinear or nonlinear.
+\item[-] The direction of the association shown in a scatterplot, if any, can be describedas positive or negative. A positive association means that as values of theexplanatory variable increase, the values of the response variable tend toincrease. A negative association means that as values of the explanatoryvariable increase, the values of the response variable tend to decrease.  Note that the terms ``increase" and ``decrease" here are descriptive and do not imply a causal relationship.
+\item[-] The strength of the association shown in a scatterplot is how closely the pointsfollow the general pattern. Strength can be described as strong, moderate, orweak.
+\item[-] Unusual features of a scatterplot include clusters of individual points or pointsthat don’t fit in the general pattern of association between the two variables.
+\end{itemize}
+
+\item Scatterplots depicting the distribution of two numeric variables may revealinformation that can be used to justify claims about the variable in context.
+
+\item The \termni{correlation coefficient} $r$, summarizes the strength and direction ofthe linear association between two quantitative variables. The correlationcoefficient $r$ is unit-free and always between $-1$ and 1, inclusive. A negativecorrelation coefficient value indicates a negative association, and a positivecorrelation coefficient value indicates a positive association.
+
+\item The strength of the linear association is determined by how close thecorrelation coefficient is to $-1$ or 1. A value of $r =0$ indicates that there is no\emph{linear} association, though there may be a different type of association such as a quadratic association. A value of $r =-1$ or $r =1$ indicates that there is a perfectlinear association.
+
+\item A correlation coefficient close to $-1$ or 1 does not necessarily mean that alinear model is appropriate.
+
+\item A perceived or real relationship between two variables does not mean thatchanges in one variable cause changes in the other. That is, correlation doesnot necessarily imply causation.
+
+
+\end{itemize}
+
+
+
+%%%%%%%%%Section Exercises
+{\input{ch_regression_analysis/TeX/summarizing_bivariate_numerical_data.tex}}
+
+
+\section[Line fitting and residuals]{Line fitting and residuals}
+\label{lineFittingResidualsCorrelation}
+\label{fitting_line_to_data_section}
+
+
+\sectionintro{
+\noindent%
+How can we use information about one variable to estimate or predict another variable?  How do we determine when these predictions will be reasonable or unreasonable?  In this section we continue our investigation of the relationship between bivariate, numerical data.  We introduce the linear regression model and the concept of residuals as error between an actual $y$-value and a predicted $y$-value.
+
+
+\subsection*{Learning objectives}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+
+\item Calculate a predictedresponse value using a linearregression model.
+
+\item Calculate the differencesbetween the observed andpredicted values.
+
+\item Interpret the differencesbetween the observed andpredicted values.
+
+\item Describe the form ofassociation of bivariate datausing residual plots.
+
+
+\end{enumerate}
+}
+
+%%
+\subsection{Fitting a line to data}
+Requests from twelve separate buyers were simultaneously placed with a trading company to purchase Target Corporation stock (ticker \texttt{TGT}, April 26th, 2012).  We let $x$ be the number of stocks to purchase and $y$ be the total cost.  Because the cost is computed using a linear formula, the linear fit is perfect, and the equation for the line is: $ y = 5 + 57.49x$.
+If we know the number of stocks purchased, we can determine the cost based on this linear equation with no error.  Additionally, we can say that each additional share of the stock cost \$57.49 and that there was a \$5 fee for the transaction.
+
+\begin{figure}[h]
+  \centering
+   \Figure[A scatterplot with a straight line fit to the data are shown for the date December 28th, 2018. The horizontal axis is "Number of Target Corporation Stocks to Purchase" and the vertical axis is "Total Cost of the Shares Purchase". Twelve data points are shown that all fall exactly on a straight line with an equation of y equals 5 plus 64.96 times x. Because the cost is computed using a linear formula, this explains why the linear fit is perfect.]{0.5}{perfLinearModel}
+   \caption{Requests from twelve separate buyers were
+       simultaneously placed with a trading company to purchase
+       Target Corporation stock
+       (ticker \texttt{TGT}, December 28th, 2018),
+       and the total cost of the shares were reported.
+       Because the cost is computed using a linear formula,
+       the linear fit is perfect.}  \label{perfLinearModel}
+\end{figure}
+
+\D{\newpage}
+
+Perfect linear relationships are unrealistic in almost any natural process. For example, if we took family income ($x$), this value would provide some useful information about how much financial support a college may offer a prospective student ($y$). However, the prediction would be far from perfect, because other factors play a role in financial support beyond a family's income.
+
+It is rare for all of the data to fall perfectly on a straight line.  Instead, it's more common for data to appear as a \emph{cloud of points}, such as those shown in Figure~\ref{imperfLinearModel}.  In each case, the data fall around a straight line, even if none of the observations fall exactly on the line. The first plot shows a relatively strong downward linear trend, where the remaining variability in the data around the line is minor relative to the strength of the relationship between $x$ and $y$. The second plot shows an upward trend that, while evident, is not as strong as the first. The last plot shows a very weak downward trend in the data, so slight we can hardly notice it. 
+
+In each of these examples, we can consider how to draw a ``best fit line".   For instance, we might wonder, should we move the line up or down a little, or should we tilt it more or less? As we move forward in this chapter, we will learn different criteria for line-fitting, and we will also learn about the uncertainty associated with estimates of model parameters.
+
+\begin{figure}[h]
+   \centering
+   \Figure[Three scatterplots are shown. The first has data ranging from -50 to positive 50 on both the horizontal and vertical axes. The data start in the upper left corner of the plot and then move steadily down to the right corner. The second plot has the horizontal axis running from 500 to about 2,000 and the vertical axis from about 0 to 25,000. At the left side of the plot, the data are in the lower half of the plot, and the points generally are steadily higher as we move right, where most points near the right end of the plot are in the upper region of the plot. A upwards trending line has been fit to these points. The last plot runs from about -10 to positive 50 on the horizontal axis and about -200 to positive 400 on the vertical axis. The points are scattered broadly across the range, with only the slightest downward trend evident in the data. A trend line has been fit to this data, though it is nearly flat.] {.99}{imperfLinearModel}
+   \caption{Three data sets where a linear model may be useful even though the data do not all fall exactly on the line.}
+   \label{imperfLinearModel}
+\end{figure}
+
+There are also cases where fitting a straight line to the data, even if there is a clear relationship between the variables, is not helpful. One such case is shown in Figure~\ref{notGoodAtAllForALinearModel} where there is a very clear relationship between the variables even though the trend is not linear. 
+
+\begin{figure}[h]
+   \centering
+   \Figure[A linear model is not useful in a nonlinear set of data shown in this plot. The data are from an introductory physics experiment, where a ball is shot at many angles of inclination between 0 degrees and 90 degrees (represented by the horizontal axis), and the measured horizontal distance traveled by the ball before it hits the ground is shown in meters. The first point, at an angle of inclination of 0 hits the ground at 0 meters traveled. As the angle is increased, the ball travels further before it hits the ground until reaching a peak at 45 degrees angle of inclination, at which point it decreases again until we reach an angle of 90 degrees, at which point the ball again does not travel any horizontal distance before it hits the ground. For the data shown, the best fitting straight line is shown and is flat. This is a good example of why a straight line fit to data where there is curvature is often not useful.] {0.75}{notGoodAtAllForALinearModel}
+   \caption{A linear model is not useful in this nonlinear case. These data are from an introductory physics experiment.}
+   \label{notGoodAtAllForALinearModel}
+\end{figure}
+
+
+\D{\newpage}
+
+%%%
+\subsection{Using linear regression to make predictions}
+\index{data!possum|(}
+
+Brushtail possums are a marsupial that lives in Australia.  A photo of one is shown in Figure~\ref{possumpic}.  Researchers captured 104 of these animals and took body measurements before releasing the animals back into the wild.  We consider two of these measurements:  the total length of each possum, from head to tail, and the length of each possum's head.  
+
+\begin{figure}[h]
+   \centering
+ \Figure[A common brushtail possum of Australia is shown. It has a brown fur coat with some gray sprinkled in along with a face and ears that somewhat resemble a house cat. The possum also has a big bushy tail.] {.5}{possumPic}
+   \caption{The common brushtail possum of Australia.\vspace{-1mm}\\
+------------------------------------\vspace{-2mm}\\
+{\footnotesize Photo by Peter Firminger on Flickr: \oiRedirect{textbook-flickr_com_wollombi_58499575}{http://flic.kr/p/6aPTn} \oiRedirect{textbook-CC_BY_2}{CC~BY~2.0~license}.}}
+   \label{possumpic}
+\end{figure}
+
+Figure~\ref{scattHeadLTotalL} shows a scatterplot for the head length and total length of the 104 possums. Each point represents a single case (possum) from the data.
+
+
+
+\begin{figure}[h]
+   \centering
+  \Figure[A scatterplot showing head length against total length for 104 brushtail possums, where the horizontal axis for total length runs from 75 centimeters to about 97 centimeters (2.5 to 3.3 feet) and the vertical axis for head length runs from about 82 millimeters up to about 104 millimeters (3 to 4 inches). For possums with a total length between 75 to 80 centimeters, there are three points shown, each with head lengths of about 85 millimeters. For possums with total length from 80 to 85 centimeters, most head lengths range from about 85 millimeters to 95 millimeters. For possums with total lengths from 85 to 90 centimeters, head lengths mostly lie between 90 millimeters and 97 millimeters. For possums with total lengths larger than 90 centimeters, the head lengths are mostly between 93 millimeters and 100 millimeters. The trend is evidently upward and approximately linear. A point representing a possum with head length 94.1mm and total length 89cm is highlighted (although not relevant for any other purpose than giving an example or reminder for how a point is read in a scatterplot).] {0.8}{scattHeadLTotalL}
+
+   \caption{A scatterplot showing head length against total length for 104 brushtail possums. A point representing a possum with head length 94.1~mm and total length 89~cm is highlighted.}
+   \label{scattHeadLTotalL}
+\end{figure}
+
+\D{\newpage}
+
+The head and total length variables are associated: possums with an above average total length also tend to have above average head lengths. While the relationship is not perfectly linear, it could be helpful to partially explain the connection between these variables with a straight line. We will use the total length, $x$, to explain or predict a possum's head length, $y$. When we use $x$ to predict $y$, we usually call $x$ the \term{explanatory variable} or predictor variable, and we call $y$ the \term{response variable}.  We could fit the linear relationship by eye, as in Figure~\ref{scattHeadLTotalLLine}.  We call this the \emph{regression line} and write it in the form $\hat{y} = a + bx$, where $a$ is the $y$-intercept of the line and $b$ is the slope of the line.  The equation for this regression line that was fit by eye is 
+
+%Straight lines should only be used when the data appear to have a linear relationship, such as the case shown in the left panel of Figure~\ref{scattHeadLTotalLTube}. The right panel of Figure~\ref{scattHeadLTotalLTube} shows a case where a curved line would be more useful in understanding the relationship between the two variables.
+
+%\begin{onebox}{Watch out for curved trends}
+%{We only consider models based on straight lines in this chapter. If data show a nonlinear trend, like that in the right panel of Figure~\ref{scattHeadLTotalLTube}, more advanced techniques should be used.\vspace{0.7mm}}
+%\end{onebox}
+
+
+
+
+\begin{eqnarray*}
+\hat{y} = 41 + 0.59x
+\label{headLLinModTotalL}
+\end{eqnarray*}
+A ``hat'' on $y$ is used to signify that this is a predicted value, not an observed value.  We can use this line to discuss properties of possums. For instance, the equation predicts a possum with a total length of 80~cm will have a head length (in mm) of
+\begin{align*}
+\hat{y} &= 41 + 0.59(80) \\
+	&= 88.2 % mm
+\end{align*}
+The value $\hat{y}$ may be viewed as an average: the equation predicts that possums with a total length of 80~cm will have an average head length of 88.2~mm. The value $\hat{y}$ is also a prediction:  absent further information about an 80~cm possum, this is our best prediction for a the head length of a single 80~cm possum.  
+
+
+%%
+\subsection{Extrapolation is treacherous}
+\index{least squares regression!extrapolation|(}
+
+{\em\small When those blizzards hit the East Coast this winter, it proved to my satisfaction that global warming was a fraud. That snow was freezing cold. But in an alarming trend, temperatures this spring have risen. Consider this: On February $6^{th}$ it was 10 degrees. Today it hit almost 80. At this rate, by August it will be 220 degrees. So clearly folks the climate debate rages on.\vspace{0.5mm}}
+
+\noindent\hspace{\textwidth}\hspace{-40mm}Stephen Colbert
+
+\noindent\hspace{\textwidth}\hspace{-40mm}April 6th, 2010 \footnote{\emph{The Colbert Report} on April 6th, 2010.} \\
+
+Linear models can be used to approximate the relationship between two variables. However, these models have real limitations. Linear regression is simply a modeling framework. The truth is almost always much more complex than our simple line. For example, we do not know how the data outside of our limited window will behave.  In general, \term{interpolation}, which is predicting a response value using an $x$-value that is within the range of the $x$-values in the data set, is safer than \term{extrapolation}, which is predicting a response value using an $x$-value that is outside the range of the $x$-values in the data set.
+
+
+%%
+\subsection{Residuals}
+
+\index{residual|(}
+
+\termsub{Residuals}{residual} are the leftover variation in the response variable after fitting a model.  Each observation will have a residual, and three of the residuals for the linear model we fit for the \data{possum} data are shown in Figure~\ref{scattHeadLTotalLLine}.  If an observation is above the regression line, then its residual, the vertical distance from the observation to the line, is positive.  Observations below the line have negative residuals.  One goal in picking the right linear model is for these residuals to be as small as possible.
+
+\begin{figure}[h]
+   \centering
+  \Figure[The same scatterplot showing head length against total length for 104 brushtail possums is shown. A linear trend line has been added with an equation of y-hat equals 41 plus 0.59 times x, which shows the clear upward trajectory of the data. Additionally, three points are highlighted. The first is labeled with an ``X" and is at approximately (77, 85) and lies about 1 unit below the trend line. A second point labeled with a ``plus sign" is at about (85, 98) and appears to be about 7 units above the trend line. The last point highlighted is a ``triangle" and is located at about (95, 93) and is about 3 units below the trend line.] {0.7}{scattHeadLTotalLLine}
+   \caption{A reasonable linear model was fit to represent the relationship between head length and total length.}
+   \label{scattHeadLTotalLLine}
+\end{figure}
+
+Let's look closer at the three residuals featured in Figure~\ref{scattHeadLTotalLLine}.  The observation marked by an ``$\times$'' has a small, negative residual of about -1; the observation marked by ``$+$'' has a large residual of about +7; and the observation marked by ``$\triangle$'' has a moderate residual of about -4. The size of a residual is usually discussed in terms of its absolute value. For example, the residual for ``$\triangle$'' is larger than that of ``$\times$'' because $|-4|$ is larger than $|-1|$.
+
+%\Comment{remove use of $e_i$ since students don't need that}
+
+
+
+\begin{onebox}{Residual: difference between observed and expected}
+The residual for a particular observation $(x, \ y)$ is the difference between the observed response and the response we would predict based on the model:
+\begin{align*}
+\text{residual} =& \ \text{observed } y - \text{predicted } y\\
+ =&\  y - \hat{y}
+\end{align*}
+We typically identify $\hat{y}$ by plugging $x$ into the model.\end{onebox}
+
+\begin{examplewrap}
+\begin{nexample}{The linear fit shown in Figure~\ref{scattHeadLTotalLLine} is given as $\hat{y} = 41 + 0.59x$. Based on this line, compute and interpret the residual of the observation $(77.0, \ 85.3)$. This observation is denoted by ``$\times$'' on the plot. Recall that $x$ is the total length measured in~cm and $y$ is head length measured in~mm.}
+We first compute the predicted value based on the model:
+\begin{align*}
+\hat{y} =& \ 41+0.59x \\
+=& \ 41+0.59(77.0)\\
+=& \  86.4
+\end{align*}
+Next we compute the difference of the actual head length and the predicted head length:
+\begin{align*}
+residual =& \ y - \hat{y} \\
+=& \ 85.3 -  86.4 \\
+=& \ -1.1
+\end{align*}
+The residual for this point is -1.1~mm, which is very close to the visual estimate of -1~mm.  For this particular possum with total length of 77~cm, the model's prediction for its head length was 1.1~mm \emph{too high}.
+\end{nexample}
+\end{examplewrap}
+
+
+\begin{exercisewrap}
+\begin{nexercise}
+If a model underestimates an observation, will the residual be positive or negative? What about if it overestimates the observation?\footnotemark 
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{If a model underestimates an observation, then the model estimate is below the actual. The residual, which is the actual observation value minus the model estimate, must then be positive. The opposite is true when the model overestimates the observation: the residual is negative.}
+
+\begin{exercisewrap}
+\begin{nexercise}
+Compute the residual for the observation $(95.5, 94.0)$, denoted by ``$\triangle$'' in the figure, using the linear model: $\hat{y} = 41 + 0.59x$.\footnotemark 
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{First compute the predicted value based on the model, then compute the residual.
+$$\hat{y} = 41+0.59x = 41 + 0.59(95.50) = 97.3$$
+$$residual = y - \hat{y} = 94.0 - 97.3 = -3.3$$
+The residual is -3.3, so the model \emph{overpredicted} the head length for this possum by 3.3~mm.}
+
+Residuals are helpful in evaluating how well a linear model fits a data set. We often display the residuals in a \term{residual plot} such as the one shown in Figure~\ref{scattHeadLTotalLResidualPlotReproduced}.  Here, the residuals are calculated for each $x$ value, and plotted versus $x$.  For instance, the point $(85.0,98.6)$ had a residual of 7.45, so in the residual plot it is placed at $(85.0, 7.45)$. Creating a residual plot is sort of like tipping the scatterplot over so the regression line is horizontal. 
+
+From the residual plot, we can better estimate the \termni{standard deviation of the residuals}, often denoted by the letter $s$. The standard deviation of the residuals tells us  typical size of the residuals.  As such, it is a measure of the typical deviation between the $y$ values and the model predictions.  In other words, it tells us the typical prediction error using the model.\footnote{The standard deviation of the residuals is calculated as:  $s=\sqrt{\frac{\sum{(y_i-\hat{y})^2}}{n-2}}$. }
+
+
+\begin{examplewrap}
+\begin{nexample}{Estimate the standard deviation of the residuals for predicting head length from total length using the line: $\hat{y} = 41+0.59x$ using
+Figure~\ref{scattHeadLTotalLResidualPlotReproduced}.
+Also, interpret the quantity in context.}
+To estimate this graphically, we use the residual plot.  The approximate 68, 95 rule for standard deviations applies.  Approximately 2/3 of the points are within $\pm$ 2.5 and approximately 95\% of the points are within $\pm$ 5, so 2.5 is a good estimate for the standard deviation of the residuals.  The typical error when predicting head length using this model is about 2.5~mm.
+\end{nexample}
+\end{examplewrap}
+
+\index{data!possum|)}
+
+\begin{figure}[h]
+   \centering
+  \begin{tabular}{cc}
+ \Figure[The same scatterplot showing head length against total length for 104 brushtail possums is shown. A linear trend line has been added with an equation of y-hat equals 41 plus 0.59 times x, which shows the clear upward trajectory of the data. Additionally, three points are highlighted. The first is labeled with an ``X" and is at approximately (77, 85) and lies about 1 unit below the trend line. A second point labeled with a ``plus sign" is at about (85, 98) and appears to be about 7 units above the trend line. The last point highlighted is a ``triangle" and is located at about (95, 93) and is about 3 units below the trend line.] {.5}{scattHeadLTotalLLine}%
+  \Figure[A residual plot for the trend line fit to the brushtail possum data is shown. Here, the horizontal axis is the same -- representing "total length", it spans 75 to 97 -- while the vertical axis represents "Residuals" and spans from about -7 to positive 8. There is on evident trend in the residuals. Three points are specifically highlighted to reflect the three points discussed in the last figure. The first is labeled with an "X" with a total length of 77 and a residual of about -1. The second is labeled with a "plus sign" and has a total length of 85 and a residual of about 7. The last point highlighted is a "triangle" with a total length of about 95 and a residual of about -3. Note that the location of the residuals above and below the trend line reflects exactly with whether the residual is positive or negative, respectively.] {0.5}{scattHeadLTotalLResidualPlot}\end{tabular}
+   \caption{Left: Scatterplot of head length versus total length for 104 brushtail possums.  Three particular points have been highlighted.  Right: Residual plot for the model shown in left panel.  }
+   \label{scattHeadLTotalLResidualPlotReproduced}
+\end{figure}
+
+
+
+\begin{examplewrap}
+\begin{nexample}{One purpose of residual plots is to identify characteristics or patterns still apparent in data after fitting a model. Figure~\ref{sampleLinesAndResPlots} shows three scatterplots with linear models in the first row and residual plots in the second row. Can you identify any patterns remaining in the residuals?}
+
+
+In the first data set (first column), the residuals show no obvious patterns. The residuals appear to be scattered randomly around the dashed line that represents 0.
+
+The second data set shows a pattern in the residuals. There is some curvature in the scatterplot, which is more obvious in the residual plot. We should not use a straight line to model these data. Instead, a more advanced technique should be used.
+
+The last plot shows very little upwards trend, and the residuals also show no obvious patterns. It is reasonable to try to fit a linear model to the data. However, it is unclear whether there is statistically significant evidence that the slope parameter is different from zero. The slope of the sample regression line is not zero, but we might wonder if this could be due to random variation. \index{residual|)}
+\end{nexample}
+\end{examplewrap}
+
+\begin{figure}[h]
+   \centering
+   \Figure[Sample data with their best fitting lines (top row of three plots) and their corresponding residual plots (bottom row of three plots). The upper left plot shows a scatterplot where the data trend downwards steadily with a straight line fit to the data, which appears to fit well everywhere. The bottom left plot is the residual plot of this first scatterplot, and it likewise shows no pattern in the residuals when looking left to right. The upper middle plot shows data with a downward trend, but the data's trend is more steep on the right side of the plot, so the overall shape of the data is that it trends downward and curves downward. A straight, downward-trending line has also been fit to this data, but it doesn't fit as well. The data are below this downward trending line initially, but it is above the line in the middle, and finally on the right it is once again below the linear trend line. The residual plot for this scatterplot is shown in the lower middle plot, and the curvature in the residuals is more evident than what was visible in the scatterplot: the residuals have negative values on the left and trend upwards until peaking with positive residuals in the middle, and then trending back down and having negative residual values again on the right. The last scatterplot in the upper right shows data with very little trend, but a slightly-upward trending straight line has been fit to the data. The corresponding residual plot, shown as the bottom right plot, also shows data with no evident trend or pattern, where observations appear relatively randomly scattered above and below 0 (in the vertical).] {}{sampleLinesAndResPlots}
+   \caption{Sample data with their best fitting lines (top row) and their corresponding residual plots (bottom row).}
+   \label{sampleLinesAndResPlots}
+\end{figure}
+
+
+
+\D{\newpage}
+
+%%
+\subsection*{Section summary}
+\begin{itemize}
+
+
+\item If the form of the relationship between $x$ and $y$ appears linear, we canapproximate the relationship between $x$ and $y$ using a \termni{linear regression model},which is a linear equation that uses an explanatory variable, $x$, to predict theresponse variable, $y$. Linear models should not be used if the trend between the variables is curved.  
+
+\item In a linear regression model, the \emph{predicted} response value, denoted by $\hat{y}$,is calculated as $\hat{y} = a + bx$, where $a$ is the $y$-intercept, $b$ is the slope of theregression line, and $x$ is the explanatory variable.
+
+\item \termni{Extrapolation} is predicting a response value using a value for the explanatoryvariable that is beyond the interval of $x$-values used to determine theregression line. The predicted value is less reliable the further the estimate isextrapolated.
+
+\item \termni{Interpolation} is predicting a response value using a value for the explanatoryvariable that is within the interval of x-values used to determine the regressionline.
+
+\item A \termni{residual} is the difference between the observed response value and thepredicted response value for the given value of the explanatory variable:residual = $y - \hat{y}$ or (residual = observed $y$ $-$ predicted $y$).
+
+\item If the residual is positive, the model underpredicts (underestimates) the valueof the response variable. If the residual is negative, the model overpredicts(overestimates) the value of the response variable.
+
+\item A \termni{residual plot} is a scatterplot of the residuals versus the predicted responsevalues (or the explanatory variable values).
+
+\item Residual plots can be used to investigate the appropriateness of the linearregression model for the observed data.
+
+\item The linear regression model should only be fit to the data if the data exhibita linear trend. Apparent randomness in a residual plot for a linear regressionmodel is confirmation of a linear form in the association between thetwo variables and indicates that the simple linear regression model is anappropriate model for the data.
+
+\item Curvature in the residual plot for a linear regression model suggests that thelinear model is not the most appropriate model for the data.
+
+\end{itemize}
+
+
+
+
+
+
+%%%%%%%%Section Exercises
+{\input{ch_regression_analysis/TeX/line_fitting_and_residuals.tex}}
+
+
+%__________________
+\section[Least squares regression]{Least squares regression }
+\label{fittingALineByLSR}
+\index{least squares regression|(}
+
+\sectionintro{
+\noindent%
+How well can we predict financial aid based on family income for a particular college?  How do we measure the fit of a model and compare different models to each other? In this section, we find, interpret, and apply the least-squares regression line and we investigate a new measure that aims to tells us about how well a model ``fits" the data.
+
+
+%%
+\subsection*{Learning objectives}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+
+\item Calculate the coefficients for the least-squares regression line model using technology or identify them from computer output.
+
+\item Interpret coefficients for theleast-squares regression linemodel.
+
+\item Calculate the coefficient of determination using technology or identify it from from computer output.  
+
+\item Interpret the coefficient of determination.
+
+
+
+
+\end{enumerate}
+}
+
+
+%%
+\subsection{An objective measure for finding the best line}
+Fitting linear models by eye is open to criticism since it is based on an individual preference. In this section, we use \emph{least squares regression} as a more rigorous approach.
+
+This section considers family income and gift aid data from a random sample
+of fifty students in the freshman class of Elmhurst College in Illinois.
+Gift aid is financial aid that does not need to be paid back, as opposed to a loan.
+A scatterplot of the data is shown in Figure~\ref{elmhurstScatterW2Lines}
+along with two linear fits.
+The lines follow a negative trend in the data; students who have higher family
+incomes tended to have lower gift aid from the university.
+
+\begin{figure}[h]
+\centering
+ \Figures [A scatterplot is shown for a random sample of 50 freshman students from Elmhurst College. The horizontal axis is for ``family income" and has values ranging from \$0 to about \$300,000. The vertical axis is for ``gift aid" and has values ranging from \$0 to about \$35,000. Two lines are fit to the data, which show a downward trend, representing a slight downward trend in the data. One of those lines is a solid line representing what is called the ``least squares line". About 10 observations are shown where family income is between \$0 and \$50,000, and gift aid for these values is roughly between \$17,000 and \$28,000. About 20 observations are shown where family income is between \$50,000 and \$100,000, and gift aid for these values is roughly between \$10,000 and \$33,000. About 10 observations are shown where family income is between \$100,000 and \$150,000, and gift aid for these values is roughly between \$9,000 and \$25,000. Three observations are shown where family income is between \$150,000 and \$200,000, and gift aid for these values of \$25,000, \$12,000, and \$13,000. Six more observations are shown where family income is larger than \$200,000, and gift aid for these values range from about \$7,000 to \$22,000, \$12,000, and \$13,000. The data in this graph will be frequently discussed throughout this section and referred to as the ``Elmhurst data".] {0.7}{elmhurstPlots}{elmhurstScatterW2Lines}
+\caption{Gift aid and family income for a random sample of 50 freshman students from Elmhurst College. Two lines are fit to the data, the solid line being the \emph{least squares line}.}
+\label{elmhurstScatterW2Lines}
+\end{figure}
+
+
+We begin by thinking about what we mean by ``best''. Mathematically, we want a line that has small residuals. Perhaps our criterion could minimize the sum of the residual magnitudes:
+\begin{eqnarray*}
+|y_1 - \hat{y}_1| + |y_2-\hat{y}_2| + \dots + |y_n-\hat{y}_n|
+\label{sumOfAbsoluteValueOfResiduals}
+\end{eqnarray*}
+We could fit a line using this criteria with a computer program.  The resulting dashed line shown in Figure~\ref{elmhurstScatterW2Lines} demonstrates this fit can be quite reasonable. However, a more common practice is to choose the line that minimizes the sum of the squared residuals:
+\begin{eqnarray*}
+(y_1 - \hat{y}_1)^2 + (y_2-\hat{y}_2)^2+ \dots + (y_n-\hat{y}_n)^2
+\label{sumOfSquaresForResiduals}
+\end{eqnarray*}
+The line that minimizes the sum of the squared residuals is represented as the solid line in Figure~\ref{elmhurstScatterW2Lines}. This is commonly called the \termni{least squares line}. 
+
+Both lines seem reasonable, so why do data scientists prefer the least squares regression line?  One reason is that it is easier to compute by hand and in most statistical software.  A more compelling reason is that in many applications, a residual twice as large as another residual is more than twice as bad. For example, being off by 4 is usually more than twice as bad as being off by 2. Squaring the residuals accounts for this discrepancy.
+
+In Figure~\ref{leastSquares}, we imagine the squared error about a line as actual squares.  The least squares regression line minimizes the sum of the \emph{areas} of these squared errors.  In the figure, the sum of the squared error is $4+1+1=6$.  There is no other line about which the sum of the squared error will be smaller.
+
+\begin{figure}[h]
+\centering
+\oiRedirect{desmos-leastsquares}{
+\Figures [A scatterplot is shown with just three points (1, 1), (3,5) and (5,3).  The least squares regression line is drawn in.  For each of the three poinst, a vertical line from the point to the regression line is drawn, indicating the residual.  To show the squared residuals, an actual square is drawn with each vertical residual line being a side of the square. ] {0.75}{leastSquares}{desmosLS3}}
+ \caption{A screenshot from the interactive Desmos Activity: Least Squares Demo. Find it at \oiRedirect{openintro-ahss-desmos}{\small{openintro.org/ahss/desmos}}.  The line is the least squares regression line as it makes the sum of squared error (in the $y$ direction) least.  Here the smallest possible sum of squared error is 6.}
+\label{leastSquares}
+\end{figure}
+
+
+\D{\newpage}
+ 
+%%
+\subsection{Writing the least squares regression line}
+\label{findingTheLeastSquaresLineSection}
+
+For the Elmhurst College data, we could fit a least squares regression line for predicting gift aid based on a student's family income and write the equation as:
+\begin{eqnarray*}
+\widehat{\textit{aid}} = a  + b\times \textit{family\us{}income}
+\end{eqnarray*}
+Here $a$ is the $y$-intercept of the least squares regression line and $b$ is the slope of the least squares regression line.  $a$ and $b$ are both statistics that can be calculated from the data.
+
+We can enter all of the data into a statistical software package and easily find the values of $a$ and $b$.  However, we can also calculate these values by hand, using only the summary statistics.
+\begin{itemize}
+\item The slope of the least squares line is given by
+\begin{eqnarray*}
+b = r\frac{s_y}{s_x}
+\label{slopeOfLSRLine}
+\end{eqnarray*}
+where $r$ is the correlation coefficient between the variables $x$ and $y$, and $s_x$ and $s_y$ are the sample standard deviations of $x$, the explanatory variable, and $y$, the response variable.
+\item The point of averages $(\bar{x}, \bar{y})$ is always on the least squares line. Plugging this point in for $x$ and $y$ in the least squares equation and solving for $a$ gives
+\begin{align*}
+\bar{y} &= a  + b\bar{x}
+&&a=\bar{y}-b\bar{x}
+\end{align*}
+\label{interceptOfLSRLine}
+
+\end{itemize}
+
+
+
+We mentioned earlier that a computer is usually used to compute the least squares line. A summary table based on computer output is shown in Figure~\ref{rOutputForIncomeAidLSRLine} for the Elmhurst College data. The first column of numbers provides estimates for $a$ and $b$, respectively.
+
+\begin{figure}[ht]
+\centering
+\begin{tabular}{l rrrr}
+  \hline
+  \vspace{-3.7mm} & & & & \\
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+  \vspace{-3.6mm} & & & & \\
+(Intercept) & 24.3193 & 1.2915 & 18.83 & 0.0000 \\ 
+family\us{}income & -0.0431 & 0.0108 & -3.98 & 0.0002 \\ 
+  \hline
+\end{tabular}
+\caption{Summary of least squares fit for the Elmhurst College data.}
+\label{rOutputForIncomeAidLSRLine}
+\end{figure}
+
+\begin{examplewrap}
+\begin{nexample}{Using the second, third, and fourth columns in Figure~\ref{rOutputForIncomeAidLSRLine} is beyond the scope of this book.  However, can you guess what they represent?}
+Look at the second row, which corresponds to the slope.  The first column, Estimate = -0.0431, tells us our best estimate for the slope of the population regression line.  We call this point estimate $b$.  The second column, Std. Error = 0.0108, is the standard error of this point estimate. The third column, t value = -3.98, is the $T$ test statistic for the null hypothesis that the slope of the population regression line = 0. The last column, Pr($>$$|$t$|$) = 0.0002, is the p-value for this two-sided $T$-test. \end{nexample}
+\end{examplewrap}
+
+\begin{examplewrap}
+\begin{nexample}{Suppose a high school senior is considering Elmhurst College. Can she simply use the linear equation that we have found to calculate her financial aid from the university?}
+No.  Using the equation will provide a prediction or estimate.  However, as we see in the scatterplot, there is a lot of variability around the line.  While the linear equation is good at capturing the trend in the data, there will be significant error in predicting an individual student's aid.  Additionally, the data all come from one freshman class, and the way aid is determined by the university may change from year to year.
+\end{nexample}
+\end{examplewrap} 
+
+
+%%
+\subsection{Interpreting the coefficients of a regression line}
+
+\index{least squares regression!interpreting parameters|(}
+
+Interpreting the coefficients in a regression model is often one of the most important steps in the analysis.
+
+\begin{examplewrap}
+\begin{nexample}{The slope for the Elmhurst College data for predicting gift aid based on family income was calculated as -0.0431.  Intepret this quantity in the context of the problem. }
+You might recall from an algebra course that slope is change in $y$ over change in $x$.  The slope of the regression line tells us about the \emph{average} change in $y$ for each unit change in $x$.  Here, both $x$ and $y$ are in thousands of dollars and the slope is \emph{negative}.  So if $x$ is one unit or one thousand dollars higher, the predicted value of $y$ will be 0.0431 thousand dollars \emph{less}.  In other words, for each additional thousand dollars of family income, the \emph{predicted} gift aid is 0.0431 thousand, or \$43.10 less.\end{nexample}
+\end{examplewrap}
+
+\begin{examplewrap}
+\begin{nexample}{The $y$-intercept for the Elmhurst College data for predicting gift aid based on family income was calculated as 24.3.  Intepret this quantity in the context of the problem. }
+The intercept $a$ describes the predicted value of $y$ when $x=0$.  The predicted gift aid is 24.3 thousand dollars if a student's family has no income.  The meaning of the intercept is relevant to this application since the family income for some students at Elmhurst is \$0. In other applications, the intercept may have little or no practical value if there are no observations where $x$ is near zero (extrapolation).  Here, it would be acceptable to say that the \emph{average} gift aid is 24.3 thousand dollars among students whose family have 0 dollars in income.
+\end{nexample}
+\end{examplewrap}
+
+\begin{onebox}{Interpreting coefficients in a linear model}
+\vspace{-4mm}
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item The slope, $b$, describes the \emph{predicted} increase or decreases in the response variable $y$ for a one~unit increase of the explanatory variable $x$.
+\item The y-intercept, $a$, describes the \emph{predicted} outcome of $y$ if $x=0$.  The linear model must be valid all the way to $x=0$ for this to make sense, which in many applications is not the case.
+\end{itemize}
+\end{onebox}
+
+\index{least squares regression!interpreting parameters|)}
+
+\begin{exercisewrap}
+\begin{nexercise}
+In the previous chapter, we encountered a data set that compared the price of new textbooks for UCLA courses at the UCLA Bookstore and on Amazon.  We fit a linear model for predicting price at UCLA Bookstore from price on Amazon and we get:  
+\begin{align*}
+\hat{y} = 1.86 + 1.03x
+\end{align*}
+where $x$ is the price on Amazon and $y$ is the price at the UCLA bookstore.  Interpret the coefficients in this model and discuss whether the interpretations make sense in this context.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The $y$-intercept is 1.86 and the units of $y$ are in dollars.  This tells us that when a textbook costs 0 dollars on Amazon, the \emph{predicted} price of the textbook at the UCLA Bookstore is 1.86 dollars.  This does not make sense as Amazon does not sell any \$0 textbooks.  The slope is 1.03, with units (dollars)/(dollars).  For each increase in 1 dollar that a book costs on Amazon, the \emph{predicted} cost at the UCLA Bookstore increases by 1.03 dollars.  This interpretation does make sense in this context.
+}
+
+
+\begin{exercisewrap}
+\begin{nexercise}
+Can we conclude that if Amazon raises the price of a textbook by 1 dollar, the UCLA Bookstore will raise the price of the textbook by \$1.03?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{No.  The slope describes the average or overall trend.  This is observational data; a causal conclusion cannot be drawn.  Remember, a causal relationship can only be concluded by a well-designed randomized, controlled experiment.  Additionally, there may be large variation in the points about the line.  The slope does not tell us how much $y$ might change based on a change in $x$ for a \emph{particular} textbook.
+}
+
+\begin{onebox}{Exercise caution when interpreting coefficients of a linear model}
+\vspace{-4mm}
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item The slope tells us only the \emph{average} or \emph{predicted} change in $y$ for each unit change in $x$; it does not tell us how much $y$ might change based on a change in $x$ for any particular \emph{individual}.  Moreover, in most cases, the slope cannot be interpreted in a causal way.
+\item When a value of $x=0$ doesn't make sense in an application, then the interpretation of the $y$-intercept won't have any practical meaning.  In general, beware of extrapolation.
+\end{itemize}
+\end{onebox}
+
+
+
+\begin{examplewrap}
+\begin{nexample}{Use the model $\widehat{\textit{aid}} = 24.3 - 0.0431\times \textit{family\us{}income}$ to estimate the aid of another freshman student whose family had income of \$1 million.}
+Recall that the units of family income are in \$1000s, so we want to calculate the aid for $\textit{family\us{}income}= 1000$:
+\begin{align*}
+\widehat{\textit{aid}} &= 24.3 - 0.0431 \times \textit{family\us{}income} \\
+\widehat{\textit{aid}}&=24.3 - 0.431(1000) = -18.8
+\end{align*}
+The model predicts this student will have -\$18,800 in aid (!). Elmhurst College cannot (or at least does not) require any students to pay extra on top of tuition to attend.
+\end{nexample}
+\end{examplewrap}
+
+Using a model to predict $y$-values for $x$-values outside the domain of the original data is called \term{extrapolation}. Generally, a linear model is only an approximation of the real relationship between two variables. If we extrapolate, we are making an unreliable bet that the approximate linear relationship will be valid in places where it has not been analyzed.
+
+\index{least squares regression!extrapolation|)}
+
+
+
+%%
+\subsection[Using $R^2$ to describe the strength of a fit]{Using \pmb{$R^2$} to describe the strength of a fit}
+
+\index{least squares regression!R-squared ($R^2$)|(}
+
+Consider the scatterplot of gift aid versus family income for the Elmhurst College data, graphed in Figure~\ref{elmhurstScatterWLSROnly}.   How well does the solid regression line fit the data?  And how much better is it than the horizontal dashed line at $\bar{y}$ at fitting the data?
+
+ \begin{figure}[h]
+\centering
+  \Figures[A scatterplot of the Elmhurst data is shown for gift aid and family income with the least squares regression line overlaid against the data, which has a slight downward trend.  The horizontal line y = y average is also shown as a dotted line.]
+{.7}{elmhurstPlots}{elmhurstScatterWAveLine}
+\caption{Gift aid and family income for a random sample of 50 freshman students from Elmhurst College, shown with the least squares regression line ($\hat{y}$) and the average line ($\bar{y}$).}
+\label{elmhurstScatterWLSROnly}
+\end{figure}
+
+
+It is common to explain the fit of a model using $R^2$ (\termsub{R-squared}{least squares regression!R-squared ($R^2$)}), the \term{coefficient of determination}, also called the \term{explained variance}. %If provided with a linear model, we might like to describe how closely the data cluster around the linear fit.  
+In Figure~\ref{elmhurstScatterWLSROnly}, the variance of the response variable, aid received, is $s_{aid}^2=29.8$. However, if we apply our least squares line, then this model reduces our uncertainty in predicting aid using a student's family income. The variability in the residuals describes how much variation remains after using the model: $s_{_{RES}}^2 = 22.4$.
+We could say that the reduction in the variance was:
+$$\frac{s_{aid}^2 - s_{_{RES}}^2}{s_{aid}^2}
+	= \frac{29.8 - 22.4}{29.8} = \frac{7.5}{29.8}
+	= 0.25$$
+If we used the simple standard deviation of the
+residuals (dividing by $n-1$ instead of $n-2$), this would be exactly $R^2$.  For large data sets, this gives values sufficiently close; however, to get the exact value of $R^2$ we use a sum of squares method, which is described here in general terms.
+
+%However, the standard way of computing the standard deviation of the residuals is slightly more sophisticated.\footnote{In computing the standard deviation of the residuals, we divide by $n-2$ rather than by $n-1$ to account for the $n-2$ degrees of freedom.}.
+
+%If we call the sum of the squared errors about the regression line $SSRes$ and the sum of the squared errors about the mean $SSM$, we can define $R^2$ as follows:
+%\begin{align*}
+%R^2=\frac{SSM - SSRes}{SSM} = 1-\frac{SSRes}{SSM}
+%\end{align*}
+
+Recall that we calculate a residual ($y- \hat{y}$) to see how well a regression line predicts a particular $y$-value.  To measure how well the regression line fits \emph{all} the data, we need to calculate all of the residuals.  We saw in the previous section that the sum of squared residuals is a way of measuring overall error about a line.  In fact, the sum of squared errors about the regression line is smaller than about any other line.  How \emph{much} smaller is this sum than the sum of squared error about the line~$\bar{y}$? Note that we if we do not know $x$, our best prediction of $y$ is simply $\bar{y}$.  In a sense, we are asking how much information using $x$ and the regression line provides over ignoring $x$ all together.
+
+Let us take two extreme examples.  In Figure~\ref{rsq1}, the correlation coefficient is 0 and the regression line is \emph{the same as} the horizontal line at $\bar{y}$; the sum of the squared error about $\hat{y}$ is equal to the sum of the squared error about $\bar{y}$.   $R^2=0$: the regression line offers no reduction in error; it ``explains" 0\% of the variation in the $y$ points.
+
+In Figure~\ref{rsq2}, the correlation coefficient is $-1$ and the regression line goes through all of the points.  There sum of the squared error about the regression line is 0.   $R^2=1$: the regression line provides 100\% reduction in error and so it ``explains" 100\% of the variation in the $y$ points. 
+
+The exact calculation of $R^2$ is tedious and is done using technology.\footnote{For those interested, the calculations of $R^2$ in Figure~\ref{rSquared} can be found as follows.  (a) The sum of the squared error about $\hat{y}$ and $\bar{y}$ both equal $(-1)^2 +(2)^2+(-1)^2=6$. $R^2 = \frac{6-6}{6} = 1 - \frac{6}{6}=0$.  (b)  $R^2 = \frac{8-0}{8} = 1- \frac{0}{8} = 1$.}
+
+\begin{figure}[H]
+  \centering
+\oiRedirect{desmos-rsquared}{
+  \subfigure[]{
+    \Figures[A scatterplot with just three points is shown, where the regression line is the horizontal line y = y average, corresponding to an R^2 of 0.] {0.4}
+        {rSquared}
+        {rsq1}
+    \label{rsq1}
+  }\hspace{5mm}
+  \subfigure[]{
+    \Figures[ A scatterplot with just three points shown that are collinear.  The regression line passes through the three points and R^2 = 1.] {0.4}
+        {rSquared}
+        {rsq2}
+  \label{rsq2}
+  }}
+  \caption{Screenshots from the interactive Desmos Activity: Understanding $R^2$.  Find it at \oiRedirect{openintro-ahss-desmos}{\small{openintro.org/ahss/desmos}}. \subref{rsq1} $R^2=0$. The regression line is equivalent to $\bar{y}$ and it explains 0\% of the variation in the $y$ points.
+      \subref{rsq2} $R^2=1$. The regression line passes through all of the points and it explains 100\% of the variation in the $y$ points.  }
+    \label{rSquared}
+\end{figure}
+
+
+
+\begin{onebox}{\pmb{$R^2$} is the explained variance}
+$R^2$ is always between 0 and 1, inclusive.  $R^2$ tells us the proportion of variation in the response variable that is explained by a regression model with one or more explanatory variables.  The higher the value of $R^2$, the better the model ``explains" the response variable.
+\end{onebox}
+
+
+
+
+\newpage
+\begin{examplewrap}
+\begin{nexample}{The linear model for predicting gift aid from family income for the Elmhurst College data is given by: $\widehat{\textit{aid}} = 24.3 - 0.0431\times \textit{family\us{}income}$.  $R^2 \approx 0.25$.  Interpret this quantity in context.}
+We can say that about 25\% of the variation in gift aid is explained by the linear model with the explanatory variable $x$ = family income.  
+\end{nexample}
+\end{examplewrap}
+
+The value of $R^2$ is, in fact, equal to $r^2$, where $r$ is the correlation coefficient.  This means that  $r = + \sqrt{R^2}$ or $ - \sqrt{R^2}$, depending on direction of the association.  Use this fact to answer the next two practice problems.
+
+\begin{exercisewrap}
+\begin{nexercise}
+If a linear model has a very strong negative relationship with a correlation coefficient of -0.97, how much of the variation in the response variable is explained by the linear model?\footnotemark 
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$R^2 = (-0.97)^2 = 0.94$ or 94\%.  94\% of the variation in $y$ is explained by the linear model.}
+\index{least squares regression!R-squared ($R^2$)|)}
+
+\begin{exercisewrap}
+\begin{nexercise}
+If a linear model has an $R^2$ or explained variance of 0.94, what is the correlation coefficient?\footnotemark 
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{We take the square root of $R^2$ and get 0.97, but we must be careful, because $r$ could be 0.97 \emph{or} -0.97.  Without knowing the slope or seeing the scatterplot, we have no way of knowing if $r$ is positive or negative.}
+
+If $R^2$ is simply the square of the correlation coefficient, why do statisticians prefer using $R^2$ to assess the fit of a model?  The correlation coefficient $r$ only measures \emph{linear} association, so it only has meaning for a linear model.  $R^2$, on the other hand, measures the fit of any model, whether linear, quadratic, exponential, etc.  Because of this, $R^2$ is more useful for measuring and \emph{comparing} the fit of different models.  
+  
+\newpage
+%%
+\subsection{Technology:  Scatterplots and regression analysis}
+\label{techlinreg}
+
+
+\noindent The data set \data{loan50}, introduced in Chapter 1, contains information on randomly sampled loans.  Download the \data{loan50} CSV file from \oiRedirect{openintro-data}{openintro.org/data}.  Open it and perform linear regression analysis for predicting \var{total$\_$credit$\_$utilized} from \var{total$\_$credit$\_$limit}.  \\
+
+\noindent \textbf{Desmos}:  
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item ENTER DATA:  Open the CSV file.  Copy the two columns that correspond to $x$ and $y$ (the $x$ variable should be on the left).  Here we copy the columns \var{total$\_$credit$\_$limit} and \var{total$\_$credit$\_$utilized}.  In a Desmos cell, paste what you copied.  You will see the data presented in a table. \\ \\
+\indent\hspace{-4mm} * For small data sets, click \calctext{+} in the upper left, choose \calctext{table} and enter $x$ and $y$ values.
+\begin{center}
+\fbox{\Figures [ A desmos calculator screen is shown.  The first few entries of table are shown and the Add Regression icon is highlighted.]
+{.8}{technologyReg}{desmosAddReg}}
+\end{center}
+\item SCATTER PLOT and REGRESSION OUTPUT:  Click the Add Regression icon shown above.  This will return the least squares regression line in the $y = mx + b$ format, $R^2$, and $r$ as shown below.  Click the magnifying glass in the lower left to Zoom Fit the graphing window.  Click the wrench icon in the upper right to specify the min, max, and step for the X-Axis and Y-Axis and to add labels to the axes.  
+\begin{center}
+\fbox{\Figures [A desmos calculator screen is shown.  A data table with regression output and a scatteplot with regression line are shown.]
+{.8}{technologyReg}{desmosScatterPlot2}}
+\end{center}
+\item RESIDUALS and RESIDUAL PLOT:  Click \fbox{plot} below the word \textcolor{gray}{RESIDUALS}.  This will add the residuals to the table and plot them against the $x$-variable.  To make a residual plot, click the circle next to $y$ in the table to deselect it and click the circle next to ``Linear Regression" to deselect it.   Then click the magnifying glass to recenter.  Adjust the Y-axis label to be ``residuals".
+\begin{center}
+\fbox{\Figures [A desmos calculator screen is shown.  A data table with regression output and a residual plot are shown. ]
+{.7}{technologyReg}{desmosResidualPlot}}
+\end{center}
+\item SUMMARIZE RESIDUALS:  Summarize the residuals, here $e_1$, as we did in Chapter 1.
+\begin{center}
+\fbox{\Figures [A desmos calculator screen is shown.  A histogram and boxplot of the residuals are shown. ]
+{.7}{technologyReg}{desmosResiduals}}
+\end{center}
+\item NONLINEAR REGRESSION:  Make sure the circle next to \calctext{Linear Regression} is selected.  Click on Linear Regression to choose other models.  Note that the residuals will update in the table and on the graph based on the model you select.\begin{center}
+\fbox{\Figures [Multiple Regression options are shown in demos. ]
+{.33}{technologyReg}{desmosNonlinearReg}}
+\end{center}
+\item MANUALLY CREATE regression model:  To see the linear regression model in the form $y = a + bx$, you can type y1 $\sim$ a + bx1.  The $\sim$ is in the upper left of keyboard.  Adjust the number after y and x to match the subscript on your data table.  You can also use this method to manually generate models of your choosing.
+\begin{center}
+\fbox{\Figures [A desmos calculator screen is shown.  A model in the form y = a + bx is shown. ]
+{.33}{technologyReg}{desmosRegab}}
+\end{center}
+%
+\end{enumerate}
+
+
+
+
+\noindent \R{}:  Scatterplots and Linear Regression Analysis
+\\First read in the $x$ and $y$ values as described on page~\pageref{rDescriptive}.  For simplicity, we use \texttt{scan()}.  However, if you have loaded the \texttt{openintro} package as described near the bottom of page \pageref{rdescriptive} you can use the \texttt{dataset$\$$variable} structure, e.g. \texttt{loan50$\$$total$\_$credit$\_$utilized}.
+\begin{multicols}{2}
+\noindent \texttt{> \calctext{x = scan()}}\\
+\texttt{1: 95131\\
+2: 51929\\
+\ \ \ \ ... \ \ \ \ \\
+50: 390156\\
+51: \\
+Read 50 items}
+\columnbreak
+
+\noindent \texttt{> \calctext{y = scan()}}\\
+\texttt{1: 32894\\
+2: 78341\\
+\ \ \ \ ... \ \ \ \ \\
+50: 52534\\
+51: \\
+Read 50 items}
+\end{multicols}
+
+\noindent Use the \texttt{lm()} function to build a linear model and \texttt{summary()} to summarize it.\\
+\texttt{> \calctext{model = lm(y $\sim$ x)}}\\
+\texttt{> \calctext{summary(model)}}\\
+\texttt{
+Residuals:\\
+ Min\ \ \ \ \  1Q\ \ \ \ \ \ Median\ \ \ 3Q \ \ \ \ Max \\
+-64713\ \  -28247\ \  -16934\ \ \ 10568\ \  305912 \\ \\
+Coefficients:\\
+.\ \ \ \ \ \ \ \ \ \ \ \ \ \ Estimate\ \ \ Std.Error\ \ \ t value\ \ \ Pr(>|t|)   \\
+\fbox{(Intercept) 42410.57946} \ \ 14210.43201 \ \   2.984 \ \  0.00446 **\\
+\fbox{. \ \ \ \ \ \ x \ \ \ \ \ 0.09176}  \ \ \ \ \ \    0.05333 \ \  1.720 \ \  0.09179 \\
+---\\
+Residual standard error: 62540 on 48 degrees of freedom\\
+Multiple \fbox{R-squared:  0.05808},	Adjusted R-squared:  0.03846\\}
+
+\noindent Use \texttt{plot(x, y)} to make a scatterplot. For fun, type \texttt{help(plot)} at the \texttt{>} prompt and investigate the optional \texttt{type} argument.\\
+\texttt{> \calctext{plot(x, y)}}\\
+\texttt{> \calctext{plot(x, y, ylim=c(0,400000), col = "purple", xlab = "Loan Amount ($\$$)", \\ylab = "Total Credit Utilized", abline(model, col="red"))}}
+\begin{center}
+\Figures [  ]
+{.4}{technologyReg}{rScatterPlot1}\hspace{10mm}
+\Figures [  ]
+{.4}{technologyReg}{rScatterPlot3}
+\end{center}
+Make a histogram of the residuals and a residual plot, plotting the residuals versus $x$. \\
+Add \texttt{xlab = " "} and \texttt{ylab = " "} as desired.\\
+\texttt{> \calctext{hist(model$\$$residuals)}}\\
+\texttt{> \calctext{plot(x, model$\$$residuals, abline(h=0))}}
+\begin{center}
+\Figures [  ]
+{.4}{technologyReg}{rResiduals1}\hspace{10mm}
+\Figures [  ]
+{.4}{technologyReg}{rResiduals3}
+\end{center}
+
+\newpage
+%%
+\noindent \textbf{Calculator}:  Your teacher may give you data files to work with.  Alternately, manually enter data into a list as described here.  NumWorks calculator instructions are included along with example output.  For the TI-83/84 and Casio calculators, general instructions are provided and worked example videos can be accessed via the \includegraphics[height=3mm]{extraTeX/icons/video_camera.png} icon or at \url{openintro.org/ti} and \url{openintro.org/casio}.
+
+\begin{onebox}{Numworks: Regression}
+Use \calctext{OK} or \calctext{EXE} to make a selection.
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Click the yellow Home button (above the black Power button) to get to the home screen.
+\item Select \calctext{Regression} and enter the $x$ and $y$ values.
+\item Use the up and right arrow and select \calctext{Graph}.  This will show you the scatterplot.  Use the left and right arrow to toggle among the data points.
+\item Press the up arrow and the right arrow to select \calctext{Regression}.  Here you can choose Linear \textcolor{gray}{a+bx} format or choose a nonlinear regression.  This will draw the regression onto the scatterplot.
+\begin{center}
+\Figures [  ]
+{.35}{technologyReg}{numworksChoose}\hspace{10mm}
+\Figures [  ]
+{.35}{technologyReg}{numworksScatterplot}
+\end{center}
+\item Press the up arrow and the right arrow to select \calctext{Regression} again.  Here you will see the regression output.  Press the down arrow to see more options, including \calctext{Residual plot}.  
+\begin{center}
+\Figures [  ]
+{.35}{technologyReg}{numworksRegression1}\hspace{10mm}
+\Figures [  ]
+{.35}{technologyReg}{numworksRegression2}
+\end{center}
+\item On the residual plot, use the left and right arrows to select individual points and see their corresponding residual.
+\item Use the arrows to choose \calctext{Stats} at the top to see the summary statistics for $x$ and $y$.  Press the right arrow to see the $y$ summary statistics.  Press down arrow to see more summary statistics.  
+\begin{center}
+\Figures [  ]
+{.35}{technologyReg}{numworksResidualPlot}\hspace{10mm}
+\Figures [  ]
+{.35}{technologyReg}{numworksSummaryStats}
+\end{center}
+\end{enumerate}
+\end{onebox}
+
+%%
+\begin{onebox}{\videohref{ti84_calculating_regression_summary_statistics} TI-84: finding $\MakeLowercase{\pmb{a}}$, \MakeLowercase{\pmb{$b$}}, $\pmb{R^2}$, and \MakeLowercase{\pmb{$r$}} for a linear model}
+Use \calctext{STAT}, \calctext{CALC}, \calctext{LinReg(a + bx)}.
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Choose \calctext{STAT}.
+\item Right arrow to \calctext{CALC}.
+\item Down arrow and choose \calctext{8:LinReg(a+bx)}.\vspace{-1.5mm}
+  \begin{itemize}
+  \item Caution: choosing \calctext{4:LinReg(ax+b)} will reverse $a$ and $b$.
+  \end{itemize}
+\item Let \calctext{Xlist} be \calctext{L1} and \calctext{Ylist} be \calctext{L2} (don't forget to enter the $x$ and $y$ values in L1 and \calctext{L2} before doing this calculation).  
+\item Leave \calctext{FreqList} blank.
+\item Leave \calctext{Store RegEQ} blank.
+\item Choose Calculate and hit \calctext{ENTER}, which returns: \\[1mm]
+\begin{tabular}{l l}
+\calctext{a} & $a$, the y-intercept of the best fit line \\
+\calctext{b} & $b$, the slope of the best fit line \\
+$\calctextmath{r^2}$ & $R^2$, the explained variance \\
+\calctext{r} & $r$, the correlation coefficient
+\end{tabular}
+\end{enumerate}
+TI-83: Do steps 1-3, then enter the $x$ list and $y$ list separated by a comma, e.g. \calctext{LinReg(a+bx) L1, L2}, then hit \calctext{ENTER}.\end{onebox}
+
+\begin{onebox}{What to do if \pmb{$r^2$} and \MakeLowercase{\pmb{$r$}} do not show up on a TI-83/84}
+If $r^2$ and $r$ do now show up when doing \calctext{STAT}, \calctext{CALC}, \calctext{LinReg}, the \emph{diagnostics} must be turned on.  This only needs to be once and the diagnostics will remain on.
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Hit \calctext{2ND} \calctext{0} (i.e. \calctext{CATALOG}).
+\item Scroll down until the arrow points at \calctext{DiagnosticOn}.
+\item Hit \calctext{ENTER} and \calctext{ENTER} again. The screen should now say: \\[1mm]
+\begin{tabular}{l l}
+\calctext{DiagnosticOn}& \\
+&\calctext{Done} \\
+\end{tabular}
+\end{enumerate}
+\end{onebox} 
+
+\begin{onebox}{What to do if a TI-83/84 returns: {ERR:}~{DIM MISMATCH}}
+\label{dimmismatch}
+This error means that the lists, generally L1 and L2, do not have the same length.
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Choose \calctext{1:Quit}.
+\item Choose \calctext{STAT},~\calctext{Edit} and make sure that the lists have the same number of entries.
+\end{enumerate}
+\end{onebox} 
+
+\begin{onebox}{\videohref{casio_calculating_regression_summary_statistics} Casio fx-9750GII: finding $\MakeLowercase{\pmb{a}}$, \MakeLowercase{\pmb{$b$}}, $\pmb{R^2}$, and \MakeLowercase{\pmb{$r$}} for a linear model}
+\ \vspace{-5mm} \
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item Navigate to \calctext{STAT} (\calcbutton{MENU} button, then hit the \calcbutton{2} button or select \calctext{STAT}).
+\item Enter the $x$ and $y$ data into 2 separate lists, e.g. $x$ values in \calctext{List 1} and $y$ values in \calctext{List 2}. Observation ordering should be the same in the two lists. For example, if $(5, 4)$ is the second observation, then the second value in the $x$ list should be 5 and the second value in the $y$ list should be 4.
+\item Navigate to \calctext{CALC} (\calcbutton{F2}) and then \calctext{SET} (\calcbutton{F6}) to set the regression context.\vspace{-1.5mm}
+  \begin{itemize}
+  \item To change the \calctext{2Var XList}, navigate to it, select \calctext{List} (\calcbutton{F1}), and enter the proper list number. Similarly, set \calctext{2Var YList} to the proper list.
+  \end{itemize}
+\item Hit \calcbutton{EXIT}.
+\item Select \calctext{REG} (\calcbutton{F3}), \calctext{X} (\calcbutton{F1}), and \calctext{a+bx} (\calcbutton{F2}), which returns: \\[1mm]
+\begin{tabular}{l l}
+\calctext{a} & $a$, the y-intercept of the best fit line \\
+\calctext{b} & $b$, the slope of the best fit line \\
+\calctext{r} & $r$, the correlation coefficient \\
+$\calctextmath{r^2}$ & $R^2$, the explained variance \\
+\calctext{MSe} & Mean squared error, which you can ignore
+\end{tabular} \\[1mm]
+If you select \calctext{ax+b} (\calcbutton{F1}), the \calctext{a} and \calctext{b} meanings will be reversed.
+\end{enumerate}
+\end{onebox} 
+
+
+
+
+\D{\newpage}
+%%%%
+\subsection{Types of outliers in linear regression (special topic) }
+\label{typesOfOutliersInLinearRegression}
+
+Outliers in regression are observations that fall far from the ``cloud'' of points. These points are especially important because they can have a strong influence on the least squares line. 
+
+\begin{examplewrap}
+\begin{nexample}{There are six plots shown in Figure~\ref{outlierPlots} along with the least squares line and residual plots. For each scatterplot and residual plot pair, identify any obvious outliers and note how they influence the least squares line. Recall that an outlier is any point that doesn't appear to belong with the vast majority of the other points.}\label{outlierPlotsExample}
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[(1)] There is one outlier far from the other points, though it only appears to slightly influence the line.
+\item[(2)] There is one outlier on the right, though it is quite close to the least squares line, which suggests it wasn't very influential.
+\item[(3)] There is one point far away from the cloud, and this outlier appears to pull the least squares line up on the right; examine how the line around the primary cloud doesn't appear to fit very well.
+\item[(4)] There is a primary cloud and then a small secondary cloud of four outliers. The secondary cloud appears to be influencing the line somewhat strongly, making the least squares line fit poorly almost everywhere. There might be an interesting explanation for the dual clouds, which is something that could be investigated.
+\item[(5)] There is no obvious trend in the main cloud of points and the outlier on the right appears to largely control the slope of the least squares line.
+\item[(6)] There is one outlier far from the cloud, however, it falls quite close to the least squares line and does not appear to be very influential.
+\end{itemize}
+\end{nexample}
+\end{examplewrap}
+
+\begin{figure}
+\centering
+  \Figure[Six scatterplots, each with a least squares line and residual plot. All data sets have at least one outlier. (1) A clear positive upward trend is evident in the points with a regression line overlaying these points, but one point is shown deviating substantially from the line about one-third of the way from the left side of the plot and far below the other points. (2) A slight downward trend is evident in the points on the left half of the plot with a regression line overlaying these points and extending to a single point on the far right of the plot that is also very close to the regression line. (3) A positive upward trend is evident for points shown on the left two-thirds of the plot with a regression line overlaying these points, but a single point is shown on the far right and lying substantially above the line. This one point appears to be "pulling" the regression line up on the right, making the line fit the rest of the data less well. (4) Most of the data is shown in the left two-thirds of the plot with a clear downward, linear trend. A cluster of 4 points is shown on the far right but deviating notably above the trend of the other points. The regression line fit to the data shows it largely "trying" to fit the bulk of the data on the left but being "pulled" upward on the right towards the cluster of points deviating from the linear trend. (5) A large cluster of points is shown on the far bottom-left, and there is no apparent trend in this large cluster. A single point is shown on the far upper-right. A regression line is fit to the data with a line extending from the cluster on the bottom-left and trending upwards near the single point on the upper right. (6) A clear downward trend is evident in the points on the right two-thirds of the plot with a regression line overlaying these points and extending to a single point on the far left of the plot that is also very close to the regression line.] {}{outlierPlots}
+\caption{Six plots, each with a least squares line and residual plot. All data sets have at least one outlier.}
+\label{outlierPlots}
+\end{figure}
+
+
+Examine the residual plots in Figure~\ref{outlierPlots}. You will probably find that there is some trend in the main clouds of (3) and (4). In these cases, the outliers influenced the slope of the least squares lines. In (5), data with no clear trend were assigned a line with a large trend simply due to one outlier (!).
+ 
+ \begin{onebox}{Leverage}
+Points that fall horizontally away from the center of the cloud tend to pull harder on the line, so we call them points with \term{high leverage}.\end{onebox}
+
+Points that fall horizontally far from the line are points of high leverage; these points can strongly influence the slope of the least squares line. If one of these high leverage points does appear to actually invoke its influence on the slope of the line -- as in cases (3), (4), and (5) of Example~\ref{outlierPlotsExample} -- then we call it an \term{influential point}. Usually we can say a point is influential if, had we fitted the line without it, the influential point would have been unusually far from the least squares line.
+
+It is tempting to remove outliers. Don't do this without a very good reason. Models that ignore exceptional (and interesting) cases often perform poorly. For instance, if a financial firm ignored the largest market swings -- the ``outliers'' --  they would soon go bankrupt by making poorly thought-out investments.
+
+\begin{onebox}{Don't ignore outliers when fitting a final model}
+{If there are outliers in the data, they should not be removed or ignored without a~good reason. Whatever final model is fit to the data would not be very helpful if it ignores the most exceptional cases.}
+\end{onebox}
+
+
+\D{\newpage}
+
+%%%%
+\subsection{Exploring futher}
+To explore some regression topics beyond those included in this textbook, visit \oiRedirect{ahss-supplements}{openintro.org/ahss/supplements}, where you will find additional content on the following topics:
+
+\begin{itemize}
+
+\item Categorical predictors with two levels
+
+\item Inference for the slope of a regression line
+
+\item Introduction to multiple linear regression
+
+\item Introduction to logistic regression
+
+\end{itemize}
+
+ 
+%%
+\subsection*{Section summary}
+
+\begin{itemize}
+
+\item The simple linear regression model is fit to the data by minimizing the sumof the squares of the residuals. Because of this, the resulting equation isoften called the \termni{least-squares regression line} (LSRL) and is calculated usingtechnology. This regression line will pass through the point ($\bar{x}$ , $\bar{y}$).
+
+
+\item We write the least squares regression line in the form: $\hat{y} = a  + bx$.  The slope $b$ and the $y$-intercept $a$ can be calculated using technology or identified from computer output.
+
+\item In simple linear regression, the square of the correlation coefficient, $R^2$, iscalled the coefficient of determination.  $R^2$ is the proportion of variation inthe response variable that is explained by the linear relationship with theexplanatory variable.
+
+\item $R^2$ is always between 0 and 1, inclusive, or between 0\% and 100\%, inclusive.  $R^2$ applies to any type of model, not just a linear model, and can be used to compare the fit among various models.  The higher the value of $R^2$, the better the model ``fits" the data. 
+
+\item The value of $R^2$ is always positive and cannot tell us the \emph{direction} of the association.  If finding $r$ based on $R^2$, make sure to use either the scatterplot or the slope of the regression line to determine whether $r = + \sqrt{R^2}$ or $- \sqrt{R^2}$. 
+
+\item The coefficients $a$ and $b$ of the least-squares regression line model (line of best fit)are statistics because they are based on a sample ofvalues.
+
+\item The slope $b$ of the least-squares regression line can be interpreted as the\emph{predicted} increase or decrease in the response variable $y$ for a one-unit increase in the explanatory variable $x$.
+
+\item The $y$-intercept $a$ in the least-squares regression line is the \emph{predicted} value ofthe response variable $y$ when the explanatory variable $x$ is equal to 0.  Sometimes, the $y$-intercept of the line does not havea reasonable interpretation in context because $x =0$ might be beyond theinterval of $x$-values used to determine the regression line (extrapolation). Atother times, the $y$-intercept of the line does not have a logical interpretation incontext because it might be a negative value for a response variable that hasno negative values, such as height.
+
+\item When interpreting $a$, $b$, and $R^2$, always interpret them based on the situation, referencing the relevant variables in context.
+
+\end{itemize}
+
+
+
+
+%%%%%%%%%Section Exercises
+{\input{ch_regression_analysis/TeX/least_squares_regression.tex}}
+
+
+
+
+%_______________________
+\reviewchapterheader{}
+
+\noindent This chapter focused on describing the linear association between two numerical variables and fitting a linear model.  
+\begin{itemize}
+
+
+\item Every analysis should begin with \emph{graphing} the data using a \termni{scatterplot} in order to see the association and any deviations from the trend.  A \termni{residual plot} helps us better see patterns in the data.  
+
+\item When the data show a linear trend, we fit a \termni{least squares regression line} of the form: $\hat{y} = a+bx$, where $a$ is the $y$-intercept and $b$ is the slope.  It is important to be able to interpret $a$ and $b$ in the context of the data.
+
+\item A \termni{residual}, $y-\hat{y}$, measures the error for an \emph{individual point}.  
+
+\item The \termni{correlation coefficient}, $r$, measures the strength and direction of the linear association between two variables.  However, $r$ alone cannot tell us whether data follow a linear trend or whether a linear model is appropriate.
+
+\item The \termni{coefficient of determination}, $R^2$, measures the proportion of variation in the $y$ values explained by a given model.  Like $r$, $R^2$ alone cannot tell us whether data follow a linear trend or whether a linear model is appropriate.  
+
+\end{itemize}
+In this chapter we focused on simple linear models with one explanatory variable.  More complex methods of prediction, such as multiple regression (more than one explanatory variable) and nonlinear regression can be studied in a future course.
+
+

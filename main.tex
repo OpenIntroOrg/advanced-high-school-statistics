@@ -1,15 +1,15 @@
 \documentclass[10pt,openany]%,oneside]
 {book}
 
-\newcommand{\versiondate}[0]{Aug 2, 2022}
+\newcommand{\versiondate}[0]{January 20, 2026}
 
 
 \usepackage{
   amsmath, calc,
   caption, changepage,
-  endnotes, enumerate,
+  endnotes, enumerate, 
   fancyhdr,
-  fix-cm,
+  fix-cm, float,
   fncychap,
   footmisc,
   fullminipage,
@@ -17,18 +17,19 @@
   ifthen, lscape,
   makeidx, manfnt,
   marginnote,
-  mdframed,
+  mdframed, MnSymbol,
   multicol, multirow,
   setspace, soul,
   tabto,
-  textcomp,
+  textcomp, 
   %tocloft,
   varioref, verbatim,
-  wasysym, wrapfig}
+  wasysym, wrapfig, xhfill}
 \usepackage{epstopdf}
 \usepackage{subfigure}
 \usepackage[explicit]{titlesec}
 %\usepackage[usenames,dvipsnames]{color}  
+
 %\newcommand{\href}[2]{#2} \newcommand{\url}[1]{#1} \newcommand{\urlstyle}[1]{}
 \include{extraTeX/style/colorsV1}
 \newcommand{\printlocation}[0]{}
@@ -39,14 +40,14 @@
 \newcommand{\chapterpagepaddingrightinner}[0]{30mm}
 
 % _____ (1) PDF _____ %
-\usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
+\usepackage[bookmarksnumbered, colorlinks 
+= false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
 
 % _____ (2) PDF -- screenreader _____ %
 %\usepackage{pdfcomment}
 % !!!!!
 % 1. Use the `style_simple` instead of `style`.
 % 2. Use the `headers_simple` instead of `headers`.
-% 3. Adjust the TOC depth to 3.
 % !!!!!
 
 % _____ (3) B&W Paperback _____ %
@@ -69,8 +70,8 @@
 \bibliography{eoce.bib}
 
 \makeindex
-\include{extraTeX/style/style}
-%\include{extraTeX/style/style_simple}
+\include{extraTeX/style/style} % standard version
+%\include{extraTeX/style/style_simple} % screen reader version
 %\include{extraTeX/style/tablet}
 %\include{extraTeX/style/video}
 % The following style file supports an 8.25 x 11 paper size.
@@ -78,8 +79,11 @@
 \include{extraTeX/preamble/title}%_derivative}
 \date{}
 \renewcommand\contentsname{Table of Contents}
-%\setcounter{tocdepth}{1} % standard version
-\setcounter{tocdepth}{3} % screen reader version
+
+%\setcounter{tocdepth}{1} 
+
+\setcounter{tocdepth}{3} 
+
 %\renewcommand{\cftchapfont}{\scshape}
 %\renewcommand{\cftsecfont}{\bfseries}
 
@@ -91,26 +95,33 @@
 \renewcommand{\thepage}{\arabic{page}}
 \tableofcontents
 \include{extraTeX/preamble/preface}
+
+
+
+
 \normalsize
 
+
 \begingroup
-\include{extraTeX/style/headers}
-%\include{extraTeX/style/headers_simple}
-\includechapter{1}{ch_data_collection}
-\includechapter{2}{ch_summarizing_data}
-\includechapter{3}{ch_probability}
-\includechapter{4}{ch_distributions}
-\includechapter{5}{ch_foundations_for_inf}
-\includechapter{6}{ch_inference_for_props}
-\includechapter{7}{ch_inference_for_means}
-\includechapter{8}{ch_regr_simple_linear}
+\include{extraTeX/style/headers}  % standard version
+%\include{extraTeX/style/headers_simple} % screen reader version
+
+\includechapter{1}{ch_one_variable_data_collecting_data}
+\includechapter{2}{ch_probability}
+\includechapter{3}{ch_inference_for_props}
+\includechapter{4}{ch_inference_for_means}
+\includechapter{5}{ch_regression_analysis}
+
+
+
 \endgroup
+
 
 
 \begingroup
 \include{extraTeX/style/style_appendices}
 \appendix{}
-\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
 \include{extraTeX/eoceSolutions/eoceSolutions}
 \include{extraTeX/data/data}
 \include{extraTeX/tables/TeX/randomNumberTable}
