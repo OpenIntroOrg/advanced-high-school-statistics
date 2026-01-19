@@ -1,8 +1,8 @@
 library(openintro)
 data(COL)
 
-myPDF('netTime100SamplingDistribution.pdf', 4.5, 2.2,
-      mar = c(2.5,.2, .2, .2), mgp=c(1.4,0,0))
+myPDF('netTime100SamplingDistribution.pdf', 6, 2.4,
+      mar = c(3.5,.2, .2, .2), mgp = c(2.2, 0.55, 0))
 
 set.seed(5)
 #run12 <- subset(run12, event == "10 Mile")

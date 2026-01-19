@@ -3,15 +3,15 @@
 
   \label{inferenceForCategoricalData}
   \label{ch_inference_for_props}
- \chaptersection{pointEstimates}
- \chaptersection{distributionphat}
-  \chaptersection{singleProportionCI}
-  \chaptersection{singleProportionTest}
-\chaptersection{distributionofdifference}
-  \chaptersection{differenceOfTwoProportionsCI}
- \chaptersection{differenceOfTwoProportionsTest}
-  \chaptersection{oneWayChiSquare}
-  \chaptersection{twoWayTablesAndChiSquare}
+ \chaptersection[\large]{pointEstimates}
+ \chaptersection[\large]{distributionphat}
+  \chaptersection[\large]{singleProportionCI}
+  \chaptersection[\large]{singleProportionTest}
+\chaptersection[\large]{distributionofdifference}
+  \chaptersection[\large]{differenceOfTwoProportionsCI}
+ \chaptersection[\large]{differenceOfTwoProportionsTest}
+  \chaptersection[\large]{oneWayChiSquare}
+  \chaptersection[\large]{twoWayTablesAndChiSquare}
 \end{chapterpage}
 \renewcommand{\chapterfolder}{ch_inference_for_props}
 
@@ -113,7 +113,7 @@ What quantity should we use as a point estimator for the \term{population mean} 
 \begin{nexercise}Using the email data, what quantity should we use as a point estimator for the population standard deviation $\sigma$?  What is the point estimate for $\sigma$ based on this sample?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Intuitively we would use the sample standard deviation $s$ as a point estimator for $\sigma$.  Based on this sample, the point estimate for $\sigma$ is $s = $13,130.}
+\footnotetext{Intuitively we would use the sample standard deviation $s$ as a point estimator for $\sigma$.  Based on this sample, the point estimate for $\sigma$ is $s = $13,130.}\vspace{-4mm}
 
 
 
@@ -152,7 +152,7 @@ The estimators in (a) and (c) are biased, because those sampling distributions a
    \centering
 \oiRedirect{desmos-biasvariability}{
 \Figure[The sampling distributions associated with four different estimators are shown in different colors and labeled a, b, c, and d.  The estimators in (a) and (c) are biased, because those sampling distributions are not centered on the parameter (true value).  The estimators in (b) and (d) are centered on the parameter, so those estimators are unbiased.  From lowest to greatest variability, we have (a), (b), (c), (d).]
-{0.5}{fourSamplingDistributions}}
+{0.55}{fourSamplingDistributions}}
    \caption{The sampling distribution of four different estimators of a parameter.  This is a screenshot from the interactive Desmos Activity: Bias and Variability in Sampling Distributions.  Find it at \oiRedirect{openintro-ahss-desmos}{\small{openintro.org/ahss/desmos}}.}
    \label{fourSamplingDistributions}
 \end{figure}
@@ -390,6 +390,8 @@ The standard deviation of a sample proportion, $\sigma_{\hat{p}}$, tells us abou
 %\item The average spread of the distribution of all possible values of $\hat{p}$ 
 %\item The average \emph{error} of the sample proportion $\hat{p}$, that~is, the average deviation between a particular sample $\hat{p}$ and the true population $p$. 
 %\end{enumerate}
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{If the proportion of people in the county with blood type O+ is really 35\%, find and interpret the mean and standard deviation of the sample proportion for a random sample of size 400.}
@@ -825,7 +827,7 @@ Based on our calculations, we can be 95\% confident that the interval (0.411, 0.
 \begin{figure}[h]
 \centering
   \Figure[Twenty-five point estimates and confidence intervals for a proportion from a simulation in which the true proportion p = 0.3 are shown.  The point estimates vary around the true population proportion of 0.3, but most of their confidence intervals overlap the value p equals 0.3. Only one of the 25 intervals does not have a confidence interval that overlaps the population proportion, and this interval has been highlighted in red. We might say that this confidence interval did not "capture" the parameter p equals 0.3.]
-{.9}{95PercentConfidenceInterval}
+{0.95}{95PercentConfidenceInterval}
 \caption{Twenty-five samples of size $n=300$ were simulated when $p = 0.30$. For each sample, a confidence interval was created to try to capture the true proportion $p$. However,~1~of these~25 intervals did not capture $p = 0.30$.  View this simulation in an interactive Desmos calculator \oiRedirect{desmos-cisimulation}{here}, or find it at \oiRedirect{openintro-ahss-desmos}{\small{openintro.org/ahss/desmos}}.}
 \label{95PercentConfidenceInterval}
 \end{figure}
@@ -944,6 +946,8 @@ Another way to find the value of $z^{\star}$ for a C\% confidence interval is to
 %\begin{onebox}{Finding \pmb{$\MakeLowercase{z}^{\star}$ }for a particular confidence level}
 %We select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. Use technology or use the $t$-table at row $\infty$ to find the critical value $z^{\star}$.\end{onebox}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise} \label{find90CIForRun10AgeExercise}
 Find the $z^{\star}$ critical value for an 80\% confidence interval.\footnotemark
@@ -984,7 +988,8 @@ When the sampling distribution of a sample proportion, $\hat{p}$, is approximate
 \item[Large counts.] In Section~\ref{distributionphat}, we applied a version of the large counts condition.  Here, because $p$ is unknown, we check that the number of observed success and failures in the sample is at least 10, that is, that $n\hat{p} \ge 10$ and $n(1-\hat{p}) \ge 10$.
 \end{description}
 
-When these conditions are met, we can use what is called a \termni{one-sample Z-interval for p}, where p is a population proportion.
+When these conditions are met, we can use what is called a \termni{one-sample Z-interval for p}, where p is a population proportion.\D{\vspace{8mm}}
+
 
 %%
 \subsection[Carrying out a one-sample Z-interval for p]{Carrying out a one-sample \pmb{$Z$}-interval for p}
@@ -1003,6 +1008,8 @@ Gallup sampled from US adults, therefore the population of interest, and the pop
 \end{nexample}
 \end{examplewrap}
 
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{Can the sample proportion $\hat{p}$ be modeled using a normal distribution?}
@@ -1109,7 +1116,6 @@ To decrease the error, we would need to increase the sample size.  We note that 
 %
 
 
-\newpage
 %%
 \subsection{Interpreting confidence levels and intervals revisited}
 \label{interpretingCIs}
@@ -1234,6 +1240,7 @@ True or False:  There is a 95\% probability that between 65.1\% and 70.9\% of US
 
 
 
+\D{\newpage}
 
 %%
 \subsection{Choosing a sample~size when estimating a proportion}
@@ -1544,7 +1551,9 @@ The consultant's complication rate for her 142 clients was $9/142 = 0.063$. What
 \label{MedConsNullNormal}
 \end{figure}
 
-\newpage
+When working with proportions, we can say that the p-value is the probability of getting a sample proportion as far from or farther from the null proportion in the direction of $H_A$ if the null hypothesis is true.  In general, we calculate and interpret a p-value under one of three scenarios.
+
+\D{\newpage}
 
 \begin{figure}[ht]
 \centering
@@ -1553,9 +1562,6 @@ The consultant's complication rate for her 142 clients was $9/142 = 0.063$. What
 \caption{When the alternative hypothesis takes the form $p <$ null value, the p-value is represented by the lower tail. When it takes the form $p >$ null value, the p-value is represented by the upper tail. When using $p \neq$ null value, then the p-value is represented by both tails.}
 \label{sidedness_example_figures}
 \end{figure}
-
-
-When working with proportions, we can say that the p-value is the probability of getting a sample proportion as far from or farther from the null proportion in the direction of $H_A$ if the null hypothesis is true.  In general, we calculate and interpret a p-value as follows:
 
 \begin{onebox}{Finding and interpreting the p-value}
 We find and interpret the \term{p-value}\index{hypothesis testing!p-value|textbf} according to the nature of the alternative hypothesis.\vspace{-1mm}
@@ -1587,6 +1593,8 @@ In our consultant's complication rate example the p-value is 0.1754.  This is la
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The data do not provide evidence that the consultant's complication rate is significantly lower or higher than the US complication rate of 10\%.}
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{In the previous exercise, we did not reject $H_0$. This means that we did not disprove the null claim. Is this equivalent to proving the null claim is~true?}
@@ -1760,9 +1768,10 @@ Because the alternative hypothesis uses a greater than sign ($>$), this is an up
 \caption{Sampling distribution of the sample proportion if the null hypothesis is true for Example~\ref{TooheyInferenceExample}. The p-value for the test with $H_A$: $p > 0.5$ is shaded.}
 \label{pValueForCampaignManagerClaimOfMoreThan50PercentSupport}
 \end{figure}
+
+\D{\newpage}
+
 The p-value, which is the area under the standard normal distribution to the right of Z = 0.89, equals 0.19.  This p-value of 0.19 is greater than $\alpha = 0.05$, so we do not reject $H_0$. That is, we do not have sufficient evidence to support the claim that Tahooey has more than 50\% support within the district.  The campaign donor will not support her.
-
-
 
 \begin{examplewrap}
 \begin{nexample}{Based on the result above, do we have evidence that Toohey's support equals 50\%?}
@@ -2521,6 +2530,8 @@ First, we want to visualize the sampling distribution of the difference: $\hat{p
 The distribution of sample differences in Figure~\ref{simdifferenceprop} seems to be centered on 0.10.  This makes sense because the mean of possible sample differences should be centered on the difference in the true proportions of 0.45 and 0.35.  Each dot in Figure~\ref{simdifferenceprop} represents a difference in sample proportions.  We can count that 49 of the 300 dots have a value less than 0 so, based on the simulation, we estimate that there is a $\frac{49}{300}$, or about a 16\% chance that the sample proportion from County 2 will be higher, misleading the market researcher.
 
 
+\D{\newpage}
+
 \subsection[The mean and standard deviation for a difference in sample proportions]{The mean and standard deviation for \pmb{$\hat{p}_1-\hat{p}_2$}}
 \label{distributionofdifference_diff_samp_props}
 
@@ -2591,7 +2602,7 @@ For all random samples of 50 people from County 1 and 60 people from County 2, t
 \end{nexample}
 \end{examplewrap}
 
-\newpage
+
 \subsection[Using a normal model for the sampling distribution of $\hat{p}_1-\hat{p}_2$]{Using a normal model for the sampling distribution of \pmb{$\hat{p}_1-\hat{p}_2$}}
 
 We used the simulation shown in Figure~\ref{simdifferenceprop} to estimate a probability involving the sampling distribution of $\hat{p}_1-\hat{p}_2$, the difference in sample proportions who have an interest in the new specialty store.  We would like a method for estimating such probabilities that does not depend on a simulation.  Fortunately, when certain conditions are met, the distribution of $\hat{p}_1-\hat{p}_2$ can be modeled with a normal distribution and we can use a normal approximation to estimate probabilities based on this sampling distribution.  
@@ -2715,6 +2726,8 @@ How much more effective is a blood thinner than a placebo for those who undergo 
 }
 
 
+\D{\newpage}
+
 %%
 \subsection{Conditions for a confidence interval for a difference of proportions}
 \index{two-proportion Z-interval|see{Z-interval for a difference of proportions}}
@@ -2770,6 +2783,8 @@ The conditions for a two-sample Z-interval for a difference in proportions are t
 \end{description}
 
 
+\D{\newpage}
+
 \subsection{Calculating a confidence interval for a difference in proportions}
 To calculate a confidence interval for a difference in proportions, we apply the same confidence interval structure from the single-proportion context but with a different point estimate and SE.
 
@@ -2815,6 +2830,9 @@ The general form of a two-sample Z-interval for $p_1 - p_2$ is given by:
 \end{align*}
 where $\hat{p}_{1} - \hat{p}_{2}$ is the point estimate and $z^{\star} \times \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$ is the margin of error.
 
+
+\D{\newpage}
+
 \subsection{Interpreting and applying a confidence interval for a difference of proportions}
 
 In this problem, we calculated the 90\% two-sample Z-interval as: ($-$0.027, 0.287).  The interpretation of this interval is analogous to the interpretation of a one-sample Z-interval, instead here we are estimating a difference in population proportions rather than a single population proportion.  We can interpret the interval as follows:  We are 90\% confident that the interval ($-$0.027, 0.287) contains the difference in the true proportions of patients like the ones in this study that would survive at least 24 hours after receiving blood thinner versus not (treatment $-$ control).  That is, we are 90\% confident that, for patients like those in the study, the survival rate for those who would receive blood thinners (treatment) is 2.7\% \emph{lower} to +28.7\% \emph{higher} than the survival rate for those who would not receive the blood thinner (control).  
@@ -2838,15 +2856,16 @@ What can we say based on the interval we calculated?  Because the interval conta
 In general, when using a confidence interval for a difference, we justify claims about the true difference based on whether the interval is entirely above 0 (evidence the first is greater), entirely below 0 (evidence the first is less), or contains 0 (not enough evidence of a real difference).
 
 
+\D{\newpage}
+
 %%%
 \subsection[Technology: the two-sample Z-interval for $p_1 - p_2$]{Technology: the two-sample Z-interval for \pmb{$p_1 - p_2$}}
 \label{2propZint}
 
 \noindent  Section~\ref{tech2Z} demonstrates how to calculate the two-proportion Z-interval and the two-proportion Z-test (introduced in the next section) using Desmos, R, and the NumWorks, TI-83/84 and Casio calculator. 
 
-\newpage
-\subsection[Summary and worked example]{Summary and worked example} 
 
+\subsection[Summary and worked example]{Summary and worked example} 
 
 \begin{onebox}{Constructing a confidence interval for a difference in proportions}
 To carry out a complete confidence interval procedure to estimate the difference in population proportions,
@@ -3020,7 +3039,7 @@ whether a survey question's phrasing can affect responses. Pew Research Center c
 \begin{quote}
 As you may know, by 2014 nearly all Americans will be required to have health insurance. [People who do not buy insurance will pay a penalty] while [People who cannot afford it will receive financial help from the government]. Do you approve or disapprove of this policy?
 \end{quote}
-\index{data!health care|(}For each randomly sampled respondent, the statements in brackets were randomized: either they were kept in the original order given above, or they were reversed. Results are presented in Figure~\ref{pewPollResultsForRandomizedStatementOrdering}
+\index{data!health care|(}For each randomly sampled respondent, the statements in brackets were randomized: either they were kept in the original order given above, or they were reversed. Results are presented in Figure~\ref{pewPollResultsForRandomizedStatementOrdering}.
 
 
 \begin{figure}[h]
@@ -3047,6 +3066,8 @@ Is this study an experiment or an observational study?\footnotemark
 \end{exercisewrap}
 \footnotetext{There is a random sample involved, but there are also two treatments.  Half of the respondents are given the original statement order and the other half, randomly, are given the reversed statement order.  This is an experiment because there are randomly assigned treatments.  }
 
+\D{\newpage}
+
 \noindent The approval percents of 47\% and 34\% seem far apart.  However, could this difference be due to random chance?  We will answer this question using a hypothesis test.  
 
 \begin{examplewrap}
@@ -3072,6 +3093,9 @@ p_1=p_2 &\text{ is equivalent to } p_1-p_2=0\text{, and} \\
 p_1\ne p_2 &\text{ is equivalent to } p_1-p_2\ne 0.  
 \end{align*}
 We can now see that the hypotheses are really about a difference of proportions: $p_1-p_2$.  In the last section, we used a two-sample Z-interval to estimate the parameter $p_1-p_2$; here, we will use a \termni{two-sample Z-test for \pmb{$p_1 - p_2$}}, with null hypothesis: $p_1-p_2=0$, i.e. $p_1=p_2$.  We will elaborate on the conditions needed for this test after introducing the concept of the pooled proportion.  
+
+
+\D{\newpage}
 
 \subsection{Calculations and conditions for a test for a difference of proportions}
 
@@ -3638,7 +3662,9 @@ $$ Z = \frac{\text{point estimate} - \text{null value}}{SE \text{ of point estim
 This construction was based on (1) identifying the difference between a point estimate and an expected value if the null hypothesis was true, and (2) standardizing that difference using the standard error of the point estimate. These two ideas will help in the construction of an appropriate test statistic for count data.
 
 In this example we have four categories: White, Black, Hispanic, and other. Because we have four values rather than just one or two, we need a new tool to analyze the data. Our strategy will be to find a test statistic that measures the overall deviation between the observed and the expected counts. 
-\newpage
+
+\D{\newpage}
+
 We first find the difference between the observed and expected counts for the four groups:
 \begin{align*}
 &&\text{White} && \text{Black} && \text{Hispanic} && \text{Other} \\
@@ -4312,7 +4338,9 @@ Looking back, we see that 0.7078 was computed as $\frac{7078}{10000}$, the fract
 \left(\frac{\text{row 1 total}}{\text{table total}}\right)\text{(column 2 total)} &= 1769.5 \\
 \left(\frac{\text{row 1 total}}{\text{table total}}\right)\text{(column 3 total)} &= 1769.5
 \end{align*}
-This leads us to a general formula for computing expected counts in a two-way table when we would like to test whether there is strong evidence of an association between the column variable and row variable.
+\D{\newpage
+
+\noindent}This leads us to a general formula for computing expected counts in a two-way table when we would like to test whether there is strong evidence of an association between the column variable and row variable.
 
 
 \begin{onebox}{Computing expected counts in a two-way table}
@@ -4343,6 +4371,8 @@ There are two conditions that must be checked before performing a chi-square tes
 \item[Large expected counts.] All of the cells in the two-way table must have at least 5~expected cases assuming the null hypothesis is true.
 \end{description}
 \end{onebox}
+
+\D{\newpage}
 
 In our Google example, we have an experiment and the three algorithms are randomly assigned to the queries.  Also, all the expected counts, assuming the null hypothesis is true, are well over 5.  Therefore, the conditions for applying the chi-square test for homogeneity are met.  
 
@@ -4428,9 +4458,9 @@ In Figure~\ref{gsearchSegBar} we compare the proportion of successes and failure
 
 \begin{figure}[h]
 \centering
-\Figures[Observed counts]{0.45}{gsearch}{gsearch_mosaic2}
+\Figures[Observed counts]{0.49}{gsearch}{gsearch_mosaic2}
 \Figures[]
-{0.45}{gsearch}{gsearchSegBar}
+{0.49}{gsearch}{gsearchSegBar}
 \caption{A mosaic plot (left) and a stacked bar chart (right) showing the proportion of successes and failures for each algorithm in the Google experiment.}
 \label{gsearchSegBar}
 \end{figure}
@@ -4547,6 +4577,8 @@ We multiply the row totals by the overall proportion who said ``Not too or not a
 \end{nexample}
 \end{examplewrap}
 
+\D{\newpage}
+
 We can use the same process for finding the expected counts for the second and third columns of the table.  In each case, we will be multiplying:  $\text{row total}\times \frac{\text{column total}}{\text{table total}}$.  In other words, just as with the chi-square test for homogeneity, we calculate the expected counts as follows:
 $$\text{Expected Count} = \frac{(\text{row total}) \times  (\text{column total})}{\text{table total}}$$
 
@@ -4608,6 +4640,8 @@ Figure~\ref{pewEVmosaicplots} offers a visual comparison of the observed and exp
 \end{figure}
 
 All of the expected counts are at least 5.  Also, in this Pew research poll, the data came from a random sample of adults in the US and the population size for adults in the US is much larger than 10 times the sample size of 5085.  Therefore, conditions for the chi-square test for independence are met.
+
+\D{\newpage}
 
 The chi-square test for independence and the chi-square test for homogeneity both involve counts in a two-way table.  The expected counts, chi-square statistic, degrees of freedom, and p-value are calculated in the same way.  
 
