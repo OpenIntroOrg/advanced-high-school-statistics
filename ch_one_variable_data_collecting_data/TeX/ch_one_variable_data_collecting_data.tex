@@ -2680,13 +2680,13 @@ In addressing this question, we ask, ``Will the researcher be imposing any treat
 Making causal conclusions based on experiments is often reasonable. However, making the same causal conclusions based on observational data is treacherous and is not recommended. Observational studies are generally only sufficient to show associations.
 
 \begin{exercisewrap}
-\begin{nexercise} \label{sunscreenLurkingExample}
+\begin{nexercise} \label{sunscreenConfoundingExample}
 Suppose an observational study tracked sunscreen use and skin cancer, and it was found people who use sunscreen are more likely to get skin cancer than people who do not use sunscreen. Does this mean sunscreen \emph{causes} skin cancer?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{No. See the paragraph following the exercise for an explanation.}
 
-Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer. One important piece of information that is absent is sun exposure. Sun exposure is what is called a \term{confounding variable} (also called a \term{lurking variable}, \term{confounding factor}, or a \term{confounder}).
+Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer. One important piece of information that is absent is sun exposure. Sun exposure is what is called a \term{confounding variable}, \term{confounding factor}, or a \term{confounder}).
 
 \begin{center}
   \Figures
@@ -3099,14 +3099,14 @@ What are possible sources of bias, and how can we try to minimize them?  If we d
 %%
 \subsection{Case study: using stents to prevent strokes}
 \label{basicExampleOfStentsAndStrokes}
-Here, we introduce a classic challenge in statistics: evaluating the efficacy of a medical treatment. Terms in this section, and indeed much of this chapter, will all be revisited later in the text. The plan for now is simply to get a sense of the role statistics can play in practice.
+Here, we introduce a classic challenge in statistics: evaluating the effectiveness of a medical treatment. Terms introduced here will be more explicitly defined later in the section.  The goal for now is simply to get a sense of the role statistics can play in practice.
 
-In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke. (As you read the main text of this book, you can refer to the original data sources and in many cases access the corresponding data sets via the Data Appendix, i.e.~Appendix~\ref{appendix_data}, starting on page~\pageref{appendix_data}.) Stents are devices put inside blood vessels that assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
+In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke.  Stents are devices put inside blood vessels that assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
 \begin{quote}
 Does the use of stents reduce the risk of stroke?
 \end{quote}
 
-The researchers who asked this question collected data on 451 at-risk patients. Each volunteer patient was randomly assigned to one of two groups:
+\noindent The researchers who asked this question collected data on 451 at-risk patients. Each volunteer patient was randomly assigned to one of two groups:
 \begin{itemize}
 \item[]\termsub{Treatment group}{treatment group}. Patients in the treatment group received a stent and medical management. The medical management included medications, management of risk factors, and help in lifestyle modification.
 \item[]\termsub{Control group}{control group}. Patients in the control group received the same medical management as the treatment group, but they did not receive stents.
@@ -3168,7 +3168,7 @@ We can compute summary statistics from the table. A \term{summary statistic} is 
 \end{itemize}
 These two summary statistics are useful in looking for differences in the groups, and we are in for a surprise: an additional 8\% of patients in the treatment group had a stroke! This is important for two reasons. First, it is contrary to what doctors expected, which was that stents would \emph{reduce} the rate of strokes. Second, it leads to a statistical question: do the data show a ``real'' difference between the groups?
 
-This second question is subtle. Suppose you flip a coin 100 times. While the chance a coin lands heads in any given coin flip is 50\%, we probably won't observe exactly 50 heads. This type of fluctuation is part of almost any type of data generating process. It is possible that the 8\% difference in the stent study is due to this natural variation. However, the larger the difference we observe (for a particular sample size), the less believable it is that the difference is due to chance. So what we are really asking is whether the difference is \term{statistically significant}, that is, whether the difference so large that we should reject the notion that it was due to chance. 
+This second question is subtle. Suppose you flip a coin 100 times. While the chance a coin lands heads in any given coin flip is 50\%, we probably won't observe exactly 50 heads. This type of fluctuation is part of almost any type of data generating process. It is possible that the 8\% difference in the stent study is due to this natural variation. However, the larger the difference we observe (for a particular sample size), the less believable it is that the difference is due to chance. So what we are really asking is whether the difference is \term{statistically significant}, that is, whether the difference so large that we should reject the notion that it was due to chance.  To answer this question, we will need to carry out an inference procedure called a hypothesis test, which is introduced in Chapter~\ref{ch_inference_for_props}.
 
 While we don't yet have the statistical tools to fully address this question on our own, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.
 
@@ -3183,7 +3183,7 @@ While we don't yet have the statistical tools to fully address this question on 
 \subsection{Reducing bias in human experiments}
 \label{biasInHumanExperiments}
 
-Just as randomization is essential in sampling in order to avoid selection bias, randomization is essential in the context of experiments to determine which subjects will receive which treatments. If the researcher chooses which patients are in the treatment and control groups, she may unintentionally place sicker patients in the treatment group, biasing the experiment against the treatment.
+Just as random selection is essential in sampling in order to avoid selection bias, \termni{random assignment} is essential in the context of experiments to determine which subjects will receive which treatments. If the researcher chooses which patients are in the treatment and control groups, she may unintentionally place sicker patients in the treatment group, biasing the experiment against the treatment.
 
 Randomized experiments are essential for investigating cause and effect relationships, but they do not ensure an unbiased perspective in all cases. Human studies are perfect examples where bias can unintentionally arise. Here we reconsider a study where a new drug was used to treat heart attack patients. In particular, researchers wanted to know if the drug reduced deaths in patients.
 
@@ -3207,23 +3207,23 @@ Look back to the study in subsection~\ref{basicExampleOfStentsAndStrokes} where 
 \D{\newpage}
 
 %%
-\subsection{Principles of experimental design}
+\subsection{Elements of a well-designed experiment}
 \label{experimentalDesignPrinciples}
 
-\noindent Well-conducted experiments are built on three main principles.
-
+\noindent The goal of an experiment is to be able to draw a \emph{causal} conclusion about the effect of a treatment.  Well-designed experiments are built on four main principles.  
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[\termsub{Direct Control.}{direct control}] Researchers assign treatments to cases, and they do their best to \term{control} any other differences in the groups. They want the groups to be as identical as possible \emph{except for the treatment}, so that at the end of the experiment any difference in response between the groups can be attributed to the treatment and not to some other confounding or lurking variable. For example, when patients take a drug in pill form, some patients take the pill with only a sip of water while others may have it with an entire glass of water. To control for the effect of water consumption, a doctor may ask all patients to drink a 12 ounce glass of water with the pill.
+\item[Comparison of Treatment Groups.] In order to determine if a treatment is effective, there should be at least two treatment groups, one of which could be a control group.  At the end of an experiment, the groups will be \emph{compared} to determine if one treatment is, overall, more effective than another treatment or a placebo.  Where possible the experiment should be \termni{double-blind}, with neither the subjects nor the researchers knowing who is receiving which treatment.
 
-Direct control refers to variables that the researcher can control, or make the same. A researcher can directly control the appearance of the treatment, the time of day it is taken, etc. She cannot directly control variables such as gender or age. To control for these other types of variables, she might consider blocking, which is described in Section~\ref{CompletelyRandomizedBlockedAndMatchedPairsDesign}.
+\item[Random Assignment.] Subjects/experimental units should be randomly assigned to treatment groups (or treatments randomly assigned to subjects/experimental units).  The purpose of the random assignment is to make the treatment groups as similar as possible with respect to \term{extraneous variables} -- variables that could be associated with or impact the response variable.  If random assignment is successful, the distributions of extraneous variables will be approximately the same for the treatments groups.  For example, some subjects may be more susceptible to a disease than others due to dietary or genetic factors. Randomizing subjects into treatment groups helps \emph{even out} the effects of such variables, and it also prevents accidental bias that result from choosing which treatment each subject/experimental unit receives.
 
-\item[Randomization.] Researchers randomize patients into treatment groups to account for variables that cannot be controlled. For example, some patients may be more susceptible to a disease than others due to their dietary habits. Randomizing patients into the treatment or control group helps \emph{even out} the effects of such differences, and it also prevents accidental bias from entering the study.
+\item[\termsub{Replication}{replication}.] Replication within an experiment means multiple subjects/experimental units are assigned to each treatment.  The more cases researchers observe, the more accurately they can estimate the effect of the explanatory variable on the response. Also, in an experiment with six subjects, even if there is randomization, it is quite possible for the three healthiest people to be in the same treatment group. In a randomized experiment with 100 people, it is virtually impossible for the healthiest 50 people to end up in the same treatment group. Thus replication makes it more likely that the randomization will be successful in evening out the effects of extraneous variables that are associated with or impact the response variable.
 
-\item[Replication.] The more cases researchers observe, the more accurately they can estimate the effect of the explanatory variable on the response. In an experiment with six subjects, even if there is randomization, it is quite possible for the three healthiest people to be in the same treatment group. In a randomized experiment with 100 people, it is virtually impossible for the healthiest 50 people to end up in the same treatment group. In a single study, we \termni{replicate} by imposing the treatment on a sufficiently large number of subjects or experimental units. A group of scientists may also replicate an entire study to verify an earlier finding. However, each study should ensure a sufficiently large number of subjects because, in many cases, there is no opportunity or funding to carry out the entire experiment again.
+\item[\termsub{Direct Control}{direct control}.] Direct control in an experiment means keeping the settings of certain potential extraneous sources of variation in the response variable the same fromexperimental unit to experimental unit. For example, when patients take a drug in pill form, some patients take the pill with only a sip of water while others may have it with an entire glass of water. To control for the effect of water consumption, a doctor may ask all patients to drink a 12 ounce glass of water with the pill.  A researcher can directly control the appearance of the treatment, the time of day it is taken, etc.  She cannot directly control variables such as gender or age. To control for these types of variables, she might consider blocking, which is described in Section~\ref{CompletelyRandomizedBlockedAndMatchedPairsDesign}.
+
 \end{description}
 
-It is important to incorporate these design principles into any experiment. If they are lacking, the inference methods presented in the following chapters will not be applicable and their results may not be trustworthy. In the next section we will consider three types of experimental design.
+Sometimes, at the end of an experiment, a researcher may find that even though these four design elements were used, an extraneous variable, such as whether or not a subject smokes, was still unevenly distributed between the treatment groups.  In this case, this extraneous variable of smoking is a \termni{confounding variable}, as it is associated with the response variable \emph{and} is more present in one treatment group than another (making it associated with the explanatory variable as well).  This is why researchers often record information on extraneous variables -- it allows them to determine if the randomization was effective at making the treatment groups similar with respect to those extraneous variables.   In the next section we will consider three types of experimental design.
 
 
 %%
@@ -3234,15 +3234,13 @@ It is important to incorporate these design principles into any experiment. If t
 \index{blocked experiment|(}
 \index{matched pairs|(}
 
-A \term{completely randomized experiment} is one in which the subjects or experimental units are randomly assigned to each group in the experiment. Suppose we have three treatments, one of which may be a placebo, and 300 subjects. To carry out a completely randomized design, we could randomly assign each subject a unique number from 1 to 300, then subjects with numbers 1-100 would get treatment~1, subjects 101-200 would get treatment~2, and subjects 201- 300 would get treatment~3. Note that this method of randomly allocating subjects to treatments in not equivalent to taking a simple random sample. Here we are not sampling a subset of a population; we are randomly \emph{splitting} subjects into groups.
+A \term{completely randomized experiment} is one in which the subjects or experimental units are randomly assigned to each treatment group in the experiment. Suppose we have two treatments, one of which may be a placebo, and 300 subjects. To carry out a completely randomized design, we could assign each subject a unique integer from 1 to 300.  Then we could use a random number generator to randomly generate 150 integers from 1 to 300 \emph{without replacement}.  The subjects assigned those integers would go in the first treatment group.  The remaining subjects would go in the second treatment group.  Note that this method of randomly assigning subjects to treatments is not equivalent to taking a simple random sample. Here we are not sampling a subset of a population; we are randomly \emph{splitting} subjects into groups.
 
 % ZZQ - The following two paragraphs have an awkward transition.
 
-While it might be ideal for the subjects to be a random sample of the population of interest, that is rarely the case. Subjects must volunteer to be part of an experiment. However, because randomization is incorporated in the splitting of the groups, we can still use statistical techniques to check for a causal connection, though the precise population for which the conclusion applies may be unclear. For example, if an experiment to determine the most effective means to encourage individuals to vote is carried out only on college students, we may not be able to generalize the conclusions of the experiment to all adults in the population.
-
 \D{\newpage}
 
-Researchers sometimes know or suspect that another variable, other than the treatment, influences the response. Under these circumstances, they may carry out a \term{blocked experiment}. In this design, they first group individuals into \term{blocks} based on the identified variable and then randomize subjects within each block to the treatment groups. This strategy is referred to as \term{blocking}. For instance, if we are looking at the effect of a drug on heart attacks, we might first split patients in the study into low-risk and high-risk blocks. Then we can randomly assign half the patients from each block to the control group and the other half to the treatment group, as shown in Figure~\ref{figureShowingBlocking}. At the end of the experiment, we would incorporate this blocking into the analysis. By blocking by risk of patient, we control for this possible confounding factor. Additionally, by randomizing subjects to treatments within each block, we attempt to even out the effect of variables that we cannot block or directly control.
+Researchers sometimes know or suspect that another variable, other than the treatment, influences the response. Under these circumstances, they may carry out a \term{blocked experiment}. In this design, they first group individuals into \term{blocks} based on the identified extraneous variable and then randomize subjects within each block to the treatment groups. This strategy is referred to as \term{blocking}. For instance, if we are looking at the effect of a drug on heart attacks, we might first split patients in the study into low-risk and high-risk blocks. Then we can randomly assign half the patients from each block to the control group and the other half to the treatment group, as shown in Figure~\ref{figureShowingBlocking}. At the end of the experiment, we would incorporate this blocking into the analysis. By blocking by risk of patient, we control for this possible confounding factor. Additionally, by randomizing subjects to treatments within each block, we attempt to even out the effect of variables that we cannot block or directly control.
 
 \begin{figure}
 \centering
@@ -3301,6 +3299,12 @@ we test all \emph{combinations} of the factors. Let's say that \var{volume} has 
 
 As the number of factors and levels increases, the number of treatments become large and the analysis of the resulting data becomes more complex, requiring the use of advanced statistical methods. We will investigate only one factor at a time in this book.
 
+\subsection{Drawing conclusions based on experiments}
+
+The goal in an experiment is for the treatment groups to be as similar as possible \emph{except for the treatment}, so that at the end of the experiment any difference in response between the groups can be attributed to the treatment and not to some confounding variable.  Using random assignment of subjects/experimental units to treatment groups allows for a cause-and-effect conclusion between the explanatory and response variables because the potential for confounding variables is reduced.  
+
+To be able to generalize this cause-and-effect relationship to a larger population, a random sample is needed.  However, for ethical and practical reasons, subjects are rarely randomly sampled from a larger population; instead, most subjects are volunteers.  For this reason, the precise population for which the conclusion applies may be unclear. For example, if an experiment to determine the most effective means to encourage individuals to vote is carried out only on college students, we may not be able to generalize the conclusions of the experiment to all adults in the population.  While technically a generalization to a larger population is not valid without a random sample, in practice we say that the results of an experiment can be generalized to the population of subjects/experimental units similar to those that participated in the experiment.  You will see this language later in the book when we investigate hypothesis testing for completely randomized experiments and matched pairs experiments.   
+
 \D{\newpage}
 
 %%
@@ -3324,7 +3328,7 @@ know which treatment they are receiving, but members of the research team
 who interact with them know which treatment each participant is receiving, or
 vice versa
 
-\item In a \termni{double-blind}, also called double-masked, experiment, n	either the
+\item In a \termni{double-blind}, also called double-masked, experiment, neither the
 participants nor the members of the research team who interact with them
 know which treatment each participant is receiving.
 
@@ -3342,9 +3346,9 @@ differently among treatment groups \emph{and} affects the response variable.
 
 \item \termni{Replication}, or imposing the treatments on multiple subjects or experimental units, provides more data for comparison and decreases the likelihood that the treatment groups differ on some characteristic due to chance alone (i.e. in spite of the randomization).  
 
-\item \termni{Direct control} in an experiment means keeping variables that within a researchers power to control (e.g. testing conditions) the \emph{same} between treatment groups and from experimental unit to experimental unit.  Direct control in an experiment helps to control for potential extraneous variables and sources of variation in the response variable.
+\item \termni{Direct control} in an experiment means keeping variables that are within a researchers power to control (e.g. testing conditions) the \emph{same} between treatment groups and from experimental unit to experimental unit.  Direct control in an experiment helps to control for potential extraneous variables and sources of variation in the response variable.
 
-\item In a \termni{completely randomized design}, subjects or experimental units are randomly assigned to different treatment groups.  To carry out the random assignment, first number the units with integers from 1 to N.  Then, use a random number generator to choose distinct integers between 1 and N and assign the units corresponding to those integers to a treatment group.  Repeat as needed.  Do this in such a way that the treatment group sizes are balanced, unless there exists a good reason to make one treatment group larger than another.
+\item In a \termni{completely randomized design}, subjects or experimental units are randomly assigned to different treatment groups.  To carry out the random assignment, first number the units with unique integers from 1 to N.  Then, use a random number generator to randomly choose integers from 1 to N without replacement and assign the subjects/units corresponding to those integers to a treatment group.  Repeat as needed.  Do this in such a way that the treatment group sizes are balanced, unless there exists a good reason to make one treatment group larger than another.
 
 \D{\newpage}
 
