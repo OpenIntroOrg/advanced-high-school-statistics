@@ -11,9 +11,9 @@ results <- apply(samples, 1, mean)
 mean(results)
 sd(results)
 
-myPDF('sampling_10k_prop_88p.pdf', 6.5, 3.2,
-    mar = c(3.5, 3.8, 1.8, 0.7),
-    mgp = c(2.3, 0.6, 0),
+myPDF('sampling_10k_prop_88p.pdf', 5, 2.3,
+    mar = c(3.3, 3.8, 0.5, 0.7),
+    mgp = c(2.2, 0.6, 0),
     yaxs = "i")
 histPlot(results,
     col = COL[1], breaks = 50,
