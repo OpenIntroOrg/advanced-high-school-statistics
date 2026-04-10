@@ -1,7 +1,8 @@
 \documentclass[10pt,openany]%,oneside]
 {book}
 
-\newcommand{\versiondate}[0]{February 8th, 2026}
+
+\newcommand{\versiondate}[0]{April 10th, 2026}
 
 
 \usepackage{
@@ -30,17 +31,21 @@
 \usepackage[explicit]{titlesec}
 %\usepackage[usenames,dvipsnames]{color}  
 
+
 %\newcommand{\href}[2]{#2} \newcommand{\url}[1]{#1} \newcommand{\urlstyle}[1]{}
-\newcommand{\printlocation}[0]{}
 \include{extraTeX/style/colorsV1}
+\newcommand{\printlocation}[0]{}
+
 
 \newcommand{\chapterpagepadding}[0]{7mm}
 \newcommand{\chapterpagepaddingleftright}[0]{\chapterpagepadding{}}
 \newcommand{\chapterpagepaddingleftinner}[0]{25mm}
 \newcommand{\chapterpagepaddingrightinner}[0]{30mm}
 
+
 % _____ (1) PDF _____ %
 \usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
+
 
 % _____ (2) PDF -- screenreader _____ %
 %\usepackage{pdfcomment}
@@ -49,8 +54,10 @@
 % 2. Use the `headers_simple` instead of `headers`.
 % !!!!!
 
+
 % _____ (3) B&W Paperback _____ %
 %\usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}\definecolor{oiGB}{rgb}{0,0,0}\definecolor{oiB}{rgb}{0,0,0}\definecolor{chaptertitlegray}{rgb}{0,0,0}\PassOptionsToPackage{hyperref}{colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true}
+
 
 % _____ (4) Hardcover _____ %
 %\definecolor{oiB}{rgb}{0,0,0}\definecolor{chaptertitlegray}{rgb}{0,0,0}\PassOptionsToPackage{hyperref}{colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true}
@@ -59,8 +66,13 @@
 % !!!!!
 % \renewcommand{\printlocation}[0]{\noindent Printed in China. \\}
 
+
 % _____ (5) Color Paperback _____ %
 %\definecolor{chaptertitlegray}{rgb}{0,0,0}\usepackage[bookmarksnumbered, pdfborder = {0 0 0}, urlcolor = black, colorlinks=true, linkcolor = black, citecolor = black, backref = true]{hyperref}\renewcommand{\chapterpagepaddingleftright}[0]{15mm} \renewcommand{\chapterpagepaddingleftinner}[0]{17mm}\renewcommand{\chapterpagepaddingrightinner}[0]{22mm}
+
+
+
+
 
 
 
@@ -68,19 +80,8 @@
 \usepackage[style=authortitle-ibid, maxnames=2,natbib=true,sortcites=true,block=space,backend=bibtex]{biblatex}
 \bibliography{eoce.bib}
 
+
 \makeindex
-
-\date{}
-\renewcommand\contentsname{Table of Contents}
-
-%\setcounter{tocdepth}{1} 
-
-\setcounter{tocdepth}{3} 
-
-%\renewcommand{\cftchapfont}{\scshape}
-%\renewcommand{\cftsecfont}{\bfseries}
-
-\begin{document}
 \include{extraTeX/style/style} % standard version
 %\include{extraTeX/style/style_simple} % screen reader version
 %\include{extraTeX/style/tablet}
@@ -88,6 +89,21 @@
 % The following style file supports an 8.25 x 11 paper size.
 %\include{extraTeX/style/hardcover}
 \include{extraTeX/preamble/title}%_derivative}
+\date{}
+\renewcommand\contentsname{Table of Contents}
+
+
+%\setcounter{tocdepth}{1} 
+
+
+\setcounter{tocdepth}{3} 
+
+
+%\renewcommand{\cftchapfont}{\scshape}
+%\renewcommand{\cftsecfont}{\bfseries}
+
+
+\begin{document}
 %\include{extraTeX/preamble/review_copy}
 \renewcommand{\thepage}{}
 \maketitle
@@ -97,8 +113,6 @@
 \include{extraTeX/preamble/preface}
 
 
-
-
 \normalsize
 
 
@@ -106,13 +120,12 @@
 \include{extraTeX/style/headers}  % standard version
 %\include{extraTeX/style/headers_simple} % screen reader version
 
+
 \includechapter{1}{ch_one_variable_data_collecting_data}
 \includechapter{2}{ch_probability}
 \includechapter{3}{ch_inference_for_props}
 \includechapter{4}{ch_inference_for_means}
 \includechapter{5}{ch_regression_analysis}
-
-
 
 \endgroup
 
@@ -130,8 +143,10 @@
 \include{extraTeX/tables/TeX/chiSquareTable}
 \endgroup
 
+
 \include{extraTeX/index/index}
 \printindex
+
 
 \begingroup
 \include{extraTeX/style/style_appendices}
@@ -144,6 +159,8 @@
 \include{extraTeX/inferenceGuide/TeX/inferenceGuide}
 \include{extraTex/formulas/formulas}
 \endgroup
+
+
 
 
 \end{document}
